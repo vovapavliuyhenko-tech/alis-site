@@ -1,15 +1,19 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Projects from "@/components/Projects";
+import Services from "@/components/Services";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <main>
       <Header />
       <Hero />
-      {/* Следующие секции (about, projects, services, footer) — в разработке */}
-      <section className="flex h-[40vh] items-center justify-center text-white/40">
-        секции ниже — в процессе клонирования
-      </section>
+      <About />
+      <Projects />
+      <Services />
+      <Footer />
     </main>
   );
 }
