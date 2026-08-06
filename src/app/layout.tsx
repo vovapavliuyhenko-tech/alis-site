@@ -16,8 +16,9 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "resayme — бренд-дизайнер, графический дизайнер Диана Семенова",
-  description: "Портфолио и курс It's base. Бренд-дизайн, айдентика, визуал.",
+  title: "ALIS — сеть студий эстетики и beauty-concierge",
+  description:
+    "ALIS beauty: образы, макияж, укладка, свадебные образы, выезд мастеров и сопровождение. Основатель — Дайана Тарзян.",
   icons: { icon: "/assets/tild3364-356_favicon.svg" },
 };
 

@@ -1,16 +1,13 @@
-// FOOTER resayme: тёмный, крупный логотип + навигация через «/».
+// FOOTER ALIS: тёмный, крупный логотип + навигация через «/».
 export default function Footer() {
-  const nav = ["курс", "обо мне", "портфолио", "прайс", "дизайнерам", "контакты"];
-  const social = ["behance", "dprofile", "inst*", "telegram"];
+  const nav = ["главная", "обо мне", "услуги", "прайс", "консьерж", "контакты"];
+  const social = ["instagram", "telegram", "whatsapp"];
   return (
     <footer className="bg-[#121212] pt-20 pb-10">
       <div className="mx-auto w-[94%] max-w-[1280px]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/assets/tild6137-646_logo_white_resayme.svg"
-          alt="resayme"
-          className="r-reveal h-10 w-auto lg:h-14"
-        />
+        <div className="r-reveal font-serif text-[44px] leading-none tracking-[0.12em] text-white lg:text-[60px]">
+          ÁLIS
+        </div>
 
         <div className="mt-12 grid gap-10 border-t border-[#2e3133] pt-10 md:grid-cols-2">
           <nav className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px]">
@@ -36,7 +33,7 @@ export default function Footer() {
         </div>
 
         <p className="mt-10 text-[13px] text-white/40">
-          © {new Date().getFullYear()} resayme · Диана Семенова
+          © {new Date().getFullYear()} ALIS · сеть студий эстетики и beauty-concierge
         </p>
       </div>
     </footer>

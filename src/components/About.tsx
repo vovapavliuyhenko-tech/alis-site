@@ -1,5 +1,5 @@
-// ABOUT resayme: тёмная секция. Заголовок «(about me)» — реальный SVG.
-// Слева абзацы, справа большой портрет, у правого края вертикальные соц-ссылки.
+// ABOUT resayme-раскладка: «(about me)» SVG, слева текст, справа портрет,
+// у правого края вертикальные соц-ссылки. Текст — от основателя салона.
 export default function About() {
   return (
     <section className="relative bg-[#17191a] py-24 lg:py-32">
@@ -16,27 +16,25 @@ export default function About() {
           {/* Левая колонка — текст */}
           <div className="r-reveal order-2 max-w-xl space-y-7 text-[13px] leading-relaxed text-white/85 lg:order-1 lg:text-[14px]">
             <p>
-              5 лет разрабатываю дизайн брендам со всего мира, мои работы —
-              отражение моих знаний и видения, имеют награды на дизайн-площадках
-              Behance/Dprofile (28 наград). За моей спиной множество обучений,
-              высшее образование дизайнера, десятки реализованных проектов, а
-              еще я обучаю с нуля
+              Создавая салоны красоты и наш уникальный concierge-сервис, мне
+              хотелось объединить людей, горящих своим делом и творчеством, с
+              чистой душой и открытым сердцем, которые смогут увидеть и соединить
+              вашу внутреннюю красоту с внешней.
             </p>
             <p>
-              Я ценю аутентичность людей и брендов, верю в уникальность и
-              непохожесть каждого из них, моя задача отразить это визуально,
-              сделать так, чтобы внешнее соответствовало внутреннему.
+              А также, обеспечить качественный сервис и позаботиться о каждой
+              детали так, чтобы у наших гостей были исключительно приятные
+              ощущения и спокойная атмосфера, в которой можно настроиться на
+              любовь.
             </p>
-            <p>
-              Я за подлинность, непохожесть, идеи и смыслы, которые можно
-              отразить в дизайне, который будет о вас и раскроет именно вашу
-              историю
-            </p>
-            <p>
-              Услуги, на которых я специализируюсь: разработка логотипов,
-              айдентики, визуала социальных сетей. Я расскажу вашу историю и
-              историю вашего бренда людям, чтобы навсегда остаться в их сердце.
-            </p>
+            <div className="pt-2">
+              <p className="text-[15px] text-white">Дайана Тарзян</p>
+              <p className="mt-1 text-[12px] uppercase tracking-[0.1em] text-white/50">
+                основатель сети студий эстетики
+                <br />
+                ALIS и ALIS BEAUTY CONCIERGE
+              </p>
+            </div>
           </div>
 
           {/* Правая колонка — портрет */}
@@ -44,7 +42,7 @@ export default function About() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/tild3236-393__.jpg"
-              alt="Диана Семенова"
+              alt="Дайана Тарзян"
               className="aspect-[3/4] w-full max-w-[420px] object-cover"
             />
           </div>
@@ -54,11 +52,11 @@ export default function About() {
       {/* Вертикальные соц-ссылки у правого края */}
       <div className="absolute right-2 top-1/2 hidden -translate-y-1/2 lg:block">
         <div className="flex items-center gap-4 text-[13px] tracking-wide text-white/60 [writing-mode:vertical-rl] rotate-180">
-          <a href="#" className="transition-colors hover:text-white">behance</a>
+          <a href="#" className="transition-colors hover:text-white">instagram</a>
           <span className="text-white/30">/</span>
-          <a href="#" className="transition-colors hover:text-white">dprofile</a>
+          <a href="#" className="transition-colors hover:text-white">telegram</a>
           <span className="text-white/30">/</span>
-          <a href="#" className="transition-colors hover:text-white">inst*</a>
+          <a href="#" className="transition-colors hover:text-white">whatsapp</a>
         </div>
       </div>
     </section>

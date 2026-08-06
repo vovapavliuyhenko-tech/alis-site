@@ -58,24 +58,24 @@ export default function Hero() {
           ref={cardRef}
           className="flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between bg-white px-7 py-9 text-center text-[#17191a] will-change-transform"
         >
-          <p className="mx-auto max-w-[16rem] text-[13px] leading-snug">
-            Бренд-дизайнер и автор курса
+          <p className="mx-auto max-w-[17rem] text-[13px] leading-snug">
+            Сеть студий эстетики и beauty-concierge
             <br />
-            It&apos;s base — Диана Семенова
+            — Дайана Тарзян
           </p>
 
-          <div className="flex flex-1 items-center justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/tild6230-623_Resayme_logo.svg"
-              alt="resayme"
-              className="w-[62%] max-w-[220px]"
-            />
+          <div className="flex flex-1 flex-col items-center justify-center">
+            <span className="font-serif text-[46px] leading-none tracking-[0.08em] text-[#17191a]">
+              ÁLIS
+            </span>
+            <span className="mt-2 text-[12px] uppercase tracking-[0.35em] text-[#17191a]/70">
+              beauty
+            </span>
           </div>
 
           <p className="mx-auto max-w-[18rem] text-[13px] leading-snug text-[#4a4a4a]">
-            для тех, кто хочет рассказать свою историю и историю бренда людям,
-            чтобы навсегда остаться в их сердце
+            для тех, кто хочет настроиться на любовь и соединить свою внутреннюю
+            красоту с внешней
           </p>
         </div>
       </div>

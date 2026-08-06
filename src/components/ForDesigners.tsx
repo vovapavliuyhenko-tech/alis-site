@@ -1,50 +1,37 @@
-// БЛОК «ДИЗАЙНЕРАМ» resayme: промо курса It's base.
-// Заголовок «for designers» + бейдж «new» — реальные SVG. Факты курса — с сайта.
+// БЛОК «ALIS BEAUTY CONCIERGE»: консьерж-сервис салона.
 const FACTS = [
-  { k: "Для кого", v: "Начинающие и опытные дизайнеры" },
-  { k: "Из чего состоит", v: "12 модулей с лекциями и заданиями" },
-  { k: "Длительность", v: "3 месяца" },
-  { k: "Обратная связь", v: "От автора курса и кураторов" },
-  { k: "Результат", v: "Оформленный на все площадки кейс" },
+  { k: "Формат", v: "Выезд мастеров и сопровождение" },
+  { k: "География", v: "Новороссийск, Сочи, Краснодар и др." },
+  { k: "Услуги", v: "Образы, макияж, укладка, свадебные образы" },
+  { k: "На мероприятии", v: "Стилист и визажист рядом весь день" },
+  { k: "Забота", v: "Продумываем каждую деталь образа" },
 ];
 
 export default function ForDesigners() {
   return (
     <section className="bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1280px]">
-        {/* Заголовок + бейдж new */}
-        <div className="r-reveal mb-14 flex items-start gap-4">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/assets/tild3236-323_for_designers.svg"
-            alt="for designers"
-            className="h-8 w-auto lg:h-10"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/assets/tild6665-633_new.svg"
-            alt="new"
-            className="h-5 w-auto lg:h-6"
-          />
-        </div>
+        {/* Заголовок */}
+        <h2 className="r-reveal mb-14 text-[34px] font-light lowercase leading-none tracking-tight text-white lg:text-[44px]">
+          <span className="text-white/45">(</span>beauty concierge<span className="text-white/45">)</span>
+        </h2>
 
         <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
           {/* Левая колонка — оффер */}
           <div>
-            <h2 className="r-reveal max-w-xl text-[26px] font-medium leading-tight text-white lg:text-[34px]">
-              Курс по графическому дизайну с 0 и для опытных —{" "}
-              <span className="font-thunder italic">It&apos;s base</span>
-            </h2>
+            <h3 className="r-reveal max-w-xl text-[26px] font-medium leading-tight text-white lg:text-[34px]">
+              ALIS Beauty Concierge — забота о каждой детали вашего образа
+            </h3>
             <p className="r-reveal mt-7 max-w-md text-[14px] leading-relaxed text-white/70">
-              Я автор курса It&apos;s base — обучение профессии дизайнера с нуля.
-              Весь мой опыт, собранный в мощную программу, чтобы получить реальную
-              опору на свои знания и стать востребованным специалистом.
+              Наш уникальный concierge-сервис: мастера ALIS приедут к вам, соберут
+              образ и будут рядом на съёмке, свадьбе или мероприятии — чтобы у вас
+              остались исключительно приятные ощущения и спокойная атмосфера.
             </p>
             <a
               href="#"
               className="r-reveal mt-10 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-[14px] font-medium text-[#17191a] transition-opacity hover:opacity-85"
             >
-              Узнать подробнее
+              Записаться
               <span aria-hidden>→</span>
             </a>
           </div>
