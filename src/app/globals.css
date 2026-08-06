@@ -35,8 +35,9 @@ body {
 /* ===== Появление при скролле (как на resayme, Tilda step-by-step) ===== */
 .r-reveal {
   opacity: 0;
-  transform: translateY(38px);
-  transition: opacity .8s cubic-bezier(.2, .7, .3, 1), transform .8s cubic-bezier(.2, .7, .3, 1);
+  transform: translateY(56px);
+  /* Длительность как на resayme: 1.8s */
+  transition: opacity 1.8s cubic-bezier(.16, 1, .3, 1), transform 1.8s cubic-bezier(.16, 1, .3, 1);
   will-change: opacity, transform;
 }
 .r-reveal.is-in {
