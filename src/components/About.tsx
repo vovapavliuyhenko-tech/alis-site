@@ -43,7 +43,7 @@ export default function About() {
             <img
               src="/assets/tild3236-393__.jpg"
               alt="Дайана Тарзян"
-              className="aspect-[3/4] w-full max-w-[420px] object-cover"
+              className="aspect-[3/4] w-full max-w-[420px] rounded-[22px] object-cover"
             />
           </div>
         </div>

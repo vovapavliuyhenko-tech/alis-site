@@ -56,7 +56,7 @@ export default function Hero() {
       <div className="absolute inset-0 flex items-center justify-center px-6">
         <div
           ref={cardRef}
-          className="flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between bg-white px-7 py-9 text-center text-[#17191a] will-change-transform"
+          className="flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between rounded-[26px] bg-white px-7 py-9 text-center text-[#17191a] will-change-transform"
         >
           <p className="mx-auto max-w-[17rem] text-[13px] leading-snug">
             Сеть студий эстетики и beauty-concierge

@@ -25,7 +25,7 @@ export default function Projects() {
 
           {/* Карточка: фото работы + подпись образа поверх */}
           <div className="absolute inset-0 flex items-center justify-center px-6">
-            <div className="relative aspect-[3/4] w-[84%] max-w-[380px] overflow-hidden">
+            <div className="relative aspect-[3/4] w-[84%] max-w-[380px] overflow-hidden rounded-[22px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={s.thumb} alt={s.title} className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute inset-0 bg-black/30" />
