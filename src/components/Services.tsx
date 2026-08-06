@@ -1,39 +1,50 @@
 "use client";
-// УСЛУГИ/ПРАЙС resayme: аккордеон. Заголовок «(services/prices)» — реальный SVG.
-// Номера строк — реальные SVG (1.svg..6.svg), иконка «+» — plus.svg.
+// УСЛУГИ/ПРАЙС: аккордеон с реальными услугами салона красоты.
+// Заголовок «(services/prices)» — SVG. Номера строк и «+» — реальные SVG.
 import { useState } from "react";
-
-const STEPS = [
-  "01. Заполнение брифа",
-  "02. Обсуждение деталей",
-  "03. Внесение предоплаты 50%",
-  "04. Разработка дизайна",
-  "05. Презентация вариантов с визуализацией",
-  "06. Внесение правок (при необходимости)",
-  "07. Согласование дизайна",
-  "08. Разработка полиграфии (если предусмотрена)",
-  "09. Согласование полиграфии",
-  "10. Внесение второй части оплаты",
-  "11. Разработка логобука/гайдлайна, подготовка макетов к печати (если предусмотрено)",
-  "12. Отправка файлов клиенту",
-];
 
 const NUM = [
   "/assets/tild3930-303_1.svg",
   "/assets/tild3639-373_2.svg",
   "/assets/tild6538-633_3.svg",
-  "/assets/tild6538-653_4.svg",
-  "/assets/tild3632-303_5.svg",
-  "/assets/tild6637-663_6.svg",
 ];
 
-const ITEMS = [
-  { title: "Этапы работы", steps: true },
-  { title: "Разработка логотипа (пакет 1)" },
-  { title: "Разработка логотипа (пакет 2)" },
-  { title: "Фирменный стиль (пакет 3)" },
-  { title: "Фирменный стиль (пакет 4)" },
-  { title: "Другие услуги" },
+type Row = { n: string; p: string };
+type Group = { title: string; rows: Row[]; note?: string };
+
+const GROUPS: Group[] = [
+  {
+    title: "Услуги",
+    rows: [
+      { n: "Полный образ", p: "8 000 ₽" },
+      { n: "Полный образ (топ-стилисты)", p: "10 000 ₽" },
+      { n: "Макияж", p: "5 000 ₽" },
+      { n: "Укладка", p: "2 500 – 3 500 ₽" },
+      { n: "Свадебный образ", p: "10 000 ₽" },
+      { n: "Свадебный образ (топ-стилисты)", p: "15 000 ₽" },
+      { n: "Пробный свадебный образ", p: "8 500 ₽" },
+      { n: "Свадебный образ и подбор 1-го look от стилиста", p: "17 000 ₽" },
+      { n: "Полный образ и подбор 1-го look на мероприятие от стилиста", p: "15 000 ₽" },
+    ],
+  },
+  {
+    title: "Выезд от 2-х мастеров",
+    rows: [
+      { n: "Новороссийск", p: "8 000 ₽" },
+      { n: "Геленджик / Анапа / Абрау-Дюрсо и другие близлежащие локации", p: "от 10 000 ₽" },
+      { n: "Сочи / Адлер", p: "от 25 000 ₽" },
+      { n: "Краснодар / Ростов", p: "от 25 000 ₽" },
+      { n: "Москва и Санкт-Петербург", p: "по запросу" },
+    ],
+    note: "*Другое количество мастеров обсуждается с менеджером",
+  },
+  {
+    title: "Сопровождение стилистов на мероприятии/свадьбе",
+    rows: [
+      { n: "Стилист или визажист", p: "2 000 ₽/час" },
+      { n: "Стилист + визажист", p: "4 000 ₽/час" },
+    ],
+  },
 ];
 
 export default function Services() {
@@ -50,10 +61,10 @@ export default function Services() {
         />
 
         <div className="border-t border-[#2e3133]">
-          {ITEMS.map((item, i) => {
+          {GROUPS.map((g, i) => {
             const isOpen = open === i;
             return (
-              <div key={item.title} className="r-reveal border-b border-[#2e3133]">
+              <div key={g.title} className="r-reveal border-b border-[#2e3133]">
                 <button
                   onClick={() => setOpen(isOpen ? -1 : i)}
                   className="flex w-full items-center gap-6 py-6 text-left lg:gap-10 lg:py-7"
@@ -62,7 +73,7 @@ export default function Services() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={NUM[i]} alt="" className="h-4 w-auto opacity-90" />
                   <span className="flex-1 text-[17px] text-white lg:text-[19px]">
-                    {item.title}
+                    {g.title}
                   </span>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -75,27 +86,28 @@ export default function Services() {
                 </button>
 
                 <div
-                  className="grid overflow-hidden transition-all duration-400"
+                  className="grid overflow-hidden transition-all duration-500"
                   style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
                 >
                   <div className="min-h-0">
-                    {item.steps ? (
-                      <div className="flex flex-col justify-between gap-8 pb-8 pl-[calc(1rem+2.5rem)] text-white/80 lg:flex-row">
-                        <ul className="space-y-1 text-[14px] leading-relaxed">
-                          {STEPS.map((s) => (
-                            <li key={s}>{s}</li>
-                          ))}
-                        </ul>
-                        <div className="shrink-0 text-[14px] text-white/60 lg:text-right">
-                          <p>Срочные заказы +50% к прайсу</p>
-                          <p>Режим работы: Пн-Пт 10:00 - 19:00</p>
-                        </div>
-                      </div>
-                    ) : (
-                      <p className="pb-8 pl-[calc(1rem+2.5rem)] text-[14px] text-white/60">
-                        Стоимость и состав пакета — по запросу.
-                      </p>
-                    )}
+                    <div className="pb-8 pl-[calc(1rem+2.5rem)] pr-2">
+                      <dl className="max-w-2xl">
+                        {g.rows.map((r) => (
+                          <div
+                            key={r.n}
+                            className="flex items-baseline justify-between gap-6 border-b border-[#2e3133]/60 py-3.5 last:border-0"
+                          >
+                            <dt className="text-[14px] text-white/85">{r.n}</dt>
+                            <dd className="shrink-0 text-[14px] tabular-nums text-white/60">
+                              {r.p}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                      {g.note && (
+                        <p className="mt-4 text-[13px] italic text-white/45">{g.note}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
