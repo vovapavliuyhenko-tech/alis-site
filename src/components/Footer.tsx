@@ -3,7 +3,7 @@ export default function Footer() {
   const nav = ["главная", "обо мне", "услуги", "прайс", "консьерж", "контакты"];
   const social = ["instagram", "telegram", "whatsapp"];
   return (
-    <footer className="bg-[#121212] pt-20 pb-10">
+    <footer id="footer" className="scroll-mt-24 bg-[#121212] pt-20 pb-10">
       <div className="mx-auto w-[94%] max-w-[1280px]">
         <div className="r-reveal font-serif text-[44px] leading-none tracking-[0.12em] text-white lg:text-[60px]">
           ÁLIS

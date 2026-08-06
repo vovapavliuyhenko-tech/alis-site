@@ -12,7 +12,7 @@ const SLIDES = [
 
 export default function Projects() {
   return (
-    <div className="relative">
+    <div id="gallery" className="relative">
       {SLIDES.map((s, i) => (
         <section
           key={s.title}

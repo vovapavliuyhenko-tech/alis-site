@@ -9,7 +9,7 @@ const FACTS = [
 
 export default function ForDesigners() {
   return (
-    <section className="bg-[#17191a] py-24 lg:py-32">
+    <section id="concierge" className="scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1280px]">
         {/* Заголовок */}
         <h2 className="r-reveal mb-14 text-[34px] font-light lowercase leading-none tracking-tight text-white lg:text-[44px]">
