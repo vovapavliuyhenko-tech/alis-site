@@ -1,9 +1,40 @@
-// HERO resayme: одно фото зеркалом слева/справа, по центру белая карточка
-// (тэглайн / логотип resayme / подзаголовок), снизу градиентное затемнение.
+"use client";
+// HERO resayme: одно фото зеркалом слева/справа, по центру белая карточка.
+// При скролле карточка плавно ОПУСКАЕТСЯ вниз и тонет в темноте (parallax).
+import { useEffect, useRef } from "react";
+
 export default function Hero() {
   const photo = "/assets/tild6230-643__.jpg";
+  const cardRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    const section = sectionRef.current;
+    if (!card || !section) return;
+
+    const update = () => {
+      const h = section.offsetHeight || window.innerHeight;
+      const progress = Math.min(Math.max(window.scrollY / h, 0), 1);
+      // карточка опускается вниз и растворяется по мере скролла
+      card.style.transform = `translateY(${progress * 300}px)`;
+      card.style.opacity = String(1 - progress * 0.95);
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
   return (
-    <section className="relative h-svh min-h-[640px] w-full overflow-hidden bg-[#cfcbc6]">
+    <section
+      ref={sectionRef}
+      className="relative h-svh min-h-[640px] w-full overflow-hidden bg-[#cfcbc6]"
+    >
       {/* Фон: фото зеркалом */}
       <div className="absolute inset-0 grid grid-cols-2">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -21,9 +52,12 @@ export default function Hero() {
         }}
       />
 
-      {/* Центральная белая карточка */}
+      {/* Центральная белая карточка (опускается при скролле) */}
       <div className="absolute inset-0 flex items-center justify-center px-6">
-        <div className="r-reveal flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between bg-white px-7 py-9 text-center text-[#17191a]">
+        <div
+          ref={cardRef}
+          className="flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between bg-white px-7 py-9 text-center text-[#17191a] will-change-transform"
+        >
           <p className="mx-auto max-w-[16rem] text-[13px] leading-snug">
             Бренд-дизайнер и автор курса
             <br />
