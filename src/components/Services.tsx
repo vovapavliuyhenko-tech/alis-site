@@ -53,12 +53,9 @@ export default function Services() {
   return (
     <section className="bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1280px]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/assets/tild3063-643_services.svg"
-          alt="(services/prices)"
-          className="r-reveal mb-14 h-9 w-auto"
-        />
+        <h2 className="r-reveal mb-14 text-[34px] font-light lowercase leading-none tracking-tight text-white lg:text-[44px]">
+          <span className="text-white/45">(</span>услуги и цены<span className="text-white/45">)</span>
+        </h2>
 
         <div className="border-t border-[#2e3133]">
           {GROUPS.map((g, i) => {
