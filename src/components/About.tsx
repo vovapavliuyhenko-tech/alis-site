@@ -40,12 +40,12 @@ export default function About() {
           </div>
 
           {/* Правая колонка — портрет */}
-          <div className="order-1 lg:order-2">
+          <div className="order-1 flex justify-center lg:order-2 lg:justify-end lg:pr-10">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/tild3236-393__.jpg"
               alt="Диана Семенова"
-              className="aspect-[3/4] w-full object-cover"
+              className="aspect-[3/4] w-full max-w-[420px] object-cover"
             />
           </div>
         </div>
