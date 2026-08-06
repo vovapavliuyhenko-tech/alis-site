@@ -46,14 +46,14 @@ export default function Services() {
         <img
           src="/assets/tild3063-643_services.svg"
           alt="(services/prices)"
-          className="mb-14 h-9 w-auto"
+          className="r-reveal mb-14 h-9 w-auto"
         />
 
         <div className="border-t border-[#2e3133]">
           {ITEMS.map((item, i) => {
             const isOpen = open === i;
             return (
-              <div key={item.title} className="border-b border-[#2e3133]">
+              <div key={item.title} className="r-reveal border-b border-[#2e3133]">
                 <button
                   onClick={() => setOpen(isOpen ? -1 : i)}
                   className="flex w-full items-center gap-6 py-6 text-left lg:gap-10 lg:py-7"

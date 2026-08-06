@@ -9,7 +9,7 @@ export default function Footer() {
         <img
           src="/assets/tild6137-646_logo_white_resayme.svg"
           alt="resayme"
-          className="h-10 w-auto lg:h-14"
+          className="r-reveal h-10 w-auto lg:h-14"
         />
 
         <div className="mt-12 grid gap-10 border-t border-[#2e3133] pt-10 md:grid-cols-2">

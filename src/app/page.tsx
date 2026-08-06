@@ -5,10 +5,12 @@ import Projects from "@/components/Projects";
 import Services from "@/components/Services";
 import ForDesigners from "@/components/ForDesigners";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
     <main>
+      <ScrollReveal />
       <Header />
       <Hero />
       <About />

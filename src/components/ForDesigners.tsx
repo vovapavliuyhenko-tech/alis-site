@@ -13,7 +13,7 @@ export default function ForDesigners() {
     <section className="bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1280px]">
         {/* Заголовок + бейдж new */}
-        <div className="mb-14 flex items-start gap-4">
+        <div className="r-reveal mb-14 flex items-start gap-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/tild3236-323_for_designers.svg"
@@ -31,18 +31,18 @@ export default function ForDesigners() {
         <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
           {/* Левая колонка — оффер */}
           <div>
-            <h2 className="max-w-xl text-[26px] font-medium leading-tight text-white lg:text-[34px]">
+            <h2 className="r-reveal max-w-xl text-[26px] font-medium leading-tight text-white lg:text-[34px]">
               Курс по графическому дизайну с 0 и для опытных —{" "}
               <span className="font-thunder italic">It&apos;s base</span>
             </h2>
-            <p className="mt-7 max-w-md text-[14px] leading-relaxed text-white/70">
+            <p className="r-reveal mt-7 max-w-md text-[14px] leading-relaxed text-white/70">
               Я автор курса It&apos;s base — обучение профессии дизайнера с нуля.
               Весь мой опыт, собранный в мощную программу, чтобы получить реальную
               опору на свои знания и стать востребованным специалистом.
             </p>
             <a
               href="#"
-              className="mt-10 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-[14px] font-medium text-[#17191a] transition-opacity hover:opacity-85"
+              className="r-reveal mt-10 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-[14px] font-medium text-[#17191a] transition-opacity hover:opacity-85"
             >
               Узнать подробнее
               <span aria-hidden>→</span>
@@ -52,7 +52,7 @@ export default function ForDesigners() {
           {/* Правая колонка — факты */}
           <dl className="divide-y divide-[#2e3133] border-t border-[#2e3133]">
             {FACTS.map((f) => (
-              <div key={f.k} className="flex items-baseline justify-between gap-6 py-5">
+              <div key={f.k} className="r-reveal flex items-baseline justify-between gap-6 py-5">
                 <dt className="text-[13px] uppercase tracking-wide text-white/45">
                   {f.k}
                 </dt>

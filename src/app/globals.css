@@ -31,3 +31,18 @@ body {
 
 /* Крупный конденсированный шрифт (Thunder → Oswald стенд-ин) */
 .font-thunder { font-family: var(--font-thunder), 'Oswald', sans-serif; }
+
+/* ===== Появление при скролле (как на resayme, Tilda step-by-step) ===== */
+.r-reveal {
+  opacity: 0;
+  transform: translateY(38px);
+  transition: opacity .8s cubic-bezier(.2, .7, .3, 1), transform .8s cubic-bezier(.2, .7, .3, 1);
+  will-change: opacity, transform;
+}
+.r-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .r-reveal { opacity: 1; transform: none; transition: none; }
+}

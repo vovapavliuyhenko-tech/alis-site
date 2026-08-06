@@ -9,12 +9,12 @@ export default function About() {
         <img
           src="/assets/tild3939-383_about.svg"
           alt="(about me)"
-          className="mb-16 h-8 w-auto lg:h-9"
+          className="r-reveal mb-16 h-8 w-auto lg:h-9"
         />
 
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
           {/* Левая колонка — текст */}
-          <div className="order-2 max-w-xl space-y-7 text-[13px] leading-relaxed text-white/85 lg:order-1 lg:text-[14px]">
+          <div className="r-reveal order-2 max-w-xl space-y-7 text-[13px] leading-relaxed text-white/85 lg:order-1 lg:text-[14px]">
             <p>
               5 лет разрабатываю дизайн брендам со всего мира, мои работы —
               отражение моих знаний и видения, имеют награды на дизайн-площадках
@@ -40,7 +40,7 @@ export default function About() {
           </div>
 
           {/* Правая колонка — портрет */}
-          <div className="order-1 flex justify-center lg:order-2 lg:justify-end lg:pr-10">
+          <div className="r-reveal order-1 flex justify-center lg:order-2 lg:justify-end lg:pr-10">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/tild3236-393__.jpg"

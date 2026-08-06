@@ -23,7 +23,7 @@ export default function Hero() {
 
       {/* Центральная белая карточка */}
       <div className="absolute inset-0 flex items-center justify-center px-6">
-        <div className="flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between bg-white px-7 py-9 text-center text-[#17191a]">
+        <div className="r-reveal flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between bg-white px-7 py-9 text-center text-[#17191a]">
           <p className="mx-auto max-w-[16rem] text-[13px] leading-snug">
             Бренд-дизайнер и автор курса
             <br />
