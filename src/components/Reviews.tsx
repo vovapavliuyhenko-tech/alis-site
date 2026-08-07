@@ -44,7 +44,7 @@ const REVIEWS: Review[] = [
 export default function Reviews() {
   const n = REVIEWS.length;
   const step = 360 / n; // угол между гранями
-  const radius = 250; // радиус кольца (карточки почти касаются)
+  const radius = 580; // радиус кольца (карточки разъезжаются к краям экрана)
 
   return (
     <section id="reviews" className="overflow-hidden bg-[#17191a] py-24 lg:py-32">
@@ -60,7 +60,7 @@ export default function Reviews() {
         </div>
 
         {/* Вращающееся 3D-кольцо */}
-        <div className="carousel3d relative mx-auto h-[360px] [perspective:1700px] lg:h-[340px]">
+        <div className="carousel3d relative mx-auto h-[360px] [perspective:4000px] lg:h-[340px]">
           <div className="ring3d absolute inset-0">
             {REVIEWS.map((r, i) => (
               <article
