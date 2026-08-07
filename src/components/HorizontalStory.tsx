@@ -107,7 +107,7 @@ export default function HorizontalStory() {
               className="flex w-full shrink-0 flex-col md:h-full md:w-screen md:flex-row"
             >
               {/* Левая кремовая половина */}
-              <div className="flex flex-col justify-between bg-[#f4efe6] px-6 py-12 md:w-[46%] md:px-[4vw] md:py-[8vh]">
+              <div className="flex flex-col justify-between bg-[#f4efe6] px-6 py-12 md:w-[46%] md:px-[4vw] md:pb-[8vh] md:pt-[18vh]">
                 <div>
                   <span className="text-[12px] uppercase tracking-[0.3em] text-[#4E2126]">
                     Этап 0{i + 1}
