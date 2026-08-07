@@ -36,6 +36,13 @@ body {
 .utp-dot { transform: scale(0.65); opacity: 0.5; }
 [data-utp-icon][data-active="1"] .utp-dot { transform: scale(1.25); opacity: 1; }
 
+/* ===== Бренды: бесконечная бегущая лента ===== */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+.marquee { animation: marquee 34s linear infinite; }
+
 /* ===== Запись: плавный переход между шагами ===== */
 @keyframes bookingStep {
   from { opacity: 0; transform: translateY(14px); }
