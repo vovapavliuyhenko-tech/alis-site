@@ -44,7 +44,7 @@ const REVIEWS: Review[] = [
 export default function Reviews() {
   const n = REVIEWS.length;
   const step = 360 / n; // угол между гранями
-  const radius = 540; // радиус кольца
+  const radius = 250; // радиус кольца (карточки почти касаются)
 
   return (
     <section id="reviews" className="overflow-hidden bg-[#17191a] py-24 lg:py-32">
@@ -60,32 +60,32 @@ export default function Reviews() {
         </div>
 
         {/* Вращающееся 3D-кольцо */}
-        <div className="carousel3d relative mx-auto h-[400px] [perspective:2200px] lg:h-[380px]">
+        <div className="carousel3d relative mx-auto h-[360px] [perspective:1700px] lg:h-[340px]">
           <div className="ring3d absolute inset-0">
             {REVIEWS.map((r, i) => (
               <article
                 key={r.name}
                 style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)` }}
-                className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[165px] flex h-[330px] w-[300px] flex-col justify-between rounded-[22px] bg-[#f4efe6] p-7 text-[#17191a] shadow-2xl [backface-visibility:hidden] lg:p-8"
+                className="absolute left-1/2 top-1/2 -ml-[135px] -mt-[145px] flex h-[290px] w-[270px] flex-col justify-between rounded-[18px] bg-[#f4efe6] p-6 text-[#17191a] shadow-2xl [backface-visibility:hidden]"
               >
-                <span className="font-serif text-[60px] leading-[0.5] text-[#4E2126]">
+                <span className="font-serif text-[46px] leading-[0.5] text-[#4E2126]">
                   &ldquo;
                 </span>
 
-                <p className="font-serif text-[18px] leading-relaxed text-[#17191a] lg:text-[20px]">
+                <p className="font-serif text-[15px] leading-relaxed text-[#17191a]">
                   {r.text}
                 </p>
 
-                <div className="flex items-center gap-3.5">
+                <div className="flex items-center gap-3">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={r.photo}
                     alt={r.name}
-                    className="h-12 w-12 rounded-full object-cover"
+                    className="h-10 w-10 rounded-full object-cover"
                   />
                   <div>
-                    <p className="text-[15px] font-medium text-[#17191a]">{r.name}</p>
-                    <p className="text-[12px] uppercase tracking-[0.12em] text-[#4E2126]">
+                    <p className="text-[14px] font-medium text-[#17191a]">{r.name}</p>
+                    <p className="text-[11px] uppercase tracking-[0.12em] text-[#4E2126]">
                       {r.role}
                     </p>
                   </div>
