@@ -95,6 +95,10 @@ export default function Booking() {
           "linear-gradient(rgba(244,239,230,0.86), rgba(244,239,230,0.86)), url(/assets/tild6230-643__.jpg)",
       }}
     >
+      {/* Растушёвка верха и низа — бесшовный стык с соседними блоками */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#f4efe6] to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f4efe6] to-transparent" />
+
       <div className="relative mx-auto w-[94%] max-w-[1080px]">
         {/* Заголовок */}
         <div className="mb-12 text-center">

@@ -22,8 +22,12 @@ export default function Home() {
       <About />
       <Projects />
       <Services />
+      {/* Плавный мостик: тёмное → кремовое */}
+      <div aria-hidden className="h-40 bg-gradient-to-b from-[#17191a] to-[#f4efe6]" />
       <Booking />
       <HorizontalStory />
+      {/* Плавный мостик: кремовое → тёмное */}
+      <div aria-hidden className="h-40 bg-gradient-to-b from-[#f4efe6] to-[#17191a]" />
       <Brands />
       <Footer />
     </main>
