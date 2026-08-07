@@ -47,7 +47,7 @@ const STAGES: Stage[] = [
 // Декоративный росчерк-цветок
 function Flourish() {
   return (
-    <svg viewBox="0 0 40 40" className="h-9 w-9 text-[#2a2622]/70" fill="none">
+    <svg viewBox="0 0 40 40" className="h-9 w-9 text-[#4E2126]" fill="none">
       <path d="M20 22c0-6-4-9-9-9 3 4 4 7 4 9-2 0-5 1-8 4 5 0 9-2 13-4z" stroke="currentColor" strokeWidth="1.1" />
       <path d="M20 22c0-6 4-9 9-9-3 4-4 7-4 9 2 0 5 1 8 4-5 0-9-2-13-4z" stroke="currentColor" strokeWidth="1.1" />
       <path d="M20 22v14" stroke="currentColor" strokeWidth="1.1" />
@@ -109,16 +109,16 @@ export default function HorizontalStory() {
               {/* Левая кремовая половина */}
               <div className="flex flex-col justify-between bg-[#f4efe6] px-6 py-12 md:w-[46%] md:px-[4vw] md:py-[8vh]">
                 <div>
-                  <span className="text-[12px] uppercase tracking-[0.3em] text-[#2a2622]/45">
+                  <span className="text-[12px] uppercase tracking-[0.3em] text-[#4E2126]">
                     Этап 0{i + 1}
                   </span>
-                  <h3 className="mt-6 font-thunder text-[34px] uppercase leading-[1.06] tracking-[0.04em] text-[#2a2622] md:mt-10 md:text-[3.4vw]">
+                  <h3 className="mt-6 font-thunder text-[34px] uppercase leading-[1.06] tracking-[0.04em] text-[#17191a] md:mt-10 md:text-[3.4vw]">
                     {s.heading}
                   </h3>
                 </div>
                 <div className="mt-10 md:mt-0">
                   <Flourish />
-                  <p className="mt-4 font-serif text-[16px] italic text-[#2a2622]/70 md:text-[18px]">
+                  <p className="mt-4 font-serif text-[16px] italic text-[#17191a]/70 md:text-[18px]">
                     {s.quote}
                   </p>
                 </div>
@@ -133,10 +133,10 @@ export default function HorizontalStory() {
                   className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-x-[6%] bottom-[6%] rounded-[6px] bg-[#f4efe6]/95 px-6 py-6 text-center backdrop-blur-sm md:px-10 md:py-8">
-                  <p className="font-serif text-[24px] uppercase tracking-[0.15em] text-[#2a2622] md:text-[30px]">
+                  <p className="font-serif text-[24px] uppercase tracking-[0.15em] text-[#4E2126] md:text-[30px]">
                     {s.name}
                   </p>
-                  <p className="mx-auto mt-3 max-w-md text-[13px] leading-relaxed text-[#2a2622]/70 md:text-[14px]">
+                  <p className="mx-auto mt-3 max-w-md text-[13px] leading-relaxed text-[#17191a]/70 md:text-[14px]">
                     {s.desc}
                   </p>
                 </div>

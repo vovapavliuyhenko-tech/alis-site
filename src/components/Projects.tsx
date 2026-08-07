@@ -18,11 +18,11 @@ const SLIDES = [
 // Одна ячейка: фон-фото на пол-экрана + карточка-флип с работой по центру.
 function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
   return (
-    <div className="relative h-full w-full overflow-hidden bg-black">
+    <div className="relative h-full w-full overflow-hidden bg-[#17191a]">
       {/* Фон-фото, растянутое на пол-экрана */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={s.bg} alt="" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-black/45" />
+      <div className="absolute inset-0 bg-[#17191a]/45" />
 
       {/* Карточка-флип по центру фото (data-parallax — лёгкая подвижка при скролле) */}
       <div data-parallax="0.14" className="absolute inset-0 flex items-center justify-center px-6 will-change-transform">
@@ -34,28 +34,28 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
               <img src={s.thumb} alt={s.title} className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
               <div className="absolute inset-0 flex items-center justify-center px-8">
-                <span className="text-center font-serif text-[24px] leading-tight text-white drop-shadow lg:text-[28px]">
+                <span className="text-center font-serif text-[24px] leading-tight text-[#f4efe6] drop-shadow lg:text-[28px]">
                   {s.title}
                 </span>
               </div>
               {/* Подсказка «наведите» */}
-              <span className="absolute right-4 top-4 rounded-full bg-white/15 px-3 py-1 text-[11px] lowercase tracking-wide text-white/90 backdrop-blur-sm">
+              <span className="absolute right-4 top-4 rounded-full bg-[#f4efe6]/15 px-3 py-1 text-[11px] lowercase tracking-wide text-[#f4efe6]/90 backdrop-blur-sm">
                 наведите
               </span>
-              <p className="absolute inset-x-0 bottom-5 text-center text-[12px] lowercase tracking-wide text-white/85">
+              <p className="absolute inset-x-0 bottom-5 text-center text-[12px] lowercase tracking-wide text-[#f4efe6]/85">
                 instagram / telegram
               </p>
             </div>
 
             {/* ОБОРОТ — продающий текст + CTA */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 rounded-[22px] border border-white/10 bg-[#17191a] px-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
-              <span className="font-serif text-[22px] leading-tight text-white lg:text-[24px]">
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 rounded-[22px] border border-[#f4efe6]/10 bg-[#17191a] px-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+              <span className="font-serif text-[22px] leading-tight text-[#f4efe6] lg:text-[24px]">
                 {s.title}
               </span>
-              <p className="text-[14px] leading-relaxed text-white/75">{s.blurb}</p>
+              <p className="text-[14px] leading-relaxed text-[#f4efe6]/75">{s.blurb}</p>
               <a
                 href="#booking"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[13px] font-medium text-[#17191a] transition-transform hover:scale-105"
+                className="inline-flex items-center gap-2 rounded-full bg-[#4E2126] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-transform hover:scale-105"
               >
                 Записаться
                 <span aria-hidden>→</span>
@@ -128,14 +128,14 @@ export default function Projects() {
       {pairs.map((pair, p) => (
         <section
           key={p}
-          className="sticky top-0 grid h-svh w-full grid-cols-1 overflow-hidden bg-black md:grid-cols-2"
+          className="sticky top-0 grid h-svh w-full grid-cols-1 overflow-hidden bg-[#17191a] md:grid-cols-2"
         >
           {pair.map((s, j) => (
             <Cell key={s.title} s={s} i={p * 2 + j} />
           ))}
 
           {/* «(галерея)» — подпись всего экрана снизу-слева */}
-          <span className="pointer-events-none absolute bottom-6 left-6 z-10 font-thunder text-[20px] lowercase tracking-wide text-white/90">
+          <span className="pointer-events-none absolute bottom-6 left-6 z-10 font-thunder text-[20px] lowercase tracking-wide text-[#f4efe6]/90">
             (галерея)
           </span>
         </section>

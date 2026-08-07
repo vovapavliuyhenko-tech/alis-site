@@ -1,20 +1,16 @@
 @import "tailwindcss";
 
-/* ===== Дизайн-токены resayme ===== */
+/* ===== Дизайн-токены ALIS: только 3 цвета ===== */
 :root {
-  --bg: #17191a;          /* чернильный тёмный фон секций */
-  --black: #121212;
-  --white: #ffffff;
-  --ink: #17191a;
-  --gray: #8b8b8b;
-  --line-dark: #2e3133;
-  --line-light: #e4e4e1;
+  --ink: #17191a;         /* чернильный — тёмная база */
+  --cream: #f4efe6;       /* кремовый — светлая база */
+  --wine: #4E2126;        /* тёмный оксблад — акцент по всему сайту */
 }
 
 @theme inline {
-  --color-bg: var(--bg);
   --color-ink: var(--ink);
-  --color-gray: var(--gray);
+  --color-cream: var(--cream);
+  --color-wine: var(--wine);
   --font-sans: var(--font-inter);
   --font-thunder: var(--font-thunder);
 }
@@ -22,8 +18,8 @@
 * { box-sizing: border-box; }
 html, body { padding: 0; margin: 0; }
 body {
-  background: var(--bg);
-  color: var(--white);
+  background: var(--ink);
+  color: var(--cream);
   font-family: var(--font-inter), Arial, sans-serif;
   letter-spacing: -0.01em;
   overflow-x: hidden;

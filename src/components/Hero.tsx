@@ -33,7 +33,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-svh min-h-[640px] w-full overflow-hidden bg-[#cfcbc6]"
+      className="relative h-svh min-h-[640px] w-full overflow-hidden bg-[#f4efe6]"
     >
       {/* Фон: фото зеркалом */}
       <div className="absolute inset-0 grid grid-cols-2">
@@ -56,7 +56,7 @@ export default function Hero() {
       <div className="absolute inset-0 flex items-center justify-center px-6">
         <div
           ref={cardRef}
-          className="flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between rounded-[26px] bg-white px-7 py-9 text-center text-[#17191a] will-change-transform"
+          className="flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between rounded-[26px] bg-[#f4efe6] px-7 py-9 text-center text-[#17191a] will-change-transform"
         >
           <p className="mx-auto max-w-[17rem] text-[13px] leading-snug">
             Сеть студий эстетики и beauty-concierge
@@ -68,12 +68,12 @@ export default function Hero() {
             <span className="font-serif text-[46px] leading-none tracking-[0.08em] text-[#17191a]">
               ÁLIS
             </span>
-            <span className="mt-2 text-[12px] uppercase tracking-[0.35em] text-[#17191a]/70">
+            <span className="mt-2 text-[12px] uppercase tracking-[0.35em] text-[#4E2126]">
               beauty
             </span>
           </div>
 
-          <p className="mx-auto max-w-[18rem] text-[13px] leading-snug text-[#4a4a4a]">
+          <p className="mx-auto max-w-[18rem] text-[13px] leading-snug text-[#17191a]/60">
             для тех, кто хочет настроиться на любовь и соединить свою внутреннюю
             красоту с внешней
           </p>
