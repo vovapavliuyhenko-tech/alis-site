@@ -1,7 +1,7 @@
 "use client";
-// ЗАПИСЬ — квиз-форма (как traffic-masters.ru), в нашем тёмном стиле.
-// Слева персона (Дайана) с репликой на каждый шаг, справа прогресс + вопрос
-// с радио-карточками. 4 вопроса + шаг контактов. TODO: подключить отправку.
+// ЗАПИСЬ — квиз-форма (как traffic-masters.ru), СВЕТЛАЯ тема на статичном фоне.
+// Фон-фото зафиксировано (background-attachment: fixed) — не двигается при скролле,
+// как блок «стоимость» на stretchfitdasha.ru. Карточка — кремовое стекло, тёмный текст.
 import { useState } from "react";
 
 type Question = { q: string; note: string; opts: string[] };
@@ -87,28 +87,30 @@ export default function Booking() {
   };
 
   return (
-    <section id="booking" className="relative scroll-mt-24 overflow-hidden bg-[#17191a] py-24 lg:py-32">
-      {/* Размытые цветовые пятна — их «ловит» блюр стеклянной карточки */}
-      <div className="pointer-events-none absolute -left-20 top-24 h-80 w-80 rounded-full bg-[#e6c6a8]/25 blur-[120px]" />
-      <div className="pointer-events-none absolute right-0 top-10 h-72 w-72 rounded-full bg-[#d7a7b0]/20 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-[#a9bcd8]/20 blur-[130px]" />
-
+    <section
+      id="booking"
+      className="relative scroll-mt-24 bg-fixed bg-cover bg-center py-24 text-[#2a2622] lg:py-32"
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(244,239,230,0.86), rgba(244,239,230,0.86)), url(/assets/tild6230-643__.jpg)",
+      }}
+    >
       <div className="relative mx-auto w-[94%] max-w-[1080px]">
         {/* Заголовок */}
         <div className="mb-12 text-center">
-          <span className="text-[13px] lowercase tracking-wide text-white/50">
+          <span className="text-[13px] lowercase tracking-wide text-[#2a2622]/50">
             (запись)
           </span>
-          <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-white lg:text-[48px]">
+          <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#2a2622] lg:text-[48px]">
             Подберём ваш образ за пару минут
           </h2>
         </div>
 
-        {/* Карточка-квиз — матовое стекло */}
-        <div className="overflow-hidden rounded-[26px] border border-white/20 bg-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
+        {/* Карточка-квиз — кремовое стекло */}
+        <div className="overflow-hidden rounded-[26px] border border-[#2a2622]/10 bg-white/55 shadow-[0_20px_60px_rgba(42,38,34,0.15)] backdrop-blur-2xl">
           <div className="grid lg:grid-cols-[300px_1fr]">
             {/* Левая колонка — персона */}
-            <div className="flex flex-col gap-6 border-b border-white/15 p-8 lg:border-b-0 lg:border-r">
+            <div className="flex flex-col gap-6 border-b border-[#2a2622]/10 p-8 lg:border-b-0 lg:border-r">
               <div className="flex items-center gap-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -117,10 +119,10 @@ export default function Booking() {
                   className="h-16 w-16 rounded-full object-cover"
                 />
                 <div>
-                  <p className="text-[16px] font-medium text-white">
+                  <p className="text-[16px] font-medium text-[#2a2622]">
                     Дайана Тарзян
                   </p>
-                  <p className="mt-0.5 text-[13px] text-white/50">
+                  <p className="mt-0.5 text-[13px] text-[#2a2622]/50">
                     основатель ALIS
                   </p>
                 </div>
@@ -128,9 +130,9 @@ export default function Booking() {
 
               {/* Реплика */}
               {!isSuccess && (
-                <div className="relative rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-md">
-                  <span className="absolute -top-1.5 left-8 h-3.5 w-3.5 rotate-45 border-l border-t border-white/20 bg-white/10 backdrop-blur-md" />
-                  <p key={step} className="booking-step text-[14px] leading-relaxed text-white/80">
+                <div className="relative rounded-2xl border border-[#2a2622]/10 bg-white/60 p-4 backdrop-blur-md">
+                  <span className="absolute -top-1.5 left-8 h-3.5 w-3.5 rotate-45 border-l border-t border-[#2a2622]/10 bg-white/60" />
+                  <p key={step} className="booking-step text-[14px] leading-relaxed text-[#2a2622]/75">
                     {note}
                   </p>
                 </div>
@@ -143,16 +145,16 @@ export default function Booking() {
                 <>
                   {/* Прогресс */}
                   <div className="mb-4 flex items-center justify-between">
-                    <span className="rounded-full border border-white/20 bg-white/15 px-3.5 py-1.5 text-[12px] font-medium uppercase tracking-wide text-white/90 backdrop-blur-md">
+                    <span className="rounded-full border border-[#2a2622]/15 bg-[#2a2622]/[0.06] px-3.5 py-1.5 text-[12px] font-medium uppercase tracking-wide text-[#2a2622]/80">
                       Шаг {step + 1} из {TOTAL}
                     </span>
-                    <span className="text-[13px] text-white/40">
+                    <span className="text-[13px] text-[#2a2622]/40">
                       {step + 1} / {TOTAL}
                     </span>
                   </div>
-                  <div className="mb-9 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+                  <div className="mb-9 h-1.5 w-full overflow-hidden rounded-full bg-[#2a2622]/10">
                     <div
-                      className="h-full rounded-full bg-white transition-all duration-500 ease-out"
+                      className="h-full rounded-full bg-[#2a2622] transition-all duration-500 ease-out"
                       style={{ width: `${((step + 1) / TOTAL) * 100}%` }}
                     />
                   </div>
@@ -161,7 +163,7 @@ export default function Booking() {
                   <div key={step} className="booking-step">
                     {!isContact ? (
                       <>
-                        <h3 className="mb-7 font-serif text-[26px] leading-tight text-white lg:text-[32px]">
+                        <h3 className="mb-7 font-serif text-[26px] leading-tight text-[#2a2622] lg:text-[32px]">
                           {QUESTIONS[step].q}
                         </h3>
                         <div className="grid gap-3 sm:grid-cols-2">
@@ -171,24 +173,24 @@ export default function Booking() {
                               <button
                                 key={opt}
                                 onClick={() => pick(opt)}
-                                className={`flex items-center gap-3.5 rounded-2xl border px-5 py-4 text-left text-[15px] backdrop-blur-md transition-all ${
+                                className={`flex items-center gap-3.5 rounded-2xl border px-5 py-4 text-left text-[15px] transition-all ${
                                   selected
-                                    ? "border-white bg-white text-[#17191a]"
-                                    : "border-white/20 bg-white/[0.06] text-white/90 hover:border-white/50 hover:bg-white/10"
+                                    ? "border-[#2a2622] bg-[#2a2622] text-white"
+                                    : "border-[#2a2622]/15 bg-white/50 text-[#2a2622]/85 hover:border-[#2a2622]/40 hover:bg-white/70"
                                 }`}
                               >
                                 <span
                                   className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
                                     selected
-                                      ? "border-[#17191a] bg-[#17191a]"
-                                      : "border-white/40"
+                                      ? "border-white bg-white"
+                                      : "border-[#2a2622]/40"
                                   }`}
                                 >
                                   {selected && (
                                     <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none">
                                       <path
                                         d="M5 12.5l4.5 4.5L19 7.5"
-                                        stroke="white"
+                                        stroke="#2a2622"
                                         strokeWidth="2.5"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
@@ -204,10 +206,10 @@ export default function Booking() {
                       </>
                     ) : (
                       <>
-                        <h3 className="mb-7 font-serif text-[26px] leading-tight text-white lg:text-[32px]">
+                        <h3 className="mb-7 font-serif text-[26px] leading-tight text-[#2a2622] lg:text-[32px]">
                           Как с вами связаться?
                         </h3>
-                        <label className="mb-3 block text-[13px] tracking-wide text-white/50">
+                        <label className="mb-3 block text-[13px] tracking-wide text-[#2a2622]/50">
                           Ваше имя
                         </label>
                         <input
@@ -215,9 +217,9 @@ export default function Booking() {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder="Имя"
-                          className="mb-7 w-full border-b border-white/20 bg-transparent pb-3 text-[16px] text-white outline-none transition-colors placeholder:text-white/30 focus:border-white"
+                          className="mb-7 w-full border-b border-[#2a2622]/25 bg-transparent pb-3 text-[16px] text-[#2a2622] outline-none transition-colors placeholder:text-[#2a2622]/30 focus:border-[#2a2622]"
                         />
-                        <label className="mb-3 block text-[13px] tracking-wide text-white/50">
+                        <label className="mb-3 block text-[13px] tracking-wide text-[#2a2622]/50">
                           Телефон
                         </label>
                         <input
@@ -225,9 +227,9 @@ export default function Booking() {
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
                           placeholder="+7 ___ ___-__-__"
-                          className="w-full border-b border-white/20 bg-transparent pb-3 text-[16px] text-white outline-none transition-colors placeholder:text-white/30 focus:border-white"
+                          className="w-full border-b border-[#2a2622]/25 bg-transparent pb-3 text-[16px] text-[#2a2622] outline-none transition-colors placeholder:text-[#2a2622]/30 focus:border-[#2a2622]"
                         />
-                        <p className="mt-7 text-[12px] leading-relaxed text-white/40">
+                        <p className="mt-7 text-[12px] leading-relaxed text-[#2a2622]/40">
                           Оставляя заявку, вы соглашаетесь на обработку
                           персональных данных.
                         </p>
@@ -240,7 +242,7 @@ export default function Booking() {
                     {step > 0 ? (
                       <button
                         onClick={() => setStep(step - 1)}
-                        className="inline-flex items-center gap-2 text-[14px] text-white/50 transition-colors hover:text-white"
+                        className="inline-flex items-center gap-2 text-[14px] text-[#2a2622]/50 transition-colors hover:text-[#2a2622]"
                       >
                         <span aria-hidden>←</span> Назад
                       </button>
@@ -251,11 +253,11 @@ export default function Booking() {
                     <button
                       onClick={goNext}
                       disabled={!canNext}
-                      className="inline-flex items-center gap-2.5 rounded-full bg-white py-3 pl-6 pr-2.5 text-[13px] font-medium uppercase tracking-wide text-[#17191a] transition-all hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
+                      className="inline-flex items-center gap-2.5 rounded-full bg-[#2a2622] py-3 pl-6 pr-2.5 text-[13px] font-medium uppercase tracking-wide text-white transition-all hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
                     >
                       {isContact ? "Записаться" : "Следующий вопрос"}
-                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#17191a]">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2a2622" strokeWidth="2.2">
                           <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </span>
@@ -265,21 +267,21 @@ export default function Booking() {
               ) : (
                 /* Экран успеха */
                 <div className="booking-step flex min-h-[320px] flex-col items-center justify-center py-6 text-center">
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-white/30">
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-[#2a2622]/30">
                     <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none">
                       <path
                         d="M5 12.5l4.5 4.5L19 7.5"
-                        stroke="white"
+                        stroke="#2a2622"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
                     </svg>
                   </div>
-                  <h3 className="font-serif text-[28px] text-white lg:text-[32px]">
+                  <h3 className="font-serif text-[28px] text-[#2a2622] lg:text-[32px]">
                     Спасибо, заявка принята
                   </h3>
-                  <p className="mx-auto mt-4 max-w-sm text-[14px] leading-relaxed text-white/55">
+                  <p className="mx-auto mt-4 max-w-sm text-[14px] leading-relaxed text-[#2a2622]/60">
                     Дайана свяжется с вами в ближайшее время
                     {answers[0] ? `, чтобы подтвердить запись на «${answers[0]}»` : ""}.
                   </p>
@@ -290,7 +292,7 @@ export default function Booking() {
                       setName("");
                       setPhone("");
                     }}
-                    className="mt-8 text-[14px] text-white/50 transition-colors hover:text-white"
+                    className="mt-8 text-[14px] text-[#2a2622]/50 transition-colors hover:text-[#2a2622]"
                   >
                     Оставить ещё одну заявку
                   </button>
