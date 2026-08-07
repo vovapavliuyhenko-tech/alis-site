@@ -1,9 +1,10 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import HorizontalStory from "@/components/HorizontalStory";
 import Projects from "@/components/Projects";
 import Services from "@/components/Services";
-import ForDesigners from "@/components/ForDesigners";
+import Booking from "@/components/Booking";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -16,9 +17,10 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
+      <HorizontalStory />
       <Projects />
       <Services />
-      <ForDesigners />
+      <Booking />
       <Footer />
     </main>
   );

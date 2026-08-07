@@ -1,52 +1,143 @@
-// ГАЛЕРЕЯ РАБОТ ALIS: 6 образов. Панели ЗАЛИПАЮТ (sticky) и наслаиваются при
-// скролле. В карточке — фото работы + подпись образа + SVG-счётчик.
-// Фото — заглушки (заменить на реальные работы салона).
+"use client";
+// ГАЛЕРЕЯ РАБОТ ALIS: экран делится на 2 фото (по пол-экрана), растянутых на
+// всю высоту. Поверх каждого фото — по центру карточка с работой.
+// При наведении карточка ПЕРЕВОРАЧИВАЕТСЯ: на обороте короткий продающий текст
+// и кнопка «Записаться». При скролле карточки слегка «догоняют» (parallax).
+// Панели ЗАЛИПАЮТ (sticky) при скролле. Фото — заглушки.
+import { useEffect, useRef } from "react";
+
 const SLIDES = [
-  { title: "Свадебный образ", num: "/assets/tild3930-303_1.svg", bg: "/assets/tild6530-383_-2___1_.jpg", thumb: "/assets/tild6230-643__.jpg" },
-  { title: "Вечерний макияж", num: "/assets/tild3639-373_2.svg", bg: "/assets/tild3638-373_-2___1__3.jpg", thumb: "/assets/tild3236-393__.jpg" },
-  { title: "Дневной образ", num: "/assets/tild6538-633_3.svg", bg: "/assets/tild6536-613_-2___1__4.jpg", thumb: "/assets/tild3535-313_bergamo.png" },
-  { title: "Съёмочный образ", num: "/assets/tild6538-653_4.svg", bg: "/assets/tild3561-646_-2___1__5.jpg", thumb: "/assets/tild6536-613_-2___1__4.jpg" },
-  { title: "Образ на выпускной", num: "/assets/tild3632-303_5.svg", bg: "/assets/tild6436-383_fermata__1.jpg", thumb: "/assets/tild6561-356_fermata__2.jpg" },
-  { title: "Образ для мероприятия", num: "/assets/tild6637-663_6.svg", bg: "/assets/tild6561-356_fermata__2.jpg", thumb: "/assets/tild3561-646_-2___1__5.jpg" },
+  { title: "Свадебный образ", blurb: "Свадьба — раз в жизни. Создадим образ, от которого не отвести взгляд весь день.", num: "/assets/tild3930-303_1.svg", bg: "/assets/tild6530-383_-2___1_.jpg", thumb: "/assets/tild6230-643__.jpg" },
+  { title: "Вечерний макияж", blurb: "Стойкий макияж, который держится до утра и выглядит безупречно на любом свете.", num: "/assets/tild3639-373_2.svg", bg: "/assets/tild3638-373_-2___1__3.jpg", thumb: "/assets/tild3236-393__.jpg" },
+  { title: "Дневной образ", blurb: "Естественная красота на каждый день — свежо, легко и по-настоящему вы.", num: "/assets/tild6538-633_3.svg", bg: "/assets/tild6536-613_-2___1__4.jpg", thumb: "/assets/tild3535-313_bergamo.png" },
+  { title: "Съёмочный образ", blurb: "Образ, который идеально ложится в кадр — для съёмок, контента и фото.", num: "/assets/tild6538-653_4.svg", bg: "/assets/tild3561-646_-2___1__5.jpg", thumb: "/assets/tild6536-613_-2___1__4.jpg" },
+  { title: "Образ на выпускной", blurb: "Ваш вечер — ваш выход. Соберём образ, который запомнят все.", num: "/assets/tild3632-303_5.svg", bg: "/assets/tild6436-383_fermata__1.jpg", thumb: "/assets/tild6561-356_fermata__2.jpg" },
+  { title: "Образ для мероприятия", blurb: "Событие требует безупречности. Подберём образ под дресс-код и повод.", num: "/assets/tild6637-663_6.svg", bg: "/assets/tild6561-356_fermata__2.jpg", thumb: "/assets/tild3561-646_-2___1__5.jpg" },
 ];
 
-export default function Projects() {
+// Одна ячейка: фон-фото на пол-экрана + карточка-флип с работой по центру.
+function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
   return (
-    <div id="gallery" className="relative">
-      {SLIDES.map((s, i) => (
-        <section
-          key={s.title}
-          className="sticky top-0 h-svh w-full overflow-hidden bg-black"
-        >
-          {/* Полноэкранный фон */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={s.bg} alt="" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-black/40" />
+    <div className="relative h-full w-full overflow-hidden bg-black">
+      {/* Фон-фото, растянутое на пол-экрана */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={s.bg} alt="" className="absolute inset-0 h-full w-full object-cover" />
+      <div className="absolute inset-0 bg-black/45" />
 
-          {/* Карточка: фото работы + подпись образа поверх */}
-          <div className="absolute inset-0 flex items-center justify-center px-6">
-            <div className="relative aspect-[3/4] w-[84%] max-w-[380px] overflow-hidden rounded-[22px]">
+      {/* Карточка-флип по центру фото (data-parallax — лёгкая подвижка при скролле) */}
+      <div data-parallax="0.14" className="absolute inset-0 flex items-center justify-center px-6 will-change-transform">
+        <div className="group relative aspect-[3/4] w-[86%] max-w-[360px] [perspective:1400px]">
+          <div className="relative h-full w-full transition-transform duration-[1100ms] [transform-style:preserve-3d] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:[transform:rotateY(180deg)]">
+            {/* ЛИЦО — фото работы */}
+            <div className="absolute inset-0 overflow-hidden rounded-[22px] shadow-2xl [backface-visibility:hidden]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={s.thumb} alt={s.title} className="absolute inset-0 h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
               <div className="absolute inset-0 flex items-center justify-center px-8">
-                <span className="text-center font-serif text-[26px] leading-tight text-white drop-shadow lg:text-[30px]">
+                <span className="text-center font-serif text-[24px] leading-tight text-white drop-shadow lg:text-[28px]">
                   {s.title}
                 </span>
               </div>
-              <p className="absolute inset-x-0 bottom-6 text-center text-[13px] lowercase tracking-wide text-white/85">
+              {/* Подсказка «наведите» */}
+              <span className="absolute right-4 top-4 rounded-full bg-white/15 px-3 py-1 text-[11px] lowercase tracking-wide text-white/90 backdrop-blur-sm">
+                наведите
+              </span>
+              <p className="absolute inset-x-0 bottom-5 text-center text-[12px] lowercase tracking-wide text-white/85">
                 instagram / telegram
               </p>
             </div>
-          </div>
 
-          {/* «(галерея)» снизу-слева */}
-          <span className="absolute bottom-8 left-6 font-thunder text-[22px] lowercase tracking-wide text-white/90">
+            {/* ОБОРОТ — продающий текст + CTA */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 rounded-[22px] border border-white/10 bg-[#17191a] px-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+              <span className="font-serif text-[22px] leading-tight text-white lg:text-[24px]">
+                {s.title}
+              </span>
+              <p className="text-[14px] leading-relaxed text-white/75">{s.blurb}</p>
+              <a
+                href="#booking"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[13px] font-medium text-[#17191a] transition-transform hover:scale-105"
+              >
+                Записаться
+                <span aria-hidden>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Счётчик работы */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={s.num} alt={`(${i + 1})`} className="absolute bottom-6 right-6 h-5 w-auto opacity-90" />
+    </div>
+  );
+}
+
+export default function Projects() {
+  // Разбиваем 6 работ на пары — каждая пара = один экран из 2 фото.
+  const pairs: (typeof SLIDES)[] = [];
+  for (let i = 0; i < SLIDES.length; i += 2) pairs.push(SLIDES.slice(i, i + 2));
+
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // Лёгкий параллакс: пока панель залипла, карточка плавно смещается по вертикали
+  // в такт скроллу — эффект «следования». Разная сила у левой/правой (глубина).
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const items = Array.from(
+      root.querySelectorAll<HTMLElement>("[data-parallax]")
+    );
+    let raf = 0;
+
+    const update = () => {
+      raf = 0;
+      const vh = window.innerHeight;
+      const sy = window.scrollY;
+      for (const el of items) {
+        const section = el.closest("section");
+        if (!section) continue;
+        // абсолютная позиция панели в документе (устойчиво к sticky)
+        const abTop = section.getBoundingClientRect().top + sy;
+        // прогресс скролла ВНУТРИ залипшей панели: 0 (вошла) → 1 (уходит)
+        const p = (sy - abTop) / vh;
+        const factor = parseFloat(el.dataset.parallax || "0.08");
+        // карточка «догоняет» скролл: по центру панели в покое, дрейф ±
+        const shift = (p - 0.5) * vh * factor;
+        el.style.transform = `translate3d(0, ${shift.toFixed(1)}px, 0)`;
+      }
+    };
+
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <div ref={rootRef} id="gallery" className="relative">
+      {pairs.map((pair, p) => (
+        <section
+          key={p}
+          className="sticky top-0 grid h-svh w-full grid-cols-1 overflow-hidden bg-black md:grid-cols-2"
+        >
+          {pair.map((s, j) => (
+            <Cell key={s.title} s={s} i={p * 2 + j} />
+          ))}
+
+          {/* «(галерея)» — подпись всего экрана снизу-слева */}
+          <span className="pointer-events-none absolute bottom-6 left-6 z-10 font-thunder text-[20px] lowercase tracking-wide text-white/90">
             (галерея)
           </span>
-          {/* Счётчик снизу-справа */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={s.num} alt={`(${i + 1})`} className="absolute bottom-8 right-6 h-6 w-auto opacity-90" />
         </section>
       ))}
     </div>

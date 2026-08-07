@@ -70,7 +70,7 @@ export default function Header() {
 
         {/* CTA */}
         <a
-          href="#footer"
+          href="#booking"
           className="flex items-center gap-2.5 rounded-full bg-white py-2 pl-5 pr-2 text-[13px] font-medium text-[#17191a] transition-opacity hover:opacity-90"
         >
           Записаться

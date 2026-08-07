@@ -43,12 +43,12 @@ export default function Hero() {
         <img src={photo} alt="" className="h-full w-full -scale-x-100 object-cover object-top" />
       </div>
 
-      {/* Затемнение низа (реальный градиент resayme) */}
+      {/* Затемнение низа — на всю ширину экрана, плавно в чёрный */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-bottom bg-no-repeat"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%]"
         style={{
-          backgroundImage: "url(/assets/tild6433-623_Gradient.svg)",
-          backgroundSize: "100% 100%",
+          backgroundImage:
+            "linear-gradient(to bottom, rgba(23,25,26,0) 0%, rgba(23,25,26,0.55) 55%, rgba(23,25,26,1) 100%)",
         }}
       />
 

@@ -32,6 +32,17 @@ body {
 /* Крупный конденсированный шрифт (Thunder → Oswald стенд-ин) */
 .font-thunder { font-family: var(--font-thunder), 'Oswald', sans-serif; }
 
+/* ===== Обо мне: точка-видоискатель, когда прицел наведён ===== */
+.utp-dot { transform: scale(0.65); opacity: 0.5; }
+[data-utp-icon][data-active="1"] .utp-dot { transform: scale(1.25); opacity: 1; }
+
+/* ===== Запись: плавный переход между шагами ===== */
+@keyframes bookingStep {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+.booking-step { animation: bookingStep 0.45s cubic-bezier(.22,1,.36,1) both; }
+
 /* ===== Появление при скролле (как на resayme, Tilda step-by-step) ===== */
 .r-reveal {
   opacity: 0;

@@ -1,115 +1,105 @@
-"use client";
-// УСЛУГИ/ПРАЙС: аккордеон с реальными услугами салона красоты.
-// Заголовок «(services/prices)» — SVG. Номера строк и «+» — реальные SVG.
-import { useState } from "react";
+// УСЛУГИ/ПРАЙС в формате «прайс-таблицы»: слева тег + крупный serif-заголовок,
+// ниже строки [номер] · название · описание · цена + деталь в скобках.
+// Стиль наш: тёмный фон, serif-заголовки, реальные цены салона.
+type Row = {
+  n: string;
+  title: string;
+  desc: string;
+  price: string;
+  meta?: string;
+};
 
-const NUM = [
-  "/assets/tild3930-303_1.svg",
-  "/assets/tild3639-373_2.svg",
-  "/assets/tild6538-633_3.svg",
-];
-
-type Row = { n: string; p: string };
-type Group = { title: string; rows: Row[]; note?: string };
-
-const GROUPS: Group[] = [
+const ROWS: Row[] = [
   {
-    title: "Услуги",
-    rows: [
-      { n: "Полный образ", p: "8 000 ₽" },
-      { n: "Полный образ (топ-стилисты)", p: "10 000 ₽" },
-      { n: "Макияж", p: "5 000 ₽" },
-      { n: "Укладка", p: "2 500 – 3 500 ₽" },
-      { n: "Свадебный образ", p: "10 000 ₽" },
-      { n: "Свадебный образ (топ-стилисты)", p: "15 000 ₽" },
-      { n: "Пробный свадебный образ", p: "8 500 ₽" },
-      { n: "Свадебный образ и подбор 1-го look от стилиста", p: "17 000 ₽" },
-      { n: "Полный образ и подбор 1-го look на мероприятие от стилиста", p: "15 000 ₽" },
-    ],
+    n: "01",
+    title: "Полный образ",
+    desc: "Макияж и укладка под ваш повод — от дневного выхода до вечернего события. Собираем цельный, ухоженный образ.",
+    price: "от 8 000 ₽",
+    meta: "с топ-стилистами — от 10 000 ₽",
   },
   {
-    title: "Выезд от 2-х мастеров",
-    rows: [
-      { n: "Новороссийск", p: "8 000 ₽" },
-      { n: "Геленджик / Анапа / Абрау-Дюрсо и другие близлежащие локации", p: "от 10 000 ₽" },
-      { n: "Сочи / Адлер", p: "от 25 000 ₽" },
-      { n: "Краснодар / Ростов", p: "от 25 000 ₽" },
-      { n: "Москва и Санкт-Петербург", p: "по запросу" },
-    ],
-    note: "*Другое количество мастеров обсуждается с менеджером",
+    n: "02",
+    title: "Свадебный образ",
+    desc: "Ваш день под ключ: пробный образ заранее, репетиция деталей и финальный свадебный look в день торжества.",
+    price: "от 10 000 ₽",
+    meta: "пробный — 8 500 ₽ · топ-стилисты — 15 000 ₽",
   },
   {
-    title: "Сопровождение стилистов на мероприятии/свадьбе",
-    rows: [
-      { n: "Стилист или визажист", p: "2 000 ₽/час" },
-      { n: "Стилист + визажист", p: "4 000 ₽/час" },
-    ],
+    n: "03",
+    title: "Макияж и укладка",
+    desc: "Отдельные услуги, когда нужно быстро и точно — только макияж или только укладка под настроение.",
+    price: "от 2 500 ₽",
+    meta: "макияж — 5 000 ₽",
+  },
+  {
+    n: "04",
+    title: "Образ с подбором look",
+    desc: "Полный образ плюс подбор одного лука от стилиста под конкретное мероприятие — от макияжа до одежды.",
+    price: "от 15 000 ₽",
+    meta: "свадебный с подбором — от 17 000 ₽",
+  },
+  {
+    n: "05",
+    title: "Выезд мастеров",
+    desc: "Команда от двух мастеров приезжает к вам. Новороссийск — 8 000 ₽; Геленджик / Анапа / Абрау-Дюрсо — от 10 000 ₽; Сочи / Адлер, Краснодар / Ростов — от 25 000 ₽; Москва и Санкт-Петербург — по запросу.",
+    price: "от 8 000 ₽",
+    meta: "другое число мастеров — по договорённости",
+  },
+  {
+    n: "06",
+    title: "Сопровождение на мероприятии",
+    desc: "Стилист и визажист рядом весь день или вечер: правки образа, помощь с деталями, быстрые перемены между выходами.",
+    price: "от 2 000 ₽/час",
+    meta: "стилист + визажист — 4 000 ₽/час",
   },
 ];
 
 export default function Services() {
-  const [open, setOpen] = useState(0);
-
   return (
     <section id="services" className="scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1280px]">
-        <h2 className="r-reveal mb-14 text-[34px] font-light lowercase leading-none tracking-tight text-white lg:text-[44px]">
-          <span className="text-white/45">(</span>услуги и цены<span className="text-white/45">)</span>
-        </h2>
+        {/* Шапка: слева тег, справа крупный serif-заголовок */}
+        <div className="mb-14 grid gap-8 lg:grid-cols-[auto_1fr] lg:gap-16">
+          <span className="r-reveal self-start text-[13px] lowercase tracking-wide text-white/45">
+            [ услуги + цены ]
+          </span>
+          <h2 className="r-reveal font-serif text-[34px] leading-[1.05] text-white lg:text-right lg:text-[54px]">
+            Собираем образ под повод,
+            <br />
+            формат и настроение
+          </h2>
+        </div>
 
-        <div className="border-t border-[#2e3133]">
-          {GROUPS.map((g, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={g.title} className="r-reveal border-b border-[#2e3133]">
-                <button
-                  onClick={() => setOpen(isOpen ? -1 : i)}
-                  className="flex w-full items-center gap-6 py-6 text-left lg:gap-10 lg:py-7"
-                  aria-expanded={isOpen}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={NUM[i]} alt="" className="h-4 w-auto opacity-90" />
-                  <span className="flex-1 text-[17px] text-white lg:text-[19px]">
-                    {g.title}
-                  </span>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/assets/tild3037-333_plus.svg"
-                    alt=""
-                    className={`h-4 w-4 transition-transform duration-300 ${
-                      isOpen ? "rotate-45" : ""
-                    }`}
-                  />
-                </button>
+        {/* Строки прайса */}
+        <div className="border-t border-white/12">
+          {ROWS.map((r) => (
+            <div
+              key={r.n}
+              className="r-reveal grid grid-cols-1 items-start gap-3 border-b border-white/12 py-8 lg:grid-cols-[64px_1fr_240px] lg:items-center lg:gap-10 lg:py-10"
+            >
+              {/* Номер */}
+              <span className="text-[13px] tracking-wide text-white/40">
+                [ {r.n} ]
+              </span>
 
-                <div
-                  className="grid overflow-hidden transition-all duration-500"
-                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
-                >
-                  <div className="min-h-0">
-                    <div className="pb-8 pl-[calc(1rem+2.5rem)] pr-2">
-                      <dl className="max-w-2xl">
-                        {g.rows.map((r) => (
-                          <div
-                            key={r.n}
-                            className="flex items-baseline justify-between gap-6 border-b border-[#2e3133]/60 py-3.5 last:border-0"
-                          >
-                            <dt className="text-[14px] text-white/85">{r.n}</dt>
-                            <dd className="shrink-0 text-[14px] tabular-nums text-white/60">
-                              {r.p}
-                            </dd>
-                          </div>
-                        ))}
-                      </dl>
-                      {g.note && (
-                        <p className="mt-4 text-[13px] italic text-white/45">{g.note}</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
+              {/* Название */}
+              <h3 className="font-serif text-[26px] leading-tight text-white lg:text-[30px]">
+                {r.title}
+              </h3>
+
+              {/* Цена + деталь */}
+              <div className="lg:min-w-[190px] lg:text-right">
+                <p className="font-serif text-[24px] leading-none text-white lg:text-[28px]">
+                  {r.price}
+                </p>
+                {r.meta && (
+                  <p className="mt-3 text-[12px] tracking-wide text-white/40">
+                    [ {r.meta} ]
+                  </p>
+                )}
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>
