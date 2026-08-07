@@ -60,7 +60,7 @@ export default function HorizontalStory() {
     const update = () => {
       raf = 0;
       const vw = window.innerWidth;
-      if (vw < 1024) {
+      if (vw < 768) {
         sec.style.height = "";
         cards.forEach((c) => {
           c.style.transform = "";
@@ -102,13 +102,13 @@ export default function HorizontalStory() {
 
   return (
     <section id="process" ref={secRef} className="relative bg-[#17191a]">
-      <div className="lg:sticky lg:top-0 lg:flex lg:h-svh lg:items-center lg:overflow-hidden">
+      <div className="md:sticky md:top-0 md:flex md:h-svh md:items-center md:overflow-hidden">
         {/* Интро-заголовок */}
-        <div className="px-6 pt-20 lg:w-[340px] lg:shrink-0 lg:px-0 lg:pl-[6vw] lg:pr-10 lg:pt-0">
+        <div className="px-6 pt-20 md:w-[340px] md:shrink-0 md:px-0 md:pl-[6vw] md:pr-10 md:pt-0">
           <span className="text-[13px] lowercase tracking-wide text-white/45">
             (этапы работы)
           </span>
-          <h2 className="mt-4 font-serif text-[38px] leading-[1.05] text-white lg:text-[58px]">
+          <h2 className="mt-4 font-serif text-[38px] leading-[1.05] text-white md:text-[58px]">
             Как мы
             <br />
             работаем
@@ -122,15 +122,15 @@ export default function HorizontalStory() {
         {/* Колода карточек */}
         <div
           ref={deckRef}
-          className="relative flex flex-col gap-6 px-6 pb-20 pt-8 lg:h-full lg:flex-1 lg:gap-0 lg:p-0"
+          className="relative flex flex-col gap-6 px-6 pb-20 pt-8 md:h-full md:flex-1 md:gap-0 md:p-0"
         >
           {STEPS.map((s) => (
             <article
               key={s.n}
               data-card
-              className="flex w-full flex-col overflow-hidden rounded-[20px] border border-white/10 bg-[#1e2021] shadow-2xl will-change-transform lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[64vh] lg:max-h-[560px] lg:w-[360px]"
+              className="flex w-full flex-col overflow-hidden rounded-[20px] border border-white/10 bg-[#1e2021] shadow-2xl will-change-transform md:absolute md:left-1/2 md:top-1/2 md:h-[64vh] md:max-h-[560px] md:w-[360px]"
             >
-              <div className="relative aspect-[4/5] w-full overflow-hidden lg:aspect-auto lg:flex-1">
+              <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-auto md:flex-1">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={s.photo}
@@ -143,8 +143,8 @@ export default function HorizontalStory() {
               </div>
               <div className="p-6">
                 <p className="font-serif leading-none text-white">
-                  <span className="text-[40px] lg:text-[48px]">{s.n}</span>
-                  <span className="text-[18px] text-white/40 lg:text-[22px]">
+                  <span className="text-[40px] md:text-[48px]">{s.n}</span>
+                  <span className="text-[18px] text-white/40 md:text-[22px]">
                     {" "}
                     / {s.word}
                   </span>
