@@ -66,26 +66,26 @@ export default function Reviews() {
               <article
                 key={r.name}
                 style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)` }}
-                className="absolute left-1/2 top-1/2 -ml-[135px] -mt-[145px] flex h-[290px] w-[270px] flex-col justify-between rounded-[18px] bg-[#f4efe6] p-6 text-[#17191a] shadow-2xl [backface-visibility:hidden]"
+                className="absolute left-1/2 top-1/2 -ml-[130px] -mt-[128px] flex h-[256px] w-[260px] flex-col justify-between rounded-[18px] bg-[#f4efe6] p-6 text-[#17191a] shadow-2xl [backface-visibility:hidden]"
               >
-                <span className="font-serif text-[46px] leading-[0.5] text-[#4E2126]">
+                <span className="font-serif text-[38px] leading-[0.5] text-[#4E2126]">
                   &ldquo;
                 </span>
 
-                <p className="font-serif text-[15px] leading-relaxed text-[#17191a]">
+                <p className="font-serif text-[13px] leading-[1.55] text-[#17191a]">
                   {r.text}
                 </p>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2.5">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={r.photo}
                     alt={r.name}
-                    className="h-10 w-10 rounded-full object-cover"
+                    className="h-9 w-9 rounded-full object-cover"
                   />
                   <div>
-                    <p className="text-[14px] font-medium text-[#17191a]">{r.name}</p>
-                    <p className="text-[11px] uppercase tracking-[0.12em] text-[#4E2126]">
+                    <p className="text-[12.5px] font-medium text-[#17191a]">{r.name}</p>
+                    <p className="text-[10px] uppercase tracking-[0.12em] text-[#4E2126]">
                       {r.role}
                     </p>
                   </div>
