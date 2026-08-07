@@ -1,7 +1,7 @@
 "use client";
-// ЭТАПЫ РАБОТЫ — лента компактных карточек, которая при вертикальном скролле
-// едет ГОРИЗОНТАЛЬНО. Слева интро-заголовок, затем карточки: фото сверху,
-// номер + название + короткий текст. На мобильном лента складывается вертикально.
+// ЭТАПЫ РАБОТЫ — «колода»: при скролле каждая следующая карточка выезжает
+// справа и НАКЛАДЫВАЕТСЯ на предыдущую со сдвигом (z-index растёт). Секция
+// закреплена (pin). На мобильном карточки складываются в вертикаль.
 import { useEffect, useRef } from "react";
 
 type Step = {
@@ -43,30 +43,47 @@ const STEPS: Step[] = [
   },
 ];
 
+const PER = 0.75; // доля высоты экрана на «прилёт» одной карточки
+
 export default function HorizontalStory() {
   const secRef = useRef<HTMLElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const deckRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sec = secRef.current;
-    const track = trackRef.current;
-    if (!sec || !track) return;
+    const deck = deckRef.current;
+    if (!sec || !deck) return;
+    const cards = Array.from(deck.querySelectorAll<HTMLElement>("[data-card]"));
+    if (!cards.length) return;
     let raf = 0;
 
     const update = () => {
       raf = 0;
       const vw = window.innerWidth;
       if (vw < 1024) {
-        track.style.transform = "";
         sec.style.height = "";
+        cards.forEach((c) => {
+          c.style.transform = "";
+          c.style.zIndex = "";
+        });
         return;
       }
       const vh = window.innerHeight;
-      const maxX = track.scrollWidth - vw;
-      // высота секции = горизонтальный оверфлоу + экран → скорость 1:1
-      sec.style.height = `${maxX + vh}px`;
-      const scrolled = Math.min(Math.max(-sec.getBoundingClientRect().top, 0), maxX);
-      track.style.transform = `translate3d(${(-scrolled).toFixed(1)}px,0,0)`;
+      const perPx = vh * PER;
+      const totalScroll = (cards.length - 1) * perPx;
+      sec.style.height = `${totalScroll + vh}px`;
+      const scrolled = Math.min(Math.max(-sec.getBoundingClientRect().top, 0), totalScroll);
+      const global = scrolled / perPx; // 0 .. cards-1
+
+      cards.forEach((c, i) => {
+        const t = Math.min(Math.max(global - i + 1, 0), 1); // 0..1 прилёт карточки i
+        const e = 1 - Math.pow(1 - t, 3); // easeOutCubic
+        const offX = i * 28; // ступенька стека вправо
+        const slide = (1 - e) * 680; // старт справа за кадром
+        const rot = (1 - e) * 6; // лёгкий наклон при влёте
+        c.style.transform = `translate(calc(-50% + ${(offX + slide).toFixed(1)}px), -50%) rotate(${rot.toFixed(2)}deg)`;
+        c.style.zIndex = String(i + 1);
+      });
     };
 
     const onScroll = () => {
@@ -86,31 +103,32 @@ export default function HorizontalStory() {
   return (
     <section id="process" ref={secRef} className="relative bg-[#17191a]">
       <div className="lg:sticky lg:top-0 lg:flex lg:h-svh lg:items-center lg:overflow-hidden">
-        <div
-          ref={trackRef}
-          className="flex flex-col gap-6 px-6 py-20 lg:h-[64vh] lg:max-h-[580px] lg:flex-row lg:items-stretch lg:gap-7 lg:px-[6vw] lg:py-0 lg:will-change-transform"
-        >
-          {/* Интро-заголовок */}
-          <div className="flex shrink-0 flex-col justify-center lg:w-[320px]">
-            <span className="text-[13px] lowercase tracking-wide text-white/45">
-              (этапы работы)
-            </span>
-            <h2 className="mt-4 font-serif text-[38px] leading-[1.05] text-white lg:text-[58px]">
-              Как мы
-              <br />
-              работаем
-            </h2>
-            <p className="mt-5 max-w-[280px] text-[14px] leading-relaxed text-white/55">
-              Четыре шага от первого сообщения до готового образа на вашем
-              событии.
-            </p>
-          </div>
+        {/* Интро-заголовок */}
+        <div className="px-6 pt-20 lg:w-[340px] lg:shrink-0 lg:px-0 lg:pl-[6vw] lg:pr-10 lg:pt-0">
+          <span className="text-[13px] lowercase tracking-wide text-white/45">
+            (этапы работы)
+          </span>
+          <h2 className="mt-4 font-serif text-[38px] leading-[1.05] text-white lg:text-[58px]">
+            Как мы
+            <br />
+            работаем
+          </h2>
+          <p className="mt-5 max-w-[280px] text-[14px] leading-relaxed text-white/55">
+            Четыре шага от первого сообщения до готового образа на вашем
+            событии.
+          </p>
+        </div>
 
-          {/* Карточки этапов */}
+        {/* Колода карточек */}
+        <div
+          ref={deckRef}
+          className="relative flex flex-col gap-6 px-6 pb-20 pt-8 lg:h-full lg:flex-1 lg:gap-0 lg:p-0"
+        >
           {STEPS.map((s) => (
             <article
               key={s.n}
-              className="flex w-full shrink-0 flex-col overflow-hidden rounded-[20px] border border-white/10 bg-white/[0.03] lg:h-full lg:w-[360px]"
+              data-card
+              className="flex w-full flex-col overflow-hidden rounded-[20px] border border-white/10 bg-[#1e2021] shadow-2xl will-change-transform lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[64vh] lg:max-h-[560px] lg:w-[360px]"
             >
               <div className="relative aspect-[4/5] w-full overflow-hidden lg:aspect-auto lg:flex-1">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
