@@ -32,6 +32,17 @@ body {
 .utp-dot { transform: scale(0.65); opacity: 0.5; }
 [data-utp-icon][data-active="1"] .utp-dot { transform: scale(1.25); opacity: 1; }
 
+/* ===== Отзывы: вращающееся 3D-кольцо (изогнутая лента) ===== */
+@keyframes spin3d {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(-360deg); }
+}
+.ring3d { transform-style: preserve-3d; animation: spin3d 34s linear infinite; }
+.carousel3d:hover .ring3d { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .ring3d { animation: none; }
+}
+
 /* ===== Бренды: бесконечная бегущая лента ===== */
 @keyframes marquee {
   from { transform: translateX(0); }

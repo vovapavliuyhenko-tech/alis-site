@@ -1,9 +1,5 @@
-"use client";
-// ОТЗЫВЫ — 3D-карусель (coverflow): центральная карточка крупная, боковые
-// повёрнуты в перспективе и притенены. Авто-прокрутка (пауза при наведении),
-// стрелки, точки, клик по боковой карточке. Палитра ink/cream/бордо.
-import { useEffect, useState } from "react";
-
+// ОТЗЫВЫ — вращающееся 3D-кольцо: карточки стоят на изгибе (грани цилиндра),
+// вся лента крутится сама по кругу. Пауза при наведении. Палитра ink/cream/бордо.
 type Review = { name: string; role: string; text: string; photo: string };
 
 const REVIEWS: Review[] = [
@@ -37,28 +33,21 @@ const REVIEWS: Review[] = [
     text: "Хожу в ALIS больше года. Каждый раз выхожу с ощущением, что стала собой — только лучше. Это дорогого стоит.",
     photo: "/assets/tild6561-356_fermata__2.jpg",
   },
+  {
+    name: "Вероника",
+    role: "вечерний образ",
+    text: "Пришла уставшей после работы — ушла королевой. Лёгкая рука мастера и атмосфера, в которой отдыхаешь душой.",
+    photo: "/assets/tild6561-356_fermata__2.jpg",
+  },
 ];
 
 export default function Reviews() {
   const n = REVIEWS.length;
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (paused) return;
-    const id = window.setInterval(() => setActive((a) => (a + 1) % n), 4500);
-    return () => window.clearInterval(id);
-  }, [paused, n]);
-
-  const go = (dir: number) => setActive((a) => (a + dir + n) % n);
+  const step = 360 / n; // угол между гранями
+  const radius = 540; // радиус кольца
 
   return (
-    <section
-      id="reviews"
-      className="overflow-hidden bg-[#17191a] py-24 lg:py-32"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
+    <section id="reviews" className="overflow-hidden bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1180px]">
         {/* Заголовок */}
         <div className="mb-14 text-center">
@@ -70,42 +59,20 @@ export default function Reviews() {
           </h2>
         </div>
 
-        {/* Сцена coverflow */}
-        <div
-          className="relative mx-auto h-[440px] [perspective:1600px] lg:h-[420px]"
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          {REVIEWS.map((r, i) => {
-            let offset = i - active;
-            if (offset > n / 2) offset -= n;
-            if (offset < -n / 2) offset += n;
-            const abs = Math.abs(offset);
-            const isActive = offset === 0;
-            const translateX = offset * 300;
-            const rotateY = Math.max(Math.min(-offset * 32, 48), -48);
-            const scale = isActive ? 1 : 0.82;
-            const opacity = abs > 2 ? 0 : isActive ? 1 : 0.4;
-            const z = 20 - abs;
-
-            return (
+        {/* Вращающееся 3D-кольцо */}
+        <div className="carousel3d relative mx-auto h-[400px] [perspective:2200px] lg:h-[380px]">
+          <div className="ring3d absolute inset-0">
+            {REVIEWS.map((r, i) => (
               <article
                 key={r.name}
-                onClick={() => !isActive && setActive(i)}
-                style={{
-                  transform: `translate(-50%, -50%) translateX(${translateX}px) rotateY(${rotateY}deg) scale(${scale})`,
-                  opacity,
-                  zIndex: z,
-                  pointerEvents: abs > 2 ? "none" : "auto",
-                  cursor: isActive ? "default" : "pointer",
-                }}
-                className="absolute left-1/2 top-1/2 flex h-[380px] w-[86%] max-w-[420px] flex-col justify-between rounded-[22px] bg-[#f4efe6] p-8 text-[#17191a] shadow-2xl transition-all duration-500 ease-out lg:p-10"
+                style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)` }}
+                className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[165px] flex h-[330px] w-[300px] flex-col justify-between rounded-[22px] bg-[#f4efe6] p-7 text-[#17191a] shadow-2xl [backface-visibility:hidden] lg:p-8"
               >
-                {/* Кавычка */}
-                <span className="font-serif text-[64px] leading-[0.5] text-[#4E2126]">
+                <span className="font-serif text-[60px] leading-[0.5] text-[#4E2126]">
                   &ldquo;
                 </span>
 
-                <p className="font-serif text-[19px] leading-relaxed text-[#17191a] lg:text-[21px]">
+                <p className="font-serif text-[18px] leading-relaxed text-[#17191a] lg:text-[20px]">
                   {r.text}
                 </p>
 
@@ -124,45 +91,13 @@ export default function Reviews() {
                   </div>
                 </div>
               </article>
-            );
-          })}
-        </div>
-
-        {/* Управление */}
-        <div className="mt-10 flex items-center justify-center gap-6">
-          <button
-            onClick={() => go(-1)}
-            aria-label="Предыдущий отзыв"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-[#f4efe6]/25 text-[#f4efe6] transition-colors hover:border-[#4E2126] hover:bg-[#4E2126]"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-
-          <div className="flex items-center gap-2.5">
-            {REVIEWS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                aria-label={`Отзыв ${i + 1}`}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === active ? "w-6 bg-[#4E2126]" : "w-2 bg-[#f4efe6]/25 hover:bg-[#f4efe6]/50"
-                }`}
-              />
             ))}
           </div>
-
-          <button
-            onClick={() => go(1)}
-            aria-label="Следующий отзыв"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-[#f4efe6]/25 text-[#f4efe6] transition-colors hover:border-[#4E2126] hover:bg-[#4E2126]"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
         </div>
+
+        <p className="mt-8 text-center text-[12px] lowercase tracking-wide text-[#f4efe6]/35">
+          наведите, чтобы остановить
+        </p>
       </div>
     </section>
   );
