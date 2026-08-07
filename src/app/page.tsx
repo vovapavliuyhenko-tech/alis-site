@@ -5,6 +5,7 @@ import About from "@/components/About";
 import HorizontalStory from "@/components/HorizontalStory";
 import Projects from "@/components/Projects";
 import Services from "@/components/Services";
+import Reviews from "@/components/Reviews";
 import Booking from "@/components/Booking";
 import Brands from "@/components/Brands";
 import Footer from "@/components/Footer";
@@ -22,6 +23,7 @@ export default function Home() {
       <About />
       <Projects />
       <Services />
+      <Reviews />
       {/* Плавный мостик: тёмное → кремовое */}
       <div aria-hidden className="h-40 bg-gradient-to-b from-[#17191a] to-[#f4efe6]" />
       <Booking />
