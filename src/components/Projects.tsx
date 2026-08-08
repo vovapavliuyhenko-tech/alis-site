@@ -69,7 +69,7 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
 
       {/* Счётчик работы */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={s.num} alt={`(${i + 1})`} className="absolute bottom-6 right-6 h-5 w-auto opacity-90" />
+      <img src={s.num} alt={`(${i + 1})`} className="absolute left-6 top-6 h-5 w-auto opacity-90" />
     </div>
   );
 }
