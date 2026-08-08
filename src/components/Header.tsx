@@ -33,10 +33,9 @@ const NAV: NavItem[] = [
       { label: { ru: "Образы и макияж", en: "Looks & makeup" }, href: "/#services" },
       { label: { ru: "Свадебные образы", en: "Bridal looks" }, href: "/#services" },
       { label: { ru: "Выезд мастеров", en: "On-location team" }, href: "/#services" },
-      { label: { ru: "Beauty concierge", en: "Beauty concierge" }, href: "/concierge" },
+      { label: { ru: "Beauty concierge", en: "Beauty concierge" }, href: "/#booking" },
     ],
   },
-  { label: { ru: "консьерж", en: "concierge" }, href: "/concierge" },
   { label: { ru: "галерея", en: "gallery" }, href: "/#gallery" },
   { label: { ru: "контакты", en: "contacts" }, href: "/#footer" },
 ];
