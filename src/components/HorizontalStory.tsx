@@ -4,42 +4,68 @@
 // половина с крупным разрядным заголовком и цитатой, справа большое фото с
 // карточкой-подписью (название этапа + описание). На мобильном — вертикально.
 import { useEffect, useRef } from "react";
+import { useLang } from "@/lib/i18n";
 
+type Loc = { ru: string; en: string };
 type Stage = {
-  name: string;
-  heading: string;
-  desc: string;
-  quote: string;
+  name: Loc;
+  heading: Loc;
+  desc: Loc;
+  quote: Loc;
   photo: string;
 };
 
 const STAGES: Stage[] = [
   {
-    name: "Знакомство",
-    heading: "Обсуждаем повод, пожелания и референсы",
-    desc: "Созваниваемся, разбираемся в задаче и понимаем, какой образ вам нужен. Уже на этом этапе — первые ориентиры и варианты.",
-    quote: "«Слышим вас с первого слова»",
+    name: { ru: "Знакомство", en: "Acquaintance" },
+    heading: {
+      ru: "Обсуждаем повод, пожелания и референсы",
+      en: "We discuss the occasion, wishes and references",
+    },
+    desc: {
+      ru: "Созваниваемся, разбираемся в задаче и понимаем, какой образ вам нужен. Уже на этом этапе — первые ориентиры и варианты.",
+      en: "We get on a call, understand the task and figure out the look you need. First directions and options already at this stage.",
+    },
+    quote: { ru: "«Слышим вас с первого слова»", en: "“We hear you from the first word”" },
     photo: "/assets/tild6230-643__.jpg",
   },
   {
-    name: "Подбор",
-    heading: "Подбираем формат, мастеров и детали",
-    desc: "Выбираем услугу под задачу, собираем команду мастеров и продумываем всё до мелочей: макияж, укладку, тайминг.",
-    quote: "«Каждая деталь под контролем»",
+    name: { ru: "Подбор", en: "Selection" },
+    heading: {
+      ru: "Подбираем формат, мастеров и детали",
+      en: "We choose the format, artists and details",
+    },
+    desc: {
+      ru: "Выбираем услугу под задачу, собираем команду мастеров и продумываем всё до мелочей: макияж, укладку, тайминг.",
+      en: "We pick the service for the task, assemble the team and plan everything to the smallest detail: makeup, hair, timing.",
+    },
+    quote: { ru: "«Каждая деталь под контролем»", en: "“Every detail under control”" },
     photo: "/assets/tild3236-393__.jpg",
   },
   {
-    name: "Образ",
-    heading: "Создаём образ премиальной косметикой",
-    desc: "Работаем стойко, аккуратно и точно по задумке — образ держится весь день и безупречно смотрится на любом свете.",
-    quote: "«Красиво там, где вы»",
+    name: { ru: "Образ", en: "The look" },
+    heading: {
+      ru: "Создаём образ премиальной косметикой",
+      en: "We craft the look with premium cosmetics",
+    },
+    desc: {
+      ru: "Работаем стойко, аккуратно и точно по задумке — образ держится весь день и безупречно смотрится на любом свете.",
+      en: "We work long-lasting, precise and true to the vision — the look holds all day and looks flawless in any light.",
+    },
+    quote: { ru: "«Красиво там, где вы»", en: "“Beautiful wherever you are”" },
     photo: "/assets/tild3535-313_bergamo.png",
   },
   {
-    name: "Событие",
-    heading: "Сопровождаем и заботимся до конца",
-    desc: "На съёмке, свадьбе или мероприятии мы рядом: правим детали, помогаем с образом и заботимся о каждой мелочи.",
-    quote: "«Ваш день — наша забота»",
+    name: { ru: "Событие", en: "The event" },
+    heading: {
+      ru: "Сопровождаем и заботимся до конца",
+      en: "We accompany and care to the very end",
+    },
+    desc: {
+      ru: "На съёмке, свадьбе или мероприятии мы рядом: правим детали, помогаем с образом и заботимся о каждой мелочи.",
+      en: "At a shoot, wedding or event we're right there: adjusting details, helping with the look and caring for every little thing.",
+    },
+    quote: { ru: "«Ваш день — наша забота»", en: "“Your day is our care”" },
     photo: "/assets/tild6536-613_-2___1__4.jpg",
   },
 ];
@@ -56,6 +82,7 @@ function Flourish() {
 }
 
 export default function HorizontalStory() {
+  const { lang } = useLang();
   const secRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -103,23 +130,23 @@ export default function HorizontalStory() {
         >
           {STAGES.map((s, i) => (
             <article
-              key={s.name}
+              key={s.name.ru}
               className="flex w-full shrink-0 flex-col md:h-full md:w-screen md:flex-row"
             >
               {/* Левая кремовая половина */}
               <div className="flex flex-col justify-between bg-[#f4efe6] px-6 py-12 md:w-[46%] md:px-[4vw] md:pb-[8vh] md:pt-[18vh]">
                 <div>
                   <span className="text-[12px] uppercase tracking-[0.3em] text-[#4E2126]">
-                    Этап 0{i + 1}
+                    {lang === "en" ? "Step" : "Этап"} 0{i + 1}
                   </span>
                   <h3 className="mt-6 font-thunder text-[34px] uppercase leading-[1.06] tracking-[0.04em] text-[#17191a] md:mt-10 md:text-[3.4vw]">
-                    {s.heading}
+                    {s.heading[lang]}
                   </h3>
                 </div>
                 <div className="mt-10 md:mt-0">
                   <Flourish />
                   <p className="mt-4 font-serif text-[16px] italic text-[#17191a]/70 md:text-[18px]">
-                    {s.quote}
+                    {s.quote[lang]}
                   </p>
                 </div>
               </div>
@@ -129,15 +156,15 @@ export default function HorizontalStory() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={s.photo}
-                  alt={s.name}
+                  alt={s.name[lang]}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-x-[6%] bottom-[6%] rounded-[18px] bg-[#f4efe6]/95 px-6 py-6 text-center backdrop-blur-sm md:px-10 md:py-8">
                   <p className="font-serif text-[24px] uppercase tracking-[0.15em] text-[#4E2126] md:text-[30px]">
-                    {s.name}
+                    {s.name[lang]}
                   </p>
                   <p className="mx-auto mt-3 max-w-md text-[13px] leading-relaxed text-[#17191a]/70 md:text-[14px]">
-                    {s.desc}
+                    {s.desc[lang]}
                   </p>
                 </div>
               </div>

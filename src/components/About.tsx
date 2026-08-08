@@ -3,29 +3,46 @@
 // видоискатель, и «прицел», который САМ наводится на каждое УТП по очереди
 // (эффект автофокуса камеры). Стиль наш: тёмный фон, портрет основателя.
 import { useEffect, useRef, useState } from "react";
+import { useLang } from "@/lib/i18n";
 
-type Utp = { title: string; desc: string };
+type Loc = { ru: string; en: string };
+type Utp = { title: Loc; desc: Loc };
 
 const UTP: Utp[] = [
   {
-    title: "слышим, что вам нужно",
-    desc: "Обсуждаем повод, образ и пожелания заранее — чтобы результат совпал с картинкой в вашей голове.",
+    title: { ru: "слышим, что вам нужно", en: "we hear what you need" },
+    desc: {
+      ru: "Обсуждаем повод, образ и пожелания заранее — чтобы результат совпал с картинкой в вашей голове.",
+      en: "We discuss the occasion, look and wishes in advance — so the result matches the picture in your head.",
+    },
   },
   {
-    title: "работаем с топ-мастерами",
-    desc: "Визажисты и стилисты с опытом на съёмках, свадьбах и крупных мероприятиях.",
+    title: { ru: "работаем с топ-мастерами", en: "we work with top artists" },
+    desc: {
+      ru: "Визажисты и стилисты с опытом на съёмках, свадьбах и крупных мероприятиях.",
+      en: "Makeup artists and stylists experienced at shoots, weddings and major events.",
+    },
   },
   {
-    title: "премиальная косметика",
-    desc: "Только проверенные бренды и стойкие материалы, которые держатся весь день и на любом свете.",
+    title: { ru: "премиальная косметика", en: "premium cosmetics" },
+    desc: {
+      ru: "Только проверенные бренды и стойкие материалы, которые держатся весь день и на любом свете.",
+      en: "Only trusted brands and long-lasting products that hold all day in any light.",
+    },
   },
   {
-    title: "безупречный сервис",
-    desc: "Заботимся о каждой детали, чтобы вам было спокойно, комфортно и по-настоящему приятно.",
+    title: { ru: "безупречный сервис", en: "impeccable service" },
+    desc: {
+      ru: "Заботимся о каждой детали, чтобы вам было спокойно, комфортно и по-настоящему приятно.",
+      en: "We care for every detail so you feel calm, comfortable and truly at ease.",
+    },
   },
   {
-    title: "держим тайминг",
-    desc: "Приезжаем вовремя, укладываемся в график события и работаем по договору.",
+    title: { ru: "держим тайминг", en: "we keep the timing" },
+    desc: {
+      ru: "Приезжаем вовремя, укладываемся в график события и работаем по договору.",
+      en: "We arrive on time, keep to the event schedule and work under contract.",
+    },
   },
 ];
 
@@ -49,6 +66,7 @@ function Viewfinder({ i, active }: { i: number; active: boolean }) {
 }
 
 export default function About() {
+  const { lang } = useLang();
   const wrapRef = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
   const [active, setActive] = useState(0);
@@ -89,10 +107,10 @@ export default function About() {
       <Viewfinder i={i} active={active === i} />
       <div className="max-w-[300px]">
         <h3 className="text-[22px] font-semibold leading-tight text-[#f4efe6] lg:text-[26px]">
-          {UTP[i].title}
+          {UTP[i].title[lang]}
         </h3>
         <p className="mt-3 text-[13px] leading-relaxed text-[#f4efe6]/55 lg:text-[14px]">
-          {UTP[i].desc}
+          {UTP[i].desc[lang]}
         </p>
       </div>
     </div>
@@ -135,11 +153,23 @@ export default function About() {
                 alt="Дайана Тарзян"
                 className="aspect-[3/4] w-full max-w-[360px] rounded-[22px] object-cover"
               />
-              <p className="mt-5 text-[15px] text-[#f4efe6]">Дайана Тарзян</p>
+              <p className="mt-5 text-[15px] text-[#f4efe6]">
+                {lang === "en" ? "Daiana Tarzyan" : "Дайана Тарзян"}
+              </p>
               <p className="mt-1 text-[12px] uppercase tracking-[0.1em] text-[#f4efe6]/50">
-                основатель сети студий эстетики
-                <br />
-                ALIS и ALIS BEAUTY CONCIERGE
+                {lang === "en" ? (
+                  <>
+                    founder of ALIS aesthetics studios
+                    <br />
+                    and ALIS BEAUTY CONCIERGE
+                  </>
+                ) : (
+                  <>
+                    основатель сети студий эстетики
+                    <br />
+                    ALIS и ALIS BEAUTY CONCIERGE
+                  </>
+                )}
               </p>
             </div>
 

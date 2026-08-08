@@ -3,93 +3,118 @@
 // раскрывается панель: описание, детальные цены, фото образа и кнопка «Записаться».
 // Открыт всегда один пункт. Стиль тёмный, serif-заголовки, реальные цены салона.
 import { useState } from "react";
+import { useLang } from "@/lib/i18n";
 
+type Loc = { ru: string; en: string };
+type Detail = { label: Loc; price: Loc };
 type Item = {
   n: string;
-  title: string;
-  price: string;
-  desc: string;
-  details: [string, string][];
-  note?: string;
+  title: Loc;
+  price: Loc;
+  desc: Loc;
+  details: Detail[];
+  note?: Loc;
   photo: string;
 };
 
 const ITEMS: Item[] = [
   {
     n: "01",
-    title: "Полный образ",
-    price: "от 8 000 ₽",
-    desc: "Макияж и укладка под ваш повод — от дневного выхода до вечернего события. Собираем цельный, ухоженный образ.",
+    title: { ru: "Полный образ", en: "Full look" },
+    price: { ru: "от 8 000 ₽", en: "from 8,000 ₽" },
+    desc: {
+      ru: "Макияж и укладка под ваш повод — от дневного выхода до вечернего события. Собираем цельный, ухоженный образ.",
+      en: "Makeup and hair for your occasion — from a daytime outing to an evening event. A polished, cohesive look.",
+    },
     details: [
-      ["Полный образ", "8 000 ₽"],
-      ["С топ-стилистами", "от 10 000 ₽"],
+      { label: { ru: "Полный образ", en: "Full look" }, price: { ru: "8 000 ₽", en: "8,000 ₽" } },
+      { label: { ru: "С топ-стилистами", en: "With top stylists" }, price: { ru: "от 10 000 ₽", en: "from 10,000 ₽" } },
     ],
     photo: "/assets/tild6230-643__.jpg",
   },
   {
     n: "02",
-    title: "Свадебный образ",
-    price: "от 10 000 ₽",
-    desc: "Ваш день под ключ: пробный образ заранее, репетиция деталей и финальный свадебный look в день торжества.",
+    title: { ru: "Свадебный образ", en: "Bridal look" },
+    price: { ru: "от 10 000 ₽", en: "from 10,000 ₽" },
+    desc: {
+      ru: "Ваш день под ключ: пробный образ заранее, репетиция деталей и финальный свадебный look в день торжества.",
+      en: "Your day, turnkey: a trial look in advance, a rehearsal of details and the final bridal look on the day.",
+    },
     details: [
-      ["Свадебный образ", "10 000 ₽"],
-      ["Пробный образ", "8 500 ₽"],
-      ["С топ-стилистами", "15 000 ₽"],
-      ["Свадебный + подбор look", "от 17 000 ₽"],
+      { label: { ru: "Свадебный образ", en: "Bridal look" }, price: { ru: "10 000 ₽", en: "10,000 ₽" } },
+      { label: { ru: "Пробный образ", en: "Trial look" }, price: { ru: "8 500 ₽", en: "8,500 ₽" } },
+      { label: { ru: "С топ-стилистами", en: "With top stylists" }, price: { ru: "15 000 ₽", en: "15,000 ₽" } },
+      { label: { ru: "Свадебный + подбор look", en: "Bridal + styling" }, price: { ru: "от 17 000 ₽", en: "from 17,000 ₽" } },
     ],
     photo: "/assets/tild3236-393__.jpg",
   },
   {
     n: "03",
-    title: "Макияж и укладка",
-    price: "от 2 500 ₽",
-    desc: "Отдельные услуги, когда нужно быстро и точно — только макияж или только укладка под настроение.",
+    title: { ru: "Макияж и укладка", en: "Makeup & hair" },
+    price: { ru: "от 2 500 ₽", en: "from 2,500 ₽" },
+    desc: {
+      ru: "Отдельные услуги, когда нужно быстро и точно — только макияж или только укладка под настроение.",
+      en: "Standalone services when you need it fast and precise — makeup only or hair only, to suit your mood.",
+    },
     details: [
-      ["Макияж", "5 000 ₽"],
-      ["Укладка", "2 500 – 3 500 ₽"],
+      { label: { ru: "Макияж", en: "Makeup" }, price: { ru: "5 000 ₽", en: "5,000 ₽" } },
+      { label: { ru: "Укладка", en: "Hair styling" }, price: { ru: "2 500 – 3 500 ₽", en: "2,500 – 3,500 ₽" } },
     ],
     photo: "/assets/tild3535-313_bergamo.png",
   },
   {
     n: "04",
-    title: "Образ с подбором look",
-    price: "от 15 000 ₽",
-    desc: "Полный образ плюс подбор одного лука от стилиста под конкретное мероприятие — от макияжа до одежды.",
+    title: { ru: "Образ с подбором look", en: "Look with styling" },
+    price: { ru: "от 15 000 ₽", en: "from 15,000 ₽" },
+    desc: {
+      ru: "Полный образ плюс подбор одного лука от стилиста под конкретное мероприятие — от макияжа до одежды.",
+      en: "A full look plus a stylist-curated outfit for a specific event — from makeup to clothing.",
+    },
     details: [
-      ["Образ + подбор look", "от 15 000 ₽"],
-      ["Свадебный с подбором", "от 17 000 ₽"],
+      { label: { ru: "Образ + подбор look", en: "Look + styling" }, price: { ru: "от 15 000 ₽", en: "from 15,000 ₽" } },
+      { label: { ru: "Свадебный с подбором", en: "Bridal with styling" }, price: { ru: "от 17 000 ₽", en: "from 17,000 ₽" } },
     ],
     photo: "/assets/tild6536-613_-2___1__4.jpg",
   },
   {
     n: "05",
-    title: "Выезд мастеров",
-    price: "от 8 000 ₽",
-    desc: "Команда от двух мастеров приезжает к вам — домой, в студию или на площадку.",
+    title: { ru: "Выезд мастеров", en: "On-location team" },
+    price: { ru: "от 8 000 ₽", en: "from 8,000 ₽" },
+    desc: {
+      ru: "Команда от двух мастеров приезжает к вам — домой, в студию или на площадку.",
+      en: "A team of two or more artists comes to you — at home, in a studio or on location.",
+    },
     details: [
-      ["Новороссийск", "8 000 ₽"],
-      ["Геленджик / Анапа / Абрау-Дюрсо", "от 10 000 ₽"],
-      ["Сочи / Адлер", "от 25 000 ₽"],
-      ["Краснодар / Ростов", "от 25 000 ₽"],
-      ["Москва / Санкт-Петербург", "по запросу"],
+      { label: { ru: "Новороссийск", en: "Novorossiysk" }, price: { ru: "8 000 ₽", en: "8,000 ₽" } },
+      { label: { ru: "Геленджик / Анапа / Абрау-Дюрсо", en: "Gelendzhik / Anapa / Abrau-Dyurso" }, price: { ru: "от 10 000 ₽", en: "from 10,000 ₽" } },
+      { label: { ru: "Сочи / Адлер", en: "Sochi / Adler" }, price: { ru: "от 25 000 ₽", en: "from 25,000 ₽" } },
+      { label: { ru: "Краснодар / Ростов", en: "Krasnodar / Rostov" }, price: { ru: "от 25 000 ₽", en: "from 25,000 ₽" } },
+      { label: { ru: "Москва / Санкт-Петербург", en: "Moscow / St. Petersburg" }, price: { ru: "по запросу", en: "on request" } },
     ],
-    note: "Другое число мастеров — по договорённости с менеджером.",
+    note: {
+      ru: "Другое число мастеров — по договорённости с менеджером.",
+      en: "A different number of artists — by arrangement with the manager.",
+    },
     photo: "/assets/tild6561-356_fermata__2.jpg",
   },
   {
     n: "06",
-    title: "Сопровождение на мероприятии",
-    price: "от 2 000 ₽/час",
-    desc: "Стилист и визажист рядом весь день или вечер: правки образа, помощь с деталями, быстрые перемены между выходами.",
+    title: { ru: "Сопровождение на мероприятии", en: "On-event support" },
+    price: { ru: "от 2 000 ₽/час", en: "from 2,000 ₽/hr" },
+    desc: {
+      ru: "Стилист и визажист рядом весь день или вечер: правки образа, помощь с деталями, быстрые перемены между выходами.",
+      en: "A stylist and makeup artist by your side all day or evening: touch-ups, help with details, quick changes between appearances.",
+    },
     details: [
-      ["Стилист или визажист", "2 000 ₽/час"],
-      ["Стилист + визажист", "4 000 ₽/час"],
+      { label: { ru: "Стилист или визажист", en: "Stylist or makeup artist" }, price: { ru: "2 000 ₽/час", en: "2,000 ₽/hr" } },
+      { label: { ru: "Стилист + визажист", en: "Stylist + makeup artist" }, price: { ru: "4 000 ₽/час", en: "4,000 ₽/hr" } },
     ],
     photo: "/assets/tild3561-646_-2___1__5.jpg",
   },
 ];
 
 export default function Services() {
+  const { lang } = useLang();
   const [open, setOpen] = useState(0);
 
   return (
@@ -114,10 +139,10 @@ export default function Services() {
                       isOpen ? "text-[#f4efe6]" : "text-[#f4efe6]/85"
                     }`}
                   >
-                    {it.title}
+                    {it.title[lang]}
                   </h3>
                   <span className="hidden font-serif text-[20px] text-[#f4efe6]/80 lg:block lg:text-[24px]">
-                    {it.price}
+                    {it.price[lang]}
                   </span>
                   {/* Иконка «+» */}
                   <span className="relative ml-auto h-4 w-4 shrink-0 lg:ml-4">
@@ -140,31 +165,31 @@ export default function Services() {
                       {/* Левая часть — описание + цены + CTA */}
                       <div className="order-2 lg:order-1">
                         <p className="max-w-lg text-[14px] leading-relaxed text-[#f4efe6]/60">
-                          {it.desc}
+                          {it.desc[lang]}
                         </p>
                         <dl className="mt-6 max-w-lg">
-                          {it.details.map(([label, price]) => (
+                          {it.details.map((d) => (
                             <div
-                              key={label}
+                              key={d.label.ru}
                               className="flex items-baseline justify-between gap-6 border-b border-[#4E2126]/35 py-3 last:border-0"
                             >
-                              <dt className="text-[14px] text-[#f4efe6]/85">{label}</dt>
+                              <dt className="text-[14px] text-[#f4efe6]/85">{d.label[lang]}</dt>
                               <dd className="shrink-0 text-[14px] tabular-nums text-[#f4efe6]/55">
-                                {price}
+                                {d.price[lang]}
                               </dd>
                             </div>
                           ))}
                         </dl>
                         {it.note && (
                           <p className="mt-4 text-[12px] italic text-[#f4efe6]/40">
-                            {it.note}
+                            {it.note[lang]}
                           </p>
                         )}
                         <a
-                          href="#booking"
+                          href="/#booking"
                           className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#4E2126] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.03]"
                         >
-                          Записаться <span aria-hidden>→</span>
+                          {lang === "en" ? "Book" : "Записаться"} <span aria-hidden>→</span>
                         </a>
                       </div>
 
@@ -173,7 +198,7 @@ export default function Services() {
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={it.photo}
-                          alt={it.title}
+                          alt={it.title[lang]}
                           className="aspect-[4/5] w-full rounded-[16px] object-cover lg:aspect-[4/5]"
                         />
                       </div>

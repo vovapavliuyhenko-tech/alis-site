@@ -2,8 +2,10 @@
 // HERO resayme: одно фото зеркалом слева/справа, по центру белая карточка.
 // При скролле карточка плавно ОПУСКАЕТСЯ вниз и тонет в темноте (parallax).
 import { useEffect, useRef } from "react";
+import { useLang } from "@/lib/i18n";
 
 export default function Hero() {
+  const { lang } = useLang();
   const photo = "/assets/tild6230-643__.jpg";
   const cardRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -59,9 +61,11 @@ export default function Hero() {
           className="flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between rounded-[26px] bg-[#f4efe6] px-7 py-9 text-center text-[#17191a] will-change-transform"
         >
           <p className="mx-auto max-w-[17rem] text-[13px] leading-snug">
-            Сеть студий эстетики и beauty-concierge
+            {lang === "en"
+              ? "Network of aesthetics studios & beauty concierge"
+              : "Сеть студий эстетики и beauty-concierge"}
             <br />
-            — Дайана Тарзян
+            {lang === "en" ? "— Daiana Tarzyan" : "— Дайана Тарзян"}
           </p>
 
           <div className="flex flex-1 flex-col items-center justify-center">
@@ -74,8 +78,9 @@ export default function Hero() {
           </div>
 
           <p className="mx-auto max-w-[18rem] text-[13px] leading-snug text-[#17191a]/60">
-            для тех, кто хочет настроиться на любовь и соединить свою внутреннюю
-            красоту с внешней
+            {lang === "en"
+              ? "for those who want to tune into love and unite their inner beauty with the outer"
+              : "для тех, кто хочет настроиться на любовь и соединить свою внутреннюю красоту с внешней"}
           </p>
         </div>
       </div>

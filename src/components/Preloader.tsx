@@ -3,8 +3,10 @@
 // салона, по центру крупный счётчик % (0→100), снизу «ещё немного…».
 // После 100% плавно исчезает, открывая сайт.
 import { useEffect, useState } from "react";
+import { useLang } from "@/lib/i18n";
 
 export default function Preloader() {
+  const { lang } = useLang();
   const [p, setP] = useState(0);
   const [gone, setGone] = useState(false);
 
@@ -53,7 +55,7 @@ export default function Preloader() {
       {/* Подпись снизу */}
       <div className="pb-14 text-center lg:pb-20">
         <p className="text-[13px] font-medium lowercase tracking-wide">
-          ещё немного…
+          {lang === "en" ? "almost there…" : "ещё немного…"}
         </p>
       </div>
     </div>

@@ -3,55 +3,124 @@
 // Фон-фото зафиксировано (background-attachment: fixed) — не двигается при скролле,
 // как блок «стоимость» на stretchfitdasha.ru. Карточка — кремовое стекло, тёмный текст.
 import { useState } from "react";
+import { useLang } from "@/lib/i18n";
 
-type Question = { q: string; note: string; opts: string[] };
+type Loc = { ru: string; en: string };
+type Question = { q: Loc; note: Loc; opts: Loc[] };
 
 const QUESTIONS: Question[] = [
   {
-    q: "Какой образ вас интересует?",
-    note: "С этого начинаю подбор — под каждый повод свои мастера и материалы.",
+    q: { ru: "Какой образ вас интересует?", en: "Which look are you after?" },
+    note: {
+      ru: "С этого начинаю подбор — под каждый повод свои мастера и материалы.",
+      en: "This is where selection starts — each occasion has its own artists and materials.",
+    },
     opts: [
-      "Полный образ",
-      "Свадебный образ",
-      "Макияж и укладка",
-      "Выезд мастеров",
-      "Сопровождение",
-      "Другое",
+      { ru: "Полный образ", en: "Full look" },
+      { ru: "Свадебный образ", en: "Bridal look" },
+      { ru: "Макияж и укладка", en: "Makeup & hair" },
+      { ru: "Выезд мастеров", en: "On-location team" },
+      { ru: "Сопровождение", en: "On-event support" },
+      { ru: "Другое", en: "Other" },
     ],
   },
   {
-    q: "На какое событие?",
-    note: "Событие задаёт стойкость макияжа и характер образа.",
+    q: { ru: "На какое событие?", en: "For what event?" },
+    note: {
+      ru: "Событие задаёт стойкость макияжа и характер образа.",
+      en: "The event sets the makeup's staying power and the character of the look.",
+    },
     opts: [
-      "Свадьба",
-      "Фотосъёмка",
-      "Выпускной",
-      "Вечернее мероприятие",
-      "Повседневно",
-      "Другое",
+      { ru: "Свадьба", en: "Wedding" },
+      { ru: "Фотосъёмка", en: "Photoshoot" },
+      { ru: "Выпускной", en: "Prom" },
+      { ru: "Вечернее мероприятие", en: "Evening event" },
+      { ru: "Повседневно", en: "Everyday" },
+      { ru: "Другое", en: "Other" },
     ],
   },
   {
-    q: "Где вам удобно?",
-    note: "Работаем в студии или приедем к вам — как комфортнее.",
-    opts: ["В студии", "Выезд к вам", "Ещё не решили"],
+    q: { ru: "Где вам удобно?", en: "Where suits you?" },
+    note: {
+      ru: "Работаем в студии или приедем к вам — как комфортнее.",
+      en: "We work in the studio or come to you — whatever is more comfortable.",
+    },
+    opts: [
+      { ru: "В студии", en: "In the studio" },
+      { ru: "Выезд к вам", en: "We come to you" },
+      { ru: "Ещё не решили", en: "Not decided yet" },
+    ],
   },
   {
-    q: "Когда планируете?",
-    note: "Подскажите сроки — подберу свободное время мастеров.",
+    q: { ru: "Когда планируете?", en: "When are you planning?" },
+    note: {
+      ru: "Подскажите сроки — подберу свободное время мастеров.",
+      en: "Tell us the timeframe — we'll find an open slot with our artists.",
+    },
     opts: [
-      "На этой неделе",
-      "В этом месяце",
-      "Через 1–2 месяца",
-      "Пока выбираю дату",
+      { ru: "На этой неделе", en: "This week" },
+      { ru: "В этом месяце", en: "This month" },
+      { ru: "Через 1–2 месяца", en: "In 1–2 months" },
+      { ru: "Пока выбираю дату", en: "Still choosing a date" },
     ],
   },
 ];
 
-const CONTACT_NOTE = "Оставьте контакты — свяжусь, чтобы подтвердить запись.";
+const CONTACT_NOTE: Loc = {
+  ru: "Оставьте контакты — свяжусь, чтобы подтвердить запись.",
+  en: "Leave your contacts — I'll get in touch to confirm the booking.",
+};
+
+const UI = {
+  ru: {
+    eyebrow: "запись",
+    title: "Подберём ваш образ за пару минут",
+    step: "Шаг",
+    of: "из",
+    contactTitle: "Как с вами связаться?",
+    name: "Ваше имя",
+    namePh: "Имя",
+    phone: "Телефон",
+    phonePh: "+7 ___ ___-__-__",
+    consent: "Оставляя заявку, вы соглашаетесь на обработку персональных данных.",
+    back: "Назад",
+    next: "Следующий вопрос",
+    submit: "Записаться",
+    successTitle: "Спасибо, заявка принята",
+    successSub1: "Дайана свяжется с вами в ближайшее время",
+    successSub2: (a: string) => `, чтобы подтвердить запись на «${a}»`,
+    again: "Оставить ещё одну заявку",
+    founder: "Дайана Тарзян",
+    founderRole: "основатель ALIS",
+  },
+  en: {
+    eyebrow: "booking",
+    title: "Let's find your look in a couple of minutes",
+    step: "Step",
+    of: "of",
+    contactTitle: "How can we reach you?",
+    name: "Your name",
+    namePh: "Name",
+    phone: "Phone",
+    phonePh: "+_ ___ ___-__-__",
+    consent: "By submitting, you agree to the processing of personal data.",
+    back: "Back",
+    next: "Next question",
+    submit: "Book",
+    successTitle: "Thank you, request received",
+    successSub1: "Daiana will contact you shortly",
+    successSub2: (a: string) => ` to confirm your booking for “${a}”`,
+    again: "Submit another request",
+    founder: "Daiana Tarzyan",
+    founderRole: "founder of ALIS",
+  },
+};
+
 const TOTAL = QUESTIONS.length + 1; // 4 вопроса + контакты
 
 export default function Booking() {
+  const { lang } = useLang();
+  const ui = UI[lang];
   const [step, setStep] = useState(0); // 0..3 — вопросы, 4 — контакты, 5 — успех
   const [answers, setAnswers] = useState<(string | null)[]>(
     Array(QUESTIONS.length).fill(null)
@@ -61,7 +130,7 @@ export default function Booking() {
 
   const isContact = step === QUESTIONS.length;
   const isSuccess = step === TOTAL;
-  const note = isContact ? CONTACT_NOTE : QUESTIONS[step]?.note;
+  const note = isContact ? CONTACT_NOTE[lang] : QUESTIONS[step]?.note[lang];
 
   const pick = (opt: string) => {
     setAnswers((a) => {
@@ -103,10 +172,10 @@ export default function Booking() {
         {/* Заголовок */}
         <div className="mb-12 text-center">
           <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
-            запись
+            {ui.eyebrow}
           </span>
           <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
-            Подберём ваш образ за пару минут
+            {ui.title}
           </h2>
         </div>
 
@@ -119,15 +188,15 @@ export default function Booking() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/assets/tild3236-393__.jpg"
-                  alt="Дайана Тарзян"
+                  alt={ui.founder}
                   className="h-16 w-16 rounded-full object-cover"
                 />
                 <div>
                   <p className="text-[16px] font-medium text-[#17191a]">
-                    Дайана Тарзян
+                    {ui.founder}
                   </p>
                   <p className="mt-0.5 text-[13px] text-[#17191a]/50">
-                    основатель ALIS
+                    {ui.founderRole}
                   </p>
                 </div>
               </div>
@@ -150,7 +219,7 @@ export default function Booking() {
                   {/* Прогресс */}
                   <div className="mb-4 flex items-center justify-between">
                     <span className="rounded-full border border-[#17191a]/15 bg-[#17191a]/[0.06] px-3.5 py-1.5 text-[12px] font-medium uppercase tracking-wide text-[#17191a]/80">
-                      Шаг {step + 1} из {TOTAL}
+                      {ui.step} {step + 1} {ui.of} {TOTAL}
                     </span>
                     <span className="text-[13px] text-[#17191a]/40">
                       {step + 1} / {TOTAL}
@@ -168,15 +237,16 @@ export default function Booking() {
                     {!isContact ? (
                       <>
                         <h3 className="mb-7 font-serif text-[26px] leading-tight text-[#17191a] lg:text-[32px]">
-                          {QUESTIONS[step].q}
+                          {QUESTIONS[step].q[lang]}
                         </h3>
                         <div className="grid gap-3 sm:grid-cols-2">
                           {QUESTIONS[step].opts.map((opt) => {
-                            const selected = answers[step] === opt;
+                            const val = opt[lang];
+                            const selected = answers[step] === val;
                             return (
                               <button
-                                key={opt}
-                                onClick={() => pick(opt)}
+                                key={opt.ru}
+                                onClick={() => pick(val)}
                                 className={`flex items-center gap-3.5 rounded-2xl border px-5 py-4 text-left text-[15px] transition-all ${
                                   selected
                                     ? "border-[#4E2126] bg-[#4E2126] text-[#f4efe6]"
@@ -202,7 +272,7 @@ export default function Booking() {
                                     </svg>
                                   )}
                                 </span>
-                                {opt}
+                                {val}
                               </button>
                             );
                           })}
@@ -211,31 +281,30 @@ export default function Booking() {
                     ) : (
                       <>
                         <h3 className="mb-7 font-serif text-[26px] leading-tight text-[#17191a] lg:text-[32px]">
-                          Как с вами связаться?
+                          {ui.contactTitle}
                         </h3>
                         <label className="mb-3 block text-[13px] tracking-wide text-[#17191a]/50">
-                          Ваше имя
+                          {ui.name}
                         </label>
                         <input
                           type="text"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          placeholder="Имя"
+                          placeholder={ui.namePh}
                           className="mb-7 w-full border-b border-[#17191a]/25 bg-transparent pb-3 text-[16px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/30 focus:border-[#17191a]"
                         />
                         <label className="mb-3 block text-[13px] tracking-wide text-[#17191a]/50">
-                          Телефон
+                          {ui.phone}
                         </label>
                         <input
                           type="tel"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          placeholder="+7 ___ ___-__-__"
+                          placeholder={ui.phonePh}
                           className="w-full border-b border-[#17191a]/25 bg-transparent pb-3 text-[16px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/30 focus:border-[#17191a]"
                         />
                         <p className="mt-7 text-[12px] leading-relaxed text-[#17191a]/40">
-                          Оставляя заявку, вы соглашаетесь на обработку
-                          персональных данных.
+                          {ui.consent}
                         </p>
                       </>
                     )}
@@ -248,7 +317,7 @@ export default function Booking() {
                         onClick={() => setStep(step - 1)}
                         className="inline-flex items-center gap-2 text-[14px] text-[#17191a]/50 transition-colors hover:text-[#17191a]"
                       >
-                        <span aria-hidden>←</span> Назад
+                        <span aria-hidden>←</span> {ui.back}
                       </button>
                     ) : (
                       <span />
@@ -259,7 +328,7 @@ export default function Booking() {
                       disabled={!canNext}
                       className="inline-flex items-center gap-2.5 rounded-full bg-[#4E2126] py-3 pl-6 pr-2.5 text-[13px] font-medium uppercase tracking-wide text-[#f4efe6] transition-all hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
                     >
-                      {isContact ? "Записаться" : "Следующий вопрос"}
+                      {isContact ? ui.submit : ui.next}
                       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4E2126" strokeWidth="2.2">
                           <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
@@ -283,11 +352,11 @@ export default function Booking() {
                     </svg>
                   </div>
                   <h3 className="font-serif text-[28px] text-[#17191a] lg:text-[32px]">
-                    Спасибо, заявка принята
+                    {ui.successTitle}
                   </h3>
                   <p className="mx-auto mt-4 max-w-sm text-[14px] leading-relaxed text-[#17191a]/60">
-                    Дайана свяжется с вами в ближайшее время
-                    {answers[0] ? `, чтобы подтвердить запись на «${answers[0]}»` : ""}.
+                    {ui.successSub1}
+                    {answers[0] ? ui.successSub2(answers[0]) : ""}.
                   </p>
                   <button
                     onClick={() => {
@@ -298,7 +367,7 @@ export default function Booking() {
                     }}
                     className="mt-8 text-[14px] text-[#17191a]/50 transition-colors hover:text-[#17191a]"
                   >
-                    Оставить ещё одну заявку
+                    {ui.again}
                   </button>
                 </div>
               )}
