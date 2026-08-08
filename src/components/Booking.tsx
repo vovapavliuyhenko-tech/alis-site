@@ -102,8 +102,8 @@ export default function Booking() {
       <div className="relative mx-auto w-[94%] max-w-[1080px]">
         {/* Заголовок */}
         <div className="mb-12 text-center">
-          <span className="text-[13px] lowercase tracking-wide text-[#17191a]/50">
-            (запись)
+          <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+            запись
           </span>
           <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
             Подберём ваш образ за пару минут

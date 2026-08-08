@@ -135,8 +135,8 @@ export default function Projects() {
           ))}
 
           {/* «(галерея)» — подпись всего экрана снизу-слева */}
-          <span className="pointer-events-none absolute bottom-6 left-6 z-10 font-thunder text-[20px] lowercase tracking-wide text-[#f4efe6]/90">
-            (галерея)
+          <span className="pointer-events-none absolute bottom-6 left-6 z-10 inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+            галерея
           </span>
         </section>
       ))}

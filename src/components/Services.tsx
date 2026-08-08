@@ -97,8 +97,8 @@ export default function Services() {
       <div className="mx-auto w-[94%] max-w-[1180px]">
         {/* Шапка */}
         <div className="mb-14 grid gap-8 lg:grid-cols-[auto_1fr] lg:gap-16">
-          <span className="r-reveal self-start text-[13px] lowercase tracking-wide text-[#f4efe6]/45">
-            [ услуги + цены ]
+          <span className="r-reveal inline-block self-start rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+            услуги + цены
           </span>
           <h2 className="r-reveal font-serif text-[34px] leading-[1.05] text-[#f4efe6] lg:text-right lg:text-[54px]">
             Собираем образ под повод,
@@ -107,19 +107,19 @@ export default function Services() {
           </h2>
         </div>
 
-        <div className="border-t border-[#f4efe6]/12">
+        <div className="border-t border-[#4E2126]/50">
           {ITEMS.map((it, i) => {
             const isOpen = open === i;
             return (
-              <div key={it.n} className="border-b border-[#f4efe6]/12">
+              <div key={it.n} className="border-b border-[#4E2126]/50">
                 {/* Строка-заголовок */}
                 <button
                   onClick={() => setOpen(isOpen ? -1 : i)}
                   aria-expanded={isOpen}
                   className="grid w-full grid-cols-[44px_1fr_auto] items-center gap-4 py-7 text-left lg:grid-cols-[64px_1fr_auto_auto] lg:gap-8 lg:py-8"
                 >
-                  <span className="text-[12px] tracking-wide text-[#f4efe6]/40 lg:text-[13px]">
-                    [ {it.n} ]
+                  <span className="justify-self-start rounded-md bg-[#4E2126] px-2 py-1 text-[11px] font-medium tabular-nums text-[#f4efe6] lg:text-[12px]">
+                    {it.n}
                   </span>
                   <h3
                     className={`font-serif text-[22px] leading-tight transition-colors lg:text-[30px] ${
@@ -158,7 +158,7 @@ export default function Services() {
                           {it.details.map(([label, price]) => (
                             <div
                               key={label}
-                              className="flex items-baseline justify-between gap-6 border-b border-[#f4efe6]/10 py-3 last:border-0"
+                              className="flex items-baseline justify-between gap-6 border-b border-[#4E2126]/35 py-3 last:border-0"
                             >
                               <dt className="text-[14px] text-[#f4efe6]/85">{label}</dt>
                               <dd className="shrink-0 text-[14px] tabular-nums text-[#f4efe6]/55">

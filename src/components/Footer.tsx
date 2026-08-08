@@ -9,11 +9,11 @@ export default function Footer() {
           ÁLIS
         </div>
 
-        <div className="mt-12 grid gap-10 border-t border-[#f4efe6]/10 pt-10 md:grid-cols-2">
+        <div className="mt-12 grid gap-10 border-t border-[#4E2126]/60 pt-10 md:grid-cols-2">
           <nav className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px]">
             {nav.map((item, i) => (
               <span key={item} className="flex items-center gap-3">
-                {i > 0 && <span className="text-[#f4efe6]/30">/</span>}
+                {i > 0 && <span className="text-[#4E2126]">/</span>}
                 <a href="#" className="text-[#f4efe6]/70 transition-colors hover:text-[#f4efe6]">
                   {item}
                 </a>
@@ -23,7 +23,7 @@ export default function Footer() {
           <nav className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] md:justify-end">
             {social.map((item, i) => (
               <span key={item} className="flex items-center gap-3">
-                {i > 0 && <span className="text-[#f4efe6]/30">/</span>}
+                {i > 0 && <span className="text-[#4E2126]">/</span>}
                 <a href="#" className="text-[#f4efe6]/70 transition-colors hover:text-[#f4efe6]">
                   {item}
                 </a>

@@ -103,8 +103,8 @@ export default function About() {
       <div className="mx-auto w-[94%] max-w-[1280px]">
         {/* Заголовок */}
         <div className="mb-16 lg:mb-20">
-          <span className="text-[13px] lowercase tracking-wide text-[#f4efe6]/45">
-            (обо мне)
+          <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+            обо мне
           </span>
           <h2 className="mt-4 max-w-2xl font-serif text-[30px] leading-[1.1] text-[#f4efe6] lg:text-[44px]">
             Почему вам будет спокойно

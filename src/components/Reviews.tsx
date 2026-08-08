@@ -99,8 +99,8 @@ export default function Reviews() {
       <div className="mx-auto w-[94%] max-w-[1180px]">
         {/* Заголовок */}
         <div className="mb-14 text-center">
-          <span className="text-[13px] lowercase tracking-wide text-[#f4efe6]/45">
-            (отзывы)
+          <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+            отзывы
           </span>
           <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#f4efe6] lg:text-[48px]">
             Что говорят наши гостьи
@@ -114,7 +114,7 @@ export default function Reviews() {
               <article
                 key={r.name}
                 style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)` }}
-                className="absolute left-1/2 top-1/2 -ml-[130px] -mt-[128px] flex h-[256px] w-[260px] flex-col justify-between rounded-[18px] bg-[#f4efe6] p-6 text-[#17191a] shadow-2xl [backface-visibility:hidden]"
+                className="absolute left-1/2 top-1/2 -ml-[130px] -mt-[128px] flex h-[256px] w-[260px] flex-col justify-between rounded-[18px] border border-[#4E2126]/25 bg-[#f4efe6] p-6 text-[#17191a] shadow-2xl [backface-visibility:hidden]"
               >
                 <span className="font-serif text-[38px] leading-[0.5] text-[#4E2126]">
                   &ldquo;
@@ -129,7 +129,7 @@ export default function Reviews() {
                   <img
                     src={r.photo}
                     alt={r.name}
-                    className="h-9 w-9 rounded-full object-cover"
+                    className="h-9 w-9 rounded-full object-cover ring-1 ring-[#4E2126]/35"
                   />
                   <div>
                     <p className="text-[12.5px] font-medium text-[#17191a]">{r.name}</p>
