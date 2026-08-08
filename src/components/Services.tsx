@@ -2,7 +2,7 @@
 // УСЛУГИ — аккордеон с фото. Строка: [номер] · название · цена. По клику плавно
 // раскрывается панель: описание, детальные цены, фото образа и кнопка «Записаться».
 // Открыт всегда один пункт. Стиль тёмный, serif-заголовки, реальные цены салона.
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -117,6 +117,19 @@ export default function Services() {
   const { lang } = useLang();
   const [open, setOpen] = useState(0);
 
+  // Открываем нужную услугу по якорю (#service-0N из меню)
+  useEffect(() => {
+    const applyHash = () => {
+      const m = window.location.hash.match(/^#service-(\d+)/);
+      if (!m) return;
+      const idx = ITEMS.findIndex((it) => it.n === m[1]);
+      if (idx >= 0) setOpen(idx);
+    };
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, []);
+
   return (
     <section id="services" className="scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1180px]">
@@ -124,7 +137,7 @@ export default function Services() {
           {ITEMS.map((it, i) => {
             const isOpen = open === i;
             return (
-              <div key={it.n} className="border-b border-[#4E2126]/50">
+              <div key={it.n} id={`service-${it.n}`} className="scroll-mt-28 border-b border-[#4E2126]/50">
                 {/* Строка-заголовок */}
                 <button
                   onClick={() => setOpen(isOpen ? -1 : i)}

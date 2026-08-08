@@ -31,9 +31,9 @@ const NAV: NavItem[] = [
     label: { ru: "услуги", en: "services" },
     href: "/#services",
     sub: [
-      { label: { ru: "Образы и макияж", en: "Looks & makeup" }, href: "/#services" },
-      { label: { ru: "Свадебные образы", en: "Bridal looks" }, href: "/#services" },
-      { label: { ru: "Выезд мастеров", en: "On-location team" }, href: "/#services" },
+      { label: { ru: "Образы и макияж", en: "Looks & makeup" }, href: "/#service-01" },
+      { label: { ru: "Свадебные образы", en: "Bridal looks" }, href: "/#service-02" },
+      { label: { ru: "Выезд мастеров", en: "On-location team" }, href: "/#service-05" },
       { label: { ru: "Beauty concierge", en: "Beauty concierge" }, href: "/#booking" },
     ],
   },
