@@ -132,7 +132,7 @@ export default function HorizontalStory() {
                   alt={s.name}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-x-[6%] bottom-[6%] rounded-[6px] bg-[#f4efe6]/95 px-6 py-6 text-center backdrop-blur-sm md:px-10 md:py-8">
+                <div className="absolute inset-x-[6%] bottom-[6%] rounded-[18px] bg-[#f4efe6]/95 px-6 py-6 text-center backdrop-blur-sm md:px-10 md:py-8">
                   <p className="font-serif text-[24px] uppercase tracking-[0.15em] text-[#4E2126] md:text-[30px]">
                     {s.name}
                   </p>
