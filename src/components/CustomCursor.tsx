@@ -6,7 +6,8 @@
 // Только для мыши/трекпада.
 import { useEffect, useRef } from "react";
 
-const N = 20; // число кругов в хвосте (как у paloma)
+const N = 12; // число кругов в хвосте (меньше — короче и без лишних капель)
+const FOLLOW = 0.45; // коэффициент догона (выше — быстрее и плотнее хвост)
 const HOVER_SEL =
   'a, button, input, textarea, select, label, summary, [role="button"], [data-cursor]';
 
@@ -41,11 +42,11 @@ export default function CustomCursor() {
 
     const tick = () => {
       // Цепочка: голова тянется к мыши, каждый следующий круг — к предыдущему
-      pts[0].x += (mx - pts[0].x) * 0.35;
-      pts[0].y += (my - pts[0].y) * 0.35;
+      pts[0].x += (mx - pts[0].x) * FOLLOW;
+      pts[0].y += (my - pts[0].y) * FOLLOW;
       for (let i = 1; i < N; i++) {
-        pts[i].x += (pts[i - 1].x - pts[i].x) * 0.35;
-        pts[i].y += (pts[i - 1].y - pts[i].y) * 0.35;
+        pts[i].x += (pts[i - 1].x - pts[i].x) * FOLLOW;
+        pts[i].y += (pts[i - 1].y - pts[i].y) * FOLLOW;
       }
       const hf = host.classList.contains("is-hovering") ? 1.5 : 1;
       for (let i = 0; i < N; i++) {
