@@ -94,6 +94,21 @@ export default function CustomCursor() {
       for (const dot of dots) dot.lock();
     }
 
+    // Адаптивный цвет: тёмная капля на светлом фоне, светлая — на тёмном
+    const updateColor = (px: number, py: number) => {
+      let el = document.elementFromPoint(px, py) as Element | null;
+      while (el) {
+        const bg = getComputedStyle(el).backgroundColor;
+        const m = bg.match(/rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?/);
+        if (m && (m[4] === undefined || parseFloat(m[4]) > 0.4)) {
+          const lum = (0.2126 * +m[1] + 0.7152 * +m[2] + 0.0722 * +m[3]) / 255;
+          cursor.classList.toggle("on-light", lum > 0.55);
+          return;
+        }
+        el = el.parentElement;
+      }
+    };
+
     const onMove = (e: MouseEvent) => {
       mouse.x = e.clientX - WIDTH / 2;
       mouse.y = e.clientY - WIDTH / 2;
@@ -101,6 +116,7 @@ export default function CustomCursor() {
         visible = true;
         cursor.classList.add("is-visible");
       }
+      updateColor(e.clientX, e.clientY);
       resetIdle();
     };
     const leave = () => {
