@@ -69,13 +69,6 @@ function Track({ hidden = false }: { hidden?: boolean }) {
 export default function Brands() {
   return (
     <section className="overflow-hidden bg-[#17191a] pt-8 pb-16 lg:pt-10 lg:pb-24">
-      <div className="mb-12 flex flex-col items-center gap-3">
-        <p className="text-center font-serif text-[13px] uppercase tracking-[0.4em] text-[#f4efe6]/60">
-          нас выбирают
-        </p>
-        <span className="h-[2px] w-10 rounded-full bg-[#4E2126]" />
-      </div>
-
       <div className="group relative flex overflow-hidden">
         <Track />
         <Track hidden />
