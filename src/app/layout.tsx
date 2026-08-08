@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/lib/i18n";
 
 // Inter — основной текст (как на resayme). Oswald — стенд-ин под Thunder (крупный текст).
 // Настоящие крупные заголовки resayme — это SVG (лежат в /public/assets), а не шрифт.
@@ -31,7 +32,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <style>{`.r-reveal{opacity:1 !important;transform:none !important;}`}</style>
         </noscript>
       </head>
-      <body>{children}</body>
+      <body>
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }

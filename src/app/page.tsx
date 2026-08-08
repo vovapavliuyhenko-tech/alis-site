@@ -1,6 +1,7 @@
 import Preloader from "@/components/Preloader";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import ConciergeTeaser from "@/components/ConciergeTeaser";
 import About from "@/components/About";
 import HorizontalStory from "@/components/HorizontalStory";
 import Projects from "@/components/Projects";
@@ -20,6 +21,7 @@ export default function Home() {
       <ScrollReveal />
       <Header />
       <Hero />
+      <ConciergeTeaser />
       <About />
       <Brands />
       <Projects />

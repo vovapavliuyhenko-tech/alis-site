@@ -1,6 +1,8 @@
-// Плавающая «капсула»-шапка ALIS: лого слева, меню по центру (с выпадашкой
-// «услуги»), CTA-кнопка «Записаться» справа. Тёмное матовое стекло.
+"use client";
+// Плавающая «капсула»-шапка ALIS: лого, меню по центру (с выпадашкой «услуги»),
+// тумблер языка RU/EN и CTA «Записаться». Тёмное матовое стекло.
 import type { ReactNode } from "react";
+import { useLang, LangToggle } from "@/lib/i18n";
 
 // Пункт меню: при наведении текст переворачивается по X и становится бордовым
 function FlipText({ children }: { children: ReactNode }) {
@@ -15,43 +17,49 @@ function FlipText({ children }: { children: ReactNode }) {
     </span>
   );
 }
-const NAV = [
-  { label: "главная", href: "#" },
-  { label: "обо мне", href: "#about" },
+
+type NavItem = {
+  label: { ru: string; en: string };
+  href: string;
+  sub?: { label: { ru: string; en: string }; href: string }[];
+};
+
+const NAV: NavItem[] = [
+  { label: { ru: "обо мне", en: "about" }, href: "/#about" },
   {
-    label: "услуги",
-    href: "#services",
+    label: { ru: "услуги", en: "services" },
+    href: "/#services",
     sub: [
-      { label: "Образы и макияж", href: "#services" },
-      { label: "Свадебные образы", href: "#services" },
-      { label: "Выезд мастеров", href: "#services" },
-      { label: "Beauty concierge", href: "#concierge" },
+      { label: { ru: "Образы и макияж", en: "Looks & makeup" }, href: "/#services" },
+      { label: { ru: "Свадебные образы", en: "Bridal looks" }, href: "/#services" },
+      { label: { ru: "Выезд мастеров", en: "On-location team" }, href: "/#services" },
+      { label: { ru: "Beauty concierge", en: "Beauty concierge" }, href: "/concierge" },
     ],
   },
-  { label: "прайс", href: "#services" },
-  { label: "галерея", href: "#gallery" },
-  { label: "контакты", href: "#footer" },
+  { label: { ru: "консьерж", en: "concierge" }, href: "/concierge" },
+  { label: { ru: "выезд", en: "travel" }, href: "/vyezd" },
+  { label: { ru: "галерея", en: "gallery" }, href: "/#gallery" },
+  { label: { ru: "контакты", en: "contacts" }, href: "/#footer" },
 ];
 
 export default function Header() {
+  const { lang } = useLang();
+
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-4 sm:px-4">
-      <div className="pointer-events-auto flex w-full max-w-[1160px] items-center justify-between gap-4 rounded-full border border-[#f4efe6]/15 bg-[#17191a]/45 py-2.5 pl-6 pr-2.5 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-md">
+      <div className="pointer-events-auto flex w-full max-w-[1200px] items-center justify-between gap-4 rounded-full border border-[#f4efe6]/15 bg-[#17191a]/45 py-2.5 pl-6 pr-2.5 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-md">
         {/* Логотип */}
-        <a href="#" className="font-serif text-[20px] leading-none tracking-[0.16em] text-[#f4efe6]">
+        <a href="/" className="font-serif text-[20px] leading-none tracking-[0.16em] text-[#f4efe6]">
           ÁLIS
         </a>
 
         {/* Навигация по центру */}
-        <nav className="hidden items-center gap-7 text-[14px] tracking-wide text-[#f4efe6]/80 lg:flex">
+        <nav className="hidden items-center gap-6 text-[14px] tracking-wide text-[#f4efe6]/80 lg:flex">
           {NAV.map((item) =>
             item.sub ? (
-              <div key={item.label} className="group relative">
-                <a
-                  href={item.href}
-                  className="group/nav flex items-center gap-1 py-2"
-                >
-                  <FlipText>{item.label}</FlipText>
+              <div key={item.label.ru} className="group relative">
+                <a href={item.href} className="group/nav flex items-center gap-1 py-2">
+                  <FlipText>{item.label[lang]}</FlipText>
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" className="mt-0.5 opacity-70">
                     <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -61,40 +69,39 @@ export default function Header() {
                   <div className="overflow-hidden rounded-2xl border border-[#f4efe6]/10 bg-[#17191a]/95 p-2 shadow-[0_12px_40px_rgba(0,0,0,0.5)] backdrop-blur-md">
                     {item.sub.map((s) => (
                       <a
-                        key={s.label}
+                        key={s.label.ru}
                         href={s.href}
                         className="block rounded-xl px-4 py-2.5 text-[13.5px] text-[#f4efe6]/75 transition-colors hover:bg-[#f4efe6]/10 hover:text-[#f4efe6]"
                       >
-                        {s.label}
+                        {s.label[lang]}
                       </a>
                     ))}
                   </div>
                 </div>
               </div>
             ) : (
-              <a
-                key={item.label}
-                href={item.href}
-                className="group/nav py-2"
-              >
-                <FlipText>{item.label}</FlipText>
+              <a key={item.label.ru} href={item.href} className="group/nav py-2">
+                <FlipText>{item.label[lang]}</FlipText>
               </a>
             )
           )}
         </nav>
 
-        {/* CTA */}
-        <a
-          href="#booking"
-          className="flex items-center gap-2.5 rounded-full bg-[#4E2126] py-2 pl-5 pr-2 text-[13px] font-medium text-[#f4efe6] transition-opacity hover:opacity-90"
-        >
-          Записаться
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4E2126" strokeWidth="2.2">
-              <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
-        </a>
+        {/* Язык + CTA */}
+        <div className="flex items-center gap-2.5">
+          <LangToggle className="hidden sm:flex" />
+          <a
+            href="/#booking"
+            className="flex items-center gap-2.5 rounded-full bg-[#4E2126] py-2 pl-5 pr-2 text-[13px] font-medium text-[#f4efe6] transition-opacity hover:opacity-90"
+          >
+            {lang === "en" ? "Book" : "Записаться"}
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4E2126" strokeWidth="2.2">
+                <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </a>
+        </div>
       </div>
     </header>
   );
