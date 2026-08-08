@@ -106,10 +106,6 @@ export default function About() {
           <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
             обо мне
           </span>
-          <h2 className="mt-4 max-w-2xl font-serif text-[30px] leading-[1.1] text-[#f4efe6] lg:text-[44px]">
-            Почему вам будет спокойно
-            <br className="hidden lg:block" /> доверить свой образ ALIS
-          </h2>
         </div>
 
         {/* Сетка УТП с движущимся прицелом */}
