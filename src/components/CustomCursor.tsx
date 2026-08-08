@@ -1,53 +1,63 @@
 "use client";
-// Кастомный курсор — точь-в-точь как на paloma.website: белая точка 6px следует
-// за мышью мгновенно, кольцо 32px тянется с задержкой; контейнер в режиме
-// mix-blend-mode: difference (инвертирует цвет под собой). При наведении на
-// интерактив точка скрывается, рамка кольца становится ярче. Только для мыши.
+// Кастомный курсор — «гелевая капля» точь-в-точь как на paloma.website:
+// контейнер с SVG-фильтром goo (feGaussianBlur + feColorMatrix), внутри 20
+// кругов по 26px с убывающим масштабом, тянущихся цепочкой за мышью — фильтр
+// сливает их в жидкий хвост. mix-blend-mode: difference — видна на любом фоне.
+// Только для мыши/трекпада.
 import { useEffect, useRef } from "react";
 
+const N = 20; // число кругов в хвосте (как у paloma)
 const HOVER_SEL =
   'a, button, input, textarea, select, label, summary, [role="button"], [data-cursor]';
 
 export default function CustomCursor() {
-  const rootRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+  const hostRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Только для точных указателей (мышь/трекпад), не для тач
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
-    const root = rootRef.current;
-    const ring = ringRef.current;
-    if (!root || !ring) return;
+    const host = hostRef.current;
+    if (!host) return;
+    const spans = Array.from(host.children) as HTMLElement[];
 
     document.documentElement.classList.add("has-custom-cursor");
 
     let mx = window.innerWidth / 2;
     let my = window.innerHeight / 2;
-    let rx = mx;
-    let ry = my;
+    const pts = Array.from({ length: N }, () => ({ x: mx, y: my }));
+    let shown = false;
     let raf = 0;
 
     const onMove = (e: MouseEvent) => {
       mx = e.clientX;
       my = e.clientY;
-      root.style.opacity = "1";
+      if (!shown) {
+        shown = true;
+        host.classList.add("is-visible");
+      }
       const t = e.target as Element | null;
-      const hov = !!(t && t.closest && t.closest(HOVER_SEL));
-      root.classList.toggle("is-hovering", hov);
+      host.classList.toggle("is-hovering", !!(t && t.closest && t.closest(HOVER_SEL)));
     };
 
     const tick = () => {
-      rx += (mx - rx) * 0.18; // кольцо догоняет с задержкой
-      ry += (my - ry) * 0.18;
-      root.style.transform = `translate(${mx}px, ${my}px)`;
-      ring.style.transform = `translate(${rx - mx}px, ${ry - my}px)`;
+      // Цепочка: голова тянется к мыши, каждый следующий круг — к предыдущему
+      pts[0].x += (mx - pts[0].x) * 0.35;
+      pts[0].y += (my - pts[0].y) * 0.35;
+      for (let i = 1; i < N; i++) {
+        pts[i].x += (pts[i - 1].x - pts[i].x) * 0.35;
+        pts[i].y += (pts[i - 1].y - pts[i].y) * 0.35;
+      }
+      const hf = host.classList.contains("is-hovering") ? 1.5 : 1;
+      for (let i = 0; i < N; i++) {
+        const s = (1 - i * 0.05) * hf;
+        spans[i].style.transform = `translate(${(pts[i].x - 13).toFixed(2)}px, ${(pts[i].y - 13).toFixed(2)}px) scale(${s.toFixed(3)})`;
+      }
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
 
-    const hide = () => (root.style.opacity = "0");
-    const show = () => (root.style.opacity = "1");
+    const hide = () => host.classList.remove("is-visible");
+    const show = () => shown && host.classList.add("is-visible");
 
     window.addEventListener("mousemove", onMove, { passive: true });
     document.addEventListener("mouseleave", hide);
@@ -65,9 +75,28 @@ export default function CustomCursor() {
   }, []);
 
   return (
-    <div ref={rootRef} className="custom-cursor" style={{ opacity: 0 }} aria-hidden>
-      <div ref={ringRef} className="custom-cursor__ring" />
-      <div className="custom-cursor__dot" />
-    </div>
+    <>
+      {/* SVG-фильтр «goo» — сливает круги в жидкую каплю */}
+      <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden>
+        <defs>
+          <filter id="palomaGoo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15"
+              result="goo"
+            />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
+
+      <div ref={hostRef} className="ink-cursor" aria-hidden>
+        {Array.from({ length: N }).map((_, i) => (
+          <span key={i} />
+        ))}
+      </div>
+    </>
   );
 }

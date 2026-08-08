@@ -28,28 +28,26 @@ body {
 /* Крупный конденсированный шрифт (Thunder → Oswald стенд-ин) */
 .font-thunder { font-family: var(--font-thunder), 'Oswald', sans-serif; }
 
-/* ===== Кастомный курсор (как на paloma.website): точка + кольцо ===== */
+/* ===== Кастомный курсор — гелевая капля (как на paloma.website) ===== */
 html.has-custom-cursor,
 html.has-custom-cursor * { cursor: none !important; }
-.custom-cursor {
+.ink-cursor {
+  --ink-col: #ffffff;
   position: fixed; top: 0; left: 0; width: 0; height: 0;
   pointer-events: none; z-index: 9000;
-  mix-blend-mode: difference; will-change: transform;
+  filter: url(#palomaGoo);
+  mix-blend-mode: difference;
+  opacity: 0; transition: opacity 0.25s;
+  will-change: transform;
 }
-.custom-cursor__dot {
-  position: absolute; top: 50%; left: 50%;
-  width: 6px; height: 6px; margin: -3px 0 0 -3px;
-  background: #fff; border-radius: 50%; transition: opacity 0.3s;
+.ink-cursor.is-visible { opacity: 1; }
+.ink-cursor span {
+  position: absolute; top: 0; left: 0; display: block;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--ink-col); transform-origin: 13px 13px;
+  will-change: transform;
 }
-.custom-cursor__ring {
-  position: absolute; top: 50%; left: 50%;
-  width: 32px; height: 32px; margin: -16px 0 0 -16px;
-  border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 50%;
-  transition: border-color 0.3s, background 0.3s; will-change: transform;
-}
-.custom-cursor.is-hovering .custom-cursor__ring { border-color: rgba(255, 255, 255, 0.9); }
-.custom-cursor.is-hovering .custom-cursor__dot { opacity: 0; }
-@media (prefers-reduced-motion: reduce) { .custom-cursor { display: none; } }
+@media (prefers-reduced-motion: reduce) { .ink-cursor { display: none; } }
 
 /* ===== Обо мне: точка-видоискатель, когда прицел наведён ===== */
 .utp-dot { transform: scale(0.65); opacity: 0.5; }
