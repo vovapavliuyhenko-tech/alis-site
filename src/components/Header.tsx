@@ -27,16 +27,7 @@ type NavItem = {
 const NAV: NavItem[] = [
   { label: { ru: "главная", en: "home" }, href: "/" },
   { label: { ru: "обо мне", en: "about" }, href: "/#about" },
-  {
-    label: { ru: "услуги", en: "services" },
-    href: "/#services",
-    sub: [
-      { label: { ru: "Образы и макияж", en: "Looks & makeup" }, href: "/#service-01" },
-      { label: { ru: "Свадебные образы", en: "Bridal looks" }, href: "/#service-02" },
-      { label: { ru: "Выезд мастеров", en: "On-location team" }, href: "/#service-05" },
-      { label: { ru: "Beauty concierge", en: "Beauty concierge" }, href: "/#booking" },
-    ],
-  },
+  { label: { ru: "услуги", en: "services" }, href: "/#services" },
   { label: { ru: "галерея", en: "gallery" }, href: "/#gallery" },
   { label: { ru: "отзывы", en: "reviews" }, href: "/#reviews" },
   { label: { ru: "этапы", en: "process" }, href: "/#process" },
