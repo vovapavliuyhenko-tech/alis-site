@@ -95,18 +95,6 @@ export default function Services() {
   return (
     <section id="services" className="scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1180px]">
-        {/* Шапка */}
-        <div className="mb-14 grid gap-8 lg:grid-cols-[auto_1fr] lg:gap-16">
-          <span className="r-reveal inline-block self-start rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
-            услуги + цены
-          </span>
-          <h2 className="r-reveal font-serif text-[34px] leading-[1.05] text-[#f4efe6] lg:text-right lg:text-[54px]">
-            Собираем образ под повод,
-            <br />
-            формат и настроение
-          </h2>
-        </div>
-
         <div className="border-t border-[#4E2126]/50">
           {ITEMS.map((it, i) => {
             const isOpen = open === i;
