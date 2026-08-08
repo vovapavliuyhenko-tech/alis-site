@@ -101,13 +101,6 @@ export default function About() {
   return (
     <section id="about" className="relative scroll-mt-24 bg-[#17191a] pt-24 pb-14 lg:pt-32 lg:pb-16">
       <div className="mx-auto w-[94%] max-w-[1280px]">
-        {/* Заголовок */}
-        <div className="mb-16 lg:mb-20">
-          <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
-            обо мне
-          </span>
-        </div>
-
         {/* Сетка УТП с движущимся прицелом */}
         <div ref={wrapRef} className="relative">
           {/* Прицел, который сам наводится */}
