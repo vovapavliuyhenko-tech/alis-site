@@ -32,7 +32,7 @@ body {
 html.has-custom-cursor,
 html.has-custom-cursor * { cursor: none !important; }
 .ink-cursor {
-  --ink-col: #f4efe6; /* по умолчанию светлая (тёмный фон сайта) */
+  --ink-col: #a6cec0; /* мятно-бирюзовый — фиксированный цвет капли */
   position: fixed; top: 0; left: 0; width: 0; height: 0;
   pointer-events: none; z-index: 9000;
   filter: url(#palomaGoo);
@@ -40,7 +40,6 @@ html.has-custom-cursor * { cursor: none !important; }
   will-change: transform;
 }
 .ink-cursor.is-visible { opacity: 1; }
-.ink-cursor.on-light { --ink-col: #17191a; } /* тёмная капля на светлых секциях */
 .ink-cursor span {
   position: absolute; top: 0; left: 0; display: block;
   width: 26px; height: 26px; border-radius: 50%;
