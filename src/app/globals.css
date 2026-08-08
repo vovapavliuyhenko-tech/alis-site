@@ -28,9 +28,6 @@ body {
 /* Крупный конденсированный шрифт (Thunder → Oswald стенд-ин) */
 .font-thunder { font-family: var(--font-thunder), 'Oswald', sans-serif; }
 
-/* Каллиграфический скрипт для заголовков (Marck Script, с кириллицей) */
-.font-script { font-family: var(--font-marck), 'Marck Script', cursive; font-weight: 400; }
-
 /* ===== Обо мне: точка-видоискатель, когда прицел наведён ===== */
 .utp-dot { transform: scale(0.65); opacity: 0.5; }
 [data-utp-icon][data-active="1"] .utp-dot { transform: scale(1.25); opacity: 1; }

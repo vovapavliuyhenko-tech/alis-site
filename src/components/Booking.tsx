@@ -105,7 +105,7 @@ export default function Booking() {
           <span className="text-[13px] lowercase tracking-wide text-[#17191a]/50">
             (запись)
           </span>
-          <h2 className="mt-4 font-script text-[40px] leading-[1.15] text-[#17191a] lg:text-[60px]">
+          <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
             Подберём ваш образ за пару минут
           </h2>
         </div>
@@ -167,7 +167,7 @@ export default function Booking() {
                   <div key={step} className="booking-step">
                     {!isContact ? (
                       <>
-                        <h3 className="mb-7 font-script text-[30px] leading-tight text-[#17191a] lg:text-[40px]">
+                        <h3 className="mb-7 font-serif text-[26px] leading-tight text-[#17191a] lg:text-[32px]">
                           {QUESTIONS[step].q}
                         </h3>
                         <div className="grid gap-3 sm:grid-cols-2">
@@ -210,7 +210,7 @@ export default function Booking() {
                       </>
                     ) : (
                       <>
-                        <h3 className="mb-7 font-script text-[30px] leading-tight text-[#17191a] lg:text-[40px]">
+                        <h3 className="mb-7 font-serif text-[26px] leading-tight text-[#17191a] lg:text-[32px]">
                           Как с вами связаться?
                         </h3>
                         <label className="mb-3 block text-[13px] tracking-wide text-[#17191a]/50">
@@ -282,7 +282,7 @@ export default function Booking() {
                       />
                     </svg>
                   </div>
-                  <h3 className="font-script text-[34px] text-[#17191a] lg:text-[42px]">
+                  <h3 className="font-serif text-[28px] text-[#17191a] lg:text-[32px]">
                     Спасибо, заявка принята
                   </h3>
                   <p className="mx-auto mt-4 max-w-sm text-[14px] leading-relaxed text-[#17191a]/60">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Oswald, Marck_Script } from "next/font/google";
+import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
 
 // Inter — основной текст (как на resayme). Oswald — стенд-ин под Thunder (крупный текст).
@@ -14,12 +14,6 @@ const oswald = Oswald({
   subsets: ["latin", "cyrillic"],
   weight: ["400", "500", "600", "700"],
 });
-// Marck Script — каллиграфический скрипт для заголовков (поддерживает кириллицу)
-const marck = Marck_Script({
-  variable: "--font-marck",
-  subsets: ["latin", "cyrillic"],
-  weight: ["400"],
-});
 
 export const metadata: Metadata = {
   title: "ALIS — сеть студий эстетики и beauty-concierge",
@@ -30,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ru" className={`${inter.variable} ${oswald.variable} ${marck.variable} antialiased`}>
+    <html lang="ru" className={`${inter.variable} ${oswald.variable} antialiased`}>
       <head>
         {/* Фолбэк: если JS выключен, элементы появления видны сразу */}
         <noscript>

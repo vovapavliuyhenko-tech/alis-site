@@ -106,7 +106,7 @@ export default function About() {
           <span className="text-[13px] lowercase tracking-wide text-[#f4efe6]/45">
             (обо мне)
           </span>
-          <h2 className="mt-4 max-w-2xl font-script text-[38px] leading-[1.15] text-[#f4efe6] lg:text-[56px]">
+          <h2 className="mt-4 max-w-2xl font-serif text-[30px] leading-[1.1] text-[#f4efe6] lg:text-[44px]">
             Почему вам будет спокойно
             <br className="hidden lg:block" /> доверить свой образ ALIS
           </h2>

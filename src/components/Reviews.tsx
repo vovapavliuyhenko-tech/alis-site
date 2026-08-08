@@ -102,7 +102,7 @@ export default function Reviews() {
           <span className="text-[13px] lowercase tracking-wide text-[#f4efe6]/45">
             (отзывы)
           </span>
-          <h2 className="mt-4 font-script text-[40px] leading-[1.15] text-[#f4efe6] lg:text-[60px]">
+          <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#f4efe6] lg:text-[48px]">
             Что говорят наши гостьи
           </h2>
         </div>
