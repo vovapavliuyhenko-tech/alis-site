@@ -100,7 +100,7 @@ export default function Services() {
           <span className="r-reveal self-start text-[13px] lowercase tracking-wide text-[#f4efe6]/45">
             [ услуги + цены ]
           </span>
-          <h2 className="r-reveal font-serif text-[34px] leading-[1.05] text-[#f4efe6] lg:text-right lg:text-[54px]">
+          <h2 className="r-reveal font-script text-[40px] leading-[1.1] text-[#f4efe6] lg:text-right lg:text-[64px]">
             Собираем образ под повод,
             <br />
             формат и настроение

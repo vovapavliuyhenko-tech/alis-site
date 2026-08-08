@@ -112,7 +112,7 @@ export default function HorizontalStory() {
                   <span className="text-[12px] uppercase tracking-[0.3em] text-[#4E2126]">
                     Этап 0{i + 1}
                   </span>
-                  <h3 className="mt-6 font-thunder text-[34px] uppercase leading-[1.06] tracking-[0.04em] text-[#17191a] md:mt-10 md:text-[3.4vw]">
+                  <h3 className="mt-6 font-script text-[40px] leading-[1.1] text-[#17191a] md:mt-10 md:text-[4vw]">
                     {s.heading}
                   </h3>
                 </div>
