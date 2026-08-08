@@ -1,6 +1,8 @@
 "use client";
-// ОТЗЫВЫ — вращающееся 3D-кольцо: карточки стоят на изгибе (грани цилиндра),
-// вся лента крутится сама по кругу. Пауза при наведении. Двуязычно (RU/EN).
+// ОТЗЫВЫ — вращающееся 3D-кольцо: карточки стоят на изгибе (грани цилиндра).
+// Крутится само; можно ЗАХВАТИТЬ указателем и тянуть в любую сторону, а
+// удержанием — останавливать. Двуязычно (RU/EN).
+import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -141,6 +143,75 @@ export default function Reviews() {
   const step = 360 / n; // угол между гранями
   const radius = 580; // радиус кольца (карточки разъезжаются к краям экрана)
 
+  const stageRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+
+  // Авто-вращение + перетаскивание указателем (мышь / палец / стилус).
+  useEffect(() => {
+    const stage = stageRef.current;
+    const ring = ringRef.current;
+    if (!stage || !ring) return;
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const AUTO = 360 / 34 / 1000; // град/мс — как прежние 34с на оборот
+    const SENS = 0.28; // чувствительность: градусов на пиксель
+
+    let angle = 0;
+    let dragging = false;
+    let startX = 0;
+    let startAngle = 0;
+    let last = 0;
+    let raf = 0;
+
+    const tick = (ts: number) => {
+      const dt = last ? ts - last : 0;
+      last = ts;
+      if (!dragging && !reduce) angle -= AUTO * dt; // само крутится в ту же сторону
+      ring.style.transform = `rotateY(${angle}deg)`;
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    const down = (e: PointerEvent) => {
+      e.preventDefault();
+      dragging = true;
+      startX = e.clientX;
+      startAngle = angle;
+      stage.style.cursor = "grabbing";
+      try {
+        stage.setPointerCapture(e.pointerId);
+      } catch {}
+    };
+    const move = (e: PointerEvent) => {
+      if (!dragging) return;
+      angle = startAngle + (e.clientX - startX) * SENS;
+    };
+    const up = (e: PointerEvent) => {
+      if (!dragging) return;
+      dragging = false;
+      startAngle = angle;
+      stage.style.cursor = "grab";
+      try {
+        stage.releasePointerCapture(e.pointerId);
+      } catch {}
+    };
+
+    stage.addEventListener("pointerdown", down);
+    stage.addEventListener("pointermove", move);
+    stage.addEventListener("pointerup", up);
+    stage.addEventListener("pointercancel", up);
+    stage.addEventListener("pointerleave", up);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      stage.removeEventListener("pointerdown", down);
+      stage.removeEventListener("pointermove", move);
+      stage.removeEventListener("pointerup", up);
+      stage.removeEventListener("pointercancel", up);
+      stage.removeEventListener("pointerleave", up);
+    };
+  }, []);
+
   return (
     <section id="reviews" className="overflow-hidden bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1180px]">
@@ -155,8 +226,11 @@ export default function Reviews() {
         </div>
 
         {/* Вращающееся 3D-кольцо */}
-        <div className="carousel3d relative mx-auto h-[360px] [perspective:4000px] lg:h-[340px]">
-          <div className="ring3d absolute inset-0">
+        <div
+          ref={stageRef}
+          className="relative mx-auto h-[360px] cursor-grab touch-pan-y select-none [perspective:4000px] lg:h-[340px]"
+        >
+          <div ref={ringRef} className="absolute inset-0 [transform-style:preserve-3d]">
             {REVIEWS.map((r, i) => (
               <article
                 key={r.name.ru}
@@ -176,6 +250,7 @@ export default function Reviews() {
                   <img
                     src={r.photo}
                     alt={r.name[lang]}
+                    draggable={false}
                     className="h-9 w-9 rounded-full object-cover ring-1 ring-[#4E2126]/35"
                   />
                   <div>
@@ -191,7 +266,9 @@ export default function Reviews() {
         </div>
 
         <p className="mt-8 text-center text-[12px] lowercase tracking-wide text-[#f4efe6]/35">
-          {lang === "en" ? "hover to pause" : "наведите, чтобы остановить"}
+          {lang === "en"
+            ? "drag to rotate · hold to pause"
+            : "потяните, чтобы листать · зажмите, чтобы остановить"}
         </p>
       </div>
     </section>
