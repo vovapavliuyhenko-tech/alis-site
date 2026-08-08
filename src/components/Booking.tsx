@@ -290,8 +290,9 @@ export default function Booking() {
   return (
     <section
       id="booking"
-      className="relative scroll-mt-24 bg-fixed bg-cover bg-center py-24 text-[#17191a] lg:py-32"
+      className="relative scroll-mt-24 bg-[#f4efe6] bg-fixed bg-cover bg-center py-24 text-[#17191a] lg:py-32"
       style={{
+        backgroundColor: "#f4efe6",
         backgroundImage:
           "linear-gradient(rgba(244,239,230,0.86), rgba(244,239,230,0.86)), url(/assets/tild6230-643__.jpg)",
       }}

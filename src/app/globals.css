@@ -32,19 +32,19 @@ body {
 html.has-custom-cursor,
 html.has-custom-cursor * { cursor: none !important; }
 .ink-cursor {
-  --ink-col: #ffffff;
+  --ink-col: #f4efe6; /* по умолчанию светлая (тёмный фон сайта) */
   position: fixed; top: 0; left: 0; width: 0; height: 0;
   pointer-events: none; z-index: 9000;
   filter: url(#palomaGoo);
-  mix-blend-mode: difference;
   opacity: 0; transition: opacity 0.25s;
   will-change: transform;
 }
 .ink-cursor.is-visible { opacity: 1; }
+.ink-cursor.on-light { --ink-col: #17191a; } /* тёмная капля на светлых секциях */
 .ink-cursor span {
   position: absolute; top: 0; left: 0; display: block;
   width: 26px; height: 26px; border-radius: 50%;
-  background: var(--ink-col); transform-origin: 13px 13px;
+  background: var(--ink-col); transform-origin: center center;
   will-change: transform;
 }
 @media (prefers-reduced-motion: reduce) { .ink-cursor { display: none; } }

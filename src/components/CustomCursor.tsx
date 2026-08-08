@@ -1,97 +1,171 @@
 "use client";
-// Кастомный курсор — «гелевая капля» точь-в-точь как на paloma.website:
-// контейнер с SVG-фильтром goo (feGaussianBlur + feColorMatrix), внутри 20
-// кругов по 26px с убывающим масштабом, тянущихся цепочкой за мышью — фильтр
-// сливает их в жидкий хвост. mix-blend-mode: difference — видна на любом фоне.
-// Только для мыши/трекпада.
+// Кастомный курсор — «чернильная капля» точь-в-точь как на paloma.website
+// (портирована их логика cursor.js): цепочка из 20 точек, слипающихся в каплю
+// через SVG goo-фильтр; в покое хвостовые точки тихо кружатся вокруг
+// зафиксированных позиций (капля «переплывает»). Цвет адаптивный — тёмный на
+// светлых секциях, светлый на тёмных, чтобы капля была видна на любом фоне.
 import { useEffect, useRef } from "react";
 
-const N = 12; // число кругов в хвосте (меньше — короче и без лишних капель)
-const FOLLOW = 0.45; // коэффициент догона (выше — быстрее и плотнее хвост)
-const HOVER_SEL =
-  'a, button, input, textarea, select, label, summary, [role="button"], [data-cursor]';
+const AMOUNT = 20;
+const SINE_DOTS = Math.floor(AMOUNT * 0.3); // 6
+const WIDTH = 26;
+const IDLE_TIMEOUT = 150;
+const TRAIL = 0.35;
 
 export default function CustomCursor() {
-  const hostRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
+    const isTouch =
+      window.matchMedia("(hover: none)").matches ||
+      window.matchMedia("(pointer: coarse)").matches ||
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0;
+    if (isTouch) return;
 
-    const host = hostRef.current;
-    if (!host) return;
-    const spans = Array.from(host.children) as HTMLElement[];
+    const cursor = cursorRef.current;
+    if (!cursor) return;
 
     document.documentElement.classList.add("has-custom-cursor");
 
-    let mx = window.innerWidth / 2;
-    let my = window.innerHeight / 2;
-    const pts = Array.from({ length: N }, () => ({ x: mx, y: my }));
-    let shown = false;
+    const mouse = { x: -100, y: -100 };
+    let idle = false;
+    let visible = false;
+    let timeoutID: number | undefined;
     let raf = 0;
 
-    let lastMove = performance.now();
+    // Точка цепочки (как у paloma)
+    class Dot {
+      index: number;
+      anglespeed = 0.05;
+      x = 0;
+      y = 0;
+      scale: number;
+      range: number;
+      angleX = 0;
+      angleY = 0;
+      lockX = 0;
+      lockY = 0;
+      el: HTMLSpanElement;
+      constructor(index: number) {
+        this.index = index;
+        this.scale = 1 - 0.05 * index;
+        this.range = WIDTH / 2 - (WIDTH / 2) * this.scale + 2;
+        this.el = document.createElement("span");
+        this.el.style.transform = `scale(${this.scale})`;
+        cursor.appendChild(this.el);
+      }
+      lock() {
+        this.lockX = this.x;
+        this.lockY = this.y;
+        this.angleX = Math.PI * 2 * Math.random();
+        this.angleY = Math.PI * 2 * Math.random();
+      }
+      draw() {
+        if (!idle || this.index <= SINE_DOTS) {
+          this._set(this.x, this.y);
+        } else {
+          this.angleX += this.anglespeed;
+          this.angleY += this.anglespeed;
+          this.y = this.lockY + Math.sin(this.angleY) * this.range;
+          this.x = this.lockX + Math.sin(this.angleX) * this.range;
+          this._set(this.x, this.y);
+        }
+      }
+      _set(x: number, y: number) {
+        this.el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${this.scale})`;
+      }
+    }
+
+    const dots: Dot[] = [];
+    for (let i = 0; i < AMOUNT; i++) dots.push(new Dot(i));
+
+    // Idle — капля расплывается на месте
+    const startIdle = () => {
+      timeoutID = window.setTimeout(goInactive, IDLE_TIMEOUT);
+      idle = false;
+    };
+    const resetIdle = () => {
+      clearTimeout(timeoutID);
+      startIdle();
+    };
+    function goInactive() {
+      idle = true;
+      for (const dot of dots) dot.lock();
+    }
+
+    // Адаптивный цвет: тёмная капля на светлом фоне, светлая — на тёмном
+    const updateColor = (px: number, py: number) => {
+      let el = document.elementFromPoint(px, py) as Element | null;
+      while (el) {
+        const bg = getComputedStyle(el).backgroundColor;
+        const m = bg.match(/rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?/);
+        if (m && (m[4] === undefined || parseFloat(m[4]) > 0.4)) {
+          const lum = (0.2126 * +m[1] + 0.7152 * +m[2] + 0.0722 * +m[3]) / 255;
+          cursor.classList.toggle("on-light", lum > 0.55);
+          return;
+        }
+        el = el.parentElement;
+      }
+    };
 
     const onMove = (e: MouseEvent) => {
-      mx = e.clientX;
-      my = e.clientY;
-      lastMove = performance.now();
-      if (!shown) {
-        shown = true;
-        host.classList.add("is-visible");
+      mouse.x = e.clientX - WIDTH / 2;
+      mouse.y = e.clientY - WIDTH / 2;
+      if (!visible) {
+        visible = true;
+        cursor.classList.add("is-visible");
       }
-      const t = e.target as Element | null;
-      host.classList.toggle("is-hovering", !!(t && t.closest && t.closest(HOVER_SEL)));
+      updateColor(e.clientX, e.clientY);
+      resetIdle();
     };
-
-    const tick = () => {
-      const now = performance.now();
-      // В покое голова тихо «переплывает» по мягкой траектории (жидкость шевелится)
-      let hx = mx;
-      let hy = my;
-      const idle = Math.min((now - lastMove - 140) / 400, 1); // 0→1 нарастание покоя
-      if (idle > 0) {
-        const t = now / 1000;
-        const a = 5 * idle; // амплитуда, px
-        hx += Math.sin(t * 1.5) * a + Math.sin(t * 0.8) * a * 0.5;
-        hy += Math.cos(t * 1.2) * a + Math.cos(t * 0.6) * a * 0.5;
-      }
-      // Цепочка: голова тянется к цели, каждый следующий круг — к предыдущему
-      pts[0].x += (hx - pts[0].x) * FOLLOW;
-      pts[0].y += (hy - pts[0].y) * FOLLOW;
-      for (let i = 1; i < N; i++) {
-        pts[i].x += (pts[i - 1].x - pts[i].x) * FOLLOW;
-        pts[i].y += (pts[i - 1].y - pts[i].y) * FOLLOW;
-      }
-      const hf = host.classList.contains("is-hovering") ? 1.5 : 1;
-      for (let i = 0; i < N; i++) {
-        const s = (1 - i * 0.05) * hf;
-        spans[i].style.transform = `translate(${(pts[i].x - 13).toFixed(2)}px, ${(pts[i].y - 13).toFixed(2)}px) scale(${s.toFixed(3)})`;
-      }
-      raf = requestAnimationFrame(tick);
+    const leave = () => {
+      cursor.classList.remove("is-visible");
+      visible = false;
     };
-    raf = requestAnimationFrame(tick);
-
-    const hide = () => host.classList.remove("is-visible");
-    const show = () => shown && host.classList.add("is-visible");
+    const enter = () => {
+      if (mouse.x > -100) {
+        cursor.classList.add("is-visible");
+        visible = true;
+      }
+    };
 
     window.addEventListener("mousemove", onMove, { passive: true });
-    document.addEventListener("mouseleave", hide);
-    document.addEventListener("mouseenter", show);
-    window.addEventListener("blur", hide);
+    document.addEventListener("mouseleave", leave);
+    document.addEventListener("mouseenter", enter);
+
+    const render = () => {
+      raf = requestAnimationFrame(render);
+      let x = mouse.x;
+      let y = mouse.y;
+      dots.forEach((dot, index) => {
+        const nextDot = dots[index + 1] || dots[0];
+        dot.x = x;
+        dot.y = y;
+        dot.draw();
+        if (!idle || index <= SINE_DOTS) {
+          x += (nextDot.x - dot.x) * TRAIL;
+          y += (nextDot.y - dot.y) * TRAIL;
+        }
+      });
+    };
+    startIdle();
+    render();
 
     return () => {
       cancelAnimationFrame(raf);
+      clearTimeout(timeoutID);
       document.documentElement.classList.remove("has-custom-cursor");
       window.removeEventListener("mousemove", onMove);
-      document.removeEventListener("mouseleave", hide);
-      document.removeEventListener("mouseenter", show);
-      window.removeEventListener("blur", hide);
+      document.removeEventListener("mouseleave", leave);
+      document.removeEventListener("mouseenter", enter);
+      cursor.innerHTML = "";
     };
   }, []);
 
   return (
     <>
-      {/* SVG-фильтр «goo» — сливает круги в жидкую каплю */}
+      {/* SVG-фильтр goo — слипает точки в чернильную каплю */}
       <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden>
         <defs>
           <filter id="palomaGoo">
@@ -107,11 +181,7 @@ export default function CustomCursor() {
         </defs>
       </svg>
 
-      <div ref={hostRef} className="ink-cursor" aria-hidden>
-        {Array.from({ length: N }).map((_, i) => (
-          <span key={i} />
-        ))}
-      </div>
+      <div ref={cursorRef} className="ink-cursor" aria-hidden />
     </>
   );
 }
