@@ -7,7 +7,6 @@ const NAV = [
   { ru: "обо мне", en: "about", href: "/#about" },
   { ru: "услуги", en: "services", href: "/#services" },
   { ru: "консьерж", en: "concierge", href: "/concierge" },
-  { ru: "выезд", en: "travel", href: "/vyezd" },
   { ru: "контакты", en: "contacts", href: "/#footer" },
 ];
 

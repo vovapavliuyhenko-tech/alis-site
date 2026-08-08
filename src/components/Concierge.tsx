@@ -107,7 +107,7 @@ export default function Concierge() {
               {t.cta1} <span aria-hidden>→</span>
             </a>
             <a
-              href="/vyezd"
+              href="/#booking"
               className="inline-flex items-center gap-2.5 rounded-full border border-[#f4efe6]/25 px-7 py-3.5 text-[14px] font-medium text-[#f4efe6] transition-colors hover:border-[#f4efe6]/60"
             >
               {t.cta2}

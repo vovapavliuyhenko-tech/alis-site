@@ -37,7 +37,6 @@ const NAV: NavItem[] = [
     ],
   },
   { label: { ru: "консьерж", en: "concierge" }, href: "/concierge" },
-  { label: { ru: "выезд", en: "travel" }, href: "/vyezd" },
   { label: { ru: "галерея", en: "gallery" }, href: "/#gallery" },
   { label: { ru: "контакты", en: "contacts" }, href: "/#footer" },
 ];
