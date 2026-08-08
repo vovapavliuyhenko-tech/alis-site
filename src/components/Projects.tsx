@@ -27,7 +27,7 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
       {/* Карточка-флип по центру фото (data-parallax — лёгкая подвижка при скролле) */}
       <div data-parallax="0.14" className="absolute inset-0 flex items-center justify-center px-6 will-change-transform">
         <div className="group relative aspect-[3/4] w-[86%] max-w-[360px] [perspective:1400px]">
-          <div className="relative h-full w-full transition-transform duration-[1100ms] [transform-style:preserve-3d] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:[transform:rotateY(180deg)]">
+          <div className="relative h-full w-full transition-transform duration-[2000ms] [transform-style:preserve-3d] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:[transform:rotateY(180deg)]">
             {/* ЛИЦО — фото работы */}
             <div className="absolute inset-0 overflow-hidden rounded-[22px] shadow-2xl [backface-visibility:hidden]">
               {/* eslint-disable-next-line @next/next/no-img-element */}

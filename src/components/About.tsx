@@ -99,7 +99,7 @@ export default function About() {
   );
 
   return (
-    <section id="about" className="relative scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
+    <section id="about" className="relative scroll-mt-24 bg-[#17191a] pt-24 pb-14 lg:pt-32 lg:pb-16">
       <div className="mx-auto w-[94%] max-w-[1280px]">
         {/* Заголовок */}
         <div className="mb-16 lg:mb-20">
