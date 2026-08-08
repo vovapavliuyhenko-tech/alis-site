@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Oswald } from "next/font/google";
+import { Inter, Oswald, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import CustomCursor from "@/components/CustomCursor";
@@ -16,6 +16,13 @@ const oswald = Oswald({
   subsets: ["latin", "cyrillic"],
   weight: ["400", "500", "600", "700"],
 });
+// Playfair Display — контрастный «журнальный» serif для заголовков
+// (ближайший бесплатный аналог IvyPresto Headline, с поддержкой кириллицы).
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "ALIS — сеть студий эстетики и beauty-concierge",
@@ -26,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ru" className={`${inter.variable} ${oswald.variable} antialiased`}>
+    <html lang="ru" className={`${inter.variable} ${oswald.variable} ${playfair.variable} antialiased`}>
       <head>
         {/* Фолбэк: если JS выключен, элементы появления видны сразу */}
         <noscript>
