@@ -178,37 +178,34 @@ export default function Reviews() {
       startX = e.clientX;
       startAngle = angle;
       stage.style.cursor = "grabbing";
-      try {
-        stage.setPointerCapture(e.pointerId);
-      } catch {}
     };
+    // Движение и отпускание слушаем на ОКНЕ — перетаскивание продолжается,
+    // даже если указатель ушёл за пределы блока (карточки выступают за рамку).
     const move = (e: PointerEvent) => {
       if (!dragging) return;
+      e.preventDefault();
       angle = startAngle + (e.clientX - startX) * SENS;
+      // Применяем сразу — перетаскивание не зависит от rAF (напр. если он придушен)
+      ring.style.transform = `rotateY(${angle}deg)`;
     };
-    const up = (e: PointerEvent) => {
+    const up = () => {
       if (!dragging) return;
       dragging = false;
       startAngle = angle;
       stage.style.cursor = "grab";
-      try {
-        stage.releasePointerCapture(e.pointerId);
-      } catch {}
     };
 
     stage.addEventListener("pointerdown", down);
-    stage.addEventListener("pointermove", move);
-    stage.addEventListener("pointerup", up);
-    stage.addEventListener("pointercancel", up);
-    stage.addEventListener("pointerleave", up);
+    window.addEventListener("pointermove", move, { passive: false });
+    window.addEventListener("pointerup", up);
+    window.addEventListener("pointercancel", up);
 
     return () => {
       cancelAnimationFrame(raf);
       stage.removeEventListener("pointerdown", down);
-      stage.removeEventListener("pointermove", move);
-      stage.removeEventListener("pointerup", up);
-      stage.removeEventListener("pointercancel", up);
-      stage.removeEventListener("pointerleave", up);
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", up);
+      window.removeEventListener("pointercancel", up);
     };
   }, []);
 

@@ -133,7 +133,7 @@ export default function Projects() {
           className="sticky top-0 grid h-svh w-full grid-cols-1 overflow-hidden bg-[#17191a] md:grid-cols-2"
         >
           {pair.map((s, j) => (
-            <Cell key={s.title} s={s} i={p * 2 + j} />
+            <Cell key={s.title.ru} s={s} i={p * 2 + j} />
           ))}
 
           {/* «(галерея)» — подпись всего экрана снизу-слева */}
