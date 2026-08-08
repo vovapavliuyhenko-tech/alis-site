@@ -29,9 +29,12 @@ export default function CustomCursor() {
     let shown = false;
     let raf = 0;
 
+    let lastMove = performance.now();
+
     const onMove = (e: MouseEvent) => {
       mx = e.clientX;
       my = e.clientY;
+      lastMove = performance.now();
       if (!shown) {
         shown = true;
         host.classList.add("is-visible");
@@ -41,9 +44,20 @@ export default function CustomCursor() {
     };
 
     const tick = () => {
-      // Цепочка: голова тянется к мыши, каждый следующий круг — к предыдущему
-      pts[0].x += (mx - pts[0].x) * FOLLOW;
-      pts[0].y += (my - pts[0].y) * FOLLOW;
+      const now = performance.now();
+      // В покое голова тихо «переплывает» по мягкой траектории (жидкость шевелится)
+      let hx = mx;
+      let hy = my;
+      const idle = Math.min((now - lastMove - 140) / 400, 1); // 0→1 нарастание покоя
+      if (idle > 0) {
+        const t = now / 1000;
+        const a = 5 * idle; // амплитуда, px
+        hx += Math.sin(t * 1.5) * a + Math.sin(t * 0.8) * a * 0.5;
+        hy += Math.cos(t * 1.2) * a + Math.cos(t * 0.6) * a * 0.5;
+      }
+      // Цепочка: голова тянется к цели, каждый следующий круг — к предыдущему
+      pts[0].x += (hx - pts[0].x) * FOLLOW;
+      pts[0].y += (hy - pts[0].y) * FOLLOW;
       for (let i = 1; i < N; i++) {
         pts[i].x += (pts[i - 1].x - pts[i].x) * FOLLOW;
         pts[i].y += (pts[i - 1].y - pts[i].y) * FOLLOW;
