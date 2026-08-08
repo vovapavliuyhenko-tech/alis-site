@@ -25,6 +25,7 @@ type NavItem = {
 };
 
 const NAV: NavItem[] = [
+  { label: { ru: "главная", en: "home" }, href: "/" },
   { label: { ru: "обо мне", en: "about" }, href: "/#about" },
   {
     label: { ru: "услуги", en: "services" },
@@ -37,6 +38,9 @@ const NAV: NavItem[] = [
     ],
   },
   { label: { ru: "галерея", en: "gallery" }, href: "/#gallery" },
+  { label: { ru: "отзывы", en: "reviews" }, href: "/#reviews" },
+  { label: { ru: "этапы", en: "process" }, href: "/#process" },
+  { label: { ru: "заявка", en: "request" }, href: "/#booking" },
   { label: { ru: "контакты", en: "contacts" }, href: "/#footer" },
 ];
 
@@ -52,7 +56,7 @@ export default function Header() {
         </a>
 
         {/* Навигация по центру */}
-        <nav className="hidden items-center gap-6 text-[14px] tracking-wide text-[#f4efe6]/80 lg:flex">
+        <nav className="hidden items-center gap-5 text-[13.5px] tracking-wide text-[#f4efe6]/80 lg:flex xl:gap-6">
           {NAV.map((item) =>
             item.sub ? (
               <div key={item.label.ru} className="group relative">
