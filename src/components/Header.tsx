@@ -36,14 +36,14 @@ const NAV = [
 export default function Header() {
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-4 sm:px-4">
-      <div className="pointer-events-auto flex w-full max-w-[1160px] items-center justify-between gap-4 rounded-full border border-[#f4efe6]/15 bg-[#17191a]/45 py-2.5 pl-6 pr-2.5 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-md">
+      <div className="pointer-events-auto flex w-full max-w-[1160px] items-center justify-between gap-4 rounded-full border border-[#17191a]/10 bg-[#f4efe6]/70 py-2.5 pl-6 pr-2.5 shadow-[0_8px_30px_rgba(23,25,26,0.12)] backdrop-blur-md">
         {/* Логотип */}
-        <a href="#" className="font-serif text-[20px] leading-none tracking-[0.16em] text-[#f4efe6]">
+        <a href="#" className="font-serif text-[20px] leading-none tracking-[0.16em] text-[#17191a]">
           ÁLIS
         </a>
 
         {/* Навигация по центру */}
-        <nav className="hidden items-center gap-7 text-[14px] tracking-wide text-[#f4efe6]/80 lg:flex">
+        <nav className="hidden items-center gap-7 text-[14px] tracking-wide text-[#17191a]/75 lg:flex">
           {NAV.map((item) =>
             item.sub ? (
               <div key={item.label} className="group relative">
@@ -58,12 +58,12 @@ export default function Header() {
                 </a>
                 {/* Выпадающее меню */}
                 <div className="invisible absolute left-1/2 top-full w-56 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                  <div className="overflow-hidden rounded-2xl border border-[#f4efe6]/10 bg-[#17191a]/95 p-2 shadow-[0_12px_40px_rgba(0,0,0,0.5)] backdrop-blur-md">
+                  <div className="overflow-hidden rounded-2xl border border-[#17191a]/10 bg-[#f4efe6]/95 p-2 shadow-[0_12px_40px_rgba(23,25,26,0.18)] backdrop-blur-md">
                     {item.sub.map((s) => (
                       <a
                         key={s.label}
                         href={s.href}
-                        className="block rounded-xl px-4 py-2.5 text-[13.5px] text-[#f4efe6]/75 transition-colors hover:bg-[#f4efe6]/10 hover:text-[#f4efe6]"
+                        className="block rounded-xl px-4 py-2.5 text-[13.5px] text-[#17191a]/75 transition-colors hover:bg-[#17191a]/[0.06] hover:text-[#17191a]"
                       >
                         {s.label}
                       </a>

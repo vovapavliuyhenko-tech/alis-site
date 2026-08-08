@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
-/* ===== Дизайн-токены ALIS: только 3 цвета ===== */
+/* ===== Дизайн-токены ALIS: светлая, нежная палитра ===== */
 :root {
-  --ink: #17191a;         /* чернильный — тёмная база */
-  --cream: #f4efe6;       /* кремовый — светлая база */
-  --wine: #4E2126;        /* тёмный оксблад — акцент по всему сайту */
+  --ink: #17191a;         /* чернильный — теперь основной ЦВЕТ ТЕКСТА */
+  --cream: #f4efe6;       /* кремовый — основная светлая база */
+  --sand: #ece4d6;        /* песочный — чуть глубже крема, для чередования секций */
+  --wine: #4E2126;        /* тёмный оксблад — деликатный акцент */
 }
 
 @theme inline {
   --color-ink: var(--ink);
   --color-cream: var(--cream);
+  --color-sand: var(--sand);
   --color-wine: var(--wine);
   --font-sans: var(--font-inter);
   --font-thunder: var(--font-thunder);
@@ -18,8 +20,8 @@
 * { box-sizing: border-box; }
 html, body { padding: 0; margin: 0; }
 body {
-  background: var(--ink);
-  color: var(--cream);
+  background: var(--cream);
+  color: var(--ink);
   font-family: var(--font-inter), Arial, sans-serif;
   letter-spacing: -0.01em;
   overflow-x: hidden;
