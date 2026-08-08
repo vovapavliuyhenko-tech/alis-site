@@ -43,12 +43,12 @@ export default function Hero() {
         <img src={photo} alt="" className="h-full w-full -scale-x-100 object-cover object-top" />
       </div>
 
-      {/* Низ плавно растворяется в кремовом — мягкий светлый переход */}
+      {/* Затемнение низа — на всю ширину экрана, плавно в чёрный */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%]"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, rgba(244,239,230,0) 0%, rgba(244,239,230,0.6) 55%, rgba(244,239,230,1) 100%)",
+            "linear-gradient(to bottom, rgba(23,25,26,0) 0%, rgba(23,25,26,0.55) 55%, rgba(23,25,26,1) 100%)",
         }}
       />
 
