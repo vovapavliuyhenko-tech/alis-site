@@ -1,80 +1,190 @@
 "use client";
-// ЗАПИСЬ — квиз-форма (как traffic-masters.ru), СВЕТЛАЯ тема на статичном фоне.
-// Фон-фото зафиксировано (background-attachment: fixed) — не двигается при скролле,
-// как блок «стоимость» на stretchfitdasha.ru. Карточка — кремовое стекло, тёмный текст.
+// ЗАЯВКА — светлый квиз на статичном фоне. Первый шаг — выбор цели
+// (Образ / Консьерж / Выезд), дальше вопросы подстраиваются под выбор.
+// Общий финальный шаг — контакты. Двуязычно (RU/EN). Отправка — заглушка.
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
 type Question = { q: Loc; note: Loc; opts: Loc[] };
+type GoalKey = "look" | "concierge" | "travel";
 
-const QUESTIONS: Question[] = [
-  {
-    q: { ru: "Какой образ вас интересует?", en: "Which look are you after?" },
-    note: {
-      ru: "С этого начинаю подбор — под каждый повод свои мастера и материалы.",
-      en: "This is where selection starts — each occasion has its own artists and materials.",
-    },
-    opts: [
-      { ru: "Полный образ", en: "Full look" },
-      { ru: "Свадебный образ", en: "Bridal look" },
-      { ru: "Макияж и укладка", en: "Makeup & hair" },
-      { ru: "Выезд мастеров", en: "On-location team" },
-      { ru: "Сопровождение", en: "On-event support" },
-      { ru: "Другое", en: "Other" },
-    ],
+// Общий вопрос про сроки — используется во всех ветках
+const WHEN: Question = {
+  q: { ru: "Когда планируете?", en: "When are you planning?" },
+  note: {
+    ru: "Подскажите сроки — подберу свободное время мастеров.",
+    en: "Tell us the timeframe — we'll find an open slot with our artists.",
   },
-  {
-    q: { ru: "На какое событие?", en: "For what event?" },
-    note: {
-      ru: "Событие задаёт стойкость макияжа и характер образа.",
-      en: "The event sets the makeup's staying power and the character of the look.",
-    },
-    opts: [
-      { ru: "Свадьба", en: "Wedding" },
-      { ru: "Фотосъёмка", en: "Photoshoot" },
-      { ru: "Выпускной", en: "Prom" },
-      { ru: "Вечернее мероприятие", en: "Evening event" },
-      { ru: "Повседневно", en: "Everyday" },
-      { ru: "Другое", en: "Other" },
-    ],
+  opts: [
+    { ru: "На этой неделе", en: "This week" },
+    { ru: "В этом месяце", en: "This month" },
+    { ru: "Через 1–2 месяца", en: "In 1–2 months" },
+    { ru: "Пока выбираю дату", en: "Still choosing a date" },
+  ],
+};
+
+// Первый шаг — выбор цели заявки
+const GOAL: { q: Loc; note: Loc; opts: (Loc & { key: GoalKey })[] } = {
+  q: { ru: "Что вам нужно?", en: "What do you need?" },
+  note: {
+    ru: "С этого начнём — подберу вопросы под вашу задачу.",
+    en: "Let's start here — I'll tailor the questions to your goal.",
   },
-  {
-    q: { ru: "Где вам удобно?", en: "Where suits you?" },
-    note: {
-      ru: "Работаем в студии или приедем к вам — как комфортнее.",
-      en: "We work in the studio or come to you — whatever is more comfortable.",
+  opts: [
+    { key: "look", ru: "Образ и макияж", en: "Look & makeup" },
+    { key: "concierge", ru: "Beauty-консьерж", en: "Beauty concierge" },
+    { key: "travel", ru: "Выезд мастеров", en: "On-location visit" },
+  ],
+};
+
+// Ветки вопросов под каждую цель (по 4 вопроса)
+const BRANCHES: Record<GoalKey, Question[]> = {
+  look: [
+    {
+      q: { ru: "Какой образ вас интересует?", en: "Which look are you after?" },
+      note: {
+        ru: "Под каждый повод свои мастера и материалы.",
+        en: "Each occasion has its own artists and materials.",
+      },
+      opts: [
+        { ru: "Полный образ", en: "Full look" },
+        { ru: "Свадебный образ", en: "Bridal look" },
+        { ru: "Макияж и укладка", en: "Makeup & hair" },
+        { ru: "Сопровождение", en: "On-event support" },
+        { ru: "Другое", en: "Other" },
+      ],
     },
-    opts: [
-      { ru: "В студии", en: "In the studio" },
-      { ru: "Выезд к вам", en: "We come to you" },
-      { ru: "Ещё не решили", en: "Not decided yet" },
-    ],
-  },
-  {
-    q: { ru: "Когда планируете?", en: "When are you planning?" },
-    note: {
-      ru: "Подскажите сроки — подберу свободное время мастеров.",
-      en: "Tell us the timeframe — we'll find an open slot with our artists.",
+    {
+      q: { ru: "На какое событие?", en: "For what event?" },
+      note: {
+        ru: "Событие задаёт стойкость макияжа и характер образа.",
+        en: "The event sets the makeup's staying power and character.",
+      },
+      opts: [
+        { ru: "Свадьба", en: "Wedding" },
+        { ru: "Фотосъёмка", en: "Photoshoot" },
+        { ru: "Выпускной", en: "Prom" },
+        { ru: "Вечернее мероприятие", en: "Evening event" },
+        { ru: "Повседневно", en: "Everyday" },
+        { ru: "Другое", en: "Other" },
+      ],
     },
-    opts: [
-      { ru: "На этой неделе", en: "This week" },
-      { ru: "В этом месяце", en: "This month" },
-      { ru: "Через 1–2 месяца", en: "In 1–2 months" },
-      { ru: "Пока выбираю дату", en: "Still choosing a date" },
-    ],
-  },
-];
+    {
+      q: { ru: "Где вам удобно?", en: "Where suits you?" },
+      note: {
+        ru: "Работаем в студии или приедем к вам — как комфортнее.",
+        en: "We work in the studio or come to you — whatever is easier.",
+      },
+      opts: [
+        { ru: "В студии", en: "In the studio" },
+        { ru: "Выезд к вам", en: "We come to you" },
+        { ru: "Ещё не решили", en: "Not decided yet" },
+      ],
+    },
+    WHEN,
+  ],
+  concierge: [
+    {
+      q: { ru: "Что нужно от консьержа?", en: "What do you need from the concierge?" },
+      note: {
+        ru: "Возьмём на себя ровно то, что нужно.",
+        en: "We'll take on exactly what you need.",
+      },
+      opts: [
+        { ru: "Образ под ключ", en: "Turnkey look" },
+        { ru: "Команда мастеров", en: "Team of artists" },
+        { ru: "Планирование образа", en: "Look planning" },
+        { ru: "Сопровождение на событии", en: "On-event support" },
+        { ru: "Организация выезда", en: "Travel arrangement" },
+        { ru: "Другое", en: "Other" },
+      ],
+    },
+    {
+      q: { ru: "Какое событие?", en: "What's the occasion?" },
+      note: {
+        ru: "Повод задаёт формат образа и тайминг.",
+        en: "The occasion sets the look and timing.",
+      },
+      opts: [
+        { ru: "Свадьба", en: "Wedding" },
+        { ru: "Фотосъёмка", en: "Photoshoot" },
+        { ru: "Мероприятие", en: "Event" },
+        { ru: "Тревел / отдых", en: "Leisure & travel" },
+        { ru: "Другое", en: "Other" },
+      ],
+    },
+    {
+      q: { ru: "Где?", en: "Where?" },
+      note: {
+        ru: "В городе, на выезде по России или за рубежом.",
+        en: "In the city, on location across Russia or abroad.",
+      },
+      opts: [
+        { ru: "В городе", en: "In the city" },
+        { ru: "Выезд по России", en: "Within Russia" },
+        { ru: "За рубежом", en: "Abroad" },
+        { ru: "Ещё не решили", en: "Not decided yet" },
+      ],
+    },
+    WHEN,
+  ],
+  travel: [
+    {
+      q: { ru: "Куда выезд?", en: "Where to?" },
+      note: {
+        ru: "От направления зависит логистика и состав команды.",
+        en: "Direction defines logistics and the team.",
+      },
+      opts: [
+        { ru: "По России", en: "Within Russia" },
+        { ru: "За рубеж", en: "Abroad" },
+      ],
+    },
+    {
+      q: { ru: "Что нужно?", en: "What do you need?" },
+      note: {
+        ru: "Можно начать с малого — расширим на месте.",
+        en: "Start small — we can expand on site.",
+      },
+      opts: [
+        { ru: "Полный образ", en: "Full look" },
+        { ru: "Макияж и укладка", en: "Makeup & hair" },
+        { ru: "Команда мастеров", en: "Team of artists" },
+        { ru: "Сопровождение", en: "On-event support" },
+        { ru: "Всё под ключ", en: "Turnkey" },
+      ],
+    },
+    {
+      q: { ru: "Сколько человек готовим?", en: "How many people to prep?" },
+      note: {
+        ru: "От числа персон зависит размер команды.",
+        en: "Headcount defines the team size.",
+      },
+      opts: [
+        { ru: "1", en: "1" },
+        { ru: "2–3", en: "2–3" },
+        { ru: "4–6", en: "4–6" },
+        { ru: "7+", en: "7+" },
+      ],
+    },
+    WHEN,
+  ],
+};
+
+const BRANCH_LEN = 4; // во всех ветках по 4 вопроса
+const QCOUNT = 1 + BRANCH_LEN; // цель + вопросы ветки
+const TOTAL = QCOUNT + 1; // + контакты (для прогресса)
 
 const CONTACT_NOTE: Loc = {
-  ru: "Оставьте контакты — свяжусь, чтобы подтвердить запись.",
-  en: "Leave your contacts — I'll get in touch to confirm the booking.",
+  ru: "Оставьте контакты — свяжусь, чтобы обсудить детали.",
+  en: "Leave your contacts — I'll get in touch to discuss the details.",
 };
 
 const UI = {
   ru: {
-    eyebrow: "запись",
-    title: "Подберём ваш образ за пару минут",
+    eyebrow: "заявка",
+    title: "Оставьте заявку — подберём под вашу задачу",
     step: "Шаг",
     of: "из",
     contactTitle: "Как с вами связаться?",
@@ -84,18 +194,18 @@ const UI = {
     phonePh: "+7 ___ ___-__-__",
     consent: "Оставляя заявку, вы соглашаетесь на обработку персональных данных.",
     back: "Назад",
-    next: "Следующий вопрос",
-    submit: "Записаться",
+    next: "Далее",
+    submit: "Отправить заявку",
     successTitle: "Спасибо, заявка принята",
     successSub1: "Дайана свяжется с вами в ближайшее время",
-    successSub2: (a: string) => `, чтобы подтвердить запись на «${a}»`,
+    successSub2: (a: string) => `, чтобы обсудить «${a}»`,
     again: "Оставить ещё одну заявку",
     founder: "Дайана Тарзян",
     founderRole: "основатель ALIS",
   },
   en: {
-    eyebrow: "booking",
-    title: "Let's find your look in a couple of minutes",
+    eyebrow: "request",
+    title: "Send a request — we'll tailor it to you",
     step: "Step",
     of: "of",
     contactTitle: "How can we reach you?",
@@ -105,37 +215,52 @@ const UI = {
     phonePh: "+_ ___ ___-__-__",
     consent: "By submitting, you agree to the processing of personal data.",
     back: "Back",
-    next: "Next question",
-    submit: "Book",
+    next: "Next",
+    submit: "Send request",
     successTitle: "Thank you, request received",
     successSub1: "Daiana will contact you shortly",
-    successSub2: (a: string) => ` to confirm your booking for “${a}”`,
+    successSub2: (a: string) => ` to discuss “${a}”`,
     again: "Submit another request",
     founder: "Daiana Tarzyan",
     founderRole: "founder of ALIS",
   },
 };
 
-const TOTAL = QUESTIONS.length + 1; // 4 вопроса + контакты
-
 export default function Booking() {
   const { lang } = useLang();
   const ui = UI[lang];
-  const [step, setStep] = useState(0); // 0..3 — вопросы, 4 — контакты, 5 — успех
-  const [answers, setAnswers] = useState<(string | null)[]>(
-    Array(QUESTIONS.length).fill(null)
-  );
+
+  const [goalKey, setGoalKey] = useState<GoalKey | null>(null);
+  const [step, setStep] = useState(0); // 0 — цель, 1..4 — ветка, 5 — контакты, 6 — успех
+  const [answers, setAnswers] = useState<(string | null)[]>(Array(QCOUNT).fill(null));
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
-  const isContact = step === QUESTIONS.length;
+  const isGoal = step === 0;
+  const isContact = step === QCOUNT;
   const isSuccess = step === TOTAL;
-  const note = isContact ? CONTACT_NOTE[lang] : QUESTIONS[step]?.note[lang];
+  const branch = goalKey ? BRANCHES[goalKey] : null;
+  const curQuestion: Question | null = isGoal
+    ? { q: GOAL.q, note: GOAL.note, opts: GOAL.opts }
+    : branch
+    ? branch[step - 1]
+    : null;
+  const note = isContact ? CONTACT_NOTE[lang] : curQuestion?.note[lang];
 
-  const pick = (opt: string) => {
+  const pickGoal = (opt: (typeof GOAL.opts)[number]) => {
+    setGoalKey(opt.key);
     setAnswers((a) => {
       const next = [...a];
-      next[step] = opt;
+      next[0] = opt[lang];
+      for (let i = 1; i < next.length; i++) next[i] = null; // сбросить ветку
+      return next;
+    });
+  };
+
+  const pick = (val: string) => {
+    setAnswers((a) => {
+      const next = [...a];
+      next[step] = val;
       return next;
     });
   };
@@ -148,11 +273,18 @@ export default function Booking() {
     if (!canNext) return;
     if (isContact) {
       // TODO: реальная отправка (Telegram / e-mail / CRM)
-      // console.log({ answers, name, phone });
       setStep(TOTAL);
     } else {
       setStep(step + 1);
     }
+  };
+
+  const reset = () => {
+    setStep(0);
+    setGoalKey(null);
+    setAnswers(Array(QCOUNT).fill(null));
+    setName("");
+    setPhone("");
   };
 
   return (
@@ -192,12 +324,8 @@ export default function Booking() {
                   className="h-16 w-16 rounded-full object-cover"
                 />
                 <div>
-                  <p className="text-[16px] font-medium text-[#17191a]">
-                    {ui.founder}
-                  </p>
-                  <p className="mt-0.5 text-[13px] text-[#17191a]/50">
-                    {ui.founderRole}
-                  </p>
+                  <p className="text-[16px] font-medium text-[#17191a]">{ui.founder}</p>
+                  <p className="mt-0.5 text-[13px] text-[#17191a]/50">{ui.founderRole}</p>
                 </div>
               </div>
 
@@ -237,16 +365,21 @@ export default function Booking() {
                     {!isContact ? (
                       <>
                         <h3 className="mb-7 font-serif text-[26px] leading-tight text-[#17191a] lg:text-[32px]">
-                          {QUESTIONS[step].q[lang]}
+                          {curQuestion!.q[lang]}
                         </h3>
                         <div className="grid gap-3 sm:grid-cols-2">
-                          {QUESTIONS[step].opts.map((opt) => {
+                          {(isGoal ? GOAL.opts : curQuestion!.opts).map((opt) => {
                             const val = opt[lang];
-                            const selected = answers[step] === val;
+                            const selected = isGoal
+                              ? goalKey === (opt as (typeof GOAL.opts)[number]).key
+                              : answers[step] === val;
+                            const onClick = isGoal
+                              ? () => pickGoal(opt as (typeof GOAL.opts)[number])
+                              : () => pick(val);
                             return (
                               <button
                                 key={opt.ru}
-                                onClick={() => pick(val)}
+                                onClick={onClick}
                                 className={`flex items-center gap-3.5 rounded-2xl border px-5 py-4 text-left text-[15px] transition-all ${
                                   selected
                                     ? "border-[#4E2126] bg-[#4E2126] text-[#f4efe6]"
@@ -255,9 +388,7 @@ export default function Booking() {
                               >
                                 <span
                                   className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
-                                    selected
-                                      ? "border-[#f4efe6] bg-[#f4efe6]"
-                                      : "border-[#17191a]/40"
+                                    selected ? "border-[#f4efe6] bg-[#f4efe6]" : "border-[#17191a]/40"
                                   }`}
                                 >
                                   {selected && (
@@ -359,12 +490,7 @@ export default function Booking() {
                     {answers[0] ? ui.successSub2(answers[0]) : ""}.
                   </p>
                   <button
-                    onClick={() => {
-                      setStep(0);
-                      setAnswers(Array(QUESTIONS.length).fill(null));
-                      setName("");
-                      setPhone("");
-                    }}
+                    onClick={reset}
                     className="mt-8 text-[14px] text-[#17191a]/50 transition-colors hover:text-[#17191a]"
                   >
                     {ui.again}
