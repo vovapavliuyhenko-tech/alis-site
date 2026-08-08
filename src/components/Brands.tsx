@@ -5,9 +5,9 @@ import type { ReactNode } from "react";
 
 // Каждый бренд — со своим стилем, приближённым к его вордмарку
 const BRANDS: ReactNode[] = [
-  <span key="e5" className="flex items-center gap-2.5 text-[#17191a]">
+  <span key="e5" className="flex items-center gap-2.5 text-[#f4efe6]">
     <span className="font-thunder text-[30px] font-bold leading-none tracking-tight">E5</span>
-    <span className="text-[9px] font-medium uppercase leading-[1.15] tracking-[0.12em] text-[#17191a]/70">
+    <span className="text-[9px] font-medium uppercase leading-[1.15] tracking-[0.12em] text-[#f4efe6]/70">
       show
       <br />
       event
@@ -15,30 +15,30 @@ const BRANDS: ReactNode[] = [
       wedding
     </span>
   </span>,
-  <span key="nitochka" className="font-serif text-[28px] italic text-[#17191a]">
+  <span key="nitochka" className="font-serif text-[28px] italic text-[#f4efe6]">
     Nitochka
   </span>,
-  <span key="talu" className="font-serif text-[20px] uppercase tracking-[0.16em] text-[#17191a]">
+  <span key="talu" className="font-serif text-[20px] uppercase tracking-[0.16em] text-[#f4efe6]">
     Château <span className="lowercase italic tracking-normal">de</span> Talu
   </span>,
-  <span key="fione" className="flex items-baseline gap-2 text-[#17191a]">
+  <span key="fione" className="flex items-baseline gap-2 text-[#f4efe6]">
     <span className="text-[24px] tracking-[0.28em]">FiONE</span>
-    <span className="text-[8px] uppercase tracking-[0.2em] text-[#17191a]/55">
+    <span className="text-[8px] uppercase tracking-[0.2em] text-[#f4efe6]/55">
       luxury resort &amp; spa
     </span>
   </span>,
-  <span key="weddywood" className="text-[27px] font-semibold lowercase tracking-tight text-[#17191a]">
+  <span key="weddywood" className="text-[27px] font-semibold lowercase tracking-tight text-[#f4efe6]">
     weddywood
   </span>,
-  <span key="eldayana" className="flex flex-col items-center leading-none text-[#17191a]">
+  <span key="eldayana" className="flex flex-col items-center leading-none text-[#f4efe6]">
     <span className="font-serif text-[21px] uppercase tracking-[0.2em]">EL&apos;DAYANA</span>
-    <span className="mt-1 text-[8px] uppercase tracking-[0.22em] text-[#17191a]/55">
+    <span className="mt-1 text-[8px] uppercase tracking-[0.22em] text-[#f4efe6]/55">
       event &amp; weddings
     </span>
   </span>,
   <span
     key="mkrtchyan"
-    className="text-[30px] italic text-[#17191a]"
+    className="text-[30px] italic text-[#f4efe6]"
     style={{ fontFamily: "'Segoe Script','Brush Script MT',cursive" }}
   >
     S. Mkrtchyan
@@ -46,7 +46,7 @@ const BRANDS: ReactNode[] = [
 ];
 
 function Sep() {
-  return <span aria-hidden className="mx-10 text-[14px] text-[#17191a]/25 lg:mx-14">✦</span>;
+  return <span aria-hidden className="mx-10 text-[14px] text-[#f4efe6]/25 lg:mx-14">✦</span>;
 }
 
 // Одна дорожка со всеми брендами (дублируется для бесшовности)
@@ -68,9 +68,9 @@ function Track({ hidden = false }: { hidden?: boolean }) {
 
 export default function Brands() {
   return (
-    <section className="overflow-hidden bg-[#f4efe6] py-16 lg:py-24">
+    <section className="overflow-hidden bg-[#17191a] py-16 lg:py-24">
       <div className="mb-12 flex flex-col items-center gap-3">
-        <p className="text-center font-serif text-[13px] uppercase tracking-[0.4em] text-[#17191a]/60">
+        <p className="text-center font-serif text-[13px] uppercase tracking-[0.4em] text-[#f4efe6]/60">
           нас выбирают
         </p>
         <span className="h-[2px] w-10 rounded-full bg-[#4E2126]" />
@@ -81,8 +81,8 @@ export default function Brands() {
         <Track hidden />
 
         {/* Растушёвка по краям */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#f4efe6] to-transparent lg:w-40" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#f4efe6] to-transparent lg:w-40" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#17191a] to-transparent lg:w-40" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#17191a] to-transparent lg:w-40" />
       </div>
     </section>
   );

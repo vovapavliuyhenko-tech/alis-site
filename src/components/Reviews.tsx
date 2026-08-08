@@ -95,14 +95,14 @@ export default function Reviews() {
   const radius = 580; // радиус кольца (карточки разъезжаются к краям экрана)
 
   return (
-    <section id="reviews" className="overflow-hidden bg-[#ece4d6] py-24 lg:py-32">
+    <section id="reviews" className="overflow-hidden bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1180px]">
         {/* Заголовок */}
         <div className="mb-14 text-center">
-          <span className="text-[13px] lowercase tracking-wide text-[#17191a]/45">
+          <span className="text-[13px] lowercase tracking-wide text-[#f4efe6]/45">
             (отзывы)
           </span>
-          <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
+          <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#f4efe6] lg:text-[48px]">
             Что говорят наши гостьи
           </h2>
         </div>
@@ -143,7 +143,7 @@ export default function Reviews() {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-[12px] lowercase tracking-wide text-[#17191a]/40">
+        <p className="mt-8 text-center text-[12px] lowercase tracking-wide text-[#f4efe6]/35">
           наведите, чтобы остановить
         </p>
       </div>

@@ -18,7 +18,7 @@ const SLIDES = [
 // Одна ячейка: фон-фото на пол-экрана + карточка-флип с работой по центру.
 function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
   return (
-    <div className="relative h-full w-full overflow-hidden bg-[#ece4d6]">
+    <div className="relative h-full w-full overflow-hidden bg-[#17191a]">
       {/* Фон-фото, растянутое на пол-экрана */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={s.bg} alt="" className="absolute inset-0 h-full w-full object-cover" />
@@ -48,11 +48,11 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
             </div>
 
             {/* ОБОРОТ — продающий текст + CTA */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 rounded-[22px] border border-[#17191a]/10 bg-[#f4efe6] px-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
-              <span className="font-serif text-[22px] leading-tight text-[#17191a] lg:text-[24px]">
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 rounded-[22px] border border-[#f4efe6]/10 bg-[#17191a] px-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+              <span className="font-serif text-[22px] leading-tight text-[#f4efe6] lg:text-[24px]">
                 {s.title}
               </span>
-              <p className="text-[14px] leading-relaxed text-[#17191a]/70">{s.blurb}</p>
+              <p className="text-[14px] leading-relaxed text-[#f4efe6]/75">{s.blurb}</p>
               <a
                 href="#booking"
                 className="inline-flex items-center gap-2 rounded-full bg-[#4E2126] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-transform hover:scale-105"
@@ -128,7 +128,7 @@ export default function Projects() {
       {pairs.map((pair, p) => (
         <section
           key={p}
-          className="sticky top-0 grid h-svh w-full grid-cols-1 overflow-hidden bg-[#ece4d6] md:grid-cols-2"
+          className="sticky top-0 grid h-svh w-full grid-cols-1 overflow-hidden bg-[#17191a] md:grid-cols-2"
         >
           {pair.map((s, j) => (
             <Cell key={s.title} s={s} i={p * 2 + j} />

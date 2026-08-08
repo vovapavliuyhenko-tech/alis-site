@@ -38,12 +38,12 @@ function Viewfinder({ i, active }: { i: number; active: boolean }) {
       className="relative flex h-11 w-11 shrink-0 items-center justify-center"
     >
       <svg viewBox="0 0 44 44" className="h-11 w-11" fill="none">
-        <path d="M3 14V3h11" stroke="currentColor" strokeWidth="1.6" className="text-[#17191a]/30" />
-        <path d="M30 3h11v11" stroke="currentColor" strokeWidth="1.6" className="text-[#17191a]/30" />
-        <path d="M41 30v11H30" stroke="currentColor" strokeWidth="1.6" className="text-[#17191a]/30" />
-        <path d="M14 41H3V30" stroke="currentColor" strokeWidth="1.6" className="text-[#17191a]/30" />
+        <path d="M3 14V3h11" stroke="currentColor" strokeWidth="1.6" className="text-[#f4efe6]/45" />
+        <path d="M30 3h11v11" stroke="currentColor" strokeWidth="1.6" className="text-[#f4efe6]/45" />
+        <path d="M41 30v11H30" stroke="currentColor" strokeWidth="1.6" className="text-[#f4efe6]/45" />
+        <path d="M14 41H3V30" stroke="currentColor" strokeWidth="1.6" className="text-[#f4efe6]/45" />
       </svg>
-      <span className="utp-dot absolute h-3 w-3 rounded-full bg-[#17191a] transition-all duration-300" />
+      <span className="utp-dot absolute h-3 w-3 rounded-full bg-[#f4efe6] transition-all duration-300" />
     </span>
   );
 }
@@ -88,10 +88,10 @@ export default function About() {
     <div className={`flex items-start gap-5 ${className}`}>
       <Viewfinder i={i} active={active === i} />
       <div className="max-w-[300px]">
-        <h3 className="text-[22px] font-semibold leading-tight text-[#17191a] lg:text-[26px]">
+        <h3 className="text-[22px] font-semibold leading-tight text-[#f4efe6] lg:text-[26px]">
           {UTP[i].title}
         </h3>
-        <p className="mt-3 text-[13px] leading-relaxed text-[#17191a]/60 lg:text-[14px]">
+        <p className="mt-3 text-[13px] leading-relaxed text-[#f4efe6]/55 lg:text-[14px]">
           {UTP[i].desc}
         </p>
       </div>
@@ -99,14 +99,14 @@ export default function About() {
   );
 
   return (
-    <section id="about" className="relative scroll-mt-24 bg-[#ece4d6] py-24 lg:py-32">
+    <section id="about" className="relative scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1280px]">
         {/* Заголовок */}
         <div className="mb-16 lg:mb-20">
-          <span className="text-[13px] lowercase tracking-wide text-[#17191a]/45">
+          <span className="text-[13px] lowercase tracking-wide text-[#f4efe6]/45">
             (обо мне)
           </span>
-          <h2 className="mt-4 max-w-2xl font-serif text-[30px] leading-[1.1] text-[#17191a] lg:text-[44px]">
+          <h2 className="mt-4 max-w-2xl font-serif text-[30px] leading-[1.1] text-[#f4efe6] lg:text-[44px]">
             Почему вам будет спокойно
             <br className="hidden lg:block" /> доверить свой образ ALIS
           </h2>
@@ -122,12 +122,12 @@ export default function About() {
             >
               <svg viewBox="0 0 120 120" className="h-[120px] w-[120px]" fill="none">
                 {/* фокус-рамка (уголки) */}
-                <path d="M38 50V38h12" stroke="#17191a" strokeWidth="2" />
-                <path d="M70 38h12v12" stroke="#17191a" strokeWidth="2" />
-                <path d="M82 70v12H70" stroke="#17191a" strokeWidth="2" />
-                <path d="M50 82H38V70" stroke="#17191a" strokeWidth="2" />
+                <path d="M38 50V38h12" stroke="#f4efe6" strokeWidth="2" />
+                <path d="M70 38h12v12" stroke="#f4efe6" strokeWidth="2" />
+                <path d="M82 70v12H70" stroke="#f4efe6" strokeWidth="2" />
+                <path d="M50 82H38V70" stroke="#f4efe6" strokeWidth="2" />
                 {/* длинные крестовые линии с разрывом по центру */}
-                <path d="M60 6V34M60 86v28M6 60h28M86 60h28" stroke="#17191a" strokeWidth="1.5" opacity="0.7" />
+                <path d="M60 6V34M60 86v28M6 60h28M86 60h28" stroke="#f4efe6" strokeWidth="1.5" opacity="0.8" />
               </svg>
             </div>
           )}
@@ -146,8 +146,8 @@ export default function About() {
                 alt="Дайана Тарзян"
                 className="aspect-[3/4] w-full max-w-[360px] rounded-[22px] object-cover"
               />
-              <p className="mt-5 text-[15px] text-[#17191a]">Дайана Тарзян</p>
-              <p className="mt-1 text-[12px] uppercase tracking-[0.1em] text-[#17191a]/50">
+              <p className="mt-5 text-[15px] text-[#f4efe6]">Дайана Тарзян</p>
+              <p className="mt-1 text-[12px] uppercase tracking-[0.1em] text-[#f4efe6]/50">
                 основатель сети студий эстетики
                 <br />
                 ALIS и ALIS BEAUTY CONCIERGE
