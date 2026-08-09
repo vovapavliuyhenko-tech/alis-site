@@ -10,38 +10,38 @@ type Utp = { title: Loc; desc: Loc };
 
 const UTP: Utp[] = [
   {
-    title: { ru: "слышим, что вам нужно", en: "we hear what you need" },
+    title: { ru: "образ ваш, а не «по-своему»", en: "your look, not our own" },
     desc: {
-      ru: "Обсуждаем повод, образ и пожелания заранее — чтобы результат совпал с картинкой в вашей голове.",
-      en: "We discuss the occasion, look and wishes in advance — so the result matches the picture in your head.",
+      ru: "Разбираем повод, референсы и пожелания до мелочей. Вы получаете образ из своей головы — а не эксперимент на себе в важный день.",
+      en: "We go through the occasion, references and wishes in detail. You get the look from your own head — not an experiment on you on the day that matters.",
     },
   },
   {
-    title: { ru: "работаем с топ-мастерами", en: "we work with top artists" },
+    title: { ru: "мастера, за которых спокойно", en: "artists you can trust" },
     desc: {
-      ru: "Визажисты и стилисты с опытом на съёмках, свадьбах и крупных мероприятиях.",
-      en: "Makeup artists and stylists experienced at shoots, weddings and major events.",
+      ru: "Визажисты и стилисты с опытом на свадьбах, съёмках и больших событиях — там, где права на ошибку нет.",
+      en: "Makeup artists and stylists proven at weddings, shoots and big events — where there's no room for error.",
     },
   },
   {
-    title: { ru: "премиальная косметика", en: "premium cosmetics" },
+    title: { ru: "стойко до последнего кадра", en: "flawless to the last frame" },
     desc: {
-      ru: "Только проверенные бренды и стойкие материалы, которые держатся весь день и на любом свете.",
-      en: "Only trusted brands and long-lasting products that hold all day in any light.",
+      ru: "Премиальная косметика, которая не плывёт и не тускнеет. Вы свежи и в объятиях, и в танце, и на фото под утро.",
+      en: "Premium products that don't slide or fade. You stay fresh through the hugs, the dancing and the photos till dawn.",
     },
   },
   {
-    title: { ru: "безупречный сервис", en: "impeccable service" },
+    title: { ru: "вам — спокойно", en: "calm is on us" },
     desc: {
-      ru: "Заботимся о каждой детали, чтобы вам было спокойно, комфортно и по-настоящему приятно.",
-      en: "We care for every detail so you feel calm, comfortable and truly at ease.",
+      ru: "Берём на себя суету и детали. Вы не следите за временем и не нервничаете — просто проживаете свой день.",
+      en: "We take on the fuss and the details. You don't watch the clock or worry — you just live your day.",
     },
   },
   {
-    title: { ru: "держим тайминг", en: "we keep the timing" },
+    title: { ru: "минута в минуту", en: "on time, to the minute" },
     desc: {
-      ru: "Приезжаем вовремя, укладываемся в график события и работаем по договору.",
-      en: "We arrive on time, keep to the event schedule and work under contract.",
+      ru: "Приезжаем заранее и держим график события по договору. Без спешки, опозданий и «мы почти успеваем».",
+      en: "We arrive early and keep to the event schedule under contract. No rushing, no lateness, no “we're almost there.”",
     },
   },
 ];

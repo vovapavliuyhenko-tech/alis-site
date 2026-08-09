@@ -23,8 +23,8 @@ const ITEMS: Item[] = [
     title: { ru: "Полный образ", en: "Full look" },
     price: { ru: "от 8 000 ₽", en: "from 8,000 ₽" },
     desc: {
-      ru: "Макияж и укладка под ваш повод — от дневного выхода до вечернего события. Собираем цельный, ухоженный образ.",
-      en: "Makeup and hair for your occasion — from a daytime outing to an evening event. A polished, cohesive look.",
+      ru: "Макияж и укладка под ваш повод — от дневного выхода до вечера. Цельный образ, в котором вы собранны и уверенны, а не «вроде накрасилась».",
+      en: "Makeup and hair for your occasion — from a daytime outing to an evening event. A cohesive look that leaves you put-together and confident, not 'sort of done'.",
     },
     details: [
       { label: { ru: "Полный образ", en: "Full look" }, price: { ru: "8 000 ₽", en: "8,000 ₽" } },
@@ -37,8 +37,8 @@ const ITEMS: Item[] = [
     title: { ru: "Свадебный образ", en: "Bridal look" },
     price: { ru: "от 10 000 ₽", en: "from 10,000 ₽" },
     desc: {
-      ru: "Ваш день под ключ: пробный образ заранее, репетиция деталей и финальный свадебный look в день торжества.",
-      en: "Your day, turnkey: a trial look in advance, a rehearsal of details and the final bridal look on the day.",
+      ru: "Ваш день без сюрпризов: пробный образ заранее — вы видите результат до свадьбы, а в день торжества остаётся только наслаждаться.",
+      en: "Your day, no surprises: a trial look beforehand — you see the result before the wedding, and on the day itself all that's left is to enjoy it.",
     },
     details: [
       { label: { ru: "Свадебный образ", en: "Bridal look" }, price: { ru: "10 000 ₽", en: "10,000 ₽" } },
@@ -53,8 +53,8 @@ const ITEMS: Item[] = [
     title: { ru: "Макияж и укладка", en: "Makeup & hair" },
     price: { ru: "от 2 500 ₽", en: "from 2,500 ₽" },
     desc: {
-      ru: "Отдельные услуги, когда нужно быстро и точно — только макияж или только укладка под настроение.",
-      en: "Standalone services when you need it fast and precise — makeup only or hair only, to suit your mood.",
+      ru: "Когда нужно быстро, но безупречно — только макияж или только укладка. Выходите за час, а выглядите так, будто готовились с утра.",
+      en: "When you need it fast but flawless — makeup only or hair only. Out in an hour, looking like you'd prepared all morning.",
     },
     details: [
       { label: { ru: "Макияж", en: "Makeup" }, price: { ru: "5 000 ₽", en: "5,000 ₽" } },
@@ -67,8 +67,8 @@ const ITEMS: Item[] = [
     title: { ru: "Образ с подбором look", en: "Look with styling" },
     price: { ru: "от 15 000 ₽", en: "from 15,000 ₽" },
     desc: {
-      ru: "Полный образ плюс подбор одного лука от стилиста под конкретное мероприятие — от макияжа до одежды.",
-      en: "A full look plus a stylist-curated outfit for a specific event — from makeup to clothing.",
+      ru: "Полный образ плюс подбор одежды от стилиста под событие — чтобы макияж, причёска и наряд говорили на одном языке, а не спорили.",
+      en: "A full look plus a stylist-picked outfit for the event — so makeup, hair and dress speak one language instead of clashing.",
     },
     details: [
       { label: { ru: "Образ + подбор look", en: "Look + styling" }, price: { ru: "от 15 000 ₽", en: "from 15,000 ₽" } },
@@ -81,8 +81,8 @@ const ITEMS: Item[] = [
     title: { ru: "Выезд мастеров", en: "On-location team" },
     price: { ru: "от 8 000 ₽", en: "from 8,000 ₽" },
     desc: {
-      ru: "Команда от двух мастеров приезжает к вам — домой, в студию или на площадку.",
-      en: "A team of two or more artists comes to you — at home, in a studio or on location.",
+      ru: "Команда мастеров приезжает к вам — домой, в студию или на площадку. Вы не едете через весь город в день события, а спокойно готовитесь у себя.",
+      en: "A team of artists comes to you — at home, in a studio or on location. No cross-town rush on the day — you get ready calmly, where you are.",
     },
     details: [
       { label: { ru: "Новороссийск", en: "Novorossiysk" }, price: { ru: "8 000 ₽", en: "8,000 ₽" } },
@@ -102,8 +102,8 @@ const ITEMS: Item[] = [
     title: { ru: "Сопровождение на мероприятии", en: "On-event support" },
     price: { ru: "от 2 000 ₽/час", en: "from 2,000 ₽/hr" },
     desc: {
-      ru: "Стилист и визажист рядом весь день или вечер: правки образа, помощь с деталями, быстрые перемены между выходами.",
-      en: "A stylist and makeup artist by your side all day or evening: touch-ups, help with details, quick changes between appearances.",
+      ru: "Мастер рядом весь день: поправит образ после объятий и танцев, поможет с деталями и быстрой сменой между выходами. Вы свежи на каждом этапе праздника.",
+      en: "An artist by your side all day: touch-ups after the hugs and dancing, help with details and quick changes between appearances. Fresh at every stage of the celebration.",
     },
     details: [
       { label: { ru: "Стилист или визажист", en: "Stylist or makeup artist" }, price: { ru: "2 000 ₽/час", en: "2,000 ₽/hr" } },

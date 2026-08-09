@@ -79,8 +79,8 @@ export default function Hero() {
 
           <p className="mx-auto max-w-[18rem] text-[13px] leading-snug text-[#17191a]/60">
             {lang === "en"
-              ? "for those who want to tune into love and unite their inner beauty with the outer"
-              : "для тех, кто хочет настроиться на любовь и соединить свою внутреннюю красоту с внешней"}
+              ? "Your look for the day you can't reshoot — flawless, all-day, and truly yours."
+              : "Ваш образ в день, который не переснять — безупречный, стойкий и по-настоящему ваш."}
           </p>
         </div>
       </div>

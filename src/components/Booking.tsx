@@ -184,7 +184,7 @@ const CONTACT_NOTE: Loc = {
 const UI = {
   ru: {
     eyebrow: "заявка",
-    title: "Оставьте заявку — подберём под вашу задачу",
+    title: "Расскажите о событии — вернёмся с образом и сметой",
     step: "Шаг",
     of: "из",
     contactTitle: "Как с вами связаться?",
@@ -205,7 +205,7 @@ const UI = {
   },
   en: {
     eyebrow: "request",
-    title: "Send a request — we'll tailor it to you",
+    title: "Tell us about your event — we'll come back with a look and a quote",
     step: "Step",
     of: "of",
     contactTitle: "How can we reach you?",

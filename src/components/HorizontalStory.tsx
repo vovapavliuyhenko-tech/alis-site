@@ -23,8 +23,8 @@ const STAGES: Stage[] = [
       en: "We discuss the occasion, wishes and references",
     },
     desc: {
-      ru: "Созваниваемся, разбираемся в задаче и понимаем, какой образ вам нужен. Уже на этом этапе — первые ориентиры и варианты.",
-      en: "We get on a call, understand the task and figure out the look you need. First directions and options already at this stage.",
+      ru: "Созваниваемся, разбираемся в задаче и понимаем, какой образ вам нужен — с референсами и первыми вариантами. Никакого «разберёмся на месте».",
+      en: "We get on a call, understand the task and the look you need — with references and first options. No 'we'll figure it out on the day'.",
     },
     quote: { ru: "«Слышим вас с первого слова»", en: "“We hear you from the first word”" },
     photo: "/assets/tild6230-643__.jpg",
@@ -62,8 +62,8 @@ const STAGES: Stage[] = [
       en: "We accompany and care to the very end",
     },
     desc: {
-      ru: "На съёмке, свадьбе или мероприятии мы рядом: правим детали, помогаем с образом и заботимся о каждой мелочи.",
-      en: "At a shoot, wedding or event we're right there: adjusting details, helping with the look and caring for every little thing.",
+      ru: "На съёмке, свадьбе или мероприятии мы рядом до конца: правим детали, спасаем от неожиданностей и держим образ идеальным. Вы просто наслаждаетесь днём.",
+      en: "At a shoot, wedding or event we're there to the end: adjusting details, handling the unexpected and keeping your look perfect. You just enjoy the day.",
     },
     quote: { ru: "«Ваш день — наша забота»", en: "“Your day is our care”" },
     photo: "/assets/tild6536-613_-2___1__4.jpg",
