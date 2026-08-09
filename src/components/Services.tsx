@@ -131,7 +131,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
+    <section id="services" className="scroll-mt-24 bg-[#f4efe6] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1180px]">
         <div className="border-t border-[#4E2126]/50">
           {ITEMS.map((it, i) => {
@@ -149,19 +149,19 @@ export default function Services() {
                   </span>
                   <h3
                     className={`font-serif text-[22px] leading-tight transition-colors lg:text-[30px] ${
-                      isOpen ? "text-[#f4efe6]" : "text-[#f4efe6]/85"
+                      isOpen ? "text-[#17191a]" : "text-[#17191a]/85"
                     }`}
                   >
                     {it.title[lang]}
                   </h3>
-                  <span className="hidden font-serif text-[20px] text-[#f4efe6]/80 lg:block lg:text-[24px]">
+                  <span className="hidden font-serif text-[20px] text-[#17191a]/80 lg:block lg:text-[24px]">
                     {it.price[lang]}
                   </span>
                   {/* Иконка «+» */}
                   <span className="relative ml-auto h-4 w-4 shrink-0 lg:ml-4">
-                    <span className="absolute left-0 top-1/2 h-[1.5px] w-4 -translate-y-1/2 bg-[#f4efe6]/70" />
+                    <span className="absolute left-0 top-1/2 h-[1.5px] w-4 -translate-y-1/2 bg-[#17191a]/70" />
                     <span
-                      className={`absolute left-1/2 top-0 h-4 w-[1.5px] -translate-x-1/2 bg-[#f4efe6]/70 transition-transform duration-300 ${
+                      className={`absolute left-1/2 top-0 h-4 w-[1.5px] -translate-x-1/2 bg-[#17191a]/70 transition-transform duration-300 ${
                         isOpen ? "rotate-90" : ""
                       }`}
                     />
@@ -177,7 +177,7 @@ export default function Services() {
                     <div className="grid gap-8 pb-10 lg:grid-cols-[1fr_320px] lg:gap-12 lg:pl-[72px]">
                       {/* Левая часть — описание + цены + CTA */}
                       <div className="order-2 lg:order-1">
-                        <p className="max-w-lg text-[14px] leading-relaxed text-[#f4efe6]/60">
+                        <p className="max-w-lg text-[14px] leading-relaxed text-[#17191a]/60">
                           {it.desc[lang]}
                         </p>
                         <dl className="mt-6 max-w-lg">
@@ -186,15 +186,15 @@ export default function Services() {
                               key={d.label.ru}
                               className="flex items-baseline justify-between gap-6 border-b border-[#4E2126]/35 py-3 last:border-0"
                             >
-                              <dt className="text-[14px] text-[#f4efe6]/85">{d.label[lang]}</dt>
-                              <dd className="shrink-0 text-[14px] tabular-nums text-[#f4efe6]/55">
+                              <dt className="text-[14px] text-[#17191a]/85">{d.label[lang]}</dt>
+                              <dd className="shrink-0 text-[14px] tabular-nums text-[#17191a]/55">
                                 {d.price[lang]}
                               </dd>
                             </div>
                           ))}
                         </dl>
                         {it.note && (
-                          <p className="mt-4 text-[12px] italic text-[#f4efe6]/40">
+                          <p className="mt-4 text-[12px] italic text-[#17191a]/40">
                             {it.note[lang]}
                           </p>
                         )}
