@@ -56,7 +56,7 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
               </p>
               <a
                 href="/#booking"
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-[#4E2126] px-6 py-3.5 text-[13px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.02]"
+                className="flex w-full items-center justify-center gap-2 rounded-full border border-[#4E2126] bg-[#4E2126] px-6 py-3.5 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:border-[#f4efe6]/70 hover:bg-transparent"
               >
                 {lang === "en" ? "Book" : "Записаться"}
                 <span aria-hidden>→</span>

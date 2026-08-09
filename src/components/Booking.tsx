@@ -458,7 +458,7 @@ export default function Booking() {
                     <button
                       onClick={goNext}
                       disabled={!canNext}
-                      className="inline-flex items-center gap-2.5 rounded-full bg-[#4E2126] py-3 pl-6 pr-2.5 text-[13px] font-medium uppercase tracking-wide text-[#f4efe6] transition-all hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
+                      className="inline-flex items-center gap-2.5 rounded-full border border-[#4E2126] bg-[#4E2126] py-3 pl-6 pr-2.5 text-[13px] font-medium uppercase tracking-wide text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#4E2126] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-[#4E2126] disabled:hover:text-[#f4efe6]"
                     >
                       {isContact ? ui.submit : ui.next}
                       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]">

@@ -85,7 +85,7 @@ export default function Header() {
           <LangToggle className="hidden sm:flex" />
           <a
             href="/#booking"
-            className="flex items-center gap-2.5 rounded-full bg-[#4E2126] py-2 pl-5 pr-2 text-[13px] font-medium text-[#f4efe6] transition-opacity hover:opacity-90"
+            className="flex items-center gap-2.5 rounded-full border border-[#4E2126] bg-[#4E2126] py-2 pl-5 pr-2 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:border-[#f4efe6]/70 hover:bg-transparent"
           >
             {lang === "en" ? "Book" : "Записаться"}
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]">
