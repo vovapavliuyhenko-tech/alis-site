@@ -51,10 +51,7 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
 
             {/* ОБОРОТ — заголовок сверху, текст по центру, кнопка во всю ширину внизу */}
             <div className="absolute inset-0 flex flex-col rounded-[22px] border border-[#f4efe6]/10 bg-[#17191a] px-8 py-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
-              <span className="font-serif text-[22px] leading-tight text-[#f4efe6] lg:text-[24px]">
-                {s.title[lang]}
-              </span>
-              <p className="flex flex-1 items-center justify-center text-[14px] leading-relaxed text-[#f4efe6]/75">
+              <p className="flex flex-1 items-center justify-center text-[15px] leading-relaxed text-[#f4efe6]/80">
                 {s.blurb[lang]}
               </p>
               <a
