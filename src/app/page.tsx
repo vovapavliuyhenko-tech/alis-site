@@ -24,9 +24,9 @@ export default function Home() {
       <Brands />
       <Projects />
       <Services />
-      <Reviews />
       <Booking />
       <HorizontalStory />
+      <Reviews />
       <Footer />
     </main>
   );
