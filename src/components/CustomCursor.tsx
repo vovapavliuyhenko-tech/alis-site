@@ -1,6 +1,6 @@
 "use client";
 // Кастомный курсор — «чернильная капля» точь-в-точь как на paloma.website
-// (портирована их логика cursor.js): цепочка из 20 точек, слипающихся в каплю
+// (портирована их логика host.js): цепочка из 20 точек, слипающихся в каплю
 // через SVG goo-фильтр; в покое хвостовые точки тихо кружатся вокруг
 // зафиксированных позиций (капля «переплывает»). Цвет адаптивный — тёмный на
 // светлых секциях, светлый на тёмных, чтобы капля была видна на любом фоне.
@@ -23,8 +23,9 @@ export default function CustomCursor() {
       navigator.maxTouchPoints > 0;
     if (isTouch) return;
 
-    const cursor = cursorRef.current;
+    const cursor: HTMLDivElement | null = cursorRef.current;
     if (!cursor) return;
+    const host: HTMLDivElement = cursor; // гарантированно не null для замыканий/класса
 
     document.documentElement.classList.add("has-custom-cursor");
 
@@ -53,7 +54,7 @@ export default function CustomCursor() {
         this.range = WIDTH / 2 - (WIDTH / 2) * this.scale + 2;
         this.el = document.createElement("span");
         this.el.style.transform = `scale(${this.scale})`;
-        cursor.appendChild(this.el);
+        host.appendChild(this.el);
       }
       lock() {
         this.lockX = this.x;
@@ -102,7 +103,7 @@ export default function CustomCursor() {
         const m = bg.match(/rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?/);
         if (m && (m[4] === undefined || parseFloat(m[4]) > 0.4)) {
           const lum = (0.2126 * +m[1] + 0.7152 * +m[2] + 0.0722 * +m[3]) / 255;
-          cursor.classList.toggle("on-light", lum > 0.55);
+          host.classList.toggle("on-light", lum > 0.55);
           return;
         }
         el = el.parentElement;
@@ -114,18 +115,18 @@ export default function CustomCursor() {
       mouse.y = e.clientY - WIDTH / 2;
       if (!visible) {
         visible = true;
-        cursor.classList.add("is-visible");
+        host.classList.add("is-visible");
       }
       updateColor(e.clientX, e.clientY);
       resetIdle();
     };
     const leave = () => {
-      cursor.classList.remove("is-visible");
+      host.classList.remove("is-visible");
       visible = false;
     };
     const enter = () => {
       if (mouse.x > -100) {
-        cursor.classList.add("is-visible");
+        host.classList.add("is-visible");
         visible = true;
       }
     };
@@ -159,7 +160,7 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", leave);
       document.removeEventListener("mouseenter", enter);
-      cursor.innerHTML = "";
+      host.innerHTML = "";
     };
   }, []);
 
