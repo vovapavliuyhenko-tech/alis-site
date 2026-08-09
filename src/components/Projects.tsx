@@ -49,15 +49,17 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
               </p>
             </div>
 
-            {/* ОБОРОТ — продающий текст + CTA */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 rounded-[22px] border border-[#f4efe6]/10 bg-[#17191a] px-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+            {/* ОБОРОТ — заголовок сверху, текст по центру, кнопка во всю ширину внизу */}
+            <div className="absolute inset-0 flex flex-col rounded-[22px] border border-[#f4efe6]/10 bg-[#17191a] px-8 py-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
               <span className="font-serif text-[22px] leading-tight text-[#f4efe6] lg:text-[24px]">
                 {s.title[lang]}
               </span>
-              <p className="text-[14px] leading-relaxed text-[#f4efe6]/75">{s.blurb[lang]}</p>
+              <p className="flex flex-1 items-center justify-center text-[14px] leading-relaxed text-[#f4efe6]/75">
+                {s.blurb[lang]}
+              </p>
               <a
                 href="/#booking"
-                className="inline-flex items-center gap-2 rounded-full bg-[#4E2126] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-transform hover:scale-105"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-[#4E2126] px-6 py-3.5 text-[13px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.02]"
               >
                 {lang === "en" ? "Book" : "Записаться"}
                 <span aria-hidden>→</span>
