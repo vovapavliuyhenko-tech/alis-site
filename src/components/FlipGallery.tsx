@@ -135,7 +135,7 @@ function FlipTile({ t }: { t: Tile }) {
 export default function FlipGallery() {
   const { lang } = useLang();
   return (
-    <section id="gallery" className="scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
+    <section id="works" className="scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1180px]">
         <div className="grid grid-cols-2 items-start gap-x-5 gap-y-10 md:grid-cols-4 md:gap-x-6 md:gap-y-12">
           {TILES.slice(0, 5).map((t) => (

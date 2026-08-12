@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import HorizontalStory from "@/components/HorizontalStory";
+import Projects from "@/components/Projects";
 import FlipGallery from "@/components/FlipGallery";
 import Services from "@/components/Services";
 import Reviews from "@/components/Reviews";
@@ -22,11 +23,12 @@ export default function Home() {
       <Hero />
       <About />
       <Brands />
-      <FlipGallery />
+      <Projects />
       <Services />
       <Booking />
       <HorizontalStory />
       <Reviews />
+      <FlipGallery />
       <Footer />
     </main>
   );
