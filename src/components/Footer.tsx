@@ -19,9 +19,9 @@ export default function Footer() {
       : "сеть студий эстетики и beauty-concierge";
 
   return (
-    <footer id="footer" className="scroll-mt-24 bg-[#17191a] pt-20 pb-10">
+    <footer id="footer" className="scroll-mt-24 bg-white pt-20 pb-10">
       <div className="mx-auto w-[94%] max-w-[1280px]">
-        <div className="r-reveal font-serif text-[44px] leading-none tracking-[0.12em] text-[#f4efe6] lg:text-[60px]">
+        <div className="r-reveal font-serif text-[44px] leading-none tracking-[0.12em] text-[#17191a] lg:text-[60px]">
           ÁLIS
         </div>
 
@@ -30,7 +30,7 @@ export default function Footer() {
             {NAV.map((item, i) => (
               <span key={item.href} className="flex items-center gap-3">
                 {i > 0 && <span className="text-[#4E2126]">/</span>}
-                <a href={item.href} className="text-[#f4efe6]/70 transition-colors hover:text-[#f4efe6]">
+                <a href={item.href} className="text-[#17191a]/70 transition-colors hover:text-[#17191a]">
                   {item[lang]}
                 </a>
               </span>
@@ -40,7 +40,7 @@ export default function Footer() {
             {SOCIAL.map((item, i) => (
               <span key={item} className="flex items-center gap-3">
                 {i > 0 && <span className="text-[#4E2126]">/</span>}
-                <a href="#" className="text-[#f4efe6]/70 transition-colors hover:text-[#f4efe6]">
+                <a href="#" className="text-[#17191a]/70 transition-colors hover:text-[#17191a]">
                   {item}
                 </a>
               </span>
@@ -48,7 +48,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        <p className="mt-10 text-[13px] text-[#f4efe6]/45">
+        <p className="mt-10 text-[13px] text-[#17191a]/45">
           © {new Date().getFullYear()} ALIS · {tagline}
         </p>
       </div>

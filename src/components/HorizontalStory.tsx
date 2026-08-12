@@ -122,7 +122,7 @@ export default function HorizontalStory() {
   }, []);
 
   return (
-    <section id="process" ref={secRef} className="relative bg-[#f4efe6]">
+    <section id="process" ref={secRef} className="relative bg-white">
       <div className="md:sticky md:top-0 md:h-svh md:overflow-hidden">
         <div
           ref={trackRef}
@@ -134,7 +134,7 @@ export default function HorizontalStory() {
               className="flex w-full shrink-0 flex-col md:h-full md:w-screen md:flex-row"
             >
               {/* Левая кремовая половина */}
-              <div className="flex flex-col justify-between bg-[#f4efe6] px-6 py-12 md:w-[46%] md:px-[4vw] md:pb-[8vh] md:pt-[18vh]">
+              <div className="flex flex-col justify-between bg-white px-6 py-12 md:w-[46%] md:px-[4vw] md:pb-[8vh] md:pt-[18vh]">
                 <div>
                   <span className="text-[12px] uppercase tracking-[0.3em] text-[#4E2126]">
                     {lang === "en" ? "Step" : "Этап"} 0{i + 1}
@@ -159,7 +159,7 @@ export default function HorizontalStory() {
                   alt={s.name[lang]}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-x-[6%] bottom-[6%] rounded-[18px] bg-[#f4efe6]/95 px-6 py-6 text-center backdrop-blur-sm md:px-10 md:py-8">
+                <div className="absolute inset-x-[6%] bottom-[6%] rounded-[18px] bg-white/95 px-6 py-6 text-center backdrop-blur-sm md:px-10 md:py-8">
                   <p className="font-serif text-[24px] uppercase tracking-[0.15em] text-[#4E2126] md:text-[30px]">
                     {s.name[lang]}
                   </p>

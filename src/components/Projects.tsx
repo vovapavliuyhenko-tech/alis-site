@@ -20,7 +20,7 @@ const SLIDES = [
 function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
   const { lang } = useLang();
   return (
-    <div className="relative h-full w-full overflow-hidden bg-[#17191a]">
+    <div className="relative h-full w-full overflow-hidden bg-white">
       {/* Фон-фото, растянутое на пол-экрана */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={s.bg} alt="" className="absolute inset-0 h-full w-full object-cover" />
@@ -50,13 +50,13 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
             </div>
 
             {/* ОБОРОТ — заголовок сверху, текст по центру, кнопка во всю ширину внизу */}
-            <div className="absolute inset-0 flex flex-col rounded-[22px] border border-[#f4efe6]/10 bg-[#17191a] px-8 py-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
-              <p className="flex flex-1 items-center justify-center text-[15px] leading-relaxed text-[#f4efe6]/80">
+            <div className="absolute inset-0 flex flex-col rounded-[22px] border border-[#17191a]/10 bg-white px-8 py-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+              <p className="flex flex-1 items-center justify-center text-[15px] leading-relaxed text-[#17191a]/80">
                 {s.blurb[lang]}
               </p>
               <a
                 href="/#booking"
-                className="flex w-full items-center justify-center gap-2 rounded-full border border-[#4E2126] bg-[#4E2126] px-6 py-3.5 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:border-[#f4efe6]/70 hover:bg-transparent"
+                className="flex w-full items-center justify-center gap-2 rounded-full border border-[#4E2126] bg-[#4E2126] px-6 py-3.5 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#4E2126]"
               >
                 {lang === "en" ? "Book" : "Записаться"}
                 <span aria-hidden>→</span>
@@ -129,7 +129,7 @@ export default function Projects() {
       {pairs.map((pair, p) => (
         <section
           key={p}
-          className="sticky top-0 grid h-svh w-full grid-cols-1 overflow-hidden bg-[#17191a] md:grid-cols-2"
+          className="sticky top-0 grid h-svh w-full grid-cols-1 overflow-hidden bg-white md:grid-cols-2"
         >
           {pair.map((s, j) => (
             <Cell key={s.title.ru} s={s} i={p * 2 + j} />

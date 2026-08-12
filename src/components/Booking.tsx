@@ -290,16 +290,16 @@ export default function Booking() {
   return (
     <section
       id="booking"
-      className="relative scroll-mt-24 bg-[#f4efe6] bg-fixed bg-cover bg-center py-24 text-[#17191a] lg:py-32"
+      className="relative scroll-mt-24 bg-white bg-fixed bg-cover bg-center py-24 text-[#17191a] lg:py-32"
       style={{
-        backgroundColor: "#f4efe6",
+        backgroundColor: "#ffffff",
         backgroundImage:
-          "linear-gradient(rgba(244,239,230,0.86), rgba(244,239,230,0.86)), url(/assets/tild6230-643__.jpg)",
+          "linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url(/assets/tild6230-643__.jpg)",
       }}
     >
       {/* Растушёвка верха и низа — бесшовный стык с соседними блоками */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#f4efe6] to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f4efe6] to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent" />
 
       <div className="relative mx-auto w-[94%] max-w-[1080px]">
         {/* Заголовок */}
@@ -313,7 +313,7 @@ export default function Booking() {
         </div>
 
         {/* Карточка-квиз — кремовое стекло */}
-        <div className="overflow-hidden rounded-[26px] border border-[#17191a]/10 bg-[#f4efe6]/55 shadow-[0_20px_60px_rgba(42,38,34,0.15)] backdrop-blur-2xl">
+        <div className="overflow-hidden rounded-[26px] border border-[#17191a]/10 bg-white/55 shadow-[0_20px_60px_rgba(42,38,34,0.15)] backdrop-blur-2xl">
           <div className="grid lg:grid-cols-[300px_1fr]">
             {/* Левая колонка — персона */}
             <div className="flex flex-col gap-6 border-b border-[#17191a]/10 p-8 lg:border-b-0 lg:border-r">
@@ -332,8 +332,8 @@ export default function Booking() {
 
               {/* Реплика */}
               {!isSuccess && (
-                <div className="relative rounded-2xl border border-[#17191a]/10 bg-[#f4efe6]/60 p-4 backdrop-blur-md">
-                  <span className="absolute -top-1.5 left-8 h-3.5 w-3.5 rotate-45 border-l border-t border-[#17191a]/10 bg-[#f4efe6]/60" />
+                <div className="relative rounded-2xl border border-[#17191a]/10 bg-white/70 p-4 backdrop-blur-md">
+                  <span className="absolute -top-1.5 left-8 h-3.5 w-3.5 rotate-45 border-l border-t border-[#17191a]/10 bg-white/70" />
                   <p key={step} className="booking-step text-[14px] leading-relaxed text-[#17191a]/75">
                     {note}
                   </p>
@@ -384,7 +384,7 @@ export default function Booking() {
                                 className={`flex items-center gap-3.5 rounded-2xl border px-5 py-4 text-left text-[15px] transition-all ${
                                   selected
                                     ? "border-[#4E2126] bg-[#4E2126] text-[#f4efe6]"
-                                    : "border-[#17191a]/15 bg-[#f4efe6]/50 text-[#17191a]/85 hover:border-[#4E2126]/50 hover:bg-[#f4efe6]/70"
+                                    : "border-[#17191a]/15 bg-white/50 text-[#17191a]/85 hover:border-[#4E2126]/50 hover:bg-white/80"
                                 }`}
                               >
                                 <span

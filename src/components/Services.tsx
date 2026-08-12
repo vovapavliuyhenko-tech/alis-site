@@ -131,7 +131,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="scroll-mt-24 bg-[#f4efe6] py-24 lg:py-32">
+    <section id="services" className="scroll-mt-24 bg-white py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1180px]">
         <div className="border-t border-[#4E2126]/50">
           {ITEMS.map((it, i) => {

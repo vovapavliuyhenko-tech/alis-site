@@ -40,14 +40,14 @@ export default function Header() {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-4 sm:px-4">
-      <div className="pointer-events-auto flex w-full max-w-[1200px] items-center justify-between gap-4 rounded-full border border-[#f4efe6]/15 bg-[#17191a]/45 py-2.5 pl-6 pr-2.5 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-md">
+      <div className="pointer-events-auto flex w-full max-w-[1200px] items-center justify-between gap-4 rounded-full border border-[#17191a]/10 bg-white/70 py-2.5 pl-6 pr-2.5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] backdrop-blur-md">
         {/* Логотип */}
-        <a href="/" className="font-serif text-[20px] leading-none tracking-[0.16em] text-[#f4efe6]">
+        <a href="/" className="font-serif text-[20px] leading-none tracking-[0.16em] text-[#17191a]">
           ÁLIS
         </a>
 
         {/* Навигация по центру */}
-        <nav className="hidden items-center gap-5 text-[13.5px] tracking-wide text-[#f4efe6]/80 lg:flex xl:gap-6">
+        <nav className="hidden items-center gap-5 text-[13.5px] tracking-wide text-[#17191a]/80 lg:flex xl:gap-6">
           {NAV.map((item) =>
             item.sub ? (
               <div key={item.label.ru} className="group relative">
@@ -85,7 +85,7 @@ export default function Header() {
           <LangToggle className="hidden sm:flex" />
           <a
             href="/#booking"
-            className="flex items-center gap-2.5 rounded-full border border-[#4E2126] bg-[#4E2126] py-2 pl-5 pr-2 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:border-[#f4efe6]/70 hover:bg-transparent"
+            className="flex items-center gap-2.5 rounded-full border border-[#4E2126] bg-[#4E2126] py-2 pl-5 pr-2 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#4E2126]"
           >
             {lang === "en" ? "Book" : "Записаться"}
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]">

@@ -98,7 +98,7 @@ function FlipTile({ t }: { t: Tile }) {
     <figure className={`${t.place} md:self-start`}>
       {/* Двусторонняя плитка: переворот по наведению */}
       <div className={`group ${aspect} w-full [perspective:1600px]`}>
-        <div className="relative h-full w-full transition-transform duration-[2200ms] [transform-style:preserve-3d] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:[transform:rotateY(180deg)]">
+        <div className="relative h-full w-full transition-transform duration-[1500ms] [transform-style:preserve-3d] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:[transform:rotateY(180deg)]">
           {/* Лицо */}
           <div className="absolute inset-0 overflow-hidden rounded-[22px] [backface-visibility:hidden]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -123,9 +123,9 @@ function FlipTile({ t }: { t: Tile }) {
       </div>
 
       {/* Техническая строка под плиткой */}
-      <figcaption className="mt-3 grid grid-cols-3 items-center font-mono text-[10.5px] lowercase tracking-wide text-[#f4efe6]/45">
+      <figcaption className="mt-3 grid grid-cols-3 items-center font-mono text-[10.5px] lowercase tracking-wide text-[#17191a]/45">
         <span className="tabular-nums">{t.n}</span>
-        <span className="text-center text-[#f4efe6]/60">{t.label[lang]}</span>
+        <span className="text-center text-[#17191a]/60">{t.label[lang]}</span>
         <span className="text-right">{t.caption[lang]}</span>
       </figcaption>
     </figure>
@@ -135,7 +135,7 @@ function FlipTile({ t }: { t: Tile }) {
 export default function FlipGallery() {
   const { lang } = useLang();
   return (
-    <section id="works" className="scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
+    <section id="works" className="scroll-mt-24 bg-white py-24 lg:py-32">
       <div className="mx-auto w-[96%] max-w-[1620px]">
         <div className="grid grid-cols-2 items-start gap-x-6 gap-y-12 md:grid-cols-4 md:gap-x-9 md:gap-y-16">
           {TILES.map((t) => (
@@ -143,7 +143,7 @@ export default function FlipGallery() {
           ))}
         </div>
 
-        <p className="mt-12 text-center font-mono text-[11px] lowercase tracking-wide text-[#f4efe6]/35">
+        <p className="mt-12 text-center font-mono text-[11px] lowercase tracking-wide text-[#17191a]/35">
           {lang === "en" ? "hover to flip · both sides are real work" : "наведите, чтобы перевернуть · с обеих сторон — наши работы"}
         </p>
       </div>

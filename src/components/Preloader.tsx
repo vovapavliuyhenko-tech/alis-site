@@ -34,7 +34,7 @@ export default function Preloader() {
   return (
     <div
       aria-hidden
-      className={`fixed inset-0 z-[100] flex flex-col bg-[#f4efe6] text-[#17191a] transition-opacity duration-[800ms] ease-out ${
+      className={`fixed inset-0 z-[100] flex flex-col bg-white text-[#17191a] transition-opacity duration-[800ms] ease-out ${
         gone ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
