@@ -8,7 +8,7 @@ import FlipGallery from "@/components/FlipGallery";
 import Services from "@/components/Services";
 import Reviews from "@/components/Reviews";
 import Booking from "@/components/Booking";
-import OnlineBooking from "@/components/OnlineBooking";
+import BookingWidget from "@/components/BookingWidget";
 import Brands from "@/components/Brands";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -27,7 +27,7 @@ export default function Home() {
       <Projects />
       <Services />
       <Booking />
-      <OnlineBooking />
+      <BookingWidget />
       <HorizontalStory />
       <Reviews />
       <FlipGallery />
