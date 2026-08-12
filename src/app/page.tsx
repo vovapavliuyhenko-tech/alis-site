@@ -24,10 +24,10 @@ export default function Home() {
       <Hero />
       <About />
       <Brands />
+      <BookingWidget />
       <Projects />
       <Services />
       <Booking />
-      <BookingWidget />
       <HorizontalStory />
       <Reviews />
       <FlipGallery />

@@ -83,7 +83,7 @@ export default function BookingWidget() {
   if (!store) {
     return (
       <section id="online" className="scroll-mt-24 bg-white py-24 lg:py-32">
-        <div className="mx-auto w-[94%] max-w-[900px] text-center text-[#17191a]/50">Загрузка…</div>
+        <div className="mx-auto w-[94%] max-w-[1120px] text-center text-[#17191a]/50">Загрузка…</div>
       </section>
     );
   }
@@ -142,7 +142,7 @@ export default function BookingWidget() {
 
   return (
     <section id="online" className="scroll-mt-24 bg-white py-24 lg:py-32">
-      <div className="mx-auto w-[94%] max-w-[900px]">
+      <div className="mx-auto w-[94%] max-w-[1120px]">
         {/* Заголовок */}
         <div className="mb-10 text-center">
           <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
