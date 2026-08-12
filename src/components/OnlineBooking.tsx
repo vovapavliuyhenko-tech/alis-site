@@ -1,6 +1,10 @@
 "use client";
-// ОНЛАЙН-ЗАПИСЬ — реальный виджет YClients, встроенный через iframe. Клиент
-// выбирает услугу, мастера и время прямо на сайте. Двуязычный заголовок.
+// ОНЛАЙН-ЗАПИСЬ — реальный виджет YClients через iframe. Встроен «заподлицо»:
+// без рамки-карточки, по ширине самого контента виджета и центрирован, чтобы
+// выглядел как родная часть страницы, а не «сайт в сайте». Двуязычный заголовок.
+// Примечание: содержимое виджета — чужой домен, его шрифты/цвета меняются только
+// в админке YClients (Онлайн-запись → оформление), не со стороны нашего сайта.
+import { useEffect } from "react";
 import { useLang } from "@/lib/i18n";
 
 const YCLIENTS_URL =
@@ -8,6 +12,31 @@ const YCLIENTS_URL =
 
 export default function OnlineBooking() {
   const { lang } = useLang();
+
+  // YClients при смене шага просит родителя проскроллить к началу виджета —
+  // ловим это и мягко подводим страницу к блоку записи.
+  useEffect(() => {
+    const onMsg = (e: MessageEvent) => {
+      if (typeof e.origin !== "string" || !e.origin.includes("yclients")) return;
+      let type = "";
+      try {
+        const d = typeof e.data === "string" ? JSON.parse(e.data) : e.data;
+        type = d?.type || d?.action || "";
+      } catch {
+        /* строковые сообщения без JSON — игнорируем */
+      }
+      if (type === "sr") {
+        const el = document.getElementById("online");
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 90;
+          if (window.scrollY > y) window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      }
+    };
+    window.addEventListener("message", onMsg);
+    return () => window.removeEventListener("message", onMsg);
+  }, []);
+
   return (
     <section id="online" className="scroll-mt-24 bg-white py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1080px]">
@@ -26,19 +55,17 @@ export default function OnlineBooking() {
           </p>
         </div>
 
-        {/* Виджет YClients */}
-        <div className="overflow-hidden rounded-[26px] border border-[#17191a]/10 bg-white shadow-[0_10px_40px_rgba(23,25,26,0.08)]">
-          <iframe
-            src={YCLIENTS_URL}
-            title={lang === "en" ? "Online booking — ALIS" : "Онлайн-запись — ALIS"}
-            loading="lazy"
-            allow="payment"
-            className="h-[78vh] min-h-[640px] w-full lg:min-h-[860px]"
-          />
-        </div>
+        {/* Виджет YClients — заподлицо, по ширине контента, без рамки-карточки */}
+        <iframe
+          src={YCLIENTS_URL}
+          title={lang === "en" ? "Online booking — ALIS" : "Онлайн-запись — ALIS"}
+          loading="lazy"
+          allow="payment"
+          className="mx-auto block h-[82vh] min-h-[760px] w-full max-w-[760px] lg:min-h-[960px]"
+        />
 
         {/* Запасная ссылка — если iframe не загрузился */}
-        <p className="mt-5 text-center text-[13px] text-[#17191a]/50">
+        <p className="mt-6 text-center text-[13px] text-[#17191a]/50">
           {lang === "en" ? "Booking not loading? " : "Не открывается форма? "}
           <a
             href={YCLIENTS_URL}
