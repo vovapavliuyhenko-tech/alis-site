@@ -1,57 +1,195 @@
 "use client";
-// FOOTER ALIS: тёмный, крупный логотип + навигация через «/». Двуязычно.
+// FOOTER ALIS — расширенный подвал: форма обратного звонка, колонки ссылок
+// (услуги / информация), контакты с адресом и часами, соцсети и нижняя строка
+// с копирайтом и правовыми ссылками. Светлая тема сайта, бордовые акценты.
+// Двуязычно (RU/EN). Телефон/часы — плейсхолдеры, замените на реальные.
+import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 
-const NAV = [
-  { ru: "главная", en: "home", href: "/" },
-  { ru: "обо мне", en: "about", href: "/#about" },
-  { ru: "услуги", en: "services", href: "/#services" },
-  { ru: "контакты", en: "contacts", href: "/#footer" },
-];
+const PHONE = "+7 (___) ___-__-__"; // TODO: реальный номер салона
+const ADDRESS = { ru: "Новороссийск,\nул. Пархоменко, 53", en: "Novorossiysk,\nParkhomenko St., 53" };
+const HOURS = { ru: "Принимаем записи с 9:00 до 21:00", en: "We take bookings from 9:00 to 21:00" };
 
-const SOCIAL = ["instagram", "telegram", "whatsapp"];
+const SERVICES = [
+  { ru: "Полный образ", en: "Full look", href: "/#services" },
+  { ru: "Свадебный образ", en: "Bridal look", href: "/#services" },
+  { ru: "Макияж и укладка", en: "Makeup & hair", href: "/#services" },
+  { ru: "Выезд мастеров", en: "On-location team", href: "/#services" },
+  { ru: "Онлайн-запись", en: "Online booking", href: "/#online" },
+];
+const INFO = [
+  { ru: "Обо мне", en: "About", href: "/#about" },
+  { ru: "Галерея работ", en: "Gallery", href: "/#gallery" },
+  { ru: "Отзывы", en: "Reviews", href: "/#reviews" },
+  { ru: "Частые вопросы", en: "FAQ", href: "/#faq" },
+  { ru: "Контакты", en: "Contacts", href: "/#footer" },
+];
+const SOCIAL_TILES = [
+  { label: "Instagram", href: "#", img: "/assets/tild3236-393__.jpg" },
+  { label: "Telegram", href: "#", img: "/assets/tild6230-643__.jpg" },
+  { label: "WhatsApp", href: "#", img: "/assets/tild3535-313_bergamo.png" },
+];
 
 export default function Footer() {
   const { lang } = useLang();
-  const tagline =
-    lang === "en"
-      ? "network of aesthetics studios & beauty concierge"
-      : "сеть студий эстетики и beauty-concierge";
+  const [phone, setPhone] = useState("");
+  const [agree, setAgree] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const canSend = phone.replace(/\D/g, "").length >= 6 && agree;
+  const submit = () => {
+    if (!canSend) return;
+    // TODO: реальная отправка (Telegram / e-mail / CRM)
+    setSent(true);
+  };
+
+  const t = (ru: string, en: string) => (lang === "en" ? en : ru);
 
   return (
-    <footer id="footer" className="scroll-mt-24 bg-white pt-20 pb-10">
-      <div className="mx-auto w-[94%] max-w-[1280px]">
-        <div className="r-reveal font-serif text-[44px] leading-none tracking-[0.12em] text-[#17191a] lg:text-[60px]">
+    <footer id="footer" className="scroll-mt-24 border-t border-[#4E2126]/25 bg-white pt-20 pb-8">
+      <div className="mx-auto w-[94%] max-w-[1320px]">
+        {/* Логотип */}
+        <div className="mb-14 font-serif text-[44px] leading-none tracking-[0.12em] text-[#17191a] lg:text-[60px]">
           ÁLIS
         </div>
 
-        <div className="mt-12 grid gap-10 border-t border-[#4E2126]/60 pt-10 md:grid-cols-2">
-          <nav className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px]">
-            {NAV.map((item, i) => (
-              <span key={item.href} className="flex items-center gap-3">
-                {i > 0 && <span className="text-[#4E2126]">/</span>}
-                <a href={item.href} className="text-[#17191a]/70 transition-colors hover:text-[#17191a]">
-                  {item[lang]}
+        <div className="grid gap-x-10 gap-y-14 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr]">
+          {/* Колонка 1 — форма обратного звонка + соцсети */}
+          <div>
+            <p className="max-w-xs font-serif text-[19px] italic leading-snug text-[#17191a]">
+              {t("Остались вопросы? Оставьте телефон — перезвоним и всё расскажем",
+                 "Still have questions? Leave your phone — we'll call back and tell you everything")}
+            </p>
+
+            {!sent ? (
+              <div className="mt-6 max-w-sm">
+                <label className="mb-2 block text-[13px] text-[#17191a]/50">{t("Телефон", "Phone")}</label>
+                <div className="flex items-center gap-3">
+                  <input
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="+7 (___) ___-__-__"
+                    className="w-full rounded-2xl border border-[#17191a]/15 bg-transparent px-4 py-3 text-[15px] text-[#17191a] outline-none focus:border-[#4E2126] placeholder:text-[#17191a]/30"
+                  />
+                  <button
+                    onClick={submit}
+                    disabled={!canSend}
+                    aria-label={t("Отправить", "Send")}
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#4E2126] text-[#4E2126] transition-colors hover:bg-[#4E2126] hover:text-[#f4efe6] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-[#4E2126]"
+                  >
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+                <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[12px] leading-snug text-[#17191a]/50">
+                  <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#4E2126]" />
+                  <span>
+                    {t("Даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности",
+                       "I consent to the processing of personal data and agree to the privacy policy")}
+                  </span>
+                </label>
+              </div>
+            ) : (
+              <div className="mt-6 max-w-sm rounded-2xl border border-[#4E2126]/30 bg-[#4E2126]/5 px-5 py-4 text-[14px] text-[#17191a]/75">
+                {t("Спасибо! Перезвоним в ближайшее время.", "Thank you! We'll call you back shortly.")}
+              </div>
+            )}
+
+            {/* Соцсети-плитки */}
+            <div className="mt-8 grid max-w-sm grid-cols-3 gap-3">
+              {SOCIAL_TILES.map((s) => (
+                <a key={s.label} href={s.href} className="group block">
+                  <div className="aspect-square overflow-hidden rounded-[14px]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={s.img} alt={s.label} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  </div>
+                  <span className="mt-2 block font-serif text-[15px] italic text-[#17191a] transition-colors group-hover:text-[#4E2126]">
+                    {s.label}
+                  </span>
                 </a>
-              </span>
-            ))}
-          </nav>
-          <nav className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] md:justify-end">
-            {SOCIAL.map((item, i) => (
-              <span key={item} className="flex items-center gap-3">
-                {i > 0 && <span className="text-[#4E2126]">/</span>}
-                <a href="#" className="text-[#17191a]/70 transition-colors hover:text-[#17191a]">
-                  {item}
+              ))}
+            </div>
+          </div>
+
+          {/* Колонка 2 — услуги */}
+          <FooterCol title={t("Услуги", "Services")} items={SERVICES} lang={lang} />
+
+          {/* Колонка 3 — информация */}
+          <FooterCol title={t("Информация", "Information")} items={INFO} lang={lang} />
+
+          {/* Колонка 4 — контакты */}
+          <div>
+            <a href={`tel:${PHONE.replace(/[^\d+]/g, "")}`} className="font-serif text-[26px] text-[#17191a] transition-colors hover:text-[#4E2126] lg:text-[30px]">
+              {PHONE}
+            </a>
+            <p className="mt-2 text-[13px] text-[#17191a]/45">{HOURS[lang]}</p>
+
+            {/* Круглые соцкнопки */}
+            <div className="mt-6 flex gap-3">
+              {["telegram", "whatsapp"].map((n) => (
+                <a key={n} href="#" aria-label={n} className="flex h-11 w-11 items-center justify-center rounded-full bg-[#4E2126] text-[#f4efe6] transition-transform hover:scale-105">
+                  {n === "telegram" ? (
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor"><path d="M21.9 4.3l-3 14.2c-.2 1-.8 1.2-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-.9.5l.3-4.6 8.5-7.7c.4-.3-.1-.5-.6-.2L7.3 13 2.8 11.6c-1-.3-1-1 .2-1.5L20.6 3c.8-.3 1.5.2 1.3 1.3z"/></svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.9 5-1.3A10 10 0 1012 2zm5.5 14c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2c.1.2.1.4 0 .5l-.4.6-.3.3c-.2.2-.4.4-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.3z"/></svg>
+                  )}
                 </a>
+              ))}
+            </div>
+
+            {/* Адрес */}
+            <p className="mt-8 whitespace-pre-line font-serif text-[22px] leading-tight text-[#17191a] lg:text-[26px]">
+              {ADDRESS[lang]}
+            </p>
+            <p className="mt-3 font-serif text-[15px] italic text-[#17191a]/50">
+              {t("Сеть студий эстетики и beauty-concierge ALIS", "ALIS aesthetics studios & beauty concierge")}
+            </p>
+          </div>
+        </div>
+
+        {/* Нижняя строка */}
+        <div className="mt-16 flex flex-col gap-4 border-t border-[#4E2126]/20 pt-7 text-[13px] text-[#17191a]/45 md:flex-row md:items-center md:justify-between">
+          <span>© {new Date().getFullYear()} ALIS — {t("образ, забота, вы", "look, care, you")}</span>
+          <nav className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            {[
+              t("Политика конфиденциальности", "Privacy policy"),
+              t("Публичная оферта", "Public offer"),
+              "Cookie",
+            ].map((x, i) => (
+              <span key={x} className="flex items-center gap-3">
+                {i > 0 && <span className="text-[#4E2126]/50">·</span>}
+                <a href="#" className="transition-colors hover:text-[#17191a]">{x}</a>
               </span>
             ))}
           </nav>
         </div>
-
-        <p className="mt-10 text-[13px] text-[#17191a]/45">
-          © {new Date().getFullYear()} ALIS · {tagline}
-        </p>
       </div>
     </footer>
+  );
+}
+
+function FooterCol({
+  title,
+  items,
+  lang,
+}: {
+  title: string;
+  items: { ru: string; en: string; href: string }[];
+  lang: "ru" | "en";
+}) {
+  return (
+    <div>
+      <p className="mb-5 font-serif text-[18px] text-[#17191a]">{title}</p>
+      <ul className="space-y-3">
+        {items.map((it) => (
+          <li key={it.ru}>
+            <a href={it.href} className="text-[15px] text-[#17191a]/60 transition-colors hover:text-[#4E2126]">
+              {it[lang]}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

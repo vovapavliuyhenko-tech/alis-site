@@ -5,6 +5,7 @@ import About from "@/components/About";
 import HorizontalStory from "@/components/HorizontalStory";
 import Projects from "@/components/Projects";
 import FlipGallery from "@/components/FlipGallery";
+import Faq from "@/components/Faq";
 import Services from "@/components/Services";
 import Reviews from "@/components/Reviews";
 import Booking from "@/components/Booking";
@@ -31,6 +32,7 @@ export default function Home() {
       <HorizontalStory />
       <Reviews />
       <FlipGallery />
+      <Faq />
       <Footer />
     </main>
   );
