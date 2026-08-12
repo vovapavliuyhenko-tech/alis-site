@@ -59,7 +59,7 @@ const TILES: Tile[] = [
     caption: { ru: "образ на выпускной", en: "prom look" },
     front: "/assets/tild6436-383_fermata__1.jpg",
     back: "/assets/tild6561-356_fermata__2.jpg",
-    ratio: "landscape",
+    ratio: "portrait",
     place: "md:col-start-2 md:row-start-2",
   },
   {
@@ -68,7 +68,7 @@ const TILES: Tile[] = [
     caption: { ru: "образ для события", en: "event look" },
     front: "/assets/tild3638-373_-2___1__3.jpg",
     back: "/assets/tild6530-383_-2___1_.jpg",
-    ratio: "landscape",
+    ratio: "portrait",
     place: "md:col-start-1 md:row-start-3",
   },
   {
