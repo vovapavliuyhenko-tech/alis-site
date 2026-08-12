@@ -138,20 +138,7 @@ export default function FlipGallery() {
     <section id="works" className="scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
       <div className="mx-auto w-[96%] max-w-[1620px]">
         <div className="grid grid-cols-2 items-start gap-x-6 gap-y-12 md:grid-cols-4 md:gap-x-9 md:gap-y-16">
-          {TILES.slice(0, 5).map((t) => (
-            <FlipTile key={t.n} t={t} />
-          ))}
-
-          {/* Заголовок в разрыве раскладки (как на референсе — справа от 05) */}
-          <div className="col-span-2 flex items-center md:col-start-3 md:row-start-2 md:col-span-2">
-            <h2 className="font-serif text-[26px] leading-[1.15] text-[#f4efe6] md:text-[34px]">
-              {lang === "en"
-                ? "for you — a finished look for the occasion, not 'sort of done'"
-                : "для вас — готовый образ под повод, а не «вроде накрасилась»"}
-            </h2>
-          </div>
-
-          {TILES.slice(5).map((t) => (
+          {TILES.map((t) => (
             <FlipTile key={t.n} t={t} />
           ))}
         </div>
