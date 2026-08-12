@@ -98,7 +98,7 @@ function FlipTile({ t }: { t: Tile }) {
     <figure className={`${t.place} md:self-start`}>
       {/* Двусторонняя плитка: переворот по наведению */}
       <div className={`group ${aspect} w-full [perspective:1600px]`}>
-        <div className="relative h-full w-full transition-transform duration-[900ms] [transform-style:preserve-3d] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:[transform:rotateY(180deg)]">
+        <div className="relative h-full w-full transition-transform duration-[2200ms] [transform-style:preserve-3d] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:[transform:rotateY(180deg)]">
           {/* Лицо */}
           <div className="absolute inset-0 overflow-hidden rounded-[6px] [backface-visibility:hidden]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -136,8 +136,8 @@ export default function FlipGallery() {
   const { lang } = useLang();
   return (
     <section id="works" className="scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
-      <div className="mx-auto w-[94%] max-w-[1180px]">
-        <div className="grid grid-cols-2 items-start gap-x-5 gap-y-10 md:grid-cols-4 md:gap-x-6 md:gap-y-12">
+      <div className="mx-auto w-[96%] max-w-[1620px]">
+        <div className="grid grid-cols-2 items-start gap-x-6 gap-y-12 md:grid-cols-4 md:gap-x-9 md:gap-y-16">
           {TILES.slice(0, 5).map((t) => (
             <FlipTile key={t.n} t={t} />
           ))}
