@@ -232,7 +232,7 @@ export default function Reviews() {
               <article
                 key={r.name.ru}
                 style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)` }}
-                className="absolute left-1/2 top-1/2 -ml-[130px] -mt-[128px] flex h-[256px] w-[260px] flex-col justify-between rounded-[18px] border border-[#4E2126]/40 bg-white p-6 text-[#17191a] shadow-2xl [backface-visibility:hidden]"
+                className="absolute left-1/2 top-1/2 -ml-[130px] -mt-[128px] flex h-[256px] w-[260px] flex-col justify-between rounded-[18px] border border-[#17191a]/10 bg-white p-6 text-[#17191a] shadow-[0_10px_30px_rgba(23,25,26,0.08)] [backface-visibility:hidden]"
               >
                 <span className="font-serif text-[38px] leading-[0.5] text-[#4E2126]">
                   &ldquo;
