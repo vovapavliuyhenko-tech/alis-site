@@ -1,8 +1,9 @@
 "use client";
-// FOOTER ALIS — расширенный подвал: форма обратного звонка, колонки ссылок
-// (услуги / информация), контакты с адресом и часами, соцсети и нижняя строка
-// с копирайтом и правовыми ссылками. Светлая тема сайта, бордовые акценты.
-// Двуязычно (RU/EN). Телефон/часы — плейсхолдеры, замените на реальные.
+// FOOTER ALIS — тёмный расширенный подвал по типу референса: слева форма
+// обратного звонка + соцсети-плитки, колонки «Услуги» и «Информация», справа
+// контакты (телефон, часы, соцкнопки, адрес). Внизу — копирайт и правовые
+// ссылки. Тёмный фон, светлый текст, бордовые заливки. Двуязычно (RU/EN).
+// Телефон/часы — плейсхолдеры, замените на реальные.
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 
@@ -46,43 +47,38 @@ export default function Footer() {
   const t = (ru: string, en: string) => (lang === "en" ? en : ru);
 
   return (
-    <footer id="footer" className="scroll-mt-24 border-t border-[#4E2126]/25 bg-white pt-20 pb-8">
-      <div className="mx-auto w-[94%] max-w-[1320px]">
-        {/* Логотип */}
-        <div className="mb-14 font-serif text-[44px] leading-none tracking-[0.12em] text-[#17191a] lg:text-[60px]">
-          ÁLIS
-        </div>
-
-        <div className="grid gap-x-10 gap-y-14 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr]">
+    <footer id="footer" className="scroll-mt-24 bg-[#141414] pt-24 pb-8 text-[#f4efe6]">
+      <div className="mx-auto w-[92%] max-w-[1320px]">
+        <div className="grid gap-x-16 gap-y-16 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           {/* Колонка 1 — форма обратного звонка + соцсети */}
           <div>
-            <p className="max-w-xs font-serif text-[19px] italic leading-snug text-[#17191a]">
+            <p className="max-w-xs font-serif text-[20px] italic leading-snug text-[#f4efe6]">
               {t("Остались вопросы? Оставьте телефон — перезвоним и всё расскажем",
                  "Still have questions? Leave your phone — we'll call back and tell you everything")}
             </p>
 
             {!sent ? (
-              <div className="mt-6 max-w-sm">
-                <label className="mb-2 block text-[13px] text-[#17191a]/50">{t("Телефон", "Phone")}</label>
+              <div className="mt-8 max-w-sm">
+                <label className="mb-2 block text-[13px] text-[#f4efe6]/50">{t("Телефон", "Phone")}</label>
                 <div className="flex items-center gap-3">
                   <input
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+7 (___) ___-__-__"
-                    className="w-full rounded-2xl border border-[#17191a]/15 bg-transparent px-4 py-3 text-[15px] text-[#17191a] outline-none focus:border-[#4E2126] placeholder:text-[#17191a]/30"
+                    className="w-full rounded-2xl border border-[#f4efe6]/15 bg-transparent px-4 py-3 text-[15px] text-[#f4efe6] outline-none focus:border-[#f4efe6]/50 placeholder:text-[#f4efe6]/30"
                   />
                   <button
                     onClick={submit}
                     disabled={!canSend}
                     aria-label={t("Отправить", "Send")}
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#4E2126] text-[#4E2126] transition-colors hover:bg-[#4E2126] hover:text-[#f4efe6] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-[#4E2126]"
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#4E2126] text-[#f4efe6] transition-transform hover:scale-105 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
                   >
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
                 </div>
-                <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[12px] leading-snug text-[#17191a]/50">
+                <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[12px] leading-snug text-[#f4efe6]/50">
                   <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#4E2126]" />
                   <span>
                     {t("Даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности",
@@ -91,20 +87,20 @@ export default function Footer() {
                 </label>
               </div>
             ) : (
-              <div className="mt-6 max-w-sm rounded-2xl border border-[#4E2126]/30 bg-[#4E2126]/5 px-5 py-4 text-[14px] text-[#17191a]/75">
+              <div className="mt-8 max-w-sm rounded-2xl border border-[#f4efe6]/15 bg-[#f4efe6]/5 px-5 py-4 text-[14px] text-[#f4efe6]/80">
                 {t("Спасибо! Перезвоним в ближайшее время.", "Thank you! We'll call you back shortly.")}
               </div>
             )}
 
             {/* Соцсети-плитки */}
-            <div className="mt-8 grid max-w-sm grid-cols-3 gap-3">
+            <div className="mt-10 grid max-w-sm grid-cols-3 gap-4">
               {SOCIAL_TILES.map((s) => (
                 <a key={s.label} href={s.href} className="group block">
                   <div className="aspect-square overflow-hidden rounded-[14px]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={s.img} alt={s.label} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
-                  <span className="mt-2 block font-serif text-[15px] italic text-[#17191a] transition-colors group-hover:text-[#4E2126]">
+                  <span className="mt-2.5 block font-serif text-[15px] italic text-[#f4efe6] transition-opacity group-hover:opacity-70">
                     {s.label}
                   </span>
                 </a>
@@ -115,17 +111,13 @@ export default function Footer() {
           {/* Колонка 2 — услуги */}
           <FooterCol title={t("Услуги", "Services")} items={SERVICES} lang={lang} />
 
-          {/* Колонка 3 — информация */}
-          <FooterCol title={t("Информация", "Information")} items={INFO} lang={lang} />
-
-          {/* Колонка 4 — контакты */}
+          {/* Колонка 3 — информация + контакты */}
           <div>
-            <a href={`tel:${PHONE.replace(/[^\d+]/g, "")}`} className="font-serif text-[26px] text-[#17191a] transition-colors hover:text-[#4E2126] lg:text-[30px]">
+            <FooterCol title={t("Информация", "Information")} items={INFO} lang={lang} />
+            <a href={`tel:${PHONE.replace(/[^\d+]/g, "")}`} className="mt-9 block font-serif text-[26px] text-[#f4efe6] transition-opacity hover:opacity-70 lg:text-[30px]">
               {PHONE}
             </a>
-            <p className="mt-2 text-[13px] text-[#17191a]/45">{HOURS[lang]}</p>
-
-            {/* Круглые соцкнопки */}
+            <p className="mt-2 text-[13px] text-[#f4efe6]/45">{HOURS[lang]}</p>
             <div className="mt-6 flex gap-3">
               {["telegram", "whatsapp"].map((n) => (
                 <a key={n} href="#" aria-label={n} className="flex h-11 w-11 items-center justify-center rounded-full bg-[#4E2126] text-[#f4efe6] transition-transform hover:scale-105">
@@ -137,29 +129,32 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+          </div>
 
-            {/* Адрес */}
-            <p className="mt-8 whitespace-pre-line font-serif text-[22px] leading-tight text-[#17191a] lg:text-[26px]">
+          {/* Колонка 4 — бренд + адрес */}
+          <div>
+            <div className="font-serif text-[40px] leading-none tracking-[0.12em] text-[#f4efe6] lg:text-[52px]">ÁLIS</div>
+            <p className="mt-8 whitespace-pre-line font-serif text-[22px] leading-tight text-[#f4efe6] lg:text-[26px]">
               {ADDRESS[lang]}
             </p>
-            <p className="mt-3 font-serif text-[15px] italic text-[#17191a]/50">
-              {t("Сеть студий эстетики и beauty-concierge ALIS", "ALIS aesthetics studios & beauty concierge")}
+            <p className="mt-3 font-serif text-[15px] italic text-[#f4efe6]/50">
+              {t("Сеть студий эстетики и beauty-concierge", "Aesthetics studios & beauty concierge")}
             </p>
           </div>
         </div>
 
         {/* Нижняя строка */}
-        <div className="mt-16 flex flex-col gap-4 border-t border-[#4E2126]/20 pt-7 text-[13px] text-[#17191a]/45 md:flex-row md:items-center md:justify-between">
+        <div className="mt-20 flex flex-col gap-4 border-t border-[#f4efe6]/12 pt-8 text-[13px] text-[#f4efe6]/45 md:flex-row md:items-center md:justify-between">
           <span>© {new Date().getFullYear()} ALIS — {t("образ, забота, вы", "look, care, you")}</span>
-          <nav className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <nav className="flex flex-wrap items-center gap-x-4 gap-y-1">
             {[
               t("Политика конфиденциальности", "Privacy policy"),
               t("Публичная оферта", "Public offer"),
               "Cookie",
             ].map((x, i) => (
-              <span key={x} className="flex items-center gap-3">
-                {i > 0 && <span className="text-[#4E2126]/50">·</span>}
-                <a href="#" className="transition-colors hover:text-[#17191a]">{x}</a>
+              <span key={x} className="flex items-center gap-4">
+                {i > 0 && <span className="text-[#f4efe6]/25">·</span>}
+                <a href="#" className="transition-colors hover:text-[#f4efe6]">{x}</a>
               </span>
             ))}
           </nav>
@@ -180,11 +175,11 @@ function FooterCol({
 }) {
   return (
     <div>
-      <p className="mb-5 font-serif text-[18px] text-[#17191a]">{title}</p>
-      <ul className="space-y-3">
+      <p className="mb-6 text-[16px] font-semibold text-[#f4efe6]">{title}</p>
+      <ul className="space-y-3.5">
         {items.map((it) => (
           <li key={it.ru}>
-            <a href={it.href} className="text-[15px] text-[#17191a]/60 transition-colors hover:text-[#4E2126]">
+            <a href={it.href} className="text-[15px] text-[#f4efe6]/55 transition-colors hover:text-[#f4efe6]">
               {it[lang]}
             </a>
           </li>

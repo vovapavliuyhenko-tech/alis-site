@@ -294,7 +294,7 @@ export default function Booking() {
       style={{
         backgroundColor: "#ffffff",
         backgroundImage:
-          "linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url(/assets/tild6230-643__.jpg)",
+          "linear-gradient(rgba(255,255,255,0.62), rgba(255,255,255,0.62)), url(/assets/tild6230-643__.jpg)",
       }}
     >
       {/* Растушёвка верха и низа — бесшовный стык с соседними блоками */}
