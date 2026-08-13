@@ -24,8 +24,8 @@ export default function Home() {
       <Hero />
       <About />
       <Brands />
-      <BookingWidget />
       <FlipGallery />
+      <BookingWidget />
       <HorizontalStory />
       <Reviews />
       <Projects />
