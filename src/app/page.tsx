@@ -6,7 +6,6 @@ import HorizontalStory from "@/components/HorizontalStory";
 import Projects from "@/components/Projects";
 import FlipGallery from "@/components/FlipGallery";
 import Faq from "@/components/Faq";
-import Services from "@/components/Services";
 import Reviews from "@/components/Reviews";
 import Booking from "@/components/Booking";
 import BookingWidget from "@/components/BookingWidget";
@@ -27,7 +26,6 @@ export default function Home() {
       <Brands />
       <BookingWidget />
       <Projects />
-      <Services />
       <Booking />
       <HorizontalStory />
       <Reviews />
