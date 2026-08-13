@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import HorizontalStory from "@/components/HorizontalStory";
 import Projects from "@/components/Projects";
-import FlipGallery from "@/components/FlipGallery";
 import Faq from "@/components/Faq";
 import Reviews from "@/components/Reviews";
 import Booking from "@/components/Booking";
@@ -24,7 +23,6 @@ export default function Home() {
       <Hero />
       <About />
       <Brands />
-      <FlipGallery />
       <BookingWidget />
       <HorizontalStory />
       <Reviews />

@@ -141,8 +141,19 @@ export default function BookingWidget() {
   const canConfirm = name.trim().length > 1 && phone.replace(/\D/g, "").length >= 6;
 
   return (
-    <section id="online" className="scroll-mt-24 bg-white py-24 lg:py-32">
-      <div className="mx-auto w-[94%] max-w-[1120px]">
+    <section
+      id="online"
+      className="relative scroll-mt-24 bg-white bg-fixed bg-cover bg-center py-24 lg:py-32"
+      style={{
+        backgroundColor: "#ffffff",
+        backgroundImage:
+          "linear-gradient(rgba(255,255,255,0.62), rgba(255,255,255,0.62)), url(/assets/tild3236-393__.jpg)",
+      }}
+    >
+      {/* Растушёвка верха и низа — бесшовный стык с соседними блоками */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent" />
+      <div className="relative mx-auto w-[94%] max-w-[1120px]">
         {/* Заголовок */}
         <div className="mb-10 text-center">
           <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">

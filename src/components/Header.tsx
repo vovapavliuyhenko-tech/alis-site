@@ -29,6 +29,7 @@ const NAV: NavItem[] = [
   { label: { ru: "обо мне", en: "about" }, href: "/#about" },
   { label: { ru: "услуги", en: "services" }, href: "/#services" },
   { label: { ru: "галерея", en: "gallery" }, href: "/#gallery" },
+  { label: { ru: "работы", en: "works" }, href: "/works" },
   { label: { ru: "отзывы", en: "reviews" }, href: "/#reviews" },
   { label: { ru: "этапы", en: "process" }, href: "/#process" },
   { label: { ru: "заявка", en: "request" }, href: "/#booking" },
