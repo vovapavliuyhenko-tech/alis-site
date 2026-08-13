@@ -55,7 +55,7 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
                 {s.blurb[lang]}
               </p>
               <a
-                href="/#booking"
+                href="/request"
                 className="flex w-full items-center justify-center gap-2 rounded-full border border-[#4E2126] bg-[#4E2126] px-6 py-3.5 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#4E2126]"
               >
                 {lang === "en" ? "Book" : "Записаться"}

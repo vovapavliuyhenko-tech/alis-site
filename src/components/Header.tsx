@@ -29,10 +29,9 @@ const NAV: NavItem[] = [
   { label: { ru: "обо мне", en: "about" }, href: "/#about" },
   { label: { ru: "услуги", en: "services" }, href: "/#services" },
   { label: { ru: "галерея", en: "gallery" }, href: "/#gallery" },
-  { label: { ru: "работы", en: "works" }, href: "/works" },
   { label: { ru: "отзывы", en: "reviews" }, href: "/#reviews" },
   { label: { ru: "этапы", en: "process" }, href: "/#process" },
-  { label: { ru: "заявка", en: "request" }, href: "/#booking" },
+  { label: { ru: "заявка", en: "request" }, href: "/request" },
   { label: { ru: "контакты", en: "contacts" }, href: "/#footer" },
 ];
 
@@ -85,7 +84,7 @@ export default function Header() {
         <div className="flex items-center gap-2.5">
           <LangToggle className="hidden sm:flex" />
           <a
-            href="/#booking"
+            href="/request"
             className="flex items-center gap-2.5 rounded-full border border-[#4E2126] bg-[#4E2126] py-2 pl-5 pr-2 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#4E2126]"
           >
             {lang === "en" ? "Book" : "Записаться"}

@@ -199,7 +199,7 @@ export default function Services() {
                           </p>
                         )}
                         <a
-                          href="/#booking"
+                          href="/request"
                           className="mt-7 inline-flex items-center gap-2 rounded-full border border-[#4E2126] bg-[#4E2126] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#4E2126]"
                         >
                           {lang === "en" ? "Book" : "Записаться"} <span aria-hidden>→</span>
