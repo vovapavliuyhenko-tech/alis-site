@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import HorizontalStory from "@/components/HorizontalStory";
-import Team from "@/components/Team";
 import Projects from "@/components/Projects";
 import FlipGallery from "@/components/FlipGallery";
 import Faq from "@/components/Faq";
@@ -23,7 +22,6 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
-      <Team />
       <Brands />
       <FlipGallery />
       <BookingWidget />
