@@ -26,8 +26,8 @@ export default function Home() {
       <FlipGallery />
       <BookingWidget />
       <HorizontalStory />
-      <Reviews />
       <Projects />
+      <Reviews />
       <Faq />
       <Footer />
     </main>
