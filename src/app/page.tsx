@@ -26,10 +26,10 @@ export default function Home() {
       <Brands />
       <BookingWidget />
       <Projects />
-      <Booking />
       <HorizontalStory />
       <Reviews />
       <FlipGallery />
+      <Booking />
       <Faq />
       <Footer />
     </main>
