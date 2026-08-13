@@ -1,7 +1,12 @@
 "use client";
-// ЧАСТЫЕ ВОПРОСЫ — широкий аккордеон на всю ширину контента, в стиле сайта
-// (белый фон, бордовые акценты, serif-заголовки). Двуязычно (RU/EN).
-import { useState } from "react";
+// ЧАСТЫЕ ВОПРОСЫ — широкий аккордеон в стиле сайта. Апгрейд дизайна/анимации:
+// • подсветка активной строки + бордовая полоска-акцент слева
+// • номер-кружок, заливающийся бордовым при открытии
+// • ответ «всплывает» снизу с fade, «+» перетекает в «−»
+// • бордовая линия «прочерчивается» под открытым вопросом
+// • строки появляются по очереди при въезде в экран (scroll-reveal)
+// Двуязычно (RU/EN).
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -55,6 +60,29 @@ const ITEMS: Item[] = [
 export default function Faq() {
   const { lang } = useLang();
   const [open, setOpen] = useState<number>(0);
+  const [started, setStarted] = useState(false);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  // scroll-reveal: как только список въезжает в экран — раскрываем строки по очереди
+  useEffect(() => {
+    const el = listRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setStarted(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setStarted(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   return (
     <section id="faq" className="scroll-mt-24 bg-white py-24 lg:py-32">
@@ -74,42 +102,91 @@ export default function Faq() {
           </p>
         </div>
 
-        {/* Правая колонка — аккордеон на всю ширину */}
-        <div className="border-t border-[#4E2126]/30">
+        {/* Правая колонка — аккордеон */}
+        <div ref={listRef} className="border-t border-[#4E2126]/25">
           {ITEMS.map((it, i) => {
             const isOpen = open === i;
             return (
-              <div key={i} className="border-b border-[#4E2126]/30">
+              <div
+                key={i}
+                className="relative border-b border-[#4E2126]/25 transition-[opacity,transform] duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
+                style={{
+                  opacity: started ? 1 : 0,
+                  transform: started ? "none" : "translateY(22px)",
+                  transitionDelay: started ? `${i * 90}ms` : "0ms",
+                }}
+              >
+                {/* Бордовая полоска-акцент слева (появляется у открытого) */}
+                <span
+                  aria-hidden
+                  className={`absolute left-0 top-0 h-full w-[3px] origin-top bg-[#4E2126] transition-transform duration-500 ease-out ${
+                    isOpen ? "scale-y-100" : "scale-y-0"
+                  }`}
+                />
+                {/* Подсветка активной строки */}
+                <span
+                  aria-hidden
+                  className={`pointer-events-none absolute inset-0 bg-[#4E2126] transition-opacity duration-500 ${
+                    isOpen ? "opacity-[0.04]" : "opacity-0"
+                  }`}
+                />
+
                 <button
                   onClick={() => setOpen(isOpen ? -1 : i)}
                   aria-expanded={isOpen}
-                  className="flex w-full items-center gap-6 py-6 text-left lg:py-7"
+                  className="group relative flex w-full items-center gap-5 py-6 pl-5 pr-2 text-left lg:py-7 lg:pl-7"
                 >
-                  <span className="font-serif text-[15px] tabular-nums text-[#4E2126]">
+                  {/* Номер-кружок */}
+                  <span
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-serif text-[13px] tabular-nums transition-all duration-500 ${
+                      isOpen
+                        ? "bg-[#4E2126] text-[#f4efe6]"
+                        : "bg-[#4E2126]/8 text-[#4E2126]"
+                    }`}
+                  >
                     0{i + 1}
                   </span>
+                  {/* Вопрос (уезжает вправо при наведении) */}
                   <span
-                    className={`flex-1 font-serif text-[20px] leading-snug transition-colors lg:text-[26px] ${
+                    className={`flex-1 font-serif text-[20px] leading-snug transition-[color,transform] duration-300 group-hover:translate-x-1.5 lg:text-[26px] ${
                       isOpen ? "text-[#17191a]" : "text-[#17191a]/80"
                     }`}
                   >
                     {it.q[lang]}
                   </span>
+                  {/* «+» ⇄ «−» */}
                   <span className="relative h-4 w-4 shrink-0">
                     <span className="absolute left-0 top-1/2 h-[1.5px] w-4 -translate-y-1/2 bg-[#4E2126]" />
                     <span
-                      className={`absolute left-1/2 top-0 h-4 w-[1.5px] -translate-x-1/2 bg-[#4E2126] transition-transform duration-300 ${
+                      className={`absolute left-1/2 top-0 h-4 w-[1.5px] -translate-x-1/2 bg-[#4E2126] transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${
                         isOpen ? "rotate-90" : ""
                       }`}
                     />
                   </span>
                 </button>
+
+                {/* Прочерчивающаяся бордовая линия под вопросом */}
+                <span
+                  aria-hidden
+                  className={`absolute left-7 right-2 bottom-0 hidden h-[1.5px] origin-left bg-[#4E2126] transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] lg:block ${
+                    isOpen ? "scale-x-100" : "scale-x-0"
+                  }`}
+                />
+
+                {/* Ответ */}
                 <div
                   className="grid overflow-hidden transition-all duration-500 ease-out"
                   style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
                 >
                   <div className="min-h-0">
-                    <p className="max-w-3xl pb-7 pl-11 pr-8 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
+                    <p
+                      className="max-w-3xl pb-7 pl-[52px] pr-8 text-[15px] leading-relaxed text-[#17191a]/60 transition-[opacity,transform] duration-500 ease-out lg:text-[16px]"
+                      style={{
+                        opacity: isOpen ? 1 : 0,
+                        transform: isOpen ? "none" : "translateY(10px)",
+                        transitionDelay: isOpen ? "120ms" : "0ms",
+                      }}
+                    >
                       {it.a[lang]}
                     </p>
                   </div>
