@@ -73,9 +73,17 @@ export default function CareLines() {
           {en ? "Care lines" : "Линейки уходов"}
         </h2>
 
-        <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:gap-x-7 lg:gap-y-12">
-          {CARDS.map((c) => (
-            <Tile key={c.label.ru} c={c} />
+        <div className="grid grid-cols-2 items-start gap-x-5 sm:grid-cols-3 lg:gap-x-7">
+          {COLS.map((col, i) => (
+            <div
+              key={i}
+              className="flex flex-col gap-10 lg:gap-14"
+              style={{ marginTop: i === 1 ? "2.5rem" : i === 2 ? "1rem" : undefined }}
+            >
+              {col.map((c) => (
+                <Tile key={c.label.ru} c={c} />
+              ))}
+            </div>
           ))}
         </div>
       </div>
