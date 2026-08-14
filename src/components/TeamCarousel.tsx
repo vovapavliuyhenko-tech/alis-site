@@ -3,7 +3,7 @@
 // подзаголовок и горизонтальная лента карточек-портретов со стрелками по бокам.
 // У каждой карточки — имя и роль в матовой плашке снизу. Внизу подпись и бордовая
 // кнопка. Листается свайпом и стрелками. Светлая тема. Двуязычно.
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -26,8 +26,36 @@ export default function TeamCarousel() {
     if (!el) return;
     const card = el.querySelector<HTMLElement>("[data-card]");
     const step = card ? card.offsetWidth + 24 : el.clientWidth * 0.5;
-    el.scrollBy({ left: dir * step, behavior: "smooth" });
+    // Если дошли до конца — вернуться в начало (закольцовка)
+    if (dir === 1 && el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) {
+      el.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      el.scrollBy({ left: dir * step, behavior: "smooth" });
+    }
   };
+
+  // Автопрокрутка: сама листается, пауза при наведении/касании
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let paused = false;
+    const pause = () => (paused = true);
+    const resume = () => (paused = false);
+    el.addEventListener("pointerenter", pause);
+    el.addEventListener("pointerleave", resume);
+    el.addEventListener("pointerdown", pause);
+    const id = setInterval(() => {
+      if (!paused) scrollBy(1);
+    }, 3500);
+    return () => {
+      clearInterval(id);
+      el.removeEventListener("pointerenter", pause);
+      el.removeEventListener("pointerleave", resume);
+      el.removeEventListener("pointerdown", pause);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section id="team" className="scroll-mt-24 bg-white py-24 lg:py-32">
@@ -63,8 +91,8 @@ export default function TeamCarousel() {
 
         <div ref={trackRef} className="hide-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto px-1 pb-2">
           {TEAM.map((m) => (
-            <article key={m.name.ru} data-card className="w-[80%] shrink-0 snap-center sm:w-[46%] lg:w-[calc(33.333%-16px)]">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-[22px] bg-[#f1ede6]">
+            <article key={m.name.ru} data-card className="w-[72%] shrink-0 snap-center sm:w-[40%] lg:w-[calc(28%-16px)]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] bg-[#f1ede6]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={m.photo} alt={m.name[lang]} className="absolute inset-0 h-full w-full object-cover" />
                 {/* Плашка имени */}
