@@ -1,30 +1,24 @@
-// СТРАНИЦА МАГАЗИНА /shop — витрина косметики и ухода, которые можно приобрести
-// в студии. Структура по мотивам главной O'CARE (без блока «Вы и O'CARE»),
-// оформление — в стиле ALIS. Шапка и подвал переиспользованы с сайта.
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+// СТРАНИЦА МАГАЗИНА /shop — точная копия главной O'CARE (ocare.tilda.ws) без блока
+// «Вы и O'CARE»: герой, бестселлеры-слайдер, блог. Бежевый фон, зелёные акценты,
+// шрифты Geologica + Cormorant Garamond. Своя светлая шапка и подвал в стиле O'CARE.
 import ScrollReveal from "@/components/ScrollReveal";
 import SmoothScroll from "@/components/SmoothScroll";
+import ShopHeader from "@/components/shop/ShopHeader";
 import ShopHero from "@/components/shop/ShopHero";
-import ProductTypes from "@/components/shop/ProductTypes";
-import ShopMission from "@/components/shop/ShopMission";
-import CareLines from "@/components/shop/CareLines";
 import Bestsellers from "@/components/shop/Bestsellers";
 import ShopBlog from "@/components/shop/ShopBlog";
+import ShopFooter from "@/components/shop/ShopFooter";
 
 export default function ShopPage() {
   return (
-    <main>
+    <main className="bg-[#F3F2EE]">
       <SmoothScroll />
       <ScrollReveal />
-      <Header />
+      <ShopHeader />
       <ShopHero />
-      <ProductTypes />
-      <ShopMission />
-      <CareLines />
       <Bestsellers />
       <ShopBlog />
-      <Footer />
+      <ShopFooter />
     </main>
   );
 }

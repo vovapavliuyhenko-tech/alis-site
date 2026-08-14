@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Oswald, Playfair_Display } from "next/font/google";
+import { Inter, Oswald, Playfair_Display, Geologica, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import CustomCursor from "@/components/CustomCursor";
@@ -23,6 +23,18 @@ const playfair = Playfair_Display({
   subsets: ["latin", "cyrillic"],
   weight: ["400", "500", "600", "700"],
 });
+// Шрифты магазина /shop — точная копия витрины O'CARE:
+// Geologica (гротеск, основной) + Cormorant Garamond (serif-заголовки).
+const geologica = Geologica({
+  variable: "--font-geologica",
+  subsets: ["latin", "cyrillic"],
+  weight: ["300", "400", "500", "600"],
+});
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin", "cyrillic"],
+  weight: ["500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "ALIS — сеть студий эстетики и beauty-concierge",
@@ -33,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ru" className={`${inter.variable} ${oswald.variable} ${playfair.variable} antialiased`}>
+    <html lang="ru" className={`${inter.variable} ${oswald.variable} ${playfair.variable} ${geologica.variable} ${cormorant.variable} antialiased`}>
       <head>
         {/* Фолбэк: если JS выключен, элементы появления видны сразу */}
         <noscript>
