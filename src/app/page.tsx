@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import HorizontalStory from "@/components/HorizontalStory";
 import FlipGallery from "@/components/FlipGallery";
-import Features from "@/components/Features";
 import LookShowcaseSection from "@/components/LookShowcaseSection";
 import TeamCarousel from "@/components/TeamCarousel";
 import Faq from "@/components/Faq";
@@ -24,7 +23,6 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
-      <Features />
       <Brands />
       <FlipGallery />
       <LookShowcaseSection />
