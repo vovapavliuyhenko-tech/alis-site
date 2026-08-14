@@ -54,9 +54,20 @@ const ITEMS: Item[] = [
   },
 ];
 
-function Row({ it, index, started }: { it: Item; index: number; started: boolean }) {
+function Row({
+  it,
+  index,
+  started,
+  open,
+  onToggle,
+}: {
+  it: Item;
+  index: number;
+  started: boolean;
+  open: boolean;
+  onToggle: () => void;
+}) {
   const { lang } = useLang();
-  const [open, setOpen] = useState(false);
   return (
     <div
       className="border-t border-[#2a2320]/12 transition-[opacity,transform] duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
@@ -67,22 +78,22 @@ function Row({ it, index, started }: { it: Item; index: number; started: boolean
       }}
     >
       <button
-        onClick={() => setOpen((v) => !v)}
+        onClick={onToggle}
         aria-expanded={open}
-        className="group flex w-full items-center justify-between gap-6 py-7 text-left lg:py-8"
+        className="group flex w-full items-center justify-between gap-6 py-5 text-left lg:py-6"
       >
         <span
-          className={`font-serif text-[18px] italic leading-snug transition-colors duration-300 lg:text-[24px] ${
+          className={`font-serif text-[17px] italic leading-snug transition-colors duration-300 lg:text-[21px] ${
             open ? "text-[#4E2126]" : "text-[#2a2320]/85 group-hover:text-[#4E2126]"
           }`}
         >
           {it.q[lang]}
         </span>
         {/* Бордовый круглый «+» → «−» */}
-        <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#4E2126] transition-transform duration-300 group-hover:scale-105 lg:h-12 lg:w-12">
-          <span className="absolute h-[2px] w-[15px] rounded-full bg-[#f4efe6]" />
+        <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#4E2126] transition-transform duration-300 group-hover:scale-105 lg:h-9 lg:w-9">
+          <span className="absolute h-[1.5px] w-[11px] rounded-full bg-[#f4efe6]" />
           <span
-            className={`absolute h-[15px] w-[2px] rounded-full bg-[#f4efe6] transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${
+            className={`absolute h-[11px] w-[1.5px] rounded-full bg-[#f4efe6] transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${
               open ? "rotate-90 scale-0" : ""
             }`}
           />
@@ -95,7 +106,7 @@ function Row({ it, index, started }: { it: Item; index: number; started: boolean
       >
         <div className="min-h-0">
           <p
-            className="max-w-2xl pb-7 pr-14 text-[14px] leading-relaxed text-[#2a2320]/60 transition-[opacity,transform] duration-500 ease-out lg:text-[15px]"
+            className="max-w-2xl pb-6 pr-14 text-[14px] leading-relaxed text-[#2a2320]/60 transition-[opacity,transform] duration-500 ease-out lg:text-[15px]"
             style={{
               opacity: open ? 1 : 0,
               transform: open ? "none" : "translateY(8px)",
@@ -113,6 +124,7 @@ function Row({ it, index, started }: { it: Item; index: number; started: boolean
 export default function Faq() {
   const { lang } = useLang();
   const [started, setStarted] = useState(false);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -155,9 +167,19 @@ export default function Faq() {
         <div ref={gridRef} className="grid gap-x-16 lg:grid-cols-2 lg:gap-x-24">
           {cols.map((col, c) => (
             <div key={c} className="border-b border-[#2a2320]/12">
-              {col.map((it, i) => (
-                <Row key={it.q.ru} it={it} index={c * mid + i} started={started} />
-              ))}
+              {col.map((it, i) => {
+                const idx = c * mid + i;
+                return (
+                  <Row
+                    key={it.q.ru}
+                    it={it}
+                    index={idx}
+                    started={started}
+                    open={openIdx === idx}
+                    onToggle={() => setOpenIdx((v) => (v === idx ? null : idx))}
+                  />
+                );
+              })}
             </div>
           ))}
         </div>
