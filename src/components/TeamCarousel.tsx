@@ -14,6 +14,9 @@ const TEAM: Member[] = [
   { name: { ru: "Анна", en: "Anna" }, role: { ru: "Визажист", en: "Makeup artist" }, photo: "/assets/tild3236-393__.jpg" },
   { name: { ru: "Мария", en: "Maria" }, role: { ru: "Стилист по волосам", en: "Hair stylist" }, photo: "/assets/tild3535-313_bergamo.png" },
   { name: { ru: "Екатерина", en: "Ekaterina" }, role: { ru: "Стилист-имиджмейкер", en: "Image stylist" }, photo: "/assets/tild6536-613_-2___1__4.jpg" },
+  { name: { ru: "София", en: "Sofia" }, role: { ru: "Бровист", en: "Brow artist" }, photo: "/assets/tild6530-383_-2___1_.jpg" },
+  { name: { ru: "Виктория", en: "Viktoria" }, role: { ru: "Косметолог", en: "Cosmetologist" }, photo: "/assets/tild3638-373_-2___1__3.jpg" },
+  { name: { ru: "Ольга", en: "Olga" }, role: { ru: "Мастер по маникюру", en: "Nail artist" }, photo: "/assets/tild3561-646_-2___1__5.jpg" },
 ];
 
 export default function TeamCarousel() {

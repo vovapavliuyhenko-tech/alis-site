@@ -31,7 +31,7 @@ export default function LookShowcase({
   const cur = looks[sel];
 
   return (
-    <div className="grid min-h-[600px] grid-cols-1 bg-white lg:min-h-[760px] lg:grid-cols-2">
+    <div className="grid min-h-[500px] grid-cols-1 bg-white lg:min-h-[600px] lg:grid-cols-2">
       {/* Большое фото во всю сторону */}
       <div className={`relative min-h-[380px] overflow-hidden lg:min-h-full ${mirror ? "lg:order-2" : "lg:order-1"}`}>
         {looks.map((l, i) => (

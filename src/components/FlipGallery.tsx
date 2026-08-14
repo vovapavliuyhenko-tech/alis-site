@@ -133,7 +133,6 @@ function FlipTile({ t }: { t: Tile }) {
 }
 
 export default function FlipGallery() {
-  const { lang } = useLang();
   return (
     <section id="works" className="scroll-mt-24 bg-white py-24 lg:py-32">
       <div className="mx-auto w-[96%] max-w-[1620px]">
@@ -142,10 +141,6 @@ export default function FlipGallery() {
             <FlipTile key={t.n} t={t} />
           ))}
         </div>
-
-        <p className="mt-12 text-center font-mono text-[11px] lowercase tracking-wide text-[#17191a]/35">
-          {lang === "en" ? "hover to flip · both sides are real work" : "наведите, чтобы перевернуть · с обеих сторон — наши работы"}
-        </p>
       </div>
     </section>
   );
