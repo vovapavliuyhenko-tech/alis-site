@@ -28,7 +28,6 @@ export default function LookShowcase({
   const en = lang === "en";
   const [sel, setSel] = useState(0);
   const go = (d: number) => setSel((s) => (s + d + looks.length) % looks.length);
-  const cur = looks[sel];
 
   return (
     <div className="grid min-h-[460px] grid-cols-1 bg-white lg:h-[88vh] lg:max-h-[720px] lg:min-h-[520px] lg:grid-cols-2">
@@ -81,12 +80,6 @@ export default function LookShowcase({
                 />
               ))}
             </div>
-          </div>
-
-          {/* Название + цена */}
-          <div className="mt-4 flex items-center justify-between px-2 text-left">
-            <span className="text-[15px] text-[#17191a]">{cur.name[lang]}</span>
-            <span className="text-[15px] font-medium text-[#4E2126]">{cur.price[lang]}</span>
           </div>
 
           {/* Миниатюры */}
