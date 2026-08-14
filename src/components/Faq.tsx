@@ -1,8 +1,9 @@
 "use client";
 // ЧАСТЫЕ ВОПРОСЫ — split-раскладка: слева аккордеон, справа липкое фото, которое
-// меняется под активный вопрос (плавный кроссфейд). Светлая тема, бордовые
-// акценты, serif-заголовки. Анимации: подсветка активной строки, номер-кружок,
-// всплывающий ответ, «+»⇄«−», прочерчивание линии, scroll-reveal каскадом.
+// меняется под активный вопрос (плавный кроссфейд). Стиль «минимал, крупная
+// типографика»: без кружков и жирных линий — только крупные serif-вопросы с
+// воздухом. Активный вопрос становится бордовым, справа тонкая стрелка ↓.
+// Анимации: цвет активного, всплывающий ответ, scroll-reveal каскадом.
 // Двуязычно (RU/EN).
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
@@ -105,71 +106,48 @@ export default function Faq() {
               : "Не нашли ответ? Оставьте телефон ниже — перезвоним и всё расскажем."}
           </p>
 
-          <div ref={listRef} className="border-t border-[#4E2126]/25">
+          <div ref={listRef} className="border-t border-[#17191a]/10">
             {ITEMS.map((it, i) => {
               const isOpen = open === i;
               return (
                 <div
                   key={i}
-                  className="relative border-b border-[#4E2126]/25 transition-[opacity,transform] duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
+                  className="border-b border-[#17191a]/10 transition-[opacity,transform] duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
                   style={{
                     opacity: started ? 1 : 0,
                     transform: started ? "none" : "translateY(22px)",
                     transitionDelay: started ? `${i * 80}ms` : "0ms",
                   }}
                 >
-                  {/* Полоска-акцент слева */}
-                  <span
-                    aria-hidden
-                    className={`absolute left-0 top-0 h-full w-[3px] origin-top bg-[#4E2126] transition-transform duration-500 ease-out ${
-                      isOpen ? "scale-y-100" : "scale-y-0"
-                    }`}
-                  />
-                  {/* Подсветка активной строки */}
-                  <span
-                    aria-hidden
-                    className={`pointer-events-none absolute inset-0 bg-[#4E2126] transition-opacity duration-500 ${
-                      isOpen ? "opacity-[0.04]" : "opacity-0"
-                    }`}
-                  />
-
                   <button
                     onClick={() => setOpen(isOpen ? -1 : i)}
                     onMouseEnter={() => setOpen(i)}
                     aria-expanded={isOpen}
-                    className="group relative flex w-full items-center gap-4 py-5 pl-5 pr-2 text-left lg:py-6 lg:pl-6"
+                    className="group flex w-full items-start gap-5 py-6 text-left lg:py-8"
                   >
                     <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-serif text-[13px] tabular-nums transition-all duration-500 ${
-                        isOpen ? "bg-[#4E2126] text-[#f4efe6]" : "bg-[#4E2126]/8 text-[#4E2126]"
-                      }`}
-                    >
-                      0{i + 1}
-                    </span>
-                    <span
-                      className={`flex-1 font-serif text-[19px] leading-snug transition-[color,transform] duration-300 group-hover:translate-x-1.5 lg:text-[23px] ${
-                        isOpen ? "text-[#17191a]" : "text-[#17191a]/80"
+                      className={`flex-1 font-serif leading-[1.15] tracking-[-0.01em] transition-colors duration-300 text-[24px] lg:text-[32px] ${
+                        isOpen ? "text-[#4E2126]" : "text-[#17191a] group-hover:text-[#4E2126]"
                       }`}
                     >
                       {it.q[lang]}
                     </span>
-                    <span className="relative h-4 w-4 shrink-0">
-                      <span className="absolute left-0 top-1/2 h-[1.5px] w-4 -translate-y-1/2 bg-[#4E2126]" />
-                      <span
-                        className={`absolute left-1/2 top-0 h-4 w-[1.5px] -translate-x-1/2 bg-[#4E2126] transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${
-                          isOpen ? "rotate-90" : ""
-                        }`}
-                      />
-                    </span>
+                    {/* Тонкая стрелка ↓ — поворачивается при открытии */}
+                    <svg
+                      viewBox="0 0 24 24"
+                      className={`mt-1 h-6 w-6 shrink-0 transition-[rotate,color] duration-500 ease-[cubic-bezier(.16,1,.3,1)] lg:mt-1.5 ${
+                        isOpen ? "rotate-180 text-[#4E2126]" : "text-[#17191a]/40 group-hover:text-[#4E2126]"
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
                   </button>
-
-                  {/* Линия под вопросом */}
-                  <span
-                    aria-hidden
-                    className={`absolute left-6 right-2 bottom-0 hidden h-[1.5px] origin-left bg-[#4E2126] transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] lg:block ${
-                      isOpen ? "scale-x-100" : "scale-x-0"
-                    }`}
-                  />
 
                   <div
                     className="grid overflow-hidden transition-all duration-500 ease-out"
@@ -177,7 +155,7 @@ export default function Faq() {
                   >
                     <div className="min-h-0">
                       <p
-                        className="max-w-xl pb-6 pl-[48px] pr-6 text-[14px] leading-relaxed text-[#17191a]/60 transition-[opacity,transform] duration-500 ease-out lg:text-[15px]"
+                        className="max-w-xl pb-7 pr-10 text-[14px] leading-relaxed text-[#17191a]/55 transition-[opacity,transform] duration-500 ease-out lg:text-[15px]"
                         style={{
                           opacity: isOpen ? 1 : 0,
                           transform: isOpen ? "none" : "translateY(10px)",
