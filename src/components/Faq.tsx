@@ -152,7 +152,7 @@ export default function Faq() {
 
   return (
     <section id="faq" className="scroll-mt-24 bg-white py-24 lg:py-32">
-      <div className="mx-auto w-[90%] max-w-[1500px]">
+      <div className="mx-auto w-[90%] max-w-[1120px]">
         {/* Заголовок по центру */}
         <div className="mb-16 text-center lg:mb-20">
           <span className="font-serif text-[15px] italic tracking-[0.05em] text-[#4E2126]/60 lg:text-[17px]">
@@ -164,7 +164,7 @@ export default function Faq() {
         </div>
 
         {/* Две колонки во всю ширину */}
-        <div ref={gridRef} className="grid gap-x-16 lg:grid-cols-2 lg:gap-x-24">
+        <div ref={gridRef} className="grid gap-x-12 lg:grid-cols-2 lg:gap-x-16">
           {cols.map((col, c) => (
             <div key={c} className="border-b border-[#2a2320]/12">
               {col.map((it, i) => {
