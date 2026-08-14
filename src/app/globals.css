@@ -36,6 +36,10 @@ html { scrollbar-color: var(--wine) #ffffff; scrollbar-width: thin; }
 }
 ::-webkit-scrollbar-thumb:hover { background: #63292f; }
 
+/* Лента-карусель без видимого скроллбара (магазин) */
+.hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
 /* Крупный конденсированный шрифт (Thunder → Oswald стенд-ин) */
 .font-thunder { font-family: var(--font-thunder), 'Oswald', sans-serif; }
 
