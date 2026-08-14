@@ -59,7 +59,7 @@ function Row({ it, index, started }: { it: Item; index: number; started: boolean
   const [open, setOpen] = useState(false);
   return (
     <div
-      className="border-t border-[#4E2126]/15 transition-[opacity,transform] duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
+      className="border-t border-[#2a2320]/12 transition-[opacity,transform] duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
       style={{
         opacity: started ? 1 : 0,
         transform: started ? "none" : "translateY(20px)",
@@ -72,7 +72,7 @@ function Row({ it, index, started }: { it: Item; index: number; started: boolean
         className="group flex w-full items-center justify-between gap-6 py-7 text-left lg:py-8"
       >
         <span
-          className={`text-[16px] leading-snug transition-colors duration-300 lg:text-[19px] ${
+          className={`font-serif text-[18px] italic leading-snug transition-colors duration-300 lg:text-[24px] ${
             open ? "text-[#4E2126]" : "text-[#2a2320]/85 group-hover:text-[#4E2126]"
           }`}
         >
@@ -139,14 +139,14 @@ export default function Faq() {
   const cols = [ITEMS.slice(0, mid), ITEMS.slice(mid)];
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-[#f4efe6] py-24 lg:py-32">
-      <div className="mx-auto w-[90%] max-w-[1600px]">
+    <section id="faq" className="scroll-mt-24 bg-white py-24 lg:py-32">
+      <div className="mx-auto w-[90%] max-w-[1500px]">
         {/* Заголовок по центру */}
         <div className="mb-16 text-center lg:mb-20">
-          <span className="font-serif text-[15px] italic tracking-[0.05em] text-[#4E2126]/70 lg:text-[17px]">
+          <span className="font-serif text-[15px] italic tracking-[0.05em] text-[#4E2126]/60 lg:text-[17px]">
             {lang === "en" ? "frequently asked questions" : "часто задаваемые вопросы"}
           </span>
-          <h2 className="mt-3 font-serif text-[40px] font-semibold uppercase leading-[1.02] tracking-[0.01em] text-[#4E2126] lg:text-[76px]">
+          <h2 className="mt-3 font-serif text-[38px] leading-[1.05] tracking-[0.01em] text-[#4E2126] lg:text-[64px]">
             {lang === "en" ? "FAQ" : "Частые вопросы"}
           </h2>
         </div>
@@ -154,7 +154,7 @@ export default function Faq() {
         {/* Две колонки во всю ширину */}
         <div ref={gridRef} className="grid gap-x-16 lg:grid-cols-2 lg:gap-x-24">
           {cols.map((col, c) => (
-            <div key={c} className="border-b border-[#4E2126]/15">
+            <div key={c} className="border-b border-[#2a2320]/12">
               {col.map((it, i) => (
                 <Row key={it.q.ru} it={it} index={c * mid + i} started={started} />
               ))}
