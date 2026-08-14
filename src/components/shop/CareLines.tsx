@@ -18,29 +18,36 @@ function Drop({ color }: { color: string }) {
   );
 }
 
-// Ровная сетка (row-major) — одинаковая высота, подписи в линию
-const CARDS: Card[] = [
-  { label: { ru: "Увлажняющая", en: "Hydrating" }, img: "/shop/care-a.jpg" },
-  { label: { ru: "Антивозрастная", en: "Anti-age" }, img: "/shop/care-b.jpg" },
-  { label: { ru: "Восстанавливающая", en: "Repairing" }, img: "/shop/care-i.png" },
-  { label: { ru: "Анти-акне", en: "Anti-acne" }, img: "/shop/care-f.jpg", drop: "#E48FB6" },
-  { label: { ru: "Противоотёчная", en: "Anti-puffiness" }, img: "/shop/care-g.jpg", drop: "#6E86D8" },
-  { label: { ru: "SPF", en: "SPF" }, img: "/shop/care-h.jpg", drop: "#F0B366" },
-  { label: { ru: "Очищающая", en: "Cleansing" }, img: "/shop/care-c.jpg", drop: "#7FB4E0" },
-  { label: { ru: "Матирующая", en: "Mattifying" }, img: "/shop/care-d.jpg", drop: "#B79AE0" },
-  { label: { ru: "Ботокс-эффект", en: "Botox-effect" }, img: "/shop/care-e.jpg", drop: "#6FCFC0" },
+// Колонки (column-major) — masonry-коллаж как на референсе O'CARE.
+// Фото в натуральных пропорциях (высота разная), колонки со смещением.
+const COLS: Card[][] = [
+  [
+    { label: { ru: "Увлажняющая", en: "Hydrating" }, img: "/shop/care-a.jpg" },
+    { label: { ru: "Анти-акне", en: "Anti-acne" }, img: "/shop/care-f.jpg", drop: "#E48FB6" },
+    { label: { ru: "Очищающая", en: "Cleansing" }, img: "/shop/care-c.jpg", drop: "#7FB4E0" },
+  ],
+  [
+    { label: { ru: "Антивозрастная", en: "Anti-age" }, img: "/shop/care-b.jpg" },
+    { label: { ru: "Противоотёчная", en: "Anti-puffiness" }, img: "/shop/care-g.jpg", drop: "#6E86D8" },
+    { label: { ru: "Матирующая", en: "Mattifying" }, img: "/shop/care-d.jpg", drop: "#B79AE0" },
+  ],
+  [
+    { label: { ru: "Восстанавливающая", en: "Repairing" }, img: "/shop/care-i.png" },
+    { label: { ru: "SPF", en: "SPF" }, img: "/shop/care-h.jpg", drop: "#F0B366" },
+    { label: { ru: "Ботокс-эффект", en: "Botox-effect" }, img: "/shop/care-e.jpg", drop: "#6FCFC0" },
+  ],
 ];
 
 function Tile({ c }: { c: Card }) {
   const { lang } = useLang();
   return (
     <a href="#bestsellers" className="group block">
-      <div className="relative aspect-[3/4] overflow-hidden rounded-[20px] bg-white">
+      <div className="relative overflow-hidden rounded-[20px] bg-white">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={c.img}
           alt={c.label[lang]}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.05]"
+          className="block h-auto w-full object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.05]"
         />
         {c.drop && <Drop color={c.drop} />}
       </div>
