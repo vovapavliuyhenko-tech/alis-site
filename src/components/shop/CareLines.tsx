@@ -18,23 +18,17 @@ function Drop({ color }: { color: string }) {
   );
 }
 
-// Колонки (column-major) — как на референсе
-const COLS: Card[][] = [
-  [
-    { label: { ru: "Увлажняющая", en: "Hydrating" }, img: "/shop/care-a.jpg" },
-    { label: { ru: "Анти-акне", en: "Anti-acne" }, img: "/shop/care-f.jpg", drop: "#E48FB6" },
-    { label: { ru: "Очищающая", en: "Cleansing" }, img: "/shop/care-c.jpg", drop: "#7FB4E0" },
-  ],
-  [
-    { label: { ru: "Антивозрастная", en: "Anti-age" }, img: "/shop/care-b.jpg" },
-    { label: { ru: "Противоотёчная", en: "Anti-puffiness" }, img: "/shop/care-g.jpg", drop: "#6E86D8" },
-    { label: { ru: "Матирующая", en: "Mattifying" }, img: "/shop/care-d.jpg", drop: "#B79AE0" },
-  ],
-  [
-    { label: { ru: "Восстанавливающая", en: "Repairing" }, img: "/shop/care-i.png" },
-    { label: { ru: "SPF", en: "SPF" }, img: "/shop/care-h.jpg", drop: "#F0B366" },
-    { label: { ru: "Ботокс-эффект", en: "Botox-effect" }, img: "/shop/care-e.jpg", drop: "#6FCFC0" },
-  ],
+// Ровная сетка (row-major) — одинаковая высота, подписи в линию
+const CARDS: Card[] = [
+  { label: { ru: "Увлажняющая", en: "Hydrating" }, img: "/shop/care-a.jpg" },
+  { label: { ru: "Антивозрастная", en: "Anti-age" }, img: "/shop/care-b.jpg" },
+  { label: { ru: "Восстанавливающая", en: "Repairing" }, img: "/shop/care-i.png" },
+  { label: { ru: "Анти-акне", en: "Anti-acne" }, img: "/shop/care-f.jpg", drop: "#E48FB6" },
+  { label: { ru: "Противоотёчная", en: "Anti-puffiness" }, img: "/shop/care-g.jpg", drop: "#6E86D8" },
+  { label: { ru: "SPF", en: "SPF" }, img: "/shop/care-h.jpg", drop: "#F0B366" },
+  { label: { ru: "Очищающая", en: "Cleansing" }, img: "/shop/care-c.jpg", drop: "#7FB4E0" },
+  { label: { ru: "Матирующая", en: "Mattifying" }, img: "/shop/care-d.jpg", drop: "#B79AE0" },
+  { label: { ru: "Ботокс-эффект", en: "Botox-effect" }, img: "/shop/care-e.jpg", drop: "#6FCFC0" },
 ];
 
 function Tile({ c }: { c: Card }) {
@@ -72,17 +66,9 @@ export default function CareLines() {
           {en ? "Care lines" : "Линейки уходов"}
         </h2>
 
-        <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:gap-7">
-          {COLS.map((col, i) => (
-            <div
-              key={i}
-              className="flex flex-col gap-10 lg:gap-14"
-              style={{ marginTop: i === 1 ? "3.5rem" : i === 2 ? "1.5rem" : undefined }}
-            >
-              {col.map((c) => (
-                <Tile key={c.label.ru} c={c} />
-              ))}
-            </div>
+        <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:gap-x-7 lg:gap-y-12">
+          {CARDS.map((c) => (
+            <Tile key={c.label.ru} c={c} />
           ))}
         </div>
       </div>
