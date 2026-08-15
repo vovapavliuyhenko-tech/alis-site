@@ -109,17 +109,9 @@ export default function Services() {
       <div className="mx-auto w-[96%] max-w-[1720px]">
         {/* Заголовок */}
         <div className="mb-12 max-w-2xl lg:mb-16">
-          <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
-            {en ? "services" : "услуги"}
-          </span>
-          <h2 className="mt-5 font-serif text-[34px] leading-[1.08] text-[#4E2126] lg:text-[56px]">
+          <h2 className="font-serif text-[34px] leading-[1.08] text-[#4E2126] lg:text-[56px]">
             {en ? "Our services" : "Наши услуги"}
           </h2>
-          <p className="mt-4 max-w-md text-[14px] leading-relaxed text-[#17191a]/55 lg:text-[15px]">
-            {en
-              ? "Aesthetics and care in one place. Choose a direction — and book a consultation with our specialists."
-              : "Эстетика и уход в одном месте. Выберите направление — и запишитесь на консультацию к нашим специалистам."}
-          </p>
         </div>
 
         {/* Сетка плиток + карточка-CTA */}

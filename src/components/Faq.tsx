@@ -155,10 +155,7 @@ export default function Faq() {
       <div className="mx-auto w-[90%] max-w-[1120px]">
         {/* Заголовок по центру */}
         <div className="mb-16 text-center lg:mb-20">
-          <span className="font-serif text-[15px] italic tracking-[0.05em] text-[#4E2126]/60 lg:text-[17px]">
-            {lang === "en" ? "frequently asked questions" : "часто задаваемые вопросы"}
-          </span>
-          <h2 className="mt-3 font-serif text-[38px] leading-[1.05] tracking-[0.01em] text-[#4E2126] lg:text-[64px]">
+          <h2 className="font-serif text-[38px] leading-[1.05] tracking-[0.01em] text-[#4E2126] lg:text-[64px]">
             {lang === "en" ? "FAQ" : "Частые вопросы"}
           </h2>
         </div>

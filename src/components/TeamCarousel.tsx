@@ -68,11 +68,6 @@ export default function TeamCarousel() {
           <br />
           <span className="font-semibold">{en ? "the ones you trust your look to" : "те, кому доверяют образ"}</span>
         </h2>
-        <p className="mx-auto mt-5 max-w-xl text-[14px] leading-relaxed text-[#17191a]/55 lg:text-[15px]">
-          {en
-            ? "Our team becomes close to the client — easy to talk to, sharing the excitement of the day. Even in stressful moments the masters stay by your side."
-            : "Наша команда становится для клиентов близкими людьми, с которыми легко общаться и делиться эмоциями дня. Даже в волнительные моменты мастера остаются рядом."}
-        </p>
       </div>
 
       <div className="relative mx-auto w-[94%] max-w-[1360px]">
@@ -109,19 +104,6 @@ export default function TeamCarousel() {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 w-[92%] max-w-[720px] text-center">
-        <p className="text-[14px] leading-relaxed text-[#17191a]/55">
-          {en
-            ? "Weddings, shoots, big events — the team helps you prepare and stay calm on the day."
-            : "Свадьбы, съёмки, большие события — команда поможет подготовиться и быть спокойной в свой день."}
-        </p>
-        <a
-          href="/request"
-          className="mt-7 inline-flex items-center justify-center rounded-full border border-[#4E2126] bg-[#4E2126] px-8 py-3.5 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#4E2126]"
-        >
-          {en ? "Meet the team" : "Познакомиться с командой"}
-        </a>
-      </div>
     </section>
   );
 }
