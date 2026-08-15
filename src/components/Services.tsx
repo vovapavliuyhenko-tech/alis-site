@@ -55,24 +55,23 @@ function Tile({ s, i, started }: { s: Service; i: number; started: boolean }) {
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.07]"
       />
       {/* Постоянное затемнение снизу для читаемости подписи */}
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#17191a]/70 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#17191a]/70 to-transparent transition-opacity duration-500 group-hover:opacity-0" />
 
       {/* Номер */}
-      <span className="absolute left-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-[12px] text-white backdrop-blur-sm">
+      <span className="absolute left-4 top-4 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-[12px] text-white backdrop-blur-sm">
         {String(i + 1).padStart(2, "0")}
       </span>
 
       {/* Подпись капсом в скобках */}
-      <span className="absolute bottom-5 left-5 right-5 z-10 text-[15px] font-medium uppercase leading-tight tracking-[0.02em] text-white transition-transform duration-500 group-hover:-translate-y-1 lg:text-[17px]">
+      <span className="absolute bottom-5 left-5 right-5 z-10 text-[15px] font-medium uppercase leading-tight tracking-[0.02em] text-white transition-opacity duration-300 group-hover:opacity-0 lg:text-[17px]">
         ({s.name[lang]})
       </span>
 
-      {/* Бордовая шторка с описанием — выезжает снизу при наведении */}
-      <div className="absolute inset-x-0 bottom-0 translate-y-full bg-[#4E2126] px-5 pb-14 pt-6 transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-y-0">
-        <p className="text-[13px] leading-relaxed text-[#f4efe6]/85 lg:text-[14px]">{s.desc[lang]}</p>
-        <span className="mt-3 inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.14em] text-[#f4efe6]">
+      {/* Блюр всей карточки + «Записаться» по центру при наведении */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#4E2126]/25 opacity-0 backdrop-blur-[6px] transition-opacity duration-500 ease-out group-hover:opacity-100">
+        <span className="inline-flex items-center gap-2.5 rounded-full border border-white/70 px-7 py-3 text-[13px] uppercase tracking-[0.16em] text-white lg:text-[14px]">
           {lang === "en" ? "Book" : "Записаться"}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </span>
       </div>
     </a>
