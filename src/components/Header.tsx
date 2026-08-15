@@ -25,15 +25,12 @@ type NavItem = {
 };
 
 const NAV: NavItem[] = [
-  { label: { ru: "главная", en: "home" }, href: "/" },
-  { label: { ru: "обо мне", en: "about" }, href: "/#about" },
-  { label: { ru: "услуги", en: "services" }, href: "/#services" },
-  { label: { ru: "галерея", en: "gallery" }, href: "/#gallery" },
-  { label: { ru: "магазин", en: "shop" }, href: "/shop" },
-  { label: { ru: "отзывы", en: "reviews" }, href: "/#reviews" },
-  { label: { ru: "этапы", en: "process" }, href: "/#process" },
-  { label: { ru: "заявка", en: "request" }, href: "/request" },
-  { label: { ru: "контакты", en: "contacts" }, href: "/#footer" },
+  { label: { ru: "Услуги", en: "Services" }, href: "/#services" },
+  { label: { ru: "Портфолио", en: "Portfolio" }, href: "/#works" },
+  { label: { ru: "Цены", en: "Prices" }, href: "/#services" },
+  { label: { ru: "Мастера", en: "Masters" }, href: "/#team" },
+  { label: { ru: "FAQ", en: "FAQ" }, href: "/#faq" },
+  { label: { ru: "Контакты", en: "Contacts" }, href: "/#footer" },
 ];
 
 export default function Header() {

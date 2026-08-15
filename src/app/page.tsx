@@ -1,17 +1,14 @@
 import Preloader from "@/components/Preloader";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
 import Services from "@/components/Services";
-import Certificates from "@/components/Certificates";
 import HorizontalStory from "@/components/HorizontalStory";
 import FlipGallery from "@/components/FlipGallery";
-import LookShowcaseSection from "@/components/LookShowcaseSection";
 import TeamCarousel from "@/components/TeamCarousel";
-import Faq from "@/components/Faq";
+import Certificates from "@/components/Certificates";
 import Reviews from "@/components/Reviews";
+import Faq from "@/components/Faq";
 import BookingWidget from "@/components/BookingWidget";
-import Brands from "@/components/Brands";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -23,18 +20,24 @@ export default function Home() {
       <SmoothScroll />
       <ScrollReveal />
       <Header />
+      {/* 1 — Херо */}
       <Hero />
-      <About />
+      {/* 2 — Наши услуги */}
       <Services />
-      <Brands />
-      <BookingWidget />
-      <FlipGallery />
-      <LookShowcaseSection />
+      {/* 3 — Как это работает / этапы */}
       <HorizontalStory />
+      {/* 4 — Наши работы (портфолио) */}
+      <FlipGallery />
+      {/* 5 — Мастера */}
       <TeamCarousel />
+      {/* 6 — Сертификаты */}
       <Certificates />
+      {/* 7 — Отзывы */}
       <Reviews />
+      {/* 8 — FAQ */}
       <Faq />
+      {/* 9 — Онлайн-заявка */}
+      <BookingWidget />
       <Footer />
     </main>
   );
