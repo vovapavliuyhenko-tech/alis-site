@@ -3,6 +3,7 @@ import { Inter, Oswald, Playfair_Display, Geologica, Cormorant_Garamond } from "
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import CustomCursor from "@/components/CustomCursor";
+import CookieConsent from "@/components/CookieConsent";
 
 // Inter — основной текст (как на resayme). Oswald — стенд-ин под Thunder (крупный текст).
 // Настоящие крупные заголовки resayme — это SVG (лежат в /public/assets), а не шрифт.
@@ -53,7 +54,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </noscript>
       </head>
       <body>
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          {children}
+          <CookieConsent />
+        </LanguageProvider>
         <CustomCursor />
       </body>
     </html>

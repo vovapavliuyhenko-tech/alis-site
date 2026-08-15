@@ -81,8 +81,11 @@ export default function Footer() {
                 <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[12px] leading-snug text-[#f4efe6]/50">
                   <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#4E2126]" />
                   <span>
-                    {t("Даю согласие на обработку персональных данных и соглашаюсь с политикой конфиденциальности",
-                       "I consent to the processing of personal data and agree to the privacy policy")}
+                    {t("Даю согласие на обработку персональных данных и соглашаюсь с ",
+                       "I consent to the processing of personal data and agree to the ")}
+                    <a href="/policy" className="underline underline-offset-2 hover:text-[#f4efe6]">
+                      {t("политикой конфиденциальности", "privacy policy")}
+                    </a>
                   </span>
                 </label>
               </div>
@@ -148,13 +151,13 @@ export default function Footer() {
           <span>© {new Date().getFullYear()} ALIS — {t("образ, забота, вы", "look, care, you")}</span>
           <nav className="flex flex-wrap items-center gap-x-4 gap-y-1">
             {[
-              t("Политика конфиденциальности", "Privacy policy"),
-              t("Публичная оферта", "Public offer"),
-              "Cookie",
+              { label: t("Политика конфиденциальности", "Privacy policy"), href: "/policy" },
+              { label: t("Публичная оферта", "Public offer"), href: "/offer" },
+              { label: "Cookie", href: "/cookies" },
             ].map((x, i) => (
-              <span key={x} className="flex items-center gap-4">
+              <span key={x.href} className="flex items-center gap-4">
                 {i > 0 && <span className="text-[#f4efe6]/25">·</span>}
-                <a href="#" className="transition-colors hover:text-[#f4efe6]">{x}</a>
+                <a href={x.href} className="transition-colors hover:text-[#f4efe6]">{x.label}</a>
               </span>
             ))}
           </nav>

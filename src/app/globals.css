@@ -112,3 +112,27 @@ html.has-custom-cursor * { cursor: none !important; }
 @media (prefers-reduced-motion: reduce) {
   .r-reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ===== Типографика юридических страниц (политика, оферта, cookie) ===== */
+.legal-prose { color: #17191a; font-size: 15px; line-height: 1.75; }
+.legal-prose h2 {
+  margin: 2.2rem 0 0.9rem;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 22px;
+  line-height: 1.25;
+  color: var(--wine);
+}
+.legal-prose h3 {
+  margin: 1.6rem 0 0.6rem;
+  font-size: 16px;
+  font-weight: 600;
+  color: #17191a;
+}
+.legal-prose p { margin: 0 0 1rem; color: rgba(23,25,26,0.8); }
+.legal-prose ul, .legal-prose ol { margin: 0 0 1rem; padding-left: 1.3rem; color: rgba(23,25,26,0.8); }
+.legal-prose li { margin: 0 0 0.5rem; padding-left: 0.2rem; }
+.legal-prose li::marker { color: var(--wine); }
+.legal-prose a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
+.legal-prose a:hover { opacity: 0.75; }
+.legal-prose strong { color: #17191a; font-weight: 600; }
+.legal-prose table { margin: 1rem 0; }
