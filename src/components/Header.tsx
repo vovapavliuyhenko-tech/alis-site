@@ -85,7 +85,7 @@ export default function Header() {
         <div className="flex items-center gap-2.5">
           <LangToggle className="hidden sm:flex" />
           <a
-            href="/request"
+            href="/#online"
             className="flex items-center gap-2.5 rounded-full border border-[#4E2126] bg-[#4E2126] py-2 pl-5 pr-2 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#4E2126]"
           >
             {lang === "en" ? "Book" : "Записаться"}

@@ -71,7 +71,7 @@ export default function Bestsellers() {
           {PRODUCTS.map((p) => (
             <a
               key={p.name.ru}
-              href="/request"
+              href="/#online"
               className="group w-[75%] shrink-0 snap-start sm:w-[46%] lg:w-[calc(25%-15px)]"
             >
               <div className="relative aspect-square overflow-hidden rounded-[18px] bg-white">

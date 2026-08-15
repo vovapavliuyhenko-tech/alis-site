@@ -90,15 +90,26 @@ export default function TeamCarousel() {
         <div ref={trackRef} className="hide-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto px-1 pb-2">
           {TEAM.map((m) => (
             <article key={m.name.ru} data-card className="w-[72%] shrink-0 snap-center sm:w-[40%] lg:w-[calc(28%-16px)]">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] bg-[#f1ede6]">
+              <a href="/#online" className="group relative block aspect-[4/5] overflow-hidden rounded-[22px] bg-[#f1ede6]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={m.photo} alt={m.name[lang]} className="absolute inset-0 h-full w-full object-cover" />
-                {/* Плашка имени */}
-                <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded-2xl bg-[#17191a]/35 px-5 py-3.5 backdrop-blur-md">
+                <img
+                  src={m.photo}
+                  alt={m.name[lang]}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.07]"
+                />
+                {/* Плашка имени — исчезает при наведении */}
+                <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded-2xl bg-[#17191a]/35 px-5 py-3.5 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-0">
                   <span className="font-serif text-[17px] text-[#f4efe6] lg:text-[19px]">{m.name[lang]}</span>
                   <span className="text-[11px] uppercase tracking-[0.1em] text-[#f4efe6]/80">{m.role[lang]}</span>
                 </div>
-              </div>
+                {/* Блюр всей карточки + «Записаться» по центру при наведении */}
+                <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#4E2126]/25 opacity-0 backdrop-blur-[6px] transition-opacity duration-500 ease-out group-hover:opacity-100">
+                  <span className="inline-flex items-center gap-2.5 rounded-full border border-white/70 px-6 py-2.5 text-[13px] uppercase tracking-[0.16em] text-white">
+                    {en ? "Book" : "Записаться"}
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  </span>
+                </div>
+              </a>
             </article>
           ))}
         </div>

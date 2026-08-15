@@ -47,7 +47,7 @@ function Tile({ s, i, started }: { s: Service; i: number; started: boolean }) {
     transitionDelay: started ? `${i * 90}ms` : "0ms",
   };
   return (
-    <a href="/request" style={reveal} className="group relative block aspect-[5/6] overflow-hidden rounded-[22px] bg-[#f1ede6]">
+    <a href="/#online" style={reveal} className="group relative block aspect-[5/6] overflow-hidden rounded-[22px] bg-[#f1ede6]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={s.img}
@@ -122,7 +122,7 @@ export default function Services() {
 
           {/* CTA-карточка */}
           <a
-            href="/request"
+            href="/#online"
             style={{
               opacity: started ? 1 : 0,
               transform: started ? "none" : "translateY(26px)",

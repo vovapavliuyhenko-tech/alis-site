@@ -30,7 +30,7 @@ export default function LookShowcaseSection() {
             en: "Change with the season. Discover new looks and premium care.",
           }}
           looks={LOOKS}
-          href="/request"
+          href="/#online"
           cta={{ ru: "Записаться", en: "Book now" }}
         />
       </div>
