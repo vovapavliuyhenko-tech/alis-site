@@ -85,14 +85,16 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Растянутая кнопка записи во всю ширину экрана — прозрачная, бордовая обводка */}
-      <a
-        href="/#online"
-        className="group absolute inset-x-0 bottom-0 z-20 flex w-full items-center justify-center gap-3 border border-[#4E2126] bg-transparent py-4 text-[13px] font-medium uppercase tracking-[0.14em] text-[#4E2126] transition-colors duration-300 hover:bg-[#4E2126] hover:text-[#f4efe6] lg:py-5"
-      >
-        {lang === "en" ? "Book now" : "Записаться на приём"}
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-      </a>
+      {/* Широкая кнопка записи — прозрачная, бордовая обводка, без тени */}
+      <div className="absolute inset-x-0 bottom-7 z-20 flex justify-center px-6 lg:bottom-10">
+        <a
+          href="/#online"
+          className="group flex w-full max-w-[1200px] items-center justify-center gap-3 rounded-full border-2 border-[#4E2126] bg-transparent py-5 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#4E2126] transition-colors duration-300 hover:bg-[#4E2126] hover:text-[#f4efe6] lg:py-6"
+        >
+          {lang === "en" ? "Book now" : "Записаться на приём"}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        </a>
+      </div>
     </section>
   );
 }
