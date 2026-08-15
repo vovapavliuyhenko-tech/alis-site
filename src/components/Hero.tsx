@@ -55,16 +55,20 @@ export default function Hero() {
       />
 
       {/* Центральная белая карточка (опускается при скролле) */}
-      <div className="absolute inset-0 flex items-center justify-center px-6 pb-24">
+      <div className="absolute inset-0 flex items-center justify-center px-6">
         <div
           ref={cardRef}
-          className="flex max-h-[76svh] w-[88%] max-w-[360px] flex-col items-center justify-between rounded-[26px] bg-white px-7 py-8 text-center text-[#17191a] shadow-[0_20px_60px_rgba(0,0,0,0.15)] will-change-transform"
+          className="flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between rounded-[26px] bg-white px-7 py-9 text-center text-[#17191a] shadow-[0_20px_60px_rgba(0,0,0,0.15)] will-change-transform"
         >
-          <span className="text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45">
-            {lang === "en" ? "Beauty studio · Novorossiysk" : "Салон эстетики и красоты · Новороссийск"}
-          </span>
+          <p className="mx-auto max-w-[17rem] text-[13px] leading-snug">
+            {lang === "en"
+              ? "Network of aesthetics studios & beauty concierge"
+              : "Сеть студий эстетики и beauty-concierge"}
+            <br />
+            {lang === "en" ? "— Daiana Tarzyan" : "— Дайана Тарзян"}
+          </p>
 
-          <div className="flex flex-col items-center py-4">
+          <div className="flex flex-1 flex-col items-center justify-center">
             <span className="font-serif text-[46px] leading-none tracking-[0.08em] text-[#17191a]">
               ÁLIS
             </span>
@@ -73,38 +77,22 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Продающий оффер */}
-          <div className="w-full">
-            <p className="font-serif text-[19px] leading-snug text-[#4E2126]">
-              {lang === "en"
-                ? "A flawless look that lasts to the last frame"
-                : "Безупречный образ, стойкий до последнего кадра"}
-            </p>
-            <ul className="mx-auto mt-4 flex max-w-[16rem] flex-col gap-2 text-left">
-              {(lang === "en"
-                ? ["Makeup, hair & cosmetology — top masters", "Holds all day and evening", "First consultation — free"]
-                : ["Макияж, волосы, косметология — топ-мастера", "Держится весь день и вечер", "Первая консультация — бесплатно"]
-              ).map((b) => (
-                <li key={b} className="flex items-start gap-2 text-[12.5px] leading-snug text-[#17191a]/70">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4E2126" strokeWidth="2.4" className="mt-[2px] shrink-0"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                  {b}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <p className="mx-auto max-w-[18rem] text-[13px] leading-snug text-[#17191a]/60">
+            {lang === "en"
+              ? "Your look for the day you can't reshoot — flawless, all-day, and truly yours."
+              : "Ваш образ в день, который не переснять — безупречный, стойкий и по-настоящему ваш."}
+          </p>
         </div>
       </div>
 
-      {/* Растянутая кнопка записи внизу первого экрана */}
-      <div className="absolute inset-x-0 bottom-6 z-20 flex justify-center px-6">
-        <a
-          href="/#online"
-          className="group flex w-full max-w-[1180px] items-center justify-center gap-3 rounded-full bg-[#4E2126] py-4 text-[13px] font-medium uppercase tracking-[0.14em] text-[#f4efe6] shadow-[0_14px_40px_rgba(78,33,38,0.35)] transition-transform duration-300 hover:scale-[1.01] lg:py-5"
-        >
-          {lang === "en" ? "Book now" : "Записаться на приём"}
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-        </a>
-      </div>
+      {/* Растянутая кнопка записи во всю ширину экрана — прозрачная, бордовая обводка */}
+      <a
+        href="/#online"
+        className="group absolute inset-x-0 bottom-0 z-20 flex w-full items-center justify-center gap-3 border border-[#4E2126] bg-transparent py-4 text-[13px] font-medium uppercase tracking-[0.14em] text-[#4E2126] transition-colors duration-300 hover:bg-[#4E2126] hover:text-[#f4efe6] lg:py-5"
+      >
+        {lang === "en" ? "Book now" : "Записаться на приём"}
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </a>
     </section>
   );
 }
