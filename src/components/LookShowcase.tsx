@@ -3,7 +3,7 @@
 // высоту половины экрана, с другой — панель с листаемой карточкой (стрелки +
 // миниатюры). Выбор миниатюры меняет и большое фото, и карточку. Проп mirror
 // зеркалит раскладку (фото справа). Светлая тема, бордовые акценты. Двуязычно.
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -29,8 +29,22 @@ export default function LookShowcase({
   const [sel, setSel] = useState(0);
   const go = (d: number) => setSel((s) => (s + d + looks.length) % looks.length);
 
+  // Автолистание — сама переключается, пауза при наведении
+  const paused = useRef(false);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => {
+      if (!paused.current) setSel((s) => (s + 1) % looks.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, [looks.length]);
+
   return (
-    <div className="grid min-h-[460px] grid-cols-1 bg-white lg:h-[88vh] lg:max-h-[720px] lg:min-h-[520px] lg:grid-cols-2">
+    <div
+      onMouseEnter={() => (paused.current = true)}
+      onMouseLeave={() => (paused.current = false)}
+      className="grid min-h-[460px] grid-cols-1 bg-white lg:h-[88vh] lg:max-h-[720px] lg:min-h-[520px] lg:grid-cols-2"
+    >
       {/* Большое фото во всю сторону */}
       <div className={`relative min-h-[380px] overflow-hidden lg:min-h-full ${mirror ? "lg:order-2" : "lg:order-1"}`}>
         {looks.map((l, i) => (
