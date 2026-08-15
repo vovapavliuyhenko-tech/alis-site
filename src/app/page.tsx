@@ -2,6 +2,7 @@ import Preloader from "@/components/Preloader";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Services from "@/components/Services";
 import HorizontalStory from "@/components/HorizontalStory";
 import FlipGallery from "@/components/FlipGallery";
 import LookShowcaseSection from "@/components/LookShowcaseSection";
@@ -23,6 +24,7 @@ export default function Home() {
       <Header />
       <Hero />
       <About />
+      <Services />
       <Brands />
       <BookingWidget />
       <FlipGallery />
