@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Services from "@/components/Services";
+import Certificates from "@/components/Certificates";
 import HorizontalStory from "@/components/HorizontalStory";
 import FlipGallery from "@/components/FlipGallery";
 import LookShowcaseSection from "@/components/LookShowcaseSection";
@@ -31,6 +32,7 @@ export default function Home() {
       <LookShowcaseSection />
       <HorizontalStory />
       <TeamCarousel />
+      <Certificates />
       <Reviews />
       <Faq />
       <Footer />
