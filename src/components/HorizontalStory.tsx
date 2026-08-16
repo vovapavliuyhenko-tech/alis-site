@@ -100,7 +100,7 @@ export default function HorizontalStory() {
         sec.style.height = "";
         return;
       }
-      const vh = window.innerHeight;
+      const vh = Math.round(window.innerHeight * 0.8);
       const maxX = track.scrollWidth - vw;
       sec.style.height = `${maxX + vh}px`;
       const scrolled = Math.min(Math.max(-sec.getBoundingClientRect().top, 0), maxX);
@@ -123,7 +123,7 @@ export default function HorizontalStory() {
 
   return (
     <section id="process" ref={secRef} className="relative bg-white">
-      <div className="md:sticky md:top-0 md:h-svh md:overflow-hidden">
+      <div className="md:sticky md:top-[10vh] md:h-[80svh] md:overflow-hidden">
         <div
           ref={trackRef}
           className="flex flex-col md:h-full md:flex-row md:will-change-transform"
@@ -134,7 +134,7 @@ export default function HorizontalStory() {
               className="flex w-full shrink-0 flex-col md:h-full md:w-screen md:flex-row"
             >
               {/* Левая кремовая половина */}
-              <div className="flex flex-col justify-between bg-white px-6 py-12 md:w-[46%] md:px-[4vw] md:pb-[8vh] md:pt-[18vh]">
+              <div className="flex flex-col justify-between bg-white px-6 py-12 md:w-[46%] md:px-[4vw] md:pb-[6vh] md:pt-[12vh]">
                 <div>
                   <span className="text-[12px] uppercase tracking-[0.3em] text-[#4E2126]">
                     {lang === "en" ? "Step" : "Этап"} 0{i + 1}
