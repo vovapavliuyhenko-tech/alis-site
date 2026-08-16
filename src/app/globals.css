@@ -143,6 +143,18 @@ html.has-custom-cursor * { cursor: none !important; }
   35% { opacity: 1; }
   100% { opacity: 0; transform: scale(1.4) translateY(-34px); }
 }
+/* Непрерывное вращение карты сертификата под углом (медленно) */
+.cert-rotate {
+  animation: certrotate 14s linear infinite;
+}
+.group:hover .cert-rotate { animation-play-state: paused; }
+@keyframes certrotate {
+  from { transform: rotateX(12deg) rotateY(0deg); }
+  to   { transform: rotateX(12deg) rotateY(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cert-rotate { animation: none; transform: rotateX(12deg) rotateY(-18deg); }
+}
 @keyframes certtwinkle {
   0% { opacity: 0; transform: scale(0) rotate(-40deg); }
   40% { opacity: 1; transform: scale(1.15) rotate(90deg); }

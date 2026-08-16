@@ -142,8 +142,8 @@ export default function Certificates() {
                   </svg>
                 ))}
 
-                {/* Карта: front + back, полный оборот по Y */}
-                <div className="relative aspect-[1.6/1] [transform-style:preserve-3d] transition-transform duration-[1100ms] ease-[cubic-bezier(.4,.1,.2,1)] [transform:rotateY(0deg)_rotateX(4deg)] group-hover:[transform:rotateY(360deg)_rotateX(0deg)_translateY(-8px)]">
+                {/* Карта: front + back, непрерывное вращение под углом */}
+                <div className="cert-rotate relative aspect-[1.6/1] [transform-style:preserve-3d]">
                   {/* Лицевая сторона */}
                   <div className="absolute inset-0 overflow-hidden rounded-[20px] border border-[#f4efe6]/25 bg-gradient-to-br from-[#5c2a30] to-[#3a171b] p-6 shadow-[-18px_24px_50px_rgba(0,0,0,0.4)] [backface-visibility:hidden]">
                     <div className="flex h-full flex-col justify-between">
