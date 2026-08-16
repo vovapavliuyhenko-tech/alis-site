@@ -8,7 +8,19 @@ import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
 type CatId = "all" | "bride" | "evening" | "day" | "shoot" | "event" | "onsite";
-type Tile = { n: string; label: Loc; caption: Loc; front: string; back: string };
+type Tile = { n: string; label: Loc; caption: Loc; front: string; back: string; place: string };
+
+// Исходная асимметричная раскладка: 1-й ряд 4, 2-й ряд 1, 3-й ряд 3 карточки
+const PLACES = [
+  "md:col-start-1 md:row-start-1",
+  "md:col-start-2 md:row-start-1",
+  "md:col-start-3 md:row-start-1",
+  "md:col-start-4 md:row-start-1",
+  "md:col-start-2 md:row-start-2",
+  "md:col-start-1 md:row-start-3",
+  "md:col-start-3 md:row-start-3",
+  "md:col-start-4 md:row-start-3",
+];
 
 const CATS: { id: CatId; label: Loc; short: Loc; caption: Loc }[] = [
   { id: "all", label: { ru: "Все", en: "All" }, short: { ru: "/образ", en: "/look" }, caption: { ru: "образ ALIS", en: "ALIS look" } },
@@ -56,6 +68,7 @@ function buildTiles(cat: (typeof CATS)[number], catIndex: number): Tile[] {
       caption: cat.caption,
       front: POOL[base % POOL.length],
       back: POOL[(base + 1) % POOL.length],
+      place: PLACES[i],
     };
   });
 }
@@ -63,7 +76,7 @@ function buildTiles(cat: (typeof CATS)[number], catIndex: number): Tile[] {
 function FlipTile({ t }: { t: Tile }) {
   const { lang } = useLang();
   return (
-    <figure className="self-start">
+    <figure className={`${t.place} md:self-start`}>
       {/* Двусторонняя плитка: переворот по наведению */}
       <div className="group aspect-[3/4] w-full [perspective:1600px]">
         <div className="relative h-full w-full transition-transform duration-[1500ms] [transform-style:preserve-3d] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:[transform:rotateY(180deg)]">
@@ -138,7 +151,7 @@ export default function FlipGallery() {
         {/* Сетка 8 плиток — расположение фиксировано, меняются только фото */}
         <div
           key={active}
-          className="grid animate-[fadeGrid_.5s_ease] grid-cols-2 items-start gap-x-6 gap-y-12 md:grid-cols-4 md:gap-x-9 md:gap-y-16"
+          className="grid animate-[fadeGrid_.5s_ease] grid-cols-2 items-start gap-x-6 gap-y-12 md:grid-cols-4 md:gap-x-9 md:gap-y-16 md:[grid-auto-rows:min-content]"
         >
           {tiles.map((t) => (
             <FlipTile key={t.n} t={t} />
