@@ -122,7 +122,7 @@ export default function TeamCarousel() {
     el.addEventListener("pointerdown", pause);
     const id = setInterval(() => {
       if (!paused) scrollBy(1);
-    }, 3800);
+    }, 2600);
     return () => {
       clearInterval(id);
       el.removeEventListener("pointerenter", pause);
@@ -138,27 +138,33 @@ export default function TeamCarousel() {
         {/* Заголовок + стрелки сверху справа */}
         <div className="mb-10 flex items-end justify-between gap-6 lg:mb-14">
           <div className="max-w-2xl">
-            <h2 className="font-serif text-[30px] leading-[1.1] text-[#4E2126] lg:text-[48px]">
-              {en ? "The masters of ALIS" : "Мастера ALIS"}
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#4E2126]/8 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4E2126]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#4E2126]" />
+              {en ? "Team" : "Команда"}
+            </span>
+            <h2 className="mt-5 font-serif text-[30px] leading-[1.1] text-[#2a2320] lg:text-[48px]">
+              {en ? "The masters who" : "Мастера, которым"}
+              <br />
+              <span className="text-[#4E2126]">{en ? "craft your look" : "доверяют образ"}</span>
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
               {en
-                ? "The people you trust your look to — with character and an eye for detail."
-                : "Те, кому вы доверяете образ — с характером и вниманием к деталям."}
+                ? "Over your look works a full team — with character and an eye for detail."
+                : "Над вашим образом работает целая команда — с характером и вниманием к деталям."}
             </p>
           </div>
           <div className="hidden shrink-0 gap-3 sm:flex">
             <button
               aria-label={en ? "Previous" : "Назад"}
               onClick={() => scrollBy(-1)}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#17191a]/12 bg-white text-[#4E2126] transition-colors hover:bg-[#4E2126] hover:text-[#f4efe6]"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#4E2126] text-[#f4efe6] shadow-[0_8px_24px_rgba(78,33,38,0.3)] transition-all hover:scale-105 hover:bg-[#3a171b]"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
             <button
               aria-label={en ? "Next" : "Вперёд"}
               onClick={() => scrollBy(1)}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#17191a]/12 bg-white text-[#4E2126] transition-colors hover:bg-[#4E2126] hover:text-[#f4efe6]"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#4E2126] text-[#f4efe6] shadow-[0_8px_24px_rgba(78,33,38,0.3)] transition-all hover:scale-105 hover:bg-[#3a171b]"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
@@ -171,7 +177,7 @@ export default function TeamCarousel() {
             <article
               key={m.name.ru}
               data-card
-              className="flex w-[80%] shrink-0 snap-start flex-col overflow-hidden rounded-[22px] border border-[#17191a]/8 bg-white shadow-[0_10px_40px_rgba(23,25,26,0.06)] sm:w-[46%] lg:w-[calc(25%-18px)]"
+              className="flex w-[72%] shrink-0 snap-start flex-col overflow-hidden rounded-[20px] border border-[#17191a]/8 bg-white shadow-[0_10px_40px_rgba(23,25,26,0.06)] sm:w-[40%] lg:w-[calc(20%-16px)]"
             >
               {/* Фото + ховер-блюр с «Записаться» */}
               <a href="/#online" className="group relative block aspect-[3/4] overflow-hidden bg-[#f1ede6]">
