@@ -33,6 +33,8 @@ export default function Home() {
       <HorizontalStory />
       {/* 4 — Наши работы (портфолио) */}
       <FlipGallery />
+      {/* Онлайн-заявка (под портфолио) */}
+      <BookingWidget />
       {/* Бренды */}
       <Brands />
       {/* 5 — Мастера */}
@@ -45,8 +47,6 @@ export default function Home() {
       <Reviews />
       {/* 8 — FAQ */}
       <Faq />
-      {/* 9 — Онлайн-заявка */}
-      <BookingWidget />
       <Footer />
     </main>
   );
