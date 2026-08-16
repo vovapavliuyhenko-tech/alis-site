@@ -30,41 +30,41 @@ export default function ConciergeConsult() {
   };
 
   const bullets = [
-    t("Выезд по России и за границу — под ваш график", "On-site across Russia and abroad — around your schedule"),
-    t("Личный консьерж на связи от заявки до события", "A personal concierge in touch from request to event"),
-    t("Команда мастеров, косметика и логистика — на нас", "The team, cosmetics and logistics — all on us"),
+    t("Не ищете мастеров на месте — привозим своих", "No hunting for local artists — we bring our own"),
+    t("Никаких «разберёмся на площадке» — всё под контролем", "No “we'll sort it on the day” — everything under control"),
+    t("Вы отдыхаете — логистика, тайминг и косметика на нас", "You relax — logistics, timing and cosmetics are on us"),
   ];
 
   return (
     <section id="concierge" className="scroll-mt-24 bg-white py-16 lg:py-24">
       <div className="mx-auto w-[92%] max-w-[1280px]">
-        <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#54121F] via-[#3B0D1A] to-[#2A0810] px-6 py-10 sm:px-10 lg:px-14 lg:py-14">
+        <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#54121F] via-[#3B0D1A] to-[#2A0810] px-6 py-12 sm:px-10 lg:px-16 lg:py-20">
           {/* Мягкое свечение */}
           <span aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#e7c9a0]/10 blur-[90px]" />
           <span aria-hidden className="pointer-events-none absolute -bottom-24 right-1/3 h-72 w-72 rounded-full bg-[#4A4B33]/20 blur-[90px]" />
 
-          <div className="relative grid items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
+          <div className="relative grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
             {/* Левая часть */}
             <div className="text-[#f4efe6]">
-              <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/25 px-4 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/25 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] text-[#f4efe6]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#e7c9a0]" />
                 {t("бесплатная консультация", "free consultation")}
               </span>
-              <h2 className="mt-5 font-serif text-[30px] leading-[1.08] lg:text-[46px]">
+              <h2 className="mt-7 font-serif text-[26px] leading-[1.12] lg:text-[38px]">
                 {t("Бьюти-консьерж", "Beauty concierge")}{" "}
                 <span className="text-[#e7c9a0]">{t("на выезд", "on location")}</span>
               </h2>
-              <p className="mt-4 max-w-lg text-[14px] leading-relaxed text-[#f4efe6]/75 lg:text-[15px]">
+              <p className="mt-5 max-w-md text-[13px] leading-relaxed text-[#f4efe6]/70 lg:text-[14px]">
                 {t(
-                  "Свадьба, съёмка или событие в другом городе или стране? Оставьте заявку — подберём формат, соберём команду и возьмём организацию образа на себя.",
-                  "A wedding, shoot or event in another city or country? Leave a request — we'll shape the format, assemble the team and handle the whole look for you."
+                  "Событие вдали от дома — а довериться незнакомым мастерам страшно? Привезём свою команду и сделаем образ безупречным.",
+                  "An event far from home — and trusting strangers with your look feels risky? We bring our own team and make it flawless."
                 )}
               </p>
 
-              <ul className="mt-7 space-y-3.5">
+              <ul className="mt-8 space-y-4">
                 {bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-[14px] leading-snug text-[#f4efe6]/90 lg:text-[15px]">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A4B33]">
+                  <li key={b} className="flex items-start gap-3 text-[13px] leading-snug text-[#f4efe6]/90 lg:text-[14px]">
+                    <span className="mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A4B33]">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f4efe6" strokeWidth="2.5"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     </span>
                     {b}
