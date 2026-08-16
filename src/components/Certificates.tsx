@@ -80,27 +80,37 @@ export default function Certificates() {
               </p>
             </div>
 
-            {/* Правая часть — карточка сертификата */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative aspect-[1.6/1] w-full max-w-[360px] rotate-[-4deg] rounded-[20px] border border-[#f4efe6]/25 bg-gradient-to-br from-[#5c2a30] to-[#3a171b] p-6 shadow-[0_24px_60px_rgba(0,0,0,0.35)] transition-transform duration-500 hover:rotate-0">
-                <div className="flex h-full flex-col justify-between">
-                  <div className="flex items-start justify-between">
-                    <span className="font-serif text-[26px] tracking-[0.14em] text-[#f4efe6]">ÁLIS</span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#f4efe6]/55">gift card</span>
+            {/* Правая часть — карточка сертификата: 3D-наклон + блик + искры */}
+            <div className="group flex justify-center lg:justify-end" style={{ perspective: "1100px" }}>
+              <div className="relative w-full max-w-[360px]">
+                {/* Искры-конфетти (появляются при наведении) */}
+                <span aria-hidden className="cert-spark pointer-events-none absolute left-[46%] top-[-6%] h-2 w-2 rounded-full bg-[#e7c9a0] opacity-0 group-hover:[animation:certpop_1s_ease_forwards]" style={{ animationDelay: "0.05s" }} />
+                <span aria-hidden className="cert-spark pointer-events-none absolute left-[70%] top-[12%] h-1.5 w-1.5 rounded-full bg-[#f4efe6] opacity-0 group-hover:[animation:certpop_1s_ease_forwards]" style={{ animationDelay: "0.15s" }} />
+                <span aria-hidden className="cert-spark pointer-events-none absolute left-[92%] top-[30%] h-2.5 w-2.5 rounded-full bg-[#e7c9a0] opacity-0 group-hover:[animation:certpop_1s_ease_forwards]" style={{ animationDelay: "0.1s" }} />
+                <span aria-hidden className="cert-spark pointer-events-none absolute left-[8%] top-[20%] h-1.5 w-1.5 rounded-full bg-[#f4efe6] opacity-0 group-hover:[animation:certpop_1s_ease_forwards]" style={{ animationDelay: "0.22s" }} />
+                <span aria-hidden className="cert-spark pointer-events-none absolute left-[84%] bottom-[-4%] h-2 w-2 rounded-full bg-[#e7c9a0] opacity-0 group-hover:[animation:certpop_1s_ease_forwards]" style={{ animationDelay: "0.12s" }} />
+
+                {/* Сама карта */}
+                <div className="relative aspect-[1.6/1] overflow-hidden rounded-[20px] border border-[#f4efe6]/25 bg-gradient-to-br from-[#5c2a30] to-[#3a171b] p-6 shadow-[-18px_24px_50px_rgba(0,0,0,0.4)] transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] [transform:rotateY(-16deg)_rotateX(6deg)] group-hover:[transform:rotateY(0deg)_rotateX(0deg)_translateY(-8px)]">
+                  <div className="flex h-full flex-col justify-between">
+                    <div className="flex items-start justify-between">
+                      <span className="font-serif text-[26px] tracking-[0.14em] text-[#f4efe6]">ÁLIS</span>
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-[#f4efe6]/55">gift card</span>
+                    </div>
+                    <div>
+                      <p className="text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/55">
+                        {t("подарочный сертификат", "gift certificate")}
+                      </p>
+                      <p className="mt-1 font-serif text-[30px] text-[#f4efe6] lg:text-[34px]">3 000 – 15 000 ₽</p>
+                    </div>
+                    <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.16em] text-[#f4efe6]/45">
+                      <span>alis beauty</span>
+                      <span>{t("процедуры · продукция", "procedures · products")}</span>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/55">
-                      {t("подарочный сертификат", "gift certificate")}
-                    </p>
-                    <p className="mt-1 font-serif text-[30px] text-[#f4efe6] lg:text-[34px]">3 000 – 15 000 ₽</p>
-                  </div>
-                  <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.16em] text-[#f4efe6]/45">
-                    <span>alis beauty</span>
-                    <span>{t("процедуры · продукция", "procedures · products")}</span>
-                  </div>
+                  {/* Пробегающий блик */}
+                  <span aria-hidden className="pointer-events-none absolute top-0 left-[-60%] h-full w-[45%] -skew-x-[18deg] bg-gradient-to-r from-transparent via-[#f4efe6]/35 to-transparent transition-[left] duration-[800ms] ease-out group-hover:left-[120%]" />
                 </div>
-                {/* Блик */}
-                <span aria-hidden className="pointer-events-none absolute -left-1/3 top-0 h-full w-1/3 rotate-12 bg-[#f4efe6]/8 blur-md" />
               </div>
             </div>
           </div>

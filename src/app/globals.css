@@ -136,3 +136,13 @@ html.has-custom-cursor * { cursor: none !important; }
 .legal-prose a:hover { opacity: 0.75; }
 .legal-prose strong { color: #17191a; font-weight: 600; }
 .legal-prose table { margin: 1rem 0; }
+
+/* Искры-конфетти на карточке подарочного сертификата */
+@keyframes certpop {
+  0% { opacity: 0; transform: scale(0) translateY(0); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1.3) translateY(-26px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cert-spark { animation: none !important; }
+}
