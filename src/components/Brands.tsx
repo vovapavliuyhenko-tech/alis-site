@@ -1,7 +1,9 @@
-// НАС ВЫБИРАЮТ — бесконечная бегущая лента брендов. Каждый бренд в СВОЁМ
-// типографическом стиле (микс), между ними — росчерк-ромб. Пауза при наведении.
-// Названия набраны типографикой (не реальные лого) — заменить на SVG/лого при наличии.
+"use client";
+// НАМ ДОВЕРЯЮТ — заголовок с бейджем-эйброу и акцентом, ниже бесконечная бегущая
+// лента брендов. Каждый бренд в СВОЁМ типографическом стиле (микс), между ними —
+// росчерк. Пауза при наведении. Двуязычно (RU/EN).
 import type { ReactNode } from "react";
+import { useLang } from "@/lib/i18n";
 
 // Каждый бренд — со своим стилем, приближённым к его вордмарку
 const BRANDS: ReactNode[] = [
@@ -67,8 +69,23 @@ function Track({ hidden = false }: { hidden?: boolean }) {
 }
 
 export default function Brands() {
+  const { lang } = useLang();
+  const en = lang === "en";
   return (
-    <section className="overflow-hidden bg-white pt-8 pb-16 lg:pt-10 lg:pb-24">
+    <section className="overflow-hidden bg-white py-20 lg:py-28">
+      {/* Заголовок с эйброу-бейджем и акцентом */}
+      <div className="mx-auto mb-12 w-[92%] max-w-[1000px] text-center lg:mb-16">
+        <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+          {en ? "Clients" : "Клиенты"}
+        </span>
+        <h2 className="mt-5 font-serif text-[30px] leading-[1.12] text-[#17191a] lg:text-[46px]">
+          {en ? "Trusted by brands" : "Нам доверяют"}
+          <br />
+          <span className="text-[#3B0D1A]">{en ? "and venues since 2019" : "бренды и площадки с 2019 года"}</span>
+        </h2>
+      </div>
+
       <div className="group relative flex overflow-hidden">
         <Track />
         <Track hidden />

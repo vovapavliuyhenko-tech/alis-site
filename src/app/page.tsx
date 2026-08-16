@@ -27,6 +27,8 @@ export default function Home() {
       <Hero />
       {/* Обо мне */}
       <About />
+      {/* Нам доверяют (бренды) */}
+      <Brands />
       {/* 2 — Наши услуги */}
       <Services />
       {/* 3 — Как это работает / этапы */}
@@ -35,8 +37,6 @@ export default function Home() {
       <FlipGallery />
       {/* Онлайн-заявка (под портфолио) */}
       <BookingWidget />
-      {/* Бренды */}
-      <Brands />
       {/* 5 — Мастера */}
       <TeamCarousel />
       {/* 6 — Сертификаты */}
