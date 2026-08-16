@@ -71,7 +71,7 @@ export default function Footer() {
                     onClick={submit}
                     disabled={!canSend}
                     aria-label={t("Отправить", "Send")}
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#4E2126] text-[#f4efe6] transition-transform hover:scale-105 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#3B0D1A] text-[#f4efe6] transition-transform hover:scale-105 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
                   >
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
@@ -79,7 +79,7 @@ export default function Footer() {
                   </button>
                 </div>
                 <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[12px] leading-snug text-[#f4efe6]/50">
-                  <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#4E2126]" />
+                  <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#3B0D1A]" />
                   <span>
                     {t("Даю согласие на обработку персональных данных и соглашаюсь с ",
                        "I consent to the processing of personal data and agree to the ")}
@@ -123,7 +123,7 @@ export default function Footer() {
             <p className="mt-2 text-[13px] text-[#f4efe6]/45">{HOURS[lang]}</p>
             <div className="mt-6 flex gap-3">
               {["telegram", "whatsapp"].map((n) => (
-                <a key={n} href="#" aria-label={n} className="flex h-11 w-11 items-center justify-center rounded-full bg-[#4E2126] text-[#f4efe6] transition-transform hover:scale-105">
+                <a key={n} href="#" aria-label={n} className="flex h-11 w-11 items-center justify-center rounded-full bg-[#3B0D1A] text-[#f4efe6] transition-transform hover:scale-105">
                   {n === "telegram" ? (
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor"><path d="M21.9 4.3l-3 14.2c-.2 1-.8 1.2-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-.9.5l.3-4.6 8.5-7.7c.4-.3-.1-.5-.6-.2L7.3 13 2.8 11.6c-1-.3-1-1 .2-1.5L20.6 3c.8-.3 1.5.2 1.3 1.3z"/></svg>
                   ) : (

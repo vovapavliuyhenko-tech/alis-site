@@ -80,7 +80,7 @@ function Marker({ good }: { good: boolean }) {
   return (
     <span
       className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-        good ? "bg-[#4E2126] text-[#f4efe6]" : "bg-[#17191a]/8 text-[#17191a]/50"
+        good ? "bg-[#4A4B33] text-[#f4efe6]" : "bg-[#17191a]/8 text-[#17191a]/50"
       }`}
     >
       {good ? (
@@ -138,14 +138,14 @@ export default function TeamCarousel() {
         {/* Заголовок + стрелки сверху справа */}
         <div className="mb-10 flex items-end justify-between gap-6 lg:mb-14">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#4E2126]/8 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4E2126]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#4E2126]" />
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
               {en ? "Team" : "Команда"}
             </span>
             <h2 className="mt-5 font-serif text-[30px] leading-[1.1] text-[#2a2320] lg:text-[48px]">
               {en ? "The masters who" : "Мастера, которым"}
               <br />
-              <span className="text-[#4E2126]">{en ? "craft your look" : "доверяют образ"}</span>
+              <span className="text-[#3B0D1A]">{en ? "craft your look" : "доверяют образ"}</span>
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
               {en
@@ -157,14 +157,14 @@ export default function TeamCarousel() {
             <button
               aria-label={en ? "Previous" : "Назад"}
               onClick={() => scrollBy(-1)}
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#4E2126] text-[#f4efe6] shadow-[0_8px_24px_rgba(78,33,38,0.3)] transition-all hover:scale-105 hover:bg-[#3a171b]"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#3B0D1A] text-[#f4efe6] shadow-[0_8px_24px_rgba(59,13,26,0.3)] transition-all hover:scale-105 hover:bg-[#2A0810]"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
             <button
               aria-label={en ? "Next" : "Вперёд"}
               onClick={() => scrollBy(1)}
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#4E2126] text-[#f4efe6] shadow-[0_8px_24px_rgba(78,33,38,0.3)] transition-all hover:scale-105 hover:bg-[#3a171b]"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#3B0D1A] text-[#f4efe6] shadow-[0_8px_24px_rgba(59,13,26,0.3)] transition-all hover:scale-105 hover:bg-[#2A0810]"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
@@ -187,7 +187,7 @@ export default function TeamCarousel() {
                   alt={m.name[lang]}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.07]"
                 />
-                <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#4E2126]/25 opacity-0 backdrop-blur-[6px] transition-opacity duration-500 ease-out group-hover:opacity-100">
+                <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#3B0D1A]/25 opacity-0 backdrop-blur-[6px] transition-opacity duration-500 ease-out group-hover:opacity-100">
                   <span className="inline-flex items-center gap-2.5 rounded-full border border-white/70 px-6 py-2.5 text-[13px] uppercase tracking-[0.16em] text-white">
                     {en ? "Book" : "Записаться"}
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>

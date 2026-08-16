@@ -10,7 +10,7 @@ function FlipText({ children }: { children: ReactNode }) {
     <span className="relative inline-block [perspective:400px]">
       <span className="block transition-transform duration-500 ease-out [transform-style:preserve-3d] group-hover/nav:[transform:rotateX(180deg)]">
         <span className="block [backface-visibility:hidden]">{children}</span>
-        <span className="absolute inset-0 block text-[#4E2126] [backface-visibility:hidden] [transform:rotateX(180deg)]">
+        <span className="absolute inset-0 block text-[#3B0D1A] [backface-visibility:hidden] [transform:rotateX(180deg)]">
           {children}
         </span>
       </span>
@@ -83,11 +83,11 @@ export default function Header() {
           <LangToggle className="hidden sm:flex" />
           <a
             href="/#online"
-            className="flex items-center gap-2.5 rounded-full border border-[#4E2126] bg-[#4E2126] py-2 pl-5 pr-2 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#4E2126]"
+            className="flex items-center gap-2.5 rounded-full border border-[#3B0D1A] bg-[#3B0D1A] py-2 pl-5 pr-2 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A]"
           >
             {lang === "en" ? "Book" : "Записаться"}
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4E2126" strokeWidth="2.2">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3B0D1A" strokeWidth="2.2">
                 <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>

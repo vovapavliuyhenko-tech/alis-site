@@ -72,7 +72,7 @@ export default function Hero() {
             <span className="font-serif text-[46px] leading-none tracking-[0.08em] text-[#17191a]">
               ÁLIS
             </span>
-            <span className="mt-2 text-[12px] uppercase tracking-[0.35em] text-[#4E2126]">
+            <span className="mt-2 text-[12px] uppercase tracking-[0.35em] text-[#4A4B33]">
               beauty
             </span>
           </div>

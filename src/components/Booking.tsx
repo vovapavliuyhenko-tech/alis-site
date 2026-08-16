@@ -304,7 +304,7 @@ export default function Booking() {
       <div className="relative mx-auto w-[94%] max-w-[1080px]">
         {/* Заголовок */}
         <div className="mb-12 text-center">
-          <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+          <span className="inline-block rounded-full bg-[#3B0D1A] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
             {ui.eyebrow}
           </span>
           <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
@@ -356,7 +356,7 @@ export default function Booking() {
                   </div>
                   <div className="mb-9 h-1.5 w-full overflow-hidden rounded-full bg-[#17191a]/10">
                     <div
-                      className="h-full rounded-full bg-[#4E2126] transition-all duration-500 ease-out"
+                      className="h-full rounded-full bg-[#3B0D1A] transition-all duration-500 ease-out"
                       style={{ width: `${((step + 1) / TOTAL) * 100}%` }}
                     />
                   </div>
@@ -383,8 +383,8 @@ export default function Booking() {
                                 onClick={onClick}
                                 className={`flex items-center gap-3.5 rounded-2xl border px-5 py-4 text-left text-[15px] transition-all ${
                                   selected
-                                    ? "border-[#4E2126] bg-[#4E2126] text-[#f4efe6]"
-                                    : "border-[#17191a]/15 bg-white/50 text-[#17191a]/85 hover:border-[#4E2126]/50 hover:bg-white/80"
+                                    ? "border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]"
+                                    : "border-[#17191a]/15 bg-white/50 text-[#17191a]/85 hover:border-[#3B0D1A]/50 hover:bg-white/80"
                                 }`}
                               >
                                 <span
@@ -396,7 +396,7 @@ export default function Booking() {
                                     <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none">
                                       <path
                                         d="M5 12.5l4.5 4.5L19 7.5"
-                                        stroke="#4E2126"
+                                        stroke="#3B0D1A"
                                         strokeWidth="2.5"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
@@ -458,11 +458,11 @@ export default function Booking() {
                     <button
                       onClick={goNext}
                       disabled={!canNext}
-                      className="inline-flex items-center gap-2.5 rounded-full border border-[#4E2126] bg-[#4E2126] py-3 pl-6 pr-2.5 text-[13px] font-medium uppercase tracking-wide text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#4E2126] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-[#4E2126] disabled:hover:text-[#f4efe6]"
+                      className="inline-flex items-center gap-2.5 rounded-full border border-[#3B0D1A] bg-[#3B0D1A] py-3 pl-6 pr-2.5 text-[13px] font-medium uppercase tracking-wide text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-[#3B0D1A] disabled:hover:text-[#f4efe6]"
                     >
                       {isContact ? ui.submit : ui.next}
                       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4E2126" strokeWidth="2.2">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3B0D1A" strokeWidth="2.2">
                           <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </span>
@@ -472,11 +472,11 @@ export default function Booking() {
               ) : (
                 /* Экран успеха */
                 <div className="booking-step flex min-h-[320px] flex-col items-center justify-center py-6 text-center">
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-[#4E2126]/40">
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-[#3B0D1A]/40">
                     <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none">
                       <path
                         d="M5 12.5l4.5 4.5L19 7.5"
-                        stroke="#4E2126"
+                        stroke="#3B0D1A"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"

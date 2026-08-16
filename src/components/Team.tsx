@@ -94,7 +94,7 @@ export default function Team() {
       <div className="mx-auto w-[94%] max-w-[1280px]">
         {/* Заголовок */}
         <div className="mb-14 text-center">
-          <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+          <span className="inline-block rounded-full bg-[#3B0D1A] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
             {lang === "en" ? "team" : "команда"}
           </span>
           <h2 className="mt-4 font-serif text-[34px] leading-[1.05] text-[#17191a] lg:text-[54px]">
@@ -131,7 +131,7 @@ export default function Team() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
 
                 {/* Номер */}
-                <span className="absolute left-4 top-4 rounded-md bg-[#4E2126] px-2 py-1 text-[11px] font-medium tabular-nums text-[#f4efe6]">
+                <span className="absolute left-4 top-4 rounded-md bg-[#3B0D1A] px-2 py-1 text-[11px] font-medium tabular-nums text-[#f4efe6]">
                   0{i + 1}
                 </span>
                 {/* Опыт */}

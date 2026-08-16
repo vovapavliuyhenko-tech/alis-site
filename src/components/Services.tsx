@@ -78,7 +78,7 @@ function Tile({ s, i, started }: { s: Service; i: number; started: boolean }) {
       </span>
 
       {/* Блюр всей карточки + «Записаться» по центру при наведении */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#4E2126]/25 opacity-0 backdrop-blur-[6px] transition-opacity duration-500 ease-out group-hover:opacity-100">
+      <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#3B0D1A]/25 opacity-0 backdrop-blur-[6px] transition-opacity duration-500 ease-out group-hover:opacity-100">
         <span className="inline-flex items-center gap-2.5 rounded-full border border-white/70 px-7 py-3 text-[13px] uppercase tracking-[0.16em] text-white lg:text-[14px]">
           {lang === "en" ? "Book" : "Записаться"}
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -119,7 +119,7 @@ export default function Services() {
       <div className="mx-auto w-[96%] max-w-[1620px]">
         {/* Заголовок */}
         <div className="mb-12 max-w-2xl lg:mb-16">
-          <h2 className="font-serif text-[34px] leading-[1.08] text-[#4E2126] lg:text-[56px]">
+          <h2 className="font-serif text-[34px] leading-[1.08] text-[#3B0D1A] lg:text-[56px]">
             {en ? "Our services" : "Наши услуги"}
           </h2>
         </div>
@@ -139,7 +139,7 @@ export default function Services() {
               transition: "opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)",
               transitionDelay: started ? `${SERVICES.length * 90}ms` : "0ms",
             }}
-            className="group relative flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-[22px] border-2 border-[#4E2126] bg-[#4E2126] p-5 text-[#ffffff] lg:p-6"
+            className="group relative flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-[22px] border-2 border-[#3B0D1A] bg-[#3B0D1A] p-5 text-[#ffffff] lg:p-6"
           >
             {/* Кремовый круг, расходящийся из-под кнопки */}
             <span
@@ -147,17 +147,17 @@ export default function Services() {
               className="pointer-events-none absolute bottom-5 left-5 z-0 h-[52px] w-[52px] origin-center rounded-full bg-[#ffffff] transition-transform duration-[650ms] ease-[cubic-bezier(.7,0,.2,1)] group-hover:scale-[26] lg:bottom-6 lg:left-6"
             />
 
-            <span className="relative z-10 font-serif text-[21px] leading-tight transition-colors duration-500 group-hover:text-[#4E2126] lg:text-[25px]">
+            <span className="relative z-10 font-serif text-[21px] leading-tight transition-colors duration-500 group-hover:text-[#3B0D1A] lg:text-[25px]">
               {en ? "Not sure what you need?" : "Не знаете, что выбрать?"}
             </span>
             <div className="relative z-10">
-              <p className="mb-6 text-[13px] leading-relaxed text-[#ffffff]/75 transition-colors duration-500 group-hover:text-[#4E2126]/80 lg:text-[14px]">
+              <p className="mb-6 text-[13px] leading-relaxed text-[#ffffff]/75 transition-colors duration-500 group-hover:text-[#3B0D1A]/80 lg:text-[14px]">
                 {en
                   ? "Tell us about your goal — we'll suggest the right procedure and a plan."
                   : "Расскажите о задаче — подберём подходящую процедуру и план."}
               </p>
-              <span className="inline-flex items-center gap-3.5 text-[13px] uppercase tracking-[0.14em] transition-colors duration-500 group-hover:text-[#4E2126]">
-                <span className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-[#ffffff] text-[#4E2126] transition-colors duration-300 group-hover:bg-transparent">
+              <span className="inline-flex items-center gap-3.5 text-[13px] uppercase tracking-[0.14em] transition-colors duration-500 group-hover:text-[#3B0D1A]">
+                <span className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-[#ffffff] text-[#3B0D1A] transition-colors duration-300 group-hover:bg-transparent">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-[650ms] ease-out group-hover:rotate-[360deg]"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </span>
                 {en ? "Get a consultation" : "Получить консультацию"}

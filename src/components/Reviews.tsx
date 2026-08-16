@@ -214,7 +214,7 @@ export default function Reviews() {
       <div className="mx-auto w-[94%] max-w-[1180px]">
         {/* Заголовок */}
         <div className="mb-14 text-center">
-          <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+          <span className="inline-block rounded-full bg-[#4A4B33] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
             {lang === "en" ? "reviews" : "отзывы"}
           </span>
           <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
@@ -234,7 +234,7 @@ export default function Reviews() {
                 style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)` }}
                 className="absolute left-1/2 top-1/2 -ml-[130px] -mt-[128px] flex h-[256px] w-[260px] flex-col justify-between rounded-[18px] border border-[#17191a]/10 bg-white p-6 text-[#17191a] shadow-[0_10px_30px_rgba(23,25,26,0.08)] [backface-visibility:hidden]"
               >
-                <span className="font-serif text-[38px] leading-[0.5] text-[#4E2126]">
+                <span className="font-serif text-[38px] leading-[0.5] text-[#3B0D1A]">
                   &ldquo;
                 </span>
 
@@ -248,11 +248,11 @@ export default function Reviews() {
                     src={r.photo}
                     alt={r.name[lang]}
                     draggable={false}
-                    className="h-9 w-9 rounded-full object-cover ring-1 ring-[#4E2126]/35"
+                    className="h-9 w-9 rounded-full object-cover ring-1 ring-[#3B0D1A]/35"
                   />
                   <div>
                     <p className="text-[12.5px] font-medium text-[#17191a]">{r.name[lang]}</p>
-                    <p className="text-[10px] uppercase tracking-[0.12em] text-[#4E2126]">
+                    <p className="text-[10px] uppercase tracking-[0.12em] text-[#4A4B33]">
                       {r.role[lang]}
                     </p>
                   </div>

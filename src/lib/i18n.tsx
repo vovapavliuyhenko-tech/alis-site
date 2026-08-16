@@ -78,7 +78,7 @@ export function LangToggle({ className = "" }: { className?: string }) {
           aria-pressed={lang === l}
           className={`rounded-full px-2.5 py-1 uppercase tracking-wide transition-colors ${
             lang === l
-              ? "bg-[#4E2126] text-[#f4efe6]"
+              ? "bg-[#3B0D1A] text-[#f4efe6]"
               : "text-[#17191a]/55 hover:text-[#17191a]"
           }`}
         >

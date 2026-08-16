@@ -20,10 +20,10 @@ export default function LegalLayout({
       <Header />
       <div className="h-16 bg-white" />
       <article className="mx-auto w-[90%] max-w-[860px] py-14 lg:py-20">
-        <a href="/" className="text-[13px] text-[#4E2126] transition-opacity hover:opacity-70">
+        <a href="/" className="text-[13px] text-[#3B0D1A] transition-opacity hover:opacity-70">
           ← На главную
         </a>
-        <h1 className="mt-6 font-serif text-[30px] leading-[1.12] text-[#4E2126] lg:text-[44px]">
+        <h1 className="mt-6 font-serif text-[30px] leading-[1.12] text-[#3B0D1A] lg:text-[44px]">
           {title}
         </h1>
         <p className="mt-3 text-[13px] text-[#17191a]/45">Редакция от {updated}</p>

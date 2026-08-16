@@ -42,7 +42,7 @@ export default function OnlineBooking() {
       <div className="mx-auto w-[94%] max-w-[1080px]">
         {/* Заголовок */}
         <div className="mb-10 text-center">
-          <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+          <span className="inline-block rounded-full bg-[#3B0D1A] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
             {lang === "en" ? "online booking" : "онлайн-запись"}
           </span>
           <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
@@ -71,7 +71,7 @@ export default function OnlineBooking() {
             href={YCLIENTS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#4E2126] underline underline-offset-4 transition-opacity hover:opacity-70"
+            className="text-[#3B0D1A] underline underline-offset-4 transition-opacity hover:opacity-70"
           >
             {lang === "en" ? "Open in a new tab" : "Открыть в новой вкладке"}
           </a>

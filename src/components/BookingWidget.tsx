@@ -156,7 +156,7 @@ export default function BookingWidget() {
       <div className="relative mx-auto w-[94%] max-w-[1120px]">
         {/* Заголовок */}
         <div className="mb-10 text-center">
-          <span className="inline-block rounded-full bg-[#4E2126] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+          <span className="inline-block rounded-full bg-[#4A4B33] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
             онлайн-запись
           </span>
           <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
@@ -189,15 +189,15 @@ export default function BookingWidget() {
                     onClick={() => { setServiceId(s.id); setMasterId(null); setDate(null); setTime(null); setStep(1); }}
                     className={`flex items-center justify-between gap-4 rounded-2xl border px-5 py-4 text-left transition-colors ${
                       serviceId === s.id
-                        ? "border-[#4E2126] bg-[#4E2126]/5"
-                        : "border-[#17191a]/12 hover:border-[#4E2126]/50"
+                        ? "border-[#3B0D1A] bg-[#3B0D1A]/5"
+                        : "border-[#17191a]/12 hover:border-[#3B0D1A]/50"
                     }`}
                   >
                     <span>
                       <span className="block text-[15px] text-[#17191a]">{s.title}</span>
                       <span className="mt-0.5 block text-[12px] text-[#17191a]/45">{fmtDuration(s.durationMin)}</span>
                     </span>
-                    <span className="shrink-0 font-serif text-[16px] text-[#4E2126]">{fmtPrice(s.price)}</span>
+                    <span className="shrink-0 font-serif text-[16px] text-[#3B0D1A]">{fmtPrice(s.price)}</span>
                   </button>
                 ))}
               </div>
@@ -214,14 +214,14 @@ export default function BookingWidget() {
                     key={m.id}
                     onClick={() => { setMasterId(m.id); setDate(null); setTime(null); setStep(2); }}
                     className={`flex items-center gap-4 rounded-2xl border px-4 py-4 text-left transition-colors ${
-                      masterId === m.id ? "border-[#4E2126] bg-[#4E2126]/5" : "border-[#17191a]/12 hover:border-[#4E2126]/50"
+                      masterId === m.id ? "border-[#3B0D1A] bg-[#3B0D1A]/5" : "border-[#17191a]/12 hover:border-[#3B0D1A]/50"
                     }`}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={m.photo} alt={m.name} className="h-14 w-14 shrink-0 rounded-full object-cover" />
                     <span>
                       <span className="block text-[15px] text-[#17191a]">{m.name}</span>
-                      <span className="mt-0.5 block text-[12px] uppercase tracking-wide text-[#4E2126]">{m.role}</span>
+                      <span className="mt-0.5 block text-[12px] uppercase tracking-wide text-[#3B0D1A]">{m.role}</span>
                     </span>
                   </button>
                 ))}
@@ -263,10 +263,10 @@ export default function BookingWidget() {
                           onClick={() => { setDate(iso); setTime(null); }}
                           className={`aspect-square rounded-lg text-[14px] transition-colors ${
                             selected
-                              ? "bg-[#4E2126] text-[#f4efe6]"
+                              ? "bg-[#3B0D1A] text-[#f4efe6]"
                               : disabled
                               ? "text-[#17191a]/20"
-                              : "text-[#17191a] hover:bg-[#4E2126]/10"
+                              : "text-[#17191a] hover:bg-[#3B0D1A]/10"
                           }`}
                         >
                           {Number(iso.slice(8, 10))}
@@ -294,8 +294,8 @@ export default function BookingWidget() {
                                 onClick={() => setTime(t)}
                                 className={`rounded-lg border px-3.5 py-2 text-[14px] tabular-nums transition-colors ${
                                   time === t
-                                    ? "border-[#4E2126] bg-[#4E2126] text-[#f4efe6]"
-                                    : "border-[#17191a]/15 text-[#17191a] hover:border-[#4E2126]/60"
+                                    ? "border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]"
+                                    : "border-[#17191a]/15 text-[#17191a] hover:border-[#3B0D1A]/60"
                                 }`}
                               >
                                 {t}
@@ -309,7 +309,7 @@ export default function BookingWidget() {
                   {date && time && (
                     <button
                       onClick={() => setStep(3)}
-                      className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#4E2126] bg-[#4E2126] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#4E2126]"
+                      className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#3B0D1A] bg-[#3B0D1A] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A]"
                     >
                       Далее <span aria-hidden>→</span>
                     </button>
@@ -330,19 +330,19 @@ export default function BookingWidget() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Имя"
-                    className="mb-6 w-full border-b border-[#17191a]/25 bg-transparent pb-3 text-[16px] text-[#17191a] outline-none focus:border-[#4E2126] placeholder:text-[#17191a]/30"
+                    className="mb-6 w-full border-b border-[#17191a]/25 bg-transparent pb-3 text-[16px] text-[#17191a] outline-none focus:border-[#3B0D1A] placeholder:text-[#17191a]/30"
                   />
                   <label className="mb-2 block text-[13px] text-[#17191a]/50">Телефон</label>
                   <input
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+7 ___ ___-__-__"
-                    className="w-full border-b border-[#17191a]/25 bg-transparent pb-3 text-[16px] text-[#17191a] outline-none focus:border-[#4E2126] placeholder:text-[#17191a]/30"
+                    className="w-full border-b border-[#17191a]/25 bg-transparent pb-3 text-[16px] text-[#17191a] outline-none focus:border-[#3B0D1A] placeholder:text-[#17191a]/30"
                   />
                   <button
                     onClick={confirm}
                     disabled={!canConfirm}
-                    className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#4E2126] bg-[#4E2126] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#4E2126] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-[#4E2126] disabled:hover:text-[#f4efe6]"
+                    className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#3B0D1A] bg-[#3B0D1A] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-[#3B0D1A] disabled:hover:text-[#f4efe6]"
                   >
                     Записаться <span aria-hidden>→</span>
                   </button>
@@ -356,7 +356,7 @@ export default function BookingWidget() {
                   <Row k="Время" v={time || ""} />
                   <div className="mt-3 flex items-baseline justify-between border-t border-[#17191a]/10 pt-3">
                     <span className="text-[#17191a]/60">Стоимость</span>
-                    <span className="font-serif text-[18px] text-[#4E2126]">{service ? fmtPrice(service.price) : ""}</span>
+                    <span className="font-serif text-[18px] text-[#3B0D1A]">{service ? fmtPrice(service.price) : ""}</span>
                   </div>
                 </div>
               </div>
@@ -366,9 +366,9 @@ export default function BookingWidget() {
           {/* Шаг 5 — успех */}
           {step === 4 && lastBooking && (
             <div className="flex min-h-[280px] flex-col items-center justify-center py-6 text-center">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-[#4E2126]/40">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-[#3B0D1A]/40">
                 <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none">
-                  <path d="M5 12.5l4.5 4.5L19 7.5" stroke="#4E2126" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M5 12.5l4.5 4.5L19 7.5" stroke="#3B0D1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
               <h3 className="font-serif text-[28px] text-[#17191a]">Вы записаны!</h3>
@@ -387,7 +387,7 @@ export default function BookingWidget() {
 
         <p className="mt-4 text-center text-[12px] text-[#17191a]/35">
           График мастеров и цены настраиваются в{" "}
-          <a href="/admin" className="text-[#4E2126] underline underline-offset-4">админке</a>.
+          <a href="/admin" className="text-[#3B0D1A] underline underline-offset-4">админке</a>.
         </p>
       </div>
     </section>
@@ -396,8 +396,8 @@ export default function BookingWidget() {
 
 function Crumb({ n, label, active, done, onClick }: { n: number; label: string; active: boolean; done: boolean; onClick: () => void }) {
   return (
-    <button onClick={onClick} className={`inline-flex items-center gap-1.5 ${active ? "text-[#4E2126]" : done ? "text-[#17191a]/70" : "text-[#17191a]/40"}`}>
-      <span className={`flex h-5 w-5 items-center justify-center rounded-full text-[11px] ${active || done ? "bg-[#4E2126] text-[#f4efe6]" : "bg-[#17191a]/10"}`}>{n}</span>
+    <button onClick={onClick} className={`inline-flex items-center gap-1.5 ${active ? "text-[#3B0D1A]" : done ? "text-[#17191a]/70" : "text-[#17191a]/40"}`}>
+      <span className={`flex h-5 w-5 items-center justify-center rounded-full text-[11px] ${active || done ? "bg-[#3B0D1A] text-[#f4efe6]" : "bg-[#17191a]/10"}`}>{n}</span>
       {label}
     </button>
   );
@@ -406,7 +406,7 @@ function Crumb({ n, label, active, done, onClick }: { n: number; label: string; 
 function StepHead({ onBack, title, sub }: { onBack: () => void; title: string; sub?: string }) {
   return (
     <div className="mb-6 flex items-center gap-4">
-      <button onClick={onBack} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#17191a]/15 text-[#17191a]/70 transition-colors hover:border-[#4E2126] hover:text-[#4E2126]" aria-label="Назад">
+      <button onClick={onBack} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#17191a]/15 text-[#17191a]/70 transition-colors hover:border-[#3B0D1A] hover:text-[#3B0D1A]" aria-label="Назад">
         <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </button>
       <div>
@@ -419,7 +419,7 @@ function StepHead({ onBack, title, sub }: { onBack: () => void; title: string; s
 
 function IconBtn({ onClick, d }: { onClick: () => void; d: string }) {
   return (
-    <button onClick={onClick} className="flex h-8 w-8 items-center justify-center rounded-full border border-[#17191a]/15 text-[#17191a]/70 transition-colors hover:border-[#4E2126] hover:text-[#4E2126]">
+    <button onClick={onClick} className="flex h-8 w-8 items-center justify-center rounded-full border border-[#17191a]/15 text-[#17191a]/70 transition-colors hover:border-[#3B0D1A] hover:text-[#3B0D1A]">
       <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><path d={d} strokeLinecap="round" strokeLinejoin="round" /></svg>
     </button>
   );

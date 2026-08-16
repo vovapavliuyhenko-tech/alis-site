@@ -96,7 +96,7 @@ function FlipTile({ t }: { t: Tile }) {
       {/* Техническая строка под плиткой */}
       <figcaption className="mt-3 grid grid-cols-3 items-center font-mono text-[10.5px] lowercase tracking-wide text-[#17191a]/45">
         <span className="tabular-nums">{t.n}</span>
-        <span className="text-center text-[#17191a]/60">{t.label[lang]}</span>
+        <span className="text-center text-[#4A4B33]">{t.label[lang]}</span>
         <span className="text-right">{t.caption[lang]}</span>
       </figcaption>
     </figure>
@@ -118,7 +118,7 @@ export default function FlipGallery() {
       <div className="mx-auto w-[96%] max-w-[1620px]">
         {/* Заголовок */}
         <div className="mb-8 max-w-2xl lg:mb-10">
-          <h2 className="font-serif text-[34px] leading-[1.08] text-[#4E2126] lg:text-[56px]">
+          <h2 className="font-serif text-[34px] leading-[1.08] text-[#3B0D1A] lg:text-[56px]">
             {en ? "Our works" : "Наши работы"}
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
@@ -138,8 +138,8 @@ export default function FlipGallery() {
                 onClick={() => setActive(c.id)}
                 className={`rounded-full border px-5 py-2.5 text-[12px] uppercase tracking-[0.1em] transition-all duration-300 ${
                   on
-                    ? "border-[#4E2126] bg-[#4E2126] text-[#f4efe6]"
-                    : "border-[#17191a]/15 bg-white text-[#17191a]/70 hover:border-[#4E2126] hover:text-[#4E2126]"
+                    ? "border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]"
+                    : "border-[#17191a]/15 bg-white text-[#17191a]/70 hover:border-[#3B0D1A] hover:text-[#3B0D1A]"
                 }`}
               >
                 {c.label[lang]}

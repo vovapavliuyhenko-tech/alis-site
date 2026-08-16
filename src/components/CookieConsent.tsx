@@ -38,11 +38,11 @@ export default function CookieConsent() {
             <>
               We use cookies to make the site work properly and to improve it. By continuing to use
               the site, you agree to our{" "}
-              <a href="/cookies" className="text-[#4E2126] underline underline-offset-2 hover:opacity-70">
+              <a href="/cookies" className="text-[#3B0D1A] underline underline-offset-2 hover:opacity-70">
                 Cookie Policy
               </a>{" "}
               and{" "}
-              <a href="/policy" className="text-[#4E2126] underline underline-offset-2 hover:opacity-70">
+              <a href="/policy" className="text-[#3B0D1A] underline underline-offset-2 hover:opacity-70">
                 Privacy Policy
               </a>
               .
@@ -51,11 +51,11 @@ export default function CookieConsent() {
             <>
               Мы используем файлы cookie, чтобы сайт работал корректно и становился удобнее. Продолжая
               пользоваться сайтом, вы соглашаетесь с{" "}
-              <a href="/cookies" className="text-[#4E2126] underline underline-offset-2 hover:opacity-70">
+              <a href="/cookies" className="text-[#3B0D1A] underline underline-offset-2 hover:opacity-70">
                 Политикой cookie
               </a>{" "}
               и{" "}
-              <a href="/policy" className="text-[#4E2126] underline underline-offset-2 hover:opacity-70">
+              <a href="/policy" className="text-[#3B0D1A] underline underline-offset-2 hover:opacity-70">
                 Политикой конфиденциальности
               </a>
               .
@@ -71,7 +71,7 @@ export default function CookieConsent() {
           </button>
           <button
             onClick={() => decide("accepted")}
-            className="rounded-full bg-[#4E2126] px-6 py-2.5 text-[13px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.03]"
+            className="rounded-full bg-[#3B0D1A] px-6 py-2.5 text-[13px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.03]"
           >
             {en ? "Accept" : "Принять"}
           </button>

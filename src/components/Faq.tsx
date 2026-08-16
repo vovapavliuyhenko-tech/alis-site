@@ -74,8 +74,8 @@ function Card({
       aria-expanded={open}
       className={`block w-full rounded-[20px] border p-6 text-left transition-[opacity,transform,background-color,border-color] duration-500 ease-[cubic-bezier(.16,1,.3,1)] lg:p-7 ${
         open
-          ? "border-[#4E2126] bg-[#4E2126] shadow-[0_18px_50px_rgba(78,33,38,0.35)]"
-          : "border-[#17191a]/12 bg-white hover:border-[#4E2126]/40"
+          ? "border-[#3B0D1A] bg-[#3B0D1A] shadow-[0_18px_50px_rgba(59,13,26,0.35)]"
+          : "border-[#17191a]/12 bg-white hover:border-[#3B0D1A]/40"
       }`}
       style={{
         opacity: started ? 1 : 0,
@@ -94,7 +94,7 @@ function Card({
         {/* Круглый шеврон */}
         <span
           className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ${
-            open ? "border-transparent bg-[#f4efe6] text-[#4E2126]" : "border-[#17191a]/20 bg-white text-[#4E2126]"
+            open ? "border-transparent bg-[#f4efe6] text-[#3B0D1A]" : "border-[#17191a]/20 bg-white text-[#3B0D1A]"
           }`}
         >
           <svg
@@ -171,7 +171,7 @@ export default function Faq() {
           <h2 className="font-serif text-[34px] leading-[1.08] text-[#2a2320] lg:text-[52px]">
             {en ? "Answers to your" : "Ответы на вопросы"}
             <br />
-            <span className="text-[#4E2126]">{en ? "questions about us" : "о работе с ALIS"}</span>
+            <span className="text-[#3B0D1A]">{en ? "questions about us" : "о работе с ALIS"}</span>
           </h2>
           <p className="mt-5 text-[15px] leading-relaxed text-[#17191a]/55 lg:text-[16px]">
             {en

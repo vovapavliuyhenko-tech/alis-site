@@ -4,13 +4,15 @@
 :root {
   --ink: #17191a;         /* чернильный — тёмная база */
   --cream: #f4efe6;       /* кремовый — светлая база */
-  --wine: #4E2126;        /* тёмный оксблад — акцент по всему сайту */
+  --wine: #3B0D1A;        /* Burgundy — основной акцент */
+  --olive: #4A4B33;       /* Deep Olive Green — второй акцент */
 }
 
 @theme inline {
   --color-ink: var(--ink);
   --color-cream: var(--cream);
   --color-wine: var(--wine);
+  --color-olive: var(--olive);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
   --font-thunder: var(--font-thunder);

@@ -47,7 +47,7 @@ export default function Preloader() {
 
       {/* Счётчик по центру */}
       <div className="flex flex-1 items-center justify-center">
-        <p className="font-serif text-[64px] italic leading-none tabular-nums text-[#4E2126] lg:text-[88px]">
+        <p className="font-serif text-[64px] italic leading-none tabular-nums text-[#3B0D1A] lg:text-[88px]">
           {p} %
         </p>
       </div>
