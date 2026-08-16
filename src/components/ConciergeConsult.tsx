@@ -38,14 +38,14 @@ export default function ConciergeConsult() {
   return (
     <section id="concierge" className="scroll-mt-24 bg-white py-16 lg:py-24">
       <div className="mx-auto w-[92%] max-w-[1280px]">
-        <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#54121F] via-[#3B0D1A] to-[#2A0810] px-6 py-12 sm:px-10 lg:px-16 lg:py-20">
+        <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#54121F] via-[#3B0D1A] to-[#2A0810] px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
           {/* Мягкое свечение */}
           <span aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#e7c9a0]/10 blur-[90px]" />
           <span aria-hidden className="pointer-events-none absolute -bottom-24 right-1/3 h-72 w-72 rounded-full bg-[#4A4B33]/20 blur-[90px]" />
 
           <div className="relative grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
             {/* Левая часть */}
-            <div className="text-[#f4efe6]">
+            <div className="flex flex-col justify-center text-[#f4efe6]">
               <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/25 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] text-[#f4efe6]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#e7c9a0]" />
                 {t("бесплатная консультация", "free consultation")}
