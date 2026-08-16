@@ -47,7 +47,7 @@ function Tile({ s, i, started }: { s: Service; i: number; started: boolean }) {
     transitionDelay: started ? `${i * 90}ms` : "0ms",
   };
   return (
-    <a href="/#online" style={reveal} className="group relative block aspect-[5/6] overflow-hidden rounded-[22px] bg-[#f1ede6]">
+    <a href="/#online" style={reveal} className="group relative block aspect-[4/5] overflow-hidden rounded-[22px] bg-[#f1ede6]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={s.img}
@@ -106,7 +106,7 @@ export default function Services() {
 
   return (
     <section id="services" className="scroll-mt-24 bg-white py-24 lg:py-32">
-      <div className="mx-auto w-[96%] max-w-[1720px]">
+      <div className="mx-auto w-[92%] max-w-[1280px]">
         {/* Заголовок */}
         <div className="mb-12 max-w-2xl lg:mb-16">
           <h2 className="font-serif text-[34px] leading-[1.08] text-[#4E2126] lg:text-[56px]">
@@ -115,7 +115,7 @@ export default function Services() {
         </div>
 
         {/* Сетка плиток + карточка-CTA */}
-        <div ref={gridRef} className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3.5">
+        <div ref={gridRef} className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 lg:gap-3.5">
           {SERVICES.map((s, i) => (
             <Tile key={s.name.ru} s={s} i={i} started={started} />
           ))}
@@ -129,9 +129,9 @@ export default function Services() {
               transition: "opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)",
               transitionDelay: started ? `${SERVICES.length * 90}ms` : "0ms",
             }}
-            className="group flex aspect-[5/6] flex-col justify-between rounded-[22px] bg-[#4E2126] p-7 text-[#f4efe6] lg:p-8"
+            className="group flex aspect-[4/5] flex-col justify-between rounded-[22px] bg-[#4E2126] p-5 text-[#f4efe6] lg:p-6"
           >
-            <span className="font-serif text-[24px] leading-tight lg:text-[30px]">
+            <span className="font-serif text-[21px] leading-tight lg:text-[25px]">
               {en ? "Not sure what you need?" : "Не знаете, что выбрать?"}
             </span>
             <div>
