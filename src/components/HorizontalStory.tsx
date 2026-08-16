@@ -100,7 +100,7 @@ export default function HorizontalStory() {
         sec.style.height = "";
         return;
       }
-      const vh = Math.round(window.innerHeight * 0.8);
+      const vh = Math.round(window.innerHeight * 0.9);
       const maxX = track.scrollWidth - vw;
       sec.style.height = `${maxX + vh}px`;
       const scrolled = Math.min(Math.max(-sec.getBoundingClientRect().top, 0), maxX);
@@ -123,7 +123,7 @@ export default function HorizontalStory() {
 
   return (
     <section id="process" ref={secRef} className="relative bg-white">
-      <div className="md:sticky md:top-[10vh] md:h-[80svh] md:overflow-hidden">
+      <div className="md:sticky md:top-[10vh] md:h-[90svh] md:overflow-hidden">
         <div
           ref={trackRef}
           className="flex flex-col md:h-full md:flex-row md:will-change-transform"
