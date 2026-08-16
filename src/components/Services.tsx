@@ -116,7 +116,7 @@ export default function Services() {
 
   return (
     <section id="services" className="scroll-mt-24 bg-white py-24 lg:py-32">
-      <div className="mx-auto w-[92%] max-w-[1280px]">
+      <div className="mx-auto w-[96%] max-w-[1620px]">
         {/* Заголовок */}
         <div className="mb-12 max-w-2xl lg:mb-16">
           <h2 className="font-serif text-[34px] leading-[1.08] text-[#4E2126] lg:text-[56px]">
