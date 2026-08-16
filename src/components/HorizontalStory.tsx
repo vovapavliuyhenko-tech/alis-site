@@ -140,7 +140,16 @@ export default function HorizontalStory() {
                     {lang === "en" ? "Step" : "Этап"} 0{i + 1}
                   </span>
                   <h3 className="mt-6 font-thunder text-[34px] uppercase leading-[1.06] tracking-[0.04em] text-[#17191a] md:mt-10 md:text-[3.4vw]">
-                    {s.heading[lang]}
+                    {(() => {
+                      const w = s.heading[lang].split(" ");
+                      const cut = Math.max(1, w.length - 2);
+                      return (
+                        <>
+                          {w.slice(0, cut).join(" ")}{" "}
+                          <span className="text-[#3B0D1A]">{w.slice(cut).join(" ")}</span>
+                        </>
+                      );
+                    })()}
                   </h3>
                 </div>
                 <div className="mt-10 md:mt-0">
