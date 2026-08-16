@@ -62,15 +62,9 @@ export default function Certificates() {
               <h2 className="r-reveal mt-5 font-serif text-[30px] leading-[1.08] lg:text-[46px]">
                 {t("Лучший подарок — красота ALIS", "The best gift is ALIS beauty")}
               </h2>
-              <p className="r-reveal mt-4 max-w-lg text-[14px] leading-relaxed text-[#f4efe6]/75 lg:text-[15px]">
-                {t(
-                  "Не гадайте с подарком — подарите впечатление. Сертификат ALIS beauty, которым приятно пользоваться.",
-                  "Stop guessing what to gift — give an experience. An ALIS beauty certificate that's a pleasure to use."
-                )}
-              </p>
 
               {/* Выгоды */}
-              <ul className="r-reveal mt-6 space-y-3">
+              <ul className="r-reveal mt-7 space-y-3.5">
                 {[
                   t("Номинал 3 000 – 15 000 ₽ — на ваш выбор", "Amount 3,000–15,000 ₽ — your choice"),
                   t("Действует на процедуры и продукцию ALIS beauty", "Valid for procedures and ALIS beauty products"),
@@ -85,22 +79,13 @@ export default function Certificates() {
                 ))}
               </ul>
 
-              <div className="r-reveal mt-8 flex flex-wrap items-center gap-4">
-                <button
-                  onClick={() => setOpen(true)}
-                  className="group/btn inline-flex items-center gap-3 rounded-full bg-[#f4efe6] px-8 py-3.5 text-[13px] font-medium uppercase tracking-[0.12em] text-[#3B0D1A] transition-transform duration-300 hover:scale-[1.03]"
-                >
-                  {t("Купить сертификат", "Buy a certificate")}
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover/btn:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </button>
-                <span className="text-[12px] text-[#f4efe6]/60">
-                  {t("Подтверждение сразу · без предоплаты", "Instant confirmation · no prepayment")}
-                </span>
-              </div>
-
-              <p className="r-reveal mt-4 text-[12px] text-[#f4efe6]/45">
-                {t("*сертификаты другим номиналом продаются только в онлайн-формате", "*certificates of other amounts are sold online only")}
-              </p>
+              <button
+                onClick={() => setOpen(true)}
+                className="group/btn r-reveal mt-9 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#f4efe6] px-10 py-4 text-[14px] font-medium uppercase tracking-[0.12em] text-[#3B0D1A] transition-transform duration-300 hover:scale-[1.02] sm:w-auto sm:min-w-[340px]"
+              >
+                {t("Купить сертификат", "Buy a certificate")}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover/btn:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </button>
             </div>
 
             {/* Правая часть — карта: оборот 360° + блик + усиленные искры */}
@@ -145,7 +130,7 @@ export default function Certificates() {
                 {/* Карта: front + back, непрерывное вращение под углом */}
                 <div className="cert-rotate relative aspect-[1.6/1] [transform-style:preserve-3d]">
                   {/* Лицевая сторона */}
-                  <div className="absolute inset-0 overflow-hidden rounded-[20px] border border-[#f4efe6]/25 bg-gradient-to-br from-[#54121F] to-[#2A0810] p-6 shadow-[-18px_24px_50px_rgba(0,0,0,0.4)] [backface-visibility:hidden]">
+                  <div className="absolute inset-0 overflow-hidden rounded-[20px] border-2 border-[#e7c9a0]/50 bg-gradient-to-br from-[#7C2432] to-[#48101E] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden]">
                     <div className="flex h-full flex-col justify-between">
                       <div className="flex items-start justify-between">
                         <span className="font-serif text-[26px] tracking-[0.14em] text-[#f4efe6]">ÁLIS</span>
@@ -166,7 +151,7 @@ export default function Certificates() {
                     <span aria-hidden className="pointer-events-none absolute top-0 left-[-60%] h-full w-[45%] -skew-x-[18deg] bg-gradient-to-r from-transparent via-[#f4efe6]/35 to-transparent transition-[left] duration-[900ms] ease-out group-hover:left-[120%]" />
                   </div>
                   {/* Оборотная сторона */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-[20px] border border-[#f4efe6]/25 bg-gradient-to-br from-[#2A0810] to-[#54121F] p-6 text-center shadow-[-18px_24px_50px_rgba(0,0,0,0.4)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-[20px] border-2 border-[#e7c9a0]/50 bg-gradient-to-br from-[#48101E] to-[#7C2432] p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden] [transform:rotateY(180deg)]">
                     <span className="font-serif text-[30px] tracking-[0.14em] text-[#f4efe6]">ÁLIS</span>
                     <span className="text-[11px] uppercase tracking-[0.22em] text-[#f4efe6]/60">{t("с любовью, beauty", "with love, beauty")}</span>
                   </div>
