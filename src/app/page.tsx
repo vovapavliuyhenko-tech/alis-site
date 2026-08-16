@@ -12,6 +12,7 @@ import LookShowcaseSection from "@/components/LookShowcaseSection";
 import Reviews from "@/components/Reviews";
 import Faq from "@/components/Faq";
 import BookingWidget from "@/components/BookingWidget";
+import ConciergeConsult from "@/components/ConciergeConsult";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -45,6 +46,8 @@ export default function Home() {
       <LookShowcaseSection />
       {/* 7 — Отзывы */}
       <Reviews />
+      {/* Выездной бьюти-консьерж — бесплатная консультация */}
+      <ConciergeConsult />
       {/* 8 — FAQ */}
       <Faq />
       <Footer />
