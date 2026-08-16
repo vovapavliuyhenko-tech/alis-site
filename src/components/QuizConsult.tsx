@@ -57,6 +57,16 @@ const QUESTIONS: Question[] = [
   },
 ];
 
+// Реплики персоны — прогревают клиента на каждом шаге (по индексу шага)
+const BUBBLES: Loc[] = [
+  { ru: "С этого начинаю подбор — под каждое событие свой формат и своя команда.", en: "This is where I start — every occasion has its own format and team." },
+  { ru: "Работаем по всей России и за границей. Логистику и тайминг беру на себя.", en: "We work across Russia and abroad. Logistics and timing are on me." },
+  { ru: "Подберу состав мастеров так, чтобы все были готовы вовремя и без спешки.", en: "I'll pick the team so everyone is ready on time, without a rush." },
+  { ru: "Соберу образ целиком — макияж, причёску и детали под ваш повод.", en: "I'll craft the whole look — makeup, hair and details for your occasion." },
+  { ru: "Знаю, как всё успеть даже в сжатые сроки. Забронируем дату заранее.", en: "I know how to make it work even on tight timelines. Let's lock the date." },
+  { ru: "Остался последний шаг — пришлю расчёт и предложения лично, без спама.", en: "One last step — I'll send your plan and options personally, no spam." },
+];
+
 export default function QuizConsult() {
   const { lang } = useLang();
   const en = lang === "en";
@@ -137,12 +147,9 @@ export default function QuizConsult() {
                 <p className="text-[12px] text-[#17191a]/55">{t("основатель ALIS", "founder of ALIS")}</p>
               </div>
             </div>
-            <div className="relative rounded-2xl border border-[#3B0D1A]/12 bg-[#3B0D1A]/[0.04] p-4 text-[13px] leading-relaxed text-[#2a2320]/80">
+            <div key={step} className="booking-step relative rounded-2xl border border-[#3B0D1A]/12 bg-[#3B0D1A]/[0.04] p-4 text-[13px] leading-relaxed text-[#2a2320]/80">
               <span aria-hidden className="absolute -top-2 left-8 h-4 w-4 rotate-45 border-l border-t border-[#3B0D1A]/12 bg-[#3B0D1A]/[0.04] md:-left-2 md:top-8 md:border-l md:border-t-0 md:border-b" />
-              {t(
-                "Лично подберу формат выезда и пришлю расчёт под ваше событие — с командой, таймингом и логистикой.",
-                "I'll personally shape your outcall and send a plan for your event — team, timing and logistics."
-              )}
+              {BUBBLES[Math.min(step, BUBBLES.length - 1)][lang]}
             </div>
           </div>
 
