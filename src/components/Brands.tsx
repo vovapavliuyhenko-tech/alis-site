@@ -74,7 +74,7 @@ export default function Brands() {
   return (
     <section className="overflow-hidden bg-white py-20 lg:py-28">
       {/* Заголовок с эйброу-бейджем и акцентом */}
-      <div className="mx-auto mb-12 w-[92%] max-w-[1000px] text-center lg:mb-16">
+      <div className="mx-auto mb-20 w-[92%] max-w-[1000px] text-center lg:mb-28">
         <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
           {en ? "Clients" : "Клиенты"}
