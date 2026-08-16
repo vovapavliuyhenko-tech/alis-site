@@ -143,6 +143,12 @@ html.has-custom-cursor * { cursor: none !important; }
   35% { opacity: 1; }
   100% { opacity: 0; transform: scale(1.4) translateY(-34px); }
 }
+/* Плавная смена сетки портфолио при фильтрации */
+@keyframes fadeGrid {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* Непрерывное вращение карты сертификата под углом (медленно) */
 .cert-rotate {
   animation: certrotate 14s linear infinite;

@@ -1,8 +1,8 @@
 "use client";
-// ЧАСТЫЕ ВОПРОСЫ — во всю ширину, две колонки. По центру: serif-надстрочник и
-// крупный заголовок капсом (бордовый). Каждый вопрос — строка с бордовым круглым
-// «+», раскрывается ответ. Тонкие разделители, кремовый фон. Каждый пункт
-// открывается независимо. scroll-reveal каскадом. Двуязычно (RU/EN).
+// ЧАСТЫЕ ВОПРОСЫ — по мотивам traffic-masters: две колонки карточек. Заголовок
+// слева в две строки (вторая — бордовым акцентом) + подзаголовок. Каждый вопрос —
+// карточка с обводкой и круглым шевроном; активная заливается бордовым, текст
+// становится кремовым. Несколько карточек могут быть открыты одновременно.
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
@@ -54,7 +54,7 @@ const ITEMS: Item[] = [
   },
 ];
 
-function Row({
+function Card({
   it,
   index,
   started,
@@ -69,62 +69,68 @@ function Row({
 }) {
   const { lang } = useLang();
   return (
-    <div
-      className="border-t border-[#2a2320]/12 transition-[opacity,transform] duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
+    <button
+      onClick={onToggle}
+      aria-expanded={open}
+      className={`block w-full rounded-[20px] border p-6 text-left transition-[opacity,transform,background-color,border-color] duration-500 ease-[cubic-bezier(.16,1,.3,1)] lg:p-7 ${
+        open
+          ? "border-[#4E2126] bg-[#4E2126] shadow-[0_18px_50px_rgba(78,33,38,0.35)]"
+          : "border-[#17191a]/12 bg-white hover:border-[#4E2126]/40"
+      }`}
       style={{
         opacity: started ? 1 : 0,
         transform: started ? "none" : "translateY(20px)",
         transitionDelay: started ? `${index * 70}ms` : "0ms",
       }}
     >
-      <button
-        onClick={onToggle}
-        aria-expanded={open}
-        className="group flex w-full items-center justify-between gap-6 py-5 text-left lg:py-6"
-      >
+      <div className="flex items-start justify-between gap-5">
         <span
-          className={`font-serif text-[17px] italic leading-snug transition-colors duration-300 lg:text-[21px] ${
-            open ? "text-[#4E2126]" : "text-[#2a2320]/85 group-hover:text-[#4E2126]"
+          className={`font-serif text-[18px] leading-snug transition-colors duration-300 lg:text-[21px] ${
+            open ? "text-[#f4efe6]" : "text-[#2a2320]"
           }`}
         >
           {it.q[lang]}
         </span>
-        {/* Бордовый круглый «+» → «−» */}
-        <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#4E2126] transition-transform duration-300 group-hover:scale-105 lg:h-9 lg:w-9">
-          <span className="absolute h-[1.5px] w-[11px] rounded-full bg-[#f4efe6]" />
-          <span
-            className={`absolute h-[11px] w-[1.5px] rounded-full bg-[#f4efe6] transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${
-              open ? "rotate-90 scale-0" : ""
-            }`}
-          />
+        {/* Круглый шеврон */}
+        <span
+          className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ${
+            open ? "border-transparent bg-[#f4efe6] text-[#4E2126]" : "border-[#17191a]/20 bg-white text-[#4E2126]"
+          }`}
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className={`transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${open ? "rotate-180" : ""}`}
+          >
+            <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </span>
-      </button>
+      </div>
 
-      <div
-        className="grid overflow-hidden transition-all duration-500 ease-out"
-        style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
-      >
+      {/* Ответ */}
+      <div className="grid overflow-hidden transition-all duration-500 ease-out" style={{ gridTemplateRows: open ? "1fr" : "0fr" }}>
         <div className="min-h-0">
           <p
-            className="max-w-2xl pb-6 pr-14 text-[14px] leading-relaxed text-[#2a2320]/60 transition-[opacity,transform] duration-500 ease-out lg:text-[15px]"
-            style={{
-              opacity: open ? 1 : 0,
-              transform: open ? "none" : "translateY(8px)",
-              transitionDelay: open ? "120ms" : "0ms",
-            }}
+            className="pt-4 text-[14px] leading-relaxed text-[#f4efe6]/85 transition-[opacity] duration-500 lg:text-[15px]"
+            style={{ opacity: open ? 1 : 0 }}
           >
             {it.a[lang]}
           </p>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
 export default function Faq() {
   const { lang } = useLang();
+  const en = lang === "en";
   const [started, setStarted] = useState(false);
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [openSet, setOpenSet] = useState<Set<number>>(new Set());
   const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -147,34 +153,41 @@ export default function Faq() {
     return () => io.disconnect();
   }, []);
 
+  const toggle = (idx: number) =>
+    setOpenSet((prev) => {
+      const next = new Set(prev);
+      next.has(idx) ? next.delete(idx) : next.add(idx);
+      return next;
+    });
+
   const mid = Math.ceil(ITEMS.length / 2);
   const cols = [ITEMS.slice(0, mid), ITEMS.slice(mid)];
 
   return (
     <section id="faq" className="scroll-mt-24 bg-white py-24 lg:py-32">
-      <div className="mx-auto w-[90%] max-w-[1120px]">
-        {/* Заголовок по центру */}
-        <div className="mb-16 text-center lg:mb-20">
-          <h2 className="font-serif text-[38px] leading-[1.05] tracking-[0.01em] text-[#4E2126] lg:text-[64px]">
-            {lang === "en" ? "FAQ" : "Частые вопросы"}
+      <div className="mx-auto w-[90%] max-w-[1180px]">
+        {/* Заголовок слева + подзаголовок */}
+        <div className="mb-12 max-w-2xl lg:mb-16">
+          <h2 className="font-serif text-[34px] leading-[1.08] text-[#2a2320] lg:text-[52px]">
+            {en ? "Answers to your" : "Ответы на вопросы"}
+            <br />
+            <span className="text-[#4E2126]">{en ? "questions about us" : "о работе с ALIS"}</span>
           </h2>
+          <p className="mt-5 text-[15px] leading-relaxed text-[#17191a]/55 lg:text-[16px]">
+            {en
+              ? "Didn't find your answer? Leave a request — we'll sort out your case."
+              : "Если не нашли ответ — оставьте заявку, мы разберём ваш случай."}
+          </p>
         </div>
 
-        {/* Две колонки во всю ширину */}
-        <div ref={gridRef} className="grid gap-x-12 lg:grid-cols-2 lg:gap-x-16">
+        {/* Две колонки карточек */}
+        <div ref={gridRef} className="grid gap-4 lg:grid-cols-2 lg:gap-5">
           {cols.map((col, c) => (
-            <div key={c} className="border-b border-[#2a2320]/12">
+            <div key={c} className="flex flex-col gap-4 lg:gap-5">
               {col.map((it, i) => {
                 const idx = c * mid + i;
                 return (
-                  <Row
-                    key={it.q.ru}
-                    it={it}
-                    index={idx}
-                    started={started}
-                    open={openIdx === idx}
-                    onToggle={() => setOpenIdx((v) => (v === idx ? null : idx))}
-                  />
+                  <Card key={it.q.ru} it={it} index={idx} started={started} open={openSet.has(idx)} onToggle={() => toggle(idx)} />
                 );
               })}
             </div>
