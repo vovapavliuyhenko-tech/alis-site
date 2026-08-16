@@ -36,6 +36,16 @@ const SERVICES: Service[] = [
     desc: { ru: "Оформление, ламинирование и наращивание — выразительный взгляд.", en: "Shaping, lamination and extensions — an expressive look." },
     img: "/assets/tild6536-613_-2___1__4.jpg",
   },
+  {
+    name: { ru: "Чистка и уход за лицом", en: "Facial cleansing & care" },
+    desc: { ru: "Комбинированная чистка, пилинги и уходовые протоколы под ваш тип кожи.", en: "Combined cleansing, peels and care protocols tailored to your skin type." },
+    img: "/shop/care-c.jpg",
+  },
+  {
+    name: { ru: "Массаж лица", en: "Facial massage" },
+    desc: { ru: "Скульптурный и лимфодренажный массаж — тонус, овал и свежий цвет лица.", en: "Sculpting and lymphatic massage — tone, contour and a fresh complexion." },
+    img: "/shop/care-d.jpg",
+  },
 ];
 
 function Tile({ s, i, started }: { s: Service; i: number; started: boolean }) {
