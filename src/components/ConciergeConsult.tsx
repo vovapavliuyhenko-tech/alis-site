@@ -50,20 +50,20 @@ export default function ConciergeConsult() {
                 <span className="h-1.5 w-1.5 rounded-full bg-[#e7c9a0]" />
                 {t("бесплатная консультация", "free consultation")}
               </span>
-              <h2 className="mt-7 font-serif text-[26px] leading-[1.12] lg:text-[38px]">
+              <h2 className="mt-8 font-serif text-[26px] leading-[1.15] lg:text-[38px]">
                 {t("Бьюти-консьерж", "Beauty concierge")}{" "}
                 <span className="text-[#e7c9a0]">{t("на выезд", "on location")}</span>
               </h2>
-              <p className="mt-5 max-w-md text-[13px] leading-relaxed text-[#f4efe6]/70 lg:text-[14px]">
+              <p className="mt-6 max-w-md text-[13px] leading-[1.75] text-[#f4efe6]/70 lg:text-[14px]">
                 {t(
                   "Событие вдали от дома — а довериться незнакомым мастерам страшно? Привезём свою команду и сделаем образ безупречным.",
                   "An event far from home — and trusting strangers with your look feels risky? We bring our own team and make it flawless."
                 )}
               </p>
 
-              <ul className="mt-8 space-y-4">
+              <ul className="mt-10 space-y-5">
                 {bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-[13px] leading-snug text-[#f4efe6]/90 lg:text-[14px]">
+                  <li key={b} className="flex items-start gap-3.5 text-[13px] leading-relaxed text-[#f4efe6]/90 lg:text-[14px]">
                     <span className="mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A4B33]">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f4efe6" strokeWidth="2.5"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     </span>
