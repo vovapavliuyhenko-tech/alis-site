@@ -177,10 +177,10 @@ export default function TeamCarousel() {
             <article
               key={m.name.ru}
               data-card
-              className="flex w-[74%] shrink-0 snap-start flex-col overflow-hidden rounded-[20px] border border-[#17191a]/8 bg-white shadow-[0_10px_40px_rgba(23,25,26,0.06)] sm:w-[44%] lg:w-[calc(23%-12px)]"
+              className="flex w-[74%] shrink-0 snap-start flex-col overflow-hidden rounded-[20px] border border-[#17191a]/8 bg-white sm:w-[44%] lg:w-[calc(23%-12px)]"
             >
               {/* Фото + ховер-блюр с «Записаться» */}
-              <a href="/#online" className="group relative block aspect-[3/4] overflow-hidden bg-[#f1ede6]">
+              <a href="/#online" className="group relative block aspect-[4/5] overflow-hidden bg-[#f1ede6]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={m.photo}
