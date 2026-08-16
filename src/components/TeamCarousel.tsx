@@ -101,7 +101,7 @@ export default function TeamCarousel() {
     const el = trackRef.current;
     if (!el) return;
     const card = el.querySelector<HTMLElement>("[data-card]");
-    const step = card ? card.offsetWidth + 24 : el.clientWidth * 0.5;
+    const step = card ? card.offsetWidth + 16 : el.clientWidth * 0.5;
     if (dir === 1 && el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) {
       el.scrollTo({ left: 0, behavior: "smooth" });
     } else {
@@ -172,12 +172,12 @@ export default function TeamCarousel() {
         </div>
 
         {/* Лента карточек */}
-        <div ref={trackRef} className="hide-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto px-1 pb-2">
+        <div ref={trackRef} className="hide-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-2">
           {TEAM.map((m) => (
             <article
               key={m.name.ru}
               data-card
-              className="flex w-[72%] shrink-0 snap-start flex-col overflow-hidden rounded-[20px] border border-[#17191a]/8 bg-white shadow-[0_10px_40px_rgba(23,25,26,0.06)] sm:w-[40%] lg:w-[calc(20%-16px)]"
+              className="flex w-[74%] shrink-0 snap-start flex-col overflow-hidden rounded-[20px] border border-[#17191a]/8 bg-white shadow-[0_10px_40px_rgba(23,25,26,0.06)] sm:w-[44%] lg:w-[calc(23%-12px)]"
             >
               {/* Фото + ховер-блюр с «Записаться» */}
               <a href="/#online" className="group relative block aspect-[3/4] overflow-hidden bg-[#f1ede6]">
