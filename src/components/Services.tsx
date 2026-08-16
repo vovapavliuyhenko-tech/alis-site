@@ -136,21 +136,22 @@ export default function Services() {
             style={{
               opacity: started ? 1 : 0,
               transform: started ? "none" : "translateY(26px)",
-              transition: "opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)",
+              transition:
+                "opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1), background-color .4s ease, color .4s ease, border-color .4s ease",
               transitionDelay: started ? `${SERVICES.length * 90}ms` : "0ms",
             }}
-            className="group flex aspect-[4/5] flex-col justify-between rounded-[22px] bg-[#4E2126] p-5 text-[#f4efe6] lg:p-6"
+            className="group flex aspect-[4/5] flex-col justify-between rounded-[22px] border-2 border-[#4E2126] bg-[#4E2126] p-5 text-[#f4efe6] hover:bg-transparent hover:text-[#4E2126] lg:p-6"
           >
             <span className="font-serif text-[21px] leading-tight lg:text-[25px]">
               {en ? "Not sure what you need?" : "Не знаете, что выбрать?"}
             </span>
             <div>
-              <p className="mb-6 text-[13px] leading-relaxed text-[#f4efe6]/70 lg:text-[14px]">
+              <p className="mb-6 text-[13px] leading-relaxed opacity-70 lg:text-[14px]">
                 {en
                   ? "Tell us about your goal — we'll suggest the right procedure and a plan."
                   : "Расскажите о задаче — подберём подходящую процедуру и план."}
               </p>
-              <span className="inline-flex items-center gap-3 border-b border-[#f4efe6]/50 pb-1.5 text-[13px] uppercase tracking-[0.14em] transition-colors group-hover:border-[#f4efe6]">
+              <span className="inline-flex items-center gap-3 rounded-full bg-[#f4efe6] px-6 py-3.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-[#4E2126] shadow-sm transition-all duration-300 group-hover:bg-[#4E2126] group-hover:text-[#f4efe6]">
                 {en ? "Get a consultation" : "Получить консультацию"}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </span>
