@@ -81,7 +81,12 @@ export default function QuizConsult() {
       next[step] = label;
       return next;
     });
-    setTimeout(() => setStep((s) => Math.min(s + 1, QUESTIONS.length)), 180);
+  };
+
+  const answered = !isContact && answers[step] != null;
+  const next = () => {
+    if (!answered) return;
+    setStep((s) => Math.min(s + 1, QUESTIONS.length));
   };
 
   const nameOk = name.trim().length > 1;
@@ -155,10 +160,13 @@ export default function QuizConsult() {
               </div>
             ) : (
               <>
-                {/* Верх: бейдж-подсказка + счётчик */}
+                {/* Верх: бейдж шага + счётчик */}
                 <div className="mb-4 flex items-center justify-between gap-3">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/12 px-3.5 py-1.5 text-[10.5px] uppercase tracking-[0.14em] text-[#4A4B33]">
-                    {isContact ? t("остался только контакт", "just your contact left") : t("это быстро", "quick and easy")}
+                  <span className="inline-flex items-center gap-2 rounded-full bg-[#3B0D1A] px-3.5 py-1.5 text-[10.5px] font-medium uppercase tracking-[0.14em] text-[#f4efe6]">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3l1.9 4.6L18.5 9l-3.6 3 1 4.9L12 14.8 8.1 16.9l1-4.9L5.5 9l4.6-1.4z" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    {isContact
+                      ? t("остался только контакт", "just your contact left")
+                      : `${t("шаг", "step")} ${step + 1} ${t("из", "of")} ${total}`}
                   </span>
                   <span className="text-[13px] font-medium tabular-nums text-[#17191a]/40">{step + 1} / {total}</span>
                 </div>
@@ -214,10 +222,12 @@ export default function QuizConsult() {
                       </button>
                       <button
                         onClick={submit}
-                        className="group/btn inline-flex items-center gap-3 rounded-full bg-[#3B0D1A] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-transform duration-300 hover:scale-[1.02]"
+                        className="group/btn inline-flex items-center gap-3 rounded-full bg-[#3B0D1A] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02]"
                       >
                         {t("Получить расчёт", "Get my plan")}
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover/btn:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]/15 transition-transform duration-300 group-hover/btn:translate-x-0.5">
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        </span>
                       </button>
                     </div>
                   </div>
@@ -233,26 +243,42 @@ export default function QuizConsult() {
                           <button
                             key={opt.ru}
                             onClick={() => pick(opt[lang])}
-                            className={`group flex items-center justify-between gap-3 rounded-2xl border px-5 py-4 text-left text-[14px] transition-all duration-200 lg:text-[15px] ${
+                            className={`group flex items-center gap-3.5 rounded-2xl border px-5 py-4 text-left text-[14px] transition-all duration-200 lg:text-[15px] ${
                               active
-                                ? "border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]"
-                                : "border-[#17191a]/12 bg-white text-[#2a2320] hover:border-[#3B0D1A] hover:bg-[#3B0D1A]/[0.03]"
+                                ? "border-[#3B0D1A] bg-[#3B0D1A]/[0.05] text-[#2a2320]"
+                                : "border-[#17191a]/12 bg-white text-[#2a2320] hover:border-[#3B0D1A]/60"
                             }`}
                           >
-                            {opt[lang]}
-                            <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition-colors ${active ? "border-[#f4efe6]/50 text-[#f4efe6]" : "border-[#17191a]/20 text-[#3B0D1A] group-hover:border-[#3B0D1A]"}`}>
-                              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                            {/* Радио-кружок слева */}
+                            <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${active ? "border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]" : "border-[#17191a]/25 text-transparent group-hover:border-[#3B0D1A]/50"}`}>
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                             </span>
+                            {opt[lang]}
                           </button>
                         );
                       })}
                     </div>
-                    {step > 0 && (
-                      <button onClick={() => setStep((s) => s - 1)} className="mt-7 inline-flex items-center gap-2 text-[14px] text-[#17191a]/50 transition-colors hover:text-[#2a2320]">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                        {t("Назад", "Back")}
+
+                    <div className="mt-8 flex items-center justify-between gap-4">
+                      {step > 0 ? (
+                        <button onClick={() => setStep((s) => s - 1)} className="inline-flex items-center gap-2 text-[14px] text-[#17191a]/50 transition-colors hover:text-[#2a2320]">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                          {t("Назад", "Back")}
+                        </button>
+                      ) : (
+                        <span />
+                      )}
+                      <button
+                        onClick={next}
+                        disabled={!answered}
+                        className="group/btn inline-flex items-center gap-3 rounded-full bg-[#3B0D1A] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
+                      >
+                        {t("Следующий вопрос", "Next question")}
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]/15 transition-transform duration-300 group-hover/btn:translate-x-0.5">
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                        </span>
                       </button>
-                    )}
+                    </div>
                   </div>
                 )}
               </>
