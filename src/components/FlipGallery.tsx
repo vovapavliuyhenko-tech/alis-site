@@ -1,97 +1,64 @@
 "use client";
-// ГАЛЕРЕЯ РАБОТ ALIS: сетка плиток, каждая ПЕРЕВОРАЧИВАЕТСЯ при наведении и
-// показывает вторую работу. Сверху — фильтр по категориям (как на референсе
-// traffic-masters): при выборе услуги плитки плавно перефильтровываются.
+// ГАЛЕРЕЯ РАБОТ ALIS: сетка из 8 плиток фиксированного расположения, каждая
+// ПЕРЕВОРАЧИВАЕТСЯ при наведении. Сверху — фильтр по категориям услуг: при
+// переключении меняются только сами фотографии и подпись, а количество и
+// раскладка остаются прежними.
 import { useMemo, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
-type Cat = "bride" | "evening" | "day" | "shoot" | "event" | "onsite";
-type Tile = {
-  n: string;
-  cat: Cat;
-  label: Loc; // /категория
-  caption: Loc; // подпись справа
-  front: string;
-  back: string;
-};
+type CatId = "all" | "bride" | "evening" | "day" | "shoot" | "event" | "onsite";
+type Tile = { n: string; label: Loc; caption: Loc; front: string; back: string };
 
-const CATS: { id: Cat | "all"; label: Loc }[] = [
-  { id: "all", label: { ru: "Все", en: "All" } },
-  { id: "bride", label: { ru: "Свадебные", en: "Bridal" } },
-  { id: "evening", label: { ru: "Вечерние", en: "Evening" } },
-  { id: "day", label: { ru: "Дневные", en: "Daytime" } },
-  { id: "shoot", label: { ru: "Съёмка", en: "Editorial" } },
-  { id: "event", label: { ru: "События", en: "Events" } },
-  { id: "onsite", label: { ru: "Выезд", en: "On-site" } },
+const CATS: { id: CatId; label: Loc; short: Loc; caption: Loc }[] = [
+  { id: "all", label: { ru: "Все", en: "All" }, short: { ru: "/образ", en: "/look" }, caption: { ru: "образ ALIS", en: "ALIS look" } },
+  { id: "bride", label: { ru: "Свадебные", en: "Bridal" }, short: { ru: "/невеста", en: "/bride" }, caption: { ru: "свадебный образ", en: "bridal look" } },
+  { id: "evening", label: { ru: "Вечерние", en: "Evening" }, short: { ru: "/вечер", en: "/evening" }, caption: { ru: "вечерний макияж", en: "evening makeup" } },
+  { id: "day", label: { ru: "Дневные", en: "Daytime" }, short: { ru: "/день", en: "/day" }, caption: { ru: "дневной образ", en: "daytime look" } },
+  { id: "shoot", label: { ru: "Съёмка", en: "Editorial" }, short: { ru: "/съёмка", en: "/editorial" }, caption: { ru: "образ для фото", en: "shoot look" } },
+  { id: "event", label: { ru: "События", en: "Events" }, short: { ru: "/событие", en: "/event" }, caption: { ru: "образ для события", en: "event look" } },
+  { id: "onsite", label: { ru: "Выезд", en: "On-site" }, short: { ru: "/выезд", en: "/on-site" }, caption: { ru: "выездной образ", en: "on-location look" } },
 ];
 
-const TILES: Tile[] = [
-  {
-    n: "01",
-    cat: "bride",
-    label: { ru: "/невеста", en: "/bride" },
-    caption: { ru: "свадебный образ", en: "bridal look" },
-    front: "/assets/tild6230-643__.jpg",
-    back: "/assets/tild3236-393__.jpg",
-  },
-  {
-    n: "02",
-    cat: "evening",
-    label: { ru: "/вечер", en: "/evening" },
-    caption: { ru: "вечерний макияж", en: "evening makeup" },
-    front: "/assets/tild3236-393__.jpg",
-    back: "/assets/tild6530-383_-2___1_.jpg",
-  },
-  {
-    n: "03",
-    cat: "day",
-    label: { ru: "/день", en: "/day" },
-    caption: { ru: "дневной образ", en: "daytime look" },
-    front: "/assets/tild3535-313_bergamo.png",
-    back: "/assets/tild6536-613_-2___1__4.jpg",
-  },
-  {
-    n: "04",
-    cat: "shoot",
-    label: { ru: "/съёмка", en: "/editorial" },
-    caption: { ru: "образ для фото", en: "shoot look" },
-    front: "/assets/tild6536-613_-2___1__4.jpg",
-    back: "/assets/tild3561-646_-2___1__5.jpg",
-  },
-  {
-    n: "05",
-    cat: "event",
-    label: { ru: "/выпускной", en: "/prom" },
-    caption: { ru: "образ на выпускной", en: "prom look" },
-    front: "/assets/tild6436-383_fermata__1.jpg",
-    back: "/assets/tild6561-356_fermata__2.jpg",
-  },
-  {
-    n: "06",
-    cat: "event",
-    label: { ru: "/событие", en: "/event" },
-    caption: { ru: "образ для события", en: "event look" },
-    front: "/assets/tild3638-373_-2___1__3.jpg",
-    back: "/assets/tild6530-383_-2___1_.jpg",
-  },
-  {
-    n: "07",
-    cat: "shoot",
-    label: { ru: "/стиль", en: "/style" },
-    caption: { ru: "макияж и укладка", en: "makeup & hair" },
-    front: "/assets/tild6561-356_fermata__2.jpg",
-    back: "/assets/tild3134-353___2024-12-08__161353.png",
-  },
-  {
-    n: "08",
-    cat: "onsite",
-    label: { ru: "/выезд", en: "/on-site" },
-    caption: { ru: "выездной образ", en: "on-location look" },
-    front: "/assets/tild3439-633___2025-03-31__213150.png",
-    back: "/assets/tild6664-386_2851782e-4c78-4475-a.png",
-  },
+// Пул реальных фото — из него набираем по 8 штук на каждую категорию
+const POOL = [
+  "/assets/tild6230-643__.jpg",
+  "/assets/tild3236-393__.jpg",
+  "/assets/tild6530-383_-2___1_.jpg",
+  "/assets/tild3638-373_-2___1__3.jpg",
+  "/assets/tild3561-646_-2___1__5.jpg",
+  "/shop/care-a.jpg",
+  "/shop/care-b.jpg",
+  "/shop/care-c.jpg",
+  "/shop/care-d.jpg",
+  "/shop/care-e.jpg",
+  "/shop/care-f.jpg",
+  "/shop/care-g.jpg",
+  "/shop/care-h.jpg",
+  "/shop/type-1.jpg",
+  "/shop/type-2.jpg",
+  "/shop/type-3.jpg",
+  "/shop/type-4.jpg",
+  "/shop/type-5.jpg",
+  "/shop/type-6.jpg",
+  "/shop/type-7.jpg",
+  "/shop/type-8.jpg",
+  "/shop/ss-portrait.jpg",
 ];
+
+// Фиксированно 8 плиток. Каждая категория подставляет свой набор фото.
+function buildTiles(cat: (typeof CATS)[number], catIndex: number): Tile[] {
+  return Array.from({ length: 8 }, (_, i) => {
+    const base = catIndex * 5 + i * 2;
+    return {
+      n: String(i + 1).padStart(2, "0"),
+      label: cat.short,
+      caption: cat.caption,
+      front: POOL[base % POOL.length],
+      back: POOL[(base + 1) % POOL.length],
+    };
+  });
+}
 
 function FlipTile({ t }: { t: Tile }) {
   const { lang } = useLang();
@@ -126,12 +93,12 @@ function FlipTile({ t }: { t: Tile }) {
 export default function FlipGallery() {
   const { lang } = useLang();
   const en = lang === "en";
-  const [active, setActive] = useState<Cat | "all">("all");
+  const [active, setActive] = useState<CatId>("all");
 
-  const visible = useMemo(
-    () => (active === "all" ? TILES : TILES.filter((t) => t.cat === active)),
-    [active]
-  );
+  const tiles = useMemo(() => {
+    const idx = CATS.findIndex((c) => c.id === active);
+    return buildTiles(CATS[idx], idx);
+  }, [active]);
 
   return (
     <section id="works" className="scroll-mt-24 bg-white py-24 lg:py-32">
@@ -168,12 +135,12 @@ export default function FlipGallery() {
           })}
         </div>
 
-        {/* Сетка плиток (плавно перефильтровывается) */}
+        {/* Сетка 8 плиток — расположение фиксировано, меняются только фото */}
         <div
           key={active}
           className="grid animate-[fadeGrid_.5s_ease] grid-cols-2 items-start gap-x-6 gap-y-12 md:grid-cols-4 md:gap-x-9 md:gap-y-16"
         >
-          {visible.map((t) => (
+          {tiles.map((t) => (
             <FlipTile key={t.n} t={t} />
           ))}
         </div>
