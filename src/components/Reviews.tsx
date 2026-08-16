@@ -218,7 +218,8 @@ export default function Reviews() {
             {lang === "en" ? "reviews" : "отзывы"}
           </span>
           <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
-            {lang === "en" ? "What our guests say" : "Что говорят наши гостьи"}
+            {lang === "en" ? "What our " : "Что говорят "}
+            <span className="text-[#3B0D1A]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
           </h2>
         </div>
 
