@@ -54,14 +54,14 @@ export default function ConciergeConsult() {
                 {t("Бьюти-консьерж", "Beauty concierge")}{" "}
                 <span className="text-[#e7c9a0]">{t("на выезд", "on location")}</span>
               </h2>
-              <p className="mt-6 max-w-md text-[13px] leading-[1.75] text-[#f4efe6]/70 lg:text-[14px]">
+              <p className="mt-8 max-w-md text-[13px] leading-[1.75] text-[#f4efe6]/70 lg:text-[14px]">
                 {t(
                   "Событие вдали от дома — а довериться незнакомым мастерам страшно? Привезём свою команду и сделаем образ безупречным.",
                   "An event far from home — and trusting strangers with your look feels risky? We bring our own team and make it flawless."
                 )}
               </p>
 
-              <ul className="mt-10 space-y-5">
+              <ul className="mt-12 space-y-5">
                 {bullets.map((b) => (
                   <li key={b} className="flex items-start gap-3.5 text-[13px] leading-relaxed text-[#f4efe6]/90 lg:text-[14px]">
                     <span className="mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A4B33]">
