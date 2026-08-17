@@ -136,7 +136,7 @@ export default function Footer() {
 
           {/* Колонка 4 — бренд + адрес */}
           <div>
-            <div className="font-serif text-[40px] leading-none tracking-[0.12em] text-[#f4efe6] lg:text-[52px]">ÁLIS</div>
+            <div className="font-display text-[40px] font-semibold leading-none tracking-[0.1em] text-[#f4efe6] lg:text-[52px]">ÁLIS</div>
             <p className="mt-8 whitespace-pre-line font-serif text-[22px] leading-tight text-[#f4efe6] lg:text-[26px]">
               {ADDRESS[lang]}
             </p>

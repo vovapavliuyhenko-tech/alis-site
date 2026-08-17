@@ -49,6 +49,10 @@ html { scrollbar-color: var(--wine) #ffffff; scrollbar-width: thin; }
 /* Крупный конденсированный шрифт (Thunder → Oswald стенд-ин) */
 .font-thunder { font-family: var(--font-thunder), 'Oswald', sans-serif; }
 
+/* Бренд/логотип (латиница): капитель Cinzel (как Trajan) и скрипт Pinyon (как Bickham) */
+.font-display { font-family: var(--font-cinzel), 'Playfair Display', Georgia, serif; }
+.font-script { font-family: var(--font-pinyon), 'Segoe Script', cursive; }
+
 /* ===== Кастомный курсор — гелевая капля (как на paloma.website) ===== */
 html.has-custom-cursor,
 html.has-custom-cursor * { cursor: none !important; }

@@ -40,7 +40,7 @@ export default function Header() {
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-4 sm:px-4">
       <div className="pointer-events-auto flex w-full max-w-[1200px] items-center justify-between gap-4 rounded-full border border-[#17191a]/10 bg-white/70 py-2.5 pl-6 pr-2.5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] backdrop-blur-md">
         {/* Логотип */}
-        <a href="/" className="font-serif text-[20px] leading-none tracking-[0.16em] text-[#17191a]">
+        <a href="/" className="font-display text-[22px] font-semibold leading-none tracking-[0.12em] text-[#17191a]">
           ÁLIS
         </a>
 

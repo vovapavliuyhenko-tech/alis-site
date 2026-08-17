@@ -40,8 +40,9 @@ export default function Preloader() {
     >
       {/* Название салона сверху */}
       <div className="pt-14 text-center lg:pt-20">
-        <p className="font-serif text-[26px] italic tracking-tight lg:text-[32px]">
-          ÁLIS <span className="opacity-60">(beauty)</span>
+        <p className="flex items-baseline justify-center gap-2 tracking-tight">
+          <span className="font-display text-[26px] font-semibold tracking-[0.1em] lg:text-[32px]">ÁLIS</span>
+          <span className="font-script text-[30px] opacity-80 lg:text-[38px]">beauty</span>
         </p>
       </div>
 
