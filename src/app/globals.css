@@ -14,7 +14,8 @@
   --color-wine: var(--wine);
   --color-olive: var(--olive);
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-playfair);
+  /* Весь serif на сайте — капитель Cormorant SC (как в заголовках) */
+  --font-serif: var(--font-cinzel);
   --font-thunder: var(--font-thunder);
 }
 
