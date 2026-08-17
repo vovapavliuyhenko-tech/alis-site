@@ -62,7 +62,7 @@ export default function LookShowcase({
       {/* Панель с карточкой */}
       <div className={`flex items-center justify-center px-6 py-10 lg:px-12 lg:py-8 ${mirror ? "lg:order-1" : "lg:order-2"}`}>
         <div className="w-full max-w-[400px] text-center">
-          <h2 className="font-serif text-[26px] leading-tight text-[#3B0D1A] lg:text-[34px]">{title[lang]}</h2>
+          <h2 className="font-display text-[26px] uppercase tracking-[0.06em] leading-tight text-[#3B0D1A] lg:text-[34px]">{title[lang]}</h2>
           <p className="mx-auto mt-3 max-w-sm text-[13px] leading-relaxed text-[#17191a]/55 lg:text-[14px]">{subtitle[lang]}</p>
 
           {/* Карточка + стрелки */}

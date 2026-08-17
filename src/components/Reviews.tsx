@@ -217,9 +217,9 @@ export default function Reviews() {
           <span className="inline-block rounded-full bg-[#4A4B33] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
             {lang === "en" ? "reviews" : "отзывы"}
           </span>
-          <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
+          <h2 className="mt-4 font-display text-[30px] uppercase tracking-[0.06em] leading-[1.12] text-[#17191a] lg:text-[44px]">
             {lang === "en" ? "What our " : "Что говорят "}
-            <span className="text-[#3B0D1A]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
+            <span className="font-script text-[40px] normal-case tracking-normal text-[#3B0D1A] lg:text-[58px]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
           </h2>
         </div>
 

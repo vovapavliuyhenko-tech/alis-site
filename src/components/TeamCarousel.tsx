@@ -142,10 +142,10 @@ export default function TeamCarousel() {
               <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
               {en ? "Team" : "Команда"}
             </span>
-            <h2 className="mt-5 font-serif text-[30px] leading-[1.1] text-[#2a2320] lg:text-[48px]">
+            <h2 className="mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] text-[#2a2320] lg:text-[44px]">
               {en ? "The masters who" : "Мастера, которым"}
               <br />
-              <span className="text-[#3B0D1A]">{en ? "craft your look" : "доверяют образ"}</span>
+              <span className="font-script text-[40px] normal-case tracking-normal text-[#3B0D1A] lg:text-[58px]">{en ? "craft your look" : "доверяют образ"}</span>
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
               {en

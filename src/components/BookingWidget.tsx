@@ -159,8 +159,8 @@ export default function BookingWidget() {
           <span className="inline-block rounded-full bg-[#4A4B33] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
             онлайн-запись
           </span>
-          <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
-            Запишитесь <span className="text-[#3B0D1A]">онлайн</span>
+          <h2 className="mt-4 font-display text-[30px] uppercase tracking-[0.06em] leading-[1.12] text-[#17191a] lg:text-[44px]">
+            Запишитесь <span className="font-script text-[42px] normal-case tracking-normal text-[#3B0D1A] lg:text-[60px]">онлайн</span>
           </h2>
         </div>
 

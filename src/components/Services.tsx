@@ -119,7 +119,7 @@ export default function Services() {
       <div className="mx-auto w-[96%] max-w-[1620px]">
         {/* Заголовок */}
         <div className="mb-12 max-w-2xl lg:mb-16">
-          <h2 className="font-serif text-[34px] leading-[1.08] text-[#3B0D1A] lg:text-[56px]">
+          <h2 className="font-display text-[34px] uppercase tracking-[0.06em] leading-[1.08] text-[#3B0D1A] lg:text-[52px]">
             {en ? "Our services" : "Наши услуги"}
           </h2>
         </div>

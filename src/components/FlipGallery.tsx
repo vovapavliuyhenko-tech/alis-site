@@ -118,7 +118,7 @@ export default function FlipGallery() {
       <div className="mx-auto w-[96%] max-w-[1620px]">
         {/* Заголовок */}
         <div className="mb-8 max-w-2xl lg:mb-10">
-          <h2 className="font-serif text-[34px] leading-[1.08] text-[#3B0D1A] lg:text-[56px]">
+          <h2 className="font-display text-[34px] uppercase tracking-[0.06em] leading-[1.08] text-[#3B0D1A] lg:text-[52px]">
             {en ? "Our works" : "Наши работы"}
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">

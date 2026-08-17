@@ -59,8 +59,9 @@ export default function Certificates() {
               <span className="r-reveal inline-block rounded-full bg-[#f4efe6]/12 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/80">
                 {t("подарочный сертификат", "gift certificate")}
               </span>
-              <h2 className="r-reveal mt-5 font-serif text-[30px] leading-[1.08] lg:text-[46px]">
-                {t("Лучший подарок — красота ALIS", "The best gift is ALIS beauty")}
+              <h2 className="r-reveal mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] lg:text-[42px]">
+                {t("Лучший подарок —", "The best gift is")}{" "}
+                <span className="font-script text-[40px] normal-case tracking-normal text-[#e7c9a0] lg:text-[56px]">{t("красота ALIS", "ALIS beauty")}</span>
               </h2>
 
               {/* Выгоды */}

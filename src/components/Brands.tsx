@@ -79,10 +79,10 @@ export default function Brands() {
           <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
           {en ? "Clients" : "Клиенты"}
         </span>
-        <h2 className="mt-5 font-serif text-[30px] leading-[1.12] text-[#17191a] lg:text-[46px]">
+        <h2 className="mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.14] text-[#17191a] lg:text-[42px]">
           {en ? "Trusted by brands" : "Нам доверяют"}
           <br />
-          <span className="text-[#3B0D1A]">{en ? "and venues since 2019" : "бренды и площадки с 2019 года"}</span>
+          <span className="font-script text-[38px] normal-case tracking-normal text-[#3B0D1A] lg:text-[54px]">{en ? "and venues since 2019" : "бренды и площадки с 2019 года"}</span>
         </h2>
       </div>
 
