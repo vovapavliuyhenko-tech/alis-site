@@ -80,7 +80,7 @@ function Marker({ good }: { good: boolean }) {
   return (
     <span
       className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-        good ? "bg-[#4A4B33] text-[#f4efe6]" : "bg-[#17191a]/8 text-[#17191a]/50"
+        good ? "bg-olive text-cream" : "bg-ink/8 text-ink/50"
       }`}
     >
       {good ? (
@@ -133,21 +133,21 @@ export default function TeamCarousel() {
   }, []);
 
   return (
-    <section id="team" className="scroll-mt-24 bg-white py-24 lg:py-32">
+    <section id="team" className="scroll-mt-24 bg-cream py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1360px]">
         {/* Заголовок + стрелки сверху справа */}
         <div className="mb-10 flex items-end justify-between gap-6 lg:mb-14">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+            <span className="inline-flex items-center gap-2 rounded-full bg-olive/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-olive">
+              <span className="h-1.5 w-1.5 rounded-full bg-olive" />
               {en ? "Team" : "Команда"}
             </span>
-            <h2 className="mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] text-[#2a2320] lg:text-[44px]">
+            <h2 className="mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] text-ink lg:text-[44px]">
               {en ? "The masters who" : "Мастера, которым"}
               <br />
-              <span className="font-script text-[40px] normal-case tracking-normal text-[#3B0D1A] lg:text-[58px]">{en ? "craft your look" : "доверяют образ"}</span>
+              <span className="font-script text-[40px] normal-case tracking-normal text-wine lg:text-[58px]">{en ? "craft your look" : "доверяют образ"}</span>
             </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
+            <p className="mt-4 text-[15px] leading-relaxed text-ink/60 lg:text-[16px]">
               {en
                 ? "Over your look works a full team — with character and an eye for detail."
                 : "Над вашим образом работает целая команда — с характером и вниманием к деталям."}
@@ -157,14 +157,14 @@ export default function TeamCarousel() {
             <button
               aria-label={en ? "Previous" : "Назад"}
               onClick={() => scrollBy(-1)}
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#3B0D1A] text-[#f4efe6] shadow-[0_8px_24px_rgba(59,13,26,0.3)] transition-all hover:scale-105 hover:bg-[#2A0810]"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-wine text-cream shadow-[0_8px_24px_rgba(117,39,52,0.3)] transition-all hover:scale-105 hover:bg-[#5c1e28]"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
             <button
               aria-label={en ? "Next" : "Вперёд"}
               onClick={() => scrollBy(1)}
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#3B0D1A] text-[#f4efe6] shadow-[0_8px_24px_rgba(59,13,26,0.3)] transition-all hover:scale-105 hover:bg-[#2A0810]"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-wine text-cream shadow-[0_8px_24px_rgba(117,39,52,0.3)] transition-all hover:scale-105 hover:bg-[#5c1e28]"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
@@ -177,7 +177,7 @@ export default function TeamCarousel() {
             <article
               key={m.name.ru}
               data-card
-              className="flex w-[74%] shrink-0 snap-start flex-col overflow-hidden rounded-[20px] border border-[#17191a]/8 bg-white sm:w-[44%] lg:w-[calc(23%-12px)]"
+              className="flex w-[74%] shrink-0 snap-start flex-col overflow-hidden rounded-[20px] border border-ink/8 bg-white sm:w-[44%] lg:w-[calc(23%-12px)]"
             >
               {/* Фото + ховер-блюр с «Записаться» */}
               <a href="/#online" className="group relative block aspect-[4/5] overflow-hidden bg-[#f1ede6]">
@@ -187,7 +187,7 @@ export default function TeamCarousel() {
                   alt={m.name[lang]}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.07]"
                 />
-                <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#3B0D1A]/25 opacity-0 backdrop-blur-[6px] transition-opacity duration-500 ease-out group-hover:opacity-100">
+                <div className="absolute inset-0 z-10 flex items-center justify-center bg-wine/25 opacity-0 backdrop-blur-[6px] transition-opacity duration-500 ease-out group-hover:opacity-100">
                   <span className="inline-flex items-center gap-2.5 rounded-full border border-white/70 px-6 py-2.5 text-[13px] uppercase tracking-[0.16em] text-white">
                     {en ? "Book" : "Записаться"}
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -197,12 +197,12 @@ export default function TeamCarousel() {
 
               {/* Инфо-панель */}
               <div className="flex flex-1 flex-col p-5 lg:p-6">
-                <h3 className="font-serif text-[22px] text-[#2a2320] lg:text-[24px]">{m.name[lang]}</h3>
-                <p className="mt-1 text-[13px] text-[#17191a]/55">{m.role[lang]}</p>
-                <div className="my-4 h-px w-full bg-[#17191a]/10" />
+                <h3 className="font-serif text-[22px] text-ink lg:text-[24px]">{m.name[lang]}</h3>
+                <p className="mt-1 text-[13px] text-ink/55">{m.role[lang]}</p>
+                <div className="my-4 h-px w-full bg-ink/10" />
                 <ul className="space-y-3">
                   {m.traits.map((tr, i) => (
-                    <li key={i} className="flex items-start gap-2.5 text-[13px] leading-snug text-[#2a2320]/80 lg:text-[13.5px]">
+                    <li key={i} className="flex items-start gap-2.5 text-[13px] leading-snug text-ink/80 lg:text-[13.5px]">
                       <Marker good={tr.good} />
                       {tr.text[lang]}
                     </li>

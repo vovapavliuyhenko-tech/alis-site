@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
-/* ===== Дизайн-токены ALIS: только 3 цвета ===== */
+/* ===== Дизайн-токены ALIS beauty (логобук) ===== */
 :root {
-  --ink: #17191a;         /* чернильный — тёмная база */
-  --cream: #f4efe6;       /* кремовый — светлая база */
-  --wine: #3B0D1A;        /* Burgundy — основной акцент */
-  --olive: #4A4B33;       /* Deep Olive Green — второй акцент */
+  --ink: #3C2818;         /* шоколад — текст и тёмные плашки */
+  --cream: #F7F0DE;       /* крем — фон всего сайта */
+  --wine: #752734;        /* бордо (осень-зима) — кнопки, активный FAQ */
+  --olive: #9A9551;       /* олива — фирменный второй акцент */
+  --taupe: #856858;       /* тауп — вторичный текст и плашки */
+  --gold: #F5DE97;        /* светлое золото — декор, крупные цифры на тёмном */
 }
 
 @theme inline {
@@ -13,52 +15,71 @@
   --color-cream: var(--cream);
   --color-wine: var(--wine);
   --color-olive: var(--olive);
-  --font-sans: var(--font-inter);
-  /* Весь serif на сайте — капитель Cormorant SC (как в заголовках) */
-  --font-serif: var(--font-cinzel);
-  --font-thunder: var(--font-thunder);
+  --color-taupe: var(--taupe);
+  --color-gold: var(--gold);
+  /* Source Code Pro (Light) — основной текст; Aboreto — заголовки/лого (латиница + фолбэк) */
+  --font-sans: var(--font-scp);
+  --font-serif: var(--font-aboreto), var(--font-scp), Georgia, serif;
+  --font-thunder: var(--font-scp);
 }
 
 * { box-sizing: border-box; }
 html, body { padding: 0; margin: 0; }
 body {
-  background: #ffffff;
+  background: var(--cream);
   color: var(--ink);
-  font-family: var(--font-inter), Arial, sans-serif;
-  letter-spacing: -0.01em;
+  font-family: var(--font-scp), 'Courier New', monospace;
+  letter-spacing: 0;
   overflow-x: hidden;
 }
 
-/* ===== Бордовый скроллбар (как акцент сайта) ===== */
-html { scrollbar-color: var(--wine) #ffffff; scrollbar-width: thin; }
+/* ===== Оливковый скроллбар (фирменный акцент) ===== */
+html { scrollbar-color: var(--olive) var(--cream); scrollbar-width: thin; }
 ::-webkit-scrollbar { width: 12px; height: 12px; }
-::-webkit-scrollbar-track { background: #ffffff; }
+::-webkit-scrollbar-track { background: var(--cream); }
 ::-webkit-scrollbar-thumb {
-  background: var(--wine); border-radius: 999px;
-  border: 3px solid #ffffff;
+  background: var(--olive); border-radius: 999px;
+  border: 3px solid var(--cream);
 }
-::-webkit-scrollbar-thumb:hover { background: #63292f; }
+::-webkit-scrollbar-thumb:hover { background: var(--taupe); }
 
 /* Лента-карусель без видимого скроллбара (магазин) */
 .hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 .hide-scrollbar::-webkit-scrollbar { display: none; width: 0; height: 0; }
 
-/* Шрифты витрины /shop (копия O'CARE) */
-.ff-geo { font-family: var(--font-geologica), Arial, sans-serif; }
-.ff-cormorant { font-family: var(--font-cormorant), 'Times New Roman', serif; }
+/* Шрифты витрины /shop — переведены на фирменную пару */
+.ff-geo { font-family: var(--font-scp), 'Courier New', monospace; font-weight: 300; }
+.ff-cormorant { font-family: var(--font-aboreto), var(--font-scp), Georgia, serif; letter-spacing: .12em; }
 
-/* Крупный конденсированный шрифт (Thunder → Oswald стенд-ин) */
-.font-thunder { font-family: var(--font-thunder), 'Oswald', sans-serif; }
+/* Крупный слой «Этапы» — Source Code Pro тонкий, капсом */
+.font-thunder {
+  font-family: var(--font-scp), 'Courier New', monospace;
+  font-weight: 200; text-transform: uppercase; letter-spacing: .14em;
+}
 
-/* Фирменная пара: капитель Cormorant SC (заголовки/лого) и тонкий скрипт Great Vibes (акценты) */
-.font-display { font-family: var(--font-cinzel), 'Cormorant SC', Georgia, serif; }
-.font-script { font-family: var(--font-pinyon), 'Great Vibes', cursive; }
+/* Фирменная пара логобука */
+.font-display {
+  font-family: var(--font-aboreto), var(--font-scp), Georgia, serif;
+  font-weight: 400; letter-spacing: .18em;
+}
+/* Акцентные слова (бывший скрипт) — Source Code Pro тонкий капсом, олива */
+.font-script {
+  font-family: var(--font-scp), 'Courier New', monospace;
+  font-weight: 300; text-transform: uppercase; letter-spacing: .22em;
+  color: var(--olive);
+}
+/* Эйброу-надписи */
+.font-label {
+  font-family: var(--font-scp), 'Courier New', monospace;
+  font-weight: 300; font-size: 11px; text-transform: uppercase;
+  letter-spacing: .24em; color: var(--taupe);
+}
 
 /* ===== Кастомный курсор — гелевая капля (как на paloma.website) ===== */
 html.has-custom-cursor,
 html.has-custom-cursor * { cursor: none !important; }
 .ink-cursor {
-  --ink-col: #17191a; /* по умолчанию тёмная (светлый фон сайта) */
+  --ink-col: var(--ink); /* по умолчанию тёмная (светлый фон сайта) */
   position: fixed; top: 0; left: 0; width: 0; height: 0;
   pointer-events: none; z-index: 9000;
   filter: url(#palomaGoo);
@@ -66,7 +87,7 @@ html.has-custom-cursor * { cursor: none !important; }
   will-change: transform;
 }
 .ink-cursor.is-visible { opacity: 1; }
-.ink-cursor.on-light { --ink-col: #17191a; } /* тёмная капля на светлых секциях */
+.ink-cursor.on-light { --ink-col: var(--ink); } /* тёмная капля на светлых секциях */
 .ink-cursor span {
   position: absolute; top: 0; left: 0; display: block;
   width: 26px; height: 26px; border-radius: 50%;
@@ -121,27 +142,28 @@ html.has-custom-cursor * { cursor: none !important; }
 }
 
 /* ===== Типографика юридических страниц (политика, оферта, cookie) ===== */
-.legal-prose { color: #17191a; font-size: 15px; line-height: 1.75; }
+.legal-prose { color: var(--taupe); font-size: 15px; line-height: 1.75; }
 .legal-prose h2 {
   margin: 2.2rem 0 0.9rem;
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-aboreto), var(--font-scp), Georgia, serif;
   font-size: 22px;
   line-height: 1.25;
+  letter-spacing: .06em;
   color: var(--wine);
 }
 .legal-prose h3 {
   margin: 1.6rem 0 0.6rem;
   font-size: 16px;
-  font-weight: 600;
-  color: #17191a;
+  font-weight: 500;
+  color: var(--ink);
 }
-.legal-prose p { margin: 0 0 1rem; color: rgba(23,25,26,0.8); }
-.legal-prose ul, .legal-prose ol { margin: 0 0 1rem; padding-left: 1.3rem; color: rgba(23,25,26,0.8); }
+.legal-prose p { margin: 0 0 1rem; color: var(--taupe); }
+.legal-prose ul, .legal-prose ol { margin: 0 0 1rem; padding-left: 1.3rem; color: var(--taupe); }
 .legal-prose li { margin: 0 0 0.5rem; padding-left: 0.2rem; }
-.legal-prose li::marker { color: var(--wine); }
+.legal-prose li::marker { color: var(--olive); }
 .legal-prose a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
 .legal-prose a:hover { opacity: 0.75; }
-.legal-prose strong { color: #17191a; font-weight: 600; }
+.legal-prose strong { color: var(--ink); font-weight: 500; }
 .legal-prose table { margin: 1rem 0; }
 
 /* Искры-конфетти на карточке подарочного сертификата */

@@ -74,8 +74,8 @@ function Card({
       aria-expanded={open}
       className={`block w-full rounded-[20px] border p-6 text-left transition-[opacity,transform,background-color,border-color] duration-500 ease-[cubic-bezier(.16,1,.3,1)] lg:p-7 ${
         open
-          ? "border-[#3B0D1A] bg-[#3B0D1A] shadow-[0_18px_50px_rgba(59,13,26,0.35)]"
-          : "border-[#17191a]/12 bg-white hover:border-[#3B0D1A]/40"
+          ? "border-wine bg-wine shadow-[0_18px_50px_rgba(117,39,52,0.35)]"
+          : "border-ink/12 bg-white hover:border-wine/40"
       }`}
       style={{
         opacity: started ? 1 : 0,
@@ -86,7 +86,7 @@ function Card({
       <div className="flex items-start justify-between gap-5">
         <span
           className={`font-serif text-[18px] leading-snug transition-colors duration-300 lg:text-[21px] ${
-            open ? "text-[#f4efe6]" : "text-[#2a2320]"
+            open ? "text-cream" : "text-ink"
           }`}
         >
           {it.q[lang]}
@@ -94,7 +94,7 @@ function Card({
         {/* Круглый шеврон */}
         <span
           className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ${
-            open ? "border-transparent bg-[#f4efe6] text-[#3B0D1A]" : "border-[#17191a]/20 bg-white text-[#3B0D1A]"
+            open ? "border-transparent bg-cream text-wine" : "border-ink/20 bg-white text-wine"
           }`}
         >
           <svg
@@ -115,7 +115,7 @@ function Card({
       <div className="grid overflow-hidden transition-all duration-500 ease-out" style={{ gridTemplateRows: open ? "1fr" : "0fr" }}>
         <div className="min-h-0">
           <p
-            className="pt-4 text-[14px] leading-relaxed text-[#f4efe6]/85 transition-[opacity] duration-500 lg:text-[15px]"
+            className="pt-4 text-[14px] leading-relaxed text-cream/85 transition-[opacity] duration-500 lg:text-[15px]"
             style={{ opacity: open ? 1 : 0 }}
           >
             {it.a[lang]}
@@ -164,16 +164,16 @@ export default function Faq() {
   const cols = [ITEMS.slice(0, mid), ITEMS.slice(mid)];
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-white py-24 lg:py-32">
+    <section id="faq" className="scroll-mt-24 bg-cream py-24 lg:py-32">
       <div className="mx-auto w-[90%] max-w-[1180px]">
         {/* Заголовок слева + подзаголовок */}
         <div className="mb-12 max-w-2xl lg:mb-16">
-          <h2 className="font-display text-[32px] uppercase tracking-[0.06em] leading-[1.1] text-[#2a2320] lg:text-[48px]">
+          <h2 className="font-display text-[32px] uppercase tracking-[0.06em] leading-[1.1] text-ink lg:text-[48px]">
             {en ? "Answers to your" : "Ответы на вопросы"}
             <br />
-            <span className="font-script text-[42px] normal-case tracking-normal text-[#3B0D1A] lg:text-[60px]">{en ? "questions about us" : "о работе с ALIS"}</span>
+            <span className="font-script text-[42px] normal-case tracking-normal text-wine lg:text-[60px]">{en ? "questions about us" : "о работе с ALIS"}</span>
           </h2>
-          <p className="mt-5 text-[15px] leading-relaxed text-[#17191a]/55 lg:text-[16px]">
+          <p className="mt-5 text-[15px] leading-relaxed text-ink/55 lg:text-[16px]">
             {en
               ? "Didn't find your answer? Leave a request — we'll sort out your case."
               : "Если не нашли ответ — оставьте заявку, мы разберём ваш случай."}

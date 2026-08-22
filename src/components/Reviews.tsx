@@ -210,16 +210,16 @@ export default function Reviews() {
   }, []);
 
   return (
-    <section id="reviews" className="overflow-hidden bg-white py-24 lg:py-32">
+    <section id="reviews" className="overflow-hidden bg-cream py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1180px]">
         {/* Заголовок */}
         <div className="mb-14 text-center">
-          <span className="inline-block rounded-full bg-[#4A4B33] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+          <span className="inline-block rounded-full bg-olive px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-cream">
             {lang === "en" ? "reviews" : "отзывы"}
           </span>
-          <h2 className="mt-4 font-display text-[30px] uppercase tracking-[0.06em] leading-[1.12] text-[#17191a] lg:text-[44px]">
+          <h2 className="mt-4 font-display text-[30px] uppercase tracking-[0.06em] leading-[1.12] text-ink lg:text-[44px]">
             {lang === "en" ? "What our " : "Что говорят "}
-            <span className="font-script text-[40px] normal-case tracking-normal text-[#3B0D1A] lg:text-[58px]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
+            <span className="font-script text-[40px] normal-case tracking-normal text-wine lg:text-[58px]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
           </h2>
         </div>
 
@@ -233,13 +233,13 @@ export default function Reviews() {
               <article
                 key={r.name.ru}
                 style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)` }}
-                className="absolute left-1/2 top-1/2 -ml-[130px] -mt-[128px] flex h-[256px] w-[260px] flex-col justify-between rounded-[18px] border border-[#17191a]/10 bg-white p-6 text-[#17191a] shadow-[0_10px_30px_rgba(23,25,26,0.08)] [backface-visibility:hidden]"
+                className="absolute left-1/2 top-1/2 -ml-[130px] -mt-[128px] flex h-[256px] w-[260px] flex-col justify-between rounded-[18px] border border-ink/10 bg-white p-6 text-ink shadow-[0_10px_30px_rgba(60,40,24,0.08)] [backface-visibility:hidden]"
               >
-                <span className="font-serif text-[38px] leading-[0.5] text-[#3B0D1A]">
+                <span className="font-serif text-[38px] leading-[0.5] text-wine">
                   &ldquo;
                 </span>
 
-                <p className="font-serif text-[13px] leading-[1.55] text-[#17191a]">
+                <p className="font-serif text-[13px] leading-[1.55] text-ink">
                   {r.text[lang]}
                 </p>
 
@@ -249,11 +249,11 @@ export default function Reviews() {
                     src={r.photo}
                     alt={r.name[lang]}
                     draggable={false}
-                    className="h-9 w-9 rounded-full object-cover ring-1 ring-[#3B0D1A]/35"
+                    className="h-9 w-9 rounded-full object-cover ring-1 ring-wine/35"
                   />
                   <div>
-                    <p className="text-[12.5px] font-medium text-[#17191a]">{r.name[lang]}</p>
-                    <p className="text-[10px] uppercase tracking-[0.12em] text-[#4A4B33]">
+                    <p className="text-[12.5px] font-medium text-ink">{r.name[lang]}</p>
+                    <p className="text-[10px] uppercase tracking-[0.12em] text-olive">
                       {r.role[lang]}
                     </p>
                   </div>
@@ -263,7 +263,7 @@ export default function Reviews() {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-[12px] lowercase tracking-wide text-[#17191a]/40">
+        <p className="mt-8 text-center text-[12px] lowercase tracking-wide text-ink/40">
           {lang === "en"
             ? "drag to rotate · hold to pause"
             : "потяните, чтобы листать · зажмите, чтобы остановить"}

@@ -35,7 +35,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-svh min-h-[640px] w-full overflow-hidden bg-white"
+      className="relative h-svh min-h-[640px] w-full overflow-hidden bg-cream"
     >
       {/* Фон: фото зеркалом */}
       <div className="absolute inset-0 grid grid-cols-2">
@@ -50,7 +50,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%]"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.65) 55%, rgba(255,255,255,1) 100%)",
+            "linear-gradient(to bottom, rgba(247,240,222,0) 0%, rgba(247,240,222,0.65) 55%, rgba(247,240,222,1) 100%)",
         }}
       />
 
@@ -58,7 +58,7 @@ export default function Hero() {
       <div className="absolute inset-0 flex items-center justify-center px-6">
         <div
           ref={cardRef}
-          className="flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between rounded-[26px] bg-white px-7 py-9 text-center text-[#17191a] shadow-[0_20px_60px_rgba(0,0,0,0.15)] will-change-transform"
+          className="flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between rounded-[26px] bg-white px-7 py-9 text-center text-ink shadow-[0_20px_60px_rgba(0,0,0,0.15)] will-change-transform"
         >
           <p className="mx-auto max-w-[17rem] text-[13px] leading-snug">
             {lang === "en"
@@ -69,15 +69,15 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-1 flex-col items-center justify-center">
-            <span className="font-display text-[46px] font-semibold leading-none tracking-[0.1em] text-[#17191a]">
+            <span className="font-display text-[46px] font-semibold leading-none tracking-[0.1em] text-ink">
               ÁLIS
             </span>
-            <span className="-mt-1 font-script text-[40px] leading-none text-[#4A4B33]">
+            <span className="-mt-1 font-script text-[40px] leading-none text-olive">
               beauty
             </span>
           </div>
 
-          <p className="mx-auto max-w-[18rem] text-[13px] leading-snug text-[#17191a]/60">
+          <p className="mx-auto max-w-[18rem] text-[13px] leading-snug text-ink/60">
             {lang === "en"
               ? "Your look for the day you can't reshoot — flawless, all-day, and truly yours."
               : "Ваш образ в день, который не переснять — безупречный, стойкий и по-настоящему ваш."}

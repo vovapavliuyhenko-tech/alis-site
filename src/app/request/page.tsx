@@ -7,7 +7,7 @@ import Booking from "@/components/Booking";
 
 export default function RequestPage() {
   return (
-    <main className="bg-white">
+    <main className="bg-cream">
       <Header />
       {/* отступ, чтобы фикс-шапка не перекрывала заголовок блока */}
       <div className="h-16 bg-white" />

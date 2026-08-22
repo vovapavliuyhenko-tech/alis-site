@@ -21,15 +21,15 @@ const ROWS: [string, string][] = [
 
 export default function Requisites() {
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#17191a]/10">
+    <div className="overflow-hidden rounded-2xl border border-ink/10">
       <table className="w-full border-collapse text-[14px]">
         <tbody>
           {ROWS.map(([k, v], i) => (
             <tr key={k} className={i % 2 ? "bg-[#f7f4ee]" : "bg-white"}>
-              <th className="w-[46%] border-b border-[#17191a]/8 px-4 py-3 text-left align-top font-medium text-[#17191a]/60">
+              <th className="w-[46%] border-b border-ink/8 px-4 py-3 text-left align-top font-medium text-ink/60">
                 {k}
               </th>
-              <td className="border-b border-[#17191a]/8 px-4 py-3 align-top text-[#17191a]">{v}</td>
+              <td className="border-b border-ink/8 px-4 py-3 align-top text-ink">{v}</td>
             </tr>
           ))}
         </tbody>

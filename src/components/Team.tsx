@@ -90,17 +90,17 @@ export default function Team() {
   }, []);
 
   return (
-    <section id="team" className="scroll-mt-24 bg-white py-24 lg:py-32">
+    <section id="team" className="scroll-mt-24 bg-cream py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1280px]">
         {/* Заголовок */}
         <div className="mb-14 text-center">
-          <span className="inline-block rounded-full bg-[#3B0D1A] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+          <span className="inline-block rounded-full bg-wine px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-cream">
             {lang === "en" ? "team" : "команда"}
           </span>
-          <h2 className="mt-4 font-serif text-[34px] leading-[1.05] text-[#17191a] lg:text-[54px]">
+          <h2 className="mt-4 font-serif text-[34px] leading-[1.05] text-ink lg:text-[54px]">
             {lang === "en" ? "Masters you can trust" : "Мастера, за которых спокойно"}
           </h2>
-          <p className="mx-auto mt-4 max-w-md text-[14px] leading-relaxed text-[#17191a]/55">
+          <p className="mx-auto mt-4 max-w-md text-[14px] leading-relaxed text-ink/55">
             {lang === "en"
               ? "The team that will create your look — proven at weddings, shoots and big events."
               : "Команда, которая создаст ваш образ — с опытом на свадьбах, съёмках и больших событиях."}
@@ -119,7 +119,7 @@ export default function Team() {
                 transitionDelay: started ? `${i * 110}ms` : "0ms",
               }}
             >
-              <div className="relative aspect-[3/4] overflow-hidden rounded-[22px] shadow-[0_10px_30px_rgba(23,25,26,0.08)] transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-[22px] shadow-[0_10px_30px_rgba(60,40,24,0.08)] transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
                 {/* Фото: ч/б → цвет, лёгкий зум */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -131,20 +131,20 @@ export default function Team() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
 
                 {/* Номер */}
-                <span className="absolute left-4 top-4 rounded-md bg-[#3B0D1A] px-2 py-1 text-[11px] font-medium tabular-nums text-[#f4efe6]">
+                <span className="absolute left-4 top-4 rounded-md bg-wine px-2 py-1 text-[11px] font-medium tabular-nums text-cream">
                   0{i + 1}
                 </span>
                 {/* Опыт */}
-                <span className="absolute right-4 top-4 rounded-full bg-[#f4efe6]/15 px-3 py-1 text-[11px] lowercase tracking-wide text-[#f4efe6] backdrop-blur-sm">
+                <span className="absolute right-4 top-4 rounded-full bg-cream/15 px-3 py-1 text-[11px] lowercase tracking-wide text-cream backdrop-blur-sm">
                   {m.exp[lang]}
                 </span>
 
                 {/* Инфо снизу */}
                 <div className="absolute inset-x-0 bottom-0 p-5">
-                  <p className="font-serif text-[20px] leading-tight text-[#f4efe6] lg:text-[22px]">
+                  <p className="font-serif text-[20px] leading-tight text-cream lg:text-[22px]">
                     {m.name[lang]}
                   </p>
-                  <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-[#f4efe6]/75">
+                  <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-cream/75">
                     {m.role[lang]}
                   </p>
 
@@ -153,7 +153,7 @@ export default function Team() {
                     {m.tags.map((t) => (
                       <span
                         key={t.ru}
-                        className="rounded-full border border-[#f4efe6]/35 px-2.5 py-1 text-[10.5px] lowercase tracking-wide text-[#f4efe6]/90"
+                        className="rounded-full border border-cream/35 px-2.5 py-1 text-[10.5px] lowercase tracking-wide text-cream/90"
                       >
                         {t[lang]}
                       </span>

@@ -9,7 +9,7 @@ const FACTS = [
 
 export default function ForDesigners() {
   return (
-    <section id="concierge" className="scroll-mt-24 bg-[#17191a] py-24 lg:py-32">
+    <section id="concierge" className="scroll-mt-24 bg-ink py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1280px]">
         {/* Заголовок */}
         <h2 className="r-reveal mb-14 text-[34px] font-light lowercase leading-none tracking-tight text-white lg:text-[44px]">
@@ -29,7 +29,7 @@ export default function ForDesigners() {
             </p>
             <a
               href="#"
-              className="r-reveal mt-10 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-[14px] font-medium text-[#17191a] transition-opacity hover:opacity-85"
+              className="r-reveal mt-10 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-[14px] font-medium text-ink transition-opacity hover:opacity-85"
             >
               Записаться
               <span aria-hidden>→</span>

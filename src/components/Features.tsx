@@ -46,26 +46,26 @@ function Cell({ c, i, started }: { c: Cell; i: number; started: boolean }) {
   if (c.t === "stat")
     return (
       <div style={reveal} className="flex min-h-[280px] flex-col items-center justify-center rounded-[28px] bg-[#f1ede6] p-8 text-center lg:min-h-[320px]">
-        <div className="font-serif text-[42px] leading-none text-[#3B0D1A] lg:text-[52px]">{c.num}</div>
-        <p className="mt-4 max-w-[220px] text-[13.5px] leading-relaxed text-[#17191a]/60 lg:text-[14px]">{c.cap[lang]}</p>
+        <div className="font-serif text-[42px] leading-none text-wine lg:text-[52px]">{c.num}</div>
+        <p className="mt-4 max-w-[220px] text-[13.5px] leading-relaxed text-ink/60 lg:text-[14px]">{c.cap[lang]}</p>
       </div>
     );
   if (c.t === "dark")
     return (
-      <div style={reveal} className="flex min-h-[320px] flex-col items-center justify-center rounded-[28px] bg-[#3B0D1A] p-8 text-center lg:min-h-[360px]">
-        <p className="font-serif text-[22px] leading-snug text-[#f4efe6] lg:text-[26px]">{c.text[lang]}</p>
+      <div style={reveal} className="flex min-h-[320px] flex-col items-center justify-center rounded-[28px] bg-wine p-8 text-center lg:min-h-[360px]">
+        <p className="font-serif text-[22px] leading-snug text-cream lg:text-[26px]">{c.text[lang]}</p>
       </div>
     );
   if (c.t === "feat")
     return (
       <div style={reveal} className="flex min-h-[220px] flex-col items-center justify-center rounded-[28px] bg-[#f1ede6] p-8 text-center">
-        <p className="text-[17px] leading-snug text-[#17191a]/85 lg:text-[19px]">{c.text[lang]}</p>
+        <p className="text-[17px] leading-snug text-ink/85 lg:text-[19px]">{c.text[lang]}</p>
       </div>
     );
   if (c.t === "text")
     return (
       <div style={reveal} className="flex min-h-[120px] items-center justify-center px-6 py-8 text-center">
-        <p className="text-[17px] leading-snug text-[#17191a]/75 lg:text-[19px]">{c.text[lang]}</p>
+        <p className="text-[17px] leading-snug text-ink/75 lg:text-[19px]">{c.text[lang]}</p>
       </div>
     );
   // photo
@@ -105,16 +105,16 @@ export default function Features() {
 
   let idx = 0;
   return (
-    <section id="features" className="scroll-mt-24 bg-white py-24 lg:py-32">
+    <section id="features" className="scroll-mt-24 bg-cream py-24 lg:py-32">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         {/* Заголовок */}
         <div className="mx-auto mb-14 max-w-2xl text-center lg:mb-20">
-          <h2 className="font-serif text-[32px] leading-[1.1] text-[#3B0D1A] lg:text-[52px]">
+          <h2 className="font-serif text-[32px] leading-[1.1] text-wine lg:text-[52px]">
             <span className="italic">{en ? "ALIS signature details," : "Авторские детали ALIS,"}</span>
             <br />
             <span className="font-semibold">{en ? "our clients fall for" : "в которые влюбляются клиенты"}</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-md text-[14px] leading-relaxed text-[#17191a]/55 lg:text-[15px]">
+          <p className="mx-auto mt-5 max-w-md text-[14px] leading-relaxed text-ink/55 lg:text-[15px]">
             {en
               ? "The ALIS team has created a formula for the perfect look: highlight your beauty, hold it all day and give you confidence."
               : "Команда ALIS создала формулу идеального образа: подчеркнуть вашу красоту, сохранить стойкость на весь день и подарить уверенность."}

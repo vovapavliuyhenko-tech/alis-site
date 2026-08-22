@@ -290,7 +290,7 @@ export default function Booking() {
   return (
     <section
       id="booking"
-      className="relative scroll-mt-24 bg-white bg-fixed bg-cover bg-center py-24 text-[#17191a] lg:py-32"
+      className="relative scroll-mt-24 bg-cream bg-fixed bg-cover bg-center py-24 text-ink lg:py-32"
       style={{
         backgroundColor: "#ffffff",
         backgroundImage:
@@ -304,19 +304,19 @@ export default function Booking() {
       <div className="relative mx-auto w-[94%] max-w-[1080px]">
         {/* Заголовок */}
         <div className="mb-12 text-center">
-          <span className="inline-block rounded-full bg-[#3B0D1A] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+          <span className="inline-block rounded-full bg-wine px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-cream">
             {ui.eyebrow}
           </span>
-          <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
+          <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-ink lg:text-[48px]">
             {ui.title}
           </h2>
         </div>
 
         {/* Карточка-квиз — кремовое стекло */}
-        <div className="overflow-hidden rounded-[26px] border border-[#17191a]/10 bg-white/55 shadow-[0_20px_60px_rgba(42,38,34,0.15)] backdrop-blur-2xl">
+        <div className="overflow-hidden rounded-[26px] border border-ink/10 bg-white/55 shadow-[0_20px_60px_rgba(60,40,24,0.15)] backdrop-blur-2xl">
           <div className="grid lg:grid-cols-[300px_1fr]">
             {/* Левая колонка — персона */}
-            <div className="flex flex-col gap-6 border-b border-[#17191a]/10 p-8 lg:border-b-0 lg:border-r">
+            <div className="flex flex-col gap-6 border-b border-ink/10 p-8 lg:border-b-0 lg:border-r">
               <div className="flex items-center gap-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -325,16 +325,16 @@ export default function Booking() {
                   className="h-16 w-16 rounded-full object-cover"
                 />
                 <div>
-                  <p className="text-[16px] font-medium text-[#17191a]">{ui.founder}</p>
-                  <p className="mt-0.5 text-[13px] text-[#17191a]/50">{ui.founderRole}</p>
+                  <p className="text-[16px] font-medium text-ink">{ui.founder}</p>
+                  <p className="mt-0.5 text-[13px] text-ink/50">{ui.founderRole}</p>
                 </div>
               </div>
 
               {/* Реплика */}
               {!isSuccess && (
-                <div className="relative rounded-2xl border border-[#17191a]/10 bg-white/70 p-4 backdrop-blur-md">
-                  <span className="absolute -top-1.5 left-8 h-3.5 w-3.5 rotate-45 border-l border-t border-[#17191a]/10 bg-white/70" />
-                  <p key={step} className="booking-step text-[14px] leading-relaxed text-[#17191a]/75">
+                <div className="relative rounded-2xl border border-ink/10 bg-white/70 p-4 backdrop-blur-md">
+                  <span className="absolute -top-1.5 left-8 h-3.5 w-3.5 rotate-45 border-l border-t border-ink/10 bg-white/70" />
+                  <p key={step} className="booking-step text-[14px] leading-relaxed text-ink/75">
                     {note}
                   </p>
                 </div>
@@ -347,16 +347,16 @@ export default function Booking() {
                 <>
                   {/* Прогресс */}
                   <div className="mb-4 flex items-center justify-between">
-                    <span className="rounded-full border border-[#17191a]/15 bg-[#17191a]/[0.06] px-3.5 py-1.5 text-[12px] font-medium uppercase tracking-wide text-[#17191a]/80">
+                    <span className="rounded-full border border-ink/15 bg-ink/[0.06] px-3.5 py-1.5 text-[12px] font-medium uppercase tracking-wide text-ink/80">
                       {ui.step} {step + 1} {ui.of} {TOTAL}
                     </span>
-                    <span className="text-[13px] text-[#17191a]/40">
+                    <span className="text-[13px] text-ink/40">
                       {step + 1} / {TOTAL}
                     </span>
                   </div>
-                  <div className="mb-9 h-1.5 w-full overflow-hidden rounded-full bg-[#17191a]/10">
+                  <div className="mb-9 h-1.5 w-full overflow-hidden rounded-full bg-ink/10">
                     <div
-                      className="h-full rounded-full bg-[#3B0D1A] transition-all duration-500 ease-out"
+                      className="h-full rounded-full bg-wine transition-all duration-500 ease-out"
                       style={{ width: `${((step + 1) / TOTAL) * 100}%` }}
                     />
                   </div>
@@ -365,7 +365,7 @@ export default function Booking() {
                   <div key={step} className="booking-step">
                     {!isContact ? (
                       <>
-                        <h3 className="mb-7 font-serif text-[26px] leading-tight text-[#17191a] lg:text-[32px]">
+                        <h3 className="mb-7 font-serif text-[26px] leading-tight text-ink lg:text-[32px]">
                           {curQuestion!.q[lang]}
                         </h3>
                         <div className="grid gap-3 sm:grid-cols-2">
@@ -383,20 +383,20 @@ export default function Booking() {
                                 onClick={onClick}
                                 className={`flex items-center gap-3.5 rounded-2xl border px-5 py-4 text-left text-[15px] transition-all ${
                                   selected
-                                    ? "border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]"
-                                    : "border-[#17191a]/15 bg-white/50 text-[#17191a]/85 hover:border-[#3B0D1A]/50 hover:bg-white/80"
+                                    ? "border-wine bg-wine text-cream"
+                                    : "border-ink/15 bg-white/50 text-ink/85 hover:border-wine/50 hover:bg-white/80"
                                 }`}
                               >
                                 <span
                                   className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
-                                    selected ? "border-[#f4efe6] bg-[#f4efe6]" : "border-[#17191a]/40"
+                                    selected ? "border-cream bg-cream" : "border-ink/40"
                                   }`}
                                 >
                                   {selected && (
                                     <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none">
                                       <path
                                         d="M5 12.5l4.5 4.5L19 7.5"
-                                        stroke="#3B0D1A"
+                                        stroke="#752734"
                                         strokeWidth="2.5"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
@@ -412,10 +412,10 @@ export default function Booking() {
                       </>
                     ) : (
                       <>
-                        <h3 className="mb-7 font-serif text-[26px] leading-tight text-[#17191a] lg:text-[32px]">
+                        <h3 className="mb-7 font-serif text-[26px] leading-tight text-ink lg:text-[32px]">
                           {ui.contactTitle}
                         </h3>
-                        <label className="mb-3 block text-[13px] tracking-wide text-[#17191a]/50">
+                        <label className="mb-3 block text-[13px] tracking-wide text-ink/50">
                           {ui.name}
                         </label>
                         <input
@@ -423,9 +423,9 @@ export default function Booking() {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder={ui.namePh}
-                          className="mb-7 w-full border-b border-[#17191a]/25 bg-transparent pb-3 text-[16px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/30 focus:border-[#17191a]"
+                          className="mb-7 w-full border-b border-ink/25 bg-transparent pb-3 text-[16px] text-ink outline-none transition-colors placeholder:text-ink/30 focus:border-ink"
                         />
-                        <label className="mb-3 block text-[13px] tracking-wide text-[#17191a]/50">
+                        <label className="mb-3 block text-[13px] tracking-wide text-ink/50">
                           {ui.phone}
                         </label>
                         <input
@@ -433,9 +433,9 @@ export default function Booking() {
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
                           placeholder={ui.phonePh}
-                          className="w-full border-b border-[#17191a]/25 bg-transparent pb-3 text-[16px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/30 focus:border-[#17191a]"
+                          className="w-full border-b border-ink/25 bg-transparent pb-3 text-[16px] text-ink outline-none transition-colors placeholder:text-ink/30 focus:border-ink"
                         />
-                        <p className="mt-7 text-[12px] leading-relaxed text-[#17191a]/40">
+                        <p className="mt-7 text-[12px] leading-relaxed text-ink/40">
                           {ui.consent}
                         </p>
                       </>
@@ -447,7 +447,7 @@ export default function Booking() {
                     {step > 0 ? (
                       <button
                         onClick={() => setStep(step - 1)}
-                        className="inline-flex items-center gap-2 text-[14px] text-[#17191a]/50 transition-colors hover:text-[#17191a]"
+                        className="inline-flex items-center gap-2 text-[14px] text-ink/50 transition-colors hover:text-ink"
                       >
                         <span aria-hidden>←</span> {ui.back}
                       </button>
@@ -458,11 +458,11 @@ export default function Booking() {
                     <button
                       onClick={goNext}
                       disabled={!canNext}
-                      className="inline-flex items-center gap-2.5 rounded-full border border-[#3B0D1A] bg-[#3B0D1A] py-3 pl-6 pr-2.5 text-[13px] font-medium uppercase tracking-wide text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-[#3B0D1A] disabled:hover:text-[#f4efe6]"
+                      className="inline-flex items-center gap-2.5 rounded-full border border-wine bg-wine py-3 pl-6 pr-2.5 text-[13px] font-medium uppercase tracking-wide text-cream transition-colors duration-300 hover:bg-transparent hover:text-wine disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-wine disabled:hover:text-cream"
                     >
                       {isContact ? ui.submit : ui.next}
-                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3B0D1A" strokeWidth="2.2">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-cream">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#752734" strokeWidth="2.2">
                           <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </span>
@@ -472,27 +472,27 @@ export default function Booking() {
               ) : (
                 /* Экран успеха */
                 <div className="booking-step flex min-h-[320px] flex-col items-center justify-center py-6 text-center">
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-[#3B0D1A]/40">
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-wine/40">
                     <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none">
                       <path
                         d="M5 12.5l4.5 4.5L19 7.5"
-                        stroke="#3B0D1A"
+                        stroke="#752734"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
                     </svg>
                   </div>
-                  <h3 className="font-serif text-[28px] text-[#17191a] lg:text-[32px]">
+                  <h3 className="font-serif text-[28px] text-ink lg:text-[32px]">
                     {ui.successTitle}
                   </h3>
-                  <p className="mx-auto mt-4 max-w-sm text-[14px] leading-relaxed text-[#17191a]/60">
+                  <p className="mx-auto mt-4 max-w-sm text-[14px] leading-relaxed text-ink/60">
                     {ui.successSub1}
                     {answers[0] ? ui.successSub2(answers[0]) : ""}.
                   </p>
                   <button
                     onClick={reset}
-                    className="mt-8 text-[14px] text-[#17191a]/50 transition-colors hover:text-[#17191a]"
+                    className="mt-8 text-[14px] text-ink/50 transition-colors hover:text-ink"
                   >
                     {ui.again}
                   </button>

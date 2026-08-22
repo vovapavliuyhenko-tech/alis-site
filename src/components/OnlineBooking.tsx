@@ -38,17 +38,17 @@ export default function OnlineBooking() {
   }, []);
 
   return (
-    <section id="online" className="scroll-mt-24 bg-white py-24 lg:py-32">
+    <section id="online" className="scroll-mt-24 bg-cream py-24 lg:py-32">
       <div className="mx-auto w-[94%] max-w-[1080px]">
         {/* Заголовок */}
         <div className="mb-10 text-center">
-          <span className="inline-block rounded-full bg-[#3B0D1A] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
+          <span className="inline-block rounded-full bg-wine px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-cream">
             {lang === "en" ? "online booking" : "онлайн-запись"}
           </span>
-          <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[48px]">
+          <h2 className="mt-4 font-serif text-[32px] leading-[1.1] text-ink lg:text-[48px]">
             {lang === "en" ? "Book your visit online" : "Запишитесь онлайн"}
           </h2>
-          <p className="mx-auto mt-3 max-w-md text-[14px] leading-relaxed text-[#17191a]/55">
+          <p className="mx-auto mt-3 max-w-md text-[14px] leading-relaxed text-ink/55">
             {lang === "en"
               ? "Choose a service, an artist and a time that suits you — the schedule is live."
               : "Выберите услугу, мастера и удобное время — расписание актуальное в реальном времени."}
@@ -65,13 +65,13 @@ export default function OnlineBooking() {
         />
 
         {/* Запасная ссылка — если iframe не загрузился */}
-        <p className="mt-6 text-center text-[13px] text-[#17191a]/50">
+        <p className="mt-6 text-center text-[13px] text-ink/50">
           {lang === "en" ? "Booking not loading? " : "Не открывается форма? "}
           <a
             href={YCLIENTS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#3B0D1A] underline underline-offset-4 transition-opacity hover:opacity-70"
+            className="text-wine underline underline-offset-4 transition-opacity hover:opacity-70"
           >
             {lang === "en" ? "Open in a new tab" : "Открыть в новой вкладке"}
           </a>
