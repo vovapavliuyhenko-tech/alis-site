@@ -1,8 +1,8 @@
 "use client";
 // FOOTER ALIS — по мотивам matre.world: гигантский вордмарк слева, таглайн
 // справа, ниже 4 колонки (контакты / соцсети / язык / обратный звонок) с крупным
-// полем ввода, нижний ряд — разработчик, правовые ссылки, копирайт. Крем-фон,
-// бордовый акцент, оливковые эйброу. Двуязычно (RU/EN).
+// полем ввода, нижний ряд — разработчик, правовые ссылки, копирайт. Бордовый
+// фон, кремовый текст, золотые эйброу. Двуязычно (RU/EN).
 // Телефон/часы — плейсхолдеры, замените на реальные.
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
@@ -32,10 +32,10 @@ export default function Footer() {
     setSent(true);
   };
 
-  const eyebrow = "mb-4 text-[11px] uppercase tracking-[0.22em] text-[#4A4B33]";
+  const eyebrow = "mb-4 text-[11px] uppercase tracking-[0.22em] text-[#e7c9a0]";
 
   return (
-    <footer id="footer" className="scroll-mt-24 bg-[#f4efe6] pt-16 text-[#3B0D1A] lg:pt-20">
+    <footer id="footer" className="scroll-mt-24 bg-[#3B0D1A] pt-16 text-white lg:pt-20">
       <div className="mx-auto w-[92%] max-w-[1360px]">
         {/* Верх: гигантский вордмарк + таглайн */}
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
 
         {/* 4 колонки */}
-        <div className="mt-14 grid gap-10 border-t border-[#3B0D1A]/15 pt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="mt-14 grid gap-10 border-t border-[#f4efe6]/15 pt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {/* Контакты */}
           <div>
             <p className={eyebrow}>{t("Контакты", "Contact")}</p>
@@ -59,7 +59,7 @@ export default function Footer() {
             <a href={`tel:${PHONE.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[14px] transition-opacity hover:opacity-70">
               {PHONE}
             </a>
-            <p className="mt-1 text-[13px] text-[#3B0D1A]/55">{HOURS[lang]}</p>
+            <p className="mt-1 text-[13px] text-white/55">{HOURS[lang]}</p>
           </div>
 
           {/* Соцсети */}
@@ -99,26 +99,26 @@ export default function Footer() {
             {!sent ? (
               <>
                 <p className="mb-3 text-[14px] leading-relaxed">{t("Оставьте телефон — перезвоним", "Leave your phone — we'll call back")}</p>
-                <div className="flex items-center gap-3 border-b border-[#3B0D1A]/40 pb-2 focus-within:border-[#3B0D1A]">
+                <div className="flex items-center gap-3 border-b border-[#f4efe6]/40 pb-2 focus-within:border-[#f4efe6]">
                   <input
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder={t("Телефон", "Phone")}
-                    className="w-full bg-transparent font-serif text-[24px] text-[#3B0D1A] outline-none placeholder:text-[#3B0D1A]/35 lg:text-[28px]"
+                    className="w-full bg-transparent font-serif text-[24px] text-white outline-none placeholder:text-white/35 lg:text-[28px]"
                   />
                   <button
                     onClick={submit}
                     disabled={!canSend}
                     aria-label={t("Отправить", "Send")}
-                    className="shrink-0 text-[#3B0D1A] transition-transform hover:translate-x-0.5 disabled:opacity-30 disabled:hover:translate-x-0"
+                    className="shrink-0 text-white transition-transform hover:translate-x-0.5 disabled:opacity-30 disabled:hover:translate-x-0"
                   >
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                       <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
                 </div>
-                <label className="mt-3 flex cursor-pointer items-start gap-2 text-[12px] leading-snug text-[#3B0D1A]/55">
-                  <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-[#3B0D1A]" />
+                <label className="mt-3 flex cursor-pointer items-start gap-2 text-[12px] leading-snug text-white/55">
+                  <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-[#f4efe6]" />
                   <span>
                     {t("Согласен на обработку данных и ", "I agree to data processing and the ")}
                     <a href="/policy" className="underline underline-offset-2">{t("политику конфиденциальности", "privacy policy")}</a>
@@ -132,7 +132,7 @@ export default function Footer() {
         </div>
 
         {/* Нижняя строка */}
-        <div className="mt-16 flex flex-col gap-4 border-t border-[#3B0D1A]/15 py-7 text-[12px] text-[#3B0D1A]/55 md:flex-row md:items-center md:justify-between">
+        <div className="mt-16 flex flex-col gap-4 border-t border-[#f4efe6]/15 py-7 text-[12px] text-white/55 md:flex-row md:items-center md:justify-between">
           <a href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-70">
             {t("Разработчик", "Developer")}
           </a>
@@ -143,7 +143,7 @@ export default function Footer() {
               { label: "Cookie", href: "/cookies" },
             ].map((x, i) => (
               <span key={x.href} className="flex items-center gap-4">
-                {i > 0 && <span className="text-[#3B0D1A]/25">·</span>}
+                {i > 0 && <span className="text-white/25">·</span>}
                 <a href={x.href} className="transition-opacity hover:opacity-70">{x.label}</a>
               </span>
             ))}
