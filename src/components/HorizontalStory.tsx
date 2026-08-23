@@ -139,7 +139,7 @@ export default function HorizontalStory() {
                   <span className="text-[12px] uppercase tracking-[0.3em] text-[#4A4B33]">
                     {lang === "en" ? "Step" : "Этап"} 0{i + 1}
                   </span>
-                  <h3 className="mt-6 font-thunder text-[34px] uppercase leading-[1.06] tracking-[0.04em] text-[#17191a] md:mt-10 md:text-[3.4vw]">
+                  <h3 className="mt-6 font-display text-[34px] uppercase leading-[1.06] tracking-[0.04em] text-[#17191a] md:mt-10 md:text-[3.4vw]">
                     {(() => {
                       const w = s.heading[lang].split(" ");
                       const cut = Math.max(1, w.length - 2);
