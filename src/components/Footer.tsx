@@ -151,13 +151,20 @@ export default function Footer() {
           <span>© {new Date().getFullYear()} ALIS — {t("образ, забота, вы", "look, care, you")}</span>
           <nav className="flex flex-wrap items-center gap-x-4 gap-y-1">
             {[
-              { label: t("Политика конфиденциальности", "Privacy policy"), href: "/policy" },
-              { label: t("Публичная оферта", "Public offer"), href: "/offer" },
-              { label: "Cookie", href: "/cookies" },
+              { label: t("Политика конфиденциальности", "Privacy policy"), href: "/policy", external: false },
+              { label: t("Публичная оферта", "Public offer"), href: "/offer", external: false },
+              { label: "Cookie", href: "/cookies", external: false },
+              { label: t("Разработчик", "Developer"), href: "https://t.me/vladimir_nvrs", external: true },
             ].map((x, i) => (
               <span key={x.href} className="flex items-center gap-4">
                 {i > 0 && <span className="text-[#f4efe6]/25">·</span>}
-                <a href={x.href} className="transition-colors hover:text-[#f4efe6]">{x.label}</a>
+                <a
+                  href={x.href}
+                  {...(x.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="transition-colors hover:text-[#f4efe6]"
+                >
+                  {x.label}
+                </a>
               </span>
             ))}
           </nav>
