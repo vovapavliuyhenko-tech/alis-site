@@ -171,7 +171,7 @@ export default function Faq() {
           <h2 className="font-display text-[32px] uppercase tracking-[0.06em] leading-[1.1] text-[#2a2320] lg:text-[48px]">
             {en ? "Answers to your" : "Ответы на вопросы"}
             <br />
-            <span className="font-script text-[42px] normal-case tracking-normal text-[#3B0D1A] lg:text-[60px]">{en ? "questions about us" : "о работе с ALIS"}</span>
+            <span className="text-[#3B0D1A]">{en ? "questions about us" : "о работе с ALIS"}</span>
           </h2>
           <p className="mt-5 text-[15px] leading-relaxed text-[#17191a]/55 lg:text-[16px]">
             {en

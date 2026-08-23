@@ -61,7 +61,7 @@ export default function Certificates() {
               </span>
               <h2 className="r-reveal mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] lg:text-[42px]">
                 {t("Лучший подарок —", "The best gift is")}{" "}
-                <span className="font-script text-[40px] normal-case tracking-normal text-[#e7c9a0] lg:text-[56px]">{t("красота ALIS", "ALIS beauty")}</span>
+                <span className="text-[#e7c9a0]">{t("красота ALIS", "ALIS beauty")}</span>
               </h2>
 
               {/* Выгоды */}

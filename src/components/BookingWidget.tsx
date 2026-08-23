@@ -160,7 +160,7 @@ export default function BookingWidget() {
             онлайн-запись
           </span>
           <h2 className="mt-4 font-display text-[30px] uppercase tracking-[0.06em] leading-[1.12] text-[#17191a] lg:text-[44px]">
-            Запишитесь <span className="font-script text-[42px] normal-case tracking-normal text-[#3B0D1A] lg:text-[60px]">онлайн</span>
+            Запишитесь <span className="text-[#3B0D1A]">онлайн</span>
           </h2>
         </div>
 
