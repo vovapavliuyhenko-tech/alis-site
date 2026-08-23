@@ -156,7 +156,13 @@ export default function Faq() {
   const toggle = (idx: number) =>
     setOpenSet((prev) => {
       const next = new Set(prev);
-      next.has(idx) ? next.delete(idx) : next.add(idx);
+      if (next.has(idx)) {
+        next.delete(idx);
+      } else {
+        // максимум 2 открытых — закрываем самую раннюю
+        if (next.size >= 2) next.delete(next.values().next().value as number);
+        next.add(idx);
+      }
       return next;
     });
 
