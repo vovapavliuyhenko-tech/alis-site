@@ -1,8 +1,8 @@
 "use client";
-// FOOTER ALIS — тёмный расширенный подвал по типу референса: слева форма
-// обратного звонка + соцсети-плитки, колонки «Услуги» и «Информация», справа
-// контакты (телефон, часы, соцкнопки, адрес). Внизу — копирайт и правовые
-// ссылки. Тёмный фон, светлый текст, бордовые заливки. Двуязычно (RU/EN).
+// FOOTER ALIS — по мотивам matre.world: гигантский вордмарк слева, таглайн
+// справа, ниже 4 колонки (контакты / соцсети / язык / обратный звонок) с крупным
+// полем ввода, нижний ряд — разработчик, правовые ссылки, копирайт. Крем-фон,
+// бордовый акцент, оливковые эйброу. Двуязычно (RU/EN).
 // Телефон/часы — плейсхолдеры, замените на реальные.
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
@@ -11,28 +11,16 @@ const PHONE = "+7 (___) ___-__-__"; // TODO: реальный номер сал�
 const ADDRESS = { ru: "Новороссийск,\nул. Пархоменко, 53", en: "Novorossiysk,\nParkhomenko St., 53" };
 const HOURS = { ru: "Принимаем записи с 9:00 до 21:00", en: "We take bookings from 9:00 to 21:00" };
 
-const SERVICES = [
-  { ru: "Полный образ", en: "Full look", href: "/#services" },
-  { ru: "Свадебный образ", en: "Bridal look", href: "/#services" },
-  { ru: "Макияж и укладка", en: "Makeup & hair", href: "/#services" },
-  { ru: "Выезд мастеров", en: "On-location team", href: "/#services" },
-  { ru: "Онлайн-запись", en: "Online booking", href: "/#online" },
-];
-const INFO = [
-  { ru: "Обо мне", en: "About", href: "/#about" },
-  { ru: "Галерея работ", en: "Gallery", href: "/#gallery" },
-  { ru: "Отзывы", en: "Reviews", href: "/#reviews" },
-  { ru: "Частые вопросы", en: "FAQ", href: "/#faq" },
-  { ru: "Контакты", en: "Contacts", href: "/#footer" },
-];
-const SOCIAL_TILES = [
-  { label: "Instagram", href: "#", img: "/assets/tild3236-393__.jpg" },
-  { label: "Telegram", href: "#", img: "/assets/tild6230-643__.jpg" },
-  { label: "WhatsApp", href: "#", img: "/assets/tild3535-313_bergamo.png" },
+const SOCIALS = [
+  { label: "Instagram", href: "#" },
+  { label: "Telegram", href: "#" },
+  { label: "WhatsApp", href: "#" },
 ];
 
 export default function Footer() {
-  const { lang } = useLang();
+  const { lang, setLang } = useLang();
+  const t = (ru: string, en: string) => (lang === "en" ? en : ru);
+
   const [phone, setPhone] = useState("");
   const [agree, setAgree] = useState(false);
   const [sent, setSent] = useState(false);
@@ -44,157 +32,125 @@ export default function Footer() {
     setSent(true);
   };
 
-  const t = (ru: string, en: string) => (lang === "en" ? en : ru);
+  const eyebrow = "mb-4 text-[11px] uppercase tracking-[0.22em] text-[#4A4B33]";
 
   return (
-    <footer id="footer" className="scroll-mt-24 bg-[#141414] pt-24 pb-8 text-[#f4efe6]">
-      <div className="mx-auto w-[92%] max-w-[1320px]">
-        <div className="grid gap-x-16 gap-y-16 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
-          {/* Колонка 1 — форма обратного звонка + соцсети */}
-          <div>
-            <p className="max-w-xs font-serif text-[20px] italic leading-snug text-[#f4efe6]">
-              {t("Остались вопросы? Оставьте телефон — перезвоним и всё расскажем",
-                 "Still have questions? Leave your phone — we'll call back and tell you everything")}
-            </p>
+    <footer id="footer" className="scroll-mt-24 bg-[#f4efe6] pt-16 text-[#3B0D1A] lg:pt-20">
+      <div className="mx-auto w-[92%] max-w-[1360px]">
+        {/* Верх: гигантский вордмарк + таглайн */}
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <span
+            className="font-display font-semibold leading-[0.82] tracking-[0.02em]"
+            style={{ fontSize: "clamp(4.5rem, 23vw, 18rem)" }}
+          >
+            ÁLIS
+          </span>
+          <p className="font-serif text-[22px] italic leading-tight lg:mt-8 lg:text-right lg:text-[30px]">
+            {t("Создано для вашего образа", "Created for your look")}
+          </p>
+        </div>
 
+        {/* 4 колонки */}
+        <div className="mt-14 grid gap-10 border-t border-[#3B0D1A]/15 pt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          {/* Контакты */}
+          <div>
+            <p className={eyebrow}>{t("Контакты", "Contact")}</p>
+            <p className="whitespace-pre-line text-[14px] leading-relaxed">{ADDRESS[lang]}</p>
+            <a href={`tel:${PHONE.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[14px] transition-opacity hover:opacity-70">
+              {PHONE}
+            </a>
+            <p className="mt-1 text-[13px] text-[#3B0D1A]/55">{HOURS[lang]}</p>
+          </div>
+
+          {/* Соцсети */}
+          <div>
+            <p className={eyebrow}>{t("Мы в сети", "Follow us")}</p>
+            <ul className="space-y-2.5">
+              {SOCIALS.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="text-[14px] transition-opacity hover:opacity-70">
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Язык */}
+          <div>
+            <p className={eyebrow}>{t("Язык", "Language")}</p>
+            <ul className="space-y-2.5">
+              {(["ru", "en"] as const).map((l) => (
+                <li key={l}>
+                  <button
+                    onClick={() => setLang(l)}
+                    className={`text-[14px] transition-opacity ${lang === l ? "font-medium" : "opacity-55 hover:opacity-100"}`}
+                  >
+                    {l === "ru" ? "Русский" : "English"}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Обратный звонок — крупное поле как на референсе */}
+          <div>
+            <p className={eyebrow}>{t("Обратный звонок", "Callback")}</p>
             {!sent ? (
-              <div className="mt-8 max-w-sm">
-                <label className="mb-2 block text-[13px] text-[#f4efe6]/50">{t("Телефон", "Phone")}</label>
-                <div className="flex items-center gap-3">
+              <>
+                <p className="mb-3 text-[14px] leading-relaxed">{t("Оставьте телефон — перезвоним", "Leave your phone — we'll call back")}</p>
+                <div className="flex items-center gap-3 border-b border-[#3B0D1A]/40 pb-2 focus-within:border-[#3B0D1A]">
                   <input
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+7 (___) ___-__-__"
-                    className="w-full rounded-2xl border border-[#f4efe6]/15 bg-transparent px-4 py-3 text-[15px] text-[#f4efe6] outline-none focus:border-[#f4efe6]/50 placeholder:text-[#f4efe6]/30"
+                    placeholder={t("Телефон", "Phone")}
+                    className="w-full bg-transparent font-serif text-[24px] text-[#3B0D1A] outline-none placeholder:text-[#3B0D1A]/35 lg:text-[28px]"
                   />
                   <button
                     onClick={submit}
                     disabled={!canSend}
                     aria-label={t("Отправить", "Send")}
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#3B0D1A] text-[#f4efe6] transition-transform hover:scale-105 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
+                    className="shrink-0 text-[#3B0D1A] transition-transform hover:translate-x-0.5 disabled:opacity-30 disabled:hover:translate-x-0"
                   >
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                       <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
                 </div>
-                <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[12px] leading-snug text-[#f4efe6]/50">
-                  <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#3B0D1A]" />
+                <label className="mt-3 flex cursor-pointer items-start gap-2 text-[12px] leading-snug text-[#3B0D1A]/55">
+                  <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-[#3B0D1A]" />
                   <span>
-                    {t("Даю согласие на обработку персональных данных и соглашаюсь с ",
-                       "I consent to the processing of personal data and agree to the ")}
-                    <a href="/policy" className="underline underline-offset-2 hover:text-[#f4efe6]">
-                      {t("политикой конфиденциальности", "privacy policy")}
-                    </a>
+                    {t("Согласен на обработку данных и ", "I agree to data processing and the ")}
+                    <a href="/policy" className="underline underline-offset-2">{t("политику конфиденциальности", "privacy policy")}</a>
                   </span>
                 </label>
-              </div>
+              </>
             ) : (
-              <div className="mt-8 max-w-sm rounded-2xl border border-[#f4efe6]/15 bg-[#f4efe6]/5 px-5 py-4 text-[14px] text-[#f4efe6]/80">
-                {t("Спасибо! Перезвоним в ближайшее время.", "Thank you! We'll call you back shortly.")}
-              </div>
+              <p className="text-[15px] leading-relaxed">{t("Спасибо! Перезвоним в ближайшее время.", "Thank you! We'll call you back shortly.")}</p>
             )}
-
-            {/* Соцсети-плитки */}
-            <div className="mt-10 grid max-w-sm grid-cols-3 gap-4">
-              {SOCIAL_TILES.map((s) => (
-                <a key={s.label} href={s.href} className="group block">
-                  <div className="aspect-square overflow-hidden rounded-[14px]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={s.img} alt={s.label} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  </div>
-                  <span className="mt-2.5 block font-serif text-[15px] italic text-[#f4efe6] transition-opacity group-hover:opacity-70">
-                    {s.label}
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Колонка 2 — услуги */}
-          <FooterCol title={t("Услуги", "Services")} items={SERVICES} lang={lang} />
-
-          {/* Колонка 3 — информация + контакты */}
-          <div>
-            <FooterCol title={t("Информация", "Information")} items={INFO} lang={lang} />
-            <a href={`tel:${PHONE.replace(/[^\d+]/g, "")}`} className="mt-9 block font-serif text-[26px] text-[#f4efe6] transition-opacity hover:opacity-70 lg:text-[30px]">
-              {PHONE}
-            </a>
-            <p className="mt-2 text-[13px] text-[#f4efe6]/45">{HOURS[lang]}</p>
-            <div className="mt-6 flex gap-3">
-              {["telegram", "whatsapp"].map((n) => (
-                <a key={n} href="#" aria-label={n} className="flex h-11 w-11 items-center justify-center rounded-full bg-[#3B0D1A] text-[#f4efe6] transition-transform hover:scale-105">
-                  {n === "telegram" ? (
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor"><path d="M21.9 4.3l-3 14.2c-.2 1-.8 1.2-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-.9.5l.3-4.6 8.5-7.7c.4-.3-.1-.5-.6-.2L7.3 13 2.8 11.6c-1-.3-1-1 .2-1.5L20.6 3c.8-.3 1.5.2 1.3 1.3z"/></svg>
-                  ) : (
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.9 5-1.3A10 10 0 1012 2zm5.5 14c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2c.1.2.1.4 0 .5l-.4.6-.3.3c-.2.2-.4.4-.2.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.3z"/></svg>
-                  )}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Колонка 4 — бренд + адрес */}
-          <div>
-            <div className="font-display text-[40px] font-semibold leading-none tracking-[0.1em] text-[#f4efe6] lg:text-[52px]">ÁLIS</div>
-            <p className="mt-8 whitespace-pre-line font-serif text-[22px] leading-tight text-[#f4efe6] lg:text-[26px]">
-              {ADDRESS[lang]}
-            </p>
-            <p className="mt-3 font-serif text-[15px] italic text-[#f4efe6]/50">
-              {t("Сеть студий эстетики и beauty-concierge", "Aesthetics studios & beauty concierge")}
-            </p>
           </div>
         </div>
 
         {/* Нижняя строка */}
-        <div className="mt-20 flex flex-col gap-4 border-t border-[#f4efe6]/12 pt-8 text-[13px] text-[#f4efe6]/45 md:flex-row md:items-center md:justify-between">
-          <span>© {new Date().getFullYear()} ALIS — {t("образ, забота, вы", "look, care, you")}</span>
+        <div className="mt-16 flex flex-col gap-4 border-t border-[#3B0D1A]/15 py-7 text-[12px] text-[#3B0D1A]/55 md:flex-row md:items-center md:justify-between">
+          <a href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-70">
+            {t("Разработчик", "Developer")}
+          </a>
           <nav className="flex flex-wrap items-center gap-x-4 gap-y-1">
             {[
-              { label: t("Политика конфиденциальности", "Privacy policy"), href: "/policy", external: false },
-              { label: t("Публичная оферта", "Public offer"), href: "/offer", external: false },
-              { label: "Cookie", href: "/cookies", external: false },
-              { label: t("Разработчик", "Developer"), href: "https://t.me/vladimir_nvrs", external: true },
+              { label: t("Политика конфиденциальности", "Privacy policy"), href: "/policy" },
+              { label: t("Публичная оферта", "Public offer"), href: "/offer" },
+              { label: "Cookie", href: "/cookies" },
             ].map((x, i) => (
               <span key={x.href} className="flex items-center gap-4">
-                {i > 0 && <span className="text-[#f4efe6]/25">·</span>}
-                <a
-                  href={x.href}
-                  {...(x.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="transition-colors hover:text-[#f4efe6]"
-                >
-                  {x.label}
-                </a>
+                {i > 0 && <span className="text-[#3B0D1A]/25">·</span>}
+                <a href={x.href} className="transition-opacity hover:opacity-70">{x.label}</a>
               </span>
             ))}
           </nav>
+          <span>© {new Date().getFullYear()} ALIS</span>
         </div>
       </div>
     </footer>
-  );
-}
-
-function FooterCol({
-  title,
-  items,
-  lang,
-}: {
-  title: string;
-  items: { ru: string; en: string; href: string }[];
-  lang: "ru" | "en";
-}) {
-  return (
-    <div>
-      <p className="mb-6 text-[16px] font-semibold text-[#f4efe6]">{title}</p>
-      <ul className="space-y-3.5">
-        {items.map((it) => (
-          <li key={it.ru}>
-            <a href={it.href} className="text-[15px] text-[#f4efe6]/55 transition-colors hover:text-[#f4efe6]">
-              {it[lang]}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }
