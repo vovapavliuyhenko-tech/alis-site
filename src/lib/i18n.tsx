@@ -69,17 +69,17 @@ export function LangToggle({ className = "" }: { className?: string }) {
   const { lang, setLang } = useLang();
   return (
     <div
-      className={`flex items-center gap-0.5 rounded-full border border-[#17191a]/15 p-0.5 text-[12px] ${className}`}
+      className={`flex items-center gap-1 rounded-full border border-[#17191a]/15 p-1 text-[13px] ${className}`}
     >
       {(["ru", "en"] as Lang[]).map((l) => (
         <button
           key={l}
           onClick={() => setLang(l)}
           aria-pressed={lang === l}
-          className={`rounded-full px-2.5 py-1 uppercase tracking-wide transition-colors ${
+          className={`cursor-pointer rounded-full px-4 py-2 uppercase leading-none tracking-wide transition-colors ${
             lang === l
               ? "bg-[#3B0D1A] text-[#f4efe6]"
-              : "text-[#17191a]/55 hover:text-[#17191a]"
+              : "text-[#17191a]/55 hover:bg-[#17191a]/5 hover:text-[#17191a]"
           }`}
         >
           {l}
