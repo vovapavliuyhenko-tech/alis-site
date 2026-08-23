@@ -146,7 +146,7 @@ export default function HorizontalStory() {
                       return (
                         <>
                           {w.slice(0, cut).join(" ")}{" "}
-                          <span className="text-[#3B0D1A]">{w.slice(cut).join(" ")}</span>
+                          <span className="text-[#4A4B33]">{w.slice(cut).join(" ")}</span>
                         </>
                       );
                     })()}

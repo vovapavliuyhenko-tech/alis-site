@@ -219,7 +219,7 @@ export default function Reviews() {
           </span>
           <h2 className="mt-4 font-display text-[30px] uppercase tracking-[0.06em] leading-[1.12] text-[#17191a] lg:text-[44px]">
             {lang === "en" ? "What our " : "Что говорят "}
-            <span className="text-[#3B0D1A]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
+            <span className="text-[#4A4B33]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
           </h2>
         </div>
 

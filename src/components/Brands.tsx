@@ -82,7 +82,7 @@ export default function Brands() {
         <h2 className="mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.14] text-[#17191a] lg:text-[42px]">
           {en ? "Trusted by brands" : "Нам доверяют"}
           <br />
-          <span className="text-[#3B0D1A]">{en ? "and venues since 2019" : "бренды и площадки с 2019 года"}</span>
+          <span className="text-[#4A4B33]">{en ? "and venues since 2019" : "бренды и площадки с 2019 года"}</span>
         </h2>
       </div>
 

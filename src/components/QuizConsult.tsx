@@ -121,7 +121,7 @@ export default function QuizConsult() {
           </span>
           <h2 className="mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] text-[#2a2320] lg:text-[42px]">
             {t("Подберём выезд", "We'll tailor your outcall")}{" "}
-            <span className="text-[#3B0D1A]">{t("за 1 минуту", "in 1 minute")}</span>
+            <span className="text-[#4A4B33]">{t("за 1 минуту", "in 1 minute")}</span>
           </h2>
           <p className="mt-4 text-[14px] leading-relaxed text-[#17191a]/55 lg:text-[15px]">
             {t(
