@@ -73,7 +73,7 @@ const STAGES: Stage[] = [
 // Декоративный росчерк-цветок
 function Flourish() {
   return (
-    <svg viewBox="0 0 40 40" className="h-9 w-9 text-olive" fill="none">
+    <svg viewBox="0 0 40 40" className="h-9 w-9 text-[#4A4B33]" fill="none">
       <path d="M20 22c0-6-4-9-9-9 3 4 4 7 4 9-2 0-5 1-8 4 5 0 9-2 13-4z" stroke="currentColor" strokeWidth="1.1" />
       <path d="M20 22c0-6 4-9 9-9-3 4-4 7-4 9 2 0 5 1 8 4-5 0-9-2-13-4z" stroke="currentColor" strokeWidth="1.1" />
       <path d="M20 22v14" stroke="currentColor" strokeWidth="1.1" />
@@ -122,7 +122,7 @@ export default function HorizontalStory() {
   }, []);
 
   return (
-    <section id="process" ref={secRef} className="relative bg-cream">
+    <section id="process" ref={secRef} className="relative bg-white">
       <div className="md:sticky md:top-[10vh] md:h-[90svh] md:overflow-hidden">
         <div
           ref={trackRef}
@@ -134,19 +134,19 @@ export default function HorizontalStory() {
               className="flex w-full shrink-0 flex-col md:h-full md:w-screen md:flex-row"
             >
               {/* Левая кремовая половина */}
-              <div className="flex flex-col justify-between bg-cream px-6 py-12 md:w-[46%] md:px-[4vw] md:pb-[6vh] md:pt-[12vh]">
+              <div className="flex flex-col justify-between bg-white px-6 py-12 md:w-[46%] md:px-[4vw] md:pb-[6vh] md:pt-[12vh]">
                 <div>
-                  <span className="text-[12px] uppercase tracking-[0.3em] text-olive">
+                  <span className="text-[12px] uppercase tracking-[0.3em] text-[#4A4B33]">
                     {lang === "en" ? "Step" : "Этап"} 0{i + 1}
                   </span>
-                  <h3 className="mt-6 font-thunder text-[34px] uppercase leading-[1.06] tracking-[0.04em] text-ink md:mt-10 md:text-[3.4vw]">
+                  <h3 className="mt-6 font-thunder text-[34px] uppercase leading-[1.06] tracking-[0.04em] text-[#17191a] md:mt-10 md:text-[3.4vw]">
                     {(() => {
                       const w = s.heading[lang].split(" ");
                       const cut = Math.max(1, w.length - 2);
                       return (
                         <>
                           {w.slice(0, cut).join(" ")}{" "}
-                          <span className="text-wine">{w.slice(cut).join(" ")}</span>
+                          <span className="text-[#3B0D1A]">{w.slice(cut).join(" ")}</span>
                         </>
                       );
                     })()}
@@ -154,7 +154,7 @@ export default function HorizontalStory() {
                 </div>
                 <div className="mt-10 md:mt-0">
                   <Flourish />
-                  <p className="mt-4 font-serif text-[16px] italic text-ink/70 md:text-[18px]">
+                  <p className="mt-4 font-serif text-[16px] italic text-[#17191a]/70 md:text-[18px]">
                     {s.quote[lang]}
                   </p>
                 </div>
@@ -169,10 +169,10 @@ export default function HorizontalStory() {
                   className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-x-[6%] bottom-[6%] rounded-[18px] bg-white/95 px-6 py-6 text-center backdrop-blur-sm md:px-10 md:py-8">
-                  <p className="font-serif text-[24px] uppercase tracking-[0.15em] text-wine md:text-[30px]">
+                  <p className="font-serif text-[24px] uppercase tracking-[0.15em] text-[#3B0D1A] md:text-[30px]">
                     {s.name[lang]}
                   </p>
-                  <p className="mx-auto mt-3 max-w-md text-[13px] leading-relaxed text-ink/70 md:text-[14px]">
+                  <p className="mx-auto mt-3 max-w-md text-[13px] leading-relaxed text-[#17191a]/70 md:text-[14px]">
                     {s.desc[lang]}
                   </p>
                 </div>

@@ -47,21 +47,21 @@ export default function Certificates() {
   };
 
   return (
-    <section id="certificates" className="scroll-mt-24 bg-cream py-16 lg:py-24">
+    <section id="certificates" className="scroll-mt-24 bg-white py-16 lg:py-24">
       <div className="mx-auto w-[92%] max-w-[1280px]">
-        <div className="relative overflow-hidden rounded-[32px] bg-wine px-7 py-10 text-cream sm:px-10 lg:px-16 lg:py-16">
+        <div className="relative overflow-hidden rounded-[32px] bg-[#3B0D1A] px-7 py-10 text-[#f4efe6] sm:px-10 lg:px-16 lg:py-16">
           {/* Мягкое свечение */}
-          <span aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cream/10 blur-[90px]" />
+          <span aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#f4efe6]/10 blur-[90px]" />
 
           <div className="relative grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
             {/* Левая часть — продающая структура + CTA (со стаггер-появлением) */}
             <div>
-              <span className="r-reveal inline-block rounded-full bg-cream/12 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-cream/80">
+              <span className="r-reveal inline-block rounded-full bg-[#f4efe6]/12 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/80">
                 {t("подарочный сертификат", "gift certificate")}
               </span>
               <h2 className="r-reveal mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] lg:text-[42px]">
                 {t("Лучший подарок —", "The best gift is")}{" "}
-                <span className="font-script text-[40px] normal-case tracking-normal text-gold lg:text-[56px]">{t("красота ALIS", "ALIS beauty")}</span>
+                <span className="font-script text-[40px] normal-case tracking-normal text-[#e7c9a0] lg:text-[56px]">{t("красота ALIS", "ALIS beauty")}</span>
               </h2>
 
               {/* Выгоды */}
@@ -71,9 +71,9 @@ export default function Certificates() {
                   t("Действует на процедуры и продукцию ALIS beauty", "Valid for procedures and ALIS beauty products"),
                   t("Оформление за пару минут — онлайн или на ресепшене", "Ready in a couple of minutes — online or at reception"),
                 ].map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-[14px] leading-snug text-cream/90 lg:text-[15px]">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-olive">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F7F0DE" strokeWidth="2.5"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  <li key={b} className="flex items-start gap-3 text-[14px] leading-snug text-[#f4efe6]/90 lg:text-[15px]">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A4B33]">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f4efe6" strokeWidth="2.5"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     </span>
                     {b}
                   </li>
@@ -82,7 +82,7 @@ export default function Certificates() {
 
               <button
                 onClick={() => setOpen(true)}
-                className="group/btn r-reveal mt-9 inline-flex w-full items-center justify-center gap-3 rounded-full bg-cream px-10 py-4 text-[14px] font-medium uppercase tracking-[0.12em] text-wine transition-transform duration-300 hover:scale-[1.02] sm:w-auto sm:min-w-[340px]"
+                className="group/btn r-reveal mt-9 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#f4efe6] px-10 py-4 text-[14px] font-medium uppercase tracking-[0.12em] text-[#3B0D1A] transition-transform duration-300 hover:scale-[1.02] sm:w-auto sm:min-w-[340px]"
               >
                 {t("Купить сертификат", "Buy a certificate")}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover/btn:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -94,14 +94,14 @@ export default function Certificates() {
               <div className="relative w-full max-w-[360px]">
                 {/* Искры — точки, разлетаются при наведении */}
                 {[
-                  { l: "46%", t: "-7%", s: 9, d: 0, c: "#F5DE97" },
-                  { l: "72%", t: "8%", s: 6, d: 0.12, c: "#F7F0DE" },
-                  { l: "94%", t: "26%", s: 10, d: 0.06, c: "#F5DE97" },
-                  { l: "6%", t: "16%", s: 6, d: 0.2, c: "#F7F0DE" },
-                  { l: "18%", t: "-4%", s: 7, d: 0.28, c: "#F5DE97" },
-                  { l: "88%", t: "78%", s: 8, d: 0.1, c: "#F5DE97" },
-                  { l: "-2%", t: "62%", s: 6, d: 0.18, c: "#F7F0DE" },
-                  { l: "60%", t: "94%", s: 7, d: 0.24, c: "#F5DE97" },
+                  { l: "46%", t: "-7%", s: 9, d: 0, c: "#e7c9a0" },
+                  { l: "72%", t: "8%", s: 6, d: 0.12, c: "#f4efe6" },
+                  { l: "94%", t: "26%", s: 10, d: 0.06, c: "#e7c9a0" },
+                  { l: "6%", t: "16%", s: 6, d: 0.2, c: "#f4efe6" },
+                  { l: "18%", t: "-4%", s: 7, d: 0.28, c: "#e7c9a0" },
+                  { l: "88%", t: "78%", s: 8, d: 0.1, c: "#e7c9a0" },
+                  { l: "-2%", t: "62%", s: 6, d: 0.18, c: "#f4efe6" },
+                  { l: "60%", t: "94%", s: 7, d: 0.24, c: "#e7c9a0" },
                 ].map((p, i) => (
                   <span
                     key={i}
@@ -124,37 +124,37 @@ export default function Certificates() {
                     className="cert-spark pointer-events-none absolute opacity-0 group-hover:[animation:certtwinkle_1.1s_ease_forwards]"
                     style={{ left: p.l, top: p.t, width: p.s, height: p.s, animationDelay: `${p.d}s` }}
                   >
-                    <path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z" fill="#F5DE97" />
+                    <path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z" fill="#e7c9a0" />
                   </svg>
                 ))}
 
                 {/* Карта: front + back, непрерывное вращение под углом */}
                 <div className="cert-rotate relative aspect-[1.6/1] [transform-style:preserve-3d]">
                   {/* Лицевая сторона */}
-                  <div className="absolute inset-0 overflow-hidden rounded-[20px] border-2 border-gold/50 bg-gradient-to-br from-[#8a3341] to-[#5c1e28] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-cream/10 [backface-visibility:hidden]">
+                  <div className="absolute inset-0 overflow-hidden rounded-[20px] border-2 border-[#e7c9a0]/50 bg-gradient-to-br from-[#7C2432] to-[#48101E] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden]">
                     <div className="flex h-full flex-col justify-between">
                       <div className="flex items-start justify-between">
-                        <span className="font-serif text-[26px] tracking-[0.14em] text-cream">ÁLIS</span>
-                        <span className="text-[10px] uppercase tracking-[0.2em] text-cream/55">gift card</span>
+                        <span className="font-serif text-[26px] tracking-[0.14em] text-[#f4efe6]">ÁLIS</span>
+                        <span className="text-[10px] uppercase tracking-[0.2em] text-[#f4efe6]/55">gift card</span>
                       </div>
                       <div>
-                        <p className="text-[11px] uppercase tracking-[0.18em] text-cream/55">
+                        <p className="text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/55">
                           {t("подарочный сертификат", "gift certificate")}
                         </p>
-                        <p className="mt-1 font-serif text-[30px] text-cream lg:text-[34px]">3 000 – 15 000 ₽</p>
+                        <p className="mt-1 font-serif text-[30px] text-[#f4efe6] lg:text-[34px]">3 000 – 15 000 ₽</p>
                       </div>
-                      <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.16em] text-cream/45">
+                      <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.16em] text-[#f4efe6]/45">
                         <span>alis beauty</span>
                         <span>{t("процедуры · продукция", "procedures · products")}</span>
                       </div>
                     </div>
                     {/* Пробегающий блик */}
-                    <span aria-hidden className="pointer-events-none absolute top-0 left-[-60%] h-full w-[45%] -skew-x-[18deg] bg-gradient-to-r from-transparent via-cream/35 to-transparent transition-[left] duration-[900ms] ease-out group-hover:left-[120%]" />
+                    <span aria-hidden className="pointer-events-none absolute top-0 left-[-60%] h-full w-[45%] -skew-x-[18deg] bg-gradient-to-r from-transparent via-[#f4efe6]/35 to-transparent transition-[left] duration-[900ms] ease-out group-hover:left-[120%]" />
                   </div>
                   {/* Оборотная сторона */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-[20px] border-2 border-gold/50 bg-gradient-to-br from-[#5c1e28] to-[#8a3341] p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-cream/10 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                    <span className="font-serif text-[30px] tracking-[0.14em] text-cream">ÁLIS</span>
-                    <span className="text-[11px] uppercase tracking-[0.22em] text-cream/60">{t("с любовью, beauty", "with love, beauty")}</span>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-[20px] border-2 border-[#e7c9a0]/50 bg-gradient-to-br from-[#48101E] to-[#7C2432] p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                    <span className="font-serif text-[30px] tracking-[0.14em] text-[#f4efe6]">ÁLIS</span>
+                    <span className="text-[11px] uppercase tracking-[0.22em] text-[#f4efe6]/60">{t("с любовью, beauty", "with love, beauty")}</span>
                   </div>
                 </div>
               </div>
@@ -166,27 +166,27 @@ export default function Certificates() {
       {/* Модальная форма заказа */}
       {open && (
         <div className="fixed inset-0 z-[120] flex items-end justify-center p-0 sm:items-center sm:p-4" role="dialog" aria-modal="true">
-          <div className="absolute inset-0 bg-ink/60 backdrop-blur-sm" onClick={close} />
+          <div className="absolute inset-0 bg-[#17191a]/60 backdrop-blur-sm" onClick={close} />
           <div className="relative w-full max-w-[520px] rounded-t-[24px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:rounded-[24px] sm:p-8">
             <button
               onClick={close}
               aria-label={t("Закрыть", "Close")}
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-ink/50 transition-colors hover:bg-ink/5 hover:text-ink"
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-[#17191a]/50 transition-colors hover:bg-[#17191a]/5 hover:text-[#17191a]"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /></svg>
             </button>
 
             {!sent ? (
               <>
-                <h3 className="font-serif text-[24px] text-wine lg:text-[28px]">
+                <h3 className="font-serif text-[24px] text-[#3B0D1A] lg:text-[28px]">
                   {t("Оформить сертификат", "Order a certificate")}
                 </h3>
-                <p className="mt-2 text-[13px] text-ink/55">
+                <p className="mt-2 text-[13px] text-[#17191a]/55">
                   {t("Выберите номинал и оставьте контакты — мы свяжемся и оформим оплату.", "Choose the amount and leave your contacts — we'll get in touch and arrange payment.")}
                 </p>
 
                 {/* Номиналы */}
-                <p className="mb-2 mt-6 text-[12px] uppercase tracking-[0.12em] text-ink/45">{t("Номинал", "Amount")}</p>
+                <p className="mb-2 mt-6 text-[12px] uppercase tracking-[0.12em] text-[#17191a]/45">{t("Номинал", "Amount")}</p>
                 <div className="flex flex-wrap gap-2.5">
                   {NOMINALS.map((n) => (
                     <button
@@ -194,8 +194,8 @@ export default function Certificates() {
                       onClick={() => setNominal(n)}
                       className={`rounded-full border px-4 py-2 text-[14px] transition-colors ${
                         nominal === n
-                          ? "border-wine bg-wine text-cream"
-                          : "border-ink/15 text-ink hover:border-wine"
+                          ? "border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]"
+                          : "border-[#17191a]/15 text-[#17191a] hover:border-[#3B0D1A]"
                       }`}
                     >
                       {n} ₽
@@ -205,8 +205,8 @@ export default function Certificates() {
                     onClick={() => setNominal("custom")}
                     className={`rounded-full border px-4 py-2 text-[14px] transition-colors ${
                       nominal === "custom"
-                        ? "border-wine bg-wine text-cream"
-                        : "border-ink/15 text-ink hover:border-wine"
+                        ? "border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]"
+                        : "border-[#17191a]/15 text-[#17191a] hover:border-[#3B0D1A]"
                     }`}
                   >
                     {t("Свой номинал", "Custom")}
@@ -218,7 +218,7 @@ export default function Certificates() {
                     onChange={(e) => setCustom(e.target.value.replace(/[^\d]/g, ""))}
                     inputMode="numeric"
                     placeholder={t("Сумма, ₽ (только онлайн)", "Amount, ₽ (online only)")}
-                    className="mt-3 w-full rounded-2xl border border-ink/15 px-4 py-3 text-[15px] outline-none focus:border-wine"
+                    className="mt-3 w-full rounded-2xl border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#3B0D1A]"
                   />
                 )}
 
@@ -228,22 +228,22 @@ export default function Certificates() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={t("Ваше имя", "Your name")}
-                    className="w-full rounded-2xl border border-ink/15 px-4 py-3 text-[15px] outline-none focus:border-wine"
+                    className="w-full rounded-2xl border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#3B0D1A]"
                   />
                   <input
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+7 (___) ___-__-__"
                     inputMode="tel"
-                    className="w-full rounded-2xl border border-ink/15 px-4 py-3 text-[15px] outline-none focus:border-wine"
+                    className="w-full rounded-2xl border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#3B0D1A]"
                   />
                 </div>
 
-                <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[12px] leading-snug text-ink/55">
-                  <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-wine" />
+                <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[12px] leading-snug text-[#17191a]/55">
+                  <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#3B0D1A]" />
                   <span>
                     {t("Даю согласие на обработку персональных данных и соглашаюсь с ", "I consent to the processing of personal data and agree to the ")}
-                    <a href="/policy" className="text-wine underline underline-offset-2">
+                    <a href="/policy" className="text-[#3B0D1A] underline underline-offset-2">
                       {t("политикой конфиденциальности", "privacy policy")}
                     </a>
                   </span>
@@ -252,21 +252,21 @@ export default function Certificates() {
                 <button
                   onClick={submit}
                   disabled={!canSend}
-                  className="mt-6 w-full rounded-full bg-wine py-3.5 text-[14px] font-medium text-cream transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
+                  className="mt-6 w-full rounded-full bg-[#3B0D1A] py-3.5 text-[14px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
                 >
                   {t("Оформить сертификат", "Order certificate")}
                 </button>
               </>
             ) : (
               <div className="py-6 text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-wine/10">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#752734" strokeWidth="2"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#3B0D1A]/10">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3B0D1A" strokeWidth="2"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </div>
-                <h3 className="mt-5 font-serif text-[24px] text-wine">{t("Заявка принята!", "Request received!")}</h3>
-                <p className="mx-auto mt-2 max-w-sm text-[14px] text-ink/60">
+                <h3 className="mt-5 font-serif text-[24px] text-[#3B0D1A]">{t("Заявка принята!", "Request received!")}</h3>
+                <p className="mx-auto mt-2 max-w-sm text-[14px] text-[#17191a]/60">
                   {t(`Сертификат на ${chosen} ₽ — мы свяжемся с вами для оформления оплаты.`, `Certificate for ${chosen} ₽ — we'll contact you to arrange payment.`)}
                 </p>
-                <button onClick={close} className="mt-6 rounded-full border border-wine px-7 py-3 text-[13px] text-wine transition-colors hover:bg-wine hover:text-cream">
+                <button onClick={close} className="mt-6 rounded-full border border-[#3B0D1A] px-7 py-3 text-[13px] text-[#3B0D1A] transition-colors hover:bg-[#3B0D1A] hover:text-[#f4efe6]">
                   {t("Готово", "Done")}
                 </button>
               </div>

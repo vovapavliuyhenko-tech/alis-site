@@ -20,11 +20,11 @@ const SLIDES = [
 function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
   const { lang } = useLang();
   return (
-    <div className="relative h-full w-full overflow-hidden bg-cream">
+    <div className="relative h-full w-full overflow-hidden bg-white">
       {/* Фон-фото, растянутое на пол-экрана */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={s.bg} alt="" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-ink/45" />
+      <div className="absolute inset-0 bg-[#17191a]/45" />
 
       {/* Карточка-флип по центру фото (data-parallax — лёгкая подвижка при скролле) */}
       <div data-parallax="0.14" className="absolute inset-0 flex items-center justify-center px-6 will-change-transform">
@@ -36,27 +36,27 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
               <img src={s.thumb} alt={s.title[lang]} className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
               <div className="absolute inset-0 flex items-center justify-center px-8">
-                <span className="text-center font-serif text-[24px] leading-tight text-cream drop-shadow lg:text-[28px]">
+                <span className="text-center font-serif text-[24px] leading-tight text-[#f4efe6] drop-shadow lg:text-[28px]">
                   {s.title[lang]}
                 </span>
               </div>
               {/* Подсказка «наведите» */}
-              <span className="absolute right-4 top-4 rounded-full bg-cream/15 px-3 py-1 text-[11px] lowercase tracking-wide text-cream/90 backdrop-blur-sm">
+              <span className="absolute right-4 top-4 rounded-full bg-[#f4efe6]/15 px-3 py-1 text-[11px] lowercase tracking-wide text-[#f4efe6]/90 backdrop-blur-sm">
                 {lang === "en" ? "hover" : "наведите"}
               </span>
-              <p className="absolute inset-x-0 bottom-5 text-center text-[12px] lowercase tracking-wide text-cream/85">
+              <p className="absolute inset-x-0 bottom-5 text-center text-[12px] lowercase tracking-wide text-[#f4efe6]/85">
                 instagram / telegram
               </p>
             </div>
 
             {/* ОБОРОТ — заголовок сверху, текст по центру, кнопка во всю ширину внизу */}
-            <div className="absolute inset-0 flex flex-col rounded-[22px] border border-ink/10 bg-white px-8 py-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
-              <p className="flex flex-1 items-center justify-center text-[15px] leading-relaxed text-ink/80">
+            <div className="absolute inset-0 flex flex-col rounded-[22px] border border-[#17191a]/10 bg-white px-8 py-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+              <p className="flex flex-1 items-center justify-center text-[15px] leading-relaxed text-[#17191a]/80">
                 {s.blurb[lang]}
               </p>
               <a
                 href="/#online"
-                className="flex w-full items-center justify-center gap-2 rounded-full border border-wine bg-wine px-6 py-3.5 text-[13px] font-medium text-cream transition-colors duration-300 hover:bg-transparent hover:text-wine"
+                className="flex w-full items-center justify-center gap-2 rounded-full border border-[#3B0D1A] bg-[#3B0D1A] px-6 py-3.5 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A]"
               >
                 {lang === "en" ? "Book" : "Записаться"}
                 <span aria-hidden>→</span>

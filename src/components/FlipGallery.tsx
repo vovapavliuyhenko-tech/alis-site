@@ -94,9 +94,9 @@ function FlipTile({ t }: { t: Tile }) {
       </div>
 
       {/* Техническая строка под плиткой */}
-      <figcaption className="mt-3 grid grid-cols-3 items-center font-mono text-[10.5px] lowercase tracking-wide text-ink/45">
+      <figcaption className="mt-3 grid grid-cols-3 items-center font-mono text-[10.5px] lowercase tracking-wide text-[#17191a]/45">
         <span className="tabular-nums">{t.n}</span>
-        <span className="text-center text-olive">{t.label[lang]}</span>
+        <span className="text-center text-[#4A4B33]">{t.label[lang]}</span>
         <span className="text-right">{t.caption[lang]}</span>
       </figcaption>
     </figure>
@@ -114,14 +114,14 @@ export default function FlipGallery() {
   }, [active]);
 
   return (
-    <section id="works" className="scroll-mt-24 bg-cream py-24 lg:py-32">
+    <section id="works" className="scroll-mt-24 bg-white py-24 lg:py-32">
       <div className="mx-auto w-[96%] max-w-[1620px]">
         {/* Заголовок */}
         <div className="mb-8 max-w-2xl lg:mb-10">
-          <h2 className="font-display text-[34px] uppercase tracking-[0.06em] leading-[1.08] text-wine lg:text-[52px]">
+          <h2 className="font-display text-[34px] uppercase tracking-[0.06em] leading-[1.08] text-[#3B0D1A] lg:text-[52px]">
             {en ? "Our works" : "Наши работы"}
           </h2>
-          <p className="mt-4 text-[15px] leading-relaxed text-ink/60 lg:text-[16px]">
+          <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
             {en
               ? "Choose a category — see the looks we create for it."
               : "Выберите категорию — и посмотрите образы, которые мы создаём."}
@@ -138,8 +138,8 @@ export default function FlipGallery() {
                 onClick={() => setActive(c.id)}
                 className={`rounded-full border px-5 py-2.5 text-[12px] uppercase tracking-[0.1em] transition-all duration-300 ${
                   on
-                    ? "border-wine bg-wine text-cream"
-                    : "border-ink/15 bg-white text-ink/70 hover:border-wine hover:text-wine"
+                    ? "border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]"
+                    : "border-[#17191a]/15 bg-white text-[#17191a]/70 hover:border-[#3B0D1A] hover:text-[#3B0D1A]"
                 }`}
               >
                 {c.label[lang]}

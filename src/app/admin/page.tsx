@@ -47,10 +47,10 @@ export default function AdminPage() {
 
   if (!authed) {
     return (
-      <main className="flex min-h-svh items-center justify-center bg-cream px-6">
+      <main className="flex min-h-svh items-center justify-center bg-white px-6">
         <div className="w-full max-w-sm">
-          <h1 className="mb-2 font-serif text-[28px] text-ink">Админка ALIS</h1>
-          <p className="mb-6 text-[13px] text-ink/50">Введите пароль для управления записью.</p>
+          <h1 className="mb-2 font-serif text-[28px] text-[#17191a]">Админка ALIS</h1>
+          <p className="mb-6 text-[13px] text-[#17191a]/50">Введите пароль для управления записью.</p>
           <input
             type="password"
             value={pw}
@@ -62,7 +62,7 @@ export default function AdminPage() {
               }
             }}
             placeholder="Пароль"
-            className="w-full border-b border-ink/25 bg-transparent pb-3 text-[16px] text-ink outline-none focus:border-wine"
+            className="w-full border-b border-[#17191a]/25 bg-transparent pb-3 text-[16px] text-[#17191a] outline-none focus:border-[#3B0D1A]"
           />
           <button
             onClick={() => {
@@ -71,36 +71,36 @@ export default function AdminPage() {
                 setAuthed(true);
               }
             }}
-            className="mt-6 w-full rounded-full border border-wine bg-wine py-3 text-[14px] font-medium text-cream transition-colors hover:bg-transparent hover:text-wine"
+            className="mt-6 w-full rounded-full border border-[#3B0D1A] bg-[#3B0D1A] py-3 text-[14px] font-medium text-[#f4efe6] transition-colors hover:bg-transparent hover:text-[#3B0D1A]"
           >
             Войти
           </button>
-          <p className="mt-4 text-[12px] text-ink/35">Пароль прототипа: <code>alis</code></p>
-          <a href="/" className="mt-6 block text-[13px] text-wine underline underline-offset-4">← на сайт</a>
+          <p className="mt-4 text-[12px] text-[#17191a]/35">Пароль прототипа: <code>alis</code></p>
+          <a href="/" className="mt-6 block text-[13px] text-[#3B0D1A] underline underline-offset-4">← на сайт</a>
         </div>
       </main>
     );
   }
 
-  if (!store) return <main className="p-10 text-ink/50">Загрузка…</main>;
+  if (!store) return <main className="p-10 text-[#17191a]/50">Загрузка…</main>;
 
   return (
-    <main className="min-h-svh bg-cream text-ink">
+    <main className="min-h-svh bg-white text-[#17191a]">
       <div className="mx-auto w-[94%] max-w-[1100px] py-10">
         {/* Шапка */}
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <h1 className="font-serif text-[30px]">Запись — управление</h1>
           <div className="flex items-center gap-3 text-[13px]">
-            <a href="/#online" className="text-wine underline underline-offset-4">Открыть витрину</a>
+            <a href="/#online" className="text-[#3B0D1A] underline underline-offset-4">Открыть витрину</a>
             <button
               onClick={() => { if (confirm("Сбросить все данные к значениям по умолчанию?")) { resetStore(); setStore(loadStore()); } }}
-              className="text-ink/50 hover:text-ink"
+              className="text-[#17191a]/50 hover:text-[#17191a]"
             >
               Сбросить данные
             </button>
             <button
               onClick={() => { sessionStorage.removeItem("alis-admin"); setAuthed(false); }}
-              className="rounded-full border border-ink/20 px-4 py-1.5 hover:border-wine"
+              className="rounded-full border border-[#17191a]/20 px-4 py-1.5 hover:border-[#3B0D1A]"
             >
               Выйти
             </button>
@@ -108,13 +108,13 @@ export default function AdminPage() {
         </div>
 
         {/* Вкладки */}
-        <div className="mb-8 flex gap-2 border-b border-ink/10">
+        <div className="mb-8 flex gap-2 border-b border-[#17191a]/10">
           {([["services", "Услуги и цены"], ["masters", "Мастера и график"], ["bookings", `Записи (${store.bookings.length})`]] as [Tab, string][]).map(([k, label]) => (
             <button
               key={k}
               onClick={() => setTab(k)}
               className={`-mb-px border-b-2 px-4 py-2.5 text-[14px] transition-colors ${
-                tab === k ? "border-wine text-wine" : "border-transparent text-ink/50 hover:text-ink"
+                tab === k ? "border-[#3B0D1A] text-[#3B0D1A]" : "border-transparent text-[#17191a]/50 hover:text-[#17191a]"
               }`}
             >
               {label}
@@ -148,7 +148,7 @@ function ServicesTab({ store, commit }: { store: Store; commit: (s: Store) => vo
       <div className="overflow-x-auto">
         <table className="w-full min-w-[560px] border-collapse text-[14px]">
           <thead>
-            <tr className="text-left text-[12px] uppercase tracking-wide text-ink/40">
+            <tr className="text-left text-[12px] uppercase tracking-wide text-[#17191a]/40">
               <th className="pb-3 pr-4 font-medium">Название</th>
               <th className="pb-3 pr-4 font-medium">Цена, ₽</th>
               <th className="pb-3 pr-4 font-medium">Длительность, мин</th>
@@ -157,25 +157,25 @@ function ServicesTab({ store, commit }: { store: Store; commit: (s: Store) => vo
           </thead>
           <tbody>
             {store.services.map((s) => (
-              <tr key={s.id} className="border-t border-ink/10">
+              <tr key={s.id} className="border-t border-[#17191a]/10">
                 <td className="py-3 pr-4">
-                  <input value={s.title} onChange={(e) => update(s.id, { title: e.target.value })} className="w-full rounded-lg border border-ink/15 px-3 py-2 outline-none focus:border-wine" />
+                  <input value={s.title} onChange={(e) => update(s.id, { title: e.target.value })} className="w-full rounded-lg border border-[#17191a]/15 px-3 py-2 outline-none focus:border-[#3B0D1A]" />
                 </td>
                 <td className="py-3 pr-4">
-                  <input type="number" value={s.price} onChange={(e) => update(s.id, { price: Number(e.target.value) })} className="w-28 rounded-lg border border-ink/15 px-3 py-2 tabular-nums outline-none focus:border-wine" />
+                  <input type="number" value={s.price} onChange={(e) => update(s.id, { price: Number(e.target.value) })} className="w-28 rounded-lg border border-[#17191a]/15 px-3 py-2 tabular-nums outline-none focus:border-[#3B0D1A]" />
                 </td>
                 <td className="py-3 pr-4">
-                  <input type="number" step={5} value={s.durationMin} onChange={(e) => update(s.id, { durationMin: Number(e.target.value) })} className="w-24 rounded-lg border border-ink/15 px-3 py-2 tabular-nums outline-none focus:border-wine" />
+                  <input type="number" step={5} value={s.durationMin} onChange={(e) => update(s.id, { durationMin: Number(e.target.value) })} className="w-24 rounded-lg border border-[#17191a]/15 px-3 py-2 tabular-nums outline-none focus:border-[#3B0D1A]" />
                 </td>
                 <td className="py-3 text-right">
-                  <button onClick={() => del(s.id)} className="text-[13px] text-wine/70 hover:text-wine">удалить</button>
+                  <button onClick={() => del(s.id)} className="text-[13px] text-[#3B0D1A]/70 hover:text-[#3B0D1A]">удалить</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <button onClick={add} className="mt-6 rounded-full border border-wine px-5 py-2.5 text-[13px] text-wine transition-colors hover:bg-wine hover:text-cream">
+      <button onClick={add} className="mt-6 rounded-full border border-[#3B0D1A] px-5 py-2.5 text-[13px] text-[#3B0D1A] transition-colors hover:bg-[#3B0D1A] hover:text-[#f4efe6]">
         + услуга
       </button>
     </div>
@@ -199,20 +199,20 @@ function MastersTab({ store, commit }: { store: Store; commit: (s: Store) => voi
   return (
     <div className="space-y-6">
       {store.masters.map((m) => (
-        <div key={m.id} className="rounded-2xl border border-ink/10 p-5">
+        <div key={m.id} className="rounded-2xl border border-[#17191a]/10 p-5">
           <div className="mb-5 flex flex-wrap items-center gap-4">
-            <input value={m.name} onChange={(e) => update(m.id, { name: e.target.value })} className="rounded-lg border border-ink/15 px-3 py-2 text-[15px] outline-none focus:border-wine" />
-            <input value={m.role} onChange={(e) => update(m.id, { role: e.target.value })} className="rounded-lg border border-ink/15 px-3 py-2 text-[13px] outline-none focus:border-wine" />
-            <label className="flex items-center gap-2 text-[13px] text-ink/60">
+            <input value={m.name} onChange={(e) => update(m.id, { name: e.target.value })} className="rounded-lg border border-[#17191a]/15 px-3 py-2 text-[15px] outline-none focus:border-[#3B0D1A]" />
+            <input value={m.role} onChange={(e) => update(m.id, { role: e.target.value })} className="rounded-lg border border-[#17191a]/15 px-3 py-2 text-[13px] outline-none focus:border-[#3B0D1A]" />
+            <label className="flex items-center gap-2 text-[13px] text-[#17191a]/60">
               шаг слота
-              <input type="number" step={5} value={m.stepMin} onChange={(e) => update(m.id, { stepMin: Number(e.target.value) })} className="w-20 rounded-lg border border-ink/15 px-3 py-2 tabular-nums outline-none focus:border-wine" />
+              <input type="number" step={5} value={m.stepMin} onChange={(e) => update(m.id, { stepMin: Number(e.target.value) })} className="w-20 rounded-lg border border-[#17191a]/15 px-3 py-2 tabular-nums outline-none focus:border-[#3B0D1A]" />
               мин
             </label>
-            <button onClick={() => del(m.id)} className="ml-auto text-[13px] text-wine/70 hover:text-wine">удалить мастера</button>
+            <button onClick={() => del(m.id)} className="ml-auto text-[13px] text-[#3B0D1A]/70 hover:text-[#3B0D1A]">удалить мастера</button>
           </div>
 
           {/* Услуги мастера */}
-          <p className="mb-2 text-[12px] uppercase tracking-wide text-ink/40">Услуги</p>
+          <p className="mb-2 text-[12px] uppercase tracking-wide text-[#17191a]/40">Услуги</p>
           <div className="mb-5 flex flex-wrap gap-2">
             {store.services.map((s) => {
               const on = m.serviceIds.includes(s.id);
@@ -220,7 +220,7 @@ function MastersTab({ store, commit }: { store: Store; commit: (s: Store) => voi
                 <button
                   key={s.id}
                   onClick={() => update(m.id, { serviceIds: on ? m.serviceIds.filter((x) => x !== s.id) : [...m.serviceIds, s.id] })}
-                  className={`rounded-full border px-3.5 py-1.5 text-[13px] transition-colors ${on ? "border-wine bg-wine text-cream" : "border-ink/15 text-ink/70 hover:border-wine/50"}`}
+                  className={`rounded-full border px-3.5 py-1.5 text-[13px] transition-colors ${on ? "border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]" : "border-[#17191a]/15 text-[#17191a]/70 hover:border-[#3B0D1A]/50"}`}
                 >
                   {s.title}
                 </button>
@@ -229,13 +229,13 @@ function MastersTab({ store, commit }: { store: Store; commit: (s: Store) => voi
           </div>
 
           {/* График по дням недели */}
-          <p className="mb-2 text-[12px] uppercase tracking-wide text-ink/40">График по дням недели</p>
+          <p className="mb-2 text-[12px] uppercase tracking-wide text-[#17191a]/40">График по дням недели</p>
           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {m.week.map((d, i) => (
-              <div key={i} className="flex items-center gap-2 rounded-lg border border-ink/10 px-3 py-2">
+              <div key={i} className="flex items-center gap-2 rounded-lg border border-[#17191a]/10 px-3 py-2">
                 <button
                   onClick={() => { const week = m.week.map((x, j) => (j === i ? { ...x, on: !x.on } : x)); update(m.id, { week }); }}
-                  className={`flex h-6 w-12 shrink-0 items-center rounded-full px-0.5 transition-colors ${d.on ? "bg-wine" : "bg-ink/15"}`}
+                  className={`flex h-6 w-12 shrink-0 items-center rounded-full px-0.5 transition-colors ${d.on ? "bg-[#3B0D1A]" : "bg-[#17191a]/15"}`}
                   aria-label={d.on ? "выходной" : "рабочий"}
                 >
                   <span className={`h-5 w-5 rounded-full bg-white transition-transform ${d.on ? "translate-x-6" : ""}`} />
@@ -244,18 +244,18 @@ function MastersTab({ store, commit }: { store: Store; commit: (s: Store) => voi
                 {d.on ? (
                   <>
                     <TimeInput value={d.start} onChange={(v) => setDay(m, i, { start: v }, update)} />
-                    <span className="text-ink/30">–</span>
+                    <span className="text-[#17191a]/30">–</span>
                     <TimeInput value={d.end} onChange={(v) => setDay(m, i, { end: v }, update)} />
                   </>
                 ) : (
-                  <span className="text-[13px] text-ink/35">выходной</span>
+                  <span className="text-[13px] text-[#17191a]/35">выходной</span>
                 )}
               </div>
             ))}
           </div>
         </div>
       ))}
-      <button onClick={add} className="rounded-full border border-wine px-5 py-2.5 text-[13px] text-wine transition-colors hover:bg-wine hover:text-cream">
+      <button onClick={add} className="rounded-full border border-[#3B0D1A] px-5 py-2.5 text-[13px] text-[#3B0D1A] transition-colors hover:bg-[#3B0D1A] hover:text-[#f4efe6]">
         + мастер
       </button>
     </div>
@@ -269,7 +269,7 @@ function setDay(m: Master, i: number, patch: Partial<DaySchedule>, update: (id: 
 
 function TimeInput({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   return (
-    <input type="time" value={value} onChange={(e) => onChange(e.target.value)} className="rounded-lg border border-ink/15 px-2 py-1 text-[13px] tabular-nums outline-none focus:border-wine" />
+    <input type="time" value={value} onChange={(e) => onChange(e.target.value)} className="rounded-lg border border-[#17191a]/15 px-2 py-1 text-[13px] tabular-nums outline-none focus:border-[#3B0D1A]" />
   );
 }
 
@@ -280,13 +280,13 @@ function BookingsTab({ store, commit }: { store: Store; commit: (s: Store) => vo
   const human = (iso: string) => { const d = new Date(iso + "T00:00:00"); return `${d.getDate()} ${MONTHS[d.getMonth()]}`; };
   const todayISO = localISO(new Date());
 
-  if (rows.length === 0) return <p className="text-[14px] text-ink/50">Пока нет записей. Оформите запись на витрине — она появится здесь.</p>;
+  if (rows.length === 0) return <p className="text-[14px] text-[#17191a]/50">Пока нет записей. Оформите запись на витрине — она появится здесь.</p>;
 
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-[720px] border-collapse text-[14px]">
         <thead>
-          <tr className="text-left text-[12px] uppercase tracking-wide text-ink/40">
+          <tr className="text-left text-[12px] uppercase tracking-wide text-[#17191a]/40">
             <th className="pb-3 pr-4 font-medium">Дата</th>
             <th className="pb-3 pr-4 font-medium">Время</th>
             <th className="pb-3 pr-4 font-medium">Услуга</th>
@@ -302,14 +302,14 @@ function BookingsTab({ store, commit }: { store: Store; commit: (s: Store) => vo
             const m = store.masters.find((x) => x.id === b.masterId);
             const upcoming = b.date >= todayISO;
             return (
-              <tr key={b.id} className={`border-t border-ink/10 ${upcoming ? "" : "text-ink/40"}`}>
+              <tr key={b.id} className={`border-t border-[#17191a]/10 ${upcoming ? "" : "text-[#17191a]/40"}`}>
                 <td className="py-3 pr-4 whitespace-nowrap">{human(b.date)}</td>
                 <td className="py-3 pr-4 tabular-nums">{b.time}</td>
-                <td className="py-3 pr-4">{s?.title || "—"} <span className="text-ink/40">{s ? fmtPrice(s.price) : ""}</span></td>
+                <td className="py-3 pr-4">{s?.title || "—"} <span className="text-[#17191a]/40">{s ? fmtPrice(s.price) : ""}</span></td>
                 <td className="py-3 pr-4">{m?.name || "—"}</td>
                 <td className="py-3 pr-4">{b.name || "—"}</td>
                 <td className="py-3 pr-4 whitespace-nowrap">{b.phone || "—"}</td>
-                <td className="py-3 text-right"><button onClick={() => del(b.id)} className="text-[13px] text-wine/70 hover:text-wine">отменить</button></td>
+                <td className="py-3 text-right"><button onClick={() => del(b.id)} className="text-[13px] text-[#3B0D1A]/70 hover:text-[#3B0D1A]">отменить</button></td>
               </tr>
             );
           })}

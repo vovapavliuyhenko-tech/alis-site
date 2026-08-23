@@ -43,7 +43,7 @@ export default function LookShowcase({
     <div
       onMouseEnter={() => (paused.current = true)}
       onMouseLeave={() => (paused.current = false)}
-      className="grid min-h-[460px] grid-cols-1 bg-cream lg:h-[88vh] lg:max-h-[720px] lg:min-h-[520px] lg:grid-cols-2"
+      className="grid min-h-[460px] grid-cols-1 bg-white lg:h-[88vh] lg:max-h-[720px] lg:min-h-[520px] lg:grid-cols-2"
     >
       {/* Большое фото во всю сторону */}
       <div className={`relative min-h-[380px] overflow-hidden lg:min-h-full ${mirror ? "lg:order-2" : "lg:order-1"}`}>
@@ -62,22 +62,22 @@ export default function LookShowcase({
       {/* Панель с карточкой */}
       <div className={`flex items-center justify-center px-6 py-10 lg:px-12 lg:py-8 ${mirror ? "lg:order-1" : "lg:order-2"}`}>
         <div className="w-full max-w-[400px] text-center">
-          <h2 className="font-display text-[26px] uppercase tracking-[0.06em] leading-tight text-wine lg:text-[34px]">{title[lang]}</h2>
-          <p className="mx-auto mt-3 max-w-sm text-[13px] leading-relaxed text-ink/55 lg:text-[14px]">{subtitle[lang]}</p>
+          <h2 className="font-display text-[26px] uppercase tracking-[0.06em] leading-tight text-[#3B0D1A] lg:text-[34px]">{title[lang]}</h2>
+          <p className="mx-auto mt-3 max-w-sm text-[13px] leading-relaxed text-[#17191a]/55 lg:text-[14px]">{subtitle[lang]}</p>
 
           {/* Карточка + стрелки */}
           <div className="relative mt-6">
             <button
               aria-label={en ? "Previous" : "Назад"}
               onClick={() => go(-1)}
-              className="absolute left-0 top-1/2 z-10 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ink/15 bg-white text-ink transition-colors hover:border-wine hover:bg-wine hover:text-cream lg:-translate-x-1/3"
+              className="absolute left-0 top-1/2 z-10 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#17191a]/15 bg-white text-[#17191a] transition-colors hover:border-[#3B0D1A] hover:bg-[#3B0D1A] hover:text-[#f4efe6] lg:-translate-x-1/3"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M11 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
             <button
               aria-label={en ? "Next" : "Вперёд"}
               onClick={() => go(1)}
-              className="absolute right-0 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-ink/15 bg-white text-ink transition-colors hover:border-wine hover:bg-wine hover:text-cream lg:translate-x-1/3"
+              className="absolute right-0 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-[#17191a]/15 bg-white text-[#17191a] transition-colors hover:border-[#3B0D1A] hover:bg-[#3B0D1A] hover:text-[#f4efe6] lg:translate-x-1/3"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
@@ -104,7 +104,7 @@ export default function LookShowcase({
                 onClick={() => setSel(i)}
                 aria-label={l.name[lang]}
                 className={`h-14 w-12 overflow-hidden rounded-[8px] ring-2 transition-all ${
-                  sel === i ? "ring-wine" : "ring-transparent opacity-60 hover:opacity-100"
+                  sel === i ? "ring-[#3B0D1A]" : "ring-transparent opacity-60 hover:opacity-100"
                 }`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -115,7 +115,7 @@ export default function LookShowcase({
 
           <a
             href={href}
-            className="mt-6 inline-block border-b border-wine pb-1 text-[13px] uppercase tracking-[0.14em] text-wine transition-opacity hover:opacity-70"
+            className="mt-6 inline-block border-b border-[#3B0D1A] pb-1 text-[13px] uppercase tracking-[0.14em] text-[#3B0D1A] transition-opacity hover:opacity-70"
           >
             {cta ? cta[lang] : en ? "To catalog" : "В каталог"}
           </a>

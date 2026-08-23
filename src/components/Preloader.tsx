@@ -34,7 +34,7 @@ export default function Preloader() {
   return (
     <div
       aria-hidden
-      className={`fixed inset-0 z-[100] flex flex-col bg-white text-ink transition-opacity duration-[800ms] ease-out ${
+      className={`fixed inset-0 z-[100] flex flex-col bg-white text-[#17191a] transition-opacity duration-[800ms] ease-out ${
         gone ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
@@ -48,7 +48,7 @@ export default function Preloader() {
 
       {/* Счётчик по центру */}
       <div className="flex flex-1 items-center justify-center">
-        <p className="font-serif text-[64px] italic leading-none tabular-nums text-wine lg:text-[88px]">
+        <p className="font-serif text-[64px] italic leading-none tabular-nums text-[#3B0D1A] lg:text-[88px]">
           {p} %
         </p>
       </div>

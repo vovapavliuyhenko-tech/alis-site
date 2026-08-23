@@ -111,19 +111,19 @@ export default function QuizConsult() {
   };
 
   return (
-    <section id="concierge" className="scroll-mt-24 bg-cream py-16 lg:py-24">
+    <section id="concierge" className="scroll-mt-24 bg-white py-16 lg:py-24">
       <div className="mx-auto w-[92%] max-w-[1180px]">
         {/* Заголовок */}
         <div className="mb-10 max-w-2xl lg:mb-12">
-          <span className="inline-flex items-center gap-2 rounded-full bg-olive/10 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] text-olive">
-            <span className="h-1.5 w-1.5 rounded-full bg-olive" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] text-[#4A4B33]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
             {t("бесплатная консультация", "free consultation")}
           </span>
-          <h2 className="mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] text-ink lg:text-[42px]">
+          <h2 className="mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] text-[#2a2320] lg:text-[42px]">
             {t("Подберём выезд", "We'll tailor your outcall")}{" "}
-            <span className="font-script text-[38px] normal-case tracking-normal text-wine lg:text-[54px]">{t("за 1 минуту", "in 1 minute")}</span>
+            <span className="font-script text-[38px] normal-case tracking-normal text-[#3B0D1A] lg:text-[54px]">{t("за 1 минуту", "in 1 minute")}</span>
           </h2>
-          <p className="mt-4 text-[14px] leading-relaxed text-ink/55 lg:text-[15px]">
+          <p className="mt-4 text-[14px] leading-relaxed text-[#17191a]/55 lg:text-[15px]">
             {t(
               "Ответьте на 5 вопросов — соберём формат под ваше событие и пришлём расчёт с командой и таймингом.",
               "Answer 5 questions — we'll shape the format for your event and send a plan with the team and timing."
@@ -132,23 +132,23 @@ export default function QuizConsult() {
         </div>
 
         {/* Карточка квиза */}
-        <div className="grid overflow-hidden rounded-[28px] border border-ink/10 bg-white shadow-[0_18px_60px_rgba(60,40,24,0.08)] md:grid-cols-[300px_1fr]">
+        <div className="grid overflow-hidden rounded-[28px] border border-[#17191a]/10 bg-white shadow-[0_18px_60px_rgba(23,25,26,0.08)] md:grid-cols-[300px_1fr]">
           {/* Левая часть — персона */}
-          <div className="flex flex-col gap-5 border-b border-ink/8 bg-[#faf7f2] p-7 md:border-b-0 md:border-r lg:p-9">
+          <div className="flex flex-col gap-5 border-b border-[#17191a]/8 bg-[#faf7f2] p-7 md:border-b-0 md:border-r lg:p-9">
             <div className="flex items-center gap-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/assets/tild6230-643__.jpg"
                 alt="Дайана Тарзян"
-                className="h-16 w-16 rounded-full object-cover ring-2 ring-wine/15"
+                className="h-16 w-16 rounded-full object-cover ring-2 ring-[#3B0D1A]/15"
               />
               <div>
-                <p className="font-serif text-[18px] text-ink">{t("Дайана Тарзян", "Daiana Tarzyan")}</p>
-                <p className="text-[12px] text-ink/55">{t("основатель ALIS", "founder of ALIS")}</p>
+                <p className="font-serif text-[18px] text-[#2a2320]">{t("Дайана Тарзян", "Daiana Tarzyan")}</p>
+                <p className="text-[12px] text-[#17191a]/55">{t("основатель ALIS", "founder of ALIS")}</p>
               </div>
             </div>
-            <div key={step} className="booking-step relative rounded-2xl border border-wine/12 bg-wine/[0.04] p-4 text-[13px] leading-relaxed text-ink/80">
-              <span aria-hidden className="absolute -top-2 left-8 h-4 w-4 rotate-45 border-l border-t border-wine/12 bg-wine/[0.04] md:-left-2 md:top-8 md:border-l md:border-t-0 md:border-b" />
+            <div key={step} className="booking-step relative rounded-2xl border border-[#3B0D1A]/12 bg-[#3B0D1A]/[0.04] p-4 text-[13px] leading-relaxed text-[#2a2320]/80">
+              <span aria-hidden className="absolute -top-2 left-8 h-4 w-4 rotate-45 border-l border-t border-[#3B0D1A]/12 bg-[#3B0D1A]/[0.04] md:-left-2 md:top-8 md:border-l md:border-t-0 md:border-b" />
               {BUBBLES[Math.min(step, BUBBLES.length - 1)][lang]}
             </div>
           </div>
@@ -157,11 +157,11 @@ export default function QuizConsult() {
           <div className="p-7 lg:p-10">
             {sent ? (
               <div className="flex min-h-[360px] flex-col items-center justify-center text-center">
-                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-wine/40">
-                  <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#752734" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-[#3B0D1A]/40">
+                  <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#3B0D1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </div>
-                <h3 className="font-serif text-[26px] text-ink">{t("Заявка принята!", "Request received!")}</h3>
-                <p className="mx-auto mt-3 max-w-sm text-[14px] leading-relaxed text-ink/60">
+                <h3 className="font-serif text-[26px] text-[#2a2320]">{t("Заявка принята!", "Request received!")}</h3>
+                <p className="mx-auto mt-3 max-w-sm text-[14px] leading-relaxed text-[#17191a]/60">
                   {t("Дайана лично разберёт ответы и пришлёт расчёт под ваш выезд в ближайшее время.", "Daiana will personally review your answers and send a tailored plan shortly.")}
                 </p>
               </div>
@@ -169,23 +169,23 @@ export default function QuizConsult() {
               <>
                 {/* Верх: бейдж шага + счётчик */}
                 <div className="mb-4 flex items-center justify-between gap-3">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-wine px-3.5 py-1.5 text-[10.5px] font-medium uppercase tracking-[0.14em] text-cream">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-[#3B0D1A] px-3.5 py-1.5 text-[10.5px] font-medium uppercase tracking-[0.14em] text-[#f4efe6]">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3l1.9 4.6L18.5 9l-3.6 3 1 4.9L12 14.8 8.1 16.9l1-4.9L5.5 9l4.6-1.4z" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     {isContact
                       ? t("остался только контакт", "just your contact left")
                       : `${t("шаг", "step")} ${step + 1} ${t("из", "of")} ${total}`}
                   </span>
-                  <span className="text-[13px] font-medium tabular-nums text-ink/40">{step + 1} / {total}</span>
+                  <span className="text-[13px] font-medium tabular-nums text-[#17191a]/40">{step + 1} / {total}</span>
                 </div>
 
                 {/* Прогресс-бар */}
-                <div className="mb-8 h-1.5 w-full overflow-hidden rounded-full bg-ink/8">
-                  <div className="h-full rounded-full bg-wine transition-[width] duration-500 ease-out" style={{ width: `${Math.round(((step + 1) / total) * 100)}%` }} />
+                <div className="mb-8 h-1.5 w-full overflow-hidden rounded-full bg-[#17191a]/8">
+                  <div className="h-full rounded-full bg-[#3B0D1A] transition-[width] duration-500 ease-out" style={{ width: `${Math.round(((step + 1) / total) * 100)}%` }} />
                 </div>
 
                 {isContact ? (
                   <div className="booking-step">
-                    <h3 className="font-serif text-[24px] leading-tight text-ink lg:text-[30px]">
+                    <h3 className="font-serif text-[24px] leading-tight text-[#2a2320] lg:text-[30px]">
                       {t("Куда прислать расчёт?", "Where should we send your plan?")}
                     </h3>
                     <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -193,14 +193,14 @@ export default function QuizConsult() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder={t("Ваше имя", "Your name")}
-                        className={`w-full rounded-xl border bg-white px-4 py-3 text-[15px] text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-wine ${touched && !nameOk ? "border-[#b3261e]" : "border-ink/15"}`}
+                        className={`w-full rounded-xl border bg-white px-4 py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#3B0D1A] ${touched && !nameOk ? "border-[#b3261e]" : "border-[#17191a]/15"}`}
                       />
                       <input
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         inputMode="tel"
                         placeholder={t("Ваш номер телефона", "Your phone number")}
-                        className={`w-full rounded-xl border bg-white px-4 py-3 text-[15px] text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-wine ${touched && !phoneOk ? "border-[#b3261e]" : "border-ink/15"}`}
+                        className={`w-full rounded-xl border bg-white px-4 py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#3B0D1A] ${touched && !phoneOk ? "border-[#b3261e]" : "border-[#17191a]/15"}`}
                       />
                     </div>
                     <textarea
@@ -208,13 +208,13 @@ export default function QuizConsult() {
                       onChange={(e) => setComment(e.target.value)}
                       rows={2}
                       placeholder={t("Комментарий (необязательно): город, дата, детали", "Comment (optional): city, date, details")}
-                      className="mt-4 w-full resize-none rounded-xl border border-ink/15 bg-white px-4 py-3 text-[15px] text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-wine"
+                      className="mt-4 w-full resize-none rounded-xl border border-[#17191a]/15 bg-white px-4 py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#3B0D1A]"
                     />
-                    <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[13px] text-ink/70">
-                      <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-wine" />
+                    <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[13px] text-[#17191a]/70">
+                      <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#3B0D1A]" />
                       <span>
                         {t("Согласен с ", "I agree to the ")}
-                        <a href="/privacy" className="text-wine underline underline-offset-2">{t("политикой конфиденциальности", "privacy policy")}</a>
+                        <a href="/privacy" className="text-[#3B0D1A] underline underline-offset-2">{t("политикой конфиденциальности", "privacy policy")}</a>
                       </span>
                     </label>
                     {touched && !canSend && (
@@ -223,16 +223,16 @@ export default function QuizConsult() {
                       </p>
                     )}
                     <div className="mt-7 flex items-center justify-between gap-4">
-                      <button onClick={() => setStep((s) => s - 1)} className="inline-flex items-center gap-2 text-[14px] text-ink/50 transition-colors hover:text-ink">
+                      <button onClick={() => setStep((s) => s - 1)} className="inline-flex items-center gap-2 text-[14px] text-[#17191a]/50 transition-colors hover:text-[#2a2320]">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
                         {t("Назад", "Back")}
                       </button>
                       <button
                         onClick={submit}
-                        className="group/btn inline-flex items-center gap-3 rounded-full bg-wine px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-cream transition-all duration-300 hover:scale-[1.02]"
+                        className="group/btn inline-flex items-center gap-3 rounded-full bg-[#3B0D1A] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02]"
                       >
                         {t("Получить расчёт", "Get my plan")}
-                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-cream/15 transition-transform duration-300 group-hover/btn:translate-x-0.5">
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]/15 transition-transform duration-300 group-hover/btn:translate-x-0.5">
                           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
                         </span>
                       </button>
@@ -240,7 +240,7 @@ export default function QuizConsult() {
                   </div>
                 ) : (
                   <div key={step} className="booking-step">
-                    <h3 className="font-serif text-[24px] leading-tight text-ink lg:text-[30px]">
+                    <h3 className="font-serif text-[24px] leading-tight text-[#2a2320] lg:text-[30px]">
                       {QUESTIONS[step].q[lang]}
                     </h3>
                     <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -252,12 +252,12 @@ export default function QuizConsult() {
                             onClick={() => pick(opt[lang])}
                             className={`group flex items-center gap-3.5 rounded-2xl border px-5 py-4 text-left text-[14px] transition-all duration-200 lg:text-[15px] ${
                               active
-                                ? "border-wine bg-wine/[0.05] text-ink"
-                                : "border-ink/12 bg-white text-ink hover:border-wine/60"
+                                ? "border-[#3B0D1A] bg-[#3B0D1A]/[0.05] text-[#2a2320]"
+                                : "border-[#17191a]/12 bg-white text-[#2a2320] hover:border-[#3B0D1A]/60"
                             }`}
                           >
                             {/* Радио-кружок слева */}
-                            <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${active ? "border-wine bg-wine text-cream" : "border-ink/25 text-transparent group-hover:border-wine/50"}`}>
+                            <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${active ? "border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]" : "border-[#17191a]/25 text-transparent group-hover:border-[#3B0D1A]/50"}`}>
                               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                             </span>
                             {opt[lang]}
@@ -268,7 +268,7 @@ export default function QuizConsult() {
 
                     <div className="mt-8 flex items-center justify-between gap-4">
                       {step > 0 ? (
-                        <button onClick={() => setStep((s) => s - 1)} className="inline-flex items-center gap-2 text-[14px] text-ink/50 transition-colors hover:text-ink">
+                        <button onClick={() => setStep((s) => s - 1)} className="inline-flex items-center gap-2 text-[14px] text-[#17191a]/50 transition-colors hover:text-[#2a2320]">
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
                           {t("Назад", "Back")}
                         </button>
@@ -278,10 +278,10 @@ export default function QuizConsult() {
                       <button
                         onClick={next}
                         disabled={!answered}
-                        className="group/btn inline-flex items-center gap-3 rounded-full bg-wine px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-cream transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
+                        className="group/btn inline-flex items-center gap-3 rounded-full bg-[#3B0D1A] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
                       >
                         {t("Следующий вопрос", "Next question")}
-                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-cream/15 transition-transform duration-300 group-hover/btn:translate-x-0.5">
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]/15 transition-transform duration-300 group-hover/btn:translate-x-0.5">
                           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
                         </span>
                       </button>

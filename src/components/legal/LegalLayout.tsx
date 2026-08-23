@@ -16,19 +16,19 @@ export default function LegalLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="bg-cream">
+    <main className="bg-white">
       <Header />
       <div className="h-16 bg-white" />
       <article className="mx-auto w-[90%] max-w-[860px] py-14 lg:py-20">
-        <a href="/" className="text-[13px] text-wine transition-opacity hover:opacity-70">
+        <a href="/" className="text-[13px] text-[#3B0D1A] transition-opacity hover:opacity-70">
           ← На главную
         </a>
-        <h1 className="mt-6 font-serif text-[30px] leading-[1.12] text-wine lg:text-[44px]">
+        <h1 className="mt-6 font-serif text-[30px] leading-[1.12] text-[#3B0D1A] lg:text-[44px]">
           {title}
         </h1>
-        <p className="mt-3 text-[13px] text-ink/45">Редакция от {updated}</p>
+        <p className="mt-3 text-[13px] text-[#17191a]/45">Редакция от {updated}</p>
         {intro && (
-          <p className="mt-6 text-[15px] leading-relaxed text-ink/70 lg:text-[16px]">{intro}</p>
+          <p className="mt-6 text-[15px] leading-relaxed text-[#17191a]/70 lg:text-[16px]">{intro}</p>
         )}
         <div className="legal-prose mt-10">{children}</div>
       </article>
