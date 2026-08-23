@@ -45,8 +45,8 @@ export default function LookShowcaseSection() {
           }}
           looks={CARE}
           mirror
-          href="/shop"
-          cta={{ ru: "В магазин", en: "To shop" }}
+          href="/#online"
+          cta={{ ru: "Узнать больше", en: "Learn more" }}
         />
       </div>
     </section>
