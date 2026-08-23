@@ -4,7 +4,7 @@
 // полем ввода, нижний ряд — разработчик, правовые ссылки, копирайт. Бордовый
 // фон, кремовый текст, золотые эйброу. Двуязычно (RU/EN).
 // Телефон/часы — плейсхолдеры, замените на реальные.
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 const PHONE = "+7 (___) ___-__-__"; // TODO: реальный номер салона
@@ -25,6 +25,24 @@ export default function Footer() {
   const [agree, setAgree] = useState(false);
   const [sent, setSent] = useState(false);
 
+  // Эффект «шторки»: футер зафиксирован снизу, контент уезжает вверх и открывает
+  // его. Распорка резервирует высоту футера, чтобы было куда «поднять шторку».
+  const footerRef = useRef<HTMLElement>(null);
+  const [footerH, setFooterH] = useState(0);
+  useEffect(() => {
+    const el = footerRef.current;
+    if (!el) return;
+    const measure = () => setFooterH(el.offsetHeight);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+
   const canSend = phone.replace(/\D/g, "").length >= 6 && agree;
   const submit = () => {
     if (!canSend) return;
@@ -35,13 +53,16 @@ export default function Footer() {
   const eyebrow = "mb-4 text-[11px] uppercase tracking-[0.22em] text-[#e7c9a0]";
 
   return (
-    <footer id="footer" className="scroll-mt-24 bg-[#3B0D1A] pt-16 text-white lg:pt-20">
+    <>
+    {/* Распорка = высота футера (место, чтобы «шторка» открылась) */}
+    <div aria-hidden style={{ height: footerH }} />
+    <footer id="footer" ref={footerRef} className="fixed bottom-0 left-0 z-0 w-full scroll-mt-24 bg-[#3B0D1A] pt-12 text-white lg:pt-14">
       <div className="mx-auto w-[92%] max-w-[1360px]">
         {/* Верх: гигантский вордмарк + таглайн */}
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <span
             className="font-display font-semibold leading-[0.82] tracking-[0.02em]"
-            style={{ fontSize: "clamp(4.5rem, 23vw, 18rem)" }}
+            style={{ fontSize: "clamp(4rem, 19vw, 14rem)" }}
           >
             ÁLIS
           </span>
@@ -152,5 +173,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }

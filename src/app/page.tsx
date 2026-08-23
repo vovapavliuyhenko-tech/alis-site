@@ -24,6 +24,8 @@ export default function Home() {
       <SmoothScroll />
       <ScrollReveal />
       <Header />
+      {/* Контент едет поверх футера — эффект «шторки» при скролле */}
+      <div className="relative z-10 bg-white">
       {/* 1 — Херо */}
       <Hero />
       {/* Обо мне */}
@@ -50,6 +52,7 @@ export default function Home() {
       <QuizConsult />
       {/* 8 — FAQ */}
       <Faq />
+      </div>
       <Footer />
     </main>
   );
