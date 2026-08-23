@@ -73,7 +73,7 @@ function Tile({ s, i, started }: { s: Service; i: number; started: boolean }) {
       </span>
 
       {/* Подпись капсом в скобках */}
-      <span className="absolute bottom-5 left-5 right-5 z-10 text-[15px] font-medium uppercase leading-tight tracking-[0.02em] text-white transition-opacity duration-300 group-hover:opacity-0 lg:text-[17px]">
+      <span className="absolute bottom-5 left-5 right-5 z-10 font-display text-[15px] uppercase leading-tight tracking-[0.04em] text-white transition-opacity duration-300 group-hover:opacity-0 lg:text-[17px]">
         ({s.name[lang]})
       </span>
 
