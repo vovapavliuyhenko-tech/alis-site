@@ -10,130 +10,58 @@ type Review = { name: Loc; role: Loc; text: Loc; photo: string };
 
 const REVIEWS: Review[] = [
   {
-    name: { ru: "Анна", en: "Anna" },
-    role: { ru: "невеста", en: "bride" },
+    name: { ru: "Екатерина К.", en: "Ekaterina K." },
+    role: { ru: "маникюр", en: "manicure" },
     text: {
-      ru: "Свадебный образ превзошёл все ожидания — держался весь день, а на фото я не могла себя узнать, настолько красиво.",
-      en: "The bridal look exceeded all expectations — it held all day, and in the photos I could barely recognise myself, it was so beautiful.",
+      ru: "Прекрасное место, квалифицированные мастера, приятная атмосфера. Была на маникюре у Ксении — всё понравилось, спасибо за красивые ноготочки.",
+      en: "A wonderful place, skilled masters and a lovely atmosphere. I had a manicure with Ksenia — loved everything, thank you for the beautiful nails.",
     },
     photo: "/assets/tild3236-393__.jpg",
   },
   {
-    name: { ru: "Мария", en: "Maria" },
-    role: { ru: "фотосессия", en: "photoshoot" },
+    name: { ru: "Виктория С.", en: "Viktoria S." },
+    role: { ru: "маникюр и укладки", en: "nails & styling" },
     text: {
-      ru: "Делали образ для съёмки. Макияж идеально лёг в кадр, а команда прочувствовала мой стиль с первого слова.",
-      en: "They created a look for a shoot. The makeup sat perfectly on camera, and the team understood my style from the first word.",
+      ru: "Обожаю этот салон! Приветливые девушки на ресепшен, забота о клиенте, чисто и очень красиво — чувствуешь себя королевой. Предлагают вкусный чай и кофе.",
+      en: "I adore this salon! Friendly reception, real care for the client, spotless and beautiful — you feel like a queen. They even offer delicious tea and coffee.",
     },
     photo: "/assets/tild6230-643__.jpg",
   },
   {
-    name: { ru: "Екатерина", en: "Ekaterina" },
-    role: { ru: "выпускной", en: "prom" },
+    name: { ru: "Анастасия В.", en: "Anastasia V." },
+    role: { ru: "укладка", en: "styling" },
     text: {
-      ru: "Готовили дочку на выпускной. Нежно, стойко и точно по референсу — она была самой красивой на вечере.",
-      en: "They prepped my daughter for prom. Gentle, long-lasting and exactly to reference — she was the most beautiful girl of the evening.",
+      ru: "Лучшее начало дня. Благодарю Екатерину за идеальную укладку и администратора за тёплый приём.",
+      en: "The best start to the day. Thank you Ekaterina for the perfect styling and the receptionist for the warm welcome.",
     },
     photo: "/assets/tild3535-313_bergamo.png",
   },
   {
-    name: { ru: "Ольга", en: "Olga" },
-    role: { ru: "мероприятие", en: "event" },
+    name: { ru: "Анна Ч.", en: "Anna Ch." },
+    role: { ru: "педикюр", en: "pedicure" },
     text: {
-      ru: "Выезд мастеров на площадку прошёл как часы. Всё вовремя, деликатно и с заботой о каждой детали образа.",
-      en: "The on-location visit ran like clockwork. Everything on time, tactful and caring about every detail of the look.",
+      ru: "Очень комфортное, красивое пространство, сотрудники внимательные. Услугу сделали отлично, как я хотела, уточнили все нюансы.",
+      en: "A very comfortable, beautiful space and attentive staff. The service was done perfectly, just as I wanted, and they checked every detail.",
     },
     photo: "/assets/tild6536-613_-2___1__4.jpg",
   },
   {
-    name: { ru: "Дарья", en: "Daria" },
-    role: { ru: "постоянная гостья", en: "regular guest" },
+    name: { ru: "Анастасия Е.", en: "Anastasia E." },
+    role: { ru: "маникюр", en: "manicure" },
     text: {
-      ru: "Хожу в ALIS больше года. Каждый раз выхожу с ощущением, что стала собой — только лучше. Это дорогого стоит.",
-      en: "I've been coming to ALIS for over a year. Every time I leave feeling like myself — only better. That's worth a lot.",
+      ru: "Прекрасный салон, качество маникюра и сервис 10 из 10. Очень уютно, комфортно и продумано до мелочей.",
+      en: "A wonderful salon, the manicure quality and service are 10 out of 10. So cosy, comfortable and thought through to the smallest detail.",
     },
     photo: "/assets/tild6561-356_fermata__2.jpg",
   },
   {
-    name: { ru: "Вероника", en: "Veronika" },
-    role: { ru: "вечерний образ", en: "evening look" },
+    name: { ru: "Анастасия К.", en: "Anastasia K." },
+    role: { ru: "маникюр", en: "manicure" },
     text: {
-      ru: "Пришла уставшей после работы — ушла королевой. Лёгкая рука мастера и атмосфера, в которой отдыхаешь душой.",
-      en: "I arrived tired after work and left a queen. A light touch from the artist and an atmosphere where your soul rests.",
+      ru: "Уютный и светлый салон. Делала маникюр у Арины — всё понравилось.",
+      en: "A cosy and bright salon. I had a manicure with Arina — loved it all.",
     },
-    photo: "/assets/tild6561-356_fermata__2.jpg",
-  },
-  {
-    name: { ru: "Светлана", en: "Svetlana" },
-    role: { ru: "свадьба", en: "wedding" },
-    text: {
-      ru: "Готовили меня и подружек невесты — все в восторге. Единый стиль, идеальный тайминг и ноль суеты в важный день.",
-      en: "They prepped me and the bridesmaids — everyone was delighted. A unified style, perfect timing and zero fuss on the big day.",
-    },
-    photo: "/assets/tild3236-393__.jpg",
-  },
-  {
-    name: { ru: "Ирина", en: "Irina" },
-    role: { ru: "макияж", en: "makeup" },
-    text: {
-      ru: "Обожаю их макияж: лёгкий, стойкий, «мой, но лучше». Ни разу не подвели, даже в жару на выезде.",
-      en: "I adore their makeup: light, long-lasting, 'me but better'. Never let me down, even in the heat on location.",
-    },
-    photo: "/assets/tild6230-643__.jpg",
-  },
-  {
-    name: { ru: "Наталья", en: "Natalia" },
-    role: { ru: "юбилей", en: "anniversary" },
-    text: {
-      ru: "Собирали образ на юбилей. Чувствовала себя звездой вечера — комплименты весь праздник не заканчивались.",
-      en: "They created a look for my milestone celebration. I felt like the star of the night — the compliments never stopped.",
-    },
-    photo: "/assets/tild3535-313_bergamo.png",
-  },
-  {
-    name: { ru: "Полина", en: "Polina" },
-    role: { ru: "фотопроект", en: "photo project" },
-    text: {
-      ru: "Снимали большой проект, образов было много. Каждый продуман до мелочей и точно попал в концепцию съёмки.",
-      en: "We shot a big project with many looks. Each was thought through to the smallest detail and fit the concept exactly.",
-    },
-    photo: "/assets/tild6536-613_-2___1__4.jpg",
-  },
-  {
-    name: { ru: "Алина", en: "Alina" },
-    role: { ru: "свадьба за городом", en: "countryside wedding" },
-    text: {
-      ru: "Свадьба была за городом, переживала за логистику. Команда приехала заранее, всё прошло спокойно и красиво.",
-      en: "The wedding was out of town and I worried about logistics. The team arrived early and everything went calmly and beautifully.",
-    },
-    photo: "/assets/tild6561-356_fermata__2.jpg",
-  },
-  {
-    name: { ru: "Юлия", en: "Yulia" },
-    role: { ru: "деловой образ", en: "business look" },
-    text: {
-      ru: "Собирали образ на конференцию. Строго, стильно и уверенно — ровно то, что нужно для сцены и камер.",
-      en: "They created a look for a conference. Sharp, stylish and confident — exactly what's needed for the stage and cameras.",
-    },
-    photo: "/assets/tild6230-643__.jpg",
-  },
-  {
-    name: { ru: "Кристина", en: "Kristina" },
-    role: { ru: "девичник", en: "hen party" },
-    text: {
-      ru: "Собрали всю компанию перед девичником. Быстро, весело и красиво — на фото каждая получилась идеально.",
-      en: "They prepped our whole group before the hen party. Fast, fun and beautiful — everyone looked perfect in the photos.",
-    },
-    photo: "/assets/tild3535-313_bergamo.png",
-  },
-  {
-    name: { ru: "Евгения", en: "Evgenia" },
-    role: { ru: "годовщина", en: "anniversary" },
-    text: {
-      ru: "Хотела нежный образ на годовщину. Услышали с полуслова и сделали именно то, о чём я мечтала.",
-      en: "I wanted a delicate look for our anniversary. They understood at a glance and made exactly what I dreamed of.",
-    },
-    photo: "/assets/tild6536-613_-2___1__4.jpg",
+    photo: "/assets/tild3638-373_-2___1__3.jpg",
   },
 ];
 
@@ -221,6 +149,11 @@ export default function Reviews() {
             {lang === "en" ? "What our " : "Что говорят "}
             <span className="text-[#4A4B33]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
           </h2>
+          <p className="mt-4 inline-flex items-center gap-2 text-[14px] text-[#17191a]/60">
+            <span className="text-[#3B0D1A]">★★★★★</span>
+            <span className="font-medium text-[#17191a]">4.9</span>
+            {lang === "en" ? "· 75+ reviews on Yandex and 2GIS" : "· 75+ отзывов на Яндекс и 2ГИС"}
+          </p>
         </div>
 
         {/* Вращающееся 3D-кольцо */}
