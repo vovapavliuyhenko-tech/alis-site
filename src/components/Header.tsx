@@ -82,7 +82,7 @@ export default function Header() {
         <div className="flex items-center gap-2.5">
           <LangToggle className="hidden sm:flex" />
           <a
-            href="/#online"
+            href="https://n1054895.yclients.com/company/976464/personal/menu" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-2.5 rounded-full border border-[#3B0D1A] bg-[#3B0D1A] py-2 pl-5 pr-2 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A]"
           >
             {lang === "en" ? "Book" : "Записаться"}

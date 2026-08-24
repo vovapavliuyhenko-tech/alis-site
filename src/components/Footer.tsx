@@ -7,14 +7,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
-const PHONE = "+7 (___) ___-__-__"; // TODO: реальный номер салона
+const PHONE_SALON = "+7 988 888 77 58"; // салон
+const PHONE_SERVICE = "+7 988 888 77 28"; // выездной сервис
+const EMAIL = "alisbeautyclub@gmail.com";
+const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
 const ADDRESS = { ru: "Новороссийск,\nул. Пархоменко, 53", en: "Novorossiysk,\nParkhomenko St., 53" };
-const HOURS = { ru: "Принимаем записи с 9:00 до 21:00", en: "We take bookings from 9:00 to 21:00" };
+const HOURS = { ru: "Без выходных, с 9:00 до 21:00", en: "Open daily, 9:00–21:00" };
 
 const SOCIALS = [
-  { label: "Instagram", href: "#" },
-  { label: "Telegram", href: "#" },
-  { label: "WhatsApp", href: "#" },
+  { label: "Instagram — Новороссийск", href: "https://www.instagram.com/alisbeauty.ru" },
+  { label: "Instagram — Global", href: "https://www.instagram.com/alisbeauty.global" },
 ];
 
 export default function Footer() {
@@ -66,8 +68,8 @@ export default function Footer() {
           >
             ÁLIS
           </span>
-          <p className="font-serif text-[22px] italic leading-tight lg:mt-8 lg:text-right lg:text-[30px]">
-            {t("Создано для вашего образа", "Created for your look")}
+          <p className="max-w-sm font-serif text-[22px] italic leading-tight lg:mt-8 lg:text-right lg:text-[28px]">
+            {t("Отражаем внутреннюю красоту во внешнем облике", "Reflecting inner beauty in your outer look")}
           </p>
         </div>
 
@@ -76,11 +78,17 @@ export default function Footer() {
           {/* Контакты */}
           <div>
             <p className={eyebrow}>{t("Контакты", "Contact")}</p>
-            <p className="whitespace-pre-line text-[14px] leading-relaxed">{ADDRESS[lang]}</p>
-            <a href={`tel:${PHONE.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[14px] transition-opacity hover:opacity-70">
-              {PHONE}
+            <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="block whitespace-pre-line text-[14px] leading-relaxed transition-opacity hover:opacity-70">
+              {ADDRESS[lang]}
             </a>
-            <p className="mt-1 text-[13px] text-white/55">{HOURS[lang]}</p>
+            <a href={`tel:${PHONE_SALON.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[14px] transition-opacity hover:opacity-70">
+              {PHONE_SALON} <span className="text-white/50">— {t("салон", "salon")}</span>
+            </a>
+            <a href={`tel:${PHONE_SERVICE.replace(/[^\d+]/g, "")}`} className="mt-1 block text-[14px] transition-opacity hover:opacity-70">
+              {PHONE_SERVICE} <span className="text-white/50">— {t("выездной сервис", "on-location")}</span>
+            </a>
+            <a href={`mailto:${EMAIL}`} className="mt-2 block text-[14px] transition-opacity hover:opacity-70">{EMAIL}</a>
+            <p className="mt-2 text-[13px] text-white/55">{HOURS[lang]}</p>
           </div>
 
           {/* Соцсети */}
@@ -169,7 +177,7 @@ export default function Footer() {
               </span>
             ))}
           </nav>
-          <span>© {new Date().getFullYear()} ALIS</span>
+          <span>© {new Date().getFullYear()} ÁLIS BEAUTY</span>
         </div>
       </div>
     </footer>

@@ -12,38 +12,38 @@ type Service = { name: Loc; desc: Loc; img: string };
 
 const SERVICES: Service[] = [
   {
-    name: { ru: "Аппаратная косметология", en: "Hardware cosmetology" },
-    desc: { ru: "RF-лифтинг, ультразвук и микротоки — упругость и сияние без операций.", en: "RF-lifting, ultrasound and microcurrents — firmness and glow without surgery." },
+    name: { ru: "Маникюр", en: "Manicure" },
+    desc: { ru: "Аккуратная работа на проверенных материалах — ухоженные руки надолго.", en: "Precise work on trusted materials — well-groomed hands that last." },
     img: "/shop/care-e.jpg",
   },
   {
-    name: { ru: "Инъекционная косметология", en: "Injection cosmetology" },
-    desc: { ru: "Биоревитализация, мезотерапия и контурная пластика у сертифицированных врачей.", en: "Biorevitalization, mesotherapy and fillers by certified doctors." },
+    name: { ru: "Педикюр", en: "Pedicure" },
+    desc: { ru: "Комфортный уход и стойкое покрытие — лёгкость с первого шага.", en: "Comfortable care and long-wear coating — lightness from the first step." },
     img: "/shop/care-b.jpg",
   },
   {
-    name: { ru: "Лазерная эпиляция", en: "Laser hair removal" },
-    desc: { ru: "Гладкая кожа надолго. Современный лазер — бережно для любого фототипа.", en: "Smooth skin for the long run. Modern laser — gentle for any skin type." },
-    img: "/assets/tild3638-373_-2___1__3.jpg",
-  },
-  {
-    name: { ru: "Перманентный макияж", en: "Permanent makeup" },
-    desc: { ru: "Брови, губы и стрелки в естественной технике — идеально каждый день.", en: "Brows, lips and liner in a natural technique — flawless every day." },
-    img: "/shop/care-a.jpg",
-  },
-  {
-    name: { ru: "Брови и ресницы", en: "Brows & lashes" },
-    desc: { ru: "Оформление, ламинирование и наращивание — выразительный взгляд.", en: "Shaping, lamination and extensions — an expressive look." },
+    name: { ru: "Коррекция бровей", en: "Brow shaping" },
+    desc: { ru: "Форма под ваши черты — выразительный и естественный взгляд.", en: "A shape to match your features — an expressive, natural look." },
     img: "/assets/tild6536-613_-2___1__4.jpg",
   },
   {
-    name: { ru: "Чистка и уход за лицом", en: "Facial cleansing & care" },
-    desc: { ru: "Комбинированная чистка, пилинги и уходовые протоколы под ваш тип кожи.", en: "Combined cleansing, peels and care protocols tailored to your skin type." },
+    name: { ru: "Макияж", en: "Makeup" },
+    desc: { ru: "От дневного до вечернего — стойкий образ под повод и настроение.", en: "From daytime to evening — a long-wear look for any occasion." },
+    img: "/shop/care-a.jpg",
+  },
+  {
+    name: { ru: "Окрашивание волос", en: "Hair colouring" },
+    desc: { ru: "Цвет, который идёт именно вам — сложные техники и бережный уход.", en: "A colour that truly suits you — advanced techniques and gentle care." },
+    img: "/assets/tild3638-373_-2___1__3.jpg",
+  },
+  {
+    name: { ru: "Укладки и стрижки", en: "Styling & haircuts" },
+    desc: { ru: "Форма и укладка под вашу задачу — от повседневной до событийной.", en: "Cut and styling for your goal — from everyday to special events." },
     img: "/shop/care-c.jpg",
   },
   {
-    name: { ru: "Массаж лица", en: "Facial massage" },
-    desc: { ru: "Скульптурный и лимфодренажный массаж — тонус, овал и свежий цвет лица.", en: "Sculpting and lymphatic massage — tone, contour and a fresh complexion." },
+    name: { ru: "Выездной сервис", en: "On-location service" },
+    desc: { ru: "Премиум-сопровождение мероприятий: команда, тайминг и образ под ключ.", en: "Premium event service: team, timing and a turnkey look." },
     img: "/shop/care-d.jpg",
   },
 ];
@@ -57,7 +57,7 @@ function Tile({ s, i, started }: { s: Service; i: number; started: boolean }) {
     transitionDelay: started ? `${i * 90}ms` : "0ms",
   };
   return (
-    <a href="/#online" style={reveal} className="group relative block aspect-[4/5] overflow-hidden rounded-[22px] bg-[#f1ede6]">
+    <a href="https://n1054895.yclients.com/company/976464/personal/menu" target="_blank" rel="noopener noreferrer" style={reveal} className="group relative block aspect-[4/5] overflow-hidden rounded-[22px] bg-[#f1ede6]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={s.img}
@@ -132,7 +132,7 @@ export default function Services() {
 
           {/* CTA-карточка */}
           <a
-            href="/#online"
+            href="https://n1054895.yclients.com/company/976464/personal/menu" target="_blank" rel="noopener noreferrer"
             style={{
               opacity: started ? 1 : 0,
               transform: started ? "none" : "translateY(26px)",
