@@ -114,8 +114,7 @@ export default function Reviews() {
   const { lang } = useLang();
   const n = REVIEWS.length;
   const step = 360 / n; // угол между гранями
-  // Радиус считаем от числа карточек, чтобы они стояли вплотную (без больших пропусков)
-  const radius = Math.round((260 + 18) / (2 * Math.sin(Math.PI / n)));
+  const radius = 580; // радиус кольца как изначально (заполняется 12 отзывами)
 
   const stageRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
