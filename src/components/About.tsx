@@ -10,38 +10,38 @@ type Utp = { title: Loc; desc: Loc };
 
 const UTP: Utp[] = [
   {
-    title: { ru: "образ ваш, а не «по-своему»", en: "your look, not our own" },
+    title: { ru: "команда профессионалов", en: "a team of professionals" },
     desc: {
-      ru: "Разбираем повод, референсы и пожелания до мелочей. Вы получаете образ из своей головы — а не эксперимент на себе в важный день.",
-      en: "We go through the occasion, references and wishes in detail. You get the look from your own head — not an experiment on you on the day that matters.",
+      ru: "Опытные мастера и фирменная атмосфера. Заботимся о вас от первого «здравствуйте» до последнего штриха.",
+      en: "Experienced masters and a signature atmosphere. We care for you from the first hello to the final touch.",
     },
   },
   {
-    title: { ru: "мастера, за которых спокойно", en: "artists you can trust" },
+    title: { ru: "внимание к каждой детали", en: "attention to every detail" },
     desc: {
-      ru: "Визажисты и стилисты с опытом на свадьбах, съёмках и больших событиях — там, где права на ошибку нет.",
-      en: "Makeup artists and stylists proven at weddings, shoots and big events — where there's no room for error.",
+      ru: "Слышим все пожелания и учитываем мелочи, которые обычно упускают. Результат — именно такой, как вы хотели.",
+      en: "We hear every wish and catch the small things others miss. The result is exactly what you pictured.",
     },
   },
   {
-    title: { ru: "стойко до последнего кадра", en: "flawless to the last frame" },
+    title: { ru: "только проверенные материалы", en: "only trusted materials" },
     desc: {
-      ru: "Премиальная косметика, которая не плывёт и не тускнеет. Вы свежи и в объятиях, и в танце, и на фото под утро.",
-      en: "Premium products that don't slide or fade. You stay fresh through the hugs, the dancing and the photos till dawn.",
+      ru: "Работаем на качественной косметике и материалах, проверенных временем. Никаких экспериментов на вас.",
+      en: "We work only with quality, time-proven cosmetics and materials. No experiments on you.",
     },
   },
   {
-    title: { ru: "вам — спокойно", en: "calm is on us" },
+    title: { ru: "сервис в 4–6 рук", en: "service in 4–6 hands" },
     desc: {
-      ru: "Берём на себя суету и детали. Вы не следите за временем и не нервничаете — просто проживаете свой день.",
-      en: "We take on the fuss and the details. You don't watch the clock or worry — you just live your day.",
+      ru: "Несколько мастеров одновременно — экономим ваше время. Полный образ готов быстрее, без спешки и суеты.",
+      en: "Several masters at once — saving your time. Your full look is ready faster, without rush or fuss.",
     },
   },
   {
-    title: { ru: "минута в минуту", en: "on time, to the minute" },
+    title: { ru: "сервис «под ключ»", en: "a turnkey service" },
     desc: {
-      ru: "Приезжаем заранее и держим график события по договору. Без спешки, опозданий и «мы почти успеваем».",
-      en: "We arrive early and keep to the event schedule under contract. No rushing, no lateness, no “we're almost there.”",
+      ru: "Вам не нужно ни о чём думать — мы уже подумали за вас. Решаем любые задачи и работаем на гибких условиях.",
+      en: "You don't have to think about a thing — we've thought of it for you. Any task, on flexible terms.",
     },
   },
 ];
