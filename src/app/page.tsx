@@ -6,7 +6,6 @@ import Services from "@/components/Services";
 import HorizontalStory from "@/components/HorizontalStory";
 import FlipGallery from "@/components/FlipGallery";
 import Brands from "@/components/Brands";
-import TeamCarousel from "@/components/TeamCarousel";
 import Certificates from "@/components/Certificates";
 import LookShowcaseSection from "@/components/LookShowcaseSection";
 import Reviews from "@/components/Reviews";
@@ -40,8 +39,6 @@ export default function Home() {
       <FlipGallery />
       {/* Онлайн-заявка (под портфолио) */}
       <BookingWidget />
-      {/* 5 — Мастера */}
-      <TeamCarousel />
       {/* 6 — Сертификаты */}
       <Certificates />
       {/* Витрина «Образы / Уход» */}

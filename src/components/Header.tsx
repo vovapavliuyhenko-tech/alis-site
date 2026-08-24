@@ -28,7 +28,6 @@ const NAV: NavItem[] = [
   { label: { ru: "Услуги", en: "Services" }, href: "/#services" },
   { label: { ru: "Портфолио", en: "Portfolio" }, href: "/#works" },
   { label: { ru: "Цены", en: "Prices" }, href: "/#services" },
-  { label: { ru: "Мастера", en: "Masters" }, href: "/#team" },
   { label: { ru: "FAQ", en: "FAQ" }, href: "/#faq" },
   { label: { ru: "Контакты", en: "Contacts" }, href: "/#footer" },
 ];
