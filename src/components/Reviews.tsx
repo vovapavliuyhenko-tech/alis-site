@@ -268,6 +268,26 @@ export default function Reviews() {
             ? "drag to rotate · hold to pause"
             : "потяните, чтобы листать · зажмите, чтобы остановить"}
         </p>
+
+        {/* Ссылки на реальные площадки с отзывами */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <span className="text-[13px] text-[#17191a]/55">{lang === "en" ? "Read real reviews:" : "Читать реальные отзывы:"}</span>
+          {[
+            { label: "Яндекс", href: "https://yandex.ru/maps/org/lis_byuti/63024642190/reviews/" },
+            { label: "2ГИС", href: "https://2gis.ru/novorossiysk/firm/70000001086737494/tab/reviews" },
+          ].map((p) => (
+            <a
+              key={p.label}
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#3B0D1A]/25 px-4 py-2 text-[13px] text-[#3B0D1A] transition-colors hover:bg-[#3B0D1A] hover:text-[#f4efe6]"
+            >
+              {p.label}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );
