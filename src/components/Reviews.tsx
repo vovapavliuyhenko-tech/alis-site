@@ -108,6 +108,15 @@ const REVIEWS: Review[] = [
     },
     photo: "/assets/tild3535-313_bergamo.png",
   },
+  {
+    name: { ru: "Евгения Е.", en: "Evgenia E." },
+    role: { ru: "барбер", en: "barber" },
+    text: {
+      ru: "Отличное место, приятная обстановка, всё очень аккуратно. Барбер Эдуард знает своё дело — сын в восторге! Ходим только к нему.",
+      en: "A great place, pleasant setting, everything is neat. Barber Eduard knows his craft — my son is thrilled! We only go to him.",
+    },
+    photo: "/assets/tild6536-613_-2___1__4.jpg",
+  },
 ];
 
 export default function Reviews() {
