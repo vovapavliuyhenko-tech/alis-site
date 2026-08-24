@@ -213,7 +213,7 @@ export default function Reviews() {
         {/* Вращающееся 3D-кольцо */}
         <div
           ref={stageRef}
-          className="relative mx-auto h-[360px] cursor-grab touch-pan-y select-none [perspective:4000px] lg:h-[340px]"
+          className="relative mx-auto h-[360px] cursor-grab touch-pan-y select-none [perspective:11000px] lg:h-[340px]"
         >
           <div ref={ringRef} className="absolute inset-0 [transform-style:preserve-3d]">
             {REVIEWS.map((r, i) => (
