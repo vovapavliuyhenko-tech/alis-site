@@ -27,8 +27,8 @@ const TOPICS: Topic[] = [
   {
     chip: { ru: "Цены", en: "Prices" },
     answer: {
-      ru: "Актуальные цены на все услуги видно прямо в онлайн-записи — там же удобно выбрать мастера и время.",
-      en: "Up-to-date prices for every service are right in the online booking — you can also pick a master and time there.",
+      ru: "Актуальные цены на все услуги видно прямо в онлайн-записи — там же удобно выбрать мастера и время. А на первое посещение действует скидка −10%.",
+      en: "Up-to-date prices for every service are right in the online booking — pick a master and time there too. And your first visit is −10%.",
     },
     actions: [{ label: { ru: "Смотреть цены и записаться →", en: "See prices & book →" }, href: YCLIENTS }],
   },

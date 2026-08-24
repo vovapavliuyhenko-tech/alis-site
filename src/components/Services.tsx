@@ -122,6 +122,13 @@ export default function Services() {
           <h2 className="font-display text-[34px] uppercase tracking-[0.06em] leading-[1.08] text-[#3B0D1A] lg:text-[52px]">
             {en ? "Our services" : "Наши услуги"}
           </h2>
+          <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
+            {en ? (
+              <>Up-to-date prices are in the online booking. <span className="font-medium text-[#4A4B33]">−10% on your first visit.</span></>
+            ) : (
+              <>Актуальные цены — в онлайн-записи. <span className="font-medium text-[#4A4B33]">−10% на первое посещение.</span></>
+            )}
+          </p>
         </div>
 
         {/* Сетка плиток + карточка-CTA */}
