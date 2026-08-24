@@ -63,6 +63,51 @@ const REVIEWS: Review[] = [
     },
     photo: "/assets/tild3638-373_-2___1__3.jpg",
   },
+  {
+    name: { ru: "Виктория", en: "Viktoria" },
+    role: { ru: "стрижка", en: "haircut" },
+    text: {
+      ru: "Прекрасный сервис, приветливый и внимательный персонал. Уютно, чисто, красиво. Мастер Екатерина сделала прекраснейшую стрижку. Рекомендую!",
+      en: "Wonderful service, friendly and attentive staff. Cosy, clean and beautiful. Ekaterina gave me a gorgeous haircut. Highly recommend!",
+    },
+    photo: "/assets/tild6530-383_-2___1_.jpg",
+  },
+  {
+    name: { ru: "Светлана П.", en: "Svetlana P." },
+    role: { ru: "окрашивание", en: "hair colouring" },
+    text: {
+      ru: "Была на окрашивании у мастера Ольги. Довольна результатом — цвет полностью соответствует ожиданиям, ещё и рекомендации по уходу дали.",
+      en: "I had my hair coloured by Olga. Delighted with the result — the colour is exactly what I expected, and they gave me care tips too.",
+    },
+    photo: "/assets/tild3561-646_-2___1__5.jpg",
+  },
+  {
+    name: { ru: "Вера В.", en: "Vera V." },
+    role: { ru: "маникюр и брови", en: "nails & brows" },
+    text: {
+      ru: "Обожаю атмосферу заботы и красоты — каждый раз не хочется уходить. Советую маникюр и оформление бровей. Мастера Милана и Алина в сердце!",
+      en: "I adore the atmosphere of care and beauty — I never want to leave. I recommend the manicure and brow shaping. Milana and Alina, you're the best!",
+    },
+    photo: "/assets/tild3236-393__.jpg",
+  },
+  {
+    name: { ru: "Татьяна В.", en: "Tatiana V." },
+    role: { ru: "стрижка и маникюр", en: "haircut & nails" },
+    text: {
+      ru: "Выбрала салон по отзывам. Юлия подравняла кончики, Ксения сделала маникюр — быстро, качественно и с учётом пожеланий. Ушла с отличным настроением.",
+      en: "I chose the salon by its reviews. Yulia trimmed my ends and Ksenia did my nails — fast, high quality and to my wishes. I left in a great mood.",
+    },
+    photo: "/assets/tild6230-643__.jpg",
+  },
+  {
+    name: { ru: "Ангелина К.", en: "Angelina K." },
+    role: { ru: "уход за волосами", en: "hair care" },
+    text: {
+      ru: "От всей души советую! Персонал грамотно подберёт услугу для ваших волос, уход можно купить домой прямо на месте, а вкусный кофе возвращает снова и снова.",
+      en: "I wholeheartedly recommend it! The staff picks the right service for your hair, you can buy home care on the spot, and the coffee brings you back again and again.",
+    },
+    photo: "/assets/tild3535-313_bergamo.png",
+  },
 ];
 
 export default function Reviews() {
