@@ -1,7 +1,7 @@
 "use client";
 // Плавающая «капсула»-шапка ALIS: лого, меню по центру (с выпадашкой «услуги»),
 // тумблер языка RU/EN и CTA «Записаться». Тёмное матовое стекло.
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { useLang, LangToggle } from "@/lib/i18n";
 
 // Пункт меню: при наведении текст переворачивается по X и становится бордовым
@@ -62,6 +62,7 @@ const NAV: NavItem[] = [
 
 export default function Header() {
   const { lang } = useLang();
+  const [open, setOpen] = useState(false);
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-4 sm:px-4">
@@ -108,6 +109,16 @@ export default function Header() {
         {/* Язык + CTA */}
         <div className="flex items-center gap-2.5">
           <LangToggle className="hidden sm:flex" />
+          {/* Гамбургер (моб.) */}
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-label={lang === "en" ? "Menu" : "Меню"}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#17191a]/12 text-[#17191a] lg:hidden"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {open ? <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /> : <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />}
+            </svg>
+          </button>
           <a
             href="https://n1054895.yclients.com/company/976464/personal/menu" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-2.5 rounded-full border border-[#3B0D1A] bg-[#3B0D1A] py-2 pl-5 pr-2 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A]"
@@ -121,6 +132,40 @@ export default function Header() {
           </a>
         </div>
       </div>
+
+      {/* Мобильное меню */}
+      {open && (
+        <div className="pointer-events-auto absolute inset-x-3 top-[72px] max-h-[80vh] overflow-y-auto rounded-3xl border border-[#17191a]/10 bg-white/95 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.18)] backdrop-blur-md sm:inset-x-4 lg:hidden">
+          <nav className="flex flex-col">
+            {NAV.map((item) => (
+              <div key={item.label.ru} className="border-b border-[#17191a]/8 py-2 last:border-0">
+                <a
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="block py-2 text-[16px] font-medium text-[#17191a]"
+                >
+                  {item.label[lang]}
+                </a>
+                {item.sub && (
+                  <div className="mb-1 flex flex-col gap-0.5 pl-3">
+                    {item.sub.map((s) => (
+                      <a
+                        key={s.label.ru}
+                        href={s.href}
+                        onClick={() => setOpen(false)}
+                        className="py-1.5 text-[14px] text-[#17191a]/60"
+                      >
+                        {s.label[lang]}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            <LangToggle className="mt-3 self-start sm:hidden" />
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
