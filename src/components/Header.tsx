@@ -25,11 +25,39 @@ type NavItem = {
 };
 
 const NAV: NavItem[] = [
-  { label: { ru: "Услуги", en: "Services" }, href: "/#services" },
-  { label: { ru: "Портфолио", en: "Portfolio" }, href: "/#works" },
-  { label: { ru: "Цены", en: "Prices" }, href: "/#services" },
-  { label: { ru: "FAQ", en: "FAQ" }, href: "/#faq" },
-  { label: { ru: "Контакты", en: "Contacts" }, href: "/#footer" },
+  { label: { ru: "Главная", en: "Home" }, href: "/" },
+  {
+    label: { ru: "Салон", en: "Salon" },
+    href: "/salon",
+    sub: [
+      { label: { ru: "Услуги", en: "Services" }, href: "/salon#uslugi" },
+      { label: { ru: "Прайс", en: "Prices" }, href: "/salon#price" },
+      { label: { ru: "Лояльность", en: "Loyalty" }, href: "/salon#loyalty" },
+      { label: { ru: "Сертификаты", en: "Certificates" }, href: "/salon#certificates" },
+      { label: { ru: "Отзывы", en: "Reviews" }, href: "/salon#reviews" },
+    ],
+  },
+  {
+    label: { ru: "Команда", en: "Team" },
+    href: "/team",
+    sub: [
+      { label: { ru: "Наша команда", en: "Our team" }, href: "/team#team" },
+      { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team#vacancies" },
+      { label: { ru: "Стать мастером бьюти-консьержа", en: "Become a concierge master" }, href: "/team#become" },
+    ],
+  },
+  {
+    label: { ru: "Бьюти-консьерж", en: "Concierge" },
+    href: "/concierge",
+    sub: [
+      { label: { ru: "Услуги", en: "Services" }, href: "/concierge#uslugi" },
+      { label: { ru: "Прайс", en: "Prices" }, href: "/concierge#price" },
+      { label: { ru: "Коммерческое предложение", en: "Proposal" }, href: "/concierge#offer" },
+      { label: { ru: "Как забронировать", en: "How to book" }, href: "/concierge#booking" },
+    ],
+  },
+  { label: { ru: "Контакты", en: "Contacts" }, href: "/contacts" },
+  { label: { ru: "Сотрудничество", en: "Cooperation" }, href: "/cooperation" },
 ];
 
 export default function Header() {
