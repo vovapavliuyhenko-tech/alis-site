@@ -3,7 +3,6 @@
 // ПЕРЕВОРАЧИВАЕТСЯ при наведении. Сверху — фильтр по категориям услуг: при
 // переключении меняются только сами фотографии и подпись, а количество и
 // раскладка остаются прежними.
-import { useMemo, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -106,53 +105,25 @@ function FlipTile({ t }: { t: Tile }) {
 export default function FlipGallery() {
   const { lang } = useLang();
   const en = lang === "en";
-  const [active, setActive] = useState<CatId>("all");
-
-  const tiles = useMemo(() => {
-    const idx = CATS.findIndex((c) => c.id === active);
-    return buildTiles(CATS[idx], idx);
-  }, [active]);
+  const tiles = buildTiles(CATS[0], 0);
 
   return (
     <section id="works" className="scroll-mt-24 bg-white py-24 lg:py-32">
       <div className="mx-auto w-[96%] max-w-[1620px]">
         {/* Заголовок */}
-        <div className="mb-8 max-w-2xl lg:mb-10">
+        <div className="mb-10 max-w-2xl lg:mb-14">
           <h2 className="font-display text-[34px] uppercase tracking-[0.06em] leading-[1.08] text-[#3B0D1A] lg:text-[52px]">
             {en ? "Our works" : "Наши работы"}
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
             {en
-              ? "Choose a category — see the looks we create for it."
-              : "Выберите категорию — и посмотрите образы, которые мы создаём."}
+              ? "The looks we create — for every occasion."
+              : "Образы, которые мы создаём — для любого повода."}
           </p>
         </div>
 
-        {/* Фильтр по категориям */}
-        <div className="mb-10 flex flex-wrap gap-2.5 lg:mb-14">
-          {CATS.map((c) => {
-            const on = active === c.id;
-            return (
-              <button
-                key={c.id}
-                onClick={() => setActive(c.id)}
-                className={`rounded-full border px-5 py-2.5 text-[12px] uppercase tracking-[0.1em] transition-all duration-300 ${
-                  on
-                    ? "border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]"
-                    : "border-[#17191a]/15 bg-white text-[#17191a]/70 hover:border-[#3B0D1A] hover:text-[#3B0D1A]"
-                }`}
-              >
-                {c.label[lang]}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Сетка 8 плиток — расположение фиксировано, меняются только фото */}
-        <div
-          key={active}
-          className="grid animate-[fadeGrid_.5s_ease] grid-cols-2 items-start gap-x-6 gap-y-12 md:grid-cols-4 md:gap-x-9 md:gap-y-16 md:[grid-auto-rows:min-content]"
-        >
+        {/* Сетка 8 плиток */}
+        <div className="grid grid-cols-2 items-start gap-x-6 gap-y-12 md:grid-cols-4 md:gap-x-9 md:gap-y-16 md:[grid-auto-rows:min-content]">
           {tiles.map((t) => (
             <FlipTile key={t.n} t={t} />
           ))}
