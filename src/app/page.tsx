@@ -2,6 +2,7 @@ import Preloader from "@/components/Preloader";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import FlipGallery from "@/components/FlipGallery";
 import Brands from "@/components/Brands";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
@@ -25,6 +26,8 @@ export default function Home() {
         <div id="hero-end" aria-hidden className="h-0" />
         {/* Обо мне */}
         <About />
+        {/* Наши работы (портфолио) — прогрев результатом */}
+        <FlipGallery />
         {/* Нам доверяют (бренды) */}
         <Brands />
         {/* FAQ */}
