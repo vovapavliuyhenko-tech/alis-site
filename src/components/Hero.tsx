@@ -1,90 +1,66 @@
 "use client";
-// HERO resayme: одно фото зеркалом слева/справа, по центру белая карточка.
-// При скролле карточка плавно ОПУСКАЕТСЯ вниз и тонет в темноте (parallax).
-import { useEffect, useRef } from "react";
+// HERO ALIS: оффер + выгода по центру на мягком световом фоне и растянутая
+// кнопка целевого действия («Записаться») во всю ширину внизу блока.
 import { useLang } from "@/lib/i18n";
+
+const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
 export default function Hero() {
   const { lang } = useLang();
-  const photo = "/assets/tild6230-643__.jpg";
-  const cardRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const card = cardRef.current;
-    const section = sectionRef.current;
-    if (!card || !section) return;
-
-    const update = () => {
-      const h = section.offsetHeight || window.innerHeight;
-      const progress = Math.min(Math.max(window.scrollY / h, 0), 1);
-      // карточка опускается вниз и растворяется по мере скролла
-      card.style.transform = `translateY(${progress * 300}px)`;
-      card.style.opacity = String(1 - progress * 0.95);
-    };
-
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, []);
+  const t = (ru: string, en: string) => (lang === "en" ? en : ru);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative h-svh min-h-[640px] w-full overflow-hidden bg-white"
-    >
-      {/* Фон: фото зеркалом */}
-      <div className="absolute inset-0 grid grid-cols-2">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={photo} alt="" className="h-full w-full object-cover object-top" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={photo} alt="" className="h-full w-full -scale-x-100 object-cover object-top" />
-      </div>
-
-      {/* Затемнение низа — на всю ширину экрана, плавно в чёрный */}
+    <section className="relative flex h-svh min-h-[600px] w-full flex-col overflow-hidden bg-[#f4efe6]">
+      {/* Мягкое световое пятно за текстом */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%]"
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-[44%] h-[78vh] w-[86vw] max-w-[1100px] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.65) 55%, rgba(255,255,255,1) 100%)",
+          background:
+            "radial-gradient(ellipse at center, rgba(59,13,26,0.12) 0%, rgba(74,75,51,0.06) 34%, rgba(244,239,230,0) 70%)",
         }}
       />
 
-      {/* Центральная белая карточка (опускается при скролле) */}
-      <div className="absolute inset-0 flex items-center justify-center px-6">
-        <div
-          ref={cardRef}
-          className="flex aspect-[337/443] max-h-[74svh] w-[86%] max-w-[338px] flex-col items-center justify-between rounded-[26px] bg-white px-7 py-9 text-center text-[#17191a] shadow-[0_20px_60px_rgba(0,0,0,0.15)] will-change-transform"
-        >
-          <p className="mx-auto max-w-[17rem] text-[13px] leading-snug">
-            {lang === "en"
-              ? "Network of aesthetics studios & beauty concierge"
-              : "Сеть студий эстетики и beauty-concierge"}
-            <br />
-            {lang === "en" ? "— Daiana Tarzyan" : "— Дайана Тарзян"}
-          </p>
+      {/* Оффер по центру */}
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pt-16 text-center">
+        <p className="font-script text-[30px] leading-none text-[#4A4B33] sm:text-[38px]">
+          {t("красота под ключ", "turnkey beauty")}
+        </p>
 
-          <div className="flex flex-1 flex-col items-center justify-center">
-            <span className="font-display text-[46px] font-semibold leading-none tracking-[0.1em] text-[#17191a]">
-              ÁLIS
-            </span>
-            <span className="-mt-1 font-script text-[40px] leading-none text-[#4A4B33]">
-              beauty
-            </span>
-          </div>
+        <h1 className="mt-3 font-display text-[34px] font-semibold uppercase leading-[1.04] tracking-[0.02em] text-[#3B0D1A] sm:text-[58px]">
+          {t("Безупречный образ", "A flawless look")}
+          <br />
+          {t("за один визит", "in a single visit")}
+        </h1>
 
-          <p className="mx-auto max-w-[18rem] text-[13px] leading-snug text-[#17191a]/60">
-            {lang === "en"
-              ? "Your look for the day you can't reshoot — flawless, all-day, and truly yours."
-              : "Ваш образ в день, который не переснять — безупречный, стойкий и по-настоящему ваш."}
-          </p>
-        </div>
+        <p className="mt-5 max-w-[540px] text-[15px] leading-relaxed text-[#17191a]/65 sm:text-[17px]">
+          {t(
+            "Маникюр, макияж, волосы и брови — в 4–6 рук. Полный образ за одно посещение и −10% в первый визит.",
+            "Nails, makeup, hair and brows — in 4–6 hands. A complete look in one visit and −10% off your first time."
+          )}
+        </p>
       </div>
 
+      {/* Целевое действие — растянутая кнопка внизу блока */}
+      <a
+        href={YCLIENTS}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative z-10 mx-3 mb-3 flex items-center justify-center gap-3 rounded-2xl bg-[#3B0D1A] py-6 text-[13px] font-medium uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#4A4B33] sm:mx-4 sm:mb-4 sm:text-[14px]"
+      >
+        {t("Записаться со скидкой −10%", "Book with −10% off")}
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="transition-transform duration-300 group-hover:translate-x-1"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </a>
     </section>
   );
 }
