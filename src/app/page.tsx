@@ -19,6 +19,8 @@ export default function Home() {
       <div className="relative z-10 bg-white">
       {/* 1 — Херо */}
       <Hero />
+      {/* Метка конца первого блока — после неё у шапки появляется подложка */}
+      <div id="hero-end" aria-hidden className="h-0" />
       {/* Обо мне */}
       <About />
       {/* Нам доверяют (бренды) */}
