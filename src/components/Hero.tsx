@@ -22,7 +22,7 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(244,239,230,0.72) 0%, rgba(244,239,230,0.55) 40%, rgba(244,239,230,0.78) 100%)",
+            "linear-gradient(180deg, rgba(244,239,230,0.7) 0%, rgba(244,239,230,0.5) 45%, rgba(244,239,230,0.28) 100%)",
         }}
       />
       {/* Мягкое световое пятно за текстом */}
@@ -60,7 +60,7 @@ export default function Hero() {
         href={YCLIENTS}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative z-10 mx-4 mb-9 flex items-center justify-center rounded-2xl bg-[#3B0D1A] py-5 text-[12.5px] font-medium uppercase tracking-[0.22em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#4A4B33] sm:mx-6 sm:mb-11 sm:text-[13.5px]"
+        className="relative z-10 mx-4 mb-12 flex items-center justify-center rounded-2xl bg-[#3B0D1A] py-5 text-[12.5px] font-medium uppercase tracking-[0.22em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#4A4B33] sm:mx-6 sm:mb-14 sm:text-[13.5px]"
       >
         {t("Записаться со скидкой −10%", "Book with −10% off")}
       </a>
