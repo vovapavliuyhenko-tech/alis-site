@@ -16,17 +16,20 @@ export default function Home() {
       <ScrollReveal />
       <Header />
       {/* Контент едет поверх футера — эффект «шторки» при скролле */}
-      <div className="relative z-10 bg-white">
+      <div className="relative z-10">
       {/* 1 — Херо */}
       <Hero />
-      {/* Метка конца первого блока — после неё у шапки появляется подложка */}
-      <div id="hero-end" aria-hidden className="h-0" />
-      {/* Обо мне */}
-      <About />
-      {/* Нам доверяют (бренды) */}
-      <Brands />
-      {/* FAQ */}
-      <Faq />
+      {/* Контентный лист со скруглённым верхом наезжает на герой */}
+      <div className="relative -mt-7 rounded-t-[32px] bg-white shadow-[0_-14px_36px_rgba(0,0,0,0.08)]">
+        {/* Метка конца первого блока — после неё у шапки появляется подложка */}
+        <div id="hero-end" aria-hidden className="h-0" />
+        {/* Обо мне */}
+        <About />
+        {/* Нам доверяют (бренды) */}
+        <Brands />
+        {/* FAQ */}
+        <Faq />
+      </div>
       </div>
       <Footer />
     </main>
