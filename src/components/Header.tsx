@@ -79,10 +79,10 @@ export default function Header() {
     };
   }, [pathname]);
 
-  const dark = !solid; // прозрачная шапка на тёмном герое → светлый текст
-  const ink = dark ? "text-[#f4efe6]" : "text-[#17191a]";
-  const inkSoft = dark ? "text-[#f4efe6]/85" : "text-[#17191a]/70";
-  const hoverInk = dark ? "hover:text-[#f4efe6]" : "hover:text-[#3B0D1A]";
+  // Герой светлый → и в прозрачном, и в состоянии с подложкой текст тёмно-бордовый
+  const ink = solid ? "text-[#17191a]" : "text-[#3B0D1A]";
+  const inkSoft = solid ? "text-[#17191a]/70" : "text-[#3B0D1A]/85";
+  const hoverInk = "hover:text-[#3B0D1A]";
 
   // Пункт меню + (опц.) выпадашка
   const NavLink = ({ item }: { item: NavItem }) =>
@@ -144,9 +144,7 @@ export default function Header() {
         {/* Логотип по центру */}
         <a
           href="/"
-          className={`font-display justify-self-center text-[22px] font-semibold leading-none tracking-[0.16em] transition-colors duration-500 sm:text-[24px] ${
-            dark ? "text-[#f4efe6]" : "text-[#3B0D1A]"
-          }`}
+          className="font-display justify-self-center text-[22px] font-semibold leading-none tracking-[0.16em] text-[#3B0D1A] sm:text-[24px]"
         >
           ÁLIS BEAUTY
         </a>
@@ -165,7 +163,7 @@ export default function Header() {
                   onClick={() => setLang(l)}
                   aria-pressed={lang === l}
                   className={`uppercase tracking-wide transition-colors ${
-                    lang === l ? (dark ? "text-[#f4efe6]" : "text-[#3B0D1A]") : "opacity-60 hover:opacity-100"
+                    lang === l ? "text-[#3B0D1A]" : "opacity-60 hover:opacity-100"
                   }`}
                 >
                   {l}
