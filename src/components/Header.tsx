@@ -21,8 +21,7 @@ const LEFT: NavItem[] = [
     label: { ru: "Салон", en: "Salon" },
     href: "/salon",
     sub: [
-      { label: { ru: "Услуги", en: "Services" }, href: "/salon#uslugi" },
-      { label: { ru: "Прайс", en: "Prices" }, href: "/salon#price" },
+      { label: { ru: "Услуги и прайс", en: "Services & prices" }, href: "/salon#uslugi" },
       { label: { ru: "Лояльность", en: "Loyalty" }, href: "/salon#loyalty" },
       { label: { ru: "Сертификаты", en: "Certificates" }, href: "/salon#certificates" },
       { label: { ru: "Отзывы", en: "Reviews" }, href: "/salon#reviews" },
@@ -41,8 +40,7 @@ const LEFT: NavItem[] = [
     label: { ru: "Бьюти-консьерж", en: "Concierge" },
     href: "/concierge",
     sub: [
-      { label: { ru: "Услуги", en: "Services" }, href: "/concierge#uslugi" },
-      { label: { ru: "Прайс", en: "Prices" }, href: "/concierge#price" },
+      { label: { ru: "Услуги и прайс", en: "Services & prices" }, href: "/concierge#uslugi" },
       { label: { ru: "Коммерческое предложение", en: "Proposal" }, href: "/concierge#offer" },
       { label: { ru: "Как забронировать", en: "How to book" }, href: "/concierge#booking" },
     ],
