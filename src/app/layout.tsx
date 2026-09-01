@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Aboreto, Source_Code_Pro } from "next/font/google";
+import { Comfortaa, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import CustomCursor from "@/components/CustomCursor";
 import CookieConsent from "@/components/CookieConsent";
 import ConciergeChat from "@/components/ConciergeChat";
 
-// Единственная пара шрифтов на всём сайте:
-// Aboreto — заголовки и главное (только латиница; для кириллицы — системный serif-фолбэк).
-// Source Code Pro — весь остальной текст, включая мелкий (с кириллицей).
-const heading = Aboreto({
+// Единственная пара шрифтов на всём сайте (оба с кириллицей — единый вид на рус./англ.):
+// Comfortaa — заголовки и главное (геометрический дисплей, с кириллицей).
+// Source Code Pro — весь остальной текст, включая мелкий.
+const heading = Comfortaa({
   variable: "--font-heading",
-  subsets: ["latin"],
-  weight: "400",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 const body = Source_Code_Pro({
