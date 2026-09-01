@@ -13,10 +13,9 @@
   --color-cream: var(--cream);
   --color-wine: var(--wine);
   --color-olive: var(--olive);
-  --font-sans: var(--font-inter);
-  /* Весь serif на сайте — капитель Cormorant SC (как в заголовках) */
-  --font-serif: var(--font-cinzel);
-  --font-thunder: var(--font-thunder);
+  /* Единственная пара: Source Code Pro — текст, Aboreto — заголовки */
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-heading);
 }
 
 * { box-sizing: border-box; }
@@ -24,7 +23,7 @@ html, body { padding: 0; margin: 0; }
 body {
   background: #ffffff;
   color: var(--ink);
-  font-family: var(--font-inter), Arial, sans-serif;
+  font-family: var(--font-body), 'Courier New', monospace;
   letter-spacing: -0.01em;
   overflow-x: hidden;
 }
@@ -43,16 +42,13 @@ html { scrollbar-color: var(--wine) #ffffff; scrollbar-width: thin; }
 .hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 .hide-scrollbar::-webkit-scrollbar { display: none; width: 0; height: 0; }
 
-/* Шрифты витрины /shop (копия O'CARE) */
-.ff-geo { font-family: var(--font-geologica), Arial, sans-serif; }
-.ff-cormorant { font-family: var(--font-cormorant), 'Times New Roman', serif; }
-
-/* Крупный конденсированный шрифт (Thunder → Oswald стенд-ин) */
-.font-thunder { font-family: var(--font-thunder), 'Oswald', sans-serif; }
-
-/* Фирменная пара: капитель Cormorant SC (заголовки/лого) и тонкий скрипт Great Vibes (акценты) */
-.font-display { font-family: var(--font-cinzel), 'Cormorant SC', Georgia, serif; }
-.font-script { font-family: var(--font-pinyon), 'Great Vibes', cursive; }
+/* Все текстовые/заголовочные классы — на единую пару шрифтов.
+   Aboreto (латиница) с serif-фолбэком для кириллицы; Source Code Pro — текст. */
+.ff-geo { font-family: var(--font-body), 'Courier New', monospace; }
+.ff-cormorant { font-family: var(--font-heading), Georgia, 'Times New Roman', serif; }
+.font-thunder { font-family: var(--font-heading), Georgia, serif; }
+.font-display { font-family: var(--font-heading), Georgia, 'Times New Roman', serif; }
+.font-script { font-family: var(--font-heading), Georgia, 'Times New Roman', serif; }
 
 /* ===== Кастомный курсор — гелевая капля (как на paloma.website) ===== */
 html.has-custom-cursor,
@@ -124,7 +120,7 @@ html.has-custom-cursor * { cursor: none !important; }
 .legal-prose { color: #17191a; font-size: 15px; line-height: 1.75; }
 .legal-prose h2 {
   margin: 2.2rem 0 0.9rem;
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-heading), Georgia, serif;
   font-size: 22px;
   line-height: 1.25;
   color: var(--wine);
