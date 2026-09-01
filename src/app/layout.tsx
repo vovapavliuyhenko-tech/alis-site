@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Comfortaa, Source_Code_Pro } from "next/font/google";
+import { Comfortaa, Source_Code_Pro, Marcellus } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import CustomCursor from "@/components/CustomCursor";
@@ -21,6 +21,13 @@ const body = Source_Code_Pro({
   weight: ["300", "400", "500", "600"],
   display: "swap",
 });
+// Marcellus — тонкий римский шрифт для надписи логотипа (фирменная леттеринг-часть).
+const logo = Marcellus({
+  variable: "--font-logo",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "ÁLIS BEAUTY — салон красоты в Новороссийске и выездной премиум-сервис",
@@ -31,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ru" className={`${heading.variable} ${body.variable} antialiased`}>
+    <html lang="ru" className={`${heading.variable} ${body.variable} ${logo.variable} antialiased`}>
       <head>
         {/* Фолбэк: если JS выключен, элементы появления видны сразу */}
         <noscript>
