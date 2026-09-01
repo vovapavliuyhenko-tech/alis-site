@@ -49,8 +49,8 @@ html { scrollbar-color: var(--wine) #ffffff; scrollbar-width: thin; }
 .font-thunder { font-family: var(--font-heading), Georgia, serif; }
 .font-display { font-family: var(--font-heading), Georgia, 'Times New Roman', serif; }
 .font-script { font-family: var(--font-heading), Georgia, 'Times New Roman', serif; }
-/* Надпись логотипа — тонкий римский Marcellus */
-.font-logo { font-family: var(--font-logo), 'Marcellus', Georgia, serif; }
+/* Надпись логотипа — единый шрифт с заголовками */
+.font-logo { font-family: var(--font-heading), Georgia, serif; }
 
 /* ===== Кастомный курсор — гелевая капля (как на paloma.website) ===== */
 html.has-custom-cursor,

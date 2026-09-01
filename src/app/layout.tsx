@@ -1,31 +1,24 @@
 import type { Metadata } from "next";
-import { Comfortaa, Source_Code_Pro, Marcellus } from "next/font/google";
+import { Marmelad, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import CustomCursor from "@/components/CustomCursor";
 import CookieConsent from "@/components/CookieConsent";
 import ConciergeChat from "@/components/ConciergeChat";
 
-// Единственная пара шрифтов на всём сайте (оба с кириллицей — единый вид на рус./англ.):
-// Comfortaa — заголовки и главное (геометрический дисплей, с кириллицей).
+// Пара шрифтов на всём сайте (оба с кириллицей):
+// Marmelad — логотип, заголовки и главное (геометрический дисплей).
 // Source Code Pro — весь остальной текст, включая мелкий.
-const heading = Comfortaa({
+const heading = Marmelad({
   variable: "--font-heading",
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400",
   display: "swap",
 });
 const body = Source_Code_Pro({
   variable: "--font-body",
   subsets: ["latin", "cyrillic"],
   weight: ["300", "400", "500", "600"],
-  display: "swap",
-});
-// Marcellus — тонкий римский шрифт для надписи логотипа (фирменная леттеринг-часть).
-const logo = Marcellus({
-  variable: "--font-logo",
-  subsets: ["latin"],
-  weight: "400",
   display: "swap",
 });
 
@@ -38,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ru" className={`${heading.variable} ${body.variable} ${logo.variable} antialiased`}>
+    <html lang="ru" className={`${heading.variable} ${body.variable} antialiased`}>
       <head>
         {/* Фолбэк: если JS выключен, элементы появления видны сразу */}
         <noscript>
