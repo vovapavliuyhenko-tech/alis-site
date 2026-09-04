@@ -117,12 +117,12 @@ export default function FlipGallery() {
             {en ? "Portfolio" : "Портфолио"}
           </span>
           <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#3B0D1A] lg:text-[44px]">
-            {en ? "Our works" : "Как это выглядит вживую"}
+            {en ? "Our works" : "Наши работы"}
           </h2>
-          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
+          <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
             {en
               ? "The looks we create — for every occasion."
-              : "Наши клиентки в тот же день, тем же светом, без ретуши. Смотрите не на макияж — смотрите, похожа ли женщина на фото на себя."}
+              : "Образы, которые мы создаём — для любого повода."}
           </p>
         </div>
 

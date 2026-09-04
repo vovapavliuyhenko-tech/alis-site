@@ -10,37 +10,37 @@ type Utp = { title: Loc; desc: Loc };
 
 const UTP: Utp[] = [
   {
-    title: { ru: "Вас слышат, а не переспаривают", en: "a team of professionals" },
+    title: { ru: "команда профессионалов", en: "a team of professionals" },
     desc: {
-      ru: "«Да что ты понимаешь, я же мастер» — не наш словарь. До начала работы разбираем ваш референс и честно говорим, что получится сегодня, что — через два захода, а что не выйдет на ваших волосах никогда. Лучше расстроить на консультации, чем в зеркале.",
+      ru: "Опытные мастера и фирменная атмосфера. Заботимся о вас от первого «здравствуйте» до последнего штриха.",
       en: "Experienced masters and a signature atmosphere. We care for you from the first hello to the final touch.",
     },
   },
   {
-    title: { ru: "Второй визит повторяет первый", en: "attention to every detail" },
+    title: { ru: "внимание к каждой детали", en: "attention to every detail" },
     desc: {
-      ru: "Записываем формулу цвета, форму и длину ногтя, изгиб ресниц, любимую линию брови. Вам не придётся каждый раз объяснять всё заново и надеяться на память мастера — «как в прошлый раз» здесь действительно означает как в прошлый раз.",
+      ru: "Слышим все пожелания и учитываем мелочи, которые обычно упускают. Результат — именно такой, как вы хотели.",
       en: "We hear every wish and catch the small things others miss. The result is exactly what you pictured.",
     },
   },
   {
-    title: { ru: "Никаких экспериментов на вас", en: "only trusted materials" },
+    title: { ru: "только проверенные материалы", en: "only trusted materials" },
     desc: {
-      ru: "Перед осветлением делаем тест пряди и разбираем историю волос: пористость, следы масс-маркета, кератин. Если сегодня осветлять нельзя — мы это скажем и предложим план, а не сделаем и не оставим вас с последствиями.",
+      ru: "Работаем на качественной косметике и материалах, проверенных временем. Никаких экспериментов на вас.",
       en: "We work only with quality, time-proven cosmetics and materials. No experiments on you.",
     },
   },
   {
-    title: { ru: "Два часа вместо целого дня", en: "service in 4–6 hands" },
+    title: { ru: "сервис в 4–6 рук", en: "service in 4–6 hands" },
     desc: {
-      ru: "Четыре, иногда шесть рук работают одновременно: пока один мастер занят волосами, второй делает ногти. Это не спешка — это параллельная работа. Вы экономите не пятнадцать минут, а половину выходного.",
+      ru: "Несколько мастеров одновременно — экономим ваше время. Полный образ готов быстрее, без спешки и суеты.",
       en: "Several masters at once — saving your time. Your full look is ready faster, without rush or fuss.",
     },
   },
   {
-    title: { ru: "Вам не нужно ничего держать в голове", en: "a turnkey service" },
+    title: { ru: "сервис «под ключ»", en: "a turnkey service" },
     desc: {
-      ru: "Напомним о записи, соберём образ под повод, состыкуем тайминг с фотографом и организатором, приедем на площадку, если нужно. Вы занимаетесь своим днём — расписание держим мы.",
+      ru: "Вам не нужно ни о чём думать — мы уже подумали за вас. Решаем любые задачи и работаем на гибких условиях.",
       en: "You don't have to think about a thing — we've thought of it for you. Any task, on flexible terms.",
     },
   },
@@ -126,19 +126,9 @@ export default function About() {
             {lang === "en" ? "About us" : "О нас"}
           </span>
           <h2 className="mt-5 font-display text-[30px] font-normal uppercase leading-[1.12] tracking-[0.05em] text-[#3B0D1A] lg:text-[44px]">
-            {lang === "en" ? (
-              <>
-                Why they choose <span className="text-[#4A4B33]">ÁLIS</span>
-              </>
-            ) : (
-              "Шесть причин не искать мастера заново"
-            )}
+            {lang === "en" ? "Why they choose" : "Почему выбирают"}{" "}
+            <span className="text-[#4A4B33]">ÁLIS</span>
           </h2>
-          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-[#17191a]/55 lg:text-[16px]">
-            {lang === "en"
-              ? "We gathered the real reasons women leave their master — and did the opposite."
-              : "Мы собрали то, из-за чего женщины на самом деле уходят от мастера — и сделали наоборот."}
-          </p>
         </div>
 
         {/* Сетка УТП с движущимся прицелом */}
