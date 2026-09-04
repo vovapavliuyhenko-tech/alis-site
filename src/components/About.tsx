@@ -118,7 +118,7 @@ export default function About() {
 
   return (
     <section id="about" className="relative scroll-mt-24 bg-white py-24 lg:py-28">
-      <div className="mx-auto w-[92%] max-w-[1400px]">
+      <div className="mx-auto w-[92%] max-w-[1200px]">
         {/* Заголовок секции */}
         <div className="mb-14 max-w-2xl lg:mb-20">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
