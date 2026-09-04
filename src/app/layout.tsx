@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Marmelad, Source_Code_Pro } from "next/font/google";
+import { Marcellus, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import CustomCursor from "@/components/CustomCursor";
 import CookieConsent from "@/components/CookieConsent";
 import BookingFab from "@/components/BookingFab";
 
-// Пара шрифтов на всём сайте (оба с кириллицей):
-// Marmelad — логотип, заголовки и главное (геометрический дисплей).
-// Source Code Pro — весь остальной текст, включая мелкий.
-const heading = Marmelad({
+// Пара шрифтов на всём сайте:
+// Marcellus — логотип и все заголовки (тонкий римский; латиница, для кириллицы — serif-фолбэк).
+// Source Code Pro — весь остальной текст, включая мелкий (с кириллицей).
+const heading = Marcellus({
   variable: "--font-heading",
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin"],
   weight: "400",
   display: "swap",
 });
