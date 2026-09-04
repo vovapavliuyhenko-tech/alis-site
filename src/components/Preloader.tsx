@@ -2,11 +2,9 @@
 // ПРЕЛОАДЕР как у PALOMA: белый экран, по центру только логотип. Затем экран
 // уходит вверх «шторкой», открывая сайт.
 import { useEffect, useState } from "react";
-import { useLang } from "@/lib/i18n";
 import { LogoLockup } from "@/components/Logo";
 
 export default function Preloader() {
-  const { lang } = useLang();
   const [lift, setLift] = useState(false);
   const [gone, setGone] = useState(false);
 
@@ -38,9 +36,6 @@ export default function Preloader() {
     >
       <div className={`flex flex-col items-center transition-opacity duration-700 ${lift ? "opacity-0" : "opacity-100"}`}>
         <LogoLockup variant="wine" />
-        <span className="mt-6 text-[11px] uppercase tracking-[0.4em] text-[#4A4B33]">
-          {lang === "en" ? "nails · makeup · hair" : "маникюр · макияж · волосы"}
-        </span>
       </div>
     </div>
   );

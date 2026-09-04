@@ -117,8 +117,20 @@ export default function About() {
   );
 
   return (
-    <section id="about" className="relative scroll-mt-24 bg-white pt-24 pb-14 lg:pt-32 lg:pb-16">
-      <div className="mx-auto w-[94%] max-w-[1280px]">
+    <section id="about" className="relative scroll-mt-24 bg-white py-24 lg:py-28">
+      <div className="mx-auto w-[92%] max-w-[1200px]">
+        {/* Заголовок секции */}
+        <div className="mb-14 max-w-2xl lg:mb-20">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+            {lang === "en" ? "About us" : "О нас"}
+          </span>
+          <h2 className="mt-5 font-display text-[30px] font-normal uppercase leading-[1.12] tracking-[0.05em] text-[#3B0D1A] lg:text-[44px]">
+            {lang === "en" ? "Why they choose" : "Почему выбирают"}{" "}
+            <span className="text-[#4A4B33]">ÁLIS</span>
+          </h2>
+        </div>
+
         {/* Сетка УТП с движущимся прицелом */}
         <div ref={wrapRef} className="relative">
           {/* Прицел, который сам наводится */}

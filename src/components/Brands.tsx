@@ -72,14 +72,14 @@ export default function Brands() {
   const { lang } = useLang();
   const en = lang === "en";
   return (
-    <section className="overflow-hidden bg-white py-20 lg:py-28">
+    <section className="overflow-hidden bg-white py-24 lg:py-28">
       {/* Заголовок с эйброу-бейджем и акцентом */}
-      <div className="mx-auto mb-20 w-[92%] max-w-[1000px] text-center lg:mb-28">
+      <div className="mx-auto mb-14 w-[92%] max-w-[1200px] text-center lg:mb-20">
         <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
           {en ? "Clients" : "Клиенты"}
         </span>
-        <h2 className="mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.14] text-[#17191a] lg:text-[42px]">
+        <h2 className="mt-5 font-display text-[30px] font-normal uppercase leading-[1.12] tracking-[0.05em] text-[#3B0D1A] lg:text-[44px]">
           {en ? "Trusted by brands" : "Нам доверяют"}
           <br />
           <span className="text-[#4A4B33]">{en ? "and venues since 2024" : "бренды и площадки с 2024 года"}</span>

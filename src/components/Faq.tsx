@@ -170,11 +170,11 @@ export default function Faq() {
   const cols = [ITEMS.slice(0, mid), ITEMS.slice(mid)];
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-white py-24 lg:py-32">
-      <div className="mx-auto w-[90%] max-w-[1180px]">
+    <section id="faq" className="scroll-mt-24 bg-white py-24 lg:py-28">
+      <div className="mx-auto w-[92%] max-w-[1200px]">
         {/* Заголовок слева + подзаголовок */}
-        <div className="mb-12 max-w-2xl lg:mb-16">
-          <h2 className="font-display text-[32px] uppercase tracking-[0.06em] leading-[1.1] text-[#2a2320] lg:text-[48px]">
+        <div className="mb-14 max-w-2xl lg:mb-20">
+          <h2 className="font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#3B0D1A] lg:text-[44px]">
             {en ? "Answers to your" : "Ответы на вопросы"}
             <br />
             <span className="text-[#4A4B33]">{en ? "questions about us" : "о работе с ALIS"}</span>
