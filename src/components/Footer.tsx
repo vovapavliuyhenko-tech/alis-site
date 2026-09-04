@@ -59,7 +59,7 @@ export default function Footer() {
     <>
     {/* Распорка = высота футера (место, чтобы «шторка» открылась) */}
     <div aria-hidden style={{ height: footerH }} />
-    <footer id="footer" ref={footerRef} className="fixed bottom-0 left-0 z-0 w-full scroll-mt-24 bg-[#3B0D1A] pt-12 text-white lg:pt-14">
+    <footer id="footer" ref={footerRef} className="fixed bottom-0 left-0 z-0 w-full scroll-mt-24 overflow-hidden rounded-t-[40px] bg-[#3B0D1A] pt-12 text-white lg:pt-14">
       <div className="mx-auto w-[92%] max-w-[1360px]">
         {/* Верх: гигантский вордмарк + таглайн */}
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
