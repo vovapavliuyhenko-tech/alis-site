@@ -23,9 +23,8 @@ export default function SalonHero() {
       <div className="relative flex min-h-[60vh] flex-col bg-white px-6 pb-6 pt-24 lg:min-h-svh lg:px-14 lg:pb-8 lg:pt-28">
         {/* Лого сверху справа */}
         <div className="flex justify-end">
-          <span className="font-logo text-[18px] uppercase leading-none tracking-[0.22em] text-[#3B0D1A] sm:text-[20px]">
-            ÁLIS&nbsp;BEAUTY
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/assets/logo-word-wine.png" alt="ÁLIS BEAUTY" className="h-[20px] w-auto sm:h-[22px]" draggable={false} />
         </div>
 
         {/* Заголовок + подзаголовок по центру */}

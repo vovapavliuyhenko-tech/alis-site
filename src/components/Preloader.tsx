@@ -3,6 +3,7 @@
 // уходит вверх «шторкой», открывая сайт.
 import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
+import { LogoLockup } from "@/components/Logo";
 
 export default function Preloader() {
   const { lang } = useLang();
@@ -36,10 +37,8 @@ export default function Preloader() {
       }`}
     >
       <div className={`flex flex-col items-center transition-opacity duration-700 ${lift ? "opacity-0" : "opacity-100"}`}>
-        <span className="font-logo text-[34px] uppercase leading-none tracking-[0.24em] text-[#3B0D1A] sm:text-[46px]">
-          ÁLIS&nbsp;BEAUTY
-        </span>
-        <span className="mt-4 text-[11px] uppercase tracking-[0.4em] text-[#4A4B33]">
+        <LogoLockup variant="wine" />
+        <span className="mt-6 text-[11px] uppercase tracking-[0.4em] text-[#4A4B33]">
           {lang === "en" ? "nails · makeup · hair" : "маникюр · макияж · волосы"}
         </span>
       </div>

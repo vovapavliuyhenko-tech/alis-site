@@ -6,6 +6,7 @@
 // Телефон/часы — плейсхолдеры, замените на реальные.
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
+import { LogoEmblem, LogoWord } from "@/components/Logo";
 
 const PHONE_SALON = "+7 988 888 77 58"; // салон
 const PHONE_SERVICE = "+7 988 888 77 28"; // выездной сервис
@@ -61,14 +62,12 @@ export default function Footer() {
     <footer id="footer" ref={footerRef} className="fixed bottom-0 left-0 z-0 w-full scroll-mt-24 bg-[#3B0D1A] pt-12 text-white lg:pt-14">
       <div className="mx-auto w-[92%] max-w-[1360px]">
         {/* Верх: гигантский вордмарк + таглайн */}
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-          <span
-            className="font-display font-semibold leading-[0.82] tracking-[0.02em]"
-            style={{ fontSize: "clamp(4rem, 19vw, 14rem)" }}
-          >
-            ÁLIS
-          </span>
-          <p className="max-w-sm font-serif text-[22px] italic leading-tight lg:mt-8 lg:text-right lg:text-[28px]">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex items-center gap-5">
+            <LogoEmblem variant="cream" className="h-[76px] w-auto lg:h-[104px]" />
+            <LogoWord variant="cream" className="h-[30px] w-auto lg:h-[40px]" />
+          </div>
+          <p className="max-w-sm font-serif text-[20px] italic leading-tight lg:text-right lg:text-[26px]">
             {t("Отражаем внутреннюю красоту во внешнем облике", "Reflecting inner beauty in your outer look")}
           </p>
         </div>

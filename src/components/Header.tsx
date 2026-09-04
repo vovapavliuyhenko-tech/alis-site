@@ -6,6 +6,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLang, type Lang } from "@/lib/i18n";
+import { LogoEmblem, LogoWord } from "@/components/Logo";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -139,12 +140,10 @@ export default function Header() {
           </svg>
         </button>
 
-        {/* Логотип по центру: надпись фирменным римским шрифтом */}
-        <a
-          href="/"
-          className="font-logo justify-self-center text-[19px] uppercase leading-none tracking-[0.22em] text-[#3B0D1A] sm:text-[22px]"
-        >
-          ÁLIS&nbsp;BEAUTY
+        {/* Логотип по центру: вензель + надпись */}
+        <a href="/" className="flex items-center gap-2.5 justify-self-center">
+          <LogoEmblem variant="wine" className="h-9 w-auto max-w-none shrink-0" />
+          <LogoWord variant="wine" className="h-[17px] w-auto max-w-none shrink-0" />
         </a>
 
         {/* Правая группа (desktop) */}
