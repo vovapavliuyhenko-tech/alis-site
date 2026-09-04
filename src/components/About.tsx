@@ -106,7 +106,7 @@ export default function About() {
     <div className={`flex items-start gap-5 ${className}`}>
       <Viewfinder i={i} active={active === i} />
       <div className="max-w-[300px]">
-        <h3 className="font-display text-[20px] uppercase tracking-[0.04em] leading-tight text-[#3B0D1A] lg:text-[24px]">
+        <h3 className="font-display text-[17px] uppercase tracking-[0.04em] leading-tight text-[#3B0D1A] lg:text-[20px]">
           {UTP[i].title[lang]}
         </h3>
         <p className="mt-3 text-[13px] leading-relaxed text-[#17191a]/55 lg:text-[14px]">
