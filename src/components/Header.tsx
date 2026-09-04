@@ -151,21 +151,25 @@ export default function Header() {
           {RIGHT.map((item) => (
             <NavLink key={item.label.ru} item={item} />
           ))}
-          {/* Мини RU/EN */}
-          <div className={`flex items-center gap-1 text-[12px] ${inkSoft}`}>
-            {(["ru", "en"] as Lang[]).map((l, i) => (
-              <span key={l} className="flex items-center gap-1">
-                {i === 1 && <span className="opacity-40">/</span>}
-                <button
-                  onClick={() => setLang(l)}
-                  aria-pressed={lang === l}
-                  className={`uppercase tracking-wide transition-colors ${
-                    lang === l ? "text-[#3B0D1A]" : "opacity-60 hover:opacity-100"
-                  }`}
-                >
-                  {l}
-                </button>
-              </span>
+          {/* Тумблер RU/EN */}
+          <div className="relative flex items-center rounded-full border border-[#3B0D1A]/25 p-0.5 text-[11px] font-medium">
+            {/* бегунок */}
+            <span
+              aria-hidden
+              className="absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full bg-[#3B0D1A] transition-transform duration-300 ease-out"
+              style={{ transform: lang === "en" ? "translateX(100%)" : "translateX(0)" }}
+            />
+            {(["ru", "en"] as Lang[]).map((l) => (
+              <button
+                key={l}
+                onClick={() => setLang(l)}
+                aria-pressed={lang === l}
+                className={`relative z-10 w-9 rounded-full py-1.5 uppercase tracking-wide transition-colors duration-300 ${
+                  lang === l ? "text-[#f4efe6]" : "text-[#3B0D1A]/60 hover:text-[#3B0D1A]"
+                }`}
+              >
+                {l}
+              </button>
             ))}
           </div>
         </div>
