@@ -17,11 +17,13 @@ export default function BookingFab() {
   useEffect(() => {
     const update = () => {
       setShown(window.scrollY > window.innerHeight * 0.7);
-      // точка слева от кнопки — если там футер, значит кнопка над бордовым фоном
-      const x = window.innerWidth - 130;
-      const y = window.innerHeight - 40;
-      const el = document.elementFromPoint(x, y);
-      setOnFooter(!!el && !!el.closest("#footer"));
+      // насколько «раскрыт» фиксированный футер снизу — если больше высоты кнопки,
+      // значит кнопка уже над бордовым футером → инвертируем цвет
+      const footer = document.getElementById("footer");
+      const fh = footer ? footer.offsetHeight : 0;
+      const docH = document.documentElement.scrollHeight;
+      const revealed = window.scrollY + window.innerHeight - (docH - fh);
+      setOnFooter(revealed > 90);
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
