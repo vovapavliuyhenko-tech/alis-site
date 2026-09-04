@@ -36,7 +36,7 @@ export default function Hero() {
       />
 
       {/* Оффер строго по центру */}
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pt-16 text-center">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 text-center">
         <h1 className="font-display text-[28px] font-normal uppercase leading-[1.16] tracking-[0.04em] text-[#3B0D1A] sm:text-[44px]">
           {t("Уходите как хотели,", "A flawless look")}
           <br />
@@ -56,7 +56,7 @@ export default function Hero() {
         href={YCLIENTS}
         target="_blank"
         rel="noopener noreferrer"
-        className="font-display relative z-10 mx-4 mb-12 flex items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] py-5 text-[12px] uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:mx-6 sm:mb-14 sm:text-[13px]"
+        className="font-display absolute inset-x-4 bottom-5 z-10 flex items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] py-5 text-[12px] uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:inset-x-6 sm:bottom-6 sm:text-[13px]"
       >
         {t("Записаться со скидкой −10%", "Book with −10% off")}
       </a>
