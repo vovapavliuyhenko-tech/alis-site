@@ -80,10 +80,15 @@ export default function Brands() {
           {en ? "Clients" : "Клиенты"}
         </span>
         <h2 className="mt-5 font-display text-[30px] font-normal uppercase leading-[1.12] tracking-[0.05em] text-[#3B0D1A] lg:text-[44px]">
-          {en ? "Trusted by brands" : "Нам доверяют"}
+          {en ? "Trusted by brands" : "Нас зовут туда,"}
           <br />
-          <span className="text-[#4A4B33]">{en ? "and venues since 2024" : "бренды и площадки с 2024 года"}</span>
+          <span className="text-[#4A4B33]">{en ? "and venues since 2024" : "где нельзя переделать"}</span>
         </h2>
+        <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-[#17191a]/55 lg:text-[16px]">
+          {en
+            ? "Weddings, shoots and events since 2024. Venues and organisers don't get a second take — so they choose a team that arrives on time and does exactly what was agreed at the rehearsal."
+            : "Свадьбы, съёмки и мероприятия с 2024 года. У площадок и организаторов нет второго дубля — поэтому они выбирают команду, которая приезжает вовремя и делает то, что согласовано на репетиции."}
+        </p>
       </div>
 
       <div className="group relative flex overflow-hidden">

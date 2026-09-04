@@ -11,45 +11,80 @@ type Item = { q: Loc; a: Loc };
 
 const ITEMS: Item[] = [
   {
+    q: { ru: "А если мне не понравится результат?", en: "What if I don't like the result?" },
+    a: {
+      ru: "Скажите об этом сразу, не выходя из кресла — мы поправим на месте. Если ошибка техническая (цвет лёг неровно, покрытие скололось в первые дни, ресницы отошли), исправляем в течение 7 дней за наш счёт. Вам не придётся платить дважды за одну работу.",
+      en: "Tell us right away, before you leave the chair — we'll fix it on the spot. If it's a technical fault (uneven colour, coating chipped in the first days, lashes came off), we correct it within 7 days at our expense. You won't pay twice for one job.",
+    },
+  },
+  {
+    q: { ru: "Как вы стерилизуете инструмент?", en: "How do you sterilise your tools?" },
+    a: {
+      ru: "Инструмент проходит дезинфекцию и автоклав, упаковывается в крафт-пакет с индикатором стерильности и вскрывается при вас. Файлы и одноразовые расходники — новые на каждого клиента. Если хотите увидеть процесс — попросите администратора, покажем.",
+      en: "Tools go through disinfection and an autoclave, are sealed in a kraft pouch with a sterility indicator and opened in front of you. Files and single-use supplies are new for every client. If you'd like to see the process — just ask the administrator.",
+    },
+  },
+  {
+    q: { ru: "Боюсь аллергии на ресницы и краску для бровей. Что вы делаете?", en: "I'm afraid of an allergy to lashes and brow tint. What do you do?" },
+    a: {
+      ru: "Перед первой процедурой предлагаем тест за 48 часов. Это важно: аллергия на клей и красители часто накопительная — может не проявиться годами, а потом остаться навсегда. Лучше потратить два дня, чем потом жить с отёкшими веками.",
+      en: "Before the first procedure we offer a patch test 48 hours in advance. It matters: allergy to glue and dyes is often cumulative — it may not show for years and then stay forever. Better to spend two days than to live with swollen eyelids.",
+    },
+  },
+  {
+    q: { ru: "Цена окончательная или на месте будет больше?", en: "Is the price final or will it grow on the spot?" },
+    a: {
+      ru: "Стоимость называем до начала работы, после осмотра. Если в процессе выясняется, что нужен дополнительный шаг, мы останавливаемся и спрашиваем вас — и только потом продолжаем. Сюрпризов в чеке не будет.",
+      en: "We name the price before we start, after examining you. If an extra step turns out to be needed, we stop and ask you first — and only then continue. No surprises on the bill.",
+    },
+  },
+  {
+    q: { ru: "Что если я опоздаю или мастер задержится?", en: "What if I'm late or the master runs over?" },
+    a: {
+      ru: "Между записями у нас есть буфер, поэтому небольшая задержка не рушит день. Если задержались мы больше чем на 15 минут — это наша ответственность, и мы это компенсируем. Ваше время стоит не меньше нашего.",
+      en: "We keep a buffer between appointments, so a small delay doesn't ruin the day. If we run more than 15 minutes late — that's on us, and we make up for it. Your time is worth no less than ours.",
+    },
+  },
+  {
+    q: { ru: "У меня волосы после домашней краски или осветления. Возьмётесь?", en: "My hair is after home colour or bleaching. Will you take it on?" },
+    a: {
+      ru: "Сначала посмотрим и сделаем тест пряди. Иногда честный ответ — «сегодня осветлять нельзя, сначала два месяца восстановления». Мы скажем это прямо и дадим план по шагам с ценой каждого. Мы не беремся за работу, после которой вам придётся стричься.",
+      en: "First we look and do a strand test. Sometimes the honest answer is: “you can't bleach today, two months of recovery first.” We'll say it straight and give a step-by-step plan with a price for each. We don't take on work that would leave you needing a haircut.",
+    },
+  },
+  {
     q: { ru: "Как записаться?", en: "How do I book?" },
     a: {
-      ru: "Онлайн прямо на сайте в блоке «Запишитесь онлайн»: выберите услугу, мастера и удобное время. Либо оставьте телефон в форме ниже — перезвоним и подберём слот.",
-      en: "Online right here in the “Book online” block: choose a service, an artist and a convenient time. Or leave your phone below — we'll call you back and find a slot.",
+      ru: "Онлайн на сайте: выбираете услугу, мастера и время — свободные окна видно сразу, переписываться и звонить не нужно. Если удобнее голосом — оставьте телефон в форме, перезвоним и подберём слот.",
+      en: "Online on the site: choose a service, a master and a time — free slots are shown at once, no messaging or calls needed. If you prefer voice — leave your phone in the form and we'll call back and find a slot.",
     },
   },
   {
-    q: { ru: "Можно ли вызвать мастера на выезд?", en: "Can the artist come to me?" },
+    q: { ru: "Можно ли вызвать мастера на выезд?", en: "Can the master come to me?" },
     a: {
-      ru: "Да. Работаем на выезде по Новороссийску и региону, а по договорённости — по России и за рубежом. Команда приезжает к вам домой, в студию или на площадку.",
-      en: "Yes. We work on location across Novorossiysk and the region, and by arrangement across Russia and abroad. The team comes to your home, a studio or the venue.",
+      ru: "Да. Работаем на выезде по Новороссийску и региону, по договорённости — по России и за рубежом. Приезжаем домой, в отель или на площадку со своим светом и косметикой.",
+      en: "Yes. We work on location across Novorossiysk and the region, and by arrangement across Russia and abroad. We come to your home, a hotel or the venue with our own lighting and cosmetics.",
     },
   },
   {
-    q: { ru: "Сколько держится макияж и укладка?", en: "How long does the makeup and hair last?" },
+    q: { ru: "Сколько держится макияж и укладка?", en: "How long do the makeup and hair last?" },
     a: {
-      ru: "Используем премиальную стойкую косметику. Образ держится весь день и вечер — от сборов до последнего кадра, даже в жару и на съёмке.",
-      en: "We use premium long-wear products. The look holds all day and evening — from the morning prep to the last frame, even in the heat or on a shoot.",
+      ru: "Весь день и вечер — от сборов до последнего кадра. Мы работаем в городе с норд-остом, солнцем и морем, поэтому подбираем стойкие текстуры с запасом, а не по идеальной погоде.",
+      en: "All day and evening — from the morning prep to the last frame. We work in a city with the Nord-Ost wind, sun and sea, so we pick long-wear textures with a margin, not for perfect weather.",
     },
   },
   {
     q: { ru: "Делаете ли пробный образ перед свадьбой?", en: "Do you do a trial look before the wedding?" },
     a: {
-      ru: "Да. Пробный образ мы согласовываем заранее — вы видите результат до торжества и в день свадьбы точно знаете, как будете выглядеть. Никаких сюрпризов.",
-      en: "Yes. We agree the trial look in advance — you see the result before the celebration and know exactly how you'll look on the day. No surprises.",
+      ru: "Да, и это главная страховка вашего утра. На репетиции мы фиксируем результат фотографиями с нескольких ракурсов, вы утверждаете образ — и в день свадьбы повторяем его точно. Никакой импровизации в шесть утра.",
+      en: "Yes, and it's the main insurance for your morning. At the trial we capture the result in photos from several angles, you approve the look — and on the wedding day we repeat it exactly. No improvising at six a.m.",
     },
   },
   {
-    q: { ru: "Нужна ли предоплата и как отменить запись?", en: "Is a deposit required and how do I cancel?" },
+    q: { ru: "Нужна ли предоплата и можно ли перенести?", en: "Is a deposit required and can I reschedule?" },
     a: {
-      ru: "Небольшая предоплата бронирует за вами время мастера. Отменить или перенести запись можно заранее — просто свяжитесь с нами, поможем подобрать другое время.",
-      en: "A small deposit reserves the artist's time for you. You can cancel or reschedule in advance — just contact us and we'll help find another time.",
-    },
-  },
-  {
-    q: { ru: "Как подготовиться к визиту?", en: "How should I prepare for the visit?" },
-    a: {
-      ru: "Приходите с чистыми волосами и без макияжа, возьмите референсы желаемого образа. Всё остальное — тон, стойкость, детали — мы берём на себя.",
-      en: "Come with clean hair and no makeup, and bring references of the look you want. Everything else — tone, longevity, details — is on us.",
+      ru: "Небольшая предоплата закрепляет за вами время мастера. Перенести или отменить можно заранее — напишите, подберём другое время. Заболел ребёнок или сдвинулась дата прихода судна — это нормальная жизнь, мы идём навстречу.",
+      en: "A small deposit secures the master's time for you. You can reschedule or cancel in advance — just message us and we'll find another time. A sick child or a shifted ship arrival date — that's normal life, and we'll meet you halfway.",
     },
   },
 ];
@@ -179,14 +214,14 @@ export default function Faq() {
             {en ? "FAQ" : "Вопросы"}
           </span>
           <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#3B0D1A] lg:text-[44px]">
-            {en ? "Answers to your" : "Ответы на вопросы"}
+            {en ? "Answers to your" : "То, о чём неудобно"}
             <br />
-            <span className="text-[#4A4B33]">{en ? "questions about us" : "о работе с ALIS"}</span>
+            <span className="text-[#4A4B33]">{en ? "questions about us" : "спрашивать вслух"}</span>
           </h2>
           <p className="mt-5 text-[15px] leading-relaxed text-[#17191a]/55 lg:text-[16px]">
             {en
               ? "Didn't find your answer? Leave a request — we'll sort out your case."
-              : "Если не нашли ответ — оставьте заявку, мы разберём ваш случай."}
+              : "Отвечаем честно, включая случаи, когда мы говорим «нет». Не нашли свой вопрос — напишите, разберём вашу ситуацию до записи."}
           </p>
         </div>
 

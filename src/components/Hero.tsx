@@ -38,14 +38,14 @@ export default function Hero() {
       {/* Оффер строго по центру */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pt-16 text-center">
         <h1 className="font-display text-[28px] font-normal uppercase leading-[1.16] tracking-[0.04em] text-[#3B0D1A] sm:text-[44px]">
-          {t("Безупречный образ", "A flawless look")}
+          {t("Три мастера работают одновременно.", "A flawless look")}
           <br />
-          {t("за один визит", "in a single visit")}
+          {t("Вы уходите через два часа, а не через день", "in a single visit")}
         </h1>
 
-        <p className="mt-7 max-w-[380px] text-[13px] leading-relaxed text-[#17191a]/60 sm:text-[14.5px]">
+        <p className="mt-7 max-w-[560px] text-[13px] leading-relaxed text-[#17191a]/60 sm:text-[14.5px]">
           {t(
-            "Маникюр, макияж, волосы и брови — в 4–6 рук. Полный образ за одно посещение и −10% в первый визит.",
+            "Маникюр, волосы, брови и макияж — в 4–6 рук, за один визит. Не нужно ездить к трём мастерам в трёх районах и складывать три чужих расписания в своё единственное свободное окно. −10% на первое посещение.",
             "Nails, makeup, hair and brows — in 4–6 hands. A complete look in one visit and −10% off your first time."
           )}
         </p>
@@ -56,10 +56,17 @@ export default function Hero() {
         href={YCLIENTS}
         target="_blank"
         rel="noopener noreferrer"
-        className="font-display relative z-10 mx-4 mb-12 flex items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] py-5 text-[12px] uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:mx-6 sm:mb-14 sm:text-[13px]"
+        className="font-display relative z-10 mx-4 mb-3 flex items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] py-5 text-[12px] uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:mx-6 sm:text-[13px]"
       >
         {t("Записаться со скидкой −10%", "Book with −10% off")}
       </a>
+      {/* Мелкая строка под кнопкой */}
+      <p className="relative z-10 mb-12 px-6 text-center text-[11px] leading-snug text-[#17191a]/50 sm:mb-14 sm:text-[12px]">
+        {t(
+          "Свободные окна на ближайшие дни видно сразу — без переписки и звонков",
+          "Available slots for the coming days are shown at once — no messaging or calls"
+        )}
+      </p>
     </section>
   );
 }

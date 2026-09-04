@@ -126,7 +126,7 @@ export default function Footer() {
             <p className={eyebrow}>{t("Обратный звонок", "Callback")}</p>
             {!sent ? (
               <>
-                <p className="mb-3 text-[14px] leading-relaxed">{t("Оставьте телефон — перезвоним", "Leave your phone — we'll call back")}</p>
+                <p className="mb-3 text-[14px] leading-relaxed">{t("Не уверены, что вам подойдёт? Оставьте телефон", "Not sure what suits you? Leave your phone")}</p>
                 <div className="flex items-center gap-3 border-b border-[#f4efe6]/40 pb-2 focus-within:border-[#f4efe6]">
                   <input
                     value={phone}
@@ -152,6 +152,12 @@ export default function Footer() {
                     <a href="/policy" className="underline underline-offset-2">{t("политику конфиденциальности", "privacy policy")}</a>
                   </span>
                 </label>
+                <p className="mt-4 text-[12px] leading-relaxed text-white/55">
+                  {t(
+                    "Перезвоним в рабочее время, зададим несколько вопросов и честно скажем, что вам действительно нужно, а на чём можно сэкономить. Без давления и без записи «на всякий случай».",
+                    "We'll call back during work hours, ask a few questions and honestly tell you what you actually need and where you can save. No pressure and no booking “just in case”.",
+                  )}
+                </p>
               </>
             ) : (
               <p className="text-[15px] leading-relaxed">{t("Спасибо! Перезвоним в ближайшее время.", "Thank you! We'll call you back shortly.")}</p>
