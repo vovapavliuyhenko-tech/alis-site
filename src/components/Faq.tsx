@@ -115,7 +115,7 @@ function Card({
       <div className="grid overflow-hidden transition-all duration-500 ease-out" style={{ gridTemplateRows: open ? "1fr" : "0fr" }}>
         <div className="min-h-0">
           <p
-            className="pt-4 text-[14px] leading-relaxed text-[#f4efe6]/85 transition-[opacity] duration-500 lg:text-[15px]"
+            className="pt-4 text-[12.5px] font-light leading-relaxed text-[#f4efe6]/80 transition-[opacity] duration-500 lg:text-[13.5px]"
             style={{ opacity: open ? 1 : 0 }}
           >
             {it.a[lang]}
