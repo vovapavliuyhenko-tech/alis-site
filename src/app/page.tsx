@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import FlipGallery from "@/components/FlipGallery";
 import Brands from "@/components/Brands";
-import ConsultForm from "@/components/pages/ConsultForm";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -31,8 +30,6 @@ export default function Home() {
         <FlipGallery />
         {/* Нам доверяют (бренды) */}
         <Brands />
-        {/* Заявка на консультацию */}
-        <ConsultForm />
         {/* FAQ */}
         <Faq />
       </div>
