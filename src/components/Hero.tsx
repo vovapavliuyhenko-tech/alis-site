@@ -38,14 +38,14 @@ export default function Hero() {
       {/* Оффер строго по центру */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pt-16 text-center">
         <h1 className="font-display text-[28px] font-normal uppercase leading-[1.16] tracking-[0.04em] text-[#3B0D1A] sm:text-[44px]">
-          {t("Безупречный образ", "A flawless look")}
+          {t("Уходите как хотели,", "A flawless look")}
           <br />
-          {t("за один визит", "in a single visit")}
+          {t("а не «как получилось»", "in a single visit")}
         </h1>
 
-        <p className="mt-7 max-w-[380px] text-[13px] leading-relaxed text-[#17191a]/60 sm:text-[14.5px]">
+        <p className="mt-7 max-w-[540px] text-[13px] leading-relaxed text-[#17191a]/60 sm:text-[14.5px]">
           {t(
-            "Маникюр, макияж, волосы и брови — в 4–6 рук. Полный образ за одно посещение и −10% в первый визит.",
+            "Волосы, ногти, брови и макияж — за один визит, в 4–6 рук. Разберём ваше фото до начала работы и согласуем результат с вами. −10% на первый визит.",
             "Nails, makeup, hair and brows — in 4–6 hands. A complete look in one visit and −10% off your first time."
           )}
         </p>
