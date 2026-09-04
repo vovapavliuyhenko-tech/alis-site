@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/pages/PageHero";
 import InfoBlock from "@/components/pages/InfoBlock";
 import QuizConsult from "@/components/QuizConsult";
+import ConciergeChat from "@/components/ConciergeChat";
 
 const PHONE_SERVICE = "+7 988 888 77 28";
 
@@ -71,6 +72,7 @@ export default function ConciergePage() {
         <div id="booking" className="scroll-mt-24"><QuizConsult /></div>
       </div>
       <Footer />
+      <ConciergeChat />
     </main>
   );
 }

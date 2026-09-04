@@ -4,7 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import CustomCursor from "@/components/CustomCursor";
 import CookieConsent from "@/components/CookieConsent";
-import ConciergeChat from "@/components/ConciergeChat";
+import BookingFab from "@/components/BookingFab";
 
 // Пара шрифтов на всём сайте (оба с кириллицей):
 // Marmelad — логотип, заголовки и главное (геометрический дисплей).
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <LanguageProvider>
           {children}
-          <ConciergeChat />
+          <BookingFab />
           <CookieConsent />
         </LanguageProvider>
         <CustomCursor />
