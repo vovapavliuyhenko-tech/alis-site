@@ -43,7 +43,7 @@ export default function Hero() {
           {t("а не «как получилось»", "in a single visit")}
         </h1>
 
-        <p className="mt-7 max-w-[540px] text-[13px] leading-relaxed text-[#17191a]/60 sm:text-[14.5px]">
+        <p className="mt-7 max-w-[540px] text-[13px] font-normal leading-relaxed text-[#17191a]/85 sm:text-[14.5px]">
           {t(
             "Волосы, ногти, брови и макияж — за один визит, в 4–6 рук. Разберём ваше фото до начала работы и согласуем результат с вами. −10% на первый визит.",
             "Nails, makeup, hair and brows — in 4–6 hands. A complete look in one visit and −10% off your first time."
