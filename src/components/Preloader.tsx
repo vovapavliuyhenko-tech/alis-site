@@ -1,26 +1,21 @@
 "use client";
-// ПРЕЛОАДЕР как на stretchfitdasha.ru/otekoff: кремовый фон, сверху название
-// салона, по центру крупный счётчик % (0→100), снизу «ещё немного…».
-// После 100% плавно исчезает, открывая сайт.
+// ПРЕЛОАДЕР как у PALOMA: белый экран, по центру только логотип. Затем экран
+// уходит вверх «шторкой», открывая сайт.
 import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 export default function Preloader() {
   const { lang } = useLang();
-  const [p, setP] = useState(0);
+  const [lift, setLift] = useState(false);
   const [gone, setGone] = useState(false);
 
   useEffect(() => {
-    let cur = 0;
-    const id = window.setInterval(() => {
-      cur = Math.min(100, cur + Math.random() * 2.4 + 1);
-      setP(Math.round(cur));
-      if (cur >= 100) {
-        window.clearInterval(id);
-        window.setTimeout(() => setGone(true), 550);
-      }
-    }, 30);
-    return () => window.clearInterval(id);
+    const t1 = window.setTimeout(() => setLift(true), 1300); // держим логотип
+    const t2 = window.setTimeout(() => setGone(true), 2200); // после «шторки» убираем
+    return () => {
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+    };
   }, []);
 
   // Блокируем скролл, пока прелоадер виден
@@ -31,33 +26,22 @@ export default function Preloader() {
     };
   }, [gone]);
 
+  if (gone) return null;
+
   return (
     <div
       aria-hidden
-      className={`fixed inset-0 z-[100] flex flex-col bg-white text-[#17191a] transition-opacity duration-[800ms] ease-out ${
-        gone ? "pointer-events-none opacity-0" : "opacity-100"
+      className={`fixed inset-0 z-[200] flex items-center justify-center bg-white transition-transform duration-[900ms] ease-[cubic-bezier(0.76,0,0.24,1)] ${
+        lift ? "-translate-y-full" : "translate-y-0"
       }`}
     >
-      {/* Название салона сверху */}
-      <div className="pt-14 text-center lg:pt-20">
-        <p className="flex items-baseline justify-center gap-2 tracking-tight">
-          <span className="font-display text-[26px] font-semibold tracking-[0.1em] lg:text-[32px]">ÁLIS</span>
-          <span className="font-script text-[30px] opacity-80 lg:text-[38px]">beauty</span>
-        </p>
-      </div>
-
-      {/* Счётчик по центру */}
-      <div className="flex flex-1 items-center justify-center">
-        <p className="font-serif text-[64px] italic leading-none tabular-nums text-[#3B0D1A] lg:text-[88px]">
-          {p} %
-        </p>
-      </div>
-
-      {/* Подпись снизу */}
-      <div className="pb-14 text-center lg:pb-20">
-        <p className="text-[13px] font-medium lowercase tracking-wide">
-          {lang === "en" ? "almost there…" : "ещё немного…"}
-        </p>
+      <div className={`flex flex-col items-center transition-opacity duration-700 ${lift ? "opacity-0" : "opacity-100"}`}>
+        <span className="font-logo text-[34px] uppercase leading-none tracking-[0.24em] text-[#3B0D1A] sm:text-[46px]">
+          ÁLIS&nbsp;BEAUTY
+        </span>
+        <span className="mt-4 text-[11px] uppercase tracking-[0.4em] text-[#4A4B33]">
+          {lang === "en" ? "nails · makeup · hair" : "маникюр · макияж · волосы"}
+        </span>
       </div>
     </div>
   );
