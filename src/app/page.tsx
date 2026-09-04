@@ -5,6 +5,7 @@ import About from "@/components/About";
 import FlipGallery from "@/components/FlipGallery";
 import Brands from "@/components/Brands";
 import Faq from "@/components/Faq";
+import ContactsCTA from "@/components/pages/ContactsCTA";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -34,6 +35,8 @@ export default function Home() {
         <Brands />
         {/* FAQ */}
         <Faq />
+        {/* Контакты + карта перед подвалом */}
+        <ContactsCTA />
       </div>
       </div>
       <Footer />
