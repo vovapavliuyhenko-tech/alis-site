@@ -1,7 +1,7 @@
 "use client";
-// Плавающая круглая кнопка «Онлайн запись» → YClients. Появляется только после
-// прокрутки первого экрана, мягко пульсирует и излучает расходящиеся кольца.
-// Видна на всех страницах, КРОМЕ страницы бьюти-консьержа (там чат-помощник).
+// Плавающая круглая кнопка «Онлайн запись» → YClients. Появляется после первого
+// экрана, пульсирует и излучает кольца. Над бордовым футером инвертирует цвет
+// (кремовая с бордовым текстом), чтобы не сливаться. Скрыта на /concierge.
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
@@ -12,20 +12,29 @@ export default function BookingFab() {
   const pathname = usePathname();
   const { lang } = useLang();
   const [shown, setShown] = useState(false);
+  const [onFooter, setOnFooter] = useState(false);
 
-  // Показываем после первого блока (≈ первый экран)
   useEffect(() => {
-    const onScroll = () => setShown(window.scrollY > window.innerHeight * 0.7);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    const update = () => {
+      setShown(window.scrollY > window.innerHeight * 0.7);
+      // точка слева от кнопки — если там футер, значит кнопка над бордовым фоном
+      const x = window.innerWidth - 130;
+      const y = window.innerHeight - 40;
+      const el = document.elementFromPoint(x, y);
+      setOnFooter(!!el && !!el.closest("#footer"));
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
     };
   }, []);
 
   if (pathname === "/concierge") return null;
+
+  const ringColor = onFooter ? "#f4efe6" : "#3B0D1A";
 
   return (
     <div
@@ -35,15 +44,19 @@ export default function BookingFab() {
     >
       <div className="relative flex h-[84px] w-[84px] items-center justify-center">
         {/* Расходящиеся кольца-волны */}
-        <span className="fab-ring" />
-        <span className="fab-ring fab-ring--2" />
+        <span className="fab-ring" style={{ borderColor: ringColor }} />
+        <span className="fab-ring fab-ring--2" style={{ borderColor: ringColor }} />
 
         <a
           href={YCLIENTS}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={lang === "en" ? "Book online" : "Онлайн запись"}
-          className="fab-pulse relative flex h-full w-full items-center justify-center rounded-full bg-[#3B0D1A] text-center text-[#f4efe6] shadow-[0_12px_34px_rgba(59,13,26,0.35)] transition-transform duration-300 hover:scale-105"
+          className={`fab-pulse relative flex h-full w-full items-center justify-center rounded-full text-center shadow-[0_12px_34px_rgba(0,0,0,0.28)] ring-1 transition-colors duration-300 hover:scale-105 ${
+            onFooter
+              ? "bg-[#f4efe6] text-[#3B0D1A] ring-[#f4efe6]"
+              : "bg-[#3B0D1A] text-[#f4efe6] ring-[#3B0D1A]"
+          }`}
         >
           <span className="px-2 text-[11px] font-medium uppercase leading-[1.25] tracking-[0.12em]">
             {lang === "en" ? (
