@@ -56,7 +56,7 @@ export default function Hero() {
         href={YCLIENTS}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative z-10 mx-4 mb-12 flex items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] py-5 text-[12.5px] font-medium uppercase tracking-[0.22em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:mx-6 sm:mb-14 sm:text-[13.5px]"
+        className="font-display relative z-10 mx-4 mb-12 flex items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] py-5 text-[15px] uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:mx-6 sm:mb-14 sm:text-[16px]"
       >
         {t("Записаться со скидкой −10%", "Book with −10% off")}
       </a>
