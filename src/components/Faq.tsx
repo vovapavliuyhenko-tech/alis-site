@@ -1,8 +1,7 @@
 "use client";
-// ВОПРОСЫ — раскладка как на sevara-sr: слева крупный заголовок «Вы спрашиваете
-// — я решаю» и фото; справа вертикальный список карточек-вопросов (аккордеон):
-// вопрос от лица клиента в «ёлочках», по клику раскрывается ответ. В стиле ÁLIS.
-import { useState } from "react";
+// ВОПРОСЫ — как на sevara-sr: слева зафиксированный заголовок + фото; справа
+// карточки-ответы на боли клиентов, которые при скролле НАЕЗЖАЮТ друг на друга
+// (sticky-stacking). Листается только правая колонка. В стиле ÁLIS. Двуязычно.
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -21,7 +20,7 @@ const ITEMS: Item[] = [
   {
     q: { ru: "«У меня совсем нет времени — реально всё за один визит?»", en: "“I'm short on time — can it all be done in one visit?”" },
     a: {
-      ru: "Да. Волосы, ногти, брови и макияж делаем одновременно, в 4–6 рук — полный образ за пару часов, без разъездов по трём мастерам.",
+      ru: "Да. Волосы, ногти, брови и макияж делаем одновременно, в 4–6 рук — полный образ за пару часов, без разъездов по трём мастерам и без потерянной субботы.",
       en: "Yes. Hair, nails, brows and makeup at once, in 4–6 hands — a complete look in a couple of hours, with no running between three masters.",
     },
   },
@@ -35,8 +34,8 @@ const ITEMS: Item[] = [
   {
     q: { ru: "«Не хочу сюрпризов в чеке»", en: "“I don't want surprises on the bill.”" },
     a: {
-      ru: "Стоимость называем до начала, после осмотра. Нужен дополнительный шаг — остановимся и спросим. Точные цены видно в онлайн-записи.",
-      en: "We name the price before we start, after examining you. If an extra step is needed, we stop and ask. Exact prices are in the online booking.",
+      ru: "Стоимость называем до начала, после осмотра. Нужен дополнительный шаг — остановимся и спросим. Точные цены видно в онлайн-записи, а на первое посещение — −10%.",
+      en: "We name the price before we start, after examining you. If an extra step is needed, we stop and ask. Exact prices are in the online booking, and your first visit is −10%.",
     },
   },
   {
@@ -65,66 +64,38 @@ const ITEMS: Item[] = [
 export default function Faq() {
   const { lang } = useLang();
   const en = lang === "en";
-  const [openSet, setOpenSet] = useState<Set<number>>(new Set([0]));
-
-  const toggle = (i: number) =>
-    setOpenSet((prev) => {
-      const next = new Set(prev);
-      next.has(i) ? next.delete(i) : next.add(i);
-      return next;
-    });
 
   return (
     <section id="faq" className="bg-white py-24 lg:py-28">
-      <div className="mx-auto grid w-[92%] max-w-[1400px] gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-        {/* Левая колонка: заголовок + фото */}
+      <div className="mx-auto grid w-[92%] max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        {/* Левая колонка — зафиксирована */}
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <h2 className="font-display text-[34px] font-normal uppercase leading-[1.06] tracking-[0.02em] text-[#3B0D1A] sm:text-[48px] lg:text-[60px]">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+            {en ? "FAQ" : "Вопросы"}
+          </span>
+          <h2 className="mt-5 font-display text-[26px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#3B0D1A] sm:text-[32px] lg:text-[40px]">
             {en ? "You ask —" : "Вы спрашиваете —"}
             <br />
             <span className="text-[#4A4B33]">{en ? "we solve" : "я решаю"}</span>
           </h2>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={PHOTO}
-            alt=""
-            className="mt-10 aspect-[3/4] w-full max-w-[280px] rounded-[24px] object-cover lg:mt-14"
-            draggable={false}
-          />
+          <img src={PHOTO} alt="" className="mt-8 aspect-[3/4] w-full max-w-[260px] rounded-[22px] object-cover lg:mt-10" draggable={false} />
         </div>
 
-        {/* Правая колонка: карточки-аккордеон */}
-        <div className="flex flex-col gap-4 lg:gap-5">
-          {ITEMS.map((it, i) => {
-            const isOpen = openSet.has(i);
-            return (
-              <div key={it.q.ru} className="overflow-hidden rounded-[24px] bg-[#faf7f2]">
-                <button
-                  onClick={() => toggle(i)}
-                  aria-expanded={isOpen}
-                  className="flex w-full items-start justify-between gap-6 px-8 py-7 text-left lg:px-10 lg:py-8"
-                >
-                  <span className="font-serif text-[19px] italic leading-snug text-[#3B0D1A] lg:text-[23px]">
-                    {it.q[lang]}
-                  </span>
-                  <span
-                    className={`mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
-                      isOpen ? "rotate-45 border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]" : "border-[#3B0D1A]/25 text-[#3B0D1A]"
-                    }`}
-                  >
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14" strokeLinecap="round" /></svg>
-                  </span>
-                </button>
-                <div className="grid transition-all duration-500 ease-out" style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}>
-                  <div className="min-h-0">
-                    <p className="px-8 pb-8 text-[14px] font-light leading-relaxed text-[#2a2320]/75 lg:px-10 lg:text-[15px]">
-                      {it.a[lang]}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        {/* Правая колонка — карточки наезжают друг на друга при скролле */}
+        <div className="flex flex-col gap-6 lg:gap-8">
+          {ITEMS.map((it, i) => (
+            <div key={it.q.ru} className="sticky" style={{ top: `${112 + i * 16}px` }}>
+              <article className="rounded-[26px] border border-[#17191a]/8 bg-[#faf7f2] p-8 shadow-[0_16px_50px_rgba(23,25,26,0.08)] lg:p-10">
+                <p className="font-serif text-[20px] italic leading-snug text-[#3B0D1A] lg:text-[24px]">{it.q[lang]}</p>
+                <span className="mt-5 mb-6 block h-px w-12 bg-[#e7c9a0]" />
+                <p className="text-[14px] font-light leading-relaxed text-[#2a2320]/75 lg:text-[15.5px]">{it.a[lang]}</p>
+              </article>
+            </div>
+          ))}
+          {/* хвост, чтобы последняя карточка успела «прилипнуть» */}
+          <div aria-hidden className="h-[30vh]" />
         </div>
       </div>
     </section>
