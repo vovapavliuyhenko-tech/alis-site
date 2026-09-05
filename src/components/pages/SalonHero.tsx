@@ -3,6 +3,7 @@
 // слева фото на всю высоту, справа белая панель (лого сверху, крупный заголовок,
 // подзаголовок и растянутая кнопка записи внизу). В бордовой палитре ÁLIS.
 import { useLang } from "@/lib/i18n";
+import { LogoLockup } from "@/components/Logo";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const PHOTO = "/assets/tild6530-383_-2___1_.jpg";
@@ -21,14 +22,9 @@ export default function SalonHero() {
 
       {/* Правая часть — белая панель */}
       <div className="relative flex min-h-[60vh] flex-col bg-white px-6 pb-6 pt-24 lg:min-h-svh lg:px-14 lg:pb-8 lg:pt-28">
-        {/* Лого сверху справа */}
-        <div className="flex justify-end">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/logo-word-wine.png" alt="ÁLIS BEAUTY" className="h-[20px] w-auto sm:h-[22px]" draggable={false} />
-        </div>
-
-        {/* Заголовок + подзаголовок по центру */}
+        {/* Полный логотип + заголовок + подзаголовок по центру */}
         <div className="flex flex-1 flex-col items-center justify-center py-10 text-center">
+          <LogoLockup variant="wine" className="mb-10" />
           <h1 className="font-display text-[22px] font-normal uppercase leading-[1.14] tracking-[0.03em] text-[#3B0D1A] sm:text-[30px] lg:text-[38px]">
             {t("Салон красоты,", "A beauty salon")}
             <br />
