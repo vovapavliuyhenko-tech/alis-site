@@ -64,7 +64,7 @@ export default function Footer() {
             href={YCLIENTS}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-9 inline-flex items-center justify-center rounded-full bg-[#f4efe6] px-12 py-4 font-display text-[13px] uppercase tracking-[0.18em] text-[#3B0D1A] transition-transform duration-300 hover:scale-[1.03]"
+            className="mt-9 inline-flex items-center justify-center rounded-full border border-[#f4efe6] bg-[#f4efe6] px-12 py-4 font-display text-[13px] uppercase tracking-[0.18em] text-[#3B0D1A] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6]"
           >
             {t("Записаться", "Book now")}
           </a>
