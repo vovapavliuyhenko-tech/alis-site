@@ -77,7 +77,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-dashed border-[#f4efe6]/40 text-[#f4efe6]/80 transition-colors hover:border-[#f4efe6] hover:text-[#f4efe6]"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-dashed border-[#f4efe6]/40 text-[#f4efe6]/80 transition-colors hover:border-[#f4efe6] hover:bg-[#f4efe6] hover:text-[#3B0D1A]"
               >
                 <IgIcon />
               </a>
