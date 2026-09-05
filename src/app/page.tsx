@@ -24,7 +24,7 @@ export default function Home() {
         <Hero />
       </div>
       {/* Контентный лист со скруглённым верхом наезжает шторкой на герой */}
-      <div className="relative z-10 mt-[16vh] overflow-hidden rounded-t-[40px] bg-white shadow-[0_-18px_44px_rgba(0,0,0,0.14)]">
+      <div className="relative z-10 mt-[16vh] rounded-t-[40px] bg-white shadow-[0_-18px_44px_rgba(0,0,0,0.14)]">
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
         {/* Обо мне */}
