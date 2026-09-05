@@ -83,19 +83,19 @@ export default function Faq() {
           <img src={PHOTO} alt="" className="mt-8 aspect-[3/4] w-full max-w-[260px] rounded-[22px] object-cover lg:mt-10" draggable={false} />
         </div>
 
-        {/* Правая колонка — карточки наезжают друг на друга при скролле */}
-        <div className="flex flex-col gap-6 lg:gap-8">
+        {/* Правая колонка — карточки идут вплотную и НАЕЗЖАЮТ друг на друга при скролле */}
+        <div className="flex flex-col">
           {ITEMS.map((it, i) => (
-            <div key={it.q.ru} className="sticky" style={{ top: `${112 + i * 16}px` }}>
-              <article className="rounded-[26px] border border-[#17191a]/8 bg-[#faf7f2] p-8 shadow-[0_16px_50px_rgba(23,25,26,0.08)] lg:p-10">
-                <p className="font-serif text-[20px] italic leading-snug text-[#3B0D1A] lg:text-[24px]">{it.q[lang]}</p>
-                <span className="mt-5 mb-6 block h-px w-12 bg-[#e7c9a0]" />
-                <p className="text-[14px] font-light leading-relaxed text-[#2a2320]/75 lg:text-[15.5px]">{it.a[lang]}</p>
+            <div key={it.q.ru} className="sticky pb-4" style={{ top: `${100 + i * 14}px` }}>
+              <article className="rounded-[20px] border border-[#17191a]/8 bg-[#faf7f2] p-6 shadow-[0_14px_40px_rgba(23,25,26,0.1)] lg:p-7">
+                <p className="font-serif text-[16px] italic leading-snug text-[#3B0D1A] lg:text-[19px]">{it.q[lang]}</p>
+                <span className="mt-4 mb-4 block h-px w-10 bg-[#e7c9a0]" />
+                <p className="text-[12.5px] font-light leading-relaxed text-[#2a2320]/70 lg:text-[13.5px]">{it.a[lang]}</p>
               </article>
             </div>
           ))}
           {/* хвост, чтобы последняя карточка успела «прилипнуть» */}
-          <div aria-hidden className="h-[30vh]" />
+          <div aria-hidden className="h-[20vh]" />
         </div>
       </div>
     </section>
