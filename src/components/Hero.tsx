@@ -1,6 +1,6 @@
 "use client";
-// HERO ALIS: оффер + выгода по центру на фоновом фото со светлой вуалью и
-// растянутая кнопка целевого действия («Записаться») с полями внизу блока.
+// HERO ALIS: фон-фото на весь экран, оффер внизу слева, список услуг внизу
+// справа (раскладка как на референсе). Кнопка записи — растянутая внизу блока.
 import { useLang } from "@/lib/i18n";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
@@ -10,53 +10,60 @@ export default function Hero() {
   const { lang } = useLang();
   const t = (ru: string, en: string) => (lang === "en" ? en : ru);
 
+  const services = [
+    t("Маникюр", "Manicure"),
+    t("Педикюр", "Pedicure"),
+    t("Брови", "Brows"),
+    t("Ресницы", "Lashes"),
+    t("Макияж", "Makeup"),
+    t("Волосы", "Hair"),
+    t("Выезд", "On-location"),
+  ];
+
   return (
-    <section className="relative flex h-svh min-h-[600px] w-full flex-col overflow-hidden bg-[#f4efe6]">
+    <section className="relative h-svh min-h-[600px] w-full overflow-hidden bg-[#17191a]">
       {/* Фоновое фото */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={PHOTO} alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
+      {/* Затемнение снизу для читаемости светлого текста */}
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#17191a]/80 via-[#17191a]/25 to-[#17191a]/5" />
 
-      {/* Светлая вуаль для читаемости тёмного текста */}
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(244,239,230,0.7) 0%, rgba(244,239,230,0.5) 45%, rgba(244,239,230,0.28) 100%)",
-        }}
-      />
-      {/* Мягкое световое пятно за текстом */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[42%] h-[70vh] w-[80vw] max-w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(244,239,230,0.85) 0%, rgba(244,239,230,0.4) 42%, rgba(244,239,230,0) 72%)",
-        }}
-      />
+      {/* Контент внизу: слева оффер, справа услуги */}
+      <div className="relative z-10 flex h-full flex-col justify-end px-5 pb-28 sm:px-8 sm:pb-32">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          {/* Оффер слева */}
+          <div className="max-w-3xl">
+            <h1 className="font-display text-[34px] font-normal uppercase leading-[1.08] tracking-[0.02em] text-[#f4efe6] sm:text-[56px] lg:text-[68px]">
+              {t("Уходите как хотели,", "Leave looking how you wanted,")}
+              <br />
+              {t("а не «как получилось»", "not “how it turned out”")}
+            </h1>
+            <p className="mt-5 max-w-xl text-[13.5px] leading-relaxed text-[#f4efe6]/80 sm:text-[15px]">
+              {t(
+                "Волосы, ногти, брови и макияж — за один визит, в 4–6 рук. Разберём ваше фото до начала работы и согласуем результат с вами. −10% на первый визит.",
+                "Hair, nails, brows and makeup — in one visit, in 4–6 hands. We review your reference before we start and agree the result with you. −10% on your first visit.",
+              )}
+            </p>
+          </div>
 
-      {/* Оффер строго по центру */}
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 text-center">
-        <h1 className="font-display text-[28px] font-normal uppercase leading-[1.16] tracking-[0.04em] text-[#3B0D1A] sm:text-[44px]">
-          {t("Уходите как хотели,", "A flawless look")}
-          <br />
-          {t("а не «как получилось»", "in a single visit")}
-        </h1>
-
-        <p className="mt-7 max-w-[540px] text-[13px] font-normal leading-relaxed text-[#17191a]/85 sm:text-[14.5px]">
-          {t(
-            "Волосы, ногти, брови и макияж — за один визит, в 4–6 рук. Разберём ваше фото до начала работы и согласуем результат с вами. −10% на первый визит.",
-            "Nails, makeup, hair and brows — in 4–6 hands. A complete look in one visit and −10% off your first time."
-          )}
-        </p>
+          {/* Услуги справа */}
+          <div className="shrink-0 lg:max-w-xs lg:text-right">
+            <p className="mb-3 text-[13px] uppercase tracking-[0.16em] text-[#f4efe6]/60">[{t("Сделаем", "We do")}]</p>
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[15px] text-[#f4efe6] lg:justify-end lg:text-[16px]">
+              {services.map((s) => (
+                <span key={s}>{s}</span>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Целевое действие — растянутая кнопка с полями внизу блока */}
+      {/* Целевое действие — растянутая кнопка (без изменений) */}
       <a
         href={YCLIENTS}
         target="_blank"
         rel="noopener noreferrer"
-        className="font-display absolute inset-x-4 bottom-5 z-10 flex items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] py-5 text-[12px] uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:inset-x-6 sm:bottom-6 sm:text-[13px]"
+        className="font-display absolute inset-x-4 bottom-5 z-10 flex items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] py-5 text-[12px] uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:inset-x-6 sm:bottom-6 sm:text-[13px]"
       >
         {t("Записаться со скидкой −10%", "Book with −10% off")}
       </a>
