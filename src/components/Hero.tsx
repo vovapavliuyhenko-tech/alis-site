@@ -22,14 +22,14 @@ export default function Hero() {
 
   return (
     <section className="relative flex h-svh min-h-[640px] w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#f7f3ed] to-[#efe7db] px-6 pt-20 text-center">
-      <div className="relative z-10 flex max-w-4xl flex-col items-center">
+      <div className="relative z-10 flex max-w-2xl flex-col items-center">
         {/* Надстрочник */}
-        <p className="text-[13px] font-medium tracking-wide text-[#2a2320] sm:text-[14px]">
+        <p className="text-[11px] font-medium tracking-wide text-[#2a2320]/80 sm:text-[12px]">
           {t("как на вашем фото. с первого раза.", "just like in your photo. from the first visit.")}
         </p>
 
         {/* Заголовок с акцентами */}
-        <h1 className="mt-6 font-display text-[30px] font-normal uppercase leading-[1.08] tracking-[0.02em] text-[#2a2320] sm:text-[46px] lg:text-[58px]">
+        <h1 className="mt-4 font-display text-[22px] font-normal uppercase leading-[1.1] tracking-[0.02em] text-[#2a2320] sm:text-[30px] lg:text-[38px]">
           <span className="text-[#4A4B33]">ÁLIS BEAUTY</span> —{" "}
           {t("полный образ", "a complete look")}{" "}
           <span className="text-[#4A4B33]">{t("за 2 часа", "in 2 hours")}</span>{" "}
@@ -37,7 +37,7 @@ export default function Hero() {
         </h1>
 
         {/* Подзаголовок */}
-        <p className="mt-6 max-w-xl text-[14px] leading-relaxed text-[#2a2320]/70 sm:text-[16px]">
+        <p className="mt-5 max-w-md text-[12.5px] leading-relaxed text-[#2a2320]/70 sm:text-[13.5px]">
           {t(
             "Волосы, ногти, брови и макияж одновременно, в 4–6 рук — без разъездов по трём мастерам и без потерянной субботы.",
             "Hair, nails, brows and makeup at once, in 4–6 hands — no running between three masters and no lost Saturday.",
@@ -49,23 +49,23 @@ export default function Hero() {
           href={YCLIENTS}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-9 inline-flex items-center justify-center rounded-full bg-[#2a2320] px-11 py-4 font-display text-[13px] uppercase tracking-[0.14em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#3B0D1A] sm:text-[14px]"
+          className="mt-7 inline-flex items-center justify-center rounded-full bg-[#2a2320] px-8 py-3 font-display text-[11.5px] uppercase tracking-[0.14em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#3B0D1A] sm:text-[12.5px]"
         >
           ( {t("записаться", "book now")} )
         </a>
 
         {/* Сноска */}
-        <p className="mt-5 max-w-xs text-[12px] italic leading-snug text-[#2a2320]/50">
+        <p className="mt-4 max-w-xs text-[11px] italic leading-snug text-[#2a2320]/50">
           {t("* один визит вместо трёх поездок по городу", "* one visit instead of three trips across town")}
         </p>
       </div>
 
       {/* Ряд круглых миниатюр */}
-      <div className="relative z-10 mt-10 flex items-center gap-3 sm:mt-12 sm:gap-4">
+      <div className="relative z-10 mt-8 flex items-center gap-2.5 sm:mt-10 sm:gap-3">
         {THUMBS.map((src) => (
           <span
             key={src}
-            className="h-12 w-12 overflow-hidden rounded-full border border-[#2a2320]/10 bg-white shadow-sm sm:h-14 sm:w-14"
+            className="h-10 w-10 overflow-hidden rounded-full border border-[#2a2320]/10 bg-white shadow-sm sm:h-11 sm:w-11"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={src} alt="" className="h-full w-full object-cover" draggable={false} />
