@@ -22,13 +22,15 @@ export default function SalonHero() {
 
       {/* Правая часть — белая панель */}
       <div className="relative flex min-h-[60vh] flex-col bg-white px-6 pb-6 pt-24 lg:min-h-svh lg:px-14 lg:pb-8 lg:pt-28">
-        {/* Полный логотип + заголовок + подзаголовок по центру */}
+        {/* Логотип наверху панели */}
+        <div className="flex items-center justify-center gap-3">
+          <LogoEmblem variant="wine" className="h-10 w-auto max-w-none" />
+          <LogoWord variant="wine" className="h-[20px] w-auto max-w-none" />
+        </div>
+
+        {/* Заголовок + подзаголовок по центру */}
         <div className="flex flex-1 flex-col items-center justify-center py-10 text-center">
-          <div className="mb-9 flex items-center gap-3">
-            <LogoEmblem variant="wine" className="h-11 w-auto max-w-none" />
-            <LogoWord variant="wine" className="h-[22px] w-auto max-w-none" />
-          </div>
-          <h1 className="font-display text-[22px] font-normal uppercase leading-[1.14] tracking-[0.03em] text-[#3B0D1A] sm:text-[30px] lg:text-[38px]">
+          <h1 className="font-display text-[19px] font-normal uppercase leading-[1.16] tracking-[0.03em] text-[#3B0D1A] sm:text-[25px] lg:text-[31px]">
             {t("Салон красоты,", "A beauty salon")}
             <br />
             {t("в который хочется", "you'll want to")}
