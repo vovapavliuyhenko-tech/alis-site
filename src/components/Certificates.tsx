@@ -47,8 +47,8 @@ export default function Certificates() {
   };
 
   return (
-    <section id="certificates" className="scroll-mt-24 bg-white py-16 lg:py-24">
-      <div className="mx-auto w-[92%] max-w-[1280px]">
+    <section id="certificates" className="scroll-mt-24 bg-white py-24 lg:py-28">
+      <div className="mx-auto w-[92%] max-w-[1200px]">
         <div className="relative overflow-hidden rounded-[32px] bg-[#3B0D1A] px-7 py-10 text-[#f4efe6] sm:px-10 lg:px-16 lg:py-16">
           {/* Мягкое свечение */}
           <span aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#f4efe6]/10 blur-[90px]" />
@@ -59,7 +59,7 @@ export default function Certificates() {
               <span className="r-reveal inline-block rounded-full bg-[#f4efe6]/12 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/80">
                 {t("подарочный сертификат", "gift certificate")}
               </span>
-              <h2 className="r-reveal mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] lg:text-[42px]">
+              <h2 className="r-reveal mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] lg:text-[44px]">
                 {t("Лучший подарок —", "The best gift is")}{" "}
                 <span className="text-[#e7c9a0]">{t("красота ALIS", "ALIS beauty")}</span>
               </h2>

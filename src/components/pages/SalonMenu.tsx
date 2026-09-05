@@ -157,11 +157,15 @@ export default function SalonMenu() {
   };
 
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-24 lg:py-28">
       <div className="mx-auto w-[94%] max-w-[1500px]">
         {/* Заголовок */}
-        <div className="mx-auto mb-12 max-w-2xl text-center lg:mb-16">
-          <h2 className="font-display text-[30px] uppercase leading-[1.1] tracking-[0.05em] text-[#3B0D1A] lg:text-[46px]">
+        <div className="mx-auto mb-14 flex max-w-2xl flex-col items-center text-center lg:mb-20">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+            {en ? "Services" : "Услуги"}
+          </span>
+          <h2 className="mt-5 font-display text-[30px] font-normal uppercase leading-[1.12] tracking-[0.05em] text-[#3B0D1A] lg:text-[44px]">
             {en ? "Services & prices" : "Услуги и цены"}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-[14px] leading-relaxed text-[#17191a]/55 lg:text-[15px]">

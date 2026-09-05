@@ -192,14 +192,15 @@ export default function Reviews() {
   }, []);
 
   return (
-    <section id="reviews" className="overflow-hidden bg-white py-24 lg:py-32">
-      <div className="mx-auto w-[94%] max-w-[1180px]">
+    <section id="reviews" className="overflow-hidden bg-white py-24 lg:py-28">
+      <div className="mx-auto w-[92%] max-w-[1200px]">
         {/* Заголовок */}
-        <div className="mb-14 text-center">
-          <span className="inline-block rounded-full bg-[#4A4B33] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]">
-            {lang === "en" ? "reviews" : "отзывы"}
+        <div className="mb-14 flex flex-col items-center text-center lg:mb-20">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+            {lang === "en" ? "Reviews" : "Отзывы"}
           </span>
-          <h2 className="mt-4 font-display text-[30px] uppercase tracking-[0.06em] leading-[1.12] text-[#17191a] lg:text-[44px]">
+          <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#3B0D1A] lg:text-[44px]">
             {lang === "en" ? "What our " : "Что говорят "}
             <span className="text-[#4A4B33]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
           </h2>

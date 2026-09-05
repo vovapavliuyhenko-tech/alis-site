@@ -25,11 +25,14 @@ export default function Loyalty() {
   const { lang } = useLang();
   const en = lang === "en";
   return (
-    <section className="scroll-mt-24 bg-[#faf7f2] py-16 lg:py-24">
-      <div className="mx-auto grid w-[92%] max-w-[1180px] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+    <section className="scroll-mt-24 bg-white py-24 lg:py-28">
+      <div className="mx-auto grid w-[92%] max-w-[1200px] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div>
-          <span className="text-[11px] uppercase tracking-[0.22em] text-[#4A4B33]">{en ? "Loyalty" : "Лояльность"}</span>
-          <h2 className="mt-4 font-display text-[28px] uppercase tracking-[0.05em] leading-[1.1] text-[#3B0D1A] lg:text-[44px]">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+            {en ? "Loyalty" : "Лояльность"}
+          </span>
+          <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#3B0D1A] lg:text-[44px]">
             {en ? "We value those who value themselves" : "Ценим тех, кто ценит себя"}
           </h2>
           <span className="mt-6 block h-px w-16 bg-[#e7c9a0]" />
