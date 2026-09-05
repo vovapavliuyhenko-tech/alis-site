@@ -10,7 +10,6 @@ const PHONE_SALON = "+7 988 888 77 58";
 const PHONE_SERVICE = "+7 988 888 77 28";
 const EMAIL = "alisbeautyclub@gmail.com";
 const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
-const PHOTO = "/assets/tild6530-383_-2___1_.jpg";
 
 const ADDRESS = { ru: "Новороссийск,\nул. Пархоменко, 53", en: "Novorossiysk,\nParkhomenko St., 53" };
 const HOURS = { ru: "Без выходных, 9:00–21:00", en: "Open daily, 9:00–21:00" };
@@ -52,11 +51,6 @@ export default function Footer() {
 
   return (
     <footer id="footer" className="relative overflow-hidden rounded-t-[40px] bg-[#3B0D1A] text-[#f4efe6]">
-      {/* Фон-фото + бордовая вуаль */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={PHOTO} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" />
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-[#3B0D1A]/85 via-[#3B0D1A]/80 to-[#3B0D1A]/95" />
-
       <div className="relative z-10 mx-auto w-[92%] max-w-[1200px]">
         {/* Центр: логотип + слоган + кнопка + соцсети */}
         <div className="flex flex-col items-center py-20 text-center lg:py-28">

@@ -21,7 +21,7 @@ export default function ContactsCTA() {
 
   return (
     <section id="contacts" className="scroll-mt-24 bg-white py-24 lg:py-28">
-      <div className="mx-auto grid w-[92%] max-w-[1200px] items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <div className="mx-auto grid w-[94%] max-w-[1400px] items-center gap-10 lg:grid-cols-2 lg:gap-20">
         {/* Карта */}
         <div className="overflow-hidden rounded-[24px] border border-[#17191a]/10 shadow-[0_18px_44px_rgba(0,0,0,0.08)]">
           <iframe
