@@ -38,7 +38,7 @@ export default function Hero() {
               <br />
               {t("а не «как получилось»", "not “how it turned out”")}
             </h1>
-            <p className="mt-5 max-w-xl text-[13.5px] leading-relaxed text-[#f4efe6]/80 sm:text-[15px]">
+            <p className="mt-5 max-w-xl text-[12px] leading-relaxed text-[#f4efe6]/80 sm:text-[13px]">
               {t(
                 "Волосы, ногти, брови и макияж — за один визит, в 4–6 рук. Разберём ваше фото до начала работы и согласуем результат с вами. −10% на первый визит.",
                 "Hair, nails, brows and makeup — in one visit, in 4–6 hands. We review your reference before we start and agree the result with you. −10% on your first visit.",
@@ -48,8 +48,8 @@ export default function Hero() {
 
           {/* Услуги справа */}
           <div className="shrink-0 lg:max-w-xs lg:text-right">
-            <p className="mb-3 text-[13px] uppercase tracking-[0.16em] text-[#f4efe6]/60">[{t("Сделаем", "We do")}]</p>
-            <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[15px] text-[#f4efe6] lg:justify-end lg:text-[16px]">
+            <p className="mb-3 text-[11px] uppercase tracking-[0.16em] text-[#f4efe6]/60">[{t("Сделаем", "We do")}]</p>
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] text-[#f4efe6] lg:justify-end lg:text-[14px]">
               {services.map((s) => (
                 <span key={s}>{s}</span>
               ))}
