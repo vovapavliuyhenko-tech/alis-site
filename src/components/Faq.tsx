@@ -1,12 +1,14 @@
 "use client";
-// ВОПРОСЫ — формат «Вы спрашиваете — я решаю» (как на sevara-sr): горизонтальная
-// лента карточек со стрелками; в каждой — вопрос от лица клиента в «ёлочках» и
-// ответ. В стиле ÁLIS. Двуязычно.
-import { useRef } from "react";
+// ВОПРОСЫ — раскладка как на sevara-sr: слева крупный заголовок «Вы спрашиваете
+// — я решаю» и фото; справа вертикальный список карточек-вопросов (аккордеон):
+// вопрос от лица клиента в «ёлочках», по клику раскрывается ответ. В стиле ÁLIS.
+import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
 type Item = { q: Loc; a: Loc };
+
+const PHOTO = "/assets/tild3236-393__.jpg";
 
 const ITEMS: Item[] = [
   {
@@ -27,35 +29,35 @@ const ITEMS: Item[] = [
     q: { ru: "«Боюсь испортить волосы после домашней краски»", en: "“I'm afraid of ruining my hair after home colour.”" },
     a: {
       ru: "Сначала тест пряди и разбор истории волос. Если осветлять нельзя — скажем прямо и дадим план по шагам, а не оставим вас с последствиями.",
-      en: "First a strand test and a look at your hair's history. If bleaching isn't safe, we say so straight and give a step-by-step plan instead of leaving you with the consequences.",
+      en: "First a strand test and a look at your hair's history. If bleaching isn't safe, we say so straight and give a step-by-step plan.",
     },
   },
   {
     q: { ru: "«Не хочу сюрпризов в чеке»", en: "“I don't want surprises on the bill.”" },
     a: {
       ru: "Стоимость называем до начала, после осмотра. Нужен дополнительный шаг — остановимся и спросим. Точные цены видно в онлайн-записи.",
-      en: "We name the price before we start, after examining you. If an extra step is needed, we stop and ask. Exact prices are shown in the online booking.",
+      en: "We name the price before we start, after examining you. If an extra step is needed, we stop and ask. Exact prices are in the online booking.",
     },
   },
   {
     q: { ru: "«Боюсь аллергии на ресницы и краску для бровей»", en: "“I'm afraid of an allergy to lashes and brow tint.”" },
     a: {
       ru: "Перед первой процедурой предлагаем тест за 48 часов. Аллергия на клей и красители часто накопительная — лучше подстраховаться, чем жить с последствиями.",
-      en: "Before the first procedure we offer a 48-hour patch test. Allergy to glue and dyes is often cumulative — better to play it safe than live with the consequences.",
+      en: "Before the first procedure we offer a 48-hour patch test. Allergy to glue and dyes is often cumulative — better safe than sorry.",
     },
   },
   {
     q: { ru: "«Не знаю, что мне подойдёт»", en: "“I don't know what suits me.”" },
     a: {
       ru: "Разберём ваше фото и пожелания до начала работы и честно скажем, что подойдёт именно вам, а что — нет. Решаем вместе, без импровизаций на ходу.",
-      en: "We review your reference and wishes before we start and honestly tell you what suits you and what doesn't. We decide together, no improvising on the go.",
+      en: "We review your reference and wishes before we start and honestly tell you what suits you. We decide together, no improvising on the go.",
     },
   },
   {
     q: { ru: "«Хочу образ на свадьбу — переживаю за стойкость»", en: "“I want a wedding look — I worry it won't last.”" },
     a: {
       ru: "Делаем пробный образ заранее и фиксируем его фото. В день события повторяем точно — образ держится до последнего кадра, даже на жаре и у моря.",
-      en: "We do a trial look in advance and capture it in photos. On the day we repeat it exactly — the look holds to the last frame, even in heat and by the sea.",
+      en: "We do a trial look in advance and capture it in photos. On the day we repeat it exactly — it holds to the last frame, even in heat and by the sea.",
     },
   },
 ];
@@ -63,69 +65,66 @@ const ITEMS: Item[] = [
 export default function Faq() {
   const { lang } = useLang();
   const en = lang === "en";
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [openSet, setOpenSet] = useState<Set<number>>(new Set([0]));
 
-  const scrollBy = (dir: 1 | -1) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const card = el.querySelector<HTMLElement>("[data-card]");
-    const step = card && card.offsetWidth > 0 ? card.offsetWidth + 20 : el.clientWidth * 0.85 || 360;
-    el.scrollBy({ left: dir * step, behavior: "smooth" });
-  };
+  const toggle = (i: number) =>
+    setOpenSet((prev) => {
+      const next = new Set(prev);
+      next.has(i) ? next.delete(i) : next.add(i);
+      return next;
+    });
 
   return (
-    <section id="faq" className="overflow-hidden bg-white py-24 lg:py-28">
-      <div className="mx-auto w-[92%] max-w-[1400px]">
-        {/* Заголовок + стрелки */}
-        <div className="mb-12 flex flex-col gap-6 lg:mb-16 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
-              {en ? "FAQ" : "Вопросы"}
-            </span>
-            <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#3B0D1A] lg:text-[44px]">
-              {en ? "You ask — " : "Вы спрашиваете — "}
-              <span className="text-[#4A4B33]">{en ? "we solve" : "я решаю"}</span>
-            </h2>
-            <p className="mt-5 text-[15px] leading-relaxed text-[#17191a]/55 lg:text-[16px]">
-              {en
-                ? "The honest answers to what you'd rather not ask out loud — including where we say “no”."
-                : "Честные ответы на то, о чём неудобно спрашивать вслух — включая случаи, когда мы говорим «нет»."}
-            </p>
-          </div>
-          {/* Стрелки */}
-          <div className="flex shrink-0 gap-3">
-            {[-1, 1].map((d) => (
-              <button
-                key={d}
-                onClick={() => scrollBy(d as 1 | -1)}
-                aria-label={d === -1 ? (en ? "Previous" : "Назад") : en ? "Next" : "Вперёд"}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-[#3B0D1A]/25 text-[#3B0D1A] transition-colors duration-300 hover:border-[#3B0D1A] hover:bg-[#3B0D1A] hover:text-[#f4efe6]"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={d === -1 ? "rotate-180" : ""}>
-                  <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-            ))}
-          </div>
+    <section id="faq" className="bg-white py-24 lg:py-28">
+      <div className="mx-auto grid w-[92%] max-w-[1400px] gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        {/* Левая колонка: заголовок + фото */}
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <h2 className="font-display text-[34px] font-normal uppercase leading-[1.06] tracking-[0.02em] text-[#3B0D1A] sm:text-[48px] lg:text-[60px]">
+            {en ? "You ask —" : "Вы спрашиваете —"}
+            <br />
+            <span className="text-[#4A4B33]">{en ? "we solve" : "я решаю"}</span>
+          </h2>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={PHOTO}
+            alt=""
+            className="mt-10 aspect-[3/4] w-full max-w-[280px] rounded-[24px] object-cover lg:mt-14"
+            draggable={false}
+          />
         </div>
 
-        {/* Лента карточек */}
-        <div
-          ref={scrollRef}
-          className="hide-scrollbar -mx-[4%] flex snap-x snap-mandatory gap-5 overflow-x-auto px-[4%] pb-2"
-        >
-          {ITEMS.map((it) => (
-            <article
-              key={it.q.ru}
-              data-card
-              className="flex w-[85%] shrink-0 snap-start flex-col rounded-[24px] border border-[#17191a]/12 bg-[#faf7f2] p-8 sm:w-[420px] lg:p-10"
-            >
-              <p className="font-serif text-[19px] italic leading-snug text-[#3B0D1A] lg:text-[22px]">{it.q[lang]}</p>
-              <span className="mt-5 mb-6 block h-px w-12 bg-[#e7c9a0]" />
-              <p className="text-[14px] font-light leading-relaxed text-[#2a2320]/75 lg:text-[15px]">{it.a[lang]}</p>
-            </article>
-          ))}
+        {/* Правая колонка: карточки-аккордеон */}
+        <div className="flex flex-col gap-4 lg:gap-5">
+          {ITEMS.map((it, i) => {
+            const isOpen = openSet.has(i);
+            return (
+              <div key={it.q.ru} className="overflow-hidden rounded-[24px] bg-[#faf7f2]">
+                <button
+                  onClick={() => toggle(i)}
+                  aria-expanded={isOpen}
+                  className="flex w-full items-start justify-between gap-6 px-8 py-7 text-left lg:px-10 lg:py-8"
+                >
+                  <span className="font-serif text-[19px] italic leading-snug text-[#3B0D1A] lg:text-[23px]">
+                    {it.q[lang]}
+                  </span>
+                  <span
+                    className={`mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                      isOpen ? "rotate-45 border-[#3B0D1A] bg-[#3B0D1A] text-[#f4efe6]" : "border-[#3B0D1A]/25 text-[#3B0D1A]"
+                    }`}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14" strokeLinecap="round" /></svg>
+                  </span>
+                </button>
+                <div className="grid transition-all duration-500 ease-out" style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}>
+                  <div className="min-h-0">
+                    <p className="px-8 pb-8 text-[14px] font-light leading-relaxed text-[#2a2320]/75 lg:px-10 lg:text-[15px]">
+                      {it.a[lang]}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
