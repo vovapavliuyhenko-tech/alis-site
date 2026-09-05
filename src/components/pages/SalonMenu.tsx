@@ -158,7 +158,7 @@ export default function SalonMenu() {
 
   return (
     <section className="bg-white py-24 lg:py-28">
-      <div className="mx-auto w-[94%] max-w-[1500px]">
+      <div className="mx-auto w-[92%] max-w-[1080px]">
         {/* Заголовок */}
         <div className="mx-auto mb-14 flex max-w-2xl flex-col items-center text-center lg:mb-20">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
