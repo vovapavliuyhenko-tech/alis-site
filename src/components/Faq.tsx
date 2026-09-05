@@ -1,9 +1,8 @@
 "use client";
-// ЧАСТЫЕ ВОПРОСЫ — по мотивам traffic-masters: две колонки карточек. Заголовок
-// слева в две строки (вторая — бордовым акцентом) + подзаголовок. Каждый вопрос —
-// карточка с обводкой и круглым шевроном; активная заливается бордовым, текст
-// становится кремовым. Несколько карточек могут быть открыты одновременно.
-import { useEffect, useRef, useState } from "react";
+// ВОПРОСЫ — формат «Вы спрашиваете — я решаю» (как на sevara-sr): горизонтальная
+// лента карточек со стрелками; в каждой — вопрос от лица клиента в «ёлочках» и
+// ответ. В стиле ÁLIS. Двуязычно.
+import { useRef } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -11,196 +10,121 @@ type Item = { q: Loc; a: Loc };
 
 const ITEMS: Item[] = [
   {
-    q: { ru: "Как записаться?", en: "How do I book?" },
+    q: { ru: "«А вдруг мне не понравится результат?»", en: "“What if I don't like the result?”" },
     a: {
-      ru: "Онлайн прямо на сайте в блоке «Запишитесь онлайн»: выберите услугу, мастера и удобное время. Либо оставьте телефон в форме ниже — перезвоним и подберём слот.",
-      en: "Online right here in the “Book online” block: choose a service, an artist and a convenient time. Or leave your phone below — we'll call you back and find a slot.",
+      ru: "Скажите сразу, не выходя из кресла — поправим на месте. Если ошибка техническая, исправляем в течение 7 дней за наш счёт. Вы не платите дважды за одну работу.",
+      en: "Tell us right away, before you leave the chair — we fix it on the spot. If it's a technical fault, we correct it within 7 days at our expense. You don't pay twice for one job.",
     },
   },
   {
-    q: { ru: "Можно ли вызвать мастера на выезд?", en: "Can the artist come to me?" },
+    q: { ru: "«У меня совсем нет времени — реально всё за один визит?»", en: "“I'm short on time — can it all be done in one visit?”" },
     a: {
-      ru: "Да. Работаем на выезде по Новороссийску и региону, а по договорённости — по России и за рубежом. Команда приезжает к вам домой, в студию или на площадку.",
-      en: "Yes. We work on location across Novorossiysk and the region, and by arrangement across Russia and abroad. The team comes to your home, a studio or the venue.",
+      ru: "Да. Волосы, ногти, брови и макияж делаем одновременно, в 4–6 рук — полный образ за пару часов, без разъездов по трём мастерам.",
+      en: "Yes. Hair, nails, brows and makeup at once, in 4–6 hands — a complete look in a couple of hours, with no running between three masters.",
     },
   },
   {
-    q: { ru: "Сколько держится макияж и укладка?", en: "How long does the makeup and hair last?" },
+    q: { ru: "«Боюсь испортить волосы после домашней краски»", en: "“I'm afraid of ruining my hair after home colour.”" },
     a: {
-      ru: "Используем премиальную стойкую косметику. Образ держится весь день и вечер — от сборов до последнего кадра, даже в жару и на съёмке.",
-      en: "We use premium long-wear products. The look holds all day and evening — from the morning prep to the last frame, even in the heat or on a shoot.",
+      ru: "Сначала тест пряди и разбор истории волос. Если осветлять нельзя — скажем прямо и дадим план по шагам, а не оставим вас с последствиями.",
+      en: "First a strand test and a look at your hair's history. If bleaching isn't safe, we say so straight and give a step-by-step plan instead of leaving you with the consequences.",
     },
   },
   {
-    q: { ru: "Делаете ли пробный образ перед свадьбой?", en: "Do you do a trial look before the wedding?" },
+    q: { ru: "«Не хочу сюрпризов в чеке»", en: "“I don't want surprises on the bill.”" },
     a: {
-      ru: "Да. Пробный образ мы согласовываем заранее — вы видите результат до торжества и в день свадьбы точно знаете, как будете выглядеть. Никаких сюрпризов.",
-      en: "Yes. We agree the trial look in advance — you see the result before the celebration and know exactly how you'll look on the day. No surprises.",
+      ru: "Стоимость называем до начала, после осмотра. Нужен дополнительный шаг — остановимся и спросим. Точные цены видно в онлайн-записи.",
+      en: "We name the price before we start, after examining you. If an extra step is needed, we stop and ask. Exact prices are shown in the online booking.",
     },
   },
   {
-    q: { ru: "Нужна ли предоплата и как отменить запись?", en: "Is a deposit required and how do I cancel?" },
+    q: { ru: "«Боюсь аллергии на ресницы и краску для бровей»", en: "“I'm afraid of an allergy to lashes and brow tint.”" },
     a: {
-      ru: "Небольшая предоплата бронирует за вами время мастера. Отменить или перенести запись можно заранее — просто свяжитесь с нами, поможем подобрать другое время.",
-      en: "A small deposit reserves the artist's time for you. You can cancel or reschedule in advance — just contact us and we'll help find another time.",
+      ru: "Перед первой процедурой предлагаем тест за 48 часов. Аллергия на клей и красители часто накопительная — лучше подстраховаться, чем жить с последствиями.",
+      en: "Before the first procedure we offer a 48-hour patch test. Allergy to glue and dyes is often cumulative — better to play it safe than live with the consequences.",
     },
   },
   {
-    q: { ru: "Как подготовиться к визиту?", en: "How should I prepare for the visit?" },
+    q: { ru: "«Не знаю, что мне подойдёт»", en: "“I don't know what suits me.”" },
     a: {
-      ru: "Приходите с чистыми волосами и без макияжа, возьмите референсы желаемого образа. Всё остальное — тон, стойкость, детали — мы берём на себя.",
-      en: "Come with clean hair and no makeup, and bring references of the look you want. Everything else — tone, longevity, details — is on us.",
+      ru: "Разберём ваше фото и пожелания до начала работы и честно скажем, что подойдёт именно вам, а что — нет. Решаем вместе, без импровизаций на ходу.",
+      en: "We review your reference and wishes before we start and honestly tell you what suits you and what doesn't. We decide together, no improvising on the go.",
+    },
+  },
+  {
+    q: { ru: "«Хочу образ на свадьбу — переживаю за стойкость»", en: "“I want a wedding look — I worry it won't last.”" },
+    a: {
+      ru: "Делаем пробный образ заранее и фиксируем его фото. В день события повторяем точно — образ держится до последнего кадра, даже на жаре и у моря.",
+      en: "We do a trial look in advance and capture it in photos. On the day we repeat it exactly — the look holds to the last frame, even in heat and by the sea.",
     },
   },
 ];
 
-function Card({
-  it,
-  index,
-  started,
-  open,
-  onToggle,
-}: {
-  it: Item;
-  index: number;
-  started: boolean;
-  open: boolean;
-  onToggle: () => void;
-}) {
-  const { lang } = useLang();
-  return (
-    <button
-      onClick={onToggle}
-      aria-expanded={open}
-      className={`block w-full rounded-[20px] border p-6 text-left transition-[opacity,transform,background-color,border-color] duration-500 ease-[cubic-bezier(.16,1,.3,1)] lg:p-7 ${
-        open
-          ? "border-[#3B0D1A] bg-[#3B0D1A] shadow-[0_18px_50px_rgba(59,13,26,0.35)]"
-          : "border-[#17191a]/12 bg-white hover:border-[#3B0D1A]/40"
-      }`}
-      style={{
-        opacity: started ? 1 : 0,
-        transform: started ? "none" : "translateY(20px)",
-        transitionDelay: started ? `${index * 70}ms` : "0ms",
-      }}
-    >
-      <div className="flex items-start justify-between gap-5">
-        <span
-          className={`font-serif text-[18px] leading-snug transition-colors duration-300 lg:text-[21px] ${
-            open ? "text-[#f4efe6]" : "text-[#2a2320]"
-          }`}
-        >
-          {it.q[lang]}
-        </span>
-        {/* Круглый шеврон */}
-        <span
-          className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ${
-            open ? "border-transparent bg-[#f4efe6] text-[#3B0D1A]" : "border-[#17191a]/20 bg-white text-[#3B0D1A]"
-          }`}
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className={`transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${open ? "rotate-180" : ""}`}
-          >
-            <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </span>
-      </div>
-
-      {/* Ответ */}
-      <div className="grid overflow-hidden transition-all duration-500 ease-out" style={{ gridTemplateRows: open ? "1fr" : "0fr" }}>
-        <div className="min-h-0">
-          <p
-            className="pt-4 text-[12.5px] font-light leading-relaxed text-[#f4efe6]/80 transition-[opacity] duration-500 lg:text-[13.5px]"
-            style={{ opacity: open ? 1 : 0 }}
-          >
-            {it.a[lang]}
-          </p>
-        </div>
-      </div>
-    </button>
-  );
-}
-
 export default function Faq() {
   const { lang } = useLang();
   const en = lang === "en";
-  const [started, setStarted] = useState(false);
-  const [openSet, setOpenSet] = useState<Set<number>>(new Set());
-  const gridRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const el = gridRef.current;
+  const scrollBy = (dir: 1 | -1) => {
+    const el = scrollRef.current;
     if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setStarted(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setStarted(true);
-          io.disconnect();
-        }
-      },
-      { threshold: 0.12 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  const toggle = (idx: number) =>
-    setOpenSet((prev) => {
-      const next = new Set(prev);
-      if (next.has(idx)) {
-        next.delete(idx);
-      } else {
-        // максимум 2 открытых — закрываем самую раннюю
-        if (next.size >= 2) next.delete(next.values().next().value as number);
-        next.add(idx);
-      }
-      return next;
-    });
-
-  const mid = Math.ceil(ITEMS.length / 2);
-  const cols = [ITEMS.slice(0, mid), ITEMS.slice(mid)];
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    const step = card && card.offsetWidth > 0 ? card.offsetWidth + 20 : el.clientWidth * 0.85 || 360;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-white py-24 lg:py-28">
-      <div className="mx-auto w-[92%] max-w-[1200px]">
-        {/* Заголовок слева + подзаголовок */}
-        <div className="mb-14 max-w-2xl lg:mb-20">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
-            {en ? "FAQ" : "Вопросы"}
-          </span>
-          <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#3B0D1A] lg:text-[44px]">
-            {en ? "Answers to your" : "Ответы на вопросы"}
-            <br />
-            <span className="text-[#4A4B33]">{en ? "questions about us" : "о работе с ALIS"}</span>
-          </h2>
-          <p className="mt-5 text-[15px] leading-relaxed text-[#17191a]/55 lg:text-[16px]">
-            {en
-              ? "Didn't find your answer? Leave a request — we'll sort out your case."
-              : "Если не нашли ответ — оставьте заявку, мы разберём ваш случай."}
-          </p>
+    <section id="faq" className="overflow-hidden bg-white py-24 lg:py-28">
+      <div className="mx-auto w-[92%] max-w-[1400px]">
+        {/* Заголовок + стрелки */}
+        <div className="mb-12 flex flex-col gap-6 lg:mb-16 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+              {en ? "FAQ" : "Вопросы"}
+            </span>
+            <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#3B0D1A] lg:text-[44px]">
+              {en ? "You ask — " : "Вы спрашиваете — "}
+              <span className="text-[#4A4B33]">{en ? "we solve" : "я решаю"}</span>
+            </h2>
+            <p className="mt-5 text-[15px] leading-relaxed text-[#17191a]/55 lg:text-[16px]">
+              {en
+                ? "The honest answers to what you'd rather not ask out loud — including where we say “no”."
+                : "Честные ответы на то, о чём неудобно спрашивать вслух — включая случаи, когда мы говорим «нет»."}
+            </p>
+          </div>
+          {/* Стрелки */}
+          <div className="flex shrink-0 gap-3">
+            {[-1, 1].map((d) => (
+              <button
+                key={d}
+                onClick={() => scrollBy(d as 1 | -1)}
+                aria-label={d === -1 ? (en ? "Previous" : "Назад") : en ? "Next" : "Вперёд"}
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-[#3B0D1A]/25 text-[#3B0D1A] transition-colors duration-300 hover:border-[#3B0D1A] hover:bg-[#3B0D1A] hover:text-[#f4efe6]"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={d === -1 ? "rotate-180" : ""}>
+                  <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Две колонки карточек */}
-        <div ref={gridRef} className="grid gap-4 lg:grid-cols-2 lg:gap-5">
-          {cols.map((col, c) => (
-            <div key={c} className="flex flex-col gap-4 lg:gap-5">
-              {col.map((it, i) => {
-                const idx = c * mid + i;
-                return (
-                  <Card key={it.q.ru} it={it} index={idx} started={started} open={openSet.has(idx)} onToggle={() => toggle(idx)} />
-                );
-              })}
-            </div>
+        {/* Лента карточек */}
+        <div
+          ref={scrollRef}
+          className="hide-scrollbar -mx-[4%] flex snap-x snap-mandatory gap-5 overflow-x-auto px-[4%] pb-2"
+        >
+          {ITEMS.map((it) => (
+            <article
+              key={it.q.ru}
+              data-card
+              className="flex w-[85%] shrink-0 snap-start flex-col rounded-[24px] border border-[#17191a]/12 bg-[#faf7f2] p-8 sm:w-[420px] lg:p-10"
+            >
+              <p className="font-serif text-[19px] italic leading-snug text-[#3B0D1A] lg:text-[22px]">{it.q[lang]}</p>
+              <span className="mt-5 mb-6 block h-px w-12 bg-[#e7c9a0]" />
+              <p className="text-[14px] font-light leading-relaxed text-[#2a2320]/75 lg:text-[15px]">{it.a[lang]}</p>
+            </article>
           ))}
         </div>
       </div>
