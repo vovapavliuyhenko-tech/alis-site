@@ -1,72 +1,77 @@
 "use client";
-// HERO ALIS: фон-фото на весь экран, оффер внизу слева, список услуг внизу
-// справа (раскладка как на референсе). Кнопка записи — растянутая внизу блока.
+// HERO ALIS — центрированная раскладка по мотивам cryome: надстрочник, крупный
+// заголовок с акцентными словами, подзаголовок, тёмная пилюля-кнопка, сноска и
+// ряд круглых миниатюр внизу. Светлый фон. Двуязычно.
 import { useLang } from "@/lib/i18n";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
-const PHOTO = "/assets/tild6230-643__.jpg";
+
+const THUMBS = [
+  "/assets/tild6230-643__.jpg",
+  "/assets/tild3236-393__.jpg",
+  "/assets/tild6530-383_-2___1_.jpg",
+  "/assets/tild3638-373_-2___1__3.jpg",
+  "/assets/tild3561-646_-2___1__5.jpg",
+  "/assets/tild6536-613_-2___1__4.jpg",
+];
 
 export default function Hero() {
   const { lang } = useLang();
-  const t = (ru: string, en: string) => (lang === "en" ? en : ru);
-
-  const services = [
-    t("Маникюр", "Manicure"),
-    t("Педикюр", "Pedicure"),
-    t("Брови", "Brows"),
-    t("Ресницы", "Lashes"),
-    t("Макияж", "Makeup"),
-    t("Волосы", "Hair"),
-    t("Выезд", "On-location"),
-  ];
+  const en = lang === "en";
+  const t = (ru: string, e: string) => (en ? e : ru);
 
   return (
-    <section className="relative h-svh min-h-[600px] w-full overflow-hidden bg-[#17191a]">
-      {/* Фоновое фото */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={PHOTO} alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
-      {/* Затемнение снизу для читаемости светлого текста */}
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#17191a]/80 via-[#17191a]/25 to-[#17191a]/5" />
+    <section className="relative flex h-svh min-h-[640px] w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#f7f3ed] to-[#efe7db] px-6 pt-20 text-center">
+      <div className="relative z-10 flex max-w-4xl flex-col items-center">
+        {/* Надстрочник */}
+        <p className="text-[13px] font-medium tracking-wide text-[#2a2320] sm:text-[14px]">
+          {t("как на вашем фото. с первого раза.", "just like in your photo. from the first visit.")}
+        </p>
 
-      {/* Контент внизу: слева оффер, справа услуги */}
-      <div className="relative z-10 flex h-full flex-col justify-end px-5 pb-28 sm:px-8 sm:pb-32">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          {/* Оффер слева */}
-          <div className="max-w-3xl">
-            <h1 className="font-display text-[22px] font-medium uppercase leading-[1.12] tracking-[0.03em] text-[#f4efe6] [text-shadow:0_0_0.4px_currentColor] sm:text-[30px] lg:text-[38px]">
-              {t("Уходите как хотели,", "Leave looking how you wanted,")}
-              <br />
-              {t("а не «как получилось»", "not “how it turned out”")}
-            </h1>
-            <p className="mt-5 max-w-xl text-[12px] leading-relaxed text-[#f4efe6]/80 sm:text-[13px]">
-              {t(
-                "Волосы, ногти, брови и макияж — за один визит, в 4–6 рук. Разберём ваше фото до начала работы и согласуем результат с вами. −10% на первый визит.",
-                "Hair, nails, brows and makeup — in one visit, in 4–6 hands. We review your reference before we start and agree the result with you. −10% on your first visit.",
-              )}
-            </p>
-          </div>
+        {/* Заголовок с акцентами */}
+        <h1 className="mt-6 font-display text-[30px] font-normal uppercase leading-[1.08] tracking-[0.02em] text-[#2a2320] sm:text-[46px] lg:text-[58px]">
+          <span className="text-[#4A4B33]">ÁLIS BEAUTY</span> —{" "}
+          {t("полный образ", "a complete look")}{" "}
+          <span className="text-[#4A4B33]">{t("за 2 часа", "in 2 hours")}</span>{" "}
+          {t("в одном кресле", "in one chair")}
+        </h1>
 
-          {/* Услуги справа */}
-          <div className="shrink-0 lg:max-w-xs lg:text-right">
-            <p className="mb-3 text-[11px] uppercase tracking-[0.16em] text-[#f4efe6]/60">[{t("Сделаем", "We do")}]</p>
-            <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] text-[#f4efe6] lg:justify-end lg:text-[14px]">
-              {services.map((s) => (
-                <span key={s}>{s}</span>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* Подзаголовок */}
+        <p className="mt-6 max-w-xl text-[14px] leading-relaxed text-[#2a2320]/70 sm:text-[16px]">
+          {t(
+            "Волосы, ногти, брови и макияж одновременно, в 4–6 рук — без разъездов по трём мастерам и без потерянной субботы.",
+            "Hair, nails, brows and makeup at once, in 4–6 hands — no running between three masters and no lost Saturday.",
+          )}
+        </p>
+
+        {/* Кнопка-пилюля */}
+        <a
+          href={YCLIENTS}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-9 inline-flex items-center justify-center rounded-full bg-[#2a2320] px-11 py-4 font-display text-[13px] uppercase tracking-[0.14em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#3B0D1A] sm:text-[14px]"
+        >
+          ( {t("записаться", "book now")} )
+        </a>
+
+        {/* Сноска */}
+        <p className="mt-5 max-w-xs text-[12px] italic leading-snug text-[#2a2320]/50">
+          {t("* один визит вместо трёх поездок по городу", "* one visit instead of three trips across town")}
+        </p>
       </div>
 
-      {/* Целевое действие — растянутая кнопка (без изменений) */}
-      <a
-        href={YCLIENTS}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-display absolute inset-x-4 bottom-5 z-10 flex items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] py-5 text-[12px] uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:inset-x-6 sm:bottom-6 sm:text-[13px]"
-      >
-        {t("Записаться со скидкой −10%", "Book with −10% off")}
-      </a>
+      {/* Ряд круглых миниатюр */}
+      <div className="relative z-10 mt-10 flex items-center gap-3 sm:mt-12 sm:gap-4">
+        {THUMBS.map((src) => (
+          <span
+            key={src}
+            className="h-12 w-12 overflow-hidden rounded-full border border-[#2a2320]/10 bg-white shadow-sm sm:h-14 sm:w-14"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={src} alt="" className="h-full w-full object-cover" draggable={false} />
+          </span>
+        ))}
+      </div>
     </section>
   );
 }
