@@ -2,7 +2,7 @@
 // Услуги и прайс салона — как на референсе: ряд овальных карточек-категорий
 // (при выборе — сплошная бордовая обводка) и прайс-лист под ними. Каждая строка
 // РАСКРЫВАЕТСЯ: описание + кнопка «Записаться». Широкие строки. Двуязычно.
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
@@ -156,6 +156,27 @@ export default function SalonMenu() {
     setOpen(null);
   };
 
+  // Переезжающее «чернильное» подчёркивание под активной категорией
+  const tabsRef = useRef<Array<HTMLButtonElement | null>>([]);
+  const [ind, setInd] = useState({ left: 0, width: 0 });
+  const measure = () => {
+    const el = tabsRef.current[active];
+    if (el) setInd({ left: el.offsetLeft, width: el.offsetWidth });
+  };
+  useLayoutEffect(() => {
+    measure();
+    const raf = requestAnimationFrame(measure);
+    return () => cancelAnimationFrame(raf);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, lang]);
+  useEffect(() => {
+    // пересчёт после загрузки шрифтов (ширина табов меняется) и при ресайзе
+    if (typeof document !== "undefined" && document.fonts?.ready) document.fonts.ready.then(measure);
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, lang]);
+
   return (
     <section className="bg-white py-24 lg:py-28">
       <div className="mx-auto w-[92%] max-w-[1080px]">
@@ -175,26 +196,32 @@ export default function SalonMenu() {
           </p>
         </div>
 
-        {/* Овальные карточки категорий */}
-        <div className="mx-auto grid max-w-[1180px] grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4 lg:gap-x-10">
-          {CATS.map((c, i) => {
-            const on = i === active;
-            return (
-              <button key={c.label.ru} onClick={() => selectCat(i)} className="group flex flex-col items-center gap-4">
-                <div
-                  className={`relative aspect-[8/5] w-full overflow-hidden rounded-[50%] border-2 transition-all duration-300 ${
-                    on ? "border-solid border-[#3B0D1A] shadow-[0_10px_30px_rgba(59,13,26,0.18)]" : "border-dashed border-[#17191a]/25 group-hover:border-[#3B0D1A]/60"
+        {/* Табы категорий с переезжающим «чернильным» подчёркиванием */}
+        <div className="mb-14 flex justify-center lg:mb-20">
+          <div className="relative flex max-w-full gap-8 overflow-x-auto border-b border-[#17191a]/10 pb-3 lg:gap-12">
+            {CATS.map((c, i) => {
+              const on = i === active;
+              return (
+                <button
+                  key={c.label.ru}
+                  ref={(el) => {
+                    tabsRef.current[i] = el;
+                  }}
+                  onClick={() => selectCat(i)}
+                  className={`shrink-0 whitespace-nowrap text-[14px] uppercase tracking-[0.1em] transition-colors duration-300 lg:text-[16px] ${
+                    on ? "text-[#3B0D1A]" : "text-[#17191a]/40 hover:text-[#17191a]/70"
                   }`}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c.img} alt={c.label[lang]} className={`h-full w-full object-cover transition-transform duration-500 ${on ? "scale-[1.04]" : "group-hover:scale-[1.03]"}`} />
-                </div>
-                <span className={`text-[14px] uppercase tracking-[0.08em] transition-colors lg:text-[15px] ${on ? "text-[#3B0D1A]" : "text-[#17191a]/45 group-hover:text-[#17191a]/70"}`}>
                   {c.label[lang]}
-                </span>
-              </button>
-            );
-          })}
+                </button>
+              );
+            })}
+            <span
+              aria-hidden
+              className="absolute -bottom-px h-[2px] rounded-full bg-[#3B0D1A] transition-all duration-300 ease-out"
+              style={{ left: ind.left, width: ind.width }}
+            />
+          </div>
         </div>
 
         {/* Прайс-лист выбранной категории — раскрывающиеся строки */}
