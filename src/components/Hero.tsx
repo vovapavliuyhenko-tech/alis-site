@@ -33,7 +33,7 @@ export default function Hero() {
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           {/* Оффер слева */}
           <div className="max-w-3xl">
-            <h1 className="font-display text-[22px] font-normal uppercase leading-[1.12] tracking-[0.03em] text-[#f4efe6] sm:text-[30px] lg:text-[38px]">
+            <h1 className="font-display text-[22px] font-medium uppercase leading-[1.12] tracking-[0.03em] text-[#f4efe6] [text-shadow:0_0_0.4px_currentColor] sm:text-[30px] lg:text-[38px]">
               {t("Уходите как хотели,", "Leave looking how you wanted,")}
               <br />
               {t("а не «как получилось»", "not “how it turned out”")}
