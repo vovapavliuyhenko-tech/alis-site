@@ -51,7 +51,7 @@ export default function Footer() {
 
   return (
     <footer id="footer" className="relative overflow-hidden rounded-t-[40px] bg-[#3B0D1A] text-[#f4efe6]">
-      <div className="relative z-10 mx-auto w-[92%] max-w-[1200px]">
+      <div className="relative z-10 mx-auto w-[94%] max-w-[1720px]">
         {/* Центр: логотип + слоган + кнопка + соцсети */}
         <div className="flex flex-col items-center py-20 text-center lg:py-28">
           <LogoEmblem variant="cream" className="h-[84px] w-auto max-w-none lg:h-[100px]" />
