@@ -61,7 +61,7 @@ export default function Header() {
   const [solid, setSolid] = useState(pathname !== "/");
   const [open, setOpen] = useState(false);
 
-  // Подложка: следим за меткой #hero-end. Пока она ниже шапки — прозрачно.
+  // На первом блоке фон прозрачный, элементы светлые; после #hero-end — подложка и тёмные
   useEffect(() => {
     const sentinel = document.getElementById("hero-end");
     if (!sentinel) {
@@ -78,10 +78,10 @@ export default function Header() {
     };
   }, [pathname]);
 
-  // Герой светлый → и в прозрачном, и в состоянии с подложкой текст тёмно-бордовый
-  const ink = solid ? "text-[#17191a]" : "text-[#3B0D1A]";
-  const inkSoft = solid ? "text-[#17191a]/70" : "text-[#3B0D1A]/85";
-  const hoverInk = "hover:text-[#3B0D1A]";
+  // Прозрачно → элементы кремовые; подложка → тёмные
+  const ink = solid ? "text-[#17191a]" : "text-[#f4efe6]";
+  const inkSoft = solid ? "text-[#17191a]/75" : "text-[#f4efe6]/90";
+  const hoverInk = solid ? "hover:text-[#3B0D1A]" : "hover:text-white";
 
   // Пункт меню + (опц.) выпадашка
   const NavLink = ({ item }: { item: NavItem }) =>
@@ -117,13 +117,13 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
         solid
-          ? "border-b border-[#17191a]/10 bg-white/80 shadow-[0_4px_24px_rgba(0,0,0,0.05)] backdrop-blur-md"
+          ? "border-b border-[#17191a]/10 bg-white/85 shadow-[0_4px_24px_rgba(0,0,0,0.05)] backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="mx-auto grid h-[68px] w-full max-w-[1280px] grid-cols-[1fr_auto_1fr] items-center px-5 sm:px-8">
         {/* Левая группа (desktop) */}
-        <nav className="hidden items-center gap-7 text-[13px] uppercase tracking-[0.14em] lg:flex">
+        <nav className="hidden items-center gap-8 text-[14px] uppercase tracking-[0.14em] lg:flex">
           {LEFT.map((item) => (
             <NavLink key={item.label.ru} item={item} />
           ))}
@@ -142,21 +142,21 @@ export default function Header() {
 
         {/* Логотип по центру: вензель + надпись */}
         <a href="/" className="flex items-center gap-2.5 justify-self-center">
-          <LogoEmblem variant="wine" className="h-9 w-auto max-w-none shrink-0" />
-          <LogoWord variant="wine" className="h-[17px] w-auto max-w-none shrink-0" />
+          <LogoEmblem variant={solid ? "wine" : "cream"} className="h-10 w-auto max-w-none shrink-0" />
+          <LogoWord variant={solid ? "wine" : "cream"} className="h-[19px] w-auto max-w-none shrink-0" />
         </a>
 
         {/* Правая группа (desktop) */}
-        <div className="hidden items-center justify-end gap-7 text-[13px] uppercase tracking-[0.14em] lg:flex">
+        <div className="hidden items-center justify-end gap-8 text-[14px] uppercase tracking-[0.14em] lg:flex">
           {RIGHT.map((item) => (
             <NavLink key={item.label.ru} item={item} />
           ))}
           {/* Тумблер RU/EN */}
-          <div className="relative flex items-center rounded-full border border-[#3B0D1A]/25 p-0.5 text-[11px] font-medium">
+          <div className={`relative flex items-center rounded-full border p-0.5 text-[12px] font-medium ${solid ? "border-[#3B0D1A]/25" : "border-[#f4efe6]/45"}`}>
             {/* бегунок */}
             <span
               aria-hidden
-              className="absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full bg-[#3B0D1A] transition-transform duration-300 ease-out"
+              className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${solid ? "bg-[#3B0D1A]" : "bg-[#f4efe6]"}`}
               style={{ transform: lang === "en" ? "translateX(100%)" : "translateX(0)" }}
             />
             {(["ru", "en"] as Lang[]).map((l) => (
@@ -164,8 +164,10 @@ export default function Header() {
                 key={l}
                 onClick={() => setLang(l)}
                 aria-pressed={lang === l}
-                className={`relative z-10 w-9 rounded-full py-1.5 uppercase tracking-wide transition-colors duration-300 ${
-                  lang === l ? "text-[#f4efe6]" : "text-[#3B0D1A]/60 hover:text-[#3B0D1A]"
+                className={`relative z-10 w-10 rounded-full py-2 uppercase tracking-wide transition-colors duration-300 ${
+                  lang === l
+                    ? solid ? "text-[#f4efe6]" : "text-[#3B0D1A]"
+                    : solid ? "text-[#3B0D1A]/60 hover:text-[#3B0D1A]" : "text-[#f4efe6]/70 hover:text-[#f4efe6]"
                 }`}
               >
                 {l}
