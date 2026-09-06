@@ -90,16 +90,6 @@ export default function TeamPinnedHero() {
             {en ? "( our masters )" : "( наши мастера )"}
           </a>
 
-          {/* Индикатор шагов */}
-          <div className="mt-12 flex items-center gap-2">
-            {STEPS.map((_, i) => (
-              <span
-                key={i}
-                className="h-1.5 rounded-full bg-white transition-all duration-300"
-                style={{ width: Math.abs(phase - i) < 0.5 ? 22 : 6, opacity: Math.abs(phase - i) < 0.5 ? 1 : 0.4 }}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </div>
