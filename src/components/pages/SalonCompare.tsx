@@ -40,51 +40,28 @@ export default function SalonCompare() {
   const { lang } = useLang();
   const en = lang === "en";
   const ref = useRef<HTMLDivElement>(null);
-  const target = useRef(0); // куда стремимся (по позиции скролла)
-  const cur = useRef(0); // текущее сглаженное значение
-  const running = useRef(false);
   const [k, setK] = useState(0); // 0 — ровно (до), 1 — повёрнуто (долистал)
 
   useEffect(() => {
-    const compute = () => {
-      const el = ref.current;
-      if (!el) return;
-      const top = el.getBoundingClientRect().top;
-      const vh = window.innerHeight;
-      const p = (vh * 0.88 - top) / (vh * 0.55);
-      target.current = Math.max(0, Math.min(1, p));
-    };
-
-    // «Догоняющий» лерп даёт инерцию и плавность, а не резкую привязку к скроллу.
-    const tick = () => {
-      cur.current += (target.current - cur.current) * 0.09;
-      if (Math.abs(target.current - cur.current) < 0.0006) {
-        cur.current = target.current;
-        setK(cur.current);
-        running.current = false;
-        return; // догнали — останавливаем цикл до следующего скролла
-      }
-      setK(cur.current);
-      requestAnimationFrame(tick);
-    };
-    const ensure = () => {
-      if (!running.current) {
-        running.current = true;
-        requestAnimationFrame(tick);
-      }
-    };
+    let raf = 0;
+    // Поворот привязан НАПРЯМУЮ к позиции скролла — карточки крутятся ровно на
+    // столько, на сколько прокручено (скролл «скрабит» анимацию, без инерции).
     const onScroll = () => {
-      compute();
-      ensure();
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const el = ref.current;
+        if (!el) return;
+        const top = el.getBoundingClientRect().top;
+        const vh = window.innerHeight;
+        const p = (vh * 0.88 - top) / (vh * 0.55);
+        setK(Math.max(0, Math.min(1, p)));
+      });
     };
-
-    compute();
-    cur.current = target.current; // на загрузке — без рывка
-    setK(cur.current);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
-      running.current = false;
+      cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
