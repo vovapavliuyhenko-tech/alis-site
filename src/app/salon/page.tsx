@@ -5,7 +5,8 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import Loyalty from "@/components/pages/Loyalty";
 import SalonHero from "@/components/pages/SalonHero";
-import ServiceTabs, { type ServiceCategory } from "@/components/pages/ServiceTabs";
+import ServiceCards from "@/components/pages/ServiceCards";
+import { type ServiceCategory } from "@/components/pages/ServiceTabs";
 
 // TODO: заменить на реальный прайс салона.
 const SALON_CATEGORIES: ServiceCategory[] = [
@@ -53,7 +54,7 @@ export default function SalonPage() {
         <SalonHero />
         <div id="uslugi" className="scroll-mt-24">
           <span id="price" />
-          <ServiceTabs
+          <ServiceCards
             eyebrow={{ ru: "Услуги и цены", en: "Services & prices" }}
             title={{ ru: "Услуги салона", en: "Salon services" }}
             categories={SALON_CATEGORIES}
