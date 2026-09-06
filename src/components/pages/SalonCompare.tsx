@@ -33,37 +33,66 @@ const COLS: { head: Loc; points: Loc[]; foot: Loc }[] = [
   },
 ];
 
+// Мягкая кривая — как у референса: медленный старт и плавное затухание.
+const easeInOut = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+
 export default function SalonCompare() {
   const { lang } = useLang();
   const en = lang === "en";
   const ref = useRef<HTMLDivElement>(null);
+  const target = useRef(0); // куда стремимся (по позиции скролла)
+  const cur = useRef(0); // текущее сглаженное значение
+  const running = useRef(false);
   const [k, setK] = useState(0); // 0 — ровно (до), 1 — повёрнуто (долистал)
 
   useEffect(() => {
-    let raf = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const el = ref.current;
-        if (!el) return;
-        const top = el.getBoundingClientRect().top;
-        const vh = window.innerHeight;
-        const p = (vh * 0.85 - top) / (vh * 0.5);
-        setK(Math.max(0, Math.min(1, p)));
-      });
+    const compute = () => {
+      const el = ref.current;
+      if (!el) return;
+      const top = el.getBoundingClientRect().top;
+      const vh = window.innerHeight;
+      const p = (vh * 0.88 - top) / (vh * 0.55);
+      target.current = Math.max(0, Math.min(1, p));
     };
-    onScroll();
+
+    // «Догоняющий» лерп даёт инерцию и плавность, а не резкую привязку к скроллу.
+    const tick = () => {
+      cur.current += (target.current - cur.current) * 0.09;
+      if (Math.abs(target.current - cur.current) < 0.0006) {
+        cur.current = target.current;
+        setK(cur.current);
+        running.current = false;
+        return; // догнали — останавливаем цикл до следующего скролла
+      }
+      setK(cur.current);
+      requestAnimationFrame(tick);
+    };
+    const ensure = () => {
+      if (!running.current) {
+        running.current = true;
+        requestAnimationFrame(tick);
+      }
+    };
+    const onScroll = () => {
+      compute();
+      ensure();
+    };
+
+    compute();
+    cur.current = target.current; // на загрузке — без рывка
+    setK(cur.current);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
-      cancelAnimationFrame(raf);
+      running.current = false;
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
   }, []);
 
-  const photoTilt = 7 * k; // боковые фото — в стороны
-  const cardTilt = 4.5 * k; // средние карточки — друг к другу
+  const e = easeInOut(k);
+  const photoTilt = 7 * e; // боковые фото — в стороны
+  const cardTilt = 4.5 * e; // средние карточки — друг к другу
 
   return (
     <section ref={ref} className="bg-white py-24 lg:py-28">
