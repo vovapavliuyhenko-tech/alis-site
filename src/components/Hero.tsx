@@ -51,13 +51,8 @@ export default function Hero() {
           rel="noopener noreferrer"
           className="mt-7 inline-flex items-center justify-center rounded-full bg-[#2a2320] px-11 py-4 font-display text-[13px] uppercase tracking-[0.14em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#3B0D1A] sm:text-[14px]"
         >
-          ( {t("записаться", "book now")} )
+          {t("записаться", "book now")}
         </a>
-
-        {/* Сноска */}
-        <p className="mt-4 max-w-xs text-[11px] italic leading-snug text-[#2a2320]/50">
-          {t("* один визит вместо трёх поездок по городу", "* one visit instead of three trips across town")}
-        </p>
       </div>
 
       {/* Ряд круглых миниатюр */}
