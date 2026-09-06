@@ -1,79 +1,96 @@
 "use client";
-// «Для кого ÁLIS» — премиальная сетка аудиторий: индекс, заголовок и короткая
-// реплика-боль от лица клиента. Мягкий hover: бордовая обводка + подъём. Двуязычно.
+// «Для кого ÁLIS» — как на cryome: закреплённая секция, заголовок и нумерованный
+// список стоят на месте, большое фото слева меняется кросс-фейдом по мере скролла.
+// Активный шаг считается от прогресса скролла внутри секции. Двуязычно.
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
-type Aud = { title: Loc; line: Loc };
+type Item = { line: Loc; img: string };
 
-const AUDS: Aud[] = [
-  {
-    title: { ru: "Невестам и героиням события", en: "Brides & guests of honour" },
-    line: { ru: "Хочу быть безупречной в день, который не переснять.", en: "I want to look flawless on a day you can't reshoot." },
-  },
-  {
-    title: { ru: "Занятым женщинам", en: "Busy women" },
-    line: { ru: "Нет времени на три салона — хочу всё за один визит.", en: "No time for three salons — I want it all in one visit." },
-  },
-  {
-    title: { ru: "Мамам", en: "Mothers" },
-    line: { ru: "Хочу час на себя без спешки, пока всё под ключ.", en: "I want an hour for myself, everything handled." },
-  },
-  {
-    title: { ru: "Перед съёмкой и выходом", en: "Before a shoot or event" },
-    line: { ru: "Нужен стойкий образ, что держится до последнего кадра.", en: "I need a look that lasts to the very last frame." },
-  },
-  {
-    title: { ru: "Тем, кто ходит регулярно", en: "Regular guests" },
-    line: { ru: "Хочу «своего» мастера и повторяемый результат.", en: "I want my own master and a repeatable result." },
-  },
-  {
-    title: { ru: "Кто устал от разъездов", en: "Tired of running around" },
-    line: { ru: "Волосы, ногти, брови и макияж — в одном кресле.", en: "Hair, nails, brows and makeup — in one chair." },
-  },
+const ITEMS: Item[] = [
+  { line: { ru: "много работает и живёт в плотном графике", en: "works a lot and lives on a tight schedule" }, img: "/assets/tild6230-643__.jpg" },
+  { line: { ru: "ценит ухоженный вид без лишних действий", en: "values a groomed look without extra fuss" }, img: "/assets/tild6530-383_-2___1_.jpg" },
+  { line: { ru: "любит эстетичный уход и красивые ритуалы", en: "loves aesthetic care and beautiful rituals" }, img: "/assets/tild3236-393__.jpg" },
+  { line: { ru: "хочет регулярный результат без спешки", en: "wants a regular result without the rush" }, img: "/assets/tild3638-373_-2___1__3.jpg" },
 ];
 
 export default function ForWhom() {
   const { lang } = useLang();
   const en = lang === "en";
+  const sectionRef = useRef<HTMLElement>(null);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    let raf = 0;
+    // rAF-цикл: не зависит от событий скролла (важно из-за SmoothScroll/Lenis)
+    const tick = () => {
+      const total = el.offsetHeight - window.innerHeight;
+      if (total > 0) {
+        const scrolled = Math.min(Math.max(-el.getBoundingClientRect().top, 0), total);
+        const idx = Math.max(0, Math.min(ITEMS.length - 1, Math.floor((scrolled / total) * ITEMS.length)));
+        setActive((prev) => (prev === idx ? prev : idx));
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   return (
-    <section id="for-whom" className="scroll-mt-24 bg-white py-24 lg:py-28">
-      <div className="mx-auto w-[92%] max-w-[1200px]">
-        {/* Заголовок */}
-        <div className="mb-14 max-w-2xl lg:mb-20">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
-            {en ? "For whom" : "Для кого"}
-          </span>
-          <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#3B0D1A] lg:text-[44px]">
-            {en ? "Who ÁLIS is for" : "Для кого"}{" "}
-            <span className="text-[#4A4B33]">ÁLIS</span>
-          </h2>
-          <p className="mt-5 text-[15px] leading-relaxed text-[#17191a]/55 lg:text-[16px]">
-            {en
-              ? "If you recognise yourself here — you'll feel at home with us."
-              : "Если узнали себя — вам у нас будет хорошо."}
-          </p>
-        </div>
+    <section id="for-whom" ref={sectionRef} className="relative bg-white lg:h-[340vh]">
+      {/* Закреплённый экран */}
+      <div className="flex min-h-svh flex-col justify-center py-24 lg:sticky lg:top-0 lg:h-svh lg:py-0">
+        <div className="mx-auto w-[92%] max-w-[1300px]">
+          {/* Заголовок по центру */}
+          <div className="mb-12 text-center lg:mb-14">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+              {en ? "for whom ÁLIS" : "для кого ÁLIS"}
+            </span>
+            <h2 className="mx-auto mt-5 max-w-2xl font-display text-[28px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#3B0D1A] lg:text-[42px]">
+              {en ? "For women with different rhythms of life" : "Для женщин с разным ритмом жизни"}
+            </h2>
+          </div>
 
-        {/* Сетка аудиторий */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-          {AUDS.map((a, i) => (
-            <div
-              key={a.title.ru}
-              className="group flex flex-col rounded-[22px] border border-[#17191a]/12 bg-[#faf7f2] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#3B0D1A] lg:p-8"
-            >
-              <span className="font-display text-[15px] tabular-nums text-[#4A4B33]">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-4 font-display text-[19px] uppercase leading-tight tracking-[0.03em] text-[#3B0D1A] lg:text-[21px]">
-                {a.title[lang]}
-              </h3>
-              <span className="mt-4 mb-5 block h-px w-10 bg-[#e7c9a0] transition-all duration-300 group-hover:w-16" />
-              <p className="font-serif text-[15px] italic leading-snug text-[#2a2320]/70 lg:text-[16px]">
-                «{a.line[lang]}»
-              </p>
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            {/* Фото — кросс-фейд */}
+            <div className="relative aspect-[4/5] w-full max-w-[420px] overflow-hidden rounded-[26px]">
+              {ITEMS.map((it, i) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={it.img}
+                  src={it.img}
+                  alt=""
+                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${i === active ? "opacity-100" : "opacity-0"}`}
+                  draggable={false}
+                />
+              ))}
             </div>
-          ))}
+
+            {/* Нумерованный список */}
+            <ul className="flex flex-col">
+              {ITEMS.map((it, i) => {
+                const on = i === active;
+                return (
+                  <li
+                    key={it.line.ru}
+                    onMouseEnter={() => setActive(i)}
+                    className="grid cursor-default grid-cols-[auto_1fr] items-start gap-6 border-t border-[#17191a]/12 py-6 last:border-b lg:gap-8 lg:py-7"
+                  >
+                    <span className={`font-display text-[15px] tabular-nums transition-colors duration-300 ${on ? "text-[#3B0D1A]" : "text-[#17191a]/35"}`}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className={`text-[16px] leading-snug transition-colors duration-300 lg:text-[19px] ${on ? "text-[#3B0D1A]" : "text-[#17191a]/40"}`}>
+                      {it.line[lang]}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
