@@ -1,33 +1,37 @@
 "use client";
-// БЛОК ВАКАНСИЙ (страница «Команда») — премиальная сетка ролей. Тексты ролей —
-// плейсхолдеры до присланного списка (легко заменить в VACANCIES).
-// Клик по карточке ведёт к форме «стать частью команды» ниже. Двуязычно.
+// БЛОК ВАКАНСИЙ (страница «Команда») — карточки с фоновым фото: затемнение,
+// текст поверх, лёгкий зум фото на наведении. Клик ведёт к форме «стать частью
+// команды» ниже. Тексты ролей — плейсхолдеры до присланного списка. Двуязычно.
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
-type Vacancy = { role: Loc; desc: Loc; schedule: Loc };
+type Vacancy = { role: Loc; desc: Loc; schedule: Loc; img: string };
 
 // TODO: заменить на реальный список вакансий, когда пришлёт владелец.
 const VACANCIES: Vacancy[] = [
   {
     role: { ru: "Парикмахер-колорист", en: "Hair colourist" },
-    desc: { ru: "Сложное окрашивание, стрижки, уход. Ценим аккуратность и работу на результат.", en: "Complex colour, cuts, care. We value precision and result-driven work." },
+    desc: { ru: "Сложное окрашивание, стрижки, уход.", en: "Complex colour, cuts, care." },
     schedule: { ru: "график 2/2", en: "2/2 schedule" },
+    img: "/assets/tild6530-383_-2___1_.jpg",
   },
   {
     role: { ru: "Мастер маникюра и педикюра", en: "Manicure & pedicure master" },
-    desc: { ru: "Гигиена, покрытие, дизайн. Работаем на проверенных материалах.", en: "Hygiene, coating, design. We work with trusted materials." },
+    desc: { ru: "Гигиена, покрытие, дизайн.", en: "Hygiene, coating, design." },
     schedule: { ru: "график гибкий", en: "flexible schedule" },
+    img: "/assets/tild3638-373_-2___1__3.jpg",
   },
   {
     role: { ru: "Бровист / лашмейкер", en: "Brow & lash artist" },
-    desc: { ru: "Брови, ресницы, окрашивание. Важна чистота линий и деликатность.", en: "Brows, lashes, tinting. Clean lines and a gentle touch matter." },
+    desc: { ru: "Брови, ресницы, окрашивание.", en: "Brows, lashes, tinting." },
     schedule: { ru: "частичная / полная", en: "part / full time" },
+    img: "/assets/tild3236-393__.jpg",
   },
   {
     role: { ru: "Администратор салона", en: "Salon administrator" },
-    desc: { ru: "Встреча гостей, запись, атмосфера. Тепло и внимание к деталям.", en: "Greeting guests, booking, atmosphere. Warmth and attention to detail." },
+    desc: { ru: "Встреча гостей, запись, атмосфера.", en: "Greeting guests, booking, atmosphere." },
     schedule: { ru: "график 2/2", en: "2/2 schedule" },
+    img: "/assets/tild6230-643__.jpg",
   },
 ];
 
@@ -53,29 +57,38 @@ export default function Vacancies() {
           </p>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-2 lg:gap-6">
-          {VACANCIES.map((v, i) => (
+        <div className="grid gap-5 sm:grid-cols-2 lg:gap-6">
+          {VACANCIES.map((v) => (
             <a
               key={v.role.ru}
               href="#join"
-              className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-[#3B0D1A]/15 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-[#3B0D1A]/40 hover:shadow-[0_26px_60px_rgba(59,13,26,0.16)]"
+              className="group relative flex aspect-[4/5] items-end overflow-hidden rounded-[24px] sm:aspect-[16/11] lg:aspect-[16/10]"
             >
-              <span className="pointer-events-none absolute -right-4 -top-6 font-display text-[80px] leading-none text-[#3B0D1A]/[0.06] transition-colors duration-300 group-hover:text-[#3B0D1A]/[0.1]">
-                {String(i + 1).padStart(2, "0")}
+              {/* Фон-фото с зумом */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={v.img}
+                alt=""
+                draggable={false}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
+              />
+              {/* Затемнение */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/10 transition-opacity duration-300 group-hover:from-black/80" />
+
+              {/* Тег графика — сверху справа */}
+              <span className="absolute right-5 top-5 rounded-full border border-white/40 bg-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-white backdrop-blur-sm">
+                {v.schedule[lang]}
               </span>
-              <div className="relative">
-                <div className="flex items-center justify-between gap-4">
-                  <h3 className="font-display text-[20px] leading-tight text-[#3B0D1A] lg:text-[24px]">{v.role[lang]}</h3>
-                  <span className="whitespace-nowrap rounded-full bg-[#4A4B33]/10 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-[#4A4B33]">
-                    {v.schedule[lang]}
-                  </span>
-                </div>
-                <p className="mt-4 text-[14px] leading-relaxed text-[#2a2320]/70 lg:text-[15px]">{v.desc[lang]}</p>
+
+              {/* Текст поверх фото — снизу */}
+              <div className="relative z-10 w-full p-7 lg:p-8">
+                <h3 className="font-display text-[22px] leading-tight text-white lg:text-[27px]">{v.role[lang]}</h3>
+                <p className="mt-2 max-w-[22rem] text-[13px] leading-relaxed text-white/75 lg:text-[14px]">{v.desc[lang]}</p>
+                <span className="mt-5 inline-flex items-center gap-2 font-display text-[13px] uppercase tracking-[0.14em] text-white">
+                  {en ? "apply" : "откликнуться"}
+                  <span className="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+                </span>
               </div>
-              <span className="relative mt-8 inline-flex items-center gap-2 font-display text-[13px] uppercase tracking-[0.14em] text-[#3B0D1A]">
-                {en ? "apply" : "откликнуться"}
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </span>
             </a>
           ))}
         </div>
