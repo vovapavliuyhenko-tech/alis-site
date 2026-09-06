@@ -53,6 +53,7 @@ export default function ConciergePage() {
             eyebrow={{ ru: "Услуги и прайс", en: "Services & prices" }}
             title={{ ru: "Форматы выезда", en: "On-location formats" }}
             categories={CONCIERGE_CATEGORIES}
+            cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }}
           />
         </div>
 

@@ -18,26 +18,13 @@ const PHOTOS = [
   "/assets/tild6536-613_-2___1__4.jpg",
 ];
 
-function Panel({
-  cat,
-  img,
-  lang,
-  onHoverRow,
-  onLeave,
-}: {
-  cat: ServiceCategory;
-  img: string;
-  lang: Lang;
-  onHoverRow: (idx: number) => void;
-  onLeave: () => void;
-}) {
+type Cta = { label: Loc; href: string; external?: boolean };
+
+function Panel({ cat, img, lang, cta }: { cat: ServiceCategory; img: string; lang: Lang; cta: Cta }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div
-      onMouseLeave={onLeave}
-      className="flex flex-col rounded-[28px] bg-[#f3f1ed] p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] lg:min-h-[640px] lg:p-14"
-    >
+    <div className="flex flex-col rounded-[28px] border border-[#3B0D1A]/30 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] lg:min-h-[640px] lg:p-14">
       {/* Фото категории — только на мобильном (на десктопе фото зафиксировано слева) */}
       <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-[20px] lg:hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -53,7 +40,6 @@ function Panel({
             <div key={r.name.ru} className="border-b border-[#2a2320]/12 first:border-t first:border-t-[#2a2320]/12">
               <button
                 onClick={() => setOpen(isOpen ? null : idx)}
-                onMouseEnter={() => onHoverRow(idx)}
                 className="flex w-full items-center justify-between gap-4 py-5 text-left"
               >
                 <span className="text-[15px] text-[#2a2320] lg:text-[16px]">{r.name[lang]}</span>
@@ -78,6 +64,15 @@ function Panel({
           );
         })}
       </div>
+
+      {/* Кнопка во всю ширину снизу карточки */}
+      <a
+        href={cta.href}
+        {...(cta.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        className="mt-8 block w-full rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] px-6 py-4 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] lg:mt-auto lg:pt-4"
+      >
+        {cta.label[lang]}
+      </a>
     </div>
   );
 }
@@ -86,16 +81,17 @@ export default function ServiceStack({
   eyebrow,
   title,
   categories,
+  cta,
   ground = "white",
 }: {
   eyebrow: Loc;
   title: Loc;
   categories: ServiceCategory[];
+  cta: Cta;
   ground?: "white" | "cream";
 }) {
   const { lang } = useLang();
   const [active, setActive] = useState(0);
-  const [hoverPhoto, setHoverPhoto] = useState<string | null>(null);
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -121,7 +117,7 @@ export default function ServiceStack({
     };
   }, []);
 
-  const photo = hoverPhoto ?? PHOTOS[active % PHOTOS.length];
+  const photo = PHOTOS[active % PHOTOS.length];
 
   return (
     <section className={ground === "cream" ? "bg-[#f7f3ed] py-14 lg:py-20" : "bg-white py-14 lg:py-20"}>
@@ -159,8 +155,7 @@ export default function ServiceStack({
                   cat={c}
                   img={PHOTOS[i % PHOTOS.length]}
                   lang={lang}
-                  onHoverRow={(idx) => setHoverPhoto(PHOTOS[idx % PHOTOS.length])}
-                  onLeave={() => setHoverPhoto(null)}
+                  cta={cta}
                 />
               </div>
             ))}

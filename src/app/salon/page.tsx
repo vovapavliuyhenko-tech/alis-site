@@ -58,6 +58,11 @@ export default function SalonPage() {
             eyebrow={{ ru: "Услуги и цены", en: "Services & prices" }}
             title={{ ru: "Услуги салона", en: "Salon services" }}
             categories={SALON_CATEGORIES}
+            cta={{
+              label: { ru: "Записаться", en: "Book now" },
+              href: "https://n1054895.yclients.com/company/976464/personal/menu",
+              external: true,
+            }}
           />
         </div>
         <div id="loyalty" className="scroll-mt-24"><Loyalty /></div>
