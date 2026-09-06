@@ -39,21 +39,21 @@ const easeInOut = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x 
 export default function SalonCompare() {
   const { lang } = useLang();
   const en = lang === "en";
-  const ref = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
   const [k, setK] = useState(0); // 0 — ровно (до), 1 — повёрнуто (долистал)
 
   useEffect(() => {
     let raf = 0;
-    // Поворот привязан НАПРЯМУЮ к позиции скролла — карточки крутятся ровно на
-    // столько, на сколько прокручено (скролл «скрабит» анимацию, без инерции).
+    // Отсчёт от РЯДА КАРТОЧЕК (а не всей секции): поворот стартует, когда ряд
+    // заходит снизу в экран, и завершается, пока он поднимается к ~40% высоты.
     const onScroll = () => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
-        const el = ref.current;
+        const el = gridRef.current;
         if (!el) return;
         const top = el.getBoundingClientRect().top;
         const vh = window.innerHeight;
-        const p = (vh * 0.88 - top) / (vh * 0.55);
+        const p = (vh - top) / (vh * 0.6);
         setK(Math.max(0, Math.min(1, p)));
       });
     };
@@ -72,13 +72,13 @@ export default function SalonCompare() {
   const cardTilt = 4.5 * e; // средние карточки — друг к другу
 
   return (
-    <section ref={ref} className="bg-white py-24 lg:py-28">
+    <section className="bg-white py-24 lg:py-28">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <h2 className="mb-16 text-center font-display text-[22px] font-normal tracking-[0.01em] lg:mb-20 lg:text-[32px]" style={{ color: INK }}>
           {en ? "ÁLIS and the usual care" : "ÁLIS и привычный уход"}
         </h2>
 
-        <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-[0.78fr_1fr_1fr_0.78fr] lg:gap-6">
+        <div ref={gridRef} className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-[0.78fr_1fr_1fr_0.78fr] lg:gap-6">
           {/* Фото слева — наклон наружу (влево) */}
           <div className="hidden lg:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
