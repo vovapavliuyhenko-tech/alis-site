@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import ConciergeHero from "@/components/pages/ConciergeHero";
 import InfoBlock from "@/components/pages/InfoBlock";
-import ServiceCards from "@/components/pages/ServiceCards";
+import ServiceScroll from "@/components/pages/ServiceScroll";
 import { type ServiceCategory } from "@/components/pages/ServiceTabs";
 import QuizConsult from "@/components/QuizConsult";
 import ConciergeChat from "@/components/ConciergeChat";
@@ -49,7 +49,7 @@ export default function ConciergePage() {
       <div className="relative z-10 bg-white">
         <div id="uslugi" className="scroll-mt-24">
           <span id="price" />
-          <ServiceCards
+          <ServiceScroll
             eyebrow={{ ru: "Услуги и прайс", en: "Services & prices" }}
             title={{ ru: "Форматы выезда", en: "On-location formats" }}
             categories={CONCIERGE_CATEGORIES}
