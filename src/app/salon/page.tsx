@@ -2,8 +2,52 @@ import Header from "@/components/Header";
 import Reviews from "@/components/Reviews";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import Loyalty from "@/components/pages/Loyalty";
+import HorizontalStory, { type Stage } from "@/components/HorizontalStory";
 import SalonPinnedHero from "@/components/pages/SalonPinnedHero";
+
+// Этапы визита в салон (для горизонтального блока).
+const SALON_STAGES: Stage[] = [
+  {
+    name: { ru: "Запись", en: "Booking" },
+    heading: { ru: "Выбираете услугу и удобное время", en: "You pick a service and a convenient time" },
+    desc: {
+      ru: "Онлайн-запись за пару минут: видно мастеров, услуги и свободные окна. Без звонков и ожидания.",
+      en: "Online booking in a couple of minutes: masters, services and free slots at a glance. No calls, no waiting.",
+    },
+    quote: { ru: "«Удобно и без звонков»", en: "“Easy, with no calls”" },
+    photo: "/assets/tild6230-643__.jpg",
+  },
+  {
+    name: { ru: "Встреча", en: "Welcome" },
+    heading: { ru: "Обсуждаем пожелания и референсы", en: "We discuss your wishes and references" },
+    desc: {
+      ru: "Администратор встречает, а мастер разбирается в задаче — с референсами и честным разбором, что подойдёт именно вам.",
+      en: "The admin greets you, the master understands the task — with references and an honest take on what suits you.",
+    },
+    quote: { ru: "«Слышим вас с первого слова»", en: "“We hear you from the first word”" },
+    photo: "/assets/tild3236-393__.jpg",
+  },
+  {
+    name: { ru: "Уход", en: "Care" },
+    heading: { ru: "Создаём полный образ за один визит", en: "We create the whole look in one visit" },
+    desc: {
+      ru: "Волосы, ногти, брови и макияж — премиальной косметикой, аккуратно и точно по задумке. Всё в одном кресле.",
+      en: "Hair, nails, brows and makeup — premium cosmetics, precise and true to the vision. All in one chair.",
+    },
+    quote: { ru: "«Красота за одно кресло»", en: "“Beauty in one chair”" },
+    photo: "/assets/tild6530-383_-2___1_.jpg",
+  },
+  {
+    name: { ru: "Забота", en: "Aftercare" },
+    heading: { ru: "Провожаем с рекомендациями и заботой", en: "We see you off with care and advice" },
+    desc: {
+      ru: "Расскажем, как сохранить результат, и напомним о следующей записи. Возвращаться к нам приятно.",
+      en: "We tell you how to keep the result and remind you of the next visit. Coming back feels good.",
+    },
+    quote: { ru: "«Возвращаться приятно»", en: "“A pleasure to return”" },
+    photo: "/assets/tild6536-613_-2___1__4.jpg",
+  },
+];
 import ServiceStack from "@/components/pages/ServiceStack";
 import { type ServiceCategory } from "@/components/pages/ServiceTabs";
 
@@ -64,7 +108,7 @@ export default function SalonPage() {
             }}
           />
         </div>
-        <div id="loyalty" className="scroll-mt-24"><Loyalty /></div>
+        <div id="loyalty" className="scroll-mt-24"><HorizontalStory stages={SALON_STAGES} sectionId="process" /></div>
         <Reviews />
       </div>
       <Footer />

@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
-type Stage = {
+export type Stage = {
   name: Loc;
   heading: Loc;
   desc: Loc;
@@ -81,7 +81,13 @@ function Flourish() {
   );
 }
 
-export default function HorizontalStory() {
+export default function HorizontalStory({
+  stages = STAGES,
+  sectionId = "process",
+}: {
+  stages?: Stage[];
+  sectionId?: string;
+}) {
   const { lang } = useLang();
   const secRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -122,13 +128,13 @@ export default function HorizontalStory() {
   }, []);
 
   return (
-    <section id="process" ref={secRef} className="relative bg-white">
+    <section id={sectionId} ref={secRef} className="relative bg-white">
       <div className="md:sticky md:top-[10vh] md:h-[90svh] md:overflow-hidden">
         <div
           ref={trackRef}
           className="flex flex-col md:h-full md:flex-row md:will-change-transform"
         >
-          {STAGES.map((s, i) => (
+          {stages.map((s, i) => (
             <article
               key={s.name.ru}
               className="flex w-full shrink-0 flex-col md:h-full md:w-screen md:flex-row"
