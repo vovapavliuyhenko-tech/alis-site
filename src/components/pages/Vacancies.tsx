@@ -73,7 +73,7 @@ export default function Vacancies() {
 
               {/* Название + описание */}
               <div className="min-w-0">
-                <h3 className="font-display text-[19px] font-normal uppercase leading-[1.1] tracking-[0.01em] text-[#3B0D1A] transition-transform duration-300 group-hover:translate-x-2 sm:text-[24px] lg:text-[32px]">
+                <h3 className="font-display text-[16px] font-normal uppercase leading-[1.15] tracking-[0.01em] text-[#3B0D1A] transition-transform duration-300 group-hover:translate-x-2 sm:text-[19px] lg:text-[24px]">
                   {v.role[lang]}
                 </h3>
                 <p className="mt-2 text-[12.5px] text-[#2a2320]/55 lg:text-[13.5px]">{v.desc[lang]}</p>
