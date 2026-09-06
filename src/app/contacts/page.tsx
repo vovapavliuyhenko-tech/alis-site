@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/pages/PageHero";
-import ContactsSection from "@/components/pages/ContactsSection";
+import ContactsCTA from "@/components/pages/ContactsCTA";
 
 export default function ContactsPage() {
   return (
@@ -18,7 +18,7 @@ export default function ContactsPage() {
             en: "Call, message or drop by — we'll help with anything.",
           }}
         />
-        <ContactsSection />
+        <ContactsCTA />
       </div>
       <Footer />
     </main>
