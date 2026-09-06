@@ -99,7 +99,7 @@ export default function JoinForm() {
 
                 <button
                   type="submit"
-                  className="mt-2 inline-flex items-center justify-center rounded-2xl bg-[#f4efe6] px-10 py-3.5 font-display text-[13px] uppercase tracking-[0.16em] text-[#3B0D1A] transition-colors duration-300 hover:bg-[#e7c9a0] sm:text-[14px]"
+                  className="mt-2 inline-flex items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] px-10 py-3.5 font-display text-[13px] uppercase tracking-[0.16em] text-[#3B0D1A] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
                 >
                   {en ? "send" : "отправить"}
                 </button>

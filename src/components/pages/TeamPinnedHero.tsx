@@ -83,7 +83,7 @@ export default function TeamPinnedHero() {
               {s.kind === "title" && (
                 <>
                   <span className="text-[10px] font-medium uppercase tracking-[0.28em] text-white/70">
-                    {en ? "team" : "команда"}
+                    {en ? "we" : "мы"}
                   </span>
                   <h1 className="mt-4 font-display text-[20px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-white sm:text-[26px] lg:text-[32px]">
                     {en ? "The ÁLIS team" : "Команда ÁLIS"}
