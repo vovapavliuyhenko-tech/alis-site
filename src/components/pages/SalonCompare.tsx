@@ -14,22 +14,22 @@ const INK = "#17191a";
 
 const COLS: { head: Loc; points: Loc[]; foot: Loc }[] = [
   {
-    head: { ru: "Как обычно", en: "The usual way" },
+    head: { ru: "В обычном салоне", en: "At an ordinary salon" },
     points: [
-      { ru: "по трём мастерам в разные дни", en: "three masters on different days" },
-      { ru: "запись под каждого отдельно", en: "a separate booking for each" },
-      { ru: "суббота уходит на разъезды", en: "your Saturday goes to commuting" },
+      { ru: "поток клиентов нестабильный", en: "an unsteady flow of clients" },
+      { ru: "процент занижают, условия туманные", en: "low commission, vague terms" },
+      { ru: "материалы и график — как придётся", en: "materials and schedule — as it goes" },
     ],
-    foot: { ru: "Обычно —\nдолго и врозь", en: "Usual —\nslow and scattered" },
+    foot: { ru: "Обычный салон — как повезёт", en: "Ordinary salon — hit or miss" },
   },
   {
-    head: { ru: "ÁLIS BEAUTY", en: "ÁLIS BEAUTY" },
+    head: { ru: "В команде ÁLIS", en: "On the ÁLIS team" },
     points: [
-      { ru: "всё в одном кресле, в 4–6 рук", en: "all in one chair, in 4–6 hands" },
-      { ru: "один визит — полный образ", en: "one visit — a complete look" },
-      { ru: "пара часов — и готово", en: "a couple of hours — and done" },
+      { ru: "стабильный поток гостей и записи", en: "a steady flow of guests and bookings" },
+      { ru: "честный процент и прозрачная оплата", en: "fair commission, transparent pay" },
+      { ru: "проверенные материалы, обучение и рост", en: "trusted materials, training and growth" },
     ],
-    foot: { ru: "ÁLIS —\nцельно и за раз", en: "ÁLIS —\nwhole, in one go" },
+    foot: { ru: "ÁLIS — стабильно и по-честному", en: "ÁLIS — stable and fair" },
   },
 ];
 
@@ -75,7 +75,7 @@ export default function SalonCompare() {
     <section className="bg-white py-24 lg:py-28">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <h2 className="mb-16 text-center font-display text-[22px] font-normal tracking-[0.01em] lg:mb-20 lg:text-[32px]" style={{ color: INK }}>
-          {en ? "ÁLIS and the usual care" : "ÁLIS и привычный уход"}
+          {en ? "Why masters choose ÁLIS" : "Почему мастера выбирают ÁLIS"}
         </h2>
 
         <div ref={gridRef} className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-[0.78fr_1fr_1fr_0.78fr] lg:gap-6">
@@ -103,13 +103,14 @@ export default function SalonCompare() {
                   transform: `rotate(${dir * cardTilt}deg)`,
                   transformOrigin: "bottom center",
                   willChange: "transform",
+                  boxShadow: "0 16px 44px rgba(23,25,26,0.10)",
                 }}
               >
                 <div>
                   <p className="font-display text-[18px] tracking-[0.01em] lg:text-[21px]" style={{ color: INK }}>
                     {c.head[lang]}
                   </p>
-                  <ul className="mt-7 space-y-4 text-[14px] leading-relaxed lg:text-[15px]" style={{ color: "rgba(23,25,26,0.72)" }}>
+                  <ul className="mt-4 space-y-3 text-[14px] leading-relaxed lg:text-[15px]" style={{ color: "rgba(23,25,26,0.72)" }}>
                     {c.points.map((pt) => (
                       <li key={pt.ru} className="flex items-start gap-3">
                         <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: INK }} />
@@ -118,7 +119,7 @@ export default function SalonCompare() {
                     ))}
                   </ul>
                 </div>
-                <p className="mt-10 whitespace-pre-line font-display text-[15px] font-semibold leading-snug lg:text-[17px]" style={{ color: INK }}>
+                <p className="mt-10 font-display text-[15px] font-normal leading-snug lg:text-[17px]" style={{ color: INK }}>
                   {c.foot[lang]}
                 </p>
               </article>
