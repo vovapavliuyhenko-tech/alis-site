@@ -24,7 +24,7 @@ function Panel({ cat, img, lang, cta }: { cat: ServiceCategory; img: string; lan
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="flex flex-col rounded-[28px] border border-[#3B0D1A]/30 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] lg:min-h-[640px] lg:p-14">
+    <div className="flex flex-col rounded-[28px] border border-[#3B0D1A]/30 bg-white p-8 lg:min-h-[640px] lg:p-14">
       {/* Фото категории — только на мобильном (на десктопе фото зафиксировано слева) */}
       <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-[20px] lg:hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -135,7 +135,7 @@ export default function ServiceStack({
         <div className="grid gap-2 lg:grid-cols-2">
           {/* ЛЕВО — одно зафиксированное фото */}
           <div className="hidden lg:block">
-            <div className="sticky top-24 h-[640px] overflow-hidden rounded-[28px] shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+            <div className="sticky top-24 h-[640px] overflow-hidden rounded-[28px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={photo} alt="" className="h-full w-full object-cover" draggable={false} />
             </div>
