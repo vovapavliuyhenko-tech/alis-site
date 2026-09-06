@@ -1,17 +1,16 @@
 "use client";
-// «Для кого ÁLIS» — обычная секция: слева фото, справа нумерованный список
-// аудиторий. Без пиннинга и скролл-эффектов. Двуязычно.
+// «Для кого ÁLIS» — по мотивам cryome: заголовок сверху, слева колонка фото,
+// справа нумерованный список аудиторий, распределённый по высоте. Двуязычно.
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
+type Item = { line: Loc; img: string };
 
-const IMG = "/assets/tild6230-643__.jpg";
-
-const ITEMS: Loc[] = [
-  { ru: "много работает и живёт в плотном графике", en: "works a lot and lives on a tight schedule" },
-  { ru: "ценит ухоженный вид без лишних действий", en: "values a groomed look without extra fuss" },
-  { ru: "любит эстетичный уход и красивые ритуалы", en: "loves aesthetic care and beautiful rituals" },
-  { ru: "хочет регулярный результат без спешки", en: "wants a regular result without the rush" },
+const ITEMS: Item[] = [
+  { line: { ru: "много работает и живёт в плотном графике", en: "works a lot and lives on a tight schedule" }, img: "/assets/tild6230-643__.jpg" },
+  { line: { ru: "ценит ухоженный вид без лишних действий", en: "values a groomed look without extra fuss" }, img: "/assets/tild6530-383_-2___1_.jpg" },
+  { line: { ru: "любит эстетичный уход и красивые ритуалы", en: "loves aesthetic care and beautiful rituals" }, img: "/assets/tild3236-393__.jpg" },
+  { line: { ru: "хочет регулярный результат без спешки", en: "wants a regular result without the rush" }, img: "/assets/tild3638-373_-2___1__3.jpg" },
 ];
 
 export default function ForWhom() {
@@ -20,9 +19,9 @@ export default function ForWhom() {
 
   return (
     <section id="for-whom" className="bg-white py-24 lg:py-28">
-      <div className="mx-auto w-[92%] max-w-[1200px]">
-        {/* Заголовок */}
-        <div className="mb-12 text-center lg:mb-16">
+      <div className="mx-auto w-[92%] max-w-[1240px]">
+        {/* Заголовок сверху по центру */}
+        <div className="mb-14 text-center lg:mb-20">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
             {en ? "for whom ÁLIS" : "для кого ÁLIS"}
@@ -32,25 +31,30 @@ export default function ForWhom() {
           </h2>
         </div>
 
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          {/* Фото */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={IMG}
-            alt=""
-            className="aspect-[4/5] w-full max-w-[420px] rounded-[26px] object-cover"
-            draggable={false}
-          />
+        {/* Слева фото-колонка, справа нумерованный список */}
+        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+          {/* Фото — вертикальная колонка */}
+          <div className="flex flex-col gap-6">
+            {ITEMS.map((it) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={it.img}
+                src={it.img}
+                alt=""
+                className="aspect-[5/4] w-full rounded-[24px] object-cover"
+                draggable={false}
+              />
+            ))}
+          </div>
 
-          {/* Нумерованный список */}
-          <ul className="flex flex-col">
+          {/* Список — распределён по высоте напротив фото */}
+          <ul className="flex flex-col justify-between gap-8 py-2">
             {ITEMS.map((it, i) => (
-              <li
-                key={it.ru}
-                className="grid grid-cols-[auto_1fr] items-start gap-6 border-t border-[#17191a]/12 py-6 last:border-b lg:gap-8 lg:py-7"
-              >
-                <span className="font-display text-[15px] tabular-nums text-[#4A4B33]">{String(i + 1).padStart(2, "0")}</span>
-                <span className="text-[16px] leading-snug text-[#2a2320] lg:text-[19px]">{it[lang]}</span>
+              <li key={it.line.ru} className="grid grid-cols-[auto_1fr] items-start gap-6 lg:gap-8">
+                <span className="font-display text-[20px] tabular-nums leading-none text-[#4A4B33] lg:text-[26px]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-[18px] leading-snug text-[#2a2320] lg:text-[24px]">{it.line[lang]}</span>
               </li>
             ))}
           </ul>
