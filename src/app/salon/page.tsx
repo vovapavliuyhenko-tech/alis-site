@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import Certificates from "@/components/Certificates";
 import Reviews from "@/components/Reviews";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -66,7 +65,6 @@ export default function SalonPage() {
           />
         </div>
         <div id="loyalty" className="scroll-mt-24"><Loyalty /></div>
-        <Certificates />
         <Reviews />
       </div>
       <Footer />

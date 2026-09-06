@@ -16,6 +16,22 @@ const FIELDS: Field[] = [
   { key: "phone", label: { ru: "Телефон", en: "Phone" }, required: true, type: "tel" },
 ];
 
+// Маска телефона: +7 (XXX) XXX-XX-XX по мере ввода цифр.
+function formatPhone(v: string): string {
+  let d = v.replace(/\D/g, "");
+  if (d.startsWith("8")) d = "7" + d.slice(1);
+  if (!d.startsWith("7")) d = "7" + d;
+  d = d.slice(0, 11);
+  const p = d.slice(1); // до 10 цифр без кода страны
+  let out = "+7";
+  if (p.length > 0) out += " (" + p.slice(0, 3);
+  if (p.length >= 3) out += ")";
+  if (p.length > 3) out += " " + p.slice(3, 6);
+  if (p.length > 6) out += "-" + p.slice(6, 8);
+  if (p.length > 8) out += "-" + p.slice(8, 10);
+  return out;
+}
+
 export default function JoinForm() {
   const { lang } = useLang();
   const en = lang === "en";
@@ -73,8 +89,11 @@ export default function JoinForm() {
                     </span>
                     <input
                       type={f.type || "text"}
-                      value={values[f.key] || ""}
-                      onChange={(e) => set(f.key, e.target.value)}
+                      inputMode={f.key === "phone" ? "tel" : undefined}
+                      placeholder={f.key === "phone" ? "+7 (___) ___-__-__" : undefined}
+                      value={f.key === "phone" ? (values[f.key] || "+7 ") : values[f.key] || ""}
+                      onFocus={f.key === "phone" ? () => { if (!values.phone) set("phone", "+7 "); } : undefined}
+                      onChange={(e) => set(f.key, f.key === "phone" ? formatPhone(e.target.value) : e.target.value)}
                       className="w-full bg-transparent text-[15px] text-[#f4efe6] outline-none placeholder:text-[#f4efe6]/30"
                     />
                   </label>
