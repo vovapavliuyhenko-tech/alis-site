@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import PageHero from "@/components/pages/PageHero";
+import ConciergeHero from "@/components/pages/ConciergeHero";
 import InfoBlock from "@/components/pages/InfoBlock";
 import QuizConsult from "@/components/QuizConsult";
 import ConciergeChat from "@/components/ConciergeChat";
@@ -13,16 +13,9 @@ export default function ConciergePage() {
     <main>
       <ScrollReveal />
       <Header />
-      <div className="relative z-10 bg-white">
-        <PageHero
-          eyebrow={{ ru: "Бьюти-консьерж", en: "Concierge" }}
-          title={{ ru: "Выездной бьюти-консьерж", en: "On-location concierge" }}
-          subtitle={{
-            ru: "Премиум-сопровождение мероприятий: команда мастеров, тайминг и образ под ключ — по России и за границей.",
-            en: "Premium event service: a team of masters, timing and a turnkey look — across Russia and abroad.",
-          }}
-        />
+      <ConciergeHero />
 
+      <div className="relative z-10 bg-white">
         <div id="uslugi" className="scroll-mt-24">
           <InfoBlock
             eyebrow={{ ru: "Услуги", en: "Services" }}
