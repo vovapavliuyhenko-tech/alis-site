@@ -51,11 +51,6 @@ export default function Vacancies() {
           <h2 className="mt-5 font-display text-[28px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#3B0D1A] lg:text-[42px]">
             {en ? "Grow with ÁLIS" : "Расти вместе с ÁLIS"}
           </h2>
-          <p className="mt-5 text-[14px] leading-relaxed text-[#2a2320]/70 lg:text-[15px]">
-            {en
-              ? "We're building a team that loves its craft. Hover a role — and tell us about yourself in the form below."
-              : "Мы собираем команду, которая любит своё дело. Наведитесь на роль — и расскажите о себе в форме ниже."}
-          </p>
         </div>
 
         {/* Оглавление-журнал: крупные строки, фото всплывает при наведении */}
@@ -79,24 +74,24 @@ export default function Vacancies() {
                 <p className="mt-2 text-[12.5px] text-[#2a2320]/55 lg:text-[13.5px]">{v.desc[lang]}</p>
               </div>
 
-              {/* График + стрелка */}
+              {/* График + стрелка в кружке */}
               <span className="flex items-center gap-4 lg:gap-6">
                 <span className="hidden whitespace-nowrap rounded-full bg-[#4A4B33]/10 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-[#4A4B33] sm:inline">
                   {v.schedule[lang]}
                 </span>
-                <span className="font-display text-[22px] text-[#3B0D1A] transition-transform duration-300 group-hover:translate-x-1.5 lg:text-[28px]">
-                  →
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#3B0D1A]/30 text-[#3B0D1A] transition-all duration-300 group-hover:border-[#3B0D1A] group-hover:bg-[#3B0D1A] group-hover:text-[#f4efe6] lg:h-12 lg:w-12">
+                  <span className="text-[16px] leading-none transition-transform duration-300 group-hover:-rotate-45 lg:text-[18px]">→</span>
                 </span>
               </span>
 
-              {/* Всплывающее фото роли (только на десктопе) */}
+              {/* Всплывающее фото роли по центру, в пустоте (только на десктопе) */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={v.img}
                 alt=""
                 draggable={false}
                 aria-hidden
-                className="pointer-events-none absolute right-[10%] top-1/2 z-20 hidden aspect-[3/4] w-[210px] -translate-y-1/2 rotate-[-3deg] scale-95 rounded-[20px] object-cover opacity-0 shadow-[0_28px_60px_rgba(59,13,26,0.28)] transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:block"
+                className="pointer-events-none absolute left-1/2 top-1/2 z-20 hidden aspect-[3/4] w-[280px] -translate-x-1/2 -translate-y-1/2 rotate-[-3deg] scale-95 rounded-[22px] object-cover opacity-0 shadow-[0_28px_60px_rgba(59,13,26,0.28)] transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:block lg:w-[320px]"
               />
             </a>
           ))}
