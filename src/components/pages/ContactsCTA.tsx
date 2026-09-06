@@ -20,7 +20,7 @@ export default function ContactsCTA() {
     "inline-flex items-center justify-center gap-2 rounded-full border border-[#3B0D1A]/25 px-6 py-3 text-[13px] uppercase tracking-[0.1em] text-[#3B0D1A] transition-colors duration-300 hover:border-[#3B0D1A] hover:bg-[#3B0D1A] hover:text-[#f4efe6]";
 
   return (
-    <section id="contacts" className="scroll-mt-24 bg-white py-24 lg:py-28">
+    <section id="contacts" className="scroll-mt-24 bg-white py-24 lg:py-32">
       <div className="mx-auto grid w-[94%] max-w-[1400px] items-center gap-10 lg:grid-cols-2 lg:gap-20">
         {/* Карта */}
         <div className="overflow-hidden rounded-[24px] border border-[#17191a]/10 shadow-[0_18px_44px_rgba(0,0,0,0.08)]">

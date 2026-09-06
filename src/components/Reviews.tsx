@@ -192,7 +192,7 @@ export default function Reviews() {
   }, []);
 
   return (
-    <section id="reviews" className="overflow-hidden bg-white py-24 lg:py-28">
+    <section id="reviews" className="overflow-hidden bg-white py-24 lg:py-32">
       <div className="mx-auto w-[92%] max-w-[1200px]">
         {/* Заголовок */}
         <div className="mb-14 flex flex-col items-center text-center lg:mb-20">

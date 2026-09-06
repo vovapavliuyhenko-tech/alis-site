@@ -72,7 +72,7 @@ export default function SalonCompare() {
   const cardTilt = 4.5 * e; // средние карточки — друг к другу
 
   return (
-    <section className="bg-white py-24 lg:py-28">
+    <section className="bg-white py-24 lg:py-32">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <h2 className="mb-16 text-center font-display text-[22px] font-normal tracking-[0.01em] lg:mb-20 lg:text-[32px]" style={{ color: INK }}>
           {en ? "Why masters choose ÁLIS" : "Почему мастера выбирают ÁLIS"}

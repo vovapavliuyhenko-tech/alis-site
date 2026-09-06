@@ -108,7 +108,7 @@ export default function FlipGallery() {
   const tiles = buildTiles(CATS[0], 0);
 
   return (
-    <section id="works" className="scroll-mt-24 bg-white py-24 lg:py-28">
+    <section id="works" className="scroll-mt-24 bg-white py-24 lg:py-32">
       <div className="mx-auto w-[92%] max-w-[1400px]">
         {/* Заголовок */}
         <div className="mb-14 max-w-2xl lg:mb-20">

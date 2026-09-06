@@ -72,7 +72,7 @@ export default function Brands() {
   const { lang } = useLang();
   const en = lang === "en";
   return (
-    <section className="overflow-hidden bg-white py-24 lg:py-28">
+    <section className="overflow-hidden bg-white py-24 lg:py-32">
       {/* Заголовок с эйброу-бейджем и акцентом */}
       <div className="mx-auto mb-14 w-[92%] max-w-[1200px] text-center lg:mb-20">
         <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">

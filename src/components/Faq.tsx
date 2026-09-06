@@ -66,7 +66,7 @@ export default function Faq() {
   const en = lang === "en";
 
   return (
-    <section id="faq" className="bg-white py-24 lg:py-28">
+    <section id="faq" className="bg-white py-24 lg:py-32">
       <div className="mx-auto grid w-[92%] max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         {/* Левая колонка — зафиксирована */}
         <div className="lg:sticky lg:top-28 lg:self-start">

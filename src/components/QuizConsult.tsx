@@ -111,7 +111,7 @@ export default function QuizConsult() {
   };
 
   return (
-    <section id="concierge" className="scroll-mt-24 bg-white py-16 lg:py-24">
+    <section id="concierge" className="scroll-mt-24 bg-white py-24 lg:py-32">
       <div className="mx-auto w-[92%] max-w-[1180px]">
         {/* Заголовок */}
         <div className="mb-10 max-w-2xl lg:mb-12">
