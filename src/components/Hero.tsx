@@ -12,7 +12,7 @@ export default function Hero() {
   const t = (ru: string, e: string) => (en ? e : ru);
 
   return (
-    <section className="relative flex h-svh min-h-[640px] w-full flex-col overflow-hidden bg-gradient-to-b from-[#f7f3ed] to-[#efe7db] px-6 pb-8 pt-20 text-center sm:pb-10">
+    <section className="relative flex h-svh min-h-[640px] w-full flex-col overflow-hidden bg-gradient-to-b from-[#f7f3ed] to-[#efe7db] px-6 pb-4 pt-20 text-center sm:pb-5">
       <div className="relative z-10 mx-auto flex max-w-2xl flex-1 flex-col items-center justify-center">
         {/* Надстрочник */}
         <p className="text-[11px] font-medium tracking-wide text-[#2a2320]/80 sm:text-[12px]">

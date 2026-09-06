@@ -44,7 +44,7 @@ export default function Footer() {
       {/* Гигантский бренд-вотермарк снизу — тот же логотип, что в шапке */}
       <LogoWord
         variant="cream"
-        className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto w-[94%] max-w-[1680px] select-none opacity-10 translate-y-[6%]"
+        className="pointer-events-none absolute inset-x-0 bottom-6 mx-auto w-[94%] max-w-[1680px] select-none opacity-10 sm:bottom-10"
       />
 
       <div className="relative z-10 mx-auto w-[94%] max-w-[1680px] pb-10 pt-16 lg:pt-20">
