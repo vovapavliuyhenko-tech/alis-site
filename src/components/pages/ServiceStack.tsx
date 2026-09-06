@@ -28,11 +28,11 @@ function CategoryCard({ cat, img, lang }: { cat: ServiceCategory; img: string; l
     // непрозрачный фон-подложка (цвет секции) перекрывает предыдущую карточку;
     // внутри — ДВЕ отдельные карточки с зазором между ними.
     <div
-      className="grid items-stretch gap-4 bg-white lg:grid-cols-2 lg:gap-6"
+      className="grid items-stretch gap-2 bg-white lg:grid-cols-2"
       onMouseLeave={() => setPhoto(img)}
     >
       {/* Левая карточка — услуги-аккордеон (простые строки с разделителями) */}
-      <div className="flex flex-col rounded-[28px] bg-[#f3f1ed] p-8 lg:min-h-[640px] lg:p-16">
+      <div className="order-2 flex flex-col rounded-[28px] bg-[#f3f1ed] p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] lg:min-h-[640px] lg:p-16">
         <h3 className="font-display text-[24px] uppercase tracking-[0.02em] text-[#2a2320] lg:text-[30px]">
           {cat.label[lang]}
         </h3>
@@ -72,7 +72,7 @@ function CategoryCard({ cat, img, lang }: { cat: ServiceCategory; img: string; l
       </div>
 
       {/* Правая карточка — большое фото (мгновенно меняется при наведении на строку) */}
-      <div className="relative min-h-[320px] overflow-hidden rounded-[28px] lg:min-h-[640px]">
+      <div className="order-1 relative min-h-[320px] overflow-hidden rounded-[28px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] lg:min-h-[640px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={photo} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
       </div>
@@ -109,7 +109,7 @@ export default function ServiceStack({
         {/* Карточки наезжают друг на друга при скролле */}
         <div>
           {categories.map((c, i) => (
-            <div key={c.label.ru} className="sticky top-24 pb-5 last:pb-0">
+            <div key={c.label.ru} className="sticky top-24 pb-2 last:pb-0">
               <CategoryCard cat={c} img={PHOTOS[i % PHOTOS.length]} lang={lang} />
             </div>
           ))}
