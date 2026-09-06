@@ -21,43 +21,48 @@ const PHOTOS = [
 
 function CategoryCard({ cat, img, lang }: { cat: ServiceCategory; img: string; lang: Lang }) {
   const [open, setOpen] = useState<number | null>(0);
+  const [photo, setPhoto] = useState(img); // фото справа, мгновенно меняется при наведении на строку
+  const rowPhoto = (idx: number) => PHOTOS[idx % PHOTOS.length];
 
   return (
-    <div className="grid overflow-hidden rounded-[28px] bg-white shadow-[0_-10px_36px_rgba(0,0,0,0.10)] lg:grid-cols-2 lg:min-h-[460px]">
-      {/* Левая панель — услуги-аккордеон */}
-      <div className="flex flex-col bg-[#f2ede3] p-8 lg:p-12">
-        <h3 className="font-display text-[22px] uppercase tracking-[0.03em] text-[#3B0D1A] lg:text-[26px]">
+    // непрозрачный фон-подложка (цвет секции) перекрывает предыдущую карточку;
+    // внутри — ДВЕ отдельные карточки с зазором между ними.
+    <div
+      className="grid items-stretch gap-4 bg-white lg:grid-cols-2 lg:gap-6"
+      onMouseLeave={() => setPhoto(img)}
+    >
+      {/* Левая карточка — услуги-аккордеон (простые строки с разделителями) */}
+      <div className="flex flex-col rounded-[28px] bg-[#f3f1ed] p-8 lg:min-h-[560px] lg:p-14">
+        <h3 className="font-display text-[24px] uppercase tracking-[0.02em] text-[#2a2320] lg:text-[30px]">
           {cat.label[lang]}
         </h3>
 
-        <div className="mt-7 flex flex-col gap-3">
+        <div className="mt-8">
           {cat.rows.map((r, idx) => {
             const isOpen = open === idx;
             return (
-              <div key={r.name.ru} className="overflow-hidden rounded-2xl border border-[#3B0D1A]/10 bg-white/70">
+              <div key={r.name.ru} className="border-b border-[#2a2320]/12 first:border-t first:border-t-[#2a2320]/12">
                 <button
                   onClick={() => setOpen(isOpen ? null : idx)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-3.5 text-left"
+                  onMouseEnter={() => setPhoto(rowPhoto(idx))}
+                  className="flex w-full items-center justify-between gap-4 py-5 text-left"
                 >
-                  <span className="text-[14px] text-[#2a2320] lg:text-[15px]">{r.name[lang]}</span>
-                  <span className="flex shrink-0 items-center gap-3">
-                    <span className="whitespace-nowrap font-display text-[14px] text-[#3B0D1A] lg:text-[15px]">{r.price[lang]}</span>
-                    <span
-                      className="flex h-6 w-6 items-center justify-center rounded-full border border-[#3B0D1A]/25 text-[12px] text-[#3B0D1A] transition-transform duration-300"
-                      style={{ transform: isOpen ? "rotate(45deg)" : "none" }}
-                    >
-                      +
-                    </span>
+                  <span className="text-[15px] text-[#2a2320] lg:text-[16px]">{r.name[lang]}</span>
+                  <span
+                    className="shrink-0 text-[18px] font-light leading-none text-[#2a2320]/70 transition-transform duration-300"
+                    style={{ transform: isOpen ? "rotate(45deg)" : "none" }}
+                  >
+                    +
                   </span>
                 </button>
-                <div
-                  className="grid transition-all duration-300 ease-out"
-                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
-                >
+                <div className="grid transition-all duration-300 ease-out" style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}>
                   <div className="overflow-hidden">
-                    <p className="px-5 pb-4 text-[12.5px] leading-relaxed text-[#2a2320]/60 lg:text-[13px]">
-                      {(r.note ?? r.price)[lang]}
-                    </p>
+                    <div className="flex items-baseline justify-between gap-4 pb-5">
+                      <p className="max-w-[80%] text-[13px] leading-relaxed text-[#2a2320]/55 lg:text-[13.5px]">
+                        {(r.note ?? r.price)[lang]}
+                      </p>
+                      <span className="whitespace-nowrap font-display text-[15px] text-[#3B0D1A] lg:text-[16px]">{r.price[lang]}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -66,10 +71,10 @@ function CategoryCard({ cat, img, lang }: { cat: ServiceCategory; img: string; l
         </div>
       </div>
 
-      {/* Правая колонка — большое фото */}
-      <div className="relative min-h-[280px] lg:min-h-full">
+      {/* Правая карточка — большое фото (мгновенно меняется при наведении на строку) */}
+      <div className="relative min-h-[320px] overflow-hidden rounded-[28px] lg:min-h-[560px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={img} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
+        <img src={photo} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
       </div>
     </div>
   );
