@@ -3,7 +3,7 @@ import Reviews from "@/components/Reviews";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import Loyalty from "@/components/pages/Loyalty";
-import SalonHero from "@/components/pages/SalonHero";
+import SalonPinnedHero from "@/components/pages/SalonPinnedHero";
 import ServiceStack from "@/components/pages/ServiceStack";
 import { type ServiceCategory } from "@/components/pages/ServiceTabs";
 
@@ -49,8 +49,8 @@ export default function SalonPage() {
     <main>
       <ScrollReveal />
       <Header />
+      <SalonPinnedHero />
       <div className="relative z-10 bg-white">
-        <SalonHero />
         <div id="uslugi" className="scroll-mt-24">
           <span id="price" />
           <ServiceStack
