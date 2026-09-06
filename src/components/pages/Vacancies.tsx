@@ -91,7 +91,7 @@ export default function Vacancies() {
                 alt=""
                 draggable={false}
                 aria-hidden
-                className="pointer-events-none absolute left-1/2 top-1/2 z-20 hidden aspect-[3/4] w-[280px] -translate-x-1/2 -translate-y-1/2 rotate-[-3deg] scale-95 rounded-[22px] object-cover opacity-0 shadow-[0_28px_60px_rgba(59,13,26,0.28)] transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:block lg:w-[320px]"
+                className="pointer-events-none absolute left-[60%] top-1/2 z-20 hidden aspect-[3/4] w-[230px] -translate-x-1/2 -translate-y-1/2 rotate-[-3deg] scale-95 rounded-[22px] object-cover opacity-0 shadow-[0_28px_60px_rgba(59,13,26,0.28)] transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:block lg:w-[260px]"
               />
             </a>
           ))}
