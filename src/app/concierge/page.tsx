@@ -2,13 +2,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import ConciergeHero from "@/components/pages/ConciergeHero";
-import InfoBlock from "@/components/pages/InfoBlock";
 import ServiceStack from "@/components/pages/ServiceStack";
 import { type ServiceCategory } from "@/components/pages/ServiceTabs";
 import QuizConsult from "@/components/QuizConsult";
 import ConciergeChat from "@/components/ConciergeChat";
-
-const PHONE_SERVICE = "+7 988 888 77 28";
 
 const onRequest = { ru: "по запросу", en: "on request" };
 const CONCIERGE_CATEGORIES: ServiceCategory[] = [
@@ -54,21 +51,6 @@ export default function ConciergePage() {
             title={{ ru: "Форматы выезда", en: "On-location formats" }}
             categories={CONCIERGE_CATEGORIES}
             cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }}
-          />
-        </div>
-
-        <div id="offer" className="scroll-mt-24">
-          <InfoBlock
-            dark
-            eyebrow={{ ru: "Коммерческое предложение", en: "Proposal" }}
-            title={{ ru: "Готовое КП для организаторов", en: "A ready proposal for organisers" }}
-            text={{
-              ru: "Для агентств, площадок и организаторов мероприятий готовим коммерческое предложение с форматами и условиями сотрудничества. Запросите — вышлем.",
-              en: "For agencies, venues and event organisers we prepare a commercial proposal with formats and terms. Request it — we'll send it over.",
-            }}
-            ctaLabel={{ ru: "Запросить КП", en: "Request the proposal" }}
-            ctaHref={`tel:${PHONE_SERVICE.replace(/[^\d+]/g, "")}`}
-            external={false}
           />
         </div>
 
