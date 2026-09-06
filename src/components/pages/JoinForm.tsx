@@ -14,9 +14,6 @@ const PHOTO = "/assets/tild6530-383_-2___1_.jpg";
 const FIELDS: Field[] = [
   { key: "name", label: { ru: "Имя", en: "Name" }, required: true },
   { key: "phone", label: { ru: "Телефон", en: "Phone" }, required: true, type: "tel" },
-  { key: "socials", label: { ru: "Ссылки на соц. сети", en: "Social links" }, required: false },
-  { key: "role", label: { ru: "Желаемая должность", en: "Desired role" }, required: true },
-  { key: "about", label: { ru: "Пара слов о себе", en: "A few words about you" }, required: false },
 ];
 
 export default function JoinForm() {
@@ -45,7 +42,7 @@ export default function JoinForm() {
 
   return (
     <section id="join" className="scroll-mt-24 bg-white p-3 sm:p-4">
-      <div className="grid min-h-[calc(100svh-24px)] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая бордовая панель */}
         <div className="flex flex-col justify-center rounded-[28px] bg-[#3B0D1A] px-6 py-10 text-[#f4efe6] sm:px-10 lg:px-14">
           <div className="mx-auto w-full max-w-lg">
