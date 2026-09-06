@@ -41,10 +41,10 @@ export default function JoinForm() {
   };
 
   return (
-    <section id="join" className="scroll-mt-24 bg-white p-3 sm:p-4">
+    <section id="join" className="scroll-mt-24 bg-white px-3 pt-3 pb-16 sm:px-4 sm:pt-4 sm:pb-24">
       <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая бордовая панель */}
-        <div className="flex flex-col justify-center rounded-[28px] bg-[#3B0D1A] px-6 py-10 text-[#f4efe6] sm:px-10 lg:px-14">
+        <div className="flex flex-col justify-center rounded-[28px] bg-[#3B0D1A] px-6 py-10 text-[#f4efe6] sm:px-10 lg:min-h-[600px] lg:px-14">
           <div className="mx-auto w-full max-w-lg">
             <h2 className="text-center font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.02em] lg:text-[34px]">
               {en ? "Become part of ÁLIS" : "Стать частью команды ÁLIS"}
@@ -109,7 +109,7 @@ export default function JoinForm() {
         </div>
 
         {/* Правая колонка — большое фото на всю высоту */}
-        <div className="relative min-h-[300px] overflow-hidden rounded-[28px] lg:min-h-full">
+        <div className="relative min-h-[320px] overflow-hidden rounded-[28px] lg:min-h-[600px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={PHOTO} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
         </div>
