@@ -55,7 +55,9 @@ export default function TeamPinnedHero() {
 
   return (
     <div ref={wrapRef} className="relative" style={{ height: `${SCENES.length * 135}vh` }}>
-      <div className="sticky top-0 h-svh min-h-[560px] w-full overflow-hidden">
+      <div className="sticky top-0 h-svh min-h-[560px] w-full p-2 sm:p-2.5">
+        {/* Скруглённая «сцена» с небольшим отступом от краёв */}
+        <div className="relative h-full w-full overflow-hidden rounded-[26px]">
         {/* Фон стоит на месте */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={BG} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
@@ -110,6 +112,7 @@ export default function TeamPinnedHero() {
             </div>
           );
         })}
+        </div>
       </div>
     </div>
   );
