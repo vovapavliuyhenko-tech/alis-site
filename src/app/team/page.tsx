@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import TeamCarousel from "@/components/TeamCarousel";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamPinnedHero from "@/components/pages/TeamPinnedHero";
@@ -17,9 +16,6 @@ export default function TeamPage() {
       <TeamPinnedHero />
 
       <div className="relative z-10 bg-white">
-        {/* Мастера */}
-        <TeamCarousel />
-
         {/* 2 — Мини-сравнение с поворотом карточек перед вакансиями */}
         <SalonCompare />
 

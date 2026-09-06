@@ -102,7 +102,7 @@ export default function TeamPinnedHero() {
                   href={YCLIENTS}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-2xl border border-white/60 bg-white/10 px-14 py-5 font-display text-[12px] uppercase tracking-[0.16em] text-white backdrop-blur-sm transition-colors duration-300 hover:bg-white hover:text-[#3B0D1A] sm:text-[13px]"
+                  className="inline-flex items-center justify-center rounded-2xl border border-white bg-white px-14 py-5 font-display text-[12px] uppercase tracking-[0.16em] text-[#3B0D1A] transition-colors duration-300 hover:bg-transparent hover:text-white sm:text-[13px]"
                 >
                   {en ? "our masters" : "наши мастера"}
                 </a>
