@@ -110,7 +110,7 @@ export default function SalonCompare() {
                   <p className="font-display text-[18px] tracking-[0.01em] lg:text-[21px]" style={{ color: INK }}>
                     {c.head[lang]}
                   </p>
-                  <ul className="mt-4 space-y-3 text-[14px] leading-relaxed lg:text-[15px]" style={{ color: "rgba(23,25,26,0.72)" }}>
+                  <ul className="mt-4 space-y-3 text-[12.5px] leading-relaxed lg:text-[13px]" style={{ color: "rgba(23,25,26,0.72)" }}>
                     {c.points.map((pt) => (
                       <li key={pt.ru} className="flex items-start gap-3">
                         <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: INK }} />
