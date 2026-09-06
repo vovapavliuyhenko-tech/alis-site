@@ -3,6 +3,7 @@
 // (соцсети / адрес / меню), крупные телефон и e-mail справа, гигантский
 // бренд-вотермарк снизу, правовой ряд. Двуязычно.
 import { useLang } from "@/lib/i18n";
+import { LogoWord } from "@/components/Logo";
 
 const PHONE_SALON = "+7 988 888 77 58";
 const PHONE_SERVICE = "+7 988 888 77 28";
@@ -40,14 +41,11 @@ export default function Footer() {
 
   return (
     <footer id="footer" className="relative overflow-hidden rounded-t-[40px] bg-[#3B0D1A] text-[#f4efe6]">
-      {/* Гигантский бренд-вотермарк снизу */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 select-none whitespace-nowrap text-center font-display uppercase leading-[0.8] tracking-[0.02em] text-[#f4efe6]/10 translate-y-[26%]"
-        style={{ fontSize: "clamp(90px, 22vw, 360px)" }}
-      >
-        ÁLIS&nbsp;BEAUTY
-      </span>
+      {/* Гигантский бренд-вотермарк снизу — тот же логотип, что в шапке */}
+      <LogoWord
+        variant="cream"
+        className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto w-[94%] max-w-[1680px] select-none opacity-10 translate-y-[6%]"
+      />
 
       <div className="relative z-10 mx-auto w-[94%] max-w-[1680px] pb-10 pt-16 lg:pt-20">
         {/* Колонки + крупный контакт справа */}
