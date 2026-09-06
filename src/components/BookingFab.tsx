@@ -12,9 +12,17 @@ export default function BookingFab() {
   const pathname = usePathname();
   const { lang } = useLang();
   const [shown, setShown] = useState(false);
+  const [onFooter, setOnFooter] = useState(false);
 
   useEffect(() => {
-    const update = () => setShown(window.scrollY > window.innerHeight * 0.7);
+    const update = () => {
+      setShown(window.scrollY > window.innerHeight * 0.7);
+      const footer = document.getElementById("footer");
+      const fh = footer ? footer.offsetHeight : 0;
+      const docH = document.documentElement.scrollHeight;
+      const revealed = window.scrollY + window.innerHeight - (docH - fh);
+      setOnFooter(revealed > 90);
+    };
     update();
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
@@ -26,7 +34,7 @@ export default function BookingFab() {
 
   if (pathname === "/concierge") return null;
 
-  const ringColor = "#3B0D1A";
+  const ringColor = onFooter ? "#f4efe6" : "#3B0D1A";
 
   return (
     <div
@@ -44,7 +52,9 @@ export default function BookingFab() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={lang === "en" ? "Book online" : "Онлайн запись"}
-          className="fab-pulse relative flex h-full w-full items-center justify-center rounded-full bg-[#3B0D1A] text-center text-[#f4efe6] shadow-[0_12px_34px_rgba(0,0,0,0.28)] ring-1 ring-[#3B0D1A] transition-colors duration-300 hover:scale-105"
+          className={`fab-pulse relative flex h-full w-full items-center justify-center rounded-full text-center shadow-[0_12px_34px_rgba(0,0,0,0.28)] ring-1 transition-colors duration-300 hover:scale-105 ${
+            onFooter ? "bg-[#f4efe6] text-[#3B0D1A] ring-[#f4efe6]" : "bg-[#3B0D1A] text-[#f4efe6] ring-[#3B0D1A]"
+          }`}
         >
           <span className="px-2 text-[11px] font-medium uppercase leading-[1.25] tracking-[0.12em]">
             {lang === "en" ? (

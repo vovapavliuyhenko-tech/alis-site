@@ -87,7 +87,7 @@ export default function Faq() {
         <div className="flex flex-col">
           {ITEMS.map((it, i) => (
             <div key={it.q.ru} className="sticky pb-4 last:pb-0" style={{ top: `${100 + i * 14}px` }}>
-              <article className="rounded-[20px] border border-[#3B0D1A]/30 bg-[#faf7f2]/55 p-6 shadow-[0_8px_30px_rgba(23,25,26,0.06)] backdrop-blur-xl lg:p-7">
+              <article className="rounded-[20px] border border-[#3B0D1A]/30 bg-white p-6 lg:p-7">
                 <p className="font-serif text-[16px] italic leading-snug text-[#3B0D1A] lg:text-[19px]">{it.q[lang]}</p>
                 <span className="mt-4 mb-4 block h-px w-10 bg-[#e7c9a0]" />
                 <p className="text-[12.5px] font-light leading-relaxed text-[#2a2320]/70 lg:text-[13.5px]">{it.a[lang]}</p>
