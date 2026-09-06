@@ -54,7 +54,7 @@ export default function TeamPinnedHero() {
   };
 
   return (
-    <div ref={wrapRef} className="relative" style={{ height: `${SCENES.length * 135}vh` }}>
+    <div ref={wrapRef} data-hide-fab className="relative" style={{ height: `${SCENES.length * 135}vh` }}>
       <div className="sticky top-0 h-svh min-h-[560px] w-full px-2 pb-2 pt-[72px] sm:px-2.5 sm:pb-2.5 sm:pt-[80px]">
         {/* Скруглённая «сцена» с небольшим отступом от краёв */}
         <div className="relative h-full w-full overflow-hidden rounded-[26px]">

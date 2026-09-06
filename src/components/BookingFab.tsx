@@ -16,7 +16,12 @@ export default function BookingFab() {
 
   useEffect(() => {
     const update = () => {
-      setShown(window.scrollY > window.innerHeight * 0.7);
+      // Скрываем кнопку, пока в кадре блок с атрибутом data-hide-fab (напр. пиннинг-герой)
+      const hideZone = document.querySelector("[data-hide-fab]");
+      const overHide = hideZone
+        ? hideZone.getBoundingClientRect().bottom > window.innerHeight * 0.6
+        : false;
+      setShown(window.scrollY > window.innerHeight * 0.7 && !overHide);
       const footer = document.getElementById("footer");
       const fh = footer ? footer.offsetHeight : 0;
       const docH = document.documentElement.scrollHeight;
