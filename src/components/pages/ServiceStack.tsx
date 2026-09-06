@@ -32,7 +32,7 @@ function CategoryCard({ cat, img, lang }: { cat: ServiceCategory; img: string; l
       onMouseLeave={() => setPhoto(img)}
     >
       {/* Левая карточка — услуги-аккордеон (простые строки с разделителями) */}
-      <div className="flex flex-col rounded-[28px] bg-[#f3f1ed] p-8 lg:min-h-[560px] lg:p-14">
+      <div className="flex flex-col rounded-[28px] bg-[#f3f1ed] p-8 lg:min-h-[640px] lg:p-16">
         <h3 className="font-display text-[24px] uppercase tracking-[0.02em] text-[#2a2320] lg:text-[30px]">
           {cat.label[lang]}
         </h3>
@@ -72,7 +72,7 @@ function CategoryCard({ cat, img, lang }: { cat: ServiceCategory; img: string; l
       </div>
 
       {/* Правая карточка — большое фото (мгновенно меняется при наведении на строку) */}
-      <div className="relative min-h-[320px] overflow-hidden rounded-[28px] lg:min-h-[560px]">
+      <div className="relative min-h-[320px] overflow-hidden rounded-[28px] lg:min-h-[640px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={photo} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
       </div>
@@ -94,8 +94,8 @@ export default function ServiceStack({
   const { lang } = useLang();
 
   return (
-    <section className={ground === "cream" ? "bg-[#f7f3ed] py-24 lg:py-28" : "bg-white py-24 lg:py-28"}>
-      <div className="mx-auto w-[92%] max-w-[1200px]">
+    <section className={ground === "cream" ? "bg-[#f7f3ed] py-14 lg:py-20" : "bg-white py-14 lg:py-20"}>
+      <div className="mx-auto w-full max-w-none px-4 sm:px-6">
         <div className="mb-12 lg:mb-16">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
