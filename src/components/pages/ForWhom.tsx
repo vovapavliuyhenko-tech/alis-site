@@ -1,16 +1,18 @@
 "use client";
-// «Для кого ÁLIS» — по мотивам cryome: заголовок сверху, слева колонка фото,
-// справа нумерованный список аудиторий, распределённый по высоте. Двуязычно.
+// «Для кого ÁLIS» — копия блока «для кого CryoMe» (Tilda Zero Block rec1898623061).
+// Слева нумерованный список 01–04 с тонкими линиями-разделителями и короткими
+// фразами; справа коллаж фото-карточек с фирменными «срезанными» углами
+// (один угол прямой: 20px 20px 20px 0). Адаптировано под палитру и тексты ÁLIS.
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
-type Item = { line: Loc; img: string };
 
-const ITEMS: Item[] = [
-  { line: { ru: "много работает и живёт в плотном графике", en: "works a lot and lives on a tight schedule" }, img: "/assets/tild6230-643__.jpg" },
-  { line: { ru: "ценит ухоженный вид без лишних действий", en: "values a groomed look without extra fuss" }, img: "/assets/tild6530-383_-2___1_.jpg" },
-  { line: { ru: "любит эстетичный уход и красивые ритуалы", en: "loves aesthetic care and beautiful rituals" }, img: "/assets/tild3236-393__.jpg" },
-  { line: { ru: "хочет регулярный результат без спешки", en: "wants a regular result without the rush" }, img: "/assets/tild3638-373_-2___1__3.jpg" },
+// углы карточек как на cryome: каждый следующий кадр «срезан» с другой стороны
+const ITEMS: { n: string; line: Loc; img: string; radius: string }[] = [
+  { n: "01", line: { ru: "много работает и живёт в плотном графике", en: "works a lot and lives on a tight schedule" }, img: "/assets/tild6230-643__.jpg", radius: "24px 24px 24px 0" },
+  { n: "02", line: { ru: "ценит ухоженный вид без лишних действий", en: "values a groomed look without extra fuss" }, img: "/assets/tild6530-383_-2___1_.jpg", radius: "24px 24px 0 24px" },
+  { n: "03", line: { ru: "любит эстетичный уход и красивые ритуалы", en: "loves aesthetic care and beautiful rituals" }, img: "/assets/tild3236-393__.jpg", radius: "24px 0 24px 24px" },
+  { n: "04", line: { ru: "хочет регулярный результат без спешки", en: "wants a regular result without the rush" }, img: "/assets/tild3638-373_-2___1__3.jpg", radius: "0 24px 24px 24px" },
 ];
 
 export default function ForWhom() {
@@ -19,45 +21,47 @@ export default function ForWhom() {
 
   return (
     <section id="for-whom" className="bg-white py-24 lg:py-28">
-      <div className="mx-auto w-[92%] max-w-[1240px]">
-        {/* Заголовок сверху по центру */}
-        <div className="mb-14 text-center lg:mb-20">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+      <div className="mx-auto grid w-[92%] max-w-[1200px] gap-y-12 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-x-24">
+        {/* ЛЕВО — заголовок + нумерованный список с линиями (как на cryome) */}
+        <div className="lg:self-start">
+          <span className="text-[12px] font-bold uppercase tracking-[0.02em] text-[#3B0D1A]">
             {en ? "for whom ÁLIS" : "для кого ÁLIS"}
           </span>
-          <h2 className="mx-auto mt-5 max-w-2xl font-display text-[28px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#3B0D1A] lg:text-[42px]">
+          <h2 className="mt-3 max-w-[16rem] font-display text-[20px] font-bold leading-[1.15] text-[#3B0D1A] lg:text-[26px]">
             {en ? "For women with different rhythms of life" : "Для женщин с разным ритмом жизни"}
           </h2>
-        </div>
 
-        {/* Слева фото-колонка, справа нумерованный список */}
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
-          {/* Фото — вертикальная колонка */}
-          <div className="flex flex-col gap-6">
+          {/* нумерованный список: тонкая линия сверху каждой строки */}
+          <ul className="mt-9">
             {ITEMS.map((it) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={it.img}
-                src={it.img}
-                alt=""
-                className="aspect-[5/4] w-full rounded-[24px] object-cover"
-                draggable={false}
-              />
-            ))}
-          </div>
-
-          {/* Список — распределён по высоте напротив фото */}
-          <ul className="flex flex-col justify-between gap-8 py-2">
-            {ITEMS.map((it, i) => (
-              <li key={it.line.ru} className="grid grid-cols-[auto_1fr] items-start gap-6 lg:gap-8">
-                <span className="font-display text-[20px] tabular-nums leading-none text-[#4A4B33] lg:text-[26px]">
-                  {String(i + 1).padStart(2, "0")}
+              <li
+                key={it.n}
+                className="grid grid-cols-[32px_1fr] items-start gap-3 border-t border-[#3B0D1A]/25 py-4"
+              >
+                <span className="font-display text-[11px] font-bold leading-[1.2] text-[#4A4B33] tabular-nums">
+                  {it.n}
                 </span>
-                <span className="text-[18px] leading-snug text-[#2a2320] lg:text-[24px]">{it.line[lang]}</span>
+                <span className="text-[13px] font-semibold leading-[1.35] tracking-[-0.01em] text-[#2a2320] lg:text-[14px]">
+                  {it.line[lang]}
+                </span>
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* ПРАВО — коллаж фото-карточек со «срезанными» углами */}
+        <div className="grid grid-cols-2 gap-5 sm:gap-6 lg:gap-7">
+          {ITEMS.map((it, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={it.img}
+              src={it.img}
+              alt=""
+              draggable={false}
+              className={`aspect-[3/4] w-full object-cover ${i % 2 === 1 ? "lg:translate-y-10" : ""}`}
+              style={{ borderRadius: it.radius }}
+            />
+          ))}
         </div>
       </div>
     </section>
