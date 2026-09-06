@@ -1,19 +1,10 @@
 "use client";
 // HERO ALIS — центрированная раскладка по мотивам cryome: надстрочник, крупный
-// заголовок с акцентными словами, подзаголовок, тёмная пилюля-кнопка, сноска и
-// ряд круглых миниатюр внизу. Светлый фон. Двуязычно.
+// заголовок с акцентными словами, подзаголовок и растянутая на всю ширину
+// кнопка-запись снизу блока. Светлый фон. Двуязычно.
 import { useLang } from "@/lib/i18n";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
-
-const THUMBS = [
-  "/assets/tild6230-643__.jpg",
-  "/assets/tild3236-393__.jpg",
-  "/assets/tild6530-383_-2___1_.jpg",
-  "/assets/tild3638-373_-2___1__3.jpg",
-  "/assets/tild3561-646_-2___1__5.jpg",
-  "/assets/tild6536-613_-2___1__4.jpg",
-];
 
 export default function Hero() {
   const { lang } = useLang();
@@ -21,8 +12,8 @@ export default function Hero() {
   const t = (ru: string, e: string) => (en ? e : ru);
 
   return (
-    <section className="relative flex h-svh min-h-[640px] w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#f7f3ed] to-[#efe7db] px-6 pt-20 text-center">
-      <div className="relative z-10 flex max-w-2xl flex-col items-center">
+    <section className="relative flex h-svh min-h-[640px] w-full flex-col overflow-hidden bg-gradient-to-b from-[#f7f3ed] to-[#efe7db] px-6 pb-8 pt-20 text-center sm:pb-10">
+      <div className="relative z-10 mx-auto flex max-w-2xl flex-1 flex-col items-center justify-center">
         {/* Надстрочник */}
         <p className="text-[11px] font-medium tracking-wide text-[#2a2320]/80 sm:text-[12px]">
           {t("как на вашем фото. с первого раза.", "just like in your photo. from the first visit.")}
@@ -44,29 +35,17 @@ export default function Hero() {
           )}
         </p>
 
-        {/* Кнопка-пилюля */}
-        <a
-          href={YCLIENTS}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-7 inline-flex items-center justify-center rounded-full border border-[#3B0D1A] bg-[#3B0D1A] px-11 py-4 font-display text-[13px] uppercase tracking-[0.14em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:text-[14px]"
-        >
-          {t("записаться", "book now")}
-        </a>
       </div>
 
-      {/* Ряд круглых миниатюр */}
-      <div className="relative z-10 mt-8 flex items-center gap-2.5 sm:mt-10 sm:gap-3">
-        {THUMBS.map((src) => (
-          <span
-            key={src}
-            className="h-10 w-10 overflow-hidden rounded-full border border-[#2a2320]/10 bg-white shadow-sm sm:h-11 sm:w-11"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={src} alt="" className="h-full w-full object-cover" draggable={false} />
-          </span>
-        ))}
-      </div>
+      {/* Кнопка-запись — растянута на всю ширину снизу блока */}
+      <a
+        href={YCLIENTS}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative z-10 flex w-full items-center justify-center rounded-full border border-[#3B0D1A] bg-[#3B0D1A] py-4 font-display text-[13px] uppercase tracking-[0.14em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:py-5 sm:text-[14px]"
+      >
+        {t("записаться", "book now")}
+      </a>
     </section>
   );
 }
