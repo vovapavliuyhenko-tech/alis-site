@@ -3,7 +3,6 @@ import Reviews from "@/components/Reviews";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import HorizontalStory, { type Stage } from "@/components/HorizontalStory";
-import SalonPinnedHero from "@/components/pages/SalonPinnedHero";
 
 // Этапы визита в салон (для горизонтального блока).
 const SALON_STAGES: Stage[] = [
@@ -93,7 +92,6 @@ export default function SalonPage() {
     <main>
       <ScrollReveal />
       <Header />
-      <SalonPinnedHero />
       <div className="relative z-10 bg-white">
         <div id="uslugi" className="scroll-mt-24">
           <span id="price" />

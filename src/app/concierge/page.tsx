@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import ConciergeHero from "@/components/pages/ConciergeHero";
 import ServiceStack from "@/components/pages/ServiceStack";
 import { type ServiceCategory } from "@/components/pages/ServiceTabs";
 import QuizConsult from "@/components/QuizConsult";
@@ -41,7 +40,6 @@ export default function ConciergePage() {
     <main>
       <ScrollReveal />
       <Header />
-      <ConciergeHero />
 
       <div className="relative z-10 bg-white">
         <div id="uslugi" className="scroll-mt-24">
