@@ -200,7 +200,7 @@ export default function Reviews() {
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
             {lang === "en" ? "Reviews" : "Отзывы"}
           </span>
-          <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#3B0D1A] lg:text-[42px]">
+          <h2 className="mt-5 font-display text-[28px] font-normal uppercase tracking-[0.04em] leading-[1.12] text-[#3B0D1A] lg:text-[42px]">
             {lang === "en" ? "What our " : "Что говорят "}
             <span className="text-[#4A4B33]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
           </h2>
@@ -216,28 +216,32 @@ export default function Reviews() {
           ref={stageRef}
           className="relative mx-auto h-[360px] cursor-grab touch-pan-y select-none [perspective:11000px] lg:h-[340px]"
         >
+          {/* Боковые градиент-маски — премиальное обрамление кольца */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-white to-transparent sm:w-28 lg:w-44" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-white to-transparent sm:w-28 lg:w-44" />
           <div ref={ringRef} className="absolute inset-0 [transform-style:preserve-3d]">
             {REVIEWS.map((r, i) => (
               <article
                 key={r.name.ru}
                 style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)` }}
-                className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[128px] flex h-[256px] w-[300px] flex-col justify-between rounded-[18px] border border-[#17191a]/10 bg-white p-6 text-[#17191a] shadow-[0_10px_30px_rgba(23,25,26,0.08)] [backface-visibility:hidden]"
+                className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[128px] flex h-[256px] w-[300px] flex-col rounded-[18px] border border-[#3B0D1A]/12 bg-white p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
               >
-                <span className="font-serif text-[38px] leading-[0.5] text-[#3B0D1A]">
-                  &ldquo;
-                </span>
+                <div className="flex items-center justify-between">
+                  <span className="text-[12px] tracking-[0.32em] text-[#8a5a3c]">★★★★★</span>
+                  <span className="font-serif text-[34px] leading-none text-[#3B0D1A]/20">&rdquo;</span>
+                </div>
 
-                <p className="font-serif text-[13px] leading-[1.55] text-[#17191a]">
+                <p className="mt-3 flex-1 font-serif text-[12.5px] leading-[1.55] text-[#17191a]/85">
                   {r.text[lang]}
                 </p>
 
-                <div className="flex items-center gap-2.5">
+                <div className="mt-4 flex items-center gap-2.5 border-t border-[#3B0D1A]/10 pt-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={r.photo}
                     alt={r.name[lang]}
                     draggable={false}
-                    className="h-9 w-9 rounded-full object-cover ring-1 ring-[#3B0D1A]/35"
+                    className="h-9 w-9 rounded-full object-cover ring-1 ring-[#8a5a3c]/40"
                   />
                   <div>
                     <p className="text-[12.5px] font-medium text-[#17191a]">{r.name[lang]}</p>
