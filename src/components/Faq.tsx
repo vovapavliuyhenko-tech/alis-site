@@ -70,11 +70,11 @@ export default function Faq() {
       <div className="mx-auto grid w-[92%] max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         {/* Левая колонка — зафиксирована */}
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
+          <span className="r-reveal inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
             {en ? "FAQ" : "Вопросы"}
           </span>
-          <h2 className="mt-5 font-display text-[26px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#3B0D1A] sm:text-[32px] lg:text-[40px]">
+          <h2 className="r-reveal mt-5 font-display text-[28px] font-normal uppercase leading-[1.1] tracking-[0.04em] text-[#3B0D1A] sm:text-[32px] lg:text-[42px]">
             {en ? "You ask —" : "Вы спрашиваете —"}
             <br />
             <span className="text-[#4A4B33]">{en ? "we solve" : "я решаю"}</span>

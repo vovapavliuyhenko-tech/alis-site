@@ -34,7 +34,7 @@ export default function PhotoMarquee() {
 
   return (
     <section className="overflow-hidden bg-white py-24 lg:py-32">
-      <div className="mx-auto mb-12 w-[92%] max-w-[1200px] lg:mb-16">
+      <div className="r-reveal mx-auto mb-12 w-[92%] max-w-[1240px] lg:mb-16">
         <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
           {en ? "gallery" : "галерея"}

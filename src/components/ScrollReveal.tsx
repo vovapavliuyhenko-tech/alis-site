@@ -1,7 +1,8 @@
 "use client";
-// Появление элементов при скролле (как на resayme): .r-reveal въезжают снизу
-// с прозрачностью, соседи — со стаггером. На scroll + getBoundingClientRect
-// (надёжнее IntersectionObserver в средах без композиции кадров).
+// Появление элементов при скролле: .r-reveal въезжают снизу с прозрачностью,
+// соседи — со стаггером. Работает и при smooth-scroll (Lenis): помимо scroll/
+// resize крутим rAF-тикер, пока не проявятся все элементы — не зависим от того,
+// шлёт ли Lenis нативный scroll.
 import { useEffect } from "react";
 
 export default function ScrollReveal() {
@@ -19,6 +20,7 @@ export default function ScrollReveal() {
     });
 
     const pending = new Set(els);
+    let raf = 0;
 
     const reveal = () => {
       const vh = window.innerHeight;
@@ -32,14 +34,21 @@ export default function ScrollReveal() {
       if (pending.size === 0) cleanup();
     };
 
+    // rAF-тикер: проверяем видимость каждый кадр (надёжно при Lenis-скролле)
+    const tick = () => {
+      reveal();
+      if (pending.size > 0) raf = requestAnimationFrame(tick);
+    };
+
     const cleanup = () => {
+      cancelAnimationFrame(raf);
       window.removeEventListener("scroll", reveal);
       window.removeEventListener("resize", reveal);
     };
 
     window.addEventListener("scroll", reveal, { passive: true });
     window.addEventListener("resize", reveal);
-    reveal(); // сразу показать то, что уже в поле зрения
+    raf = requestAnimationFrame(tick);
 
     return cleanup;
   }, []);
