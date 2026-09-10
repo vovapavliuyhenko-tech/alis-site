@@ -40,7 +40,7 @@ export default function TeamHero({
   );
 
   const Panel = (
-    <div className="relative flex h-full flex-col items-center justify-center gap-10 bg-white px-8 py-20 text-center lg:gap-12 lg:px-14">
+    <div className="relative flex h-full flex-col items-center justify-between bg-white px-8 py-16 text-center lg:px-14 lg:py-20">
       {/* Верх — логотип или надстрочник */}
       {logoTop ? (
         <LogoLockup variant="wine" className="scale-[0.6]" />
