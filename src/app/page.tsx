@@ -21,12 +21,12 @@ export default function Home() {
       <div className="relative z-10 bg-white">
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
+        {/* Лента-галерея — фото бегут сами (сразу под первым блоком) */}
+        <PhotoMarquee />
         {/* Услуги — bento-галерея категорий */}
         <ServiceBento />
         {/* Наши работы (портфолио) — прогрев результатом */}
         <FlipGallery />
-        {/* Лента-галерея — фото бегут сами */}
-        <PhotoMarquee />
         {/* Нам доверяют (бренды) */}
         <Brands />
         {/* FAQ */}
