@@ -95,13 +95,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Слоган */}
-        <p className="mt-12 max-w-md font-serif text-[18px] italic leading-tight text-[#f4efe6]/70 lg:text-[22px]">
-          {t("Отражаем внутреннюю красоту во внешнем облике", "Reflecting inner beauty in your outer look")}
-        </p>
-
         {/* Место под вотермарк */}
-        <div className="h-[26vh] min-h-[180px] lg:h-[34vh]" />
+        <div className="mt-12 h-[14vh] min-h-[110px] lg:h-[18vh]" />
 
         {/* Нижний ряд */}
         <div className="flex flex-col gap-4 text-[12px] text-[#f4efe6]/55 md:flex-row md:items-end md:justify-between">
