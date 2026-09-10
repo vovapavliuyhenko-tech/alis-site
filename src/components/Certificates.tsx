@@ -61,7 +61,7 @@ export default function Certificates() {
               </span>
               <h2 className="r-reveal mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] lg:text-[44px]">
                 {t("Лучший подарок —", "The best gift is")}{" "}
-                <span className="text-[#e7c9a0]">{t("красота ALIS", "ALIS beauty")}</span>
+                <span className="text-[#8a5a3c]">{t("красота ALIS", "ALIS beauty")}</span>
               </h2>
 
               {/* Выгоды */}
@@ -94,14 +94,14 @@ export default function Certificates() {
               <div className="relative w-full max-w-[360px]">
                 {/* Искры — точки, разлетаются при наведении */}
                 {[
-                  { l: "46%", t: "-7%", s: 9, d: 0, c: "#e7c9a0" },
+                  { l: "46%", t: "-7%", s: 9, d: 0, c: "#8a5a3c" },
                   { l: "72%", t: "8%", s: 6, d: 0.12, c: "#f4efe6" },
-                  { l: "94%", t: "26%", s: 10, d: 0.06, c: "#e7c9a0" },
+                  { l: "94%", t: "26%", s: 10, d: 0.06, c: "#8a5a3c" },
                   { l: "6%", t: "16%", s: 6, d: 0.2, c: "#f4efe6" },
-                  { l: "18%", t: "-4%", s: 7, d: 0.28, c: "#e7c9a0" },
-                  { l: "88%", t: "78%", s: 8, d: 0.1, c: "#e7c9a0" },
+                  { l: "18%", t: "-4%", s: 7, d: 0.28, c: "#8a5a3c" },
+                  { l: "88%", t: "78%", s: 8, d: 0.1, c: "#8a5a3c" },
                   { l: "-2%", t: "62%", s: 6, d: 0.18, c: "#f4efe6" },
-                  { l: "60%", t: "94%", s: 7, d: 0.24, c: "#e7c9a0" },
+                  { l: "60%", t: "94%", s: 7, d: 0.24, c: "#8a5a3c" },
                 ].map((p, i) => (
                   <span
                     key={i}
@@ -124,14 +124,14 @@ export default function Certificates() {
                     className="cert-spark pointer-events-none absolute opacity-0 group-hover:[animation:certtwinkle_1.1s_ease_forwards]"
                     style={{ left: p.l, top: p.t, width: p.s, height: p.s, animationDelay: `${p.d}s` }}
                   >
-                    <path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z" fill="#e7c9a0" />
+                    <path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z" fill="#8a5a3c" />
                   </svg>
                 ))}
 
                 {/* Карта: front + back, непрерывное вращение под углом */}
                 <div className="cert-rotate relative aspect-[1.6/1] [transform-style:preserve-3d]">
                   {/* Лицевая сторона */}
-                  <div className="absolute inset-0 overflow-hidden rounded-[20px] border-2 border-[#e7c9a0]/50 bg-gradient-to-br from-[#7C2432] to-[#48101E] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden]">
+                  <div className="absolute inset-0 overflow-hidden rounded-[20px] border-2 border-[#8a5a3c]/50 bg-gradient-to-br from-[#7C2432] to-[#48101E] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden]">
                     <div className="flex h-full flex-col justify-between">
                       <div className="flex items-start justify-between">
                         <span className="font-serif text-[26px] tracking-[0.14em] text-[#f4efe6]">ÁLIS</span>
@@ -152,7 +152,7 @@ export default function Certificates() {
                     <span aria-hidden className="pointer-events-none absolute top-0 left-[-60%] h-full w-[45%] -skew-x-[18deg] bg-gradient-to-r from-transparent via-[#f4efe6]/35 to-transparent transition-[left] duration-[900ms] ease-out group-hover:left-[120%]" />
                   </div>
                   {/* Оборотная сторона */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-[20px] border-2 border-[#e7c9a0]/50 bg-gradient-to-br from-[#48101E] to-[#7C2432] p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-[20px] border-2 border-[#8a5a3c]/50 bg-gradient-to-br from-[#48101E] to-[#7C2432] p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden] [transform:rotateY(180deg)]">
                     <span className="font-serif text-[30px] tracking-[0.14em] text-[#f4efe6]">ÁLIS</span>
                     <span className="text-[11px] uppercase tracking-[0.22em] text-[#f4efe6]/60">{t("с любовью, beauty", "with love, beauty")}</span>
                   </div>

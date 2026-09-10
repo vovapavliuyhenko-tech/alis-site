@@ -37,7 +37,7 @@ export default function PageHero({
         <h1 className="mt-6 font-display text-[36px] uppercase tracking-[0.05em] leading-[1.05] text-[#3B0D1A] lg:text-[64px]">
           {title[lang]}
         </h1>
-        <span className="mt-6 block h-px w-16 bg-[#e7c9a0]" />
+        <span className="mt-6 block h-px w-16 bg-[#8a5a3c]" />
         {subtitle && (
           <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[17px]">
             {subtitle[lang]}
