@@ -9,6 +9,9 @@ type Loc = { ru: string; en: string };
 type Item = { q: Loc; a: Loc };
 
 const PHOTO = "/assets/tild3236-393__.jpg";
+const DEFAULT_EYEBROW: Loc = { ru: "Вопросы", en: "FAQ" };
+const DEFAULT_TITLE_TOP: Loc = { ru: "Вы спрашиваете —", en: "You ask —" };
+const DEFAULT_TITLE_BOTTOM: Loc = { ru: "я решаю", en: "we solve" };
 
 const ITEMS: Item[] = [
   {
@@ -62,9 +65,22 @@ const ITEMS: Item[] = [
   },
 ];
 
-export default function Faq() {
+export default function Faq({
+  items = ITEMS,
+  photo = PHOTO,
+  eyebrow = DEFAULT_EYEBROW,
+  titleTop = DEFAULT_TITLE_TOP,
+  titleBottom = DEFAULT_TITLE_BOTTOM,
+  sectionId = "faq",
+}: {
+  items?: Item[];
+  photo?: string;
+  eyebrow?: Loc;
+  titleTop?: Loc;
+  titleBottom?: Loc;
+  sectionId?: string;
+} = {}) {
   const { lang } = useLang();
-  const en = lang === "en";
 
   // Какая карточка сейчас в верхней (передней) позиции стека — она акцентно-бордовая.
   const sectionRef = useRef<HTMLElement>(null);
@@ -94,26 +110,26 @@ export default function Faq() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="faq" className="bg-white py-16 lg:py-20">
+    <section ref={sectionRef} id={sectionId} className="scroll-mt-24 bg-white py-16 lg:py-20">
       <div className="mx-auto grid w-[92%] max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         {/* Левая колонка — зафиксирована */}
         <div className="lg:sticky lg:top-28 lg:self-start">
           <span className="r-reveal inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
-            {en ? "FAQ" : "Вопросы"}
+            {eyebrow[lang]}
           </span>
           <h2 className="r-reveal mt-5 font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.04em] text-[#3B0D1A] sm:text-[28px] lg:text-[34px]">
-            {en ? "You ask —" : "Вы спрашиваете —"}
+            {titleTop[lang]}
             <br />
-            <span className="text-[#4A4B33]">{en ? "we solve" : "я решаю"}</span>
+            <span className="text-[#4A4B33]">{titleBottom[lang]}</span>
           </h2>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={PHOTO} alt="" loading="lazy" decoding="async" className="mt-8 aspect-[3/4] w-full max-w-[260px] rounded-[22px] object-cover lg:mt-10" draggable={false} />
+          <img src={photo} alt="" loading="lazy" decoding="async" className="mt-8 aspect-[3/4] w-full max-w-[260px] rounded-[22px] object-cover lg:mt-10" draggable={false} />
         </div>
 
         {/* Правая колонка — карточки идут вплотную и НАЕЗЖАЮТ друг на друга при скролле */}
         <div className="flex flex-col">
-          {ITEMS.map((it, i) => {
+          {items.map((it, i) => {
             const isActive = i === active;
             return (
               <div
