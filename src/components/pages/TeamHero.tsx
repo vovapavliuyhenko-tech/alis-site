@@ -39,16 +39,10 @@ export default function TeamHero({
 
   const Panel = (
     <div className="relative flex h-full flex-col items-center justify-between bg-white px-8 py-16 text-center lg:px-14 lg:py-20">
-      {/* Верх — логотип (первый блок) или надстрочник */}
-      <div className="flex flex-col items-center">
-        {logo ? (
-          <LogoLockup variant="wine" className="scale-90" />
-        ) : (
-          <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#4A4B33]">
-            {eyebrow[lang]}
-          </span>
-        )}
-      </div>
+      {/* Верх — надстрочник */}
+      <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#4A4B33]">
+        {eyebrow[lang]}
+      </span>
 
       {/* Середина — крупный заголовок + текст */}
       <div className="flex flex-col items-center">
@@ -60,13 +54,17 @@ export default function TeamHero({
         </p>
       </div>
 
-      {/* Низ — кнопка во всю ширину панели */}
-      <a
-        href={cta.href}
-        className="flex w-full items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:text-[14px]"
-      >
-        {en ? cta.label.en : cta.label.ru}
-      </a>
+      {/* Низ — логотип (первый блок) или кнопка во всю ширину панели */}
+      {logo ? (
+        <LogoLockup variant="wine" className="scale-[0.6]" />
+      ) : (
+        <a
+          href={cta.href}
+          className="flex w-full items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:text-[14px]"
+        >
+          {en ? cta.label.en : cta.label.ru}
+        </a>
+      )}
     </div>
   );
 

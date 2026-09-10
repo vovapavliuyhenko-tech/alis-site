@@ -17,7 +17,7 @@ export default function TeamPage() {
         pinned
         logo
         photo="/assets/tild3236-393__.jpg"
-        eyebrow={{ ru: "команда ÁLIS", en: "the ÁLIS team" }}
+        eyebrow={{ ru: "философия", en: "philosophy" }}
         title={{ ru: "Мастера, которым доверяют образ", en: "Masters you trust with your look" }}
         sub={{
           ru: "Колористы, нейл-мастера, бровисты и визажисты, которые работают в 4–6 рук и собирают полный образ за один визит.",
