@@ -166,13 +166,13 @@ export default function HorizontalStory({
                 </div>
               </div>
 
-              {/* Правая половина — фото + карточка-подпись */}
-              <div className="relative min-h-[62vh] md:min-h-0 md:w-[54%]">
+              {/* Правая половина — фото (скруглённое, с небольшим отступом) + карточка-подпись */}
+              <div className="relative min-h-[62vh] p-3 md:min-h-0 md:w-[54%] md:p-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={s.photo}
                   alt={s.name[lang]}
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="absolute inset-3 h-[calc(100%-1.5rem)] w-[calc(100%-1.5rem)] rounded-[24px] object-cover md:inset-4 md:h-[calc(100%-2rem)] md:w-[calc(100%-2rem)]"
                 />
                 <div className="absolute inset-x-[6%] bottom-[6%] rounded-[18px] bg-white/95 px-6 py-6 text-center backdrop-blur-sm md:px-10 md:py-8">
                   <p className="font-serif text-[24px] uppercase tracking-[0.15em] text-[#3B0D1A] md:text-[30px]">

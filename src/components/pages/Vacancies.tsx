@@ -53,13 +53,13 @@ export default function Vacancies() {
           </h2>
         </div>
 
-        {/* Оглавление-журнал: крупные строки, фото всплывает при наведении */}
-        <div className="border-b border-[#3B0D1A]/15">
+        {/* Оглавление-журнал: закруглённые строки-карточки, при наведении — полупрозрачно-бордовые */}
+        <div className="flex flex-col gap-3">
           {VACANCIES.map((v, i) => (
             <a
               key={v.role.ru}
               href="#join"
-              className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-5 border-t border-[#3B0D1A]/15 py-7 lg:gap-8 lg:py-9"
+              className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[20px] border border-[#3B0D1A]/12 px-6 py-6 transition-colors duration-300 hover:border-transparent hover:bg-[#3B0D1A]/10 lg:gap-8 lg:px-8 lg:py-8"
             >
               {/* Номер */}
               <span className="font-display text-[13px] tabular-nums text-[#4A4B33] lg:text-[15px]">
