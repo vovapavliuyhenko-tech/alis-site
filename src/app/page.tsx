@@ -1,7 +1,7 @@
 import Preloader from "@/components/Preloader";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
+import ServiceBento from "@/components/pages/ServiceBento";
 import FlipGallery from "@/components/FlipGallery";
 import Brands from "@/components/Brands";
 import Faq from "@/components/Faq";
@@ -20,8 +20,8 @@ export default function Home() {
       <div className="relative z-10 bg-white">
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
-        {/* Обо мне */}
-        <About />
+        {/* Услуги — bento-галерея категорий */}
+        <ServiceBento />
         {/* Наши работы (портфолио) — прогрев результатом */}
         <FlipGallery />
         {/* Нам доверяют (бренды) */}
