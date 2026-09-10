@@ -21,7 +21,7 @@ export default function ServiceBento() {
 
   return (
     <section id="services" className="scroll-mt-24 bg-white py-24 lg:py-32">
-      <div className="mx-auto w-[92%] max-w-[1240px]">
+      <div className="mx-auto w-[94%] max-w-[1440px]">
         <div className="r-reveal mb-12 max-w-2xl lg:mb-16">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />

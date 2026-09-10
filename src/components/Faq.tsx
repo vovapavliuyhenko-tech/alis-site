@@ -74,7 +74,7 @@ export default function Faq() {
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
             {en ? "FAQ" : "Вопросы"}
           </span>
-          <h2 className="r-reveal mt-5 font-display text-[28px] font-normal uppercase leading-[1.1] tracking-[0.04em] text-[#3B0D1A] sm:text-[32px] lg:text-[42px]">
+          <h2 className="r-reveal mt-5 font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.04em] text-[#3B0D1A] sm:text-[28px] lg:text-[34px]">
             {en ? "You ask —" : "Вы спрашиваете —"}
             <br />
             <span className="text-[#4A4B33]">{en ? "we solve" : "я решаю"}</span>
@@ -87,7 +87,7 @@ export default function Faq() {
         <div className="flex flex-col">
           {ITEMS.map((it) => (
             <div key={it.q.ru} className="sticky top-24 pb-4 last:pb-0">
-              <article className="flex min-h-[240px] flex-col justify-center rounded-[20px] border border-[#3B0D1A]/30 bg-white p-6 lg:p-7">
+              <article className="flex min-h-[240px] flex-col justify-center rounded-[20px] border border-[#3B0D1A]/30 bg-white p-6 transition-colors duration-300 hover:border-transparent hover:bg-[#3B0D1A]/10 lg:p-7">
                 <p className="font-serif text-[16px] italic leading-snug text-[#3B0D1A] lg:text-[19px]">{it.q[lang]}</p>
                 <span className="mt-4 mb-4 block h-px w-10 bg-[#8a5a3c]" />
                 <p className="text-[12.5px] font-light leading-relaxed text-[#2a2320]/70 lg:text-[13.5px]">{it.a[lang]}</p>
