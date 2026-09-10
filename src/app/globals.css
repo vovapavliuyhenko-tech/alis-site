@@ -30,6 +30,9 @@ body {
 
 /* ===== Бордовый скроллбар (как акцент сайта) ===== */
 html { scrollbar-color: var(--wine) #ffffff; scrollbar-width: thin; }
+/* Плавная прокрутка к якорям (кнопки/меню) + отступ под фикс-шапку */
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 ::-webkit-scrollbar { width: 12px; height: 12px; }
 ::-webkit-scrollbar-track { background: #ffffff; }
 ::-webkit-scrollbar-thumb {
