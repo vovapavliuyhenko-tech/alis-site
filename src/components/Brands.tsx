@@ -3,7 +3,6 @@
 // лента брендов. Каждый бренд в СВОЁМ типографическом стиле (микс), между ними —
 // росчерк. Пауза при наведении. Двуязычно (RU/EN).
 import type { ReactNode } from "react";
-import { useLang } from "@/lib/i18n";
 
 // Каждый бренд — со своим стилем, приближённым к его вордмарку
 const BRANDS: ReactNode[] = [
@@ -69,23 +68,8 @@ function Track({ hidden = false }: { hidden?: boolean }) {
 }
 
 export default function Brands() {
-  const { lang } = useLang();
-  const en = lang === "en";
   return (
-    <section className="overflow-hidden bg-white py-24 lg:py-32">
-      {/* Заголовок с эйброу-бейджем и акцентом */}
-      <div className="mx-auto mb-14 w-[92%] max-w-[1200px] text-center lg:mb-20">
-        <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
-          {en ? "Clients" : "Клиенты"}
-        </span>
-        <h2 className="mt-5 font-display text-[28px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#3B0D1A] lg:text-[42px]">
-          {en ? "Trusted by brands" : "Нам доверяют"}
-          <br />
-          <span className="text-[#4A4B33]">{en ? "and venues since 2024" : "бренды и площадки с 2024 года"}</span>
-        </h2>
-      </div>
-
+    <section className="overflow-hidden bg-white py-14 lg:py-20">
       <div className="group relative flex overflow-hidden">
         <Track />
         <Track hidden />

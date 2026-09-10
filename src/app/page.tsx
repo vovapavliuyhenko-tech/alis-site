@@ -22,10 +22,10 @@ export default function Home() {
         <div id="hero-end" aria-hidden className="h-0" />
         {/* Лента-галерея — фото бегут сами (сразу под первым блоком) */}
         <PhotoMarquee />
+        {/* Нам доверяют — бегущая строка брендов (после второго блока) */}
+        <Brands />
         {/* Услуги — bento-галерея категорий */}
         <ServiceBento />
-        {/* Нам доверяют (бренды) */}
-        <Brands />
         {/* FAQ */}
         <Faq />
       </div>
