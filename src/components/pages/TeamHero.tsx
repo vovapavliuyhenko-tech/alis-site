@@ -38,27 +38,27 @@ export default function TeamHero({
   );
 
   const Panel = (
-    <div className="relative flex h-full flex-col items-center justify-between gap-8 bg-white px-8 py-16 text-center lg:px-14 lg:py-20">
-      {/* Верх — логотип (первый блок) или надстрочник + заголовок */}
+    <div className="relative flex h-full flex-col items-center justify-between bg-white px-8 py-16 text-center lg:px-14 lg:py-20">
+      {/* Верх — логотип (первый блок) или надстрочник */}
       <div className="flex flex-col items-center">
         {logo ? (
           <LogoLockup variant="wine" className="scale-90" />
         ) : (
-          <>
-            <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#4A4B33]">
-              {eyebrow[lang]}
-            </span>
-            <h2 className="mt-5 max-w-[15ch] font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.02em] text-[#3B0D1A] sm:text-[30px] lg:text-[38px]">
-              {title[lang]}
-            </h2>
-          </>
+          <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#4A4B33]">
+            {eyebrow[lang]}
+          </span>
         )}
       </div>
 
-      {/* Середина — текст */}
-      <p className="my-auto max-w-md text-[13px] leading-relaxed text-[#2a2320]/70 sm:text-[14px]">
-        {sub[lang]}
-      </p>
+      {/* Середина — крупный заголовок + текст */}
+      <div className="flex flex-col items-center">
+        <h2 className="max-w-[15ch] font-display text-[26px] font-normal uppercase leading-[1.14] tracking-[0.02em] text-[#3B0D1A] sm:text-[32px] lg:text-[40px]">
+          {title[lang]}
+        </h2>
+        <p className="mt-6 max-w-md text-[13px] leading-relaxed text-[#2a2320]/70 sm:text-[14px]">
+          {sub[lang]}
+        </p>
+      </div>
 
       {/* Низ — кнопка во всю ширину панели */}
       <a
