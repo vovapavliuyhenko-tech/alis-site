@@ -44,6 +44,8 @@ export default function ServiceBento() {
                 src={c.img}
                 alt=""
                 draggable={false}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-all duration-[700ms] ease-out group-hover:scale-105 group-hover:blur-lg"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/20 transition-colors duration-500 group-hover:from-black/55 group-hover:via-black/25 group-hover:to-black/45" />

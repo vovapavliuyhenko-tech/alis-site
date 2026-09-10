@@ -37,7 +37,7 @@ export default function TeamHero({
   const Photo = (
     <div className="relative hidden lg:block">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={photo} alt="" draggable={false} className="absolute inset-0 h-full w-full object-cover" />
+      <img src={photo} alt="" draggable={false} loading={pinned ? "eager" : "lazy"} decoding="async" className="absolute inset-0 h-full w-full object-cover" />
     </div>
   );
 

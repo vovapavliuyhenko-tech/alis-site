@@ -1,0 +1,14 @@
+{
+  "name": "ÁLIS BEAUTY",
+  "short_name": "ÁLIS",
+  "description": "Салон красоты ÁLIS BEAUTY в Новороссийске и выездной премиум-сервис.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4efe6",
+  "theme_color": "#3B0D1A",
+  "lang": "ru",
+  "icons": [
+    { "src": "/assets/logo-emblem-wine.png", "sizes": "any", "type": "image/png", "purpose": "any" }
+  ]
+}

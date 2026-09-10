@@ -136,7 +136,7 @@ export default function JoinForm() {
         {/* Правая колонка — большое фото на всю высоту */}
         <div className="relative min-h-[320px] overflow-hidden rounded-[28px] lg:min-h-[600px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={PHOTO} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
+          <img src={PHOTO} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
         </div>
       </div>
     </section>

@@ -100,7 +100,7 @@ export default function Faq() {
             <span className="text-[#4A4B33]">{en ? "we solve" : "я решаю"}</span>
           </h2>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={PHOTO} alt="" className="mt-8 aspect-[3/4] w-full max-w-[260px] rounded-[22px] object-cover lg:mt-10" draggable={false} />
+          <img src={PHOTO} alt="" loading="lazy" decoding="async" className="mt-8 aspect-[3/4] w-full max-w-[260px] rounded-[22px] object-cover lg:mt-10" draggable={false} />
         </div>
 
         {/* Правая колонка — карточки идут вплотную и НАЕЗЖАЮТ друг на друга при скролле */}

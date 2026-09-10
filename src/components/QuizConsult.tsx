@@ -140,6 +140,8 @@ export default function QuizConsult() {
               <img
                 src="/assets/tild6230-643__.jpg"
                 alt="Дайана Тарзян"
+                loading="lazy"
+                decoding="async"
                 className="h-16 w-16 rounded-full object-cover ring-2 ring-[#3B0D1A]/15"
               />
               <div>

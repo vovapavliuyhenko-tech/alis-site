@@ -81,6 +81,8 @@ export default function SalonCompare() {
               src={PHOTO_L}
               alt=""
               draggable={false}
+              loading="lazy"
+              decoding="async"
               className="h-full w-full rounded-[22px] object-cover shadow-[0_18px_44px_rgba(0,0,0,0.14)]"
               style={{ transform: `rotate(${-photoTilt}deg)`, transformOrigin: "bottom center", willChange: "transform" }}
             />
@@ -136,6 +138,8 @@ export default function SalonCompare() {
               src={PHOTO_R}
               alt=""
               draggable={false}
+              loading="lazy"
+              decoding="async"
               className="h-full w-full rounded-[22px] object-cover shadow-[0_18px_44px_rgba(0,0,0,0.14)]"
               style={{ transform: `rotate(${photoTilt}deg)`, transformOrigin: "bottom center", willChange: "transform" }}
             />

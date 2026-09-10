@@ -241,6 +241,8 @@ export default function Reviews() {
                     src={r.photo}
                     alt={r.name[lang]}
                     draggable={false}
+                    loading="lazy"
+                    decoding="async"
                     className="h-9 w-9 rounded-full object-cover ring-1 ring-[#8a5a3c]/40"
                   />
                   <div>
