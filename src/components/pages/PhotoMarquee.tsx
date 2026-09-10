@@ -4,25 +4,24 @@
 // одинаковые дорожки (как «Нам доверяют»). Двуязычно.
 import { useLang } from "@/lib/i18n";
 
-// Кадры разного размера — и по ширине, и по высоте (w × h). Центрируются по
-// вертикали, поэтому лента получается «рваной». Мобайл — множитель поменьше.
-const ITEMS: { src: string; w: number; h: number }[] = [
-  { src: "/assets/tild6230-643__.jpg", w: 300, h: 400 },
-  { src: "/assets/tild3236-393__.jpg", w: 420, h: 300 },
-  { src: "/assets/tild6530-383_-2___1_.jpg", w: 280, h: 460 },
-  { src: "/assets/tild3638-373_-2___1__3.jpg", w: 360, h: 340 },
-  { src: "/assets/tild3561-646_-2___1__5.jpg", w: 300, h: 420 },
-  { src: "/assets/tild6536-613_-2___1__4.jpg", w: 400, h: 300 },
-  { src: "/shop/ss-portrait.jpg", w: 260, h: 440 },
+// Кадры одного формата — единый портретный размер, минимальный зазор.
+const ITEMS: string[] = [
+  "/assets/tild6230-643__.jpg",
+  "/assets/tild3236-393__.jpg",
+  "/assets/tild6530-383_-2___1_.jpg",
+  "/assets/tild3638-373_-2___1__3.jpg",
+  "/assets/tild3561-646_-2___1__5.jpg",
+  "/assets/tild6536-613_-2___1__4.jpg",
+  "/shop/ss-portrait.jpg",
 ];
 
-function Track({ hidden = false, scale = 1 }: { hidden?: boolean; scale?: number }) {
+function Track({ hidden = false }: { hidden?: boolean }) {
   return (
-    <ul aria-hidden={hidden} className="marquee flex shrink-0 items-center group-hover:[animation-play-state:paused]">
-      {ITEMS.map((it, i) => (
-        <li key={i} className="mr-2 shrink-0 lg:mr-3" style={{ width: it.w * scale, height: it.h * scale }}>
+    <ul aria-hidden={hidden} className="marquee flex shrink-0 group-hover:[animation-play-state:paused]">
+      {ITEMS.map((src, i) => (
+        <li key={i} className="mr-2 aspect-[3/4] h-[320px] shrink-0 lg:mr-3 lg:h-[440px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={it.src} alt="" draggable={false} className="h-full w-full rounded-[14px] object-cover" />
+          <img src={src} alt="" draggable={false} className="h-full w-full rounded-[14px] object-cover" />
         </li>
       ))}
     </ul>
