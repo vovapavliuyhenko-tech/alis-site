@@ -39,7 +39,7 @@ export default function ContactsCTA() {
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
             {t("Контакты", "Contacts")}
           </span>
-          <h2 className="mt-5 font-display text-[30px] font-normal uppercase leading-[1.12] tracking-[0.05em] text-[#3B0D1A] lg:text-[44px]">
+          <h2 className="mt-5 font-display text-[28px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#3B0D1A] lg:text-[42px]">
             {t("Остались вопросы?", "Still have questions?")}
             <br />
             <span className="text-[#4A4B33]">{t("Напишите нам", "Message us")}</span>

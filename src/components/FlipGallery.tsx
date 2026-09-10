@@ -116,7 +116,7 @@ export default function FlipGallery() {
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
             {en ? "Portfolio" : "Портфолио"}
           </span>
-          <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#3B0D1A] lg:text-[44px]">
+          <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#3B0D1A] lg:text-[42px]">
             {en ? "Our works" : "Наши работы"}
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">

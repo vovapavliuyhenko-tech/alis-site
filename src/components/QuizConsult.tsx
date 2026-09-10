@@ -229,7 +229,7 @@ export default function QuizConsult() {
                       </button>
                       <button
                         onClick={submit}
-                        className="group/btn inline-flex items-center gap-3 rounded-full bg-[#3B0D1A] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02]"
+                        className="group/btn inline-flex items-center gap-3 rounded-2xl bg-[#3B0D1A] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02]"
                       >
                         {t("Получить расчёт", "Get my plan")}
                         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]/15 transition-transform duration-300 group-hover/btn:translate-x-0.5">
@@ -278,7 +278,7 @@ export default function QuizConsult() {
                       <button
                         onClick={next}
                         disabled={!answered}
-                        className="group/btn inline-flex items-center gap-3 rounded-full bg-[#3B0D1A] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
+                        className="group/btn inline-flex items-center gap-3 rounded-2xl bg-[#3B0D1A] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
                       >
                         {t("Следующий вопрос", "Next question")}
                         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]/15 transition-transform duration-300 group-hover/btn:translate-x-0.5">
