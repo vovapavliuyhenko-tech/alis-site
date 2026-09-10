@@ -1,8 +1,9 @@
 "use client";
-// БЛОК-ЛЕНТА на главной — фотографии разных размеров бегут сами (авто-скролл),
-// минимальный зазор между кадрами, пауза при наведении. Бесшовный цикл через две
-// одинаковые дорожки (как «Нам доверяют»). Двуязычно.
+// БЛОК-ЛЕНТА на главной — фотографии бегут сами (авто-скролл), пауза при
+// наведении. Клиент может листать вручную: перетаскиванием мышью или свайпом/
+// трекпадом; на время ручного листания авто-прокрутка встаёт на паузу. Двуязычно.
 import { useLang } from "@/lib/i18n";
+import { useRef, useState } from "react";
 
 // Кадры одного формата — единый портретный размер, минимальный зазор.
 const ITEMS: string[] = [
@@ -15,9 +16,12 @@ const ITEMS: string[] = [
   "/shop/ss-portrait.jpg",
 ];
 
-function Track({ hidden = false }: { hidden?: boolean }) {
+function Track({ hidden = false, paused = false }: { hidden?: boolean; paused?: boolean }) {
   return (
-    <ul aria-hidden={hidden} className="marquee flex shrink-0 group-hover:[animation-play-state:paused]">
+    <ul
+      aria-hidden={hidden}
+      className={`marquee flex shrink-0 group-hover:[animation-play-state:paused] ${paused ? "[animation-play-state:paused]" : ""}`}
+    >
       {ITEMS.map((src, i) => (
         <li key={i} className="mr-2 aspect-[3/4] h-[320px] shrink-0 lg:mr-3 lg:h-[440px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -32,6 +36,28 @@ export default function PhotoMarquee() {
   const { lang } = useLang();
   const en = lang === "en";
 
+  const scroller = useRef<HTMLDivElement>(null);
+  const [dragging, setDragging] = useState(false);
+  const drag = useRef({ active: false, startX: 0, startScroll: 0 });
+
+  const onDown = (e: React.PointerEvent) => {
+    const el = scroller.current;
+    if (!el) return;
+    drag.current = { active: true, startX: e.clientX, startScroll: el.scrollLeft };
+    setDragging(true);
+    el.setPointerCapture(e.pointerId);
+  };
+  const onMove = (e: React.PointerEvent) => {
+    const el = scroller.current;
+    if (!el || !drag.current.active) return;
+    el.scrollLeft = drag.current.startScroll - (e.clientX - drag.current.startX);
+  };
+  const onUp = (e: React.PointerEvent) => {
+    drag.current.active = false;
+    setDragging(false);
+    scroller.current?.releasePointerCapture(e.pointerId);
+  };
+
   return (
     <section className="overflow-hidden rounded-t-[40px] bg-white py-24 lg:py-32">
       <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] lg:mb-16">
@@ -44,9 +70,17 @@ export default function PhotoMarquee() {
         </h2>
       </div>
 
-      <div className="group flex overflow-hidden">
-        <Track />
-        <Track hidden />
+      {/* Лента: авто-бег + ручное листание (drag / свайп / трекпад) */}
+      <div
+        ref={scroller}
+        onPointerDown={onDown}
+        onPointerMove={onMove}
+        onPointerUp={onUp}
+        onPointerCancel={onUp}
+        className={`group flex touch-pan-y overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${dragging ? "cursor-grabbing" : "cursor-grab"}`}
+      >
+        <Track paused={dragging} />
+        <Track hidden paused={dragging} />
       </div>
     </section>
   );
