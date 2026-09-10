@@ -15,7 +15,7 @@ export default function SalonPrice() {
           <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/25 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em]">
             {en ? "Prices" : "Прайс"}
           </span>
-          <h2 className="mt-5 max-w-2xl font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] lg:text-[42px]">
+          <h2 className="mt-5 max-w-2xl font-display text-[24px] uppercase tracking-[0.06em] leading-[1.12] lg:text-[36px]">
             {en ? "All prices are in the online booking" : "Актуальные цены — в онлайн-записи"}
           </h2>
           <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-[#f4efe6]/75 lg:text-[15px]">

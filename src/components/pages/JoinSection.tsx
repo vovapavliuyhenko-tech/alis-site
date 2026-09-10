@@ -32,7 +32,7 @@ export default function JoinSection({
           <span className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] ${dark ? "bg-[#4A4B33]/25 text-[#f4efe6]" : "bg-[#4A4B33]/12 text-[#4A4B33]"}`}>
             {eyebrow[lang]}
           </span>
-          <h2 className={`mt-5 max-w-2xl font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] lg:text-[42px] ${dark ? "" : "text-[#3B0D1A]"}`}>
+          <h2 className={`mt-5 max-w-2xl font-display text-[24px] uppercase tracking-[0.06em] leading-[1.12] lg:text-[36px] ${dark ? "" : "text-[#3B0D1A]"}`}>
             {title[lang]}
           </h2>
           <p className={`mt-4 max-w-2xl text-[14px] leading-relaxed lg:text-[15px] ${dark ? "text-[#f4efe6]/75" : "text-[#2a2320]/75"}`}>

@@ -47,7 +47,7 @@ export default function Vacancies() {
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
             {en ? "vacancies" : "вакансии"}
           </span>
-          <h2 className="mt-5 font-display text-[28px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#3B0D1A] lg:text-[42px]">
+          <h2 className="mt-5 font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#3B0D1A] lg:text-[36px]">
             {en ? "Grow with ÁLIS" : "Расти вместе с ÁLIS"}
           </h2>
         </div>

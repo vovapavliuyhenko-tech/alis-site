@@ -27,7 +27,7 @@ export default function ServiceBento() {
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
             {en ? "services" : "услуги"}
           </span>
-          <h2 className="mt-5 font-display text-[28px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#3B0D1A] lg:text-[42px]">
+          <h2 className="mt-5 font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#3B0D1A] lg:text-[36px]">
             {en ? "Everything for your look" : "Всё для вашего образа"}
           </h2>
         </div>
@@ -57,7 +57,7 @@ export default function ServiceBento() {
 
               {/* Название слева сверху */}
               <div className="absolute left-6 top-5">
-                <h3 className="font-display text-[22px] uppercase tracking-[0.03em] text-white lg:text-[28px]">
+                <h3 className="font-display text-[22px] uppercase tracking-[0.03em] text-white lg:text-[24px]">
                   {c.title[lang]}
                 </h3>
               </div>

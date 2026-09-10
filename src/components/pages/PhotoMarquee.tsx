@@ -86,7 +86,7 @@ export default function PhotoMarquee() {
           <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
           {en ? "gallery" : "галерея"}
         </span>
-        <h2 className="mt-5 font-display text-[28px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#3B0D1A] lg:text-[42px]">
+        <h2 className="mt-5 font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#3B0D1A] lg:text-[36px]">
           {en ? "The ÁLIS atmosphere" : "Атмосфера ÁLIS"}
         </h2>
       </div>

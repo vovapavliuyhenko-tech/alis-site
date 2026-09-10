@@ -48,7 +48,7 @@ export default function SplitMedia({
         {/* Текст */}
         <div className={mirror ? "lg:order-1" : "lg:order-2"}>
           <span className="text-[11px] uppercase tracking-[0.22em] text-[#4A4B33]">{eyebrow[lang]}</span>
-          <h2 className="mt-4 font-display text-[28px] uppercase tracking-[0.05em] leading-[1.1] text-[#3B0D1A] lg:text-[42px]">
+          <h2 className="mt-4 font-display text-[24px] uppercase tracking-[0.05em] leading-[1.1] text-[#3B0D1A] lg:text-[36px]">
             {title[lang]}
           </h2>
           {text && <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-[#2a2320]/70 lg:text-[16px]">{text[lang]}</p>}

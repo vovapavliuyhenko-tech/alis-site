@@ -42,7 +42,7 @@ export default function ContactsCTA() {
             {t("Контакты", "Contacts")}
           </span>
 
-          <h2 className="r-reveal mt-6 font-display text-[28px] font-normal uppercase leading-[1.12] tracking-[0.04em] lg:text-[42px]">
+          <h2 className="r-reveal mt-6 font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.04em] lg:text-[36px]">
             {t("Остались вопросы?", "Still have questions?")}
             <br />
             <span className="text-[#c9a98f]">{t("Напишите нам", "Message us")}</span>
