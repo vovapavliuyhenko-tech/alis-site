@@ -56,13 +56,13 @@ export default function Philosophy() {
               </svg>
             </span>
 
-            <p className="mt-7 text-[14px] leading-relaxed text-[#2a2320]/85 lg:text-[15px]">
+            <p className="mt-7 text-[14px] leading-relaxed text-[#2a2320]/85 lg:ml-10 lg:text-[15px]">
               {en
                 ? "— we bring your whole look together in one place and one pair of hands: hair, nails, brows, makeup and care in a single visit — no running across town, no lost day."
                 : "— это когда весь ваш образ собирается в одном месте и в одних руках: волосы, ногти, брови, макияж и уход за один визит — без разъездов по городу и потерянного дня."}
             </p>
 
-            <p className="mt-5 text-[14px] leading-relaxed text-[#2a2320]/70 lg:text-[15px]">
+            <p className="mt-5 text-[14px] leading-relaxed text-[#2a2320]/70 lg:ml-20 lg:text-[15px]">
               {en
                 ? "We don't chase trends for the sake of it. First we listen and tell you honestly what suits you and what doesn't. Our job is simple: you leave still yourself — only rested and sure of it."
                 : "Мы не гонимся за трендами ради трендов. Сначала слушаем и честно говорим, что подойдёт именно вам, а что — нет. Наша работа проста: вы выходите собой — только отдохнувшей и уверенной."}
