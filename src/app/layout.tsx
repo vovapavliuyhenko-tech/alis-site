@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import Preloader from "@/components/Preloader";
 import ServiceWorker from "@/components/ServiceWorker";
+import SmoothAnchor from "@/components/SmoothAnchor";
 import CustomCursor from "@/components/CustomCursor";
 import CookieConsent from "@/components/CookieConsent";
 import BookingFab from "@/components/BookingFab";
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <CookieConsent />
         </LanguageProvider>
         <CustomCursor />
+        <SmoothAnchor />
         <ServiceWorker />
       </body>
     </html>
