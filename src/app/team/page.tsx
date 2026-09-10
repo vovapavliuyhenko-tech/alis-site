@@ -12,8 +12,9 @@ export default function TeamPage() {
       <ScrollReveal />
       <Header />
 
-      {/* 1 — Герой-сплит (PALOMA): фото слева, закреплён — следующий наезжает поверх */}
+      {/* 1 — Герой-сплит (PALOMA): фото слева, ЗАКРЕПЛЁН — второй блок наезжает поверх */}
       <TeamHero
+        pinned
         photo="/assets/tild3236-393__.jpg"
         eyebrow={{ ru: "команда ÁLIS", en: "the ÁLIS team" }}
         title={{ ru: "Мастера, которым доверяют образ", en: "Masters you trust with your look" }}

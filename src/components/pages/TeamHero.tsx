@@ -14,6 +14,7 @@ export default function TeamHero({
   sub,
   cta,
   reverse = false,
+  pinned = false,
 }: {
   photo: string;
   eyebrow: Loc;
@@ -21,6 +22,7 @@ export default function TeamHero({
   sub: Loc;
   cta: { label: Loc; href: string };
   reverse?: boolean;
+  pinned?: boolean;
 }) {
   const { lang } = useLang();
   const en = lang === "en";
@@ -55,7 +57,7 @@ export default function TeamHero({
   return (
     <section
       data-hide-fab
-      className="relative grid h-svh min-h-[600px] grid-cols-1 overflow-hidden lg:grid-cols-2"
+      className={`${pinned ? "sticky top-0 z-0" : "relative z-10"} grid h-svh min-h-[600px] grid-cols-1 overflow-hidden lg:grid-cols-2`}
     >
       {reverse ? (
         <>
