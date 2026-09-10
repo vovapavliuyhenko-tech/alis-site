@@ -20,7 +20,7 @@ export default function Philosophy() {
           {en ? " is" : ""}
         </h2>
 
-        <div className="mt-10 grid items-center gap-10 lg:mt-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <div className="mt-10 grid items-start gap-10 lg:mt-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           {/* Фото основателя */}
           <div className="r-reveal">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -35,8 +35,8 @@ export default function Philosophy() {
             </p>
           </div>
 
-          {/* Текст */}
-          <div className="r-reveal max-w-[560px]">
+          {/* Текст — прижат к верху, фраза в верхней трети (как на референсе) */}
+          <div className="r-reveal max-w-[520px] lg:pt-12">
             {/* Выделенная фраза с рисованным кружком */}
             <span className="relative inline-block font-serif text-[19px] italic leading-snug text-[#3B0D1A] lg:text-[22px]">
               <span className="relative z-10">{en ? "«Beauty without the fuss»" : "«Красота без суеты»"}</span>
