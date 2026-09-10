@@ -12,7 +12,7 @@ export default function Philosophy() {
 
   return (
     <section className="bg-[#f4efe6] py-16 lg:py-24">
-      <div className="mx-auto w-[92%] max-w-[1180px]">
+      <div className="mx-auto w-[92%] max-w-[1280px]">
         {/* Заголовок */}
         <h2 className="r-reveal font-display text-[34px] font-normal leading-[1.05] tracking-[0.01em] text-[#2a2320] sm:text-[46px] lg:text-[58px]">
           {en ? "What " : "Что такое "}
@@ -36,7 +36,7 @@ export default function Philosophy() {
           </div>
 
           {/* Текст — прижат к верху, фраза в верхней трети (как на референсе) */}
-          <div className="r-reveal max-w-[520px] lg:pt-12">
+          <div className="r-reveal max-w-[760px] lg:pt-12">
             {/* Выделенная фраза с рисованным кружком */}
             <span className="relative inline-block font-serif text-[19px] italic leading-snug text-[#3B0D1A] lg:text-[22px]">
               <span className="relative z-10">{en ? "«Beauty without the fuss»" : "«Красота без суеты»"}</span>
@@ -58,14 +58,14 @@ export default function Philosophy() {
 
             <p className="mt-7 text-[14px] leading-relaxed text-[#2a2320]/85 lg:ml-10 lg:text-[15px]">
               {en
-                ? "— we bring your whole look together in one place and one pair of hands: hair, nails, brows, makeup and care in a single visit — no running across town, no lost day."
-                : "— это когда весь ваш образ собирается в одном месте и в одних руках: волосы, ногти, брови, макияж и уход за один визит — без разъездов по городу и потерянного дня."}
+                ? "— your whole look, hair, nails, brows, makeup and care, comes together in one pair of hands in a single visit."
+                : "— это когда весь образ, волосы, ногти, брови, макияж и уход, собирается в одних руках за один визит."}
             </p>
 
             <p className="mt-5 text-[14px] leading-relaxed text-[#2a2320]/70 lg:ml-20 lg:text-[15px]">
               {en
-                ? "We don't chase trends for the sake of it. First we listen and tell you honestly what suits you and what doesn't. Our job is simple: you leave still yourself — only rested and sure of it."
-                : "Мы не гонимся за трендами ради трендов. Сначала слушаем и честно говорим, что подойдёт именно вам, а что — нет. Наша работа проста: вы выходите собой — только отдохнувшей и уверенной."}
+                ? "No trends for the sake of it: we tell you honestly what suits you. You leave still yourself, only rested and sure of it."
+                : "Без трендов ради трендов: честно говорим, что вам подойдёт. Вы выходите собой — только отдохнувшей и уверенной."}
             </p>
           </div>
         </div>
