@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ServiceBento from "@/components/pages/ServiceBento";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
+import Philosophy from "@/components/pages/Philosophy";
 import Brands from "@/components/Brands";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
@@ -22,6 +23,8 @@ export default function Home() {
         <div id="hero-end" aria-hidden className="h-0" />
         {/* Лента-галерея — фото бегут сами (сразу под первым блоком) */}
         <PhotoMarquee />
+        {/* Философия салона — фото основателя + короткое кредо */}
+        <Philosophy />
         {/* Нам доверяют — бегущая строка брендов (после второго блока) */}
         <Brands />
         {/* Услуги — bento-галерея категорий */}
