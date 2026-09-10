@@ -58,7 +58,7 @@ export default function Vacancies() {
             <a
               key={v.role.ru}
               href="#join"
-              className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[20px] border border-[#3B0D1A]/12 px-6 py-6 transition-colors duration-300 hover:border-transparent hover:bg-[#3B0D1A]/10 lg:gap-8 lg:px-8 lg:py-8"
+              className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[20px] border border-[#3B0D1A]/12 px-6 py-6 transition-colors duration-300 hover:border-transparent hover:bg-[#3B0D1A]/20 lg:gap-8 lg:px-8 lg:py-8"
             >
               {/* Номер */}
               <span className="font-display text-[13px] tabular-nums text-[#4A4B33] lg:text-[15px]">
@@ -90,7 +90,7 @@ export default function Vacancies() {
                 alt=""
                 draggable={false}
                 aria-hidden
-                className="pointer-events-none absolute left-[60%] top-1/2 z-20 hidden aspect-[3/4] w-[230px] -translate-x-1/2 -translate-y-1/2 rotate-[-3deg] scale-95 rounded-[22px] object-cover opacity-0 shadow-[0_28px_60px_rgba(59,13,26,0.28)] transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:block lg:w-[260px]"
+                className="pointer-events-none absolute left-[60%] top-1/2 z-20 hidden aspect-[3/4] w-[205px] -translate-x-1/2 -translate-y-1/2 rotate-[-3deg] scale-95 rounded-[22px] object-cover opacity-0 shadow-[0_28px_60px_rgba(59,13,26,0.28)] transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:block lg:w-[232px]"
               />
             </a>
           ))}
