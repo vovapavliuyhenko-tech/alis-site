@@ -38,7 +38,6 @@ const easeInOut = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x 
 
 export default function SalonCompare() {
   const { lang } = useLang();
-  const en = lang === "en";
   const gridRef = useRef<HTMLDivElement>(null);
   const [k, setK] = useState(0); // 0 — ровно (до), 1 — повёрнуто (долистал)
 
@@ -74,10 +73,6 @@ export default function SalonCompare() {
   return (
     <section className="bg-white py-24 lg:py-32">
       <div className="mx-auto w-[92%] max-w-[1280px]">
-        <h2 className="mb-16 text-center font-display text-[22px] font-normal tracking-[0.01em] lg:mb-20 lg:text-[32px]" style={{ color: INK }}>
-          {en ? "Why masters choose ÁLIS" : "Почему мастера выбирают ÁLIS"}
-        </h2>
-
         <div ref={gridRef} className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-[0.78fr_1fr_1fr_0.78fr] lg:gap-6">
           {/* Фото слева — наклон наружу (влево) */}
           <div className="hidden lg:block">
