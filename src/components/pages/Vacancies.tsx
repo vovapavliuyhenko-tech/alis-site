@@ -8,31 +8,30 @@ import { useLang } from "@/lib/i18n";
 type Loc = { ru: string; en: string };
 type Vacancy = { role: Loc; desc: Loc; schedule: Loc; img: string };
 
-// TODO: заменить на реальный список вакансий, когда пришлёт владелец.
 const VACANCIES: Vacancy[] = [
   {
-    role: { ru: "Парикмахер-колорист", en: "Hair colourist" },
-    desc: { ru: "Сложное окрашивание, стрижки, уход", en: "Complex colour, cuts, care" },
-    schedule: { ru: "график 2/2", en: "2/2 schedule" },
-    img: "/assets/tild6530-383_-2___1_.jpg",
-  },
-  {
-    role: { ru: "Мастер маникюра и педикюра", en: "Manicure & pedicure master" },
-    desc: { ru: "Гигиена, покрытие, дизайн", en: "Hygiene, coating, design" },
-    schedule: { ru: "график гибкий", en: "flexible schedule" },
-    img: "/assets/tild3638-373_-2___1__3.jpg",
-  },
-  {
-    role: { ru: "Бровист / лашмейкер", en: "Brow & lash artist" },
-    desc: { ru: "Брови, ресницы, окрашивание", en: "Brows, lashes, tinting" },
-    schedule: { ru: "частичная / полная", en: "part / full time" },
-    img: "/assets/tild3236-393__.jpg",
-  },
-  {
-    role: { ru: "Администратор салона", en: "Salon administrator" },
+    role: { ru: "Администратор", en: "Administrator" },
     desc: { ru: "Встреча гостей, запись, атмосфера", en: "Greeting guests, booking, atmosphere" },
     schedule: { ru: "график 2/2", en: "2/2 schedule" },
     img: "/assets/tild6230-643__.jpg",
+  },
+  {
+    role: { ru: "Визажист", en: "Makeup artist" },
+    desc: { ru: "Дневной, вечерний, свадебный макияж", en: "Day, evening and bridal makeup" },
+    schedule: { ru: "частичная / полная", en: "part / full time" },
+    img: "/assets/tild6536-613_-2___1__4.jpg",
+  },
+  {
+    role: { ru: "Бровист", en: "Brow artist" },
+    desc: { ru: "Брови, ресницы, окрашивание", en: "Brows, lashes, tinting" },
+    schedule: { ru: "график гибкий", en: "flexible schedule" },
+    img: "/assets/tild3236-393__.jpg",
+  },
+  {
+    role: { ru: "Мастер ногтевого сервиса", en: "Nail service master" },
+    desc: { ru: "Маникюр, педикюр, покрытие, дизайн", en: "Manicure, pedicure, coating, design" },
+    schedule: { ru: "график 2/2", en: "2/2 schedule" },
+    img: "/assets/tild3638-373_-2___1__3.jpg",
   },
 ];
 
