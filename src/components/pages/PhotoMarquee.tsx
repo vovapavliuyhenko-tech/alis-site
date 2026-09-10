@@ -4,22 +4,23 @@
 // одинаковые дорожки (как «Нам доверяют»). Двуязычно.
 import { useLang } from "@/lib/i18n";
 
-// Кадры разной ширины (aspect-ratio при фикс. высоте) — «разных размеров».
-const ITEMS: { src: string; r: number }[] = [
-  { src: "/assets/tild6230-643__.jpg", r: 0.78 },
-  { src: "/assets/tild3236-393__.jpg", r: 1.3 },
-  { src: "/assets/tild6530-383_-2___1_.jpg", r: 0.72 },
-  { src: "/assets/tild3638-373_-2___1__3.jpg", r: 1.0 },
-  { src: "/assets/tild3561-646_-2___1__5.jpg", r: 0.8 },
-  { src: "/assets/tild6536-613_-2___1__4.jpg", r: 1.25 },
-  { src: "/shop/ss-portrait.jpg", r: 0.7 },
+// Кадры разного размера — и по ширине, и по высоте (w × h). Центрируются по
+// вертикали, поэтому лента получается «рваной». Мобайл — множитель поменьше.
+const ITEMS: { src: string; w: number; h: number }[] = [
+  { src: "/assets/tild6230-643__.jpg", w: 300, h: 400 },
+  { src: "/assets/tild3236-393__.jpg", w: 420, h: 300 },
+  { src: "/assets/tild6530-383_-2___1_.jpg", w: 280, h: 460 },
+  { src: "/assets/tild3638-373_-2___1__3.jpg", w: 360, h: 340 },
+  { src: "/assets/tild3561-646_-2___1__5.jpg", w: 300, h: 420 },
+  { src: "/assets/tild6536-613_-2___1__4.jpg", w: 400, h: 300 },
+  { src: "/shop/ss-portrait.jpg", w: 260, h: 440 },
 ];
 
-function Track({ hidden = false }: { hidden?: boolean }) {
+function Track({ hidden = false, scale = 1 }: { hidden?: boolean; scale?: number }) {
   return (
-    <ul aria-hidden={hidden} className="marquee flex shrink-0 group-hover:[animation-play-state:paused]">
+    <ul aria-hidden={hidden} className="marquee flex shrink-0 items-center group-hover:[animation-play-state:paused]">
       {ITEMS.map((it, i) => (
-        <li key={i} className="mr-2 h-[300px] shrink-0 lg:mr-3 lg:h-[440px]" style={{ aspectRatio: it.r }}>
+        <li key={i} className="mr-2 shrink-0 lg:mr-3" style={{ width: it.w * scale, height: it.h * scale }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={it.src} alt="" draggable={false} className="h-full w-full rounded-[14px] object-cover" />
         </li>
