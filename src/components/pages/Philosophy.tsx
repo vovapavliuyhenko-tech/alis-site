@@ -56,7 +56,7 @@ export default function Philosophy() {
               </svg>
             </span>
 
-            <p className="mt-7 text-[14px] leading-relaxed text-[#2a2320]/85 lg:ml-10 lg:text-[15px]">
+            <p className="mt-7 text-[14px] leading-relaxed text-[#2a2320]/85 lg:ml-4 lg:text-[15px]">
               {en
                 ? "— your whole look, hair, nails, brows, makeup and care, comes together in one pair of hands in a single visit."
                 : "— это когда весь образ, волосы, ногти, брови, макияж и уход, собирается в одних руках за один визит."}
