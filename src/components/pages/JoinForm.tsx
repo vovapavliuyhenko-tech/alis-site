@@ -60,22 +60,28 @@ export default function JoinForm() {
     <section id="join" className="scroll-mt-24 bg-white px-3 pt-3 pb-16 sm:px-4 sm:pt-4 sm:pb-24">
       <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая бордовая панель */}
-        <div className="flex flex-col justify-between gap-10 rounded-[28px] bg-[#3B0D1A] px-6 py-12 text-[#f4efe6] sm:px-10 lg:min-h-[620px] lg:px-14 lg:py-16">
-          <h2 className="mx-auto w-full max-w-lg text-center font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.02em] lg:text-[34px]">
-            {en ? "Become part of ÁLIS" : "Стать частью команды ÁLIS"}
-          </h2>
-
-          <div className="mx-auto w-full max-w-lg">
+        <div className="flex flex-col rounded-[28px] bg-[#3B0D1A] px-6 py-12 text-[#f4efe6] sm:px-10 lg:min-h-[620px] lg:px-14 lg:py-16">
             {sent ? (
-              <div className="mt-10 flex flex-col items-center rounded-[20px] bg-white/[0.06] p-8 text-center">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#8a5a3c] font-display text-[22px] text-[#f4efe6]">✓</span>
-                <h3 className="mt-5 font-display text-[22px] uppercase tracking-[0.02em]">{en ? "Thank you!" : "Спасибо!"}</h3>
-                <p className="mt-3 max-w-sm text-[14px] leading-relaxed text-[#f4efe6]/70">
-                  {en ? "We've received your application and will get back to you soon." : "Мы получили вашу заявку и скоро свяжемся с вами."}
-                </p>
+              <div className="flex flex-1 flex-col justify-between gap-10">
+                <h2 className="mx-auto w-full max-w-lg text-center font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.02em] lg:text-[34px]">
+                  {en ? "Become part of ÁLIS" : "Стать частью команды ÁLIS"}
+                </h2>
+                <div className="mx-auto flex w-full max-w-lg flex-col items-center rounded-[20px] bg-white/[0.06] p-8 text-center">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#8a5a3c] font-display text-[22px] text-[#f4efe6]">✓</span>
+                  <h3 className="mt-5 font-display text-[22px] uppercase tracking-[0.02em]">{en ? "Thank you!" : "Спасибо!"}</h3>
+                  <p className="mt-3 max-w-sm text-[14px] leading-relaxed text-[#f4efe6]/70">
+                    {en ? "We've received your application and will get back to you soon." : "Мы получили вашу заявку и скоро свяжемся с вами."}
+                  </p>
+                </div>
+                <span aria-hidden />
               </div>
             ) : (
-              <form onSubmit={submit} noValidate className="mt-8 flex flex-col gap-3">
+              <form onSubmit={submit} noValidate className="flex flex-1 flex-col justify-between gap-10">
+                <h2 className="mx-auto w-full max-w-lg text-center font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.02em] lg:text-[34px]">
+                  {en ? "Become part of ÁLIS" : "Стать частью команды ÁLIS"}
+                </h2>
+
+                <div className="mx-auto flex w-full max-w-lg flex-col gap-3">
                 {FIELDS.map((f) => (
                   <label
                     key={f.key}
@@ -115,16 +121,16 @@ export default function JoinForm() {
                       : "Отправляя форму, вы соглашаетесь с обработкой персональных данных."}
                   </span>
                 </label>
+                </div>
 
                 <button
                   type="submit"
-                  className="mt-2 inline-flex items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] px-10 py-3.5 font-display text-[13px] uppercase tracking-[0.16em] text-[#3B0D1A] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
+                  className="mx-auto flex w-full max-w-lg items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#3B0D1A] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
                 >
                   {en ? "send" : "отправить"}
                 </button>
               </form>
             )}
-          </div>
         </div>
 
         {/* Правая колонка — большое фото на всю высоту */}
