@@ -42,7 +42,7 @@ export default function Philosophy() {
           href={YCLIENTS}
           target="_blank"
           rel="noopener noreferrer"
-          className="r-reveal mt-8 inline-flex items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#3B0D1A] px-10 py-4 font-display text-[13px] uppercase tracking-[0.14em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#f4efe6] hover:text-[#3B0D1A] sm:text-[14px]"
+          className="r-reveal mt-8 inline-flex items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] px-16 py-4 font-display text-[13px] uppercase tracking-[0.14em] text-[#3B0D1A] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
         >
           {en ? "book now" : "записаться"}
         </a>
