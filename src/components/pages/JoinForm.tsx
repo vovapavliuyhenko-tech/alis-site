@@ -60,12 +60,12 @@ export default function JoinForm() {
     <section id="join" className="scroll-mt-24 bg-white px-3 pt-3 pb-16 sm:px-4 sm:pt-4 sm:pb-24">
       <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая бордовая панель */}
-        <div className="flex flex-col justify-center rounded-[28px] bg-[#3B0D1A] px-6 py-10 text-[#f4efe6] sm:px-10 lg:min-h-[600px] lg:px-14">
-          <div className="mx-auto w-full max-w-lg">
-            <h2 className="text-center font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.02em] lg:text-[34px]">
-              {en ? "Become part of ÁLIS" : "Стать частью команды ÁLIS"}
-            </h2>
+        <div className="flex flex-col justify-between gap-10 rounded-[28px] bg-[#3B0D1A] px-6 py-12 text-[#f4efe6] sm:px-10 lg:min-h-[620px] lg:px-14 lg:py-16">
+          <h2 className="mx-auto w-full max-w-lg text-center font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.02em] lg:text-[34px]">
+            {en ? "Become part of ÁLIS" : "Стать частью команды ÁLIS"}
+          </h2>
 
+          <div className="mx-auto w-full max-w-lg">
             {sent ? (
               <div className="mt-10 flex flex-col items-center rounded-[20px] bg-white/[0.06] p-8 text-center">
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#8a5a3c] font-display text-[22px] text-[#f4efe6]">✓</span>
