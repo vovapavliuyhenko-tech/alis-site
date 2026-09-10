@@ -20,9 +20,9 @@ export default function ServiceBento() {
   const en = lang === "en";
 
   return (
-    <section id="services" className="scroll-mt-24 bg-white py-24 lg:py-32">
+    <section id="services" className="scroll-mt-24 bg-white py-16 lg:py-20">
       <div className="mx-auto w-[94%] max-w-[1440px]">
-        <div className="r-reveal mb-12 max-w-2xl lg:mb-16">
+        <div className="r-reveal mb-8 max-w-2xl lg:mb-10">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
             {en ? "services" : "услуги"}
@@ -32,7 +32,7 @@ export default function ServiceBento() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 lg:h-[720px] lg:grid-cols-3 lg:grid-rows-2">
+        <div className="grid grid-cols-2 gap-3 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
           {CATS.map((c, i) => (
             <a
               key={c.title.ru}
