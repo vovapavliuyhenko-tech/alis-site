@@ -17,6 +17,7 @@ export default function TeamHero({
   reverse = false,
   pinned = false,
   logo = false,
+  logoTop = false,
 }: {
   photo: string;
   eyebrow: Loc;
@@ -26,6 +27,7 @@ export default function TeamHero({
   reverse?: boolean;
   pinned?: boolean;
   logo?: boolean;
+  logoTop?: boolean;
 }) {
   const { lang } = useLang();
   const en = lang === "en";
@@ -38,11 +40,15 @@ export default function TeamHero({
   );
 
   const Panel = (
-    <div className="relative flex h-full flex-col items-center justify-between bg-white px-8 pb-16 pt-28 text-center lg:px-14 lg:pb-20 lg:pt-32">
-      {/* Верх — надстрочник */}
-      <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#4A4B33]">
-        {eyebrow[lang]}
-      </span>
+    <div className="relative flex h-full flex-col items-center justify-between bg-white px-8 pb-16 pt-36 text-center lg:px-14 lg:pb-20 lg:pt-40">
+      {/* Верх — логотип или надстрочник */}
+      {logoTop ? (
+        <LogoLockup variant="wine" className="scale-[0.6]" />
+      ) : (
+        <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#4A4B33]">
+          {eyebrow[lang]}
+        </span>
+      )}
 
       {/* Середина — крупный заголовок + текст */}
       <div className="flex flex-col items-center">
