@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ServiceBento from "@/components/pages/ServiceBento";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
-import FlipGallery from "@/components/FlipGallery";
 import Brands from "@/components/Brands";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
@@ -25,8 +24,6 @@ export default function Home() {
         <PhotoMarquee />
         {/* Услуги — bento-галерея категорий */}
         <ServiceBento />
-        {/* Наши работы (портфолио) — прогрев результатом */}
-        <FlipGallery />
         {/* Нам доверяют (бренды) */}
         <Brands />
         {/* FAQ */}
