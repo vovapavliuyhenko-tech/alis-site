@@ -4,6 +4,7 @@
 // наезжает поверх предыдущего при скролле. Фото можно ставить слева или справа.
 // Высота — экран минус шапка, чтобы блок помещался и не перекрывался шапкой.
 import { useLang } from "@/lib/i18n";
+import { LogoLockup } from "@/components/Logo";
 
 type Loc = { ru: string; en: string };
 
@@ -15,6 +16,7 @@ export default function TeamHero({
   cta,
   reverse = false,
   pinned = false,
+  logo = false,
 }: {
   photo: string;
   eyebrow: Loc;
@@ -23,6 +25,7 @@ export default function TeamHero({
   cta: { label: Loc; href: string };
   reverse?: boolean;
   pinned?: boolean;
+  logo?: boolean;
 }) {
   const { lang } = useLang();
   const en = lang === "en";
@@ -35,19 +38,32 @@ export default function TeamHero({
   );
 
   const Panel = (
-    <div className="relative flex flex-col items-center justify-center bg-white px-8 py-16 text-center lg:px-16">
-      <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#4A4B33]">
-        {eyebrow[lang]}
-      </span>
-      <h2 className="mt-5 max-w-[15ch] font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.02em] text-[#3B0D1A] sm:text-[30px] lg:text-[38px]">
-        {title[lang]}
-      </h2>
-      <p className="mt-5 max-w-md text-[13px] leading-relaxed text-[#2a2320]/70 sm:text-[14px]">
+    <div className="relative flex h-full flex-col items-center justify-between gap-8 bg-white px-8 py-16 text-center lg:px-14 lg:py-20">
+      {/* Верх — логотип (первый блок) или надстрочник + заголовок */}
+      <div className="flex flex-col items-center">
+        {logo ? (
+          <LogoLockup variant="wine" className="scale-90" />
+        ) : (
+          <>
+            <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#4A4B33]">
+              {eyebrow[lang]}
+            </span>
+            <h2 className="mt-5 max-w-[15ch] font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.02em] text-[#3B0D1A] sm:text-[30px] lg:text-[38px]">
+              {title[lang]}
+            </h2>
+          </>
+        )}
+      </div>
+
+      {/* Середина — текст */}
+      <p className="my-auto max-w-md text-[13px] leading-relaxed text-[#2a2320]/70 sm:text-[14px]">
         {sub[lang]}
       </p>
+
+      {/* Низ — кнопка во всю ширину панели */}
       <a
         href={cta.href}
-        className="mt-8 inline-flex items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] px-12 py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:text-[14px]"
+        className="flex w-full items-center justify-center rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] sm:text-[14px]"
       >
         {en ? cta.label.en : cta.label.ru}
       </a>
