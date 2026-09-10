@@ -55,7 +55,7 @@ export default function TeamHero({
   return (
     <section
       data-hide-fab
-      className="sticky top-0 z-0 grid h-svh min-h-[600px] grid-cols-1 overflow-hidden lg:grid-cols-2"
+      className="relative grid h-svh min-h-[600px] grid-cols-1 overflow-hidden lg:grid-cols-2"
     >
       {reverse ? (
         <>
