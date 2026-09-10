@@ -91,15 +91,23 @@ export default function SalonCompare() {
             />
           </div>
 
-          {/* Средние карточки — одинаковые белые с обводкой */}
+          {/* Средние карточки: левая — бордовая, правая — оливковая полупрозрачная */}
           {COLS.map((c, i) => {
             const dir = i === 0 ? 1 : -1;
+            const wine = i === 0;
+            const bg = wine ? "#3B0D1A" : "rgba(74,75,51,0.12)";
+            const border = wine ? "transparent" : "rgba(74,75,51,0.28)";
+            const headColor = wine ? "#f4efe6" : INK;
+            const subColor = wine ? "rgba(244,239,230,0.78)" : "rgba(23,25,26,0.72)";
+            const bullet = wine ? "#f4efe6" : "#4A4B33";
+            const footColor = wine ? "#f4efe6" : INK;
             return (
               <article
                 key={c.head.ru}
-                className="flex min-h-[420px] flex-col justify-between rounded-[22px] border bg-white p-9 lg:p-10"
+                className="flex min-h-[420px] flex-col justify-between rounded-[22px] border p-9 lg:p-10"
                 style={{
-                  borderColor: "rgba(23,25,26,0.14)",
+                  backgroundColor: bg,
+                  borderColor: border,
                   transform: `rotate(${dir * cardTilt}deg)`,
                   transformOrigin: "bottom center",
                   willChange: "transform",
@@ -107,19 +115,19 @@ export default function SalonCompare() {
                 }}
               >
                 <div>
-                  <p className="font-display text-[18px] tracking-[0.01em] lg:text-[21px]" style={{ color: INK }}>
+                  <p className="font-display text-[18px] tracking-[0.01em] lg:text-[21px]" style={{ color: headColor }}>
                     {c.head[lang]}
                   </p>
-                  <ul className="mt-4 space-y-3 text-[12.5px] leading-relaxed lg:text-[13px]" style={{ color: "rgba(23,25,26,0.72)" }}>
+                  <ul className="mt-4 space-y-3 text-[12.5px] leading-relaxed lg:text-[13px]" style={{ color: subColor }}>
                     {c.points.map((pt) => (
                       <li key={pt.ru} className="flex items-start gap-3">
-                        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: INK }} />
+                        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: bullet }} />
                         {pt[lang]}
                       </li>
                     ))}
                   </ul>
                 </div>
-                <p className="mt-10 font-display text-[15px] font-normal leading-snug lg:text-[17px]" style={{ color: INK }}>
+                <p className="mt-10 font-display text-[15px] font-normal leading-snug lg:text-[17px]" style={{ color: footColor }}>
                   {c.foot[lang]}
                 </p>
               </article>
