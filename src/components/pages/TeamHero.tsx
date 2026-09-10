@@ -18,6 +18,7 @@ export default function TeamHero({
   pinned = false,
   logo = false,
   logoTop = false,
+  roundedTop = false,
 }: {
   photo: string;
   eyebrow: Loc;
@@ -28,6 +29,7 @@ export default function TeamHero({
   pinned?: boolean;
   logo?: boolean;
   logoTop?: boolean;
+  roundedTop?: boolean;
 }) {
   const { lang } = useLang();
   const en = lang === "en";
@@ -83,7 +85,7 @@ export default function TeamHero({
   return (
     <section
       data-hide-fab
-      className={`${pinned ? "sticky top-0 z-0" : "relative z-10"} grid h-svh min-h-[600px] grid-cols-1 overflow-hidden lg:grid-cols-2`}
+      className={`${pinned ? "sticky top-0 z-0" : "relative z-10"} ${roundedTop ? "rounded-t-[40px]" : ""} grid h-svh min-h-[600px] grid-cols-1 overflow-hidden lg:grid-cols-2`}
     >
       {reverse ? (
         <>
