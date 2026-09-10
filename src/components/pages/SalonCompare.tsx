@@ -94,12 +94,12 @@ export default function SalonCompare() {
           {/* Средние карточки: левая — бордовая, правая — оливковая полупрозрачная */}
           {COLS.map((c, i) => {
             const dir = i === 0 ? 1 : -1;
-            const wine = i === 0;
-            const bg = wine ? "#3B0D1A" : "rgba(74,75,51,0.12)";
-            const border = wine ? "transparent" : "rgba(74,75,51,0.28)";
+            const wine = i === 1; // правая — главная, бордовая
+            const bg = wine ? "#3B0D1A" : "#ffffff";
+            const border = wine ? "transparent" : "rgba(23,25,26,0.14)";
             const headColor = wine ? "#f4efe6" : INK;
             const subColor = wine ? "rgba(244,239,230,0.78)" : "rgba(23,25,26,0.72)";
-            const bullet = wine ? "#f4efe6" : "#4A4B33";
+            const bullet = wine ? "#f4efe6" : INK;
             const footColor = wine ? "#f4efe6" : INK;
             return (
               <article
