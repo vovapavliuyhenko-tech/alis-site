@@ -33,7 +33,7 @@ export default function TeamHero({
   );
 
   const Panel = (
-    <div className="relative flex flex-col items-center justify-center bg-[#f4efe6] px-8 py-16 text-center lg:px-16">
+    <div className="relative flex flex-col items-center justify-center bg-white px-8 py-16 text-center lg:px-16">
       <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#4A4B33]">
         {eyebrow[lang]}
       </span>
