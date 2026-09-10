@@ -2,6 +2,7 @@
 // ВОПРОСЫ — как на sevara-sr: слева зафиксированный заголовок + фото; справа
 // карточки-ответы на боли клиентов, которые при скролле НАЕЗЖАЮТ друг на друга
 // (sticky-stacking). Листается только правая колонка. В стиле ÁLIS. Двуязычно.
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -65,6 +66,25 @@ export default function Faq() {
   const { lang } = useLang();
   const en = lang === "en";
 
+  // Какая карточка сейчас в верхней (передней) позиции стека — она акцентно-бордовая.
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const STICK = 96 + 6; // top-24 (6rem) + небольшой допуск
+    let raf = 0;
+    const loop = () => {
+      let idx = 0;
+      cardRefs.current.forEach((el, i) => {
+        if (el && el.getBoundingClientRect().top <= STICK) idx = i;
+      });
+      setActive((prev) => (prev === idx ? prev : idx));
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
   return (
     <section id="faq" className="bg-white py-16 lg:py-20">
       <div className="mx-auto grid w-[92%] max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
@@ -85,15 +105,32 @@ export default function Faq() {
 
         {/* Правая колонка — карточки идут вплотную и НАЕЗЖАЮТ друг на друга при скролле */}
         <div className="flex flex-col">
-          {ITEMS.map((it) => (
-            <div key={it.q.ru} className="sticky top-24 pb-3 last:pb-0">
-              <article className="flex min-h-[190px] flex-col justify-center rounded-[20px] border border-[#3B0D1A]/30 bg-white p-5 transition-colors duration-300 hover:border-transparent hover:bg-[#e6d3d8] lg:p-6">
-                <p className="font-serif text-[16px] italic leading-snug text-[#3B0D1A] lg:text-[19px]">{it.q[lang]}</p>
-                <span className="mt-4 mb-4 block h-px w-10 bg-[#8a5a3c]" />
-                <p className="text-[12.5px] font-light leading-relaxed text-[#2a2320]/70 lg:text-[13.5px]">{it.a[lang]}</p>
-              </article>
-            </div>
-          ))}
+          {ITEMS.map((it, i) => {
+            const isActive = i === active;
+            return (
+              <div
+                key={it.q.ru}
+                ref={(el) => { cardRefs.current[i] = el; }}
+                className="sticky top-24 pb-3 last:pb-0"
+              >
+                <article
+                  className={`flex min-h-[190px] flex-col justify-center rounded-[20px] border p-5 transition-colors duration-300 lg:p-6 ${
+                    isActive
+                      ? "border-transparent bg-[#3B0D1A]"
+                      : "border-[#3B0D1A]/30 bg-white hover:border-transparent hover:bg-[#e6d3d8]"
+                  }`}
+                >
+                  <p className={`font-serif text-[16px] italic leading-snug lg:text-[19px] ${isActive ? "text-[#f4efe6]" : "text-[#3B0D1A]"}`}>
+                    {it.q[lang]}
+                  </p>
+                  <span className={`mt-4 mb-4 block h-px w-10 ${isActive ? "bg-[#f4efe6]/60" : "bg-[#8a5a3c]"}`} />
+                  <p className={`text-[12.5px] font-light leading-relaxed lg:text-[13.5px] ${isActive ? "text-[#f4efe6]/80" : "text-[#2a2320]/70"}`}>
+                    {it.a[lang]}
+                  </p>
+                </article>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
