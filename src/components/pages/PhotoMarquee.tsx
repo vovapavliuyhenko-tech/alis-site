@@ -42,6 +42,7 @@ export default function PhotoMarquee() {
     const el = scroller.current;
     if (!el) return;
     let raf = 0;
+    let running = false;
     const step = () => {
       const half = (el.scrollWidth / 2) || 1; // ширина одной дорожки (их две — для бесшовности)
       if (!hovering.current && !drag.current.active) el.scrollLeft += 0.7;
@@ -54,8 +55,12 @@ export default function PhotoMarquee() {
       }
       raf = requestAnimationFrame(step);
     };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
+    const start = () => { if (!running) { running = true; raf = requestAnimationFrame(step); } };
+    const stop = () => { running = false; cancelAnimationFrame(raf); };
+    // Крутим анимацию только пока лента на экране — экономит ресурсы и разгружает скролл
+    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop()), { rootMargin: "200px" });
+    io.observe(el);
+    return () => { stop(); io.disconnect(); };
   }, []);
 
   const onDown = (e: React.PointerEvent) => {

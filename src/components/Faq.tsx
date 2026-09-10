@@ -67,12 +67,16 @@ export default function Faq() {
   const en = lang === "en";
 
   // Какая карточка сейчас в верхней (передней) позиции стека — она акцентно-бордовая.
+  const sectionRef = useRef<HTMLElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [active, setActive] = useState(0);
 
   useEffect(() => {
+    const sec = sectionRef.current;
+    if (!sec) return;
     const STICK = 96 + 6; // top-24 (6rem) + небольшой допуск
     let raf = 0;
+    let running = false;
     const loop = () => {
       let idx = 0;
       cardRefs.current.forEach((el, i) => {
@@ -81,12 +85,16 @@ export default function Faq() {
       setActive((prev) => (prev === idx ? prev : idx));
       raf = requestAnimationFrame(loop);
     };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
+    const start = () => { if (!running) { running = true; raf = requestAnimationFrame(loop); } };
+    const stop = () => { running = false; cancelAnimationFrame(raf); };
+    // Считаем активную карточку только пока блок на экране
+    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop()), { rootMargin: "200px" });
+    io.observe(sec);
+    return () => { stop(); io.disconnect(); };
   }, []);
 
   return (
-    <section id="faq" className="bg-white py-16 lg:py-20">
+    <section ref={sectionRef} id="faq" className="bg-white py-16 lg:py-20">
       <div className="mx-auto grid w-[92%] max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         {/* Левая колонка — зафиксирована */}
         <div className="lg:sticky lg:top-28 lg:self-start">

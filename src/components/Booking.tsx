@@ -290,7 +290,7 @@ export default function Booking() {
   return (
     <section
       id="booking"
-      className="relative scroll-mt-24 bg-white bg-fixed bg-cover bg-center py-24 text-[#17191a] lg:py-32"
+      className="relative scroll-mt-24 bg-white bg-cover bg-center py-24 text-[#17191a] lg:py-32"
       style={{
         backgroundColor: "#ffffff",
         backgroundImage:

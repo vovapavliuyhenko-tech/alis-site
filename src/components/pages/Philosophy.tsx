@@ -15,7 +15,7 @@ export default function Philosophy() {
       {/* Зафиксированный фон — не двигается при скролле */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-cover bg-fixed bg-center"
+        className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${PHOTO})` }}
       />
       {/* Затемнение для читаемости */}
