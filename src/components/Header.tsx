@@ -88,22 +88,29 @@ export default function Header() {
   // Пункт меню + (опц.) выпадашка
   const NavLink = ({ item }: { item: NavItem }) =>
     item.sub ? (
-      <div className="group relative">
+      <div className="group relative flex h-[68px] items-center">
         <a href={item.href} className={`flex items-center gap-1 py-2 ${inkSoft} transition-colors ${hoverInk}`}>
           <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 group-hover:after:w-full">
             {item.label[lang]}
           </span>
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" className="mt-0.5 opacity-60">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" className="mt-0.5 opacity-60 transition-transform duration-300 group-hover:rotate-180">
             <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </a>
-        <div className="invisible absolute left-1/2 top-full w-56 -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#17191a]/95 p-2 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-md">
-            {item.sub.map((s) => (
-              <a key={s.label.ru} href={s.href} className="block rounded-xl px-4 py-2.5 text-[13px] text-[#f4efe6]/70 transition-colors hover:bg-white/10 hover:text-[#f4efe6]">
-                {s.label[lang]}
-              </a>
-            ))}
+        {/* Мега-панель: во всю ширину, светлый фон, пункты в колонках */}
+        <div className="invisible fixed inset-x-0 top-[68px] opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+          <div className="border-t border-[#6E7248]/15 bg-[#F9F8F6]/98 shadow-[0_24px_50px_rgba(0,0,0,0.08)] backdrop-blur-md">
+            <div className="mx-auto grid max-w-[1280px] grid-cols-2 gap-x-10 gap-y-1 px-8 py-10 md:grid-cols-3">
+              {item.sub.map((s) => (
+                <a
+                  key={s.label.ru}
+                  href={s.href}
+                  className="rounded-xl px-5 py-4 text-[13px] uppercase tracking-[0.12em] text-[#6E7248] transition-colors hover:bg-[#6E7248]/10 hover:text-[#4A4B33]"
+                >
+                  {s.label[lang]}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
