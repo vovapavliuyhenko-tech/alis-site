@@ -83,7 +83,7 @@ export default function ContactsCTA() {
           <iframe
             src={MAP_EMBED}
             title={t("Салон ÁLIS на карте", "ÁLIS salon on the map")}
-            className="h-[320px] w-full lg:h-full lg:min-h-[560px]"
+            className="h-[300px] w-full lg:h-full lg:min-h-[460px]"
             loading="lazy"
             allowFullScreen
           />
@@ -91,41 +91,41 @@ export default function ContactsCTA() {
 
         {/* Белая карточка с бордовой обводкой */}
         <div
-          className="flex flex-col justify-center rounded-[24px] border bg-white px-7 py-10 text-[#3B0D1A] lg:min-h-[560px] lg:px-12 lg:py-12"
+          className="flex flex-col justify-center rounded-[24px] border bg-white px-6 py-7 text-[#3B0D1A] lg:min-h-[460px] lg:px-9 lg:py-9"
           style={{ borderColor: WINE }}
         >
-          <h2 className="r-reveal font-display text-[28px] font-normal leading-[1.1] tracking-[0.02em] lg:text-[42px]">
+          <h2 className="r-reveal font-display text-[22px] font-normal leading-[1.1] tracking-[0.02em] lg:text-[30px]">
             ÁLIS Beauty <span className="opacity-70">{t("на Пархоменко", "on Parkhomenko")}</span>
           </h2>
-          <p className="r-reveal mt-3 text-[14px] italic leading-relaxed text-[#3B0D1A]/55 lg:text-[15px]">
+          <p className="r-reveal mt-2 text-[12.5px] italic leading-relaxed text-[#3B0D1A]/55 lg:text-[13.5px]">
             {t("Премиальный салон красоты · Новороссийск", "Premium beauty salon · Novorossiysk")}
             <br />
             {t("Запись по телефону, в WhatsApp или онлайн", "Book by phone, on WhatsApp or online")}
           </p>
 
-          <div className="r-reveal mt-7 h-px w-full" style={{ background: `${WINE}40` }} />
+          <div className="r-reveal mt-5 h-px w-full" style={{ background: `${WINE}40` }} />
 
-          <dl className="r-reveal mt-6">
+          <dl className="r-reveal mt-4">
             {ROWS.map((r) => (
               <div
                 key={r.label}
-                className="flex flex-col gap-1 border-b py-3.5 sm:flex-row sm:items-baseline sm:gap-6"
+                className="flex flex-col gap-0.5 border-b py-2.5 sm:flex-row sm:items-baseline sm:gap-6"
                 style={{ borderColor: `${WINE}1f` }}
               >
-                <dt className="w-full text-[11px] uppercase tracking-[0.16em] text-[#3B0D1A]/60 sm:w-[42%] sm:shrink-0">
+                <dt className="w-full text-[10px] uppercase tracking-[0.16em] text-[#3B0D1A]/60 sm:w-[40%] sm:shrink-0">
                   {r.label}
                 </dt>
-                <dd className="text-[14.5px] italic leading-snug text-[#3B0D1A] lg:text-[16px]">{r.value}</dd>
+                <dd className="text-[13px] italic leading-snug text-[#3B0D1A] lg:text-[14px]">{r.value}</dd>
               </div>
             ))}
           </dl>
 
-          <div className="r-reveal mt-8 flex flex-wrap gap-3">
+          <div className="r-reveal mt-6 flex flex-wrap gap-2.5">
             <a
               href={MAP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-[#3B0D1A] px-7 py-3.5 text-[12px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#5a1a2c]"
+              className="inline-flex items-center justify-center rounded-full bg-[#3B0D1A] px-6 py-3 text-[11px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#5a1a2c]"
             >
               {t("Построить маршрут", "Get directions")}
             </a>
@@ -133,7 +133,7 @@ export default function ContactsCTA() {
               href={`https://wa.me/${WA}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full border border-[#3B0D1A] px-7 py-3.5 text-[12px] uppercase tracking-[0.16em] text-[#3B0D1A] transition-colors duration-300 hover:bg-[#3B0D1A] hover:text-[#f4efe6]"
+              className="inline-flex items-center justify-center rounded-full border border-[#3B0D1A] px-6 py-3 text-[11px] uppercase tracking-[0.16em] text-[#3B0D1A] transition-colors duration-300 hover:bg-[#3B0D1A] hover:text-[#f4efe6]"
             >
               {t("Написать в WhatsApp", "Message on WhatsApp")}
             </a>
@@ -142,24 +142,24 @@ export default function ContactsCTA() {
       </div>
 
       {/* Соц-сети — кнопки-карточки */}
-      <div className="mx-auto mt-4 grid w-[94%] max-w-[1400px] gap-4 sm:grid-cols-2 lg:mt-6 lg:grid-cols-3 lg:gap-6">
+      <div className="mx-auto mt-3 grid w-[94%] max-w-[1400px] gap-3 sm:grid-cols-2 lg:mt-4 lg:grid-cols-3 lg:gap-4">
         {SOCIALS.map(({ icon: Icon, title, sub, href }) => (
           <a
             key={title}
             href={href}
             target={href.startsWith("http") ? "_blank" : undefined}
             rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="r-reveal group flex items-center gap-4 rounded-[20px] border bg-white px-5 py-4 transition-colors duration-300 hover:bg-[#3B0D1A]"
+            className="r-reveal group flex items-center gap-3.5 rounded-[18px] border bg-white px-4 py-3 transition-colors duration-300 hover:bg-[#3B0D1A]"
             style={{ borderColor: `${WINE}33` }}
           >
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[14px] bg-[#3B0D1A]/8 text-[#3B0D1A] transition-colors duration-300 group-hover:bg-[#f4efe6]/15 group-hover:text-[#f4efe6]">
-              <Icon className="h-5 w-5" />
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#3B0D1A]/8 text-[#3B0D1A] transition-colors duration-300 group-hover:bg-[#f4efe6]/15 group-hover:text-[#f4efe6]">
+              <Icon className="h-[18px] w-[18px]" />
             </span>
             <span className="min-w-0">
-              <span className="block truncate text-[15px] font-medium text-[#3B0D1A] transition-colors duration-300 group-hover:text-[#f4efe6]">
+              <span className="block truncate text-[14px] font-medium text-[#3B0D1A] transition-colors duration-300 group-hover:text-[#f4efe6]">
                 {title}
               </span>
-              <span className="block truncate text-[13px] italic text-[#3B0D1A]/55 transition-colors duration-300 group-hover:text-[#f4efe6]/70">
+              <span className="block truncate text-[12px] italic text-[#3B0D1A]/55 transition-colors duration-300 group-hover:text-[#f4efe6]/70">
                 {sub}
               </span>
             </span>
