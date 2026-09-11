@@ -23,11 +23,11 @@ export default function Philosophy() {
 
       {/* Контент — раскладка и ритм как в Hero */}
       <div className="relative z-10 mx-auto flex w-[90%] max-w-2xl flex-col items-center text-center text-white">
-        <p className="r-reveal text-[11px] font-medium uppercase tracking-[0.24em] text-white/75 sm:text-[12px]">
+        <p className="r-reveal text-[12px] italic tracking-[0.02em] text-white/75">
           {en ? "the ÁLIS philosophy" : "философия ÁLIS"}
         </p>
 
-        <h2 className="r-reveal mt-4 font-display text-[22px] font-normal uppercase leading-[1.1] tracking-[0.02em] sm:text-[30px] lg:text-[38px]">
+        <h2 className="r-reveal mt-4 font-serif-display text-[22px] font-normal uppercase leading-[1.15] tracking-[0.02em] sm:text-[30px] lg:text-[36px]">
           {en ? "Beauty without the fuss" : "Красота без суеты"}
         </h2>
 
@@ -39,7 +39,7 @@ export default function Philosophy() {
 
         <a
           href="/concierge"
-          className="r-reveal mt-8 inline-flex items-center justify-center gap-2 rounded-2xl border border-[#f4efe6] bg-[#f4efe6] px-14 py-4 font-display text-[13px] uppercase tracking-[0.14em] text-[#3B0D1A] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
+          className="r-reveal mt-8 inline-flex items-center justify-center gap-2 rounded-full border border-[#F4F1EA] bg-[#F4F1EA] px-12 py-4 text-[12px] font-medium uppercase tracking-[0.08em] text-[#2c2822] transition-colors duration-300 hover:bg-transparent hover:text-[#F4F1EA] sm:text-[13px]"
         >
           {en ? "beauty concierge" : "бьюти-консьерж"}
           <span aria-hidden>→</span>

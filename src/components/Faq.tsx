@@ -114,14 +114,14 @@ export default function Faq({
       <div className="mx-auto grid w-[92%] max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         {/* Левая колонка — зафиксирована */}
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <span className="r-reveal inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+          <span className="r-reveal inline-flex items-center gap-2 rounded-full bg-[#70695A]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#70695A]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#70695A]" />
             {eyebrow[lang]}
           </span>
-          <h2 className="r-reveal mt-5 font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.04em] text-[#3B0D1A] sm:text-[28px] lg:text-[34px]">
+          <h2 className="r-reveal mt-5 font-serif-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.04em] text-[#70695A] sm:text-[28px] lg:text-[34px]">
             {titleTop[lang]}
             <br />
-            <span className="text-[#4A4B33]">{titleBottom[lang]}</span>
+            <span className="text-[#70695A]">{titleBottom[lang]}</span>
           </h2>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={photo} alt="" loading="lazy" decoding="async" className="mt-8 aspect-[3/4] w-full max-w-[260px] rounded-[22px] object-cover lg:mt-10" draggable={false} />
@@ -140,15 +140,15 @@ export default function Faq({
                 <article
                   className={`flex min-h-[190px] flex-col justify-center rounded-[20px] border p-5 transition-colors duration-300 lg:p-6 ${
                     isActive
-                      ? "border-transparent bg-[#3B0D1A]"
-                      : "border-[#3B0D1A]/30 bg-white hover:border-transparent hover:bg-[#e6d3d8]"
+                      ? "border-transparent bg-[#70695A]"
+                      : "border-[#70695A]/30 bg-white hover:border-transparent hover:bg-[#EAEAE4]"
                   }`}
                 >
-                  <p className={`font-serif text-[16px] italic leading-snug lg:text-[19px] ${isActive ? "text-[#f4efe6]" : "text-[#3B0D1A]"}`}>
+                  <p className={`font-serif text-[16px] italic leading-snug lg:text-[19px] ${isActive ? "text-[#F4F1EA]" : "text-[#70695A]"}`}>
                     {it.q[lang]}
                   </p>
-                  <span className={`mt-4 mb-4 block h-px w-10 ${isActive ? "bg-[#f4efe6]/60" : "bg-[#8a5a3c]"}`} />
-                  <p className={`text-[12.5px] font-light leading-relaxed lg:text-[13.5px] ${isActive ? "text-[#f4efe6]/80" : "text-[#2a2320]/70"}`}>
+                  <span className={`mt-4 mb-4 block h-px w-10 ${isActive ? "bg-[#F4F1EA]/60" : "bg-[#70695A]"}`} />
+                  <p className={`text-[12.5px] font-light leading-relaxed lg:text-[13.5px] ${isActive ? "text-[#F4F1EA]/80" : "text-[#444444]/70"}`}>
                     {it.a[lang]}
                   </p>
                 </article>

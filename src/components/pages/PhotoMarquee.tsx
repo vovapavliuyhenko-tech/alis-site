@@ -79,13 +79,12 @@ export default function PhotoMarquee() {
   };
 
   return (
-    <section className="overflow-hidden rounded-t-[40px] bg-white pt-12 pb-24 lg:pt-14 lg:pb-32">
-      <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] lg:mb-16">
-        <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
-          {en ? "gallery" : "галерея"}
-        </span>
-        <h2 className="mt-5 font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#3B0D1A] lg:text-[36px]">
+    <section className="overflow-hidden bg-[#F9F8F6] pt-16 pb-20 lg:pt-20 lg:pb-28">
+      <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] text-center lg:mb-16">
+        <p className="text-[11px] italic tracking-[0.02em] text-[#70695A]">
+          {en ? "the atmosphere" : "атмосфера"}
+        </p>
+        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#70695A] sm:text-[26px] lg:text-[30px]">
           {en ? "The ÁLIS atmosphere" : "Атмосфера ÁLIS"}
         </h2>
       </div>
@@ -104,8 +103,8 @@ export default function PhotoMarquee() {
       </div>
 
       {/* Полоса прогресса под фото */}
-      <div className="mx-auto mt-10 h-[3px] w-[94%] max-w-[1440px] overflow-hidden rounded-full bg-[#3B0D1A]/12">
-        <div ref={barRef} className="h-full rounded-full bg-[#3B0D1A]" style={{ width: "0%" }} />
+      <div className="mx-auto mt-10 h-[3px] w-[94%] max-w-[1440px] overflow-hidden rounded-full bg-[#C2C0B6]/40">
+        <div ref={barRef} className="h-full rounded-full bg-[#70695A]" style={{ width: "0%" }} />
       </div>
     </section>
   );

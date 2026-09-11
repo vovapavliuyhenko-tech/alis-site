@@ -6,9 +6,9 @@ import type { ReactNode } from "react";
 
 // Каждый бренд — со своим стилем, приближённым к его вордмарку
 const BRANDS: ReactNode[] = [
-  <span key="e5" className="flex items-center gap-2.5 text-[#17191a]">
+  <span key="e5" className="flex items-center gap-2.5 text-[#6b6459]">
     <span className="font-thunder text-[30px] font-bold leading-none tracking-tight">E5</span>
-    <span className="text-[9px] font-medium uppercase leading-[1.15] tracking-[0.12em] text-[#17191a]/70">
+    <span className="text-[9px] font-medium uppercase leading-[1.15] tracking-[0.12em] text-[#6b6459]/70">
       show
       <br />
       event
@@ -16,30 +16,30 @@ const BRANDS: ReactNode[] = [
       wedding
     </span>
   </span>,
-  <span key="nitochka" className="font-serif text-[28px] italic text-[#17191a]">
+  <span key="nitochka" className="font-serif text-[28px] italic text-[#6b6459]">
     Nitochka
   </span>,
-  <span key="talu" className="font-serif text-[20px] uppercase tracking-[0.16em] text-[#17191a]">
+  <span key="talu" className="font-serif text-[20px] uppercase tracking-[0.16em] text-[#6b6459]">
     Château <span className="lowercase italic tracking-normal">de</span> Talu
   </span>,
-  <span key="fione" className="flex items-baseline gap-2 text-[#17191a]">
+  <span key="fione" className="flex items-baseline gap-2 text-[#6b6459]">
     <span className="text-[24px] tracking-[0.28em]">FiONE</span>
-    <span className="text-[8px] uppercase tracking-[0.2em] text-[#17191a]/55">
+    <span className="text-[8px] uppercase tracking-[0.2em] text-[#6b6459]/55">
       luxury resort &amp; spa
     </span>
   </span>,
-  <span key="weddywood" className="text-[27px] font-semibold lowercase tracking-tight text-[#17191a]">
+  <span key="weddywood" className="text-[27px] font-semibold lowercase tracking-tight text-[#6b6459]">
     weddywood
   </span>,
-  <span key="eldayana" className="flex flex-col items-center leading-none text-[#17191a]">
+  <span key="eldayana" className="flex flex-col items-center leading-none text-[#6b6459]">
     <span className="font-serif text-[21px] uppercase tracking-[0.2em]">EL&apos;DAYANA</span>
-    <span className="mt-1 text-[8px] uppercase tracking-[0.22em] text-[#17191a]/55">
+    <span className="mt-1 text-[8px] uppercase tracking-[0.22em] text-[#6b6459]/55">
       event &amp; weddings
     </span>
   </span>,
   <span
     key="mkrtchyan"
-    className="text-[30px] italic text-[#17191a]"
+    className="text-[30px] italic text-[#6b6459]"
     style={{ fontFamily: "'Segoe Script','Brush Script MT',cursive" }}
   >
     S. Mkrtchyan
@@ -47,7 +47,7 @@ const BRANDS: ReactNode[] = [
 ];
 
 function Sep() {
-  return <span aria-hidden className="mx-10 text-[14px] text-[#17191a]/25 lg:mx-14">✦</span>;
+  return <span aria-hidden className="mx-10 text-[14px] text-[#6b6459]/25 lg:mx-14">✦</span>;
 }
 
 // Одна дорожка со всеми брендами (дублируется для бесшовности)
@@ -69,14 +69,15 @@ function Track({ hidden = false }: { hidden?: boolean }) {
 
 export default function Brands() {
   return (
-    <section className="overflow-hidden bg-white py-14 lg:py-20">
+    <section className="overflow-hidden bg-[#F9F8F6] py-16 lg:py-24">
+      <p className="mb-10 text-center text-[11px] italic tracking-[0.02em] text-[#70695A] lg:mb-12">нам доверяют</p>
       <div className="group relative flex overflow-hidden">
         <Track />
         <Track hidden />
 
         {/* Растушёвка по краям */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent lg:w-40" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent lg:w-40" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#F9F8F6] to-transparent lg:w-40" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#F9F8F6] to-transparent lg:w-40" />
       </div>
     </section>
   );
