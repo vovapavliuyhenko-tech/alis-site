@@ -72,22 +72,22 @@ export default function Hero() {
       </div>
 
       {/* КАРТОЧКА-ОТЗЫВ (справа, компактная) */}
-      <figure className="mx-6 mb-6 flex items-stretch gap-3.5 rounded-[18px] border border-white/40 bg-[#eee9e1]/72 p-3.5 text-[#17191a] backdrop-blur-md max-[520px]:flex-col lg:absolute lg:bottom-[var(--btm)] lg:right-[var(--pad)] lg:mx-0 lg:mb-0 lg:w-[420px] lg:p-4">
+      <figure className="mx-6 mb-6 flex items-stretch gap-3.5 rounded-[18px] border border-white/35 bg-white/15 p-3.5 text-white shadow-[0_8px_40px_rgba(0,0,0,0.18)] backdrop-blur-2xl max-[520px]:flex-col lg:absolute lg:bottom-[var(--btm)] lg:right-[var(--pad)] lg:mx-0 lg:mb-0 lg:w-[430px] lg:p-4">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={SPECIALIST_PHOTO}
           alt={t("Евгения Романова", "Evgenia Romanova")}
-          className="w-[84px] shrink-0 self-stretch rounded-[12px] bg-[#cfc8bd] object-cover max-[520px]:h-[140px] max-[520px]:w-full"
+          className="w-[112px] shrink-0 self-stretch rounded-[12px] bg-[#cfc8bd]/40 object-cover max-[520px]:h-[150px] max-[520px]:w-full"
         />
         <div className="flex min-w-0 flex-col justify-center gap-2.5">
-          <blockquote className="text-[12px] leading-[1.5] text-[#35322e]">
+          <blockquote className="text-[12px] leading-[1.5] text-white/90">
             {t(
-              "«Здесь создаётся атмосфера, в которой вы чувствуете спокойствие и доверие. Вслед за этим уходит эмоциональное напряжение, а тело максимально эффективно откликается на массаж».",
-              "“Here we create an atmosphere where you feel calm and trust. The emotional tension then fades, and the body responds to the massage as effectively as possible.”",
+              "«Здесь рождается атмосфера спокойствия и доверия — тело расслабляется и откликается на массаж».",
+              "“An atmosphere of calm and trust — the body relaxes and responds to the massage.”",
             )}
           </blockquote>
-          <figcaption className="text-[12px] leading-[1.35] text-[#4a4642]">
-            <strong className="font-semibold">{t("Евгения Романова,", "Evgenia Romanova,")}</strong>{" "}
+          <figcaption className="text-[12px] leading-[1.35] text-white/75">
+            <strong className="font-semibold text-white">{t("Евгения Романова,", "Evgenia Romanova,")}</strong>{" "}
             {t("специалист по работе с телом", "bodywork specialist")}
           </figcaption>
         </div>
