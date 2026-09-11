@@ -69,15 +69,15 @@ function Track({ hidden = false }: { hidden?: boolean }) {
 
 export default function Brands() {
   return (
-    <section className="overflow-hidden bg-[#F9F8F6] py-16 lg:py-24">
+    <section className="overflow-hidden bg-white py-16 lg:py-24">
       <p className="mb-10 text-center text-[11px] italic tracking-[0.02em] text-[#6E7248] lg:mb-12">нам доверяют</p>
       <div className="group relative flex overflow-hidden">
         <Track />
         <Track hidden />
 
         {/* Растушёвка по краям */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#F9F8F6] to-transparent lg:w-40" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#F9F8F6] to-transparent lg:w-40" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent lg:w-40" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent lg:w-40" />
       </div>
     </section>
   );
