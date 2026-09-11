@@ -113,13 +113,17 @@ export default function Header() {
       </a>
     );
 
+  // На главной первый экран несёт собственную верхнюю панель (герой студии
+  // массажа) — глобальную шапку прячем, пока не проскроллили за первый блок.
+  const hiddenOverHero = pathname === "/" && !solid;
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         solid
           ? "border-b border-[#17191a]/10 bg-white/85 shadow-[0_4px_24px_rgba(0,0,0,0.05)] backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
-      }`}
+      } ${hiddenOverHero ? "pointer-events-none -translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
     >
       <div className="mx-auto grid h-[68px] w-full max-w-[1280px] grid-cols-[1fr_auto_1fr] items-center px-5 sm:px-8">
         {/* Левая группа (desktop) */}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Marcellus, Source_Code_Pro } from "next/font/google";
+import { Marcellus, Source_Code_Pro, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import Preloader from "@/components/Preloader";
@@ -24,6 +24,13 @@ const body = Source_Code_Pro({
   weight: ["300", "400", "500", "600"],
   display: "swap",
 });
+// Playfair Display — крупный серифный заголовок первого блока (с кириллицей).
+const serif = Playfair_Display({
+  variable: "--font-serif-display",
+  subsets: ["latin", "cyrillic"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "ÁLIS BEAUTY — салон красоты в Новороссийске и выездной премиум-сервис",
@@ -35,7 +42,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ru" className={`${heading.variable} ${body.variable} antialiased`}>
+    <html lang="ru" className={`${heading.variable} ${body.variable} ${serif.variable} antialiased`}>
       <head>
         <meta name="theme-color" content="#3B0D1A" />
         {/* Фолбэк: если JS выключен, элементы появления видны сразу */}

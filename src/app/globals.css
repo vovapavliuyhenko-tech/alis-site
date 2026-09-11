@@ -53,6 +53,8 @@ html { scrollbar-color: var(--wine) #ffffff; scrollbar-width: thin; }
 .font-script { font-family: var(--font-heading), Georgia, 'Times New Roman', serif; }
 /* Надпись логотипа — единый шрифт с заголовками */
 .font-logo { font-family: var(--font-heading), Georgia, serif; }
+/* Крупный серифный заголовок первого блока (Playfair Display, с кириллицей) */
+.font-serif-display { font-family: var(--font-serif-display), Georgia, 'Times New Roman', serif; }
 
 /* ===== Кнопка «Онлайн запись»: пульс + расходящиеся кольца ===== */
 .fab-pulse { animation: fabPulse 2.6s ease-in-out infinite; }
