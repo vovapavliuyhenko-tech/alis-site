@@ -65,7 +65,7 @@ export default function Hero() {
           href={YCLIENTS}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-[#efe9e1] px-10 py-4 text-[14px] font-medium tracking-[0.01em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white lg:mt-8 lg:w-auto lg:min-w-[min(520px,68vw)]"
+          className="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-[#efe9e1] px-10 py-4 text-[14px] font-medium tracking-[0.01em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white lg:mt-8 lg:w-auto lg:min-w-[min(520px,68vw)]"
         >
           {t("Записаться", "Book now")}
         </a>

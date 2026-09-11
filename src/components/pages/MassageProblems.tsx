@@ -51,9 +51,7 @@ const ITEMS: Item[] = [
 function Capsule({ item, lang }: { item: Item; lang: "ru" | "en" }) {
   return (
     <div
-      className={`relative flex min-h-[176px] w-full max-w-[515px] flex-col items-center justify-center rounded-full border border-dashed border-[#C2C0B6] px-10 py-9 text-center sm:px-16 lg:min-h-[200px] lg:px-[74px] ${
-        item.filled ? "bg-[#EAEAE4]" : "bg-transparent"
-      }`}
+      className="relative flex min-h-[176px] w-full max-w-[515px] flex-col items-center justify-center rounded-[34px] border border-dashed border-[#6E7248]/50 bg-[#6E7248]/[0.1] px-10 py-9 text-center sm:px-16 lg:min-h-[200px] lg:px-[74px]"
     >
       <span className="text-[10px] tracking-[0.14em] text-[#C2C0B6]">{`{ ${item.n} }`}</span>
       <h3 className="mt-2.5 max-w-[300px] text-[14px] font-semibold leading-[1.2] text-[#6E7248]">{item.title[lang]}</h3>
