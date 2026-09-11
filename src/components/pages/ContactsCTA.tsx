@@ -2,14 +2,19 @@
 // КОНТАКТЫ — сплит: слева карта Яндекс, справа БЕЛАЯ карточка с бордовой обводкой:
 // название салона, подзаголовок, линия и строки «поле — значение» (адрес, часы,
 // телефон, запись), две кнопки действия. Ниже — сетка соц-кнопок в том же стиле.
+import { useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
+
+// Видео слева (как на референсе). Положи ролик сюда — покажется вместо постера.
+const VIDEO_SRC = "/assets/contacts.mp4";
+const VIDEO_POSTER = "/assets/tild3236-393__.jpg";
+const SALON_URL = "/salon#uslugi";
 
 const PHONE = "+7 988 888 77 58";
 const PHONE_SERVICE = "+7 988 888 77 28";
 const WA = "79888887758";
 const EMAIL = "alisbeautyclub@gmail.com";
 const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
-const MAP_EMBED = "https://yandex.ru/map-widget/v1/org/63024642190/";
 const IG = "https://www.instagram.com/alisbeauty.ru";
 const IG_GLOBAL = "https://www.instagram.com/alisbeauty.global";
 const ADDRESS = { ru: "Новороссийск, ул. Пархоменко, 53", en: "Novorossiysk, Parkhomenko St., 53" };
@@ -40,6 +45,16 @@ export default function ContactsCTA() {
   const t = (ru: string, e: string) => (en ? e : ru);
   const tel = PHONE.replace(/[^\d+]/g, "");
   const telService = PHONE_SERVICE.replace(/[^\d+]/g, "");
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+  const toggleSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    if (!v.muted) v.play().catch(() => {});
+    setMuted(v.muted);
+  };
 
   // строки «поле — значение» в карточке
   const ROWS: { label: string; value: React.ReactNode }[] = [
@@ -78,22 +93,36 @@ export default function ContactsCTA() {
   return (
     <section id="contacts" className="scroll-mt-24 bg-white pb-20 pt-2 lg:pb-28 lg:pt-4">
       <div className="mx-auto grid w-[94%] max-w-[1400px] items-stretch gap-4 lg:grid-cols-2 lg:gap-6">
-        {/* Карта */}
-        <div className="r-reveal overflow-hidden rounded-[24px] border border-[#17191a]/10 shadow-[0_18px_44px_rgba(0,0,0,0.08)]">
-          <iframe
-            src={MAP_EMBED}
-            title={t("Салон ÁLIS на карте", "ÁLIS salon on the map")}
-            className="h-[300px] w-full lg:h-full lg:min-h-[460px]"
-            loading="lazy"
-            allowFullScreen
-          />
+        {/* Видео слева (постер-заглушка, пока не добавлен ролик) + кнопка звука */}
+        <div className="r-reveal relative overflow-hidden rounded-[24px] border border-[#17191a]/10 shadow-[0_18px_44px_rgba(0,0,0,0.08)]">
+          <video
+            ref={videoRef}
+            className="h-[360px] w-full object-cover lg:h-full lg:min-h-[520px]"
+            poster={VIDEO_POSTER}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          >
+            <source src={VIDEO_SRC} type="video/mp4" />
+          </video>
+          <button
+            type="button"
+            onClick={toggleSound}
+            aria-label={muted ? t("Включить звук", "Unmute") : t("Выключить звук", "Mute")}
+            className="absolute bottom-4 left-4 grid h-11 w-11 place-items-center rounded-full bg-black/45 text-white backdrop-blur-sm transition-colors hover:bg-black/65"
+          >
+            {muted ? (
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden><path d="M11 5 6 9H3v6h3l5 4V5zm5.5 3.5-1.4 1.4L16.6 12l-1.5 1.5 1.4 1.4L18 13.4l1.5 1.5 1.4-1.4L19.4 12l1.5-1.5-1.4-1.4L18 10.6z" /></svg>
+            ) : (
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden><path d="M11 5 6 9H3v6h3l5 4V5zm4.5 2.1a5 5 0 0 1 0 9.8v-2.1a3 3 0 0 0 0-5.6V7.1zM15 10.3a2 2 0 0 1 0 3.4v-3.4z" /></svg>
+            )}
+          </button>
         </div>
 
-        {/* Белая карточка с бордовой обводкой */}
-        <div
-          className="flex flex-col justify-center rounded-[24px] border bg-white px-6 py-7 text-[#3B0D1A] lg:min-h-[460px] lg:px-9 lg:py-9"
-          style={{ borderColor: WINE }}
-        >
+        {/* Белая карточка (как на референсе) */}
+        <div className="flex flex-col justify-center rounded-[24px] border border-[#17191a]/12 bg-white px-6 py-7 text-[#3B0D1A] shadow-[0_18px_44px_rgba(0,0,0,0.06)] lg:min-h-[520px] lg:px-9 lg:py-10">
           <h2 className="r-reveal font-display text-[22px] font-normal leading-[1.1] tracking-[0.02em] lg:text-[30px]">
             ÁLIS Beauty <span className="opacity-70">{t("на Пархоменко", "on Parkhomenko")}</span>
           </h2>
@@ -103,7 +132,7 @@ export default function ContactsCTA() {
             {t("Запись по телефону, в WhatsApp или онлайн", "Book by phone, on WhatsApp or online")}
           </p>
 
-          <div className="r-reveal mt-5 h-px w-full" style={{ background: `${WINE}40` }} />
+          <div className="r-reveal mt-5 h-[2px] w-full" style={{ background: WINE }} />
 
           <dl className="r-reveal mt-4">
             {ROWS.map((r) => (
@@ -130,12 +159,10 @@ export default function ContactsCTA() {
               {t("Построить маршрут", "Get directions")}
             </a>
             <a
-              href={`https://wa.me/${WA}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={SALON_URL}
               className="inline-flex items-center justify-center rounded-full border border-[#3B0D1A] px-6 py-3 text-[11px] uppercase tracking-[0.16em] text-[#3B0D1A] transition-colors duration-300 hover:bg-[#3B0D1A] hover:text-[#f4efe6]"
             >
-              {t("Написать в WhatsApp", "Message on WhatsApp")}
+              {t("Смотреть услуги", "View services")}
             </a>
           </div>
         </div>
