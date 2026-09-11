@@ -92,6 +92,23 @@ export default function ContactsCTA() {
 
   return (
     <section id="contacts" className="scroll-mt-24 bg-white pb-20 pt-2 lg:pb-28 lg:pt-4">
+      {/* Шапка блока — в едином стиле с главной/командой */}
+      <div className="r-reveal mx-auto mb-10 w-[94%] max-w-[1400px] lg:mb-12">
+        <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+          {t("контакты", "contacts")}
+        </span>
+        <h2 className="mt-5 max-w-2xl font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#3B0D1A] lg:text-[36px]">
+          {t("Мы всегда на связи", "We're always in touch")}
+        </h2>
+        <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-[#17191a]/60 lg:text-[15px]">
+          {t(
+            "Приезжайте в салон на Пархоменко или напишите нам удобным способом — поможем с записью и подберём услуги под вашу задачу.",
+            "Visit our salon on Parkhomenko or message us in any way that suits you — we'll help you book and choose the right services.",
+          )}
+        </p>
+      </div>
+
       <div className="mx-auto grid w-[94%] max-w-[1400px] items-stretch gap-4 lg:grid-cols-2 lg:gap-6">
         {/* Видео слева (постер-заглушка, пока не добавлен ролик) + кнопка звука */}
         <div className="r-reveal relative overflow-hidden rounded-[24px] border border-[#17191a]/10 shadow-[0_18px_44px_rgba(0,0,0,0.08)]">
