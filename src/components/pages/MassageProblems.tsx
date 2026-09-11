@@ -51,7 +51,7 @@ const ITEMS: Item[] = [
 function Capsule({ item, lang }: { item: Item; lang: "ru" | "en" }) {
   return (
     <div
-      className="relative flex min-h-[176px] w-full max-w-[515px] flex-col items-center justify-center rounded-[34px] border border-dashed border-[#F4F1EA]/25 bg-[#6E7248] px-10 py-9 text-center sm:px-16 lg:min-h-[200px] lg:px-[74px]"
+      className="relative flex min-h-[176px] w-full max-w-[515px] flex-col items-center justify-center rounded-[34px] border border-dashed border-[#F4F1EA]/45 bg-[#6E7248] px-10 py-9 text-center sm:px-16 lg:min-h-[200px] lg:px-[74px]"
     >
       <span className="text-[10px] tracking-[0.14em] text-[#F4F1EA]/55">{`{ ${item.n} }`}</span>
       <h3 className="mt-2.5 max-w-[300px] text-[14px] font-semibold leading-[1.2] text-[#F4F1EA]">{item.title[lang]}</h3>
@@ -90,10 +90,10 @@ export default function MassageProblems() {
           {/* Центральное круглое фото + соединительные линии */}
           <div className="relative mx-auto my-2 shrink-0 lg:my-0">
             {/* пунктирные соединители (только десктоп) */}
-            <span className="pointer-events-none absolute right-full top-[26%] hidden h-px w-[52px] border-t border-dashed border-[#C2C0B6] xl:block" />
-            <span className="pointer-events-none absolute right-full top-[74%] hidden h-px w-[52px] border-t border-dashed border-[#C2C0B6] xl:block" />
-            <span className="pointer-events-none absolute left-full top-[26%] hidden h-px w-[52px] border-t border-dashed border-[#C2C0B6] xl:block" />
-            <span className="pointer-events-none absolute left-full top-[74%] hidden h-px w-[52px] border-t border-dashed border-[#C2C0B6] xl:block" />
+            <span className="pointer-events-none absolute right-full top-[26%] hidden h-0.5 w-[64px] border-t-2 border-dashed border-[#6E7248]/70 lg:block" />
+            <span className="pointer-events-none absolute right-full top-[74%] hidden h-0.5 w-[64px] border-t-2 border-dashed border-[#6E7248]/70 lg:block" />
+            <span className="pointer-events-none absolute left-full top-[26%] hidden h-0.5 w-[64px] border-t-2 border-dashed border-[#6E7248]/70 lg:block" />
+            <span className="pointer-events-none absolute left-full top-[74%] hidden h-0.5 w-[64px] border-t-2 border-dashed border-[#6E7248]/70 lg:block" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={CIRCLE_PHOTO}
