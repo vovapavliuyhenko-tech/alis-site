@@ -51,11 +51,11 @@ const ITEMS: Item[] = [
 function Capsule({ item, lang }: { item: Item; lang: "ru" | "en" }) {
   return (
     <div
-      className="relative flex min-h-[176px] w-full max-w-[515px] flex-col items-center justify-center rounded-[34px] border border-dashed border-[#6E7248]/50 bg-[#6E7248]/[0.1] px-10 py-9 text-center sm:px-16 lg:min-h-[200px] lg:px-[74px]"
+      className="relative flex min-h-[176px] w-full max-w-[515px] flex-col items-center justify-center rounded-[34px] border border-dashed border-[#F4F1EA]/25 bg-[#6E7248] px-10 py-9 text-center sm:px-16 lg:min-h-[200px] lg:px-[74px]"
     >
-      <span className="text-[10px] tracking-[0.14em] text-[#C2C0B6]">{`{ ${item.n} }`}</span>
-      <h3 className="mt-2.5 max-w-[300px] text-[14px] font-semibold leading-[1.2] text-[#6E7248]">{item.title[lang]}</h3>
-      <p className="mt-2 max-w-[330px] text-[12.5px] leading-[1.45] text-[#444]/85">{item.desc[lang]}</p>
+      <span className="text-[10px] tracking-[0.14em] text-[#F4F1EA]/55">{`{ ${item.n} }`}</span>
+      <h3 className="mt-2.5 max-w-[300px] text-[14px] font-semibold leading-[1.2] text-[#F4F1EA]">{item.title[lang]}</h3>
+      <p className="mt-2 max-w-[330px] text-[12.5px] leading-[1.45] text-[#F4F1EA]/85">{item.desc[lang]}</p>
     </div>
   );
 }
