@@ -1,14 +1,12 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import ServiceBento from "@/components/pages/ServiceBento";
-import PhotoMarquee from "@/components/pages/PhotoMarquee";
-import Philosophy from "@/components/pages/Philosophy";
-import Brands from "@/components/Brands";
-import Faq from "@/components/Faq";
+import MassageProblems from "@/components/pages/MassageProblems";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import SmoothScroll from "@/components/SmoothScroll";
 
+// Клон massage-romanova.ru — собирается поблочно. Готово: герой, блок «Что вас
+// беспокоит сегодня?». Далее: техники, обо мне, CTA, подход, прайс, отзывы, контакты.
 export default function Home() {
   return (
     <main>
@@ -16,19 +14,10 @@ export default function Home() {
       <ScrollReveal />
       <Header />
       <Hero />
-      <div className="relative z-10 bg-white">
+      <div className="relative z-10 bg-[#F9F8F6]">
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
-        {/* Лента-галерея — фото бегут сами (сразу под первым блоком) */}
-        <PhotoMarquee />
-        {/* Философия — обложка с зафиксированным фоном */}
-        <Philosophy />
-        {/* Услуги — bento-галерея категорий */}
-        <ServiceBento />
-        {/* Нам доверяют — бегущая строка брендов */}
-        <Brands />
-        {/* FAQ */}
-        <Faq />
+        <MassageProblems />
       </div>
       <Footer />
     </main>

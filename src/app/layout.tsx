@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Marcellus, Source_Code_Pro, Playfair_Display } from "next/font/google";
+import { Marcellus, Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import Preloader from "@/components/Preloader";
@@ -18,10 +18,10 @@ const heading = Marcellus({
   weight: "400",
   display: "swap",
 });
-const body = Source_Code_Pro({
+const body = Manrope({
   variable: "--font-body",
   subsets: ["latin", "cyrillic"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 // Playfair Display — крупный серифный заголовок первого блока (с кириллицей).
