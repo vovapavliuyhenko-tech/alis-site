@@ -1,8 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import MassageProblems from "@/components/pages/MassageProblems";
-import MassageContacts from "@/components/pages/MassageContacts";
-import MassageFooter from "@/components/pages/MassageFooter";
+import Footer from "@/components/Footer";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
 import Philosophy from "@/components/pages/Philosophy";
 import ServiceBento from "@/components/pages/ServiceBento";
@@ -29,9 +28,8 @@ export default function Home() {
         <ServiceBento />
         <Brands />
         <Faq />
-        <MassageContacts />
       </div>
-      <MassageFooter />
+      <Footer />
     </main>
   );
 }
