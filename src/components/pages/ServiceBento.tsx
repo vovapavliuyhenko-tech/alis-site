@@ -47,7 +47,7 @@ export default function ServiceBento() {
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-all duration-[700ms] ease-out group-hover:scale-105 group-hover:blur-lg"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/20 transition-colors duration-500 group-hover:from-black/55 group-hover:via-black/25 group-hover:to-black/45" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/20 transition-colors duration-500 group-hover:from-[#6E7248]/70 group-hover:via-[#6E7248]/40 group-hover:to-[#6E7248]/60" />
 
               {/* Кружок со стрелкой справа сверху — на ховере светлеет, стрелка поворачивается */}
               <span className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/50 text-[15px] text-white transition-colors duration-300 group-hover:border-transparent group-hover:bg-[#F4F1EA] group-hover:text-[#6E7248] lg:h-10 lg:w-10">
