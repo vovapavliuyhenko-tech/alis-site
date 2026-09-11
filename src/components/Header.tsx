@@ -100,12 +100,12 @@ export default function Header() {
         {/* Мега-панель: во всю ширину, светлый фон, пункты в колонках */}
         <div className="invisible fixed inset-x-0 top-[68px] opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
           <div className="border-t border-[#6E7248]/15 bg-[#F9F8F6]/98 shadow-[0_24px_50px_rgba(0,0,0,0.08)] backdrop-blur-md">
-            <div className="mx-auto grid max-w-[1280px] grid-cols-2 gap-x-10 gap-y-1 px-8 py-10 md:grid-cols-3">
+            <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-center gap-x-8 gap-y-1 px-8 py-4">
               {item.sub.map((s) => (
                 <a
                   key={s.label.ru}
                   href={s.href}
-                  className="rounded-xl px-5 py-4 text-[13px] uppercase tracking-[0.12em] text-[#6E7248] transition-colors hover:bg-[#6E7248]/10 hover:text-[#4A4B33]"
+                  className="rounded-lg px-4 py-2 text-[12.5px] uppercase tracking-[0.12em] text-[#6E7248] transition-colors hover:bg-[#6E7248]/10 hover:text-[#4A4B33]"
                 >
                   {s.label[lang]}
                 </a>
