@@ -1,6 +1,6 @@
 "use client";
 // БЛОК-ЛЕНТА на главной — фотографии бегут сами (JS-автоскролл через scrollLeft),
-// пауза при наведении. Клиент листает вручную: перетаскиванием/свайпом/трекпадом.
+// бег не прерывается при наведении. Клиент листает вручную: перетаскиванием/свайпом/трекпадом.
 // Под фото — полоса прогресса, отражающая позицию прокрутки (как на референсе).
 import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
@@ -35,7 +35,6 @@ export default function PhotoMarquee() {
 
   const scroller = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
-  const hovering = useRef(false);
   const drag = useRef({ active: false, startX: 0, startScroll: 0 });
 
   useEffect(() => {
@@ -45,7 +44,7 @@ export default function PhotoMarquee() {
     let running = false;
     const step = () => {
       const half = (el.scrollWidth / 2) || 1; // ширина одной дорожки (их две — для бесшовности)
-      if (!hovering.current && !drag.current.active) el.scrollLeft += 0.7;
+      if (!drag.current.active) el.scrollLeft += 0.7;
       // бесшовная петля
       if (el.scrollLeft >= half) el.scrollLeft -= half;
       else if (el.scrollLeft < 0) el.scrollLeft += half;
@@ -98,8 +97,6 @@ export default function PhotoMarquee() {
         onPointerMove={onMove}
         onPointerUp={onUp}
         onPointerCancel={onUp}
-        onMouseEnter={() => { hovering.current = true; }}
-        onMouseLeave={() => { hovering.current = false; }}
         className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
       >
         <Track />

@@ -8,7 +8,7 @@ export default function ContactsPage() {
     <main>
       <ScrollReveal />
       <Header />
-      <div className="relative z-10 bg-white pt-28 lg:pt-32">
+      <div className="relative z-10 bg-white pt-16 lg:pt-16">
         <ContactsCTA />
       </div>
       <Footer />
