@@ -43,7 +43,7 @@ export default function Hero() {
 
       {/* НИЖНИЙ КОНТЕНТ (слева) */}
       <div className="mt-auto px-6 pb-7 lg:absolute lg:bottom-[var(--btm)] lg:left-0 lg:mt-0 lg:max-w-[min(760px,58vw)] lg:pb-0 lg:pl-[var(--pad)] lg:pr-6">
-        <p className="text-[13px] leading-relaxed text-white/90">
+        <p className="text-[11.5px] leading-relaxed text-white/90">
           {t("Запишитесь на первый сеанс и почувствуйте,", "Book your first session and feel")}
           <br />
           {t("как тело отпускает накопившееся напряжение.", "how the body releases built-up tension.")}
@@ -53,7 +53,7 @@ export default function Hero() {
           </strong>
         </p>
 
-        <h1 className="mt-6 font-serif-display text-[24px] font-semibold uppercase leading-[1.1] tracking-[0.005em] text-white [text-shadow:0_1px_24px_rgba(0,0,0,.22)] sm:text-[30px] lg:mt-7 lg:whitespace-nowrap lg:text-[clamp(26px,3vw,44px)]">
+        <h1 className="mt-5 font-serif-display text-[20px] font-semibold uppercase leading-[1.12] tracking-[0.005em] text-white [text-shadow:0_1px_24px_rgba(0,0,0,.22)] sm:text-[25px] lg:mt-6 lg:whitespace-nowrap lg:text-[clamp(22px,2.4vw,34px)]">
           {t("Студия массажа,", "A massage studio")}
           <br />
           {t("где каждое прикосновение", "where every touch")}
