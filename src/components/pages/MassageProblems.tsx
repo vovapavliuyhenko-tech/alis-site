@@ -56,7 +56,7 @@ function Capsule({ item, lang }: { item: Item; lang: "ru" | "en" }) {
       }`}
     >
       <span className="text-[10px] tracking-[0.14em] text-[#C2C0B6]">{`{ ${item.n} }`}</span>
-      <h3 className="mt-2.5 max-w-[300px] text-[14px] font-semibold leading-[1.2] text-[#444]">{item.title[lang]}</h3>
+      <h3 className="mt-2.5 max-w-[300px] text-[14px] font-semibold leading-[1.2] text-[#6E7248]">{item.title[lang]}</h3>
       <p className="mt-2 max-w-[330px] text-[12.5px] leading-[1.45] text-[#444]/85">{item.desc[lang]}</p>
     </div>
   );
