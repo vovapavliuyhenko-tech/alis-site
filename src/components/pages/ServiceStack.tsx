@@ -24,7 +24,7 @@ function Panel({ cat, img, lang, cta }: { cat: ServiceCategory; img: string; lan
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="flex flex-col rounded-[28px] border border-[#3B0D1A]/30 bg-white p-8 lg:min-h-[640px] lg:p-14">
+    <div className="flex flex-col rounded-[28px] border border-[#9A9D22]/30 bg-white p-8 lg:min-h-[640px] lg:p-14">
       {/* Фото категории — только на мобильном (на десктопе фото зафиксировано слева) */}
       <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-[20px] lg:hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -56,7 +56,7 @@ function Panel({ cat, img, lang, cta }: { cat: ServiceCategory; img: string; lan
                     <p className="max-w-[80%] text-[13px] leading-relaxed text-[#2a2320]/55 lg:text-[13.5px]">
                       {(r.note ?? r.price)[lang]}
                     </p>
-                    <span className="whitespace-nowrap font-display text-[15px] text-[#3B0D1A] lg:text-[16px]">{r.price[lang]}</span>
+                    <span className="whitespace-nowrap font-display text-[15px] text-[#9A9D22] lg:text-[16px]">{r.price[lang]}</span>
                   </div>
                 </div>
               </div>
@@ -69,7 +69,7 @@ function Panel({ cat, img, lang, cta }: { cat: ServiceCategory; img: string; lan
       <a
         href={cta.href}
         {...(cta.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-        className="mt-8 block w-full rounded-2xl border border-[#3B0D1A] bg-[#3B0D1A] px-6 py-4 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#3B0D1A] lg:mt-auto lg:pt-4"
+        className="mt-8 block w-full rounded-2xl border border-[#9A9D22] bg-[#9A9D22] px-6 py-4 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#9A9D22] lg:mt-auto lg:pt-4"
       >
         {cta.label[lang]}
       </a>
@@ -123,11 +123,11 @@ export default function ServiceStack({
     <section className={ground === "cream" ? "bg-[#f7f3ed] py-14 lg:py-20" : "bg-white py-14 lg:py-20"}>
       <div className="mx-auto w-full max-w-none px-4 sm:px-6">
         <div className="mb-12 lg:mb-16">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#9A9D22]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#9A9D22]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#9A9D22]" />
             {eyebrow[lang]}
           </span>
-          <h2 className="mt-5 font-display text-[26px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#3B0D1A] lg:text-[40px]">
+          <h2 className="mt-5 font-display text-[26px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#9A9D22] lg:text-[40px]">
             {title[lang]}
           </h2>
         </div>

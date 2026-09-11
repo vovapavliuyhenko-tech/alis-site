@@ -104,7 +104,7 @@ export default function ConciergeChat() {
       {open && (
         <div className="pointer-events-auto flex h-[70vh] max-h-[520px] w-[calc(100vw-2rem)] max-w-[360px] flex-col overflow-hidden rounded-[22px] border border-[#17191a]/10 bg-white shadow-[0_24px_70px_rgba(0,0,0,0.25)]">
           {/* Шапка */}
-          <div className="flex items-center gap-3 bg-[#3B0D1A] px-5 py-4 text-[#f4efe6]">
+          <div className="flex items-center gap-3 bg-[#9A9D22] px-5 py-4 text-[#f4efe6]">
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f4efe6]/15 font-display text-[15px] font-semibold tracking-[0.08em]">Á</span>
             <div className="flex-1">
               <p className="text-[14px] font-medium leading-tight">{en ? "ÁLIS concierge" : "Консьерж ÁLIS"}</p>
@@ -119,7 +119,7 @@ export default function ConciergeChat() {
           <div ref={bodyRef} className="flex-1 space-y-3 overflow-y-auto bg-[#faf7f2] px-4 py-4">
             {msgs.map((m, i) => (
               <div key={i} className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}>
-                <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[13.5px] leading-relaxed ${m.from === "user" ? "bg-[#3B0D1A] text-[#f4efe6]" : "border border-[#17191a]/8 bg-white text-[#2a2320]"}`}>
+                <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[13.5px] leading-relaxed ${m.from === "user" ? "bg-[#9A9D22] text-[#f4efe6]" : "border border-[#17191a]/8 bg-white text-[#2a2320]"}`}>
                   <p>{m.text}</p>
                   {m.actions?.map((a) => (
                     <a
@@ -127,7 +127,7 @@ export default function ConciergeChat() {
                       href={a.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-[#4A4B33] px-3.5 py-1.5 text-[12px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.03]"
+                      className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-[#9A9D22] px-3.5 py-1.5 text-[12px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.03]"
                     >
                       {a.label[lang]}
                     </a>
@@ -143,7 +143,7 @@ export default function ConciergeChat() {
               <button
                 key={tp.chip.ru}
                 onClick={() => ask(tp)}
-                className="rounded-full border border-[#3B0D1A]/25 px-3 py-1.5 text-[12px] text-[#3B0D1A] transition-colors hover:bg-[#3B0D1A] hover:text-[#f4efe6]"
+                className="rounded-full border border-[#9A9D22]/25 px-3 py-1.5 text-[12px] text-[#9A9D22] transition-colors hover:bg-[#9A9D22] hover:text-[#f4efe6]"
               >
                 {tp.chip[lang]}
               </button>
@@ -156,7 +156,7 @@ export default function ConciergeChat() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label={en ? "Open chat" : "Открыть чат"}
-        className="pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#3B0D1A] text-[#f4efe6] shadow-[0_10px_30px_rgba(59,13,26,0.4)] transition-transform hover:scale-105"
+        className="pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#9A9D22] text-[#f4efe6] shadow-[0_10px_30px_rgba(59,13,26,0.4)] transition-transform hover:scale-105"
       >
         {open ? (
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /></svg>

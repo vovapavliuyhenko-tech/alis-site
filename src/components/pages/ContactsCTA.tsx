@@ -20,7 +20,7 @@ const IG_GLOBAL = "https://www.instagram.com/alisbeauty.global";
 const ADDRESS = { ru: "Новороссийск, ул. Пархоменко, 53", en: "Novorossiysk, Parkhomenko St., 53" };
 const HOURS = { ru: "Без выходных, 9:00–21:00", en: "Open daily, 9:00–21:00" };
 
-const WINE = "#3B0D1A";
+const WINE = "#9A9D22";
 
 /* ── иконки соц-кнопок (одним штрихом, наследуют currentColor) ───────────── */
 const IcWhatsApp = (p: React.SVGProps<SVGSVGElement>) => (
@@ -94,11 +94,11 @@ export default function ContactsCTA() {
     <section id="contacts" className="scroll-mt-24 bg-white pb-20 pt-2 lg:pb-28 lg:pt-4">
       {/* Шапка блока — в едином стиле с главной/командой */}
       <div className="r-reveal mx-auto mb-10 w-[94%] max-w-[1400px] lg:mb-12">
-        <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+        <span className="inline-flex items-center gap-2 rounded-full bg-[#9A9D22]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#9A9D22]">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#9A9D22]" />
           {t("контакты", "contacts")}
         </span>
-        <h2 className="mt-5 max-w-2xl font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#3B0D1A] lg:text-[36px]">
+        <h2 className="mt-5 max-w-2xl font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#9A9D22] lg:text-[36px]">
           {t("Мы всегда на связи", "We're always in touch")}
         </h2>
         <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-[#17191a]/60 lg:text-[15px]">
@@ -139,11 +139,11 @@ export default function ContactsCTA() {
         </div>
 
         {/* Белая карточка (как на референсе) */}
-        <div className="flex flex-col justify-center rounded-[24px] border border-[#17191a]/12 bg-white px-6 py-7 text-[#3B0D1A] shadow-[0_18px_44px_rgba(0,0,0,0.06)] lg:min-h-[520px] lg:px-9 lg:py-10">
+        <div className="flex flex-col justify-center rounded-[24px] border border-[#17191a]/12 bg-white px-6 py-7 text-[#9A9D22] shadow-[0_18px_44px_rgba(0,0,0,0.06)] lg:min-h-[520px] lg:px-9 lg:py-10">
           <h2 className="r-reveal font-display text-[22px] font-normal leading-[1.1] tracking-[0.02em] lg:text-[30px]">
             ÁLIS Beauty <span className="opacity-70">{t("на Пархоменко", "on Parkhomenko")}</span>
           </h2>
-          <p className="r-reveal mt-2 text-[12.5px] italic leading-relaxed text-[#3B0D1A]/55 lg:text-[13.5px]">
+          <p className="r-reveal mt-2 text-[12.5px] italic leading-relaxed text-[#9A9D22]/55 lg:text-[13.5px]">
             {t("Премиальный салон красоты · Новороссийск", "Premium beauty salon · Novorossiysk")}
             <br />
             {t("Запись по телефону, в WhatsApp или онлайн", "Book by phone, on WhatsApp or online")}
@@ -158,10 +158,10 @@ export default function ContactsCTA() {
                 className="flex flex-col gap-0.5 border-b py-2.5 sm:flex-row sm:items-baseline sm:gap-6"
                 style={{ borderColor: `${WINE}1f` }}
               >
-                <dt className="w-full text-[10px] uppercase tracking-[0.16em] text-[#3B0D1A]/60 sm:w-[40%] sm:shrink-0">
+                <dt className="w-full text-[10px] uppercase tracking-[0.16em] text-[#9A9D22]/60 sm:w-[40%] sm:shrink-0">
                   {r.label}
                 </dt>
-                <dd className="text-[13px] italic leading-snug text-[#3B0D1A] lg:text-[14px]">{r.value}</dd>
+                <dd className="text-[13px] italic leading-snug text-[#9A9D22] lg:text-[14px]">{r.value}</dd>
               </div>
             ))}
           </dl>
@@ -171,13 +171,13 @@ export default function ContactsCTA() {
               href={MAP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-[#3B0D1A] px-6 py-3 text-[11px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#5a1a2c]"
+              className="inline-flex items-center justify-center rounded-full bg-[#9A9D22] px-6 py-3 text-[11px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#5a1a2c]"
             >
               {t("Построить маршрут", "Get directions")}
             </a>
             <a
               href={SALON_URL}
-              className="inline-flex items-center justify-center rounded-full border border-[#3B0D1A] px-6 py-3 text-[11px] uppercase tracking-[0.16em] text-[#3B0D1A] transition-colors duration-300 hover:bg-[#3B0D1A] hover:text-[#f4efe6]"
+              className="inline-flex items-center justify-center rounded-full border border-[#9A9D22] px-6 py-3 text-[11px] uppercase tracking-[0.16em] text-[#9A9D22] transition-colors duration-300 hover:bg-[#9A9D22] hover:text-[#f4efe6]"
             >
               {t("Смотреть услуги", "View services")}
             </a>
@@ -193,21 +193,21 @@ export default function ContactsCTA() {
             href={href}
             target={href.startsWith("http") ? "_blank" : undefined}
             rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="r-reveal group flex items-center gap-3.5 rounded-[18px] border bg-white px-4 py-3 transition-colors duration-300 hover:bg-[#3B0D1A]"
+            className="r-reveal group flex items-center gap-3.5 rounded-[18px] border bg-white px-4 py-3 transition-colors duration-300 hover:bg-[#9A9D22]"
             style={{ borderColor: `${WINE}33` }}
           >
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#3B0D1A]/8 text-[#3B0D1A] transition-colors duration-300 group-hover:bg-[#f4efe6]/15 group-hover:text-[#f4efe6]">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#9A9D22]/8 text-[#9A9D22] transition-colors duration-300 group-hover:bg-[#f4efe6]/15 group-hover:text-[#f4efe6]">
               <Icon className="h-[18px] w-[18px]" />
             </span>
             <span className="min-w-0">
-              <span className="block truncate text-[14px] font-medium text-[#3B0D1A] transition-colors duration-300 group-hover:text-[#f4efe6]">
+              <span className="block truncate text-[14px] font-medium text-[#9A9D22] transition-colors duration-300 group-hover:text-[#f4efe6]">
                 {title}
               </span>
-              <span className="block truncate text-[12px] italic text-[#3B0D1A]/55 transition-colors duration-300 group-hover:text-[#f4efe6]/70">
+              <span className="block truncate text-[12px] italic text-[#9A9D22]/55 transition-colors duration-300 group-hover:text-[#f4efe6]/70">
                 {sub}
               </span>
             </span>
-            <span className="ml-auto shrink-0 text-[#3B0D1A]/40 transition-colors duration-300 group-hover:text-[#f4efe6]">
+            <span className="ml-auto shrink-0 text-[#9A9D22]/40 transition-colors duration-300 group-hover:text-[#f4efe6]">
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
                 <path d="M7 17 17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

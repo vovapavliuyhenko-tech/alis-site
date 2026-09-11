@@ -60,11 +60,11 @@ export default function ServiceScroll({
     <section className={ground === "cream" ? "bg-[#f7f3ed] py-24 lg:py-28" : "bg-white py-24 lg:py-28"}>
       <div className="mx-auto w-[92%] max-w-[1200px]">
         <div className="mb-12 lg:mb-16">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#9A9D22]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#9A9D22]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#9A9D22]" />
             {eyebrow[lang]}
           </span>
-          <h2 className="mt-5 font-display text-[26px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#3B0D1A] lg:text-[40px]">
+          <h2 className="mt-5 font-display text-[26px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#9A9D22] lg:text-[40px]">
             {title[lang]}
           </h2>
         </div>
@@ -104,7 +104,7 @@ export default function ServiceScroll({
                 ref={(el) => {
                   refs.current[i] = el;
                 }}
-                className="border-t border-[#3B0D1A]/12 py-8 first:border-t-0 first:pt-0 lg:min-h-[62vh] lg:py-12"
+                className="border-t border-[#9A9D22]/12 py-8 first:border-t-0 first:pt-0 lg:min-h-[62vh] lg:py-12"
               >
                 {/* Фото категории — только на мобильном */}
                 <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-[22px] lg:hidden">
@@ -115,15 +115,15 @@ export default function ServiceScroll({
                 </div>
 
                 {/* Название категории — на десктопе (крупное фото слева) */}
-                <h3 className="mb-5 hidden font-display text-[18px] uppercase tracking-[0.06em] text-[#3B0D1A]/40 lg:block">
+                <h3 className="mb-5 hidden font-display text-[18px] uppercase tracking-[0.06em] text-[#9A9D22]/40 lg:block">
                   {c.label[lang]}
                 </h3>
 
                 {c.rows.map((r) => (
                   <div key={r.name.ru} className="flex items-baseline gap-4 py-3.5">
                     <span className="min-w-0 text-[15px] text-[#2a2320] lg:text-[16px]">{r.name[lang]}</span>
-                    <span className="mx-1 flex-1 translate-y-[-3px] border-b border-dotted border-[#3B0D1A]/25" />
-                    <span className="whitespace-nowrap font-display text-[15px] text-[#3B0D1A] lg:text-[17px]">{r.price[lang]}</span>
+                    <span className="mx-1 flex-1 translate-y-[-3px] border-b border-dotted border-[#9A9D22]/25" />
+                    <span className="whitespace-nowrap font-display text-[15px] text-[#9A9D22] lg:text-[17px]">{r.price[lang]}</span>
                   </div>
                 ))}
               </div>

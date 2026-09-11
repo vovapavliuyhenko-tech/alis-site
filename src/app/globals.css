@@ -4,8 +4,8 @@
 :root {
   --ink: #17191a;         /* чернильный — тёмная база */
   --cream: #f4efe6;       /* кремовый — светлая база */
-  --wine: #3B0D1A;        /* Burgundy — основной акцент */
-  --olive: #4A4B33;       /* Deep Olive Green — второй акцент */
+  --wine: #9A9D22;        /* Burgundy — основной акцент */
+  --olive: #9A9D22;       /* Deep Olive Green — второй акцент */
 
   /* ===== Токены студии массажа (эталон massage-romanova.ru) ===== */
   --m-bg: #F9F8F6;        /* тёплый офф-вайт — фон страницы */
@@ -45,7 +45,7 @@ html { scrollbar-color: var(--wine) #ffffff; scrollbar-width: thin; }
   background: var(--wine); border-radius: 999px;
   border: 3px solid #ffffff;
 }
-::-webkit-scrollbar-thumb:hover { background: #63292f; }
+::-webkit-scrollbar-thumb:hover { background: #6b6e17; }
 
 /* Лента-карусель без видимого скроллбара (магазин) */
 .hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }

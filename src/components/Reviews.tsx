@@ -196,16 +196,16 @@ export default function Reviews() {
       <div className="mx-auto w-[92%] max-w-[1200px]">
         {/* Заголовок */}
         <div className="mb-14 flex flex-col items-center text-center lg:mb-20">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#4A4B33]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#4A4B33]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4A4B33]" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#9A9D22]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#9A9D22]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#9A9D22]" />
             {lang === "en" ? "Reviews" : "Отзывы"}
           </span>
-          <h2 className="mt-5 font-display text-[24px] font-normal uppercase tracking-[0.04em] leading-[1.12] text-[#3B0D1A] lg:text-[36px]">
+          <h2 className="mt-5 font-display text-[24px] font-normal uppercase tracking-[0.04em] leading-[1.12] text-[#9A9D22] lg:text-[36px]">
             {lang === "en" ? "What our " : "Что говорят "}
-            <span className="text-[#4A4B33]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
+            <span className="text-[#9A9D22]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
           </h2>
           <p className="mt-4 inline-flex items-center gap-2 text-[14px] text-[#17191a]/60">
-            <span className="text-[#3B0D1A]">★★★★★</span>
+            <span className="text-[#9A9D22]">★★★★★</span>
             <span className="font-medium text-[#17191a]">4.9</span>
             {lang === "en" ? "· 75+ reviews on Yandex and 2GIS" : "· 75+ отзывов на Яндекс и 2ГИС"}
           </p>
@@ -224,18 +224,18 @@ export default function Reviews() {
               <article
                 key={r.name.ru}
                 style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)` }}
-                className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[128px] flex h-[256px] w-[300px] flex-col rounded-[18px] border border-[#3B0D1A]/12 bg-white p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
+                className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[128px] flex h-[256px] w-[300px] flex-col rounded-[18px] border border-[#9A9D22]/12 bg-white p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[12px] tracking-[0.32em] text-[#8a5a3c]">★★★★★</span>
-                  <span className="font-serif text-[34px] leading-none text-[#3B0D1A]/20">&rdquo;</span>
+                  <span className="font-serif text-[34px] leading-none text-[#9A9D22]/20">&rdquo;</span>
                 </div>
 
                 <p className="mt-3 flex-1 font-serif text-[12.5px] leading-[1.55] text-[#17191a]/85">
                   {r.text[lang]}
                 </p>
 
-                <div className="mt-4 flex items-center gap-2.5 border-t border-[#3B0D1A]/10 pt-4">
+                <div className="mt-4 flex items-center gap-2.5 border-t border-[#9A9D22]/10 pt-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={r.photo}
@@ -247,7 +247,7 @@ export default function Reviews() {
                   />
                   <div>
                     <p className="text-[12.5px] font-medium text-[#17191a]">{r.name[lang]}</p>
-                    <p className="text-[10px] uppercase tracking-[0.12em] text-[#4A4B33]">
+                    <p className="text-[10px] uppercase tracking-[0.12em] text-[#9A9D22]">
                       {r.role[lang]}
                     </p>
                   </div>
@@ -275,7 +275,7 @@ export default function Reviews() {
               href={p.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-[#3B0D1A]/25 px-4 py-2 text-[13px] text-[#3B0D1A] transition-colors hover:bg-[#3B0D1A] hover:text-[#f4efe6]"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#9A9D22]/25 px-4 py-2 text-[13px] text-[#9A9D22] transition-colors hover:bg-[#9A9D22] hover:text-[#f4efe6]"
             >
               {p.label}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" /></svg>

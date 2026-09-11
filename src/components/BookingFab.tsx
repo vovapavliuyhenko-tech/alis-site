@@ -39,7 +39,7 @@ export default function BookingFab() {
 
   if (pathname === "/concierge") return null;
 
-  const ringColor = onFooter ? "#f4efe6" : "#3B0D1A";
+  const ringColor = onFooter ? "#f4efe6" : "#9A9D22";
 
   return (
     <div
@@ -58,7 +58,7 @@ export default function BookingFab() {
           rel="noopener noreferrer"
           aria-label={lang === "en" ? "Book online" : "Онлайн запись"}
           className={`fab-pulse relative flex h-full w-full items-center justify-center rounded-full text-center shadow-[0_12px_34px_rgba(0,0,0,0.28)] ring-1 transition-colors duration-300 hover:scale-105 ${
-            onFooter ? "bg-[#f4efe6] text-[#3B0D1A] ring-[#f4efe6]" : "bg-[#3B0D1A] text-[#f4efe6] ring-[#3B0D1A]"
+            onFooter ? "bg-[#f4efe6] text-[#9A9D22] ring-[#f4efe6]" : "bg-[#9A9D22] text-[#f4efe6] ring-[#9A9D22]"
           }`}
         >
           <span className="px-2 text-[11px] font-medium uppercase leading-[1.25] tracking-[0.12em]">
