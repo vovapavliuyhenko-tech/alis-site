@@ -78,10 +78,12 @@ export default function Header() {
     };
   }, [pathname]);
 
-  // Герой светлый → элементы шапки всегда тёмные (фон только меняется)
-  const ink = "text-[#17191a]";
-  const inkSoft = "text-[#17191a]/75";
-  const hoverInk = "hover:text-[#3B0D1A]";
+  // Над первым экраном главной (тёмное фото) — шапка светлая; после прокрутки
+  // и на внутренних страницах — тёмная на белой подложке.
+  const overHero = pathname === "/" && !solid;
+  const ink = overHero ? "text-white" : "text-[#17191a]";
+  const inkSoft = overHero ? "text-white/80" : "text-[#17191a]/75";
+  const hoverInk = overHero ? "hover:text-white" : "hover:text-[#3B0D1A]";
 
   // Пункт меню + (опц.) выпадашка
   const NavLink = ({ item }: { item: NavItem }) =>
@@ -113,17 +115,13 @@ export default function Header() {
       </a>
     );
 
-  // На главной первый экран несёт собственную верхнюю панель (герой студии
-  // массажа) — глобальную шапку прячем, пока не проскроллили за первый блок.
-  const hiddenOverHero = pathname === "/" && !solid;
-
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         solid
           ? "border-b border-[#17191a]/10 bg-white/85 shadow-[0_4px_24px_rgba(0,0,0,0.05)] backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
-      } ${hiddenOverHero ? "pointer-events-none -translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
+      }`}
     >
       <div className="mx-auto grid h-[68px] w-full max-w-[1280px] grid-cols-[1fr_auto_1fr] items-center px-5 sm:px-8">
         {/* Левая группа (desktop) */}
@@ -146,8 +144,8 @@ export default function Header() {
 
         {/* Логотип по центру: вензель + надпись */}
         <a href="/" className="flex items-center gap-2.5 justify-self-center">
-          <LogoEmblem variant="wine" className="h-10 w-auto max-w-none shrink-0" />
-          <LogoWord variant="wine" className="h-[19px] w-auto max-w-none shrink-0" />
+          <LogoEmblem variant={overHero ? "cream" : "wine"} className="h-10 w-auto max-w-none shrink-0" />
+          <LogoWord variant={overHero ? "cream" : "wine"} className="h-[19px] w-auto max-w-none shrink-0" />
         </a>
 
         {/* Правая группа (desktop) */}
@@ -156,11 +154,11 @@ export default function Header() {
             <NavLink key={item.label.ru} item={item} />
           ))}
           {/* Тумблер RU/EN */}
-          <div className="relative flex items-center rounded-full border border-[#3B0D1A]/25 p-0.5 text-[12px] font-medium">
+          <div className={`relative flex items-center rounded-full border p-0.5 text-[12px] font-medium ${overHero ? "border-white/40" : "border-[#3B0D1A]/25"}`}>
             {/* бегунок */}
             <span
               aria-hidden
-              className="absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full bg-[#3B0D1A] transition-transform duration-300 ease-out"
+              className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${overHero ? "bg-white" : "bg-[#3B0D1A]"}`}
               style={{ transform: lang === "en" ? "translateX(100%)" : "translateX(0)" }}
             />
             {(["ru", "en"] as Lang[]).map((l) => (
@@ -169,7 +167,9 @@ export default function Header() {
                 onClick={() => setLang(l)}
                 aria-pressed={lang === l}
                 className={`relative z-10 w-10 rounded-full py-2 uppercase tracking-wide transition-colors duration-300 ${
-                  lang === l ? "text-[#f4efe6]" : "text-[#3B0D1A]/60 hover:text-[#3B0D1A]"
+                  lang === l
+                    ? overHero ? "text-[#17191a]" : "text-[#f4efe6]"
+                    : overHero ? "text-white/70 hover:text-white" : "text-[#3B0D1A]/60 hover:text-[#3B0D1A]"
                 }`}
               >
                 {l}
