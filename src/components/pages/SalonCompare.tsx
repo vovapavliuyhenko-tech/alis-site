@@ -92,7 +92,7 @@ export default function SalonCompare() {
           {COLS.map((c, i) => {
             const dir = i === 0 ? 1 : -1;
             const wine = i === 1; // правая — главная, бордовая
-            const bg = wine ? "#9A9D22" : "#ffffff";
+            const bg = wine ? "#6E7248" : "#ffffff";
             const border = wine ? "transparent" : "rgba(23,25,26,0.14)";
             const headColor = wine ? "#f4efe6" : INK;
             const subColor = wine ? "rgba(244,239,230,0.78)" : "rgba(23,25,26,0.72)";

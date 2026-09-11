@@ -98,7 +98,7 @@ export default function SalonPinnedHero() {
                     href={YCLIENTS}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-2xl border border-white bg-white px-14 py-5 font-display text-[12px] uppercase tracking-[0.16em] text-[#9A9D22] transition-colors duration-300 hover:bg-transparent hover:text-white sm:text-[13px]"
+                    className="inline-flex items-center justify-center rounded-2xl border border-white bg-white px-14 py-5 font-display text-[12px] uppercase tracking-[0.16em] text-[#6E7248] transition-colors duration-300 hover:bg-transparent hover:text-white sm:text-[13px]"
                   >
                     {en ? "book now" : "записаться"}
                   </a>

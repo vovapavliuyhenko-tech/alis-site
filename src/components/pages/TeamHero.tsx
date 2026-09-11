@@ -53,14 +53,14 @@ export default function TeamHero({
       {logoTop ? (
         <LogoLockup variant="wine" className="scale-[0.6]" />
       ) : (
-        <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#9A9D22]">
+        <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#6E7248]">
           {eyebrow[lang]}
         </span>
       )}
 
       {/* Середина — крупный заголовок + текст */}
       <div className="flex flex-col items-center">
-        <h2 className="max-w-[15ch] font-display text-[26px] font-normal uppercase leading-[1.14] tracking-[0.02em] text-[#9A9D22] sm:text-[32px] lg:text-[40px]">
+        <h2 className="max-w-[15ch] font-display text-[26px] font-normal uppercase leading-[1.14] tracking-[0.02em] text-[#6E7248] sm:text-[32px] lg:text-[40px]">
           {title[lang]}
         </h2>
         <p className="mt-6 max-w-md text-[13px] leading-relaxed text-[#2a2320]/70 sm:text-[14px]">
@@ -74,7 +74,7 @@ export default function TeamHero({
       ) : (
         <a
           href={cta.href}
-          className="flex w-full items-center justify-center rounded-2xl border border-[#9A9D22] bg-[#9A9D22] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#9A9D22] sm:text-[14px]"
+          className="flex w-full items-center justify-center rounded-2xl border border-[#6E7248] bg-[#6E7248] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#6E7248] sm:text-[14px]"
         >
           {en ? cta.label.en : cta.label.ru}
         </a>

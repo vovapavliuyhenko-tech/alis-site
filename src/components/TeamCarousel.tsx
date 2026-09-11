@@ -38,13 +38,13 @@ export default function TeamCarousel() {
       <div className="mx-auto w-[92%] max-w-[1180px]">
         {/* Заголовок */}
         <div className="mb-10 max-w-2xl lg:mb-14">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#9A9D22]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#9A9D22]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#9A9D22]" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#6E7248]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#6E7248]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#6E7248]" />
             {en ? "Team" : "Команда"}
           </span>
           <h2 className="mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] text-[#2a2320] lg:text-[44px]">
             {en ? "Who to reach out to" : "К кому обратиться"}{" "}
-            <span className="text-[#9A9D22]">{en ? "at ÁLIS" : "в ÁLIS"}</span>
+            <span className="text-[#6E7248]">{en ? "at ÁLIS" : "в ÁLIS"}</span>
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
             {en
@@ -61,7 +61,7 @@ export default function TeamCarousel() {
               className="flex flex-col rounded-[20px] border border-[#17191a]/8 bg-white p-6 shadow-[0_10px_40px_rgba(23,25,26,0.06)] lg:p-7"
             >
               <div className="flex items-center gap-4">
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#9A9D22] font-display text-[22px] font-semibold text-[#f4efe6]">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#6E7248] font-display text-[22px] font-semibold text-[#f4efe6]">
                   {l.initial}
                 </span>
                 <div>
@@ -72,7 +72,7 @@ export default function TeamCarousel() {
               <p className="mt-5 flex-1 text-[14px] leading-relaxed text-[#2a2320]/75">{l.about[lang]}</p>
               <a
                 href={TEL}
-                className="group/btn mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-[#9A9D22] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.1em] text-[#9A9D22] transition-colors duration-300 hover:bg-[#9A9D22] hover:text-[#f4efe6]"
+                className="group/btn mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-[#6E7248] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.1em] text-[#6E7248] transition-colors duration-300 hover:bg-[#6E7248] hover:text-[#f4efe6]"
               >
                 {en ? "Get in touch" : "Связаться"}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover/btn:translate-x-0.5"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>

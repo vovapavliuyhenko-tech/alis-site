@@ -23,8 +23,8 @@ export default function StepsList({
     <section className={`scroll-mt-24 ${bg} py-16 lg:py-24`}>
       <div className="mx-auto w-[92%] max-w-[1180px]">
         <div className="max-w-2xl">
-          <span className="text-[11px] uppercase tracking-[0.22em] text-[#9A9D22]">{eyebrow[lang]}</span>
-          <h2 className="mt-4 font-display text-[28px] uppercase tracking-[0.05em] leading-[1.1] text-[#9A9D22] lg:text-[44px]">
+          <span className="text-[11px] uppercase tracking-[0.22em] text-[#6E7248]">{eyebrow[lang]}</span>
+          <h2 className="mt-4 font-display text-[28px] uppercase tracking-[0.05em] leading-[1.1] text-[#6E7248] lg:text-[44px]">
             {title[lang]}
           </h2>
         </div>
@@ -34,7 +34,7 @@ export default function StepsList({
               key={s.title.ru}
               className="grid grid-cols-[auto_1fr] items-start gap-5 border-t border-[#17191a]/12 py-7 lg:grid-cols-[120px_1fr] lg:gap-10 lg:py-9"
             >
-              <span className="font-display text-[38px] leading-none text-[#9A9D22] lg:text-[64px]">
+              <span className="font-display text-[38px] leading-none text-[#6E7248] lg:text-[64px]">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div className="max-w-2xl">

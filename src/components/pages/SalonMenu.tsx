@@ -182,11 +182,11 @@ export default function SalonMenu() {
       <div className="mx-auto w-[92%] max-w-[1080px]">
         {/* Заголовок */}
         <div className="mx-auto mb-14 flex max-w-2xl flex-col items-center text-center lg:mb-20">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#9A9D22]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#9A9D22]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#9A9D22]" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#6E7248]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#6E7248]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#6E7248]" />
             {en ? "Services" : "Услуги"}
           </span>
-          <h2 className="mt-5 font-display text-[30px] font-normal uppercase leading-[1.12] tracking-[0.05em] text-[#9A9D22] lg:text-[44px]">
+          <h2 className="mt-5 font-display text-[30px] font-normal uppercase leading-[1.12] tracking-[0.05em] text-[#6E7248] lg:text-[44px]">
             {en ? "Services & prices" : "Услуги и цены"}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-[14px] leading-relaxed text-[#17191a]/55 lg:text-[15px]">
@@ -209,7 +209,7 @@ export default function SalonMenu() {
                   }}
                   onClick={() => selectCat(i)}
                   className={`shrink-0 whitespace-nowrap text-[14px] uppercase tracking-[0.1em] transition-colors duration-300 lg:text-[16px] ${
-                    on ? "text-[#9A9D22]" : "text-[#17191a]/40 hover:text-[#17191a]/70"
+                    on ? "text-[#6E7248]" : "text-[#17191a]/40 hover:text-[#17191a]/70"
                   }`}
                 >
                   {c.label[lang]}
@@ -218,7 +218,7 @@ export default function SalonMenu() {
             })}
             <span
               aria-hidden
-              className="absolute -bottom-px h-[2px] rounded-full bg-[#9A9D22] transition-all duration-300 ease-out"
+              className="absolute -bottom-px h-[2px] rounded-full bg-[#6E7248] transition-all duration-300 ease-out"
               style={{ left: ind.left, width: ind.width }}
             />
           </div>
@@ -240,7 +240,7 @@ export default function SalonMenu() {
                   <span className="tabular-nums text-[14px] text-[#17191a]/55 sm:text-[16px]">{it.price[lang]}</span>
                   <span
                     className={`flex h-9 w-9 items-center justify-center rounded-full border transition-all duration-300 ${
-                      isOpen ? "rotate-45 border-[#9A9D22] bg-[#9A9D22] text-[#f4efe6]" : "border-[#17191a]/15 text-[#17191a]/45"
+                      isOpen ? "rotate-45 border-[#6E7248] bg-[#6E7248] text-[#f4efe6]" : "border-[#17191a]/15 text-[#17191a]/45"
                     }`}
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14" strokeLinecap="round" /></svg>
@@ -257,7 +257,7 @@ export default function SalonMenu() {
                       href={YCLIENTS}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-6 inline-flex items-center justify-center rounded-full bg-[#9A9D22] px-9 py-4 text-[13px] font-medium uppercase tracking-[0.14em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#9A9D22] lg:mt-0"
+                      className="mt-6 inline-flex items-center justify-center rounded-full bg-[#6E7248] px-9 py-4 text-[13px] font-medium uppercase tracking-[0.14em] text-[#f4efe6] transition-colors duration-300 hover:bg-[#6E7248] lg:mt-0"
                     >
                       {en ? "Book now" : "Записаться"}
                     </a>
@@ -272,7 +272,7 @@ export default function SalonMenu() {
             href={YCLIENTS}
             target="_blank"
             rel="noopener noreferrer"
-            className="group mt-10 inline-flex items-center gap-3 text-[13px] uppercase tracking-[0.14em] text-[#9A9D22]"
+            className="group mt-10 inline-flex items-center gap-3 text-[13px] uppercase tracking-[0.14em] text-[#6E7248]"
           >
             {en ? "Full price list & booking" : "Полный прайс и запись"}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>

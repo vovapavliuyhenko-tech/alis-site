@@ -23,11 +23,11 @@ export default function ServiceBento() {
     <section id="services" className="scroll-mt-24 bg-white py-16 lg:py-20">
       <div className="mx-auto w-[94%] max-w-[1440px]">
         <div className="r-reveal mb-8 max-w-2xl lg:mb-10">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#70695A]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#70695A]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#70695A]" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#6E7248]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#6E7248]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#6E7248]" />
             {en ? "services" : "услуги"}
           </span>
-          <h2 className="mt-5 font-serif-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#70695A] lg:text-[36px]">
+          <h2 className="mt-5 font-serif-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#6E7248] lg:text-[36px]">
             {en ? "Everything for your look" : "Всё для вашего образа"}
           </h2>
         </div>
@@ -51,7 +51,7 @@ export default function ServiceBento() {
               <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/20 transition-colors duration-500 group-hover:from-black/55 group-hover:via-black/25 group-hover:to-black/45" />
 
               {/* Кружок со стрелкой справа сверху — на ховере светлеет, стрелка поворачивается */}
-              <span className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/50 text-[15px] text-white transition-colors duration-300 group-hover:border-transparent group-hover:bg-[#F4F1EA] group-hover:text-[#70695A] lg:h-10 lg:w-10">
+              <span className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/50 text-[15px] text-white transition-colors duration-300 group-hover:border-transparent group-hover:bg-[#F4F1EA] group-hover:text-[#6E7248] lg:h-10 lg:w-10">
                 <span className="transition-transform duration-300 group-hover:rotate-12">↗</span>
               </span>
 

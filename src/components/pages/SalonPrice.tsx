@@ -11,8 +11,8 @@ export default function SalonPrice() {
   return (
     <section className="scroll-mt-24 bg-white py-16 lg:py-24">
       <div className="mx-auto w-[92%] max-w-[1180px]">
-        <div className="overflow-hidden rounded-[28px] bg-[#9A9D22] px-7 py-12 text-[#f4efe6] sm:px-10 lg:px-14 lg:py-16">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#9A9D22]/25 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em]">
+        <div className="overflow-hidden rounded-[28px] bg-[#6E7248] px-7 py-12 text-[#f4efe6] sm:px-10 lg:px-14 lg:py-16">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#6E7248]/25 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em]">
             {en ? "Prices" : "Прайс"}
           </span>
           <h2 className="mt-5 max-w-2xl font-display text-[24px] uppercase tracking-[0.06em] leading-[1.12] lg:text-[36px]">
@@ -27,7 +27,7 @@ export default function SalonPrice() {
             href={YCLIENTS}
             target="_blank"
             rel="noopener noreferrer"
-            className="group/btn mt-8 inline-flex items-center gap-3 rounded-full bg-[#f4efe6] px-8 py-4 text-[14px] font-medium uppercase tracking-[0.1em] text-[#9A9D22] transition-transform duration-300 hover:scale-[1.02]"
+            className="group/btn mt-8 inline-flex items-center gap-3 rounded-full bg-[#f4efe6] px-8 py-4 text-[14px] font-medium uppercase tracking-[0.1em] text-[#6E7248] transition-transform duration-300 hover:scale-[1.02]"
           >
             {en ? "See prices & book" : "Смотреть цены и записаться"}
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover/btn:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>

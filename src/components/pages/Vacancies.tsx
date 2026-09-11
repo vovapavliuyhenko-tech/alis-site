@@ -43,11 +43,11 @@ export default function Vacancies() {
     <section id="vacancies" className="scroll-mt-24 bg-white py-24 lg:py-32">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <div className="mb-12 max-w-2xl lg:mb-16">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#9A9D22]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#9A9D22]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#9A9D22]" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#6E7248]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#6E7248]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#6E7248]" />
             {en ? "vacancies" : "вакансии"}
           </span>
-          <h2 className="mt-5 font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#9A9D22] lg:text-[36px]">
+          <h2 className="mt-5 font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#6E7248] lg:text-[36px]">
             {en ? "Grow with ÁLIS" : "Расти вместе с ÁLIS"}
           </h2>
         </div>
@@ -58,16 +58,16 @@ export default function Vacancies() {
             <a
               key={v.role.ru}
               href="#join"
-              className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[20px] border border-[#9A9D22]/12 px-6 py-6 transition-colors duration-300 hover:border-transparent hover:bg-[#9A9D22] lg:gap-8 lg:px-8 lg:py-8"
+              className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[20px] border border-[#6E7248]/12 px-6 py-6 transition-colors duration-300 hover:border-transparent hover:bg-[#6E7248] lg:gap-8 lg:px-8 lg:py-8"
             >
               {/* Номер */}
-              <span className="font-display text-[13px] tabular-nums text-[#9A9D22] transition-colors duration-300 group-hover:text-[#f4efe6]/70 lg:text-[15px]">
+              <span className="font-display text-[13px] tabular-nums text-[#6E7248] transition-colors duration-300 group-hover:text-[#f4efe6]/70 lg:text-[15px]">
                 {String(i + 1).padStart(2, "0")}
               </span>
 
               {/* Название + описание */}
               <div className="min-w-0">
-                <h3 className="font-display text-[16px] font-normal uppercase leading-[1.15] tracking-[0.01em] text-[#9A9D22] transition-all duration-300 group-hover:translate-x-2 group-hover:text-[#f4efe6] sm:text-[19px] lg:text-[24px]">
+                <h3 className="font-display text-[16px] font-normal uppercase leading-[1.15] tracking-[0.01em] text-[#6E7248] transition-all duration-300 group-hover:translate-x-2 group-hover:text-[#f4efe6] sm:text-[19px] lg:text-[24px]">
                   {v.role[lang]}
                 </h3>
                 <p className="mt-2 text-[12.5px] text-[#2a2320]/55 transition-colors duration-300 group-hover:text-[#f4efe6]/70 lg:text-[13.5px]">{v.desc[lang]}</p>
@@ -75,10 +75,10 @@ export default function Vacancies() {
 
               {/* График + стрелка в кружке */}
               <span className="flex items-center gap-4 lg:gap-6">
-                <span className="hidden whitespace-nowrap rounded-full bg-[#9A9D22]/10 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-[#9A9D22] transition-colors duration-300 group-hover:bg-[#f4efe6]/15 group-hover:text-[#f4efe6] sm:inline">
+                <span className="hidden whitespace-nowrap rounded-full bg-[#6E7248]/10 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-[#6E7248] transition-colors duration-300 group-hover:bg-[#f4efe6]/15 group-hover:text-[#f4efe6] sm:inline">
                   {v.schedule[lang]}
                 </span>
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#9A9D22]/30 text-[#9A9D22] transition-all duration-300 group-hover:border-[#f4efe6] group-hover:bg-[#f4efe6] group-hover:text-[#9A9D22] lg:h-12 lg:w-12">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#6E7248]/30 text-[#6E7248] transition-all duration-300 group-hover:border-[#f4efe6] group-hover:bg-[#f4efe6] group-hover:text-[#6E7248] lg:h-12 lg:w-12">
                   <span className="text-[16px] leading-none transition-transform duration-300 group-hover:-rotate-45 lg:text-[18px]">→</span>
                 </span>
               </span>

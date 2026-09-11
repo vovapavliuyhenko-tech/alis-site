@@ -73,10 +73,10 @@ export default function MassageProblems() {
       <div className="mx-auto w-[94%] max-w-[1400px]">
         {/* Заголовок секции */}
         <div className="text-center">
-          <p className="text-[10px] lowercase tracking-[0.05em] text-[#70695A]">
+          <p className="text-[10px] lowercase tracking-[0.05em] text-[#6E7248]">
             {en ? "listen to yourself…" : "прислушайтесь к себе..."}
           </p>
-          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#70695A] lg:text-[28px]">
+          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
             {en ? "What troubles you today?" : "Что вас беспокоит сегодня?"}
           </h2>
         </div>

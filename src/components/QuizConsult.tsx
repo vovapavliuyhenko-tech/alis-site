@@ -115,13 +115,13 @@ export default function QuizConsult() {
       <div className="mx-auto w-[92%] max-w-[1180px]">
         {/* Заголовок */}
         <div className="mb-10 max-w-2xl lg:mb-12">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#9A9D22]/10 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] text-[#9A9D22]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#9A9D22]" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#6E7248]/10 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] text-[#6E7248]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#6E7248]" />
             {t("бесплатная консультация", "free consultation")}
           </span>
           <h2 className="mt-5 font-display text-[24px] uppercase tracking-[0.06em] leading-[1.12] text-[#2a2320] lg:text-[36px]">
             {t("Подберём выезд", "We'll tailor your outcall")}{" "}
-            <span className="text-[#9A9D22]">{t("за 1 минуту", "in 1 minute")}</span>
+            <span className="text-[#6E7248]">{t("за 1 минуту", "in 1 minute")}</span>
           </h2>
           <p className="mt-4 text-[14px] leading-relaxed text-[#17191a]/55 lg:text-[15px]">
             {t(
@@ -142,15 +142,15 @@ export default function QuizConsult() {
                 alt="Дайана Тарзян"
                 loading="lazy"
                 decoding="async"
-                className="h-16 w-16 rounded-full object-cover ring-2 ring-[#9A9D22]/15"
+                className="h-16 w-16 rounded-full object-cover ring-2 ring-[#6E7248]/15"
               />
               <div>
                 <p className="font-serif text-[18px] text-[#2a2320]">{t("Дайана Тарзян", "Daiana Tarzyan")}</p>
                 <p className="text-[12px] text-[#17191a]/55">{t("основатель ALIS", "founder of ALIS")}</p>
               </div>
             </div>
-            <div key={step} className="booking-step relative rounded-2xl border border-[#9A9D22]/12 bg-[#9A9D22]/[0.04] p-4 text-[13px] leading-relaxed text-[#2a2320]/80">
-              <span aria-hidden className="absolute -top-2 left-8 h-4 w-4 rotate-45 border-l border-t border-[#9A9D22]/12 bg-[#9A9D22]/[0.04] md:-left-2 md:top-8 md:border-l md:border-t-0 md:border-b" />
+            <div key={step} className="booking-step relative rounded-2xl border border-[#6E7248]/12 bg-[#6E7248]/[0.04] p-4 text-[13px] leading-relaxed text-[#2a2320]/80">
+              <span aria-hidden className="absolute -top-2 left-8 h-4 w-4 rotate-45 border-l border-t border-[#6E7248]/12 bg-[#6E7248]/[0.04] md:-left-2 md:top-8 md:border-l md:border-t-0 md:border-b" />
               {BUBBLES[Math.min(step, BUBBLES.length - 1)][lang]}
             </div>
           </div>
@@ -159,8 +159,8 @@ export default function QuizConsult() {
           <div className="p-7 lg:p-10">
             {sent ? (
               <div className="flex min-h-[360px] flex-col items-center justify-center text-center">
-                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-[#9A9D22]/40">
-                  <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#9A9D22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-[#6E7248]/40">
+                  <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#6E7248" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </div>
                 <h3 className="font-serif text-[26px] text-[#2a2320]">{t("Заявка принята!", "Request received!")}</h3>
                 <p className="mx-auto mt-3 max-w-sm text-[14px] leading-relaxed text-[#17191a]/60">
@@ -171,7 +171,7 @@ export default function QuizConsult() {
               <>
                 {/* Верх: бейдж шага + счётчик */}
                 <div className="mb-4 flex items-center justify-between gap-3">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-[#9A9D22] px-3.5 py-1.5 text-[10.5px] font-medium uppercase tracking-[0.14em] text-[#f4efe6]">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-[#6E7248] px-3.5 py-1.5 text-[10.5px] font-medium uppercase tracking-[0.14em] text-[#f4efe6]">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3l1.9 4.6L18.5 9l-3.6 3 1 4.9L12 14.8 8.1 16.9l1-4.9L5.5 9l4.6-1.4z" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     {isContact
                       ? t("остался только контакт", "just your contact left")
@@ -182,7 +182,7 @@ export default function QuizConsult() {
 
                 {/* Прогресс-бар */}
                 <div className="mb-8 h-1.5 w-full overflow-hidden rounded-full bg-[#17191a]/8">
-                  <div className="h-full rounded-full bg-[#9A9D22] transition-[width] duration-500 ease-out" style={{ width: `${Math.round(((step + 1) / total) * 100)}%` }} />
+                  <div className="h-full rounded-full bg-[#6E7248] transition-[width] duration-500 ease-out" style={{ width: `${Math.round(((step + 1) / total) * 100)}%` }} />
                 </div>
 
                 {isContact ? (
@@ -195,14 +195,14 @@ export default function QuizConsult() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder={t("Ваше имя", "Your name")}
-                        className={`w-full rounded-xl border bg-white px-4 py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#9A9D22] ${touched && !nameOk ? "border-[#b3261e]" : "border-[#17191a]/15"}`}
+                        className={`w-full rounded-xl border bg-white px-4 py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#6E7248] ${touched && !nameOk ? "border-[#b3261e]" : "border-[#17191a]/15"}`}
                       />
                       <input
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         inputMode="tel"
                         placeholder={t("Ваш номер телефона", "Your phone number")}
-                        className={`w-full rounded-xl border bg-white px-4 py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#9A9D22] ${touched && !phoneOk ? "border-[#b3261e]" : "border-[#17191a]/15"}`}
+                        className={`w-full rounded-xl border bg-white px-4 py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#6E7248] ${touched && !phoneOk ? "border-[#b3261e]" : "border-[#17191a]/15"}`}
                       />
                     </div>
                     <textarea
@@ -210,13 +210,13 @@ export default function QuizConsult() {
                       onChange={(e) => setComment(e.target.value)}
                       rows={2}
                       placeholder={t("Комментарий (необязательно): город, дата, детали", "Comment (optional): city, date, details")}
-                      className="mt-4 w-full resize-none rounded-xl border border-[#17191a]/15 bg-white px-4 py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#9A9D22]"
+                      className="mt-4 w-full resize-none rounded-xl border border-[#17191a]/15 bg-white px-4 py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#6E7248]"
                     />
                     <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[13px] text-[#17191a]/70">
-                      <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#9A9D22]" />
+                      <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#6E7248]" />
                       <span>
                         {t("Согласен с ", "I agree to the ")}
-                        <a href="/privacy" className="text-[#9A9D22] underline underline-offset-2">{t("политикой конфиденциальности", "privacy policy")}</a>
+                        <a href="/privacy" className="text-[#6E7248] underline underline-offset-2">{t("политикой конфиденциальности", "privacy policy")}</a>
                       </span>
                     </label>
                     {touched && !canSend && (
@@ -231,7 +231,7 @@ export default function QuizConsult() {
                       </button>
                       <button
                         onClick={submit}
-                        className="group/btn inline-flex items-center gap-3 rounded-2xl bg-[#9A9D22] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02]"
+                        className="group/btn inline-flex items-center gap-3 rounded-2xl bg-[#6E7248] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02]"
                       >
                         {t("Получить расчёт", "Get my plan")}
                         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]/15 transition-transform duration-300 group-hover/btn:translate-x-0.5">
@@ -254,12 +254,12 @@ export default function QuizConsult() {
                             onClick={() => pick(opt[lang])}
                             className={`group flex items-center gap-3.5 rounded-2xl border px-5 py-4 text-left text-[14px] transition-all duration-200 lg:text-[15px] ${
                               active
-                                ? "border-[#9A9D22] bg-[#9A9D22]/[0.05] text-[#2a2320]"
-                                : "border-[#17191a]/12 bg-white text-[#2a2320] hover:border-[#9A9D22]/60"
+                                ? "border-[#6E7248] bg-[#6E7248]/[0.05] text-[#2a2320]"
+                                : "border-[#17191a]/12 bg-white text-[#2a2320] hover:border-[#6E7248]/60"
                             }`}
                           >
                             {/* Радио-кружок слева */}
-                            <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${active ? "border-[#9A9D22] bg-[#9A9D22] text-[#f4efe6]" : "border-[#17191a]/25 text-transparent group-hover:border-[#9A9D22]/50"}`}>
+                            <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${active ? "border-[#6E7248] bg-[#6E7248] text-[#f4efe6]" : "border-[#17191a]/25 text-transparent group-hover:border-[#6E7248]/50"}`}>
                               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                             </span>
                             {opt[lang]}
@@ -280,7 +280,7 @@ export default function QuizConsult() {
                       <button
                         onClick={next}
                         disabled={!answered}
-                        className="group/btn inline-flex items-center gap-3 rounded-2xl bg-[#9A9D22] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
+                        className="group/btn inline-flex items-center gap-3 rounded-2xl bg-[#6E7248] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
                       >
                         {t("Следующий вопрос", "Next question")}
                         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]/15 transition-transform duration-300 group-hover/btn:translate-x-0.5">

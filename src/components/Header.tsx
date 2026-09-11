@@ -83,7 +83,7 @@ export default function Header() {
   const overHero = pathname === "/" && !solid;
   const ink = overHero ? "text-white" : "text-[#17191a]";
   const inkSoft = overHero ? "text-white/80" : "text-[#17191a]/75";
-  const hoverInk = overHero ? "hover:text-white" : "hover:text-[#9A9D22]";
+  const hoverInk = overHero ? "hover:text-white" : "hover:text-[#6E7248]";
 
   // Пункт меню + (опц.) выпадашка
   const NavLink = ({ item }: { item: NavItem }) =>
@@ -154,11 +154,11 @@ export default function Header() {
             <NavLink key={item.label.ru} item={item} />
           ))}
           {/* Тумблер RU/EN */}
-          <div className={`relative flex items-center rounded-full border p-0.5 text-[12px] font-medium ${overHero ? "border-white/40" : "border-[#9A9D22]/25"}`}>
+          <div className={`relative flex items-center rounded-full border p-0.5 text-[12px] font-medium ${overHero ? "border-white/40" : "border-[#6E7248]/25"}`}>
             {/* бегунок */}
             <span
               aria-hidden
-              className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${overHero ? "bg-white" : "bg-[#9A9D22]"}`}
+              className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${overHero ? "bg-white" : "bg-[#6E7248]"}`}
               style={{ transform: lang === "en" ? "translateX(100%)" : "translateX(0)" }}
             />
             {(["ru", "en"] as Lang[]).map((l) => (
@@ -169,7 +169,7 @@ export default function Header() {
                 className={`relative z-10 w-10 rounded-full py-2 uppercase tracking-wide transition-colors duration-300 ${
                   lang === l
                     ? overHero ? "text-[#17191a]" : "text-[#f4efe6]"
-                    : overHero ? "text-white/70 hover:text-white" : "text-[#9A9D22]/60 hover:text-[#9A9D22]"
+                    : overHero ? "text-white/70 hover:text-white" : "text-[#6E7248]/60 hover:text-[#6E7248]"
                 }`}
               >
                 {l}
@@ -216,7 +216,7 @@ export default function Header() {
                   onClick={() => setLang(l)}
                   aria-pressed={lang === l}
                   className={`rounded-full border px-4 py-2 uppercase tracking-wide transition-colors ${
-                    lang === l ? "border-[#9A9D22] bg-[#9A9D22] text-[#f4efe6]" : "border-[#17191a]/15 text-[#17191a]/60"
+                    lang === l ? "border-[#6E7248] bg-[#6E7248] text-[#f4efe6]" : "border-[#17191a]/15 text-[#17191a]/60"
                   }`}
                 >
                   {l}

@@ -20,15 +20,15 @@ export default function FeatureCards({
     <section className="scroll-mt-24 bg-white py-16 lg:py-24">
       <div className="mx-auto w-[92%] max-w-[1180px]">
         <div className="mb-10 max-w-2xl lg:mb-14">
-          <span className="text-[11px] uppercase tracking-[0.22em] text-[#9A9D22]">{eyebrow[lang]}</span>
-          <h2 className="mt-4 font-display text-[28px] uppercase tracking-[0.05em] leading-[1.1] text-[#9A9D22] lg:text-[44px]">
+          <span className="text-[11px] uppercase tracking-[0.22em] text-[#6E7248]">{eyebrow[lang]}</span>
+          <h2 className="mt-4 font-display text-[28px] uppercase tracking-[0.05em] leading-[1.1] text-[#6E7248] lg:text-[44px]">
             {title[lang]}
           </h2>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
           {cards.map((c) => (
-            <div key={c.title.ru} className="rounded-[20px] border border-[#17191a]/8 bg-[#faf7f2] p-7 transition-colors hover:border-[#9A9D22]/30 lg:p-8">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#9A9D22] text-[#f4efe6]">
+            <div key={c.title.ru} className="rounded-[20px] border border-[#17191a]/8 bg-[#faf7f2] p-7 transition-colors hover:border-[#6E7248]/30 lg:p-8">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#6E7248] text-[#f4efe6]">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d={c.icon} strokeLinecap="round" strokeLinejoin="round" /></svg>
               </span>
               <h3 className="mt-5 font-display text-[19px] uppercase tracking-[0.04em] text-[#2a2320] lg:text-[22px]">{c.title[lang]}</h3>

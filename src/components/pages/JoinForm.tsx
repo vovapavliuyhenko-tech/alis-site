@@ -60,7 +60,7 @@ export default function JoinForm() {
     <section id="join" className="scroll-mt-24 bg-white px-3 pt-3 pb-16 sm:px-4 sm:pt-4 sm:pb-24">
       <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая бордовая панель */}
-        <div className="flex flex-col rounded-[28px] bg-[#9A9D22] px-6 py-12 text-[#f4efe6] sm:px-10 lg:min-h-[620px] lg:px-14 lg:py-16">
+        <div className="flex flex-col rounded-[28px] bg-[#6E7248] px-6 py-12 text-[#f4efe6] sm:px-10 lg:min-h-[620px] lg:px-14 lg:py-16">
             {sent ? (
               <div className="flex flex-1 flex-col justify-between gap-10">
                 <h2 className="mx-auto w-full max-w-lg text-center font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.02em] lg:text-[34px]">
@@ -125,7 +125,7 @@ export default function JoinForm() {
 
                 <button
                   type="submit"
-                  className="mx-auto flex w-full max-w-lg items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#9A9D22] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
+                  className="mx-auto flex w-full max-w-lg items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#6E7248] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
                 >
                   {en ? "send" : "отправить"}
                 </button>

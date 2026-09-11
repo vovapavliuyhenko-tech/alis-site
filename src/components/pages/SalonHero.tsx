@@ -30,7 +30,7 @@ export default function SalonHero() {
 
         {/* Заголовок + подзаголовок по центру */}
         <div className="flex flex-1 flex-col items-center justify-center py-10 text-center">
-          <h1 className="font-display text-[19px] font-normal uppercase leading-[1.16] tracking-[0.03em] text-[#9A9D22] sm:text-[25px] lg:text-[31px]">
+          <h1 className="font-display text-[19px] font-normal uppercase leading-[1.16] tracking-[0.03em] text-[#6E7248] sm:text-[25px] lg:text-[31px]">
             {t("Салон красоты,", "A beauty salon")}
             <br />
             {t("в который хочется", "you'll want to")}
@@ -50,7 +50,7 @@ export default function SalonHero() {
           href={YCLIENTS}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-display flex w-full items-center justify-center rounded-2xl border border-[#9A9D22] bg-[#9A9D22] py-5 text-[12px] uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#9A9D22] sm:text-[13px]"
+          className="font-display flex w-full items-center justify-center rounded-2xl border border-[#6E7248] bg-[#6E7248] py-5 text-[12px] uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#6E7248] sm:text-[13px]"
         >
           {t("Записаться", "Book now")}
         </a>

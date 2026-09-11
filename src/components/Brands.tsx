@@ -70,7 +70,7 @@ function Track({ hidden = false }: { hidden?: boolean }) {
 export default function Brands() {
   return (
     <section className="overflow-hidden bg-[#F9F8F6] py-16 lg:py-24">
-      <p className="mb-10 text-center text-[11px] italic tracking-[0.02em] text-[#70695A] lg:mb-12">нам доверяют</p>
+      <p className="mb-10 text-center text-[11px] italic tracking-[0.02em] text-[#6E7248] lg:mb-12">нам доверяют</p>
       <div className="group relative flex overflow-hidden">
         <Track />
         <Track hidden />

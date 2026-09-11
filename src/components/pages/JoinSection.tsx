@@ -28,11 +28,11 @@ export default function JoinSection({
   return (
     <section className={`scroll-mt-24 py-16 lg:py-24 ${dark ? "bg-white" : "bg-white"}`}>
       <div className="mx-auto w-[92%] max-w-[1180px]">
-        <div className={`overflow-hidden rounded-[28px] px-7 py-12 sm:px-10 lg:px-14 lg:py-16 ${dark ? "bg-[#9A9D22] text-[#f4efe6]" : "border border-[#17191a]/10 bg-[#faf7f2] text-[#2a2320]"}`}>
-          <span className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] ${dark ? "bg-[#9A9D22]/25 text-[#f4efe6]" : "bg-[#9A9D22]/12 text-[#9A9D22]"}`}>
+        <div className={`overflow-hidden rounded-[28px] px-7 py-12 sm:px-10 lg:px-14 lg:py-16 ${dark ? "bg-[#6E7248] text-[#f4efe6]" : "border border-[#17191a]/10 bg-[#faf7f2] text-[#2a2320]"}`}>
+          <span className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] ${dark ? "bg-[#6E7248]/25 text-[#f4efe6]" : "bg-[#6E7248]/12 text-[#6E7248]"}`}>
             {eyebrow[lang]}
           </span>
-          <h2 className={`mt-5 max-w-2xl font-display text-[24px] uppercase tracking-[0.06em] leading-[1.12] lg:text-[36px] ${dark ? "" : "text-[#9A9D22]"}`}>
+          <h2 className={`mt-5 max-w-2xl font-display text-[24px] uppercase tracking-[0.06em] leading-[1.12] lg:text-[36px] ${dark ? "" : "text-[#6E7248]"}`}>
             {title[lang]}
           </h2>
           <p className={`mt-4 max-w-2xl text-[14px] leading-relaxed lg:text-[15px] ${dark ? "text-[#f4efe6]/75" : "text-[#2a2320]/75"}`}>
@@ -42,7 +42,7 @@ export default function JoinSection({
           <ul className="mt-7 grid gap-3 sm:grid-cols-2">
             {bullets.map((b) => (
               <li key={b.ru} className={`flex items-start gap-3 text-[14px] leading-snug ${dark ? "text-[#f4efe6]/90" : "text-[#2a2320]/85"}`}>
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#9A9D22]">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#6E7248]">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f4efe6" strokeWidth="2.5"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </span>
                 {b[lang]}
@@ -55,7 +55,7 @@ export default function JoinSection({
               href={IG}
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] transition-transform duration-300 hover:scale-[1.02] ${dark ? "bg-[#f4efe6] text-[#9A9D22]" : "bg-[#9A9D22] text-[#f4efe6]"}`}
+              className={`inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] transition-transform duration-300 hover:scale-[1.02] ${dark ? "bg-[#f4efe6] text-[#6E7248]" : "bg-[#6E7248] text-[#f4efe6]"}`}
             >
               {t("Написать в Instagram", "Message on Instagram")}
             </a>

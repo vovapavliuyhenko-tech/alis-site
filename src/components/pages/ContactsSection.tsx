@@ -16,7 +16,7 @@ export default function ContactsSection() {
   const { lang } = useLang();
   const en = lang === "en";
   const t = (ru: string, enn: string) => (en ? enn : ru);
-  const eyebrow = "text-[11px] uppercase tracking-[0.22em] text-[#9A9D22] mb-2";
+  const eyebrow = "text-[11px] uppercase tracking-[0.22em] text-[#6E7248] mb-2";
 
   return (
     <section className="bg-white py-16 lg:py-24">
@@ -50,7 +50,7 @@ export default function ContactsSection() {
                 { label: "Instagram — Новороссийск", href: IG_RU },
                 { label: "Instagram — Global", href: IG_GLOBAL },
               ].map((s) => (
-                <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#9A9D22]/25 px-4 py-2 text-[13px] text-[#9A9D22] transition-colors hover:bg-[#9A9D22] hover:text-[#f4efe6]">
+                <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#6E7248]/25 px-4 py-2 text-[13px] text-[#6E7248] transition-colors hover:bg-[#6E7248] hover:text-[#f4efe6]">
                   {s.label}
                 </a>
               ))}
@@ -63,13 +63,13 @@ export default function ContactsSection() {
           href={MAP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative flex min-h-[320px] items-end overflow-hidden rounded-[24px] bg-[#9A9D22] p-8 text-[#f4efe6]"
+          className="group relative flex min-h-[320px] items-end overflow-hidden rounded-[24px] bg-[#6E7248] p-8 text-[#f4efe6]"
         >
-          <span aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#9A9D22]/25 blur-[80px]" />
+          <span aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#6E7248]/25 blur-[80px]" />
           <div className="relative">
             <p className="font-display text-[24px] uppercase tracking-[0.06em] lg:text-[30px]">{t("Мы в Новороссийске", "We're in Novorossiysk")}</p>
             <p className="mt-2 text-[14px] text-[#f4efe6]/75">{ADDRESS[lang]}</p>
-            <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#f4efe6] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.1em] text-[#9A9D22] transition-transform duration-300 group-hover:scale-[1.03]">
+            <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#f4efe6] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.1em] text-[#6E7248] transition-transform duration-300 group-hover:scale-[1.03]">
               {t("Открыть на карте", "Open on map")}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </span>
