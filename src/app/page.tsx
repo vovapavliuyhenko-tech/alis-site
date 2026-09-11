@@ -1,8 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import MassageProblems from "@/components/pages/MassageProblems";
-import MassageCTA from "@/components/pages/MassageCTA";
-import MassageApproach from "@/components/pages/MassageApproach";
 import MassageContacts from "@/components/pages/MassageContacts";
 import MassageFooter from "@/components/pages/MassageFooter";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
@@ -25,8 +23,6 @@ export default function Home() {
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
         <MassageProblems />
-        <MassageCTA />
-        <MassageApproach />
         {/* Прежние блоки ÁLIS в стиле референса */}
         <PhotoMarquee />
         <Philosophy />
