@@ -111,20 +111,20 @@ export default function Faq({
 
   return (
     <section ref={sectionRef} id={sectionId} className="scroll-mt-24 bg-white py-16 lg:py-20">
-      <div className="mx-auto grid w-[92%] max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-        {/* Левая колонка — зафиксирована */}
-        <div className="lg:sticky lg:top-28 lg:self-start">
-          <span className="r-reveal inline-flex items-center gap-2 rounded-full bg-[#6E7248]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#6E7248]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#6E7248]" />
-            {eyebrow[lang]}
-          </span>
-          <h2 className="r-reveal mt-5 font-serif-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.04em] text-[#6E7248] sm:text-[28px] lg:text-[34px]">
-            {titleTop[lang]}
-            <br />
-            <span className="text-[#6E7248]">{titleBottom[lang]}</span>
+      <div className="mx-auto w-[92%] max-w-[1400px]">
+        {/* Заголовок секции — по центру, единый стиль */}
+        <div className="r-reveal mb-12 text-center lg:mb-16">
+          <p className="text-[10px] lowercase tracking-[0.05em] text-[#6E7248]">{eyebrow[lang]}</p>
+          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
+            {titleTop[lang]} {titleBottom[lang]}
           </h2>
+        </div>
+
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        {/* Левая колонка — фото, зафиксировано */}
+        <div className="lg:sticky lg:top-28 lg:self-start">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={photo} alt="" loading="lazy" decoding="async" className="mt-8 aspect-[3/4] w-full max-w-[260px] rounded-[22px] object-cover lg:mt-10" draggable={false} />
+          <img src={photo} alt="" loading="lazy" decoding="async" className="aspect-[3/4] w-full max-w-[260px] rounded-[22px] object-cover" draggable={false} />
         </div>
 
         {/* Правая колонка — карточки идут вплотную и НАЕЗЖАЮТ друг на друга при скролле */}
@@ -155,6 +155,7 @@ export default function Faq({
               </div>
             );
           })}
+        </div>
         </div>
       </div>
     </section>

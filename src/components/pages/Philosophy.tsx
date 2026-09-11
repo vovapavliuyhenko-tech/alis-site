@@ -23,11 +23,11 @@ export default function Philosophy() {
 
       {/* Контент — раскладка и ритм как в Hero */}
       <div className="relative z-10 mx-auto flex w-[90%] max-w-2xl flex-col items-center text-center text-white">
-        <p className="r-reveal text-[12px] italic tracking-[0.02em] text-white/75">
+        <p className="r-reveal text-[10px] lowercase tracking-[0.05em] text-white/75">
           {en ? "the ÁLIS philosophy" : "философия ÁLIS"}
         </p>
 
-        <h2 className="r-reveal mt-4 font-serif-display text-[22px] font-normal uppercase leading-[1.15] tracking-[0.02em] sm:text-[30px] lg:text-[36px]">
+        <h2 className="r-reveal mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-white lg:text-[28px]">
           {en ? "Beauty without the fuss" : "Красота без суеты"}
         </h2>
 

@@ -81,10 +81,10 @@ export default function PhotoMarquee() {
   return (
     <section className="overflow-hidden bg-[#F9F8F6] pt-16 pb-20 lg:pt-20 lg:pb-28">
       <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] text-center lg:mb-16">
-        <p className="text-[11px] italic tracking-[0.02em] text-[#6E7248]">
+        <p className="text-[10px] lowercase tracking-[0.05em] text-[#6E7248]">
           {en ? "the atmosphere" : "атмосфера"}
         </p>
-        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] sm:text-[26px] lg:text-[30px]">
+        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
           {en ? "The ÁLIS atmosphere" : "Атмосфера ÁLIS"}
         </h2>
       </div>
