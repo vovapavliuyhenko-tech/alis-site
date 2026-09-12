@@ -85,7 +85,7 @@ export default function PhotoMarquee() {
           {en ? "the atmosphere" : "атмосфера"}
         </p>
         <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
-          {en ? "The ÁLIS atmosphere" : "Атмосфера ÁLIS"}
+          {en ? "You'll want to come back" : "Сюда хочется вернуться"}
         </h2>
       </div>
 

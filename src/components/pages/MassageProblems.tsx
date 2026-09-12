@@ -13,37 +13,37 @@ const ITEMS: Item[] = [
   {
     n: "01",
     filled: true,
-    title: { ru: "Дискомфорт в шее, спине или пояснице", en: "Discomfort in the neck, back or lower back" },
+    title: { ru: "Полдня по разным салонам", en: "Half a day across different salons" },
     desc: {
-      ru: "Долгие часы за компьютером или работа на ногах постепенно накапливают напряжение в теле. Спина начинает ныть, плечи становятся тяжёлыми, а мысли — менее ясными.",
-      en: "Long hours at the computer or on your feet build up tension. The back starts to ache, shoulders feel heavy, and thoughts less clear.",
+      ru: "Парикмахер в одном конце города, ногти — в другом, брови — на завтра. День уходит на дорогу, а не на себя.",
+      en: "Hair at one end of town, nails at another, brows tomorrow. The day goes to traffic, not to you.",
     },
   },
   {
     n: "02",
     filled: false,
-    title: { ru: "Эмоциональное истощение, тревожность", en: "Emotional exhaustion, anxiety" },
+    title: { ru: "Образ не собирается в одно", en: "The look never comes together" },
     desc: {
-      ru: "Каждый день вы решаете десятки задач, заботитесь о близких и живёте в постоянном потоке новостей. Постепенно появляется чувство опустошения. И даже после сна не хватает сил и энергии.",
-      en: "Every day you solve dozens of tasks, care for loved ones and live in a constant news stream. A feeling of emptiness sets in — and even after sleep there's not enough energy.",
+      ru: "Причёску сделали. Но макияж не в тон, а руки — отдельная история. По кускам красиво. Вместе — нет.",
+      en: "The hair is done. But the makeup is off-tone and the nails are a separate story. Pretty in pieces. Not as a whole.",
     },
   },
   {
     n: "03",
     filled: true,
-    title: { ru: "Отёки и ощущение тяжести", en: "Swelling and a feeling of heaviness" },
+    title: { ru: "Событие близко, а времени нет", en: "The event is close, and there's no time" },
     desc: {
-      ru: "К вечеру обувь становится теснее, ноги наливаются тяжестью, а тело кажется «отёкшим». Такое состояние знакомо многим после долгого рабочего дня, перелёта или нескольких часов без движения.",
-      en: "By evening shoes feel tighter, legs grow heavy and the body feels swollen — familiar after a long day, a flight or hours without moving.",
+      ru: "Свадьба, съёмка, важный выход. Нужно всё и сразу — а записи к мастерам не стыкуются.",
+      en: "A wedding, a shoot, a big night out. You need it all at once — but the bookings never line up.",
     },
   },
   {
     n: "04",
     filled: false,
-    title: { ru: "Перегруженные мышцы после тренировок", en: "Overloaded muscles after workouts" },
+    title: { ru: "Стараетесь, а выглядите уставшей", en: "You try, but still look tired" },
     desc: {
-      ru: "Вы регулярно тренируетесь, но тело не успевает восстановиться между нагрузками. Чувствуете, что мышцы «забиты», и хочется размять их, чтобы вернуть лёгкость и свободу движений.",
-      en: "You train regularly, but the body can't recover between sessions. Muscles feel tight, and you want to loosen them to regain lightness and freedom of movement.",
+      ru: "Корни, сухие кончики, руки без ухода. Зеркало напоминает об этом каждое утро.",
+      en: "Roots, dry ends, hands without care. The mirror reminds you every morning.",
     },
   },
 ];
@@ -72,10 +72,10 @@ export default function MassageProblems() {
         {/* Заголовок секции */}
         <div className="text-center">
           <p className="text-[10px] lowercase tracking-[0.05em] text-[#6E7248]">
-            {en ? "listen to yourself…" : "прислушайтесь к себе..."}
+            {en ? "let's be honest" : "давайте честно"}
           </p>
           <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
-            {en ? "What troubles you today?" : "Что вас беспокоит сегодня?"}
+            {en ? "What eats your time and energy?" : "Что забирает ваше время и силы?"}
           </h2>
         </div>
 

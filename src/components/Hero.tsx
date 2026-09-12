@@ -44,21 +44,21 @@ export default function Hero() {
       {/* НИЖНИЙ КОНТЕНТ (слева) */}
       <div className="mt-auto px-6 pb-7 lg:absolute lg:bottom-[var(--btm)] lg:left-0 lg:mt-0 lg:max-w-[min(760px,58vw)] lg:pb-0 lg:pl-[var(--pad)] lg:pr-6">
         <p className="text-[11.5px] leading-relaxed text-white/90">
-          {t("Запишитесь на первый сеанс и почувствуйте,", "Book your first session and feel")}
+          {t("Волосы, ногти, брови и макияж — сразу.", "Hair, nails, brows and makeup — all at once.")}
           <br />
-          {t("как тело отпускает накопившееся напряжение.", "how the body releases built-up tension.")}
+          {t("Приходите уставшей — выходите собранной. За один визит.", "Come in tired — leave put together. In one visit.")}
           <br />
           <strong className="font-semibold">
-            {t("Скидка 10% на первое посещение.", "10% off your first visit.")}
+            {t("Первый визит — скидка −10%.", "First visit — 10% off.")}
           </strong>
         </p>
 
         <h1 className="mt-5 font-serif-display text-[20px] font-semibold uppercase leading-[1.12] tracking-[0.005em] text-white [text-shadow:0_1px_24px_rgba(0,0,0,.22)] sm:text-[25px] lg:mt-6 lg:whitespace-nowrap lg:text-[clamp(22px,2.4vw,34px)]">
-          {t("Студия массажа,", "A massage studio")}
+          {t("Полный образ", "A complete look")}
           <br />
-          {t("где каждое прикосновение", "where every touch")}
+          {t("за один визит,", "in a single visit,")}
           <br />
-          {t("расслабляет тело и мысли", "relaxes body and mind")}
+          {t("в одном кресле", "in one chair")}
         </h1>
 
         <a
@@ -82,13 +82,13 @@ export default function Hero() {
         <div className="flex min-w-0 flex-col justify-center gap-2.5">
           <blockquote className="text-[12px] leading-[1.5] text-white/90">
             {t(
-              "«Здесь рождается атмосфера спокойствия и доверия — тело расслабляется и откликается на массаж».",
-              "“An atmosphere of calm and trust — the body relaxes and responds to the massage.”",
+              "«Пришла за причёской — вышла с готовым образом целиком. Впервые не бегала по городу».",
+              "“Came for a haircut — left with a whole finished look. For once, no running across town.”",
             )}
           </blockquote>
           <figcaption className="text-[12px] leading-[1.35] text-white/75">
-            <strong className="font-semibold text-white">{t("Евгения Романова,", "Evgenia Romanova,")}</strong>{" "}
-            {t("специалист по работе с телом", "bodywork specialist")}
+            <strong className="font-semibold text-white">{t("Марина,", "Marina,")}</strong>{" "}
+            {t("гостья салона", "salon guest")}
           </figcaption>
         </div>
       </figure>

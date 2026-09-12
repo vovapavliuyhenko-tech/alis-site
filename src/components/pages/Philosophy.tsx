@@ -33,15 +33,15 @@ export default function Philosophy() {
 
         <p className="r-reveal mt-5 max-w-md text-[12.5px] leading-relaxed text-white/80 sm:text-[13.5px]">
           {en
-            ? "Your whole look in one pair of hands — or we bring the salon to you."
-            : "Весь ваш образ в одних руках — или привезём салон к вам."}
+            ? "Your whole look — in one pair of hands. No rush, no running around, no compromises."
+            : "Весь ваш образ — в одних руках. Без спешки, без беготни, без компромиссов."}
         </p>
 
         <a
-          href="/concierge"
+          href="#services"
           className="r-reveal mt-8 inline-flex items-center justify-center gap-2 rounded-xl border border-transparent bg-[#6E7248] px-12 py-4 text-[12px] font-medium uppercase tracking-[0.08em] text-[#F4F1EA] transition-all duration-300 hover:border-white/40 hover:bg-white/15 hover:backdrop-blur-md sm:text-[13px]"
         >
-          {en ? "beauty concierge" : "бьюти-консьерж"}
+          {en ? "view services" : "смотреть услуги"}
           <span aria-hidden>→</span>
         </a>
       </div>
