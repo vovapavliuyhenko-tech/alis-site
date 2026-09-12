@@ -7,7 +7,8 @@ import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
 type Row = { name: Loc; price: Loc; time?: Loc };
-type Category = { label: Loc; sub: Loc; from: Loc; rows: Row[] };
+type Group = { title?: Loc; rows: Row[] };
+type Category = { label: Loc; sub: Loc; from: Loc; groups: Group[] };
 
 export default function SalonServices({
   eyebrow,
@@ -86,17 +87,26 @@ export default function SalonServices({
                 {/* Раскрывающаяся плашка с прайсом */}
                 <div className={`grid transition-all duration-500 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
                   <div className="overflow-hidden">
-                    <ul className="mx-6 mb-6 divide-y divide-[#f4efe6]/15 border-t border-[#f4efe6]/15 lg:mx-8 lg:mb-8">
-                      {c.rows.map((r) => (
-                        <li key={r.name.ru} className="grid grid-cols-[1fr_auto] items-baseline gap-4 py-3 lg:py-3.5">
-                          <span className="min-w-0">
-                            <span className="block text-[14px] font-medium text-[#f4efe6] lg:text-[15px]">{r.name[lang]}</span>
-                            {r.time && <span className="mt-0.5 block text-[12px] text-[#f4efe6]/60">{r.time[lang]}</span>}
-                          </span>
-                          <span className="whitespace-nowrap font-display text-[15px] tracking-[0.01em] text-[#f4efe6] lg:text-[17px]">{r.price[lang]}</span>
-                        </li>
+                    <div className="mx-6 mb-6 lg:mx-8 lg:mb-8">
+                      {c.groups.map((g, gi) => (
+                        <div key={gi} className={gi > 0 ? "mt-5" : ""}>
+                          {g.title && (
+                            <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/55">{g.title[lang]}</p>
+                          )}
+                          <ul className="divide-y divide-[#f4efe6]/15 border-t border-[#f4efe6]/15">
+                            {g.rows.map((r) => (
+                              <li key={r.name.ru} className="grid grid-cols-[1fr_auto] items-baseline gap-4 py-3 lg:py-3.5">
+                                <span className="min-w-0">
+                                  <span className="block text-[14px] font-medium text-[#f4efe6] lg:text-[15px]">{r.name[lang]}</span>
+                                  {r.time && <span className="mt-0.5 block text-[12px] text-[#f4efe6]/60">{r.time[lang]}</span>}
+                                </span>
+                                <span className="whitespace-nowrap font-display text-[15px] tracking-[0.01em] text-[#f4efe6] lg:text-[17px]">{r.price[lang]}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </div>
               </div>
