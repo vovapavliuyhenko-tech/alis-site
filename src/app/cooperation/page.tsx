@@ -55,7 +55,7 @@ export default function CooperationPage() {
       <Header />
 
       {/* 1 — Фото + сетка карточек с вариантами сотрудничества */}
-      <div className="relative z-10 bg-[#F9F8F6]">
+      <div className="relative z-10 bg-white">
         <CooperationFormats />
       </div>
 
