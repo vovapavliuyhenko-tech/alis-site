@@ -101,7 +101,7 @@ export default function SalonCompare() {
             return (
               <article
                 key={c.head.ru}
-                className="flex min-h-[420px] flex-col justify-between rounded-[22px] border p-9 lg:p-10"
+                className="flex min-h-[420px] flex-col rounded-[22px] border p-9 lg:p-10"
                 style={{
                   backgroundColor: bg,
                   borderColor: border,
@@ -111,20 +111,18 @@ export default function SalonCompare() {
                   boxShadow: "0 16px 44px rgba(23,25,26,0.10)",
                 }}
               >
-                <div>
-                  <p className="font-display text-[18px] tracking-[0.01em] lg:text-[21px]" style={{ color: headColor }}>
-                    {c.head[lang]}
-                  </p>
-                  <ul className="mt-4 space-y-3 text-[12.5px] leading-relaxed lg:text-[13px]" style={{ color: subColor }}>
-                    {c.points.map((pt) => (
-                      <li key={pt.ru} className="flex items-start gap-3">
-                        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: bullet }} />
-                        {pt[lang]}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <p className="mt-10 font-display text-[15px] font-normal leading-snug lg:text-[17px]" style={{ color: footColor }}>
+                <p className="font-display text-[18px] tracking-[0.01em] lg:text-[21px]" style={{ color: headColor }}>
+                  {c.head[lang]}
+                </p>
+                <ul className="flex flex-1 flex-col justify-center space-y-3 text-[12.5px] leading-relaxed lg:text-[13px]" style={{ color: subColor }}>
+                  {c.points.map((pt) => (
+                    <li key={pt.ru} className="flex items-start gap-3">
+                      <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: bullet }} />
+                      {pt[lang]}
+                    </li>
+                  ))}
+                </ul>
+                <p className="font-display text-[15px] font-normal leading-snug lg:text-[17px]" style={{ color: footColor }}>
                   {c.foot[lang]}
                 </p>
               </article>
