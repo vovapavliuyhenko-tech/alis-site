@@ -42,7 +42,7 @@ export default function ContactsBlock() {
           {/* Слева — высокое фото */}
           <div className="overflow-hidden rounded-[24px] border border-[#6E7248]/25">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={PHOTO} alt="" aria-hidden className="h-full min-h-[340px] w-full object-cover lg:min-h-[540px]" />
+            <img src={PHOTO} alt="" aria-hidden className="h-full min-h-[340px] w-full object-cover lg:min-h-[620px]" />
           </div>
 
           {/* Справа — заголовок, реквизиты, кнопки */}
@@ -61,7 +61,7 @@ export default function ContactsBlock() {
 
             <dl>
               {ROWS.map((r) => (
-                <div key={r.label.ru} className="grid grid-cols-[130px_1fr] items-baseline gap-5 border-b border-[#C2C0B6]/40 py-[18px]">
+                <div key={r.label.ru} className="grid grid-cols-[130px_1fr] items-baseline gap-5 border-b border-[#C2C0B6]/40 py-[23px]">
                   <dt className="text-[10.5px] uppercase tracking-[0.14em] text-[#6E7248]">{r.label[lang]}</dt>
                   <dd className="font-serif-display text-[15px] leading-snug text-[#444] lg:text-[16px]">
                     {r.href ? (
