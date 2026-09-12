@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
-type Row = { name: Loc; price: Loc; time: Loc };
+type Row = { name: Loc; price: Loc; time?: Loc };
 type Category = { label: Loc; sub: Loc; from: Loc; rows: Row[] };
 
 export default function SalonServices({
@@ -91,7 +91,7 @@ export default function SalonServices({
                         <li key={r.name.ru} className="grid grid-cols-[1fr_auto] items-baseline gap-4 py-3 lg:py-3.5">
                           <span className="min-w-0">
                             <span className="block text-[14px] font-medium text-[#f4efe6] lg:text-[15px]">{r.name[lang]}</span>
-                            <span className="mt-0.5 block text-[12px] text-[#f4efe6]/60">{r.time[lang]}</span>
+                            {r.time && <span className="mt-0.5 block text-[12px] text-[#f4efe6]/60">{r.time[lang]}</span>}
                           </span>
                           <span className="whitespace-nowrap font-display text-[15px] tracking-[0.01em] text-[#f4efe6] lg:text-[17px]">{r.price[lang]}</span>
                         </li>
@@ -109,7 +109,7 @@ export default function SalonServices({
           href={cta.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 flex w-full items-center justify-center rounded-[20px] border border-[#6E7248] bg-[#6E7248] px-6 py-7 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#6E7248] sm:text-[14px]"
+          className="mt-3 flex w-full items-center justify-center rounded-[20px] border border-[#6E7248] bg-[#6E7248] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#6E7248] sm:text-[14px]"
         >
           {en ? "Book now · −10% on your first visit" : "Записаться · −10% на первый визит"}
         </a>
