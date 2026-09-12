@@ -98,7 +98,7 @@ export default function ContactsBlock() {
       </div>
 
       {/* Сетка карточек-контактов */}
-      <div className="mt-3 grid gap-3 sm:mt-4 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+      <div className="mt-8 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:mt-10 lg:grid-cols-3">
         {CARDS.map((c, i) => (
           <a
             key={c.title + i}
