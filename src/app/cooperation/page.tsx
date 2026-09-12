@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import CooperationFormats from "@/components/pages/CooperationFormats";
 import CooperationForm from "@/components/pages/CooperationForm";
 import Faq from "@/components/Faq";
 
@@ -46,18 +47,23 @@ const COOP_FAQ: { q: Loc; a: Loc }[] = [
 ];
 
 // Страница «Сотрудничество» — три блока:
-// 1) кино-сплит-герой, 2) форма заявки на партнёрство, 3) частые вопросы.
+// 1) фото + карточки с вариантами сотрудничества, 2) форма заявки, 3) частые вопросы.
 export default function CooperationPage() {
   return (
     <main>
       <ScrollReveal />
       <Header />
 
-      <div className="relative z-10 bg-white pt-20 lg:pt-24">
-        {/* 1 — Форма заявки на партнёрство */}
+      {/* 1 — Фото + сетка карточек с вариантами сотрудничества */}
+      <div className="relative z-10 bg-[#F9F8F6]">
+        <CooperationFormats />
+      </div>
+
+      <div className="relative z-10 bg-white">
+        {/* 2 — Форма заявки на партнёрство */}
         <CooperationForm />
 
-        {/* 2 — Частые вопросы про сотрудничество */}
+        {/* 3 — Частые вопросы про сотрудничество */}
         <Faq
           items={COOP_FAQ}
           sectionId="coop-faq"
