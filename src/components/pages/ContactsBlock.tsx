@@ -51,10 +51,11 @@ export default function ContactsBlock() {
             <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.1] tracking-[0.01em] text-[#6E7248] sm:text-[28px] lg:whitespace-nowrap lg:text-[clamp(24px,2.2vw,34px)]">
               {t("ÁLIS BEAUTY на Пархоменко", "ÁLIS BEAUTY on Parkhomenko")}
             </h2>
-            <p className="mt-3 text-[13px] italic leading-relaxed text-[#444]/70">
-              {t("Салон красоты полного цикла · Новороссийск", "Full-service beauty salon · Novorossiysk")}
-              <br />
-              {t("Полный образ за один визит — и −10% на первый.", "Your whole look in one visit — and −10% on the first.")}
+            <p className="mt-3 text-[13px] italic leading-relaxed text-[#444]/70 [text-align:justify]">
+              {t(
+                "Салон красоты полного цикла в Новороссийске — полный образ за один визит, в 4–6 рук, и −10% на первое посещение.",
+                "A full-service beauty salon in Novorossiysk — your whole look in one visit, in 4–6 hands, and −10% on your first.",
+              )}
             </p>
 
             <span className="mt-6 block h-px w-full bg-[#C2C0B6]/50" />
