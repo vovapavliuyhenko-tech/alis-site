@@ -1,7 +1,8 @@
 "use client";
-// СТРАНИЦА КОНТАКТОВ — раскладка по мотивам paloma.website/contacts: слева
-// высокое фото, справа заголовок + строки-реквизиты и кнопки; ниже — сетка
-// карточек мессенджеров с ↗. Палитра и типографика — как на сайте. Двуязычно.
+// СТРАНИЦА КОНТАКТОВ — раскладка и размеры 1-в-1 по paloma.website/contacts:
+// контейнер во всю ширину (px-72), колонки 50/50 (gap 58px), высокое фото
+// слева, справа крупный серифный заголовок + строки-реквизиты + кнопки; ниже —
+// сетка карточек (3 кол., gap 22px). Палитра и типографика — как на сайте.
 import { useLang } from "@/lib/i18n";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
@@ -35,34 +36,34 @@ export default function ContactsBlock() {
   ];
 
   return (
-    <section className="bg-[#F9F8F6] pb-20 pt-28 lg:pb-28 lg:pt-32">
-      <div className="mx-auto w-[92%] max-w-[1160px]">
-        <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-14">
+    <section className="bg-[#F9F8F6] pb-24 pt-28 lg:pb-32 lg:pt-36">
+      <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-[72px]">
+        <div className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-[58px]">
           {/* Слева — высокое фото */}
           <div className="overflow-hidden rounded-[24px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={PHOTO} alt="" aria-hidden className="h-full min-h-[360px] w-full object-cover lg:min-h-[560px]" />
+            <img src={PHOTO} alt="" aria-hidden className="h-full min-h-[420px] w-full object-cover lg:min-h-[600px]" />
           </div>
 
           {/* Справа — заголовок, реквизиты, кнопки */}
           <div className="flex flex-col">
-            <p className="text-[10px] lowercase tracking-[0.05em] text-[#6E7248]">{t("контакты", "contacts")}</p>
-            <h2 className="mt-3 font-serif-display text-[26px] font-normal uppercase leading-[1.15] tracking-[0.02em] text-[#6E7248] lg:text-[34px]">
+            <p className="text-[11px] lowercase tracking-[0.05em] text-[#6E7248]">{t("контакты", "contacts")}</p>
+            <h2 className="mt-4 font-serif-display text-[30px] font-normal uppercase leading-[1.06] tracking-[0.01em] text-[#6E7248] lg:text-[46px]">
               {t("ÁLIS BEAUTY на Пархоменко", "ÁLIS BEAUTY on Parkhomenko")}
             </h2>
-            <p className="mt-3 text-[13px] italic leading-relaxed text-[#444]/70">
+            <p className="mt-4 text-[14px] italic leading-relaxed text-[#444]/70">
               {t("Салон красоты полного цикла · Новороссийск", "Full-service beauty salon · Novorossiysk")}
               <br />
               {t("Полный образ за один визит — и −10% на первый.", "Your whole look in one visit — and −10% on the first.")}
             </p>
 
-            <span className="mt-7 block h-px w-full bg-[#C2C0B6]/50" />
+            <span className="mt-8 block h-px w-full bg-[#C2C0B6]/50" />
 
             <dl>
               {ROWS.map((r) => (
-                <div key={r.label.ru} className="grid grid-cols-[120px_1fr] items-baseline gap-4 border-b border-[#C2C0B6]/40 py-4">
-                  <dt className="text-[10.5px] uppercase tracking-[0.14em] text-[#6E7248]">{r.label[lang]}</dt>
-                  <dd className="font-serif-display text-[15px] text-[#444]">
+                <div key={r.label.ru} className="grid grid-cols-[140px_1fr] items-baseline gap-5 border-b border-[#C2C0B6]/40 py-5">
+                  <dt className="text-[11px] uppercase tracking-[0.16em] text-[#6E7248]">{r.label[lang]}</dt>
+                  <dd className="font-serif-display text-[17px] leading-snug text-[#444] lg:text-[18px]">
                     {r.href ? (
                       <a href={r.href} target={r.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="transition-colors hover:text-[#6E7248]">
                         {r.value}
@@ -75,12 +76,12 @@ export default function ContactsBlock() {
               ))}
             </dl>
 
-            <div className="mt-8 flex flex-col gap-3">
+            <div className="mt-9 flex flex-col gap-3">
               <a
                 href={YCLIENTS}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-xl border border-transparent bg-[#6E7248] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.08em] text-[#F4F1EA] transition-all duration-300 hover:border-white/40 hover:bg-white/15 hover:text-[#6E7248] hover:backdrop-blur-md"
+                className="inline-flex items-center justify-center rounded-xl border border-transparent bg-[#6E7248] px-[26px] py-[15px] text-[11px] font-medium uppercase tracking-[0.1em] text-[#F4F1EA] transition-all duration-300 hover:border-white/40 hover:bg-white/15 hover:text-[#6E7248] hover:backdrop-blur-md"
               >
                 {t("Записаться", "Book now")}
               </a>
@@ -88,7 +89,7 @@ export default function ContactsBlock() {
                 href={MAP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-xl border border-[#6E7248]/40 px-8 py-4 text-[13px] font-medium uppercase tracking-[0.08em] text-[#6E7248] transition-colors duration-300 hover:bg-[#6E7248] hover:text-[#F4F1EA]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#6E7248]/40 px-[26px] py-[15px] text-[11px] font-medium uppercase tracking-[0.1em] text-[#6E7248] transition-colors duration-300 hover:bg-[#6E7248] hover:text-[#F4F1EA]"
               >
                 {t("Построить маршрут", "Get directions")}
               </a>
@@ -97,20 +98,20 @@ export default function ContactsBlock() {
         </div>
 
         {/* Сетка карточек-контактов */}
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3">
+        <div className="mt-[22px] grid gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
           {CARDS.map((c, i) => (
             <a
               key={c.title + i}
               href={c.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between gap-4 rounded-[18px] border border-[#C2C0B6]/45 bg-white/60 px-6 py-5 transition-colors duration-300 hover:border-transparent hover:bg-[#6E7248]"
+              className="group flex items-center justify-between gap-4 rounded-[20px] border border-[#C2C0B6]/45 bg-white/60 p-7 transition-colors duration-300 hover:border-transparent hover:bg-[#6E7248]"
             >
               <span className="min-w-0">
-                <span className="block text-[13px] font-semibold uppercase tracking-[0.06em] text-[#6E7248] transition-colors group-hover:text-[#F4F1EA]">{c.title}</span>
-                <span className="mt-0.5 block truncate text-[12px] text-[#444]/70 transition-colors group-hover:text-[#F4F1EA]/80">{c.sub[lang]}</span>
+                <span className="block text-[14px] font-semibold uppercase tracking-[0.06em] text-[#6E7248] transition-colors group-hover:text-[#F4F1EA]">{c.title}</span>
+                <span className="mt-1 block truncate text-[13px] text-[#444]/70 transition-colors group-hover:text-[#F4F1EA]/80">{c.sub[lang]}</span>
               </span>
-              <span className="shrink-0 text-[16px] text-[#6E7248] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#F4F1EA]">↗</span>
+              <span className="shrink-0 text-[18px] text-[#6E7248] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#F4F1EA]">↗</span>
             </a>
           ))}
         </div>
