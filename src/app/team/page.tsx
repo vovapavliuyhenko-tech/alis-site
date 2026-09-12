@@ -66,13 +66,13 @@ export default function TeamPage() {
         pinned
         logo
         photo="/assets/tild3236-393__.jpg"
-        eyebrow={{ ru: "философия", en: "philosophy" }}
-        title={{ ru: "Мастера, которым доверяют образ", en: "Masters you trust with your look" }}
+        eyebrow={{ ru: "работа в ÁLIS", en: "work at ÁLIS" }}
+        title={{ ru: "Устали сидеть в пустом кресле?", en: "Tired of sitting in an empty chair?" }}
         sub={{
-          ru: "Колористы, нейл-мастера, бровисты и визажисты, которые работают в 4–6 рук и собирают полный образ за один визит.",
-          en: "Colourists, nail artists, brow and makeup masters who work in 4–6 hands and build a complete look in a single visit.",
+          ru: "Поток гостей приводит салон и онлайн-запись. Вы работаете руками — клиентов ищем мы. Стабильно, без простоев.",
+          en: "The salon and online booking bring the guests. You do the craft — we find the clients. Steady, no idle time.",
         }}
-        cta={{ label: { ru: "наши мастера", en: "our masters" }, href: "#vacancies" }}
+        cta={{ label: { ru: "смотреть вакансии", en: "see vacancies" }, href: "#vacancies" }}
       />
 
       {/* 2 — Такой же герой, фото справа (зеркально), тоже наезжает поверх */}
@@ -82,10 +82,10 @@ export default function TeamPage() {
         roundedTop
         photo="/assets/tild6536-613_-2___1__4.jpg"
         eyebrow={{ ru: "почему к нам", en: "why join us" }}
-        title={{ ru: "Хотите в команду ÁLIS?", en: "Want to join the ÁLIS team?" }}
+        title={{ ru: "Растите в мастерстве и в доходе", en: "Grow in craft and in income" }}
         sub={{
-          ru: "Мы растём и ищем мастеров, которые любят своё дело. Поток клиентов, гибкий график и команда, на которую можно опереться.",
-          en: "We're growing and looking for masters who love their craft. A steady flow of clients, a flexible schedule and a team you can rely on.",
+          ru: "Честный процент, материалы за счёт салона, гибкий график. Наставничество и разборы — и поток, чтобы применять новое каждый день.",
+          en: "Fair commission, materials on the salon, a flexible schedule. Mentorship and reviews — plus the flow to use new skills every day.",
         }}
         cta={{ label: { ru: "оставить заявку", en: "apply now" }, href: "#join" }}
       />
