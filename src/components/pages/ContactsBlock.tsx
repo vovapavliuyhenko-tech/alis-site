@@ -40,7 +40,7 @@ export default function ContactsBlock() {
       <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-[72px]">
         <div className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-[58px]">
           {/* Слева — высокое фото */}
-          <div className="overflow-hidden rounded-[24px]">
+          <div className="overflow-hidden rounded-[24px] border border-[#6E7248]/25">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={PHOTO} alt="" aria-hidden className="h-full min-h-[420px] w-full object-cover lg:min-h-[600px]" />
           </div>
