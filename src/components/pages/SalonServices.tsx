@@ -62,10 +62,10 @@ export default function SalonServices({
 
                   {/* Название + подпись */}
                   <span className="min-w-0">
-                    <span className={`block font-display text-[16px] font-normal uppercase leading-[1.15] tracking-[0.01em] transition-colors duration-300 sm:text-[19px] lg:text-[24px] ${isOpen ? "text-[#f4efe6]" : "text-[#6E7248]"}`}>
+                    <span className={`block font-display text-[14px] font-normal uppercase leading-[1.2] tracking-[0.02em] transition-colors duration-300 sm:text-[15px] lg:text-[17px] ${isOpen ? "text-[#f4efe6]" : "text-[#6E7248]"}`}>
                       {c.label[lang]}
                     </span>
-                    <span className={`mt-1.5 block text-[12.5px] transition-colors duration-300 lg:text-[13.5px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#2a2320]/55"}`}>
+                    <span className={`mt-1 block text-[11px] transition-colors duration-300 lg:text-[12px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#2a2320]/55"}`}>
                       {c.sub[lang]}
                     </span>
                   </span>
