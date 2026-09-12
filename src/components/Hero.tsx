@@ -86,9 +86,9 @@ export default function Hero() {
               "“We build your whole look in one visit — and give −10% on your first. Come in: you'll feel the difference at once.”",
             )}
           </blockquote>
-          <figcaption className="text-[11.5px] leading-[1.35] text-white/70">
-            <strong className="font-semibold text-white">{t("Основатель", "Founder")}</strong>{" "}
-            {t("ÁLIS BEAUTY", "of ÁLIS BEAUTY")}
+          <figcaption className="text-[11.5px] leading-[1.4] text-white/70">
+            <strong className="font-semibold text-white">{t("Дайана Тарзян,", "Diana Tarzyan,")}</strong>{" "}
+            {t("основатель сети студий эстетики ÁLIS и ÁLIS BEAUTY Concierge", "founder of the ÁLIS & ÁLIS BEAUTY Concierge aesthetics studios")}
           </figcaption>
         </div>
       </figure>
