@@ -90,15 +90,6 @@ export default function Hero() {
             <strong className="font-semibold text-white">{t("Основатель", "Founder")}</strong>{" "}
             {t("ÁLIS BEAUTY", "of ÁLIS BEAUTY")}
           </figcaption>
-          <a
-            href={YCLIENTS}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-1 inline-flex w-fit items-center gap-1.5 text-[11.5px] font-medium uppercase tracking-[0.08em] text-white underline decoration-white/40 underline-offset-4 transition-opacity duration-300 hover:opacity-80"
-          >
-            {t("Записаться на первый визит", "Book your first visit")}
-            <span aria-hidden>→</span>
-          </a>
         </div>
       </figure>
     </section>
