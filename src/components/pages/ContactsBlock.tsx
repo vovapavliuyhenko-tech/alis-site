@@ -111,7 +111,9 @@ export default function ContactsBlock() {
                 <span className="block text-[14px] font-semibold uppercase tracking-[0.06em] text-[#6E7248]">{c.title}</span>
                 <span className="mt-1 block truncate text-[13px] text-[#444]/70">{c.sub[lang]}</span>
               </span>
-              <span className="shrink-0 text-[18px] text-[#6E7248] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#6E7248]/40 text-[15px] text-[#6E7248] transition-all duration-300 group-hover:border-transparent group-hover:bg-[#6E7248] group-hover:text-[#F4F1EA] lg:h-11 lg:w-11">
+                <span className="transition-transform duration-300 group-hover:rotate-45">↗</span>
+              </span>
             </a>
           ))}
         </div>
