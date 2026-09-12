@@ -81,7 +81,7 @@ export default function ContactsBlock() {
                 href={YCLIENTS}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-xl bg-[#6E7248] px-[26px] py-[13px] text-[11px] font-medium uppercase tracking-[0.1em] text-[#F4F1EA] shadow-[0_6px_18px_rgba(110,114,72,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#5b5e3a] hover:shadow-[0_12px_30px_rgba(110,114,72,0.32)]"
+                className="inline-flex items-center justify-center rounded-xl bg-[#6E7248] px-[26px] py-[17px] text-[11px] font-medium uppercase tracking-[0.1em] text-[#F4F1EA] shadow-[0_6px_18px_rgba(110,114,72,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#5b5e3a] hover:shadow-[0_12px_30px_rgba(110,114,72,0.32)]"
               >
                 {t("Записаться", "Book now")}
               </a>
@@ -89,7 +89,7 @@ export default function ContactsBlock() {
                 href={MAP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-xl border border-[#6E7248]/40 px-[26px] py-[13px] text-[11px] font-medium uppercase tracking-[0.1em] text-[#6E7248] transition-all duration-300 hover:-translate-y-0.5 hover:border-transparent hover:bg-[#6E7248] hover:text-[#F4F1EA] hover:shadow-[0_12px_30px_rgba(110,114,72,0.28)]"
+                className="inline-flex items-center justify-center rounded-xl border border-[#6E7248]/40 px-[26px] py-[17px] text-[11px] font-medium uppercase tracking-[0.1em] text-[#6E7248] transition-all duration-300 hover:-translate-y-0.5 hover:border-transparent hover:bg-[#6E7248] hover:text-[#F4F1EA] hover:shadow-[0_12px_30px_rgba(110,114,72,0.28)]"
               >
                 {t("Построить маршрут", "Get directions")}
               </a>
