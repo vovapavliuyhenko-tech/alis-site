@@ -60,7 +60,7 @@ export default function TeamHero({
 
       {/* Середина — крупный заголовок + текст */}
       <div className="flex flex-col items-center">
-        <h2 className="max-w-[15ch] font-display text-[26px] font-normal uppercase leading-[1.14] tracking-[0.02em] text-[#6E7248] sm:text-[32px] lg:text-[40px]">
+        <h2 className="max-w-[15ch] font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
           {title[lang]}
         </h2>
         <p className="mt-6 max-w-md text-[13px] leading-relaxed text-[#2a2320]/70 sm:text-[14px]">

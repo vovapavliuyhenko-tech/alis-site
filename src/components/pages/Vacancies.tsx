@@ -42,12 +42,12 @@ export default function Vacancies() {
   return (
     <section id="vacancies" className="scroll-mt-24 bg-white py-24 lg:py-32">
       <div className="mx-auto w-[92%] max-w-[1280px]">
-        <div className="mb-12 max-w-2xl lg:mb-16">
+        <div className="mb-12 text-center lg:mb-16">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#6E7248]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#6E7248]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#6E7248]" />
             {en ? "vacancies" : "вакансии"}
           </span>
-          <h2 className="mt-5 font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#6E7248] lg:text-[36px]">
+          <h2 className="mt-5 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.03em] text-[#6E7248] lg:text-[28px]">
             {en ? "Grow with ÁLIS" : "Расти вместе с ÁLIS"}
           </h2>
         </div>

@@ -63,7 +63,7 @@ export default function JoinForm() {
         <div className="flex flex-col rounded-[28px] bg-[#6E7248] px-6 py-12 text-[#f4efe6] sm:px-10 lg:min-h-[620px] lg:px-14 lg:py-16">
             {sent ? (
               <div className="flex flex-1 flex-col justify-between gap-10">
-                <h2 className="mx-auto w-full max-w-lg text-center font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.02em] lg:text-[34px]">
+                <h2 className="mx-auto w-full max-w-lg text-center font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] lg:text-[28px]">
                   {en ? "Become part of ÁLIS" : "Стать частью команды ÁLIS"}
                 </h2>
                 <div className="mx-auto flex w-full max-w-lg flex-col items-center rounded-[20px] bg-white/[0.06] p-8 text-center">
@@ -77,7 +77,7 @@ export default function JoinForm() {
               </div>
             ) : (
               <form onSubmit={submit} noValidate className="flex flex-1 flex-col justify-between gap-10">
-                <h2 className="mx-auto w-full max-w-lg text-center font-display text-[24px] font-normal uppercase leading-[1.1] tracking-[0.02em] lg:text-[34px]">
+                <h2 className="mx-auto w-full max-w-lg text-center font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] lg:text-[28px]">
                   {en ? "Become part of ÁLIS" : "Стать частью команды ÁLIS"}
                 </h2>
 
