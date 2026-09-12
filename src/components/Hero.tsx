@@ -79,17 +79,26 @@ export default function Hero() {
           alt={t("Евгения Романова", "Evgenia Romanova")}
           className="w-[112px] shrink-0 self-stretch rounded-[12px] bg-[#cfc8bd]/40 object-cover max-[520px]:h-[150px] max-[520px]:w-full"
         />
-        <div className="flex min-w-0 flex-col justify-center gap-2.5">
+        <div className="flex min-w-0 flex-col justify-center gap-2">
           <blockquote className="text-[12px] leading-[1.5] text-white/90">
             {t(
-              "«Пришла за причёской — вышла с готовым образом целиком. Впервые не бегала по городу».",
-              "“Came for a haircut — left with a whole finished look. For once, no running across town.”",
+              "«Собираем весь образ за один визит — и дарим −10% на первое посещение. Приходите: разницу почувствуете сразу».",
+              "“We build your whole look in one visit — and give −10% on your first. Come in: you'll feel the difference at once.”",
             )}
           </blockquote>
-          <figcaption className="text-[12px] leading-[1.35] text-white/75">
-            <strong className="font-semibold text-white">{t("Марина,", "Marina,")}</strong>{" "}
-            {t("гостья салона", "salon guest")}
+          <figcaption className="text-[11.5px] leading-[1.35] text-white/70">
+            <strong className="font-semibold text-white">{t("Основатель", "Founder")}</strong>{" "}
+            {t("ÁLIS BEAUTY", "of ÁLIS BEAUTY")}
           </figcaption>
+          <a
+            href={YCLIENTS}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 inline-flex w-fit items-center gap-1.5 text-[11.5px] font-medium uppercase tracking-[0.08em] text-white underline decoration-white/40 underline-offset-4 transition-opacity duration-300 hover:opacity-80"
+          >
+            {t("Записаться на первый визит", "Book your first visit")}
+            <span aria-hidden>→</span>
+          </a>
         </div>
       </figure>
     </section>
