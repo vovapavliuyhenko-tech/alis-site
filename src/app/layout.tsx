@@ -28,7 +28,7 @@ const body = Manrope({
 const serif = Playfair_Display({
   variable: "--font-serif-display",
   subsets: ["latin", "cyrillic"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
