@@ -22,7 +22,7 @@ export default function SalonServices({
 }) {
   const { lang } = useLang();
   const en = lang === "en";
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section id="uslugi" className="scroll-mt-24 bg-white py-24 lg:py-32">
@@ -53,7 +53,7 @@ export default function SalonServices({
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
-                  className="group grid w-full grid-cols-[auto_1fr_auto] items-center gap-5 px-6 py-5 text-left lg:gap-8 lg:px-8 lg:py-5"
+                  className="group grid w-full grid-cols-[auto_1fr_auto] items-center gap-5 px-6 py-4 text-left lg:gap-8 lg:px-8 lg:py-4"
                 >
                   {/* Номер */}
                   <span className={`font-display text-[13px] tabular-nums transition-colors duration-300 lg:text-[15px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#6E7248]"}`}>
@@ -65,7 +65,7 @@ export default function SalonServices({
                     <span className={`block font-display text-[16px] font-normal uppercase leading-[1.15] tracking-[0.01em] transition-colors duration-300 sm:text-[19px] lg:text-[24px] ${isOpen ? "text-[#f4efe6]" : "text-[#6E7248]"}`}>
                       {c.label[lang]}
                     </span>
-                    <span className={`mt-2 block text-[12.5px] transition-colors duration-300 lg:text-[13.5px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#2a2320]/55"}`}>
+                    <span className={`mt-1.5 block text-[12.5px] transition-colors duration-300 lg:text-[13.5px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#2a2320]/55"}`}>
                       {c.sub[lang]}
                     </span>
                   </span>
@@ -88,7 +88,7 @@ export default function SalonServices({
                   <div className="overflow-hidden">
                     <ul className="mx-6 mb-6 divide-y divide-[#f4efe6]/15 border-t border-[#f4efe6]/15 lg:mx-8 lg:mb-8">
                       {c.rows.map((r) => (
-                        <li key={r.name.ru} className="grid grid-cols-[1fr_auto] items-baseline gap-4 py-3.5 lg:py-4">
+                        <li key={r.name.ru} className="grid grid-cols-[1fr_auto] items-baseline gap-4 py-3 lg:py-3.5">
                           <span className="min-w-0">
                             <span className="block text-[14px] font-medium text-[#f4efe6] lg:text-[15px]">{r.name[lang]}</span>
                             <span className="mt-0.5 block text-[12px] text-[#f4efe6]/60">{r.time[lang]}</span>
