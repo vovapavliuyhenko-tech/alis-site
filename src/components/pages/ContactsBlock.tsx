@@ -46,7 +46,7 @@ export default function ContactsBlock() {
           </div>
 
           {/* Справа — заголовок, реквизиты, кнопки */}
-          <div className="flex flex-col">
+          <div className="flex flex-col rounded-[24px] border border-[#6E7248]/25 bg-white/40 p-8 lg:p-10">
             <p className="text-[11px] lowercase tracking-[0.05em] text-[#6E7248]">{t("контакты", "contacts")}</p>
             <h2 className="mt-4 font-serif-display text-[30px] font-normal uppercase leading-[1.06] tracking-[0.01em] text-[#6E7248] lg:text-[46px]">
               {t("ÁLIS BEAUTY на Пархоменко", "ÁLIS BEAUTY on Parkhomenko")}
