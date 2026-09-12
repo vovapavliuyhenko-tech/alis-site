@@ -45,34 +45,34 @@ const IconBloggers = (
 const FORMATS: Format[] = [
   {
     icon: IconEvents,
-    title: { ru: "Соберём бьюти-команду на ваше мероприятие", en: "We'll bring a beauty team to your event" },
+    title: { ru: "Гости готовы к кадру — без очередей", en: "Guests camera-ready — no queues" },
     desc: {
-      ru: "Мастера по волосам, макияжу и ногтям работают прямо на площадке — гости и модели всегда собраны и готовы к кадру.",
-      en: "Hair, makeup and nail masters work right on site — guests and models always put together and camera-ready.",
+      ru: "Привозим бьюти-команду к вам. Волосы, макияж, ногти — в 4–6 рук, параллельно. Все собраны точно к началу.",
+      en: "We bring the beauty team to you. Hair, makeup, nails — in 4–6 hands, in parallel. Everyone ready right on time.",
     },
   },
   {
     icon: IconBrands,
-    title: { ru: "Покажем ваш бренд гостям салона", en: "We'll show your brand to our guests" },
+    title: { ru: "Ваш бренд — в руках тех, кто платит за красоту", en: "Your brand in the hands of people who pay for beauty" },
     desc: {
-      ru: "Работаем на профессиональной косметике и открыты к совместным проектам: тесты продукции, контент и спецпредложения.",
-      en: "We work on professional cosmetics and welcome joint projects: product tests, content and special offers.",
+      ru: "Даём вашей косметике живой контакт с гостями и мастерами. Тесты, честные отзывы, контент. Аудитория, которая уже покупает уход.",
+      en: "We put your cosmetics in real contact with guests and masters. Tests, honest reviews, content. An audience that already buys care.",
     },
   },
   {
     icon: IconVenues,
-    title: { ru: "Возьмём бьюти-часть мероприятия под ключ", en: "We'll handle the beauty side turnkey" },
+    title: { ru: "Бьюти под ключ — забота с ваших плеч", en: "Beauty turnkey — off your plate" },
     desc: {
-      ru: "Отели, рестораны и event-агентства — берём на себя весь бьюти-блок под ваш формат и тайминг, без забот с вашей стороны.",
-      en: "Hotels, restaurants and event agencies — we take on the whole beauty block, matched to your format and timing.",
+      ru: "Отель, ресторан, event-агентство? Берём весь бьюти-блок на себя. Вы отвечаете за событие — мы за то, как выглядят гости.",
+      en: "Hotel, restaurant, event agency? We take the whole beauty block. You own the event — we own how the guests look.",
     },
   },
   {
     icon: IconBloggers,
-    title: { ru: "Растём вместе в долгую", en: "We grow together, for the long run" },
+    title: { ru: "Партнёрство в долгую, не разовый бартер", en: "A long-term partnership, not a one-off barter" },
     desc: {
-      ru: "Долгосрочные коллаборации с теми, кто разделяет наши ценности. Честный обмен и реальный сервис, а не разовый бартер.",
-      en: "Long-term collaborations with people who share our values. A fair exchange and real service, not a one-off barter.",
+      ru: "Работаем с теми, кто разделяет наши ценности. Реальный сервис вместо галочки. Растём вместе: вы — в контенте, мы — в доверии.",
+      en: "We work with those who share our values. Real service, not a checkbox. We grow together: you in content, us in trust.",
     },
   },
 ];
