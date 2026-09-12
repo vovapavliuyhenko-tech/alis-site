@@ -105,13 +105,13 @@ export default function ContactsBlock() {
               href={c.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between gap-4 rounded-[20px] border border-[#C2C0B6]/45 bg-white/60 p-7 transition-colors duration-300 hover:border-transparent hover:bg-[#6E7248]"
+              className="group flex items-center justify-between gap-4 rounded-[20px] border border-[#C2C0B6]/45 bg-white/70 p-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#6E7248] hover:shadow-[0_16px_44px_rgba(110,114,72,0.22)]"
             >
               <span className="min-w-0">
-                <span className="block text-[14px] font-semibold uppercase tracking-[0.06em] text-[#6E7248] transition-colors group-hover:text-[#F4F1EA]">{c.title}</span>
-                <span className="mt-1 block truncate text-[13px] text-[#444]/70 transition-colors group-hover:text-[#F4F1EA]/80">{c.sub[lang]}</span>
+                <span className="block text-[14px] font-semibold uppercase tracking-[0.06em] text-[#6E7248]">{c.title}</span>
+                <span className="mt-1 block truncate text-[13px] text-[#444]/70">{c.sub[lang]}</span>
               </span>
-              <span className="shrink-0 text-[18px] text-[#6E7248] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#F4F1EA]">↗</span>
+              <span className="shrink-0 text-[18px] text-[#6E7248] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
             </a>
           ))}
         </div>
