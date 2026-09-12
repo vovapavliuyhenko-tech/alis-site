@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import TeamHero from "@/components/pages/TeamHero";
 import CooperationForm from "@/components/pages/CooperationForm";
 import Faq from "@/components/Faq";
 
@@ -54,23 +53,11 @@ export default function CooperationPage() {
       <ScrollReveal />
       <Header />
 
-      {/* 1 — Кино-сплит-герой */}
-      <TeamHero
-        photo="/assets/tild6530-383_-2___1_.jpg"
-        eyebrow={{ ru: "сотрудничество", en: "cooperation" }}
-        title={{ ru: "Давайте создавать красоту вместе", en: "Let's create beauty together" }}
-        sub={{
-          ru: "Открыты к партнёрству с брендами, площадками, организаторами мероприятий и мастерами. Обсудим формат под вашу задачу.",
-          en: "Open to partnerships with brands, venues, event organisers and masters. Let's find a format for your goal.",
-        }}
-        cta={{ label: { ru: "оставить заявку", en: "send a request" }, href: "#request" }}
-      />
-
-      <div className="relative z-10 bg-white">
-        {/* 2 — Форма заявки на партнёрство */}
+      <div className="relative z-10 bg-white pt-20 lg:pt-24">
+        {/* 1 — Форма заявки на партнёрство */}
         <CooperationForm />
 
-        {/* 3 — Частые вопросы про сотрудничество */}
+        {/* 2 — Частые вопросы про сотрудничество */}
         <Faq
           items={COOP_FAQ}
           sectionId="coop-faq"
