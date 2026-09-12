@@ -26,7 +26,7 @@ export default function SalonServices({
 
   return (
     <section id="uslugi" className="scroll-mt-24 bg-white py-24 lg:py-32">
-      <div className="mx-auto w-[92%] max-w-[1080px]">
+      <div className="mx-auto w-[92%] max-w-[1280px]">
         <div className="mb-12 text-center lg:mb-16">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#6E7248]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#6E7248]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#6E7248]" />
@@ -53,7 +53,7 @@ export default function SalonServices({
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
-                  className="group grid w-full grid-cols-[auto_1fr_auto] items-center gap-5 px-6 py-6 text-left lg:gap-8 lg:px-8 lg:py-7"
+                  className="group grid w-full grid-cols-[auto_1fr_auto] items-center gap-5 px-6 py-5 text-left lg:gap-8 lg:px-8 lg:py-5"
                 >
                   {/* Номер */}
                   <span className={`font-display text-[13px] tabular-nums transition-colors duration-300 lg:text-[15px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#6E7248]"}`}>
@@ -76,7 +76,9 @@ export default function SalonServices({
                       {c.from[lang]}
                     </span>
                     <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-all duration-300 lg:h-12 lg:w-12 ${isOpen ? "border-[#f4efe6] bg-[#f4efe6] text-[#6E7248]" : "border-[#6E7248]/30 text-[#6E7248]"}`}>
-                      <span className={`text-[16px] leading-none transition-transform duration-300 lg:text-[18px] ${isOpen ? "rotate-180" : ""}`}>⌄</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`h-4 w-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
+                        <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
                     </span>
                   </span>
                 </button>
