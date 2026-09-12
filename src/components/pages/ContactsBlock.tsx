@@ -45,7 +45,7 @@ export default function ContactsBlock() {
         </div>
 
         {/* Справа — заголовок, реквизиты, кнопки */}
-        <div className="flex flex-col rounded-[30px] bg-[#EAEAE4] p-7 lg:p-10">
+        <div className="flex flex-col rounded-[30px] border border-[#6E7248]/15 bg-white p-7 lg:p-10">
           <p className="text-[11px] uppercase tracking-[0.28em] text-[#6E7248]">{t("контакты", "contacts")}</p>
           <h2 className="mt-4 font-display text-[26px] font-normal uppercase leading-[1.1] tracking-[0.02em] text-[#6E7248] sm:text-[32px] lg:text-[38px]">
             {t("ÁLIS BEAUTY на Пархоменко", "ÁLIS BEAUTY on Parkhomenko")}
@@ -105,7 +105,7 @@ export default function ContactsBlock() {
             href={c.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between gap-4 rounded-[24px] bg-[#EAEAE4] p-7 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_44px_rgba(110,114,72,0.18)]"
+            className="group flex items-center justify-between gap-4 rounded-[24px] border border-[#6E7248]/15 bg-white p-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#6E7248] hover:shadow-[0_16px_44px_rgba(110,114,72,0.18)]"
           >
             <span className="min-w-0">
               <span className="block text-[14px] font-semibold uppercase tracking-[0.06em] text-[#6E7248]">{c.title}</span>
