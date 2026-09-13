@@ -3,19 +3,18 @@
 // авто-скролл + ручное листание (drag) + круглые стрелки ←/→. Карточка: фото,
 // серифное название, цена и широкая кнопка «Подробнее» (открывает модалку). Двуязычно.
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { useLang } from "@/lib/i18n";
-import { useShop } from "@/lib/shop";
 import { PRODUCTS, fmtPrice } from "@/lib/products";
 
 export default function MerchMarquee() {
   const { lang } = useLang();
   const en = lang === "en";
   const t = (ru: string, e: string) => (en ? e : ru);
-  const s = useShop();
 
   const scroller = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
-  const drag = useRef({ active: false, startX: 0, startScroll: 0 });
+  const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false });
 
   useEffect(() => {
     const el = scroller.current;
@@ -47,49 +46,52 @@ export default function MerchMarquee() {
   };
 
   const onDown = (e: React.PointerEvent) => {
-    if ((e.target as HTMLElement).closest("button")) return;
     const el = scroller.current;
     if (!el) return;
-    drag.current = { active: true, startX: e.clientX, startScroll: el.scrollLeft };
-    el.setPointerCapture(e.pointerId);
+    drag.current = { active: true, startX: e.clientX, startScroll: el.scrollLeft, moved: false };
   };
   const onMove = (e: React.PointerEvent) => {
     const el = scroller.current;
     if (!el || !drag.current.active) return;
-    el.scrollLeft = drag.current.startScroll - (e.clientX - drag.current.startX);
+    const dx = e.clientX - drag.current.startX;
+    if (Math.abs(dx) > 4) {
+      drag.current.moved = true;
+      el.setPointerCapture(e.pointerId);
+    }
+    el.scrollLeft = drag.current.startScroll - dx;
   };
   const onUp = (e: React.PointerEvent) => {
     drag.current.active = false;
     try { scroller.current?.releasePointerCapture(e.pointerId); } catch {}
+  };
+  // Если это было перетаскивание — гасим клик по карточке (чтобы не открылась страница)
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (drag.current.moved) { e.preventDefault(); e.stopPropagation(); drag.current.moved = false; }
   };
 
   const Track = ({ hidden = false }: { hidden?: boolean }) => (
     <ul aria-hidden={hidden} className="flex shrink-0">
       {PRODUCTS.map((p, i) => (
         <li key={i} className="mr-4 w-[260px] shrink-0 lg:mr-5 lg:w-[340px]">
-          <button
-            onClick={() => s.openProduct(p.id)}
-            className="group block w-full overflow-hidden rounded-[10px]"
-            aria-label={p.name[lang]}
-          >
+          <Link href={`/product/${p.id}`} className="group block w-full overflow-hidden rounded-[10px]" aria-label={p.name[lang]} draggable={false}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={p.img} alt="" draggable={false} loading="lazy" decoding="async" className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
-          </button>
+          </Link>
           <h3 className="mt-4 font-serif-display text-[22px] leading-tight text-[#2a2320] lg:text-[26px]">{p.name[lang]}</h3>
           <p className="mt-1 font-serif-display text-[15px] text-[#2a2320]/55 lg:text-[16px]">{fmtPrice(p.price, en)}</p>
-          <button
-            onClick={() => s.openProduct(p.id)}
+          <Link
+            href={`/product/${p.id}`}
             className="mt-4 flex w-full items-center justify-center rounded-[10px] border border-[#6E7248]/35 py-3 text-[11px] uppercase tracking-[0.18em] text-[#6E7248] transition-colors duration-300 hover:border-transparent hover:bg-[#6E7248] hover:text-[#f4efe6]"
           >
             {t("Подробнее", "View")}
-          </button>
+          </Link>
         </li>
       ))}
     </ul>
   );
 
   return (
-    <section className="overflow-hidden bg-white pt-16 pb-20 lg:pt-20 lg:pb-24">
+    <section id="merch" className="scroll-mt-24 overflow-hidden bg-white pt-16 pb-20 lg:pt-20 lg:pb-24">
       <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] text-center lg:mb-16">
         <p className="text-[10px] lowercase tracking-[0.05em] text-[#6E7248]">{t("мерч", "merch")}</p>
         <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
@@ -105,6 +107,7 @@ export default function MerchMarquee() {
           onPointerMove={onMove}
           onPointerUp={onUp}
           onPointerCancel={onUp}
+          onClickCapture={onClickCapture}
           className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden px-[3%] [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
         >
           <Track />

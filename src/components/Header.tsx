@@ -26,6 +26,7 @@ const LEFT: NavItem[] = [
       { label: { ru: "Услуги и прайс", en: "Services & prices" }, href: "/salon#uslugi" },
       { label: { ru: "Лояльность", en: "Loyalty" }, href: "/salon#loyalty" },
       { label: { ru: "Сертификаты", en: "Certificates" }, href: "/salon#certificates" },
+      { label: { ru: "Магазин", en: "Shop" }, href: "/salon#merch" },
       { label: { ru: "Отзывы", en: "Reviews" }, href: "/salon#reviews" },
     ],
   },

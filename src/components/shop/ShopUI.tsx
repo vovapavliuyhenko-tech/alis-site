@@ -1,6 +1,7 @@
 "use client";
 // Глобальный UI магазина: drawer корзины, drawer избранного и модалка товара.
 // Монтируется один раз в layout. Оформление заказа — сообщением в WhatsApp.
+import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { useShop } from "@/lib/shop";
 import { fmtPrice, PRODUCTS } from "@/lib/products";
@@ -40,8 +41,6 @@ export default function ShopUI() {
     return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
   };
 
-  const product = s.ui.product ? s.productById(s.ui.product) : undefined;
-
   return (
     <>
       {/* Затемнение-подложка */}
@@ -49,49 +48,9 @@ export default function ShopUI() {
         onClick={s.closeAll}
         aria-hidden
         className={`fixed inset-0 z-[90] bg-black/40 backdrop-blur-[2px] transition-opacity duration-300 ${
-          s.ui.cart || s.ui.fav || s.ui.product ? "opacity-100" : "pointer-events-none opacity-0"
+          s.ui.cart || s.ui.fav ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
-
-      {/* ===== Модалка товара ===== */}
-      <div className={`fixed inset-0 z-[95] flex items-center justify-center p-4 transition-all duration-300 ${product ? "opacity-100" : "pointer-events-none opacity-0"}`}>
-        {product && (
-          <div className="relative flex max-h-[88vh] w-full max-w-[880px] flex-col overflow-hidden rounded-[24px] bg-white shadow-2xl md:flex-row">
-            <button onClick={s.closeAll} aria-label={t("Закрыть", "Close")} className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 text-[#2a2320] backdrop-blur transition-colors hover:bg-white">
-              <IconClose />
-            </button>
-            <div className="relative h-[240px] w-full shrink-0 md:h-auto md:w-[46%]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={product.img} alt="" className="absolute inset-0 h-full w-full object-cover" />
-            </div>
-            <div className="flex flex-1 flex-col overflow-y-auto p-7 lg:p-9">
-              <p className="text-[11px] uppercase tracking-[0.18em] text-[#6E7248]">{product.tag[lang]}</p>
-              <h3 className="mt-2 font-display text-[24px] uppercase leading-[1.15] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
-                {product.name[lang]}
-              </h3>
-              <p className="mt-4 text-[14px] leading-relaxed text-[#2a2320]/70">{product.desc[lang]}</p>
-              <p className="mt-6 font-display text-[26px] text-[#2a2320]">{fmtPrice(product.price, en)}</p>
-              <div className="mt-auto flex flex-col gap-2.5 pt-8">
-                <button
-                  onClick={() => { s.add(product.id); s.openCart(); }}
-                  className="flex w-full items-center justify-center rounded-2xl border border-[#6E7248] bg-[#6E7248] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#6E7248]"
-                >
-                  {t("В корзину", "Add to cart")}
-                </button>
-                <button
-                  onClick={() => s.toggleFav(product.id)}
-                  className={`flex w-full items-center justify-center gap-2 rounded-2xl border py-3.5 font-display text-[12px] uppercase tracking-[0.14em] transition-colors duration-300 ${
-                    s.isFav(product.id) ? "border-[#6E7248] bg-[#6E7248]/10 text-[#6E7248]" : "border-[#6E7248]/40 text-[#6E7248] hover:border-[#6E7248]"
-                  }`}
-                >
-                  <IconHeart filled={s.isFav(product.id)} />
-                  {s.isFav(product.id) ? t("В избранном", "In favourites") : t("В избранное", "Add to favourites")}
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
 
       {/* ===== Drawer корзины ===== */}
       <Drawer open={s.ui.cart} onClose={s.closeAll} title={t("Корзина", "Cart")}>
@@ -161,7 +120,7 @@ export default function ShopUI() {
                   <img src={p.img} alt="" className="h-20 w-16 shrink-0 rounded-[12px] object-cover" />
                   <div className="flex min-w-0 flex-1 flex-col">
                     <div className="flex items-start justify-between gap-3">
-                      <button onClick={() => { s.openProduct(id); }} className="text-left text-[14px] font-medium text-[#2a2320] hover:text-[#6E7248]">{p.name[lang]}</button>
+                      <Link href={`/product/${id}`} onClick={s.closeAll} className="text-left text-[14px] font-medium text-[#2a2320] hover:text-[#6E7248]">{p.name[lang]}</Link>
                       <button onClick={() => s.toggleFav(id)} aria-label={t("Убрать", "Remove")} className="text-[#6E7248]"><IconHeart filled /></button>
                     </div>
                     <span className="mt-1 text-[13px] text-[#6E7248]">{fmtPrice(p.price, en)}</span>
