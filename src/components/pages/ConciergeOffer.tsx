@@ -64,24 +64,35 @@ export default function ConciergeOffer() {
     <section id="offer" className="scroll-mt-24 bg-white px-3 py-16 sm:px-4 lg:py-24">
       <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая колонка — оффер */}
-        <div className="flex flex-col justify-center rounded-[28px] border border-[#6E7248]/15 bg-white p-8 lg:p-12">
-          <p className="text-[11px] uppercase tracking-[0.22em] text-[#6E7248]">{t("коммерческое предложение", "our proposal")}</p>
-          <h2 className="mt-4 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
+        <div className="flex flex-col justify-center rounded-[28px] border border-[#6E7248]/15 bg-[#F9F8F6] p-8 lg:p-12">
+          <p className="text-[11px] uppercase tracking-[0.24em] text-[#6E7248]">{t("коммерческое предложение", "our proposal")}</p>
+          <h2 className="mt-5 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
             {t("Бьюти-консьерж под ключ", "Beauty concierge, turnkey")}
           </h2>
-          <p className="mt-4 max-w-md text-[13px] leading-relaxed text-[#2a2320]/70 lg:text-[14px]">
+          <p className="mt-5 max-w-md text-[13px] leading-relaxed text-[#2a2320]/60 lg:text-[14px]">
             {t(
               "Событие требует безупречного вида — а у вас нет времени на салон и организацию. Берём бьюти-часть на себя полностью.",
               "The occasion demands a flawless look — but there's no time for the salon and logistics. We take the whole beauty part on ourselves.",
             )}
           </p>
-          <ul className="mt-7 flex flex-col gap-3.5">
-            {INCLUDED.map((it) => (
-              <li key={it.ru} className="flex items-start gap-3 text-[14px] leading-snug text-[#2a2320]">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6E7248]" />
-                {it[lang]}
-              </li>
-            ))}
+
+          <p className="mt-9 text-[10px] uppercase tracking-[0.2em] text-[#6E7248]/50">{t("что входит", "what's included")}</p>
+          <ul className="mt-2 flex flex-col">
+            {INCLUDED.map((it, i) => {
+              const accent = i === INCLUDED.length - 1;
+              return (
+                <li key={it.ru} className={`flex items-center gap-4 py-4 ${i > 0 ? "border-t border-[#6E7248]/12" : ""}`}>
+                  <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${accent ? "bg-[#6E7248] text-[#f4efe6]" : "bg-[#6E7248]/10 text-[#6E7248]"}`}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                      <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  <span className={`text-[14px] leading-snug lg:text-[15px] ${accent ? "font-medium text-[#6E7248]" : "text-[#2a2320]"}`}>
+                    {it[lang]}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
