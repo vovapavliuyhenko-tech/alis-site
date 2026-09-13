@@ -24,24 +24,24 @@ export default function Philosophy() {
       {/* Контент — раскладка и ритм как в Hero */}
       <div className="relative z-10 mx-auto flex w-[90%] max-w-2xl flex-col items-center text-center text-white">
         <p className="r-reveal text-[10px] lowercase tracking-[0.05em] text-white/75">
-          {en ? "the ÁLIS philosophy" : "философия ÁLIS"}
+          {en ? "ÁLIS beauty concierge" : "бьюти-консьерж ÁLIS"}
         </p>
 
         <h2 className="r-reveal mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-white lg:text-[28px]">
-          {en ? "Beauty without the fuss" : "Красота без суеты"}
+          {en ? "Beauty comes to you" : "Красота с выездом"}
         </h2>
 
         <p className="r-reveal mt-5 max-w-md text-[12.5px] leading-relaxed text-white/80 sm:text-[13.5px]">
           {en
-            ? "Your whole look — in one pair of hands. No rush, no running around, no compromises."
-            : "Весь ваш образ — в одних руках. Без спешки, без беготни, без компромиссов."}
+            ? "A wedding, a shoot, a big event — and no time for the salon. Our team comes to you and creates the whole look on site, right on schedule."
+            : "Свадьба, съёмка, важное событие — а ехать в салон некогда. Команда мастеров приедет к вам и соберёт образ на месте, точно к таймингу."}
         </p>
 
         <a
-          href="#services"
+          href="/concierge"
           className="r-reveal mt-8 inline-flex items-center justify-center gap-2 rounded-xl border border-transparent bg-[#6E7248] px-12 py-4 text-[12px] font-medium uppercase tracking-[0.08em] text-[#F4F1EA] transition-all duration-300 hover:border-white/40 hover:bg-white/15 hover:backdrop-blur-md sm:text-[13px]"
         >
-          {en ? "view services" : "смотреть услуги"}
+          {en ? "about the concierge" : "о бьюти-консьерже"}
           <span aria-hidden>→</span>
         </a>
       </div>
