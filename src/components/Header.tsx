@@ -57,7 +57,7 @@ const RIGHT: NavItem[] = [
 
 function BagIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-[22px] w-[22px]">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-[18px] w-[18px]">
       <path d="M6 8h12l-1 12H7L6 8Z" strokeLinejoin="round" />
       <path d="M9 8V6a3 3 0 0 1 6 0v2" strokeLinecap="round" />
     </svg>
@@ -65,7 +65,7 @@ function BagIcon() {
 }
 function HeartIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-[22px] w-[22px]">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-[18px] w-[18px]">
       <path d="M12 20s-7-4.35-7-9a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 4.65-7 9-7 9Z" strokeLinejoin="round" />
     </svg>
   );
@@ -148,11 +148,11 @@ export default function Header() {
   );
   const ShopIcons = () => (
     <div className="flex items-center">
-      <button onClick={shop.openFav} aria-label={lang === "en" ? "Favourites" : "Избранное"} className={`relative flex h-10 w-10 items-center justify-center transition-colors ${ink} ${hoverInk}`}>
+      <button onClick={shop.openFav} aria-label={lang === "en" ? "Favourites" : "Избранное"} className={`relative flex h-8 w-8 items-center justify-center transition-colors ${ink} ${hoverInk}`}>
         <HeartIcon />
         {shop.favCount > 0 && <Badge n={shop.favCount} />}
       </button>
-      <button onClick={shop.openCart} aria-label={lang === "en" ? "Cart" : "Корзина"} className={`relative flex h-10 w-10 items-center justify-center transition-colors ${ink} ${hoverInk}`}>
+      <button onClick={shop.openCart} aria-label={lang === "en" ? "Cart" : "Корзина"} className={`relative flex h-8 w-8 items-center justify-center transition-colors ${ink} ${hoverInk}`}>
         <BagIcon />
         {shop.cartCount > 0 && <Badge n={shop.cartCount} />}
       </button>

@@ -22,7 +22,6 @@ export default function SalonServices({
   cta: { label: Loc; href: string };
 }) {
   const { lang } = useLang();
-  const en = lang === "en";
   const [open, setOpen] = useState<number | null>(null);
 
   return (
@@ -114,14 +113,14 @@ export default function SalonServices({
           })}
         </div>
 
-        {/* Растянутая кнопка записи со скидкой */}
+        {/* Растянутая кнопка-CTA */}
         <a
           href={cta.href}
-          target="_blank"
-          rel="noopener noreferrer"
+          target={cta.href.startsWith("http") ? "_blank" : undefined}
+          rel={cta.href.startsWith("http") ? "noopener noreferrer" : undefined}
           className="mt-3 flex w-full items-center justify-center rounded-[20px] border border-[#6E7248] bg-[#6E7248] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#6E7248] sm:text-[14px]"
         >
-          {en ? "Book now · −10% on your first visit" : "Записаться · −10% на первый визит"}
+          {cta.label[lang]}
         </a>
       </div>
     </section>

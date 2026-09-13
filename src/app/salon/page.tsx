@@ -304,7 +304,7 @@ export default function SalonPage() {
           eyebrow={{ ru: "услуги и цены", en: "services & prices" }}
           title={{ ru: "Услуги салона", en: "Salon services" }}
           categories={SALON_CATEGORIES}
-          cta={{ label: { ru: "Записаться", en: "Book now" }, href: YCLIENTS }}
+          cta={{ label: { ru: "Записаться · −10% на первый визит", en: "Book now · −10% on your first visit" }, href: YCLIENTS }}
         />
         <MerchMarquee />
         <LoyaltyCerts />
