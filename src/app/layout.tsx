@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Marcellus, Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
+import { ShopProvider } from "@/lib/shop";
+import ShopUI from "@/components/shop/ShopUI";
 import Preloader from "@/components/Preloader";
 import ServiceWorker from "@/components/ServiceWorker";
 import SmoothAnchor from "@/components/SmoothAnchor";
@@ -53,9 +55,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <Preloader />
         <LanguageProvider>
-          {children}
-          <BookingFab />
-          <CookieConsent />
+          <ShopProvider>
+            {children}
+            <ShopUI />
+            <BookingFab />
+            <CookieConsent />
+          </ShopProvider>
         </LanguageProvider>
         <CustomCursor />
         <SmoothAnchor />

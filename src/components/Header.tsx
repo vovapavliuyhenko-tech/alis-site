@@ -6,6 +6,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLang, type Lang } from "@/lib/i18n";
+import { useShop } from "@/lib/shop";
 import { LogoEmblem, LogoWord } from "@/components/Logo";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
@@ -49,14 +50,32 @@ const LEFT: NavItem[] = [
 ];
 
 const RIGHT: NavItem[] = [
+  { label: { ru: "Магазин", en: "Shop" }, href: "/shop" },
   { label: { ru: "Сотрудничество", en: "Cooperation" }, href: "/cooperation" },
   { label: { ru: "Контакты", en: "Contacts" }, href: "/contacts" },
 ];
+
+function BagIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-[22px] w-[22px]">
+      <path d="M6 8h12l-1 12H7L6 8Z" strokeLinejoin="round" />
+      <path d="M9 8V6a3 3 0 0 1 6 0v2" strokeLinecap="round" />
+    </svg>
+  );
+}
+function HeartIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-[22px] w-[22px]">
+      <path d="M12 20s-7-4.35-7-9a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 4.65-7 9-7 9Z" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 const ALL_NAV = [...LEFT, ...RIGHT];
 
 export default function Header() {
   const { lang, setLang } = useLang();
+  const shop = useShop();
   const pathname = usePathname();
   const [solid, setSolid] = useState(pathname !== "/");
   const [open, setOpen] = useState(false);
@@ -122,6 +141,24 @@ export default function Header() {
       </a>
     );
 
+  const Badge = ({ n }: { n: number }) => (
+    <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#6E7248] px-1 text-[10px] font-medium leading-none text-[#f4efe6]">
+      {n}
+    </span>
+  );
+  const ShopIcons = () => (
+    <div className="flex items-center">
+      <button onClick={shop.openFav} aria-label={lang === "en" ? "Favourites" : "Избранное"} className={`relative flex h-10 w-10 items-center justify-center transition-colors ${ink} ${hoverInk}`}>
+        <HeartIcon />
+        {shop.favCount > 0 && <Badge n={shop.favCount} />}
+      </button>
+      <button onClick={shop.openCart} aria-label={lang === "en" ? "Cart" : "Корзина"} className={`relative flex h-10 w-10 items-center justify-center transition-colors ${ink} ${hoverInk}`}>
+        <BagIcon />
+        {shop.cartCount > 0 && <Badge n={shop.cartCount} />}
+      </button>
+    </div>
+  );
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
@@ -183,17 +220,21 @@ export default function Header() {
               </button>
             ))}
           </div>
+          <ShopIcons />
         </div>
 
-        {/* Правый край на моб. — запись */}
-        <a
-          href={YCLIENTS}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`justify-self-end text-[12px] uppercase tracking-[0.12em] lg:hidden ${ink}`}
-        >
-          {lang === "en" ? "Book" : "Запись"}
-        </a>
+        {/* Правый край на моб. — иконки магазина + запись */}
+        <div className="flex items-center justify-self-end lg:hidden">
+          <ShopIcons />
+          <a
+            href={YCLIENTS}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`ml-1 text-[12px] uppercase tracking-[0.12em] ${ink}`}
+          >
+            {lang === "en" ? "Book" : "Запись"}
+          </a>
+        </div>
       </div>
 
       {/* Мобильное меню */}
