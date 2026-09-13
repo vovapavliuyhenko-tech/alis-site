@@ -48,7 +48,7 @@ export default function ContactsBlock() {
             </svg>
             {t("контакты", "contacts")}
           </p>
-          <h2 className="mt-5 font-display text-[34px] font-normal uppercase leading-[1.02] tracking-[0.01em] text-[#6E7248] sm:text-[48px] lg:text-[64px]">
+          <h2 className="mt-5 font-display text-[28px] font-normal uppercase leading-[1.05] tracking-[0.01em] text-[#6E7248] sm:text-[36px] lg:text-[46px]">
             {t("Как нас найти", "How to find us")}
           </h2>
 
@@ -77,7 +77,7 @@ export default function ContactsBlock() {
                 href={b.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex min-h-[124px] flex-col rounded-[20px] bg-[#ECE7DB] p-5 transition-colors duration-300 hover:bg-[#e3dccb] lg:min-h-[140px] lg:p-6"
+                className="group relative flex min-h-[124px] flex-col rounded-[20px] bg-[#EEF0E8] p-5 transition-colors duration-300 hover:bg-[#e3e7d8] lg:min-h-[140px] lg:p-6"
               >
                 <span className="max-w-[80%] font-display text-[13px] uppercase leading-[1.3] tracking-[0.06em] text-[#6E7248] lg:text-[14px]">
                   {b.label[lang]}
