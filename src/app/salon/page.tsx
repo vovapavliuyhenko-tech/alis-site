@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Reviews from "@/components/Reviews";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import TeamHero from "@/components/pages/TeamHero";
 import SalonServices from "@/components/pages/SalonServices";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
@@ -218,7 +219,37 @@ export default function SalonPage() {
     <main>
       <ScrollReveal />
       <Header />
-      <div className="relative z-10 bg-white pt-[68px]">
+
+      {/* 1 — Герой-сплит (закреплён): боль клиента — образ по трём мастерам */}
+      <TeamHero
+        pinned
+        logo
+        photo="/assets/tild6530-383_-2___1_.jpg"
+        eyebrow={{ ru: "салон красоты", en: "beauty salon" }}
+        title={{ ru: "Устали собирать образ по трём мастерам?", en: "Tired of chasing three masters for one look?" }}
+        sub={{
+          ru: "Волосы у одного, ногти у другого, брови — в третьем месте. Разные дни, дорога, ожидание. А образ всё равно не складывается.",
+          en: "Hair at one place, nails at another, brows somewhere else. Different days, travel, waiting — and the look still doesn't come together.",
+        }}
+        cta={{ label: { ru: "смотреть услуги", en: "see services" }, href: "#uslugi" }}
+      />
+
+      {/* 2 — Зеркальный герой (наезжает поверх): решение + оффер −10% */}
+      <TeamHero
+        reverse
+        logoTop
+        roundedTop
+        photo="/assets/tild6230-643__.jpg"
+        eyebrow={{ ru: "почему мы", en: "why us" }}
+        title={{ ru: "Весь образ за один визит — и −10%", en: "Your whole look in one visit — and −10%" }}
+        sub={{
+          ru: "Команда мастеров работает в 4–6 рук на профессиональной косметике. Приходите уставшей — выходите собранной. Первый визит — со скидкой 10%.",
+          en: "A team works in 4–6 hands on professional cosmetics. Come in tired — leave put together. First visit — 10% off.",
+        }}
+        cta={{ label: { ru: "смотреть услуги", en: "see services" }, href: "#uslugi" }}
+      />
+
+      <div className="relative z-10 bg-white">
         <SalonServices
           eyebrow={{ ru: "услуги и цены", en: "services & prices" }}
           title={{ ru: "Услуги салона", en: "Salon services" }}
