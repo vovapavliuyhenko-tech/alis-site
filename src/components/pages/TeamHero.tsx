@@ -83,7 +83,7 @@ export default function TeamHero({
   return (
     <section
       data-hide-fab
-      className={`${pinned ? "sticky top-0 z-0" : "relative z-10"} h-svh min-h-[600px] bg-white px-2 pb-2 pt-[72px] lg:px-2.5 lg:pb-2.5 lg:pt-[80px]`}
+      className={`${pinned ? "sticky top-0 z-0 pt-[72px] lg:pt-[80px]" : "relative z-10 pt-2 lg:pt-2.5"} h-svh min-h-[600px] bg-white px-2 pb-2 lg:px-2.5 lg:pb-2.5`}
     >
       {/* Две отдельные скруглённые карточки (фото + панель) с минимальным зазором */}
       <div className="grid h-full grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2.5">
