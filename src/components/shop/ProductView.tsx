@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { useShop } from "@/lib/shop";
 import { fmtPrice, type Product } from "@/lib/products";
+import MerchMarquee from "@/components/shop/MerchMarquee";
 
 function Heart({ filled }: { filled: boolean }) {
   return (
@@ -113,6 +114,15 @@ export default function ProductView({ product }: { product: Product }) {
           </div>
         </div>
       </div>
+
+      {/* С этим часто покупают */}
+      <MerchMarquee
+        sectionId="related"
+        eyebrow={{ ru: "смотреть ещё", en: "see more" }}
+        title={{ ru: "С этим часто покупают", en: "Often bought together" }}
+        exclude={product.id}
+        catalogHref="/salon#merch"
+      />
     </div>
   );
 }

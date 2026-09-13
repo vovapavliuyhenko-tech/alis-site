@@ -306,8 +306,8 @@ export default function SalonPage() {
           categories={SALON_CATEGORIES}
           cta={{ label: { ru: "Записаться", en: "Book now" }, href: YCLIENTS }}
         />
-        <LoyaltyCerts />
         <MerchMarquee />
+        <LoyaltyCerts />
         <Reviews />
         <Faq
           items={SALON_FAQ}

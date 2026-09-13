@@ -7,10 +7,25 @@ import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { PRODUCTS, fmtPrice } from "@/lib/products";
 
-export default function MerchMarquee() {
+type Loc = { ru: string; en: string };
+
+export default function MerchMarquee({
+  sectionId = "merch",
+  eyebrow = { ru: "мерч", en: "merch" },
+  title = { ru: "Немного ÁLIS — с собой", en: "A little ÁLIS to take home" },
+  exclude,
+  catalogHref,
+}: {
+  sectionId?: string;
+  eyebrow?: Loc;
+  title?: Loc;
+  exclude?: string;
+  catalogHref?: string;
+} = {}) {
   const { lang } = useLang();
   const en = lang === "en";
   const t = (ru: string, e: string) => (en ? e : ru);
+  const items = exclude ? PRODUCTS.filter((p) => p.id !== exclude) : PRODUCTS;
 
   const scroller = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
@@ -71,7 +86,7 @@ export default function MerchMarquee() {
 
   const Track = ({ hidden = false }: { hidden?: boolean }) => (
     <ul aria-hidden={hidden} className="flex shrink-0">
-      {PRODUCTS.map((p, i) => (
+      {items.map((p, i) => (
         <li key={i} className="mr-4 w-[260px] shrink-0 lg:mr-5 lg:w-[340px]">
           <Link href={`/product/${p.id}`} className="group block w-full overflow-hidden rounded-[10px]" aria-label={p.name[lang]} draggable={false}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -91,12 +106,17 @@ export default function MerchMarquee() {
   );
 
   return (
-    <section id="merch" className="scroll-mt-24 overflow-hidden bg-white pt-16 pb-20 lg:pt-20 lg:pb-24">
+    <section id={sectionId} className="scroll-mt-24 overflow-hidden bg-white pt-16 pb-20 lg:pt-20 lg:pb-24">
       <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] text-center lg:mb-16">
-        <p className="text-[10px] lowercase tracking-[0.05em] text-[#6E7248]">{t("мерч", "merch")}</p>
+        <p className="text-[10px] lowercase tracking-[0.05em] text-[#6E7248]">{eyebrow[lang]}</p>
         <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
-          {t("Немного ÁLIS — с собой", "A little ÁLIS to take home")}
+          {title[lang]}
         </h2>
+        {catalogHref && (
+          <Link href={catalogHref} className="mt-4 inline-block text-[11px] uppercase tracking-[0.16em] text-[#6E7248] underline-offset-4 transition-colors hover:underline">
+            {t("в каталог", "view all")} →
+          </Link>
+        )}
       </div>
 
       {/* Лента + круглые стрелки навигации */}
