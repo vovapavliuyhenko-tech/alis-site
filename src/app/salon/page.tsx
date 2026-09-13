@@ -6,6 +6,55 @@ import TeamHero from "@/components/pages/TeamHero";
 import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
 import MerchMarquee from "@/components/shop/MerchMarquee";
+import Faq from "@/components/Faq";
+
+type LocT = { ru: string; en: string };
+
+// FAQ по странице салона — снимаем главные возражения гостя.
+const SALON_FAQ: { q: LocT; a: LocT }[] = [
+  {
+    q: { ru: "«Правда весь образ за один визит?»", en: "“Really the whole look in one visit?”" },
+    a: {
+      ru: "Да. Команда работает в 4–6 рук: волосы, ногти, брови и макияж — параллельно. Приходите уставшей — выходите собранной.",
+      en: "Yes. A team works in 4–6 hands: hair, nails, brows and makeup — in parallel. Come in tired, leave put together.",
+    },
+  },
+  {
+    q: { ru: "«Сколько времени займёт полный образ?»", en: "“How long does the full look take?”" },
+    a: {
+      ru: "Тайминг согласуем заранее под ваши услуги и событие. За счёт параллельной работы мастеров укладываемся быстрее, чем по отдельным салонам.",
+      en: "We agree the timing in advance for your services and event. Working in parallel, we finish faster than separate salons would.",
+    },
+  },
+  {
+    q: { ru: "«Хочу только одну услугу — это можно?»", en: "“Can I book just one service?”" },
+    a: {
+      ru: "Конечно. Можно прийти на одну услугу или собрать полный образ — как удобно вам. Всё видно при онлайн-записи.",
+      en: "Of course. Book a single service or the full look — whatever suits you. It's all visible in online booking.",
+    },
+  },
+  {
+    q: { ru: "«На какой косметике работаете?»", en: "“What products do you use?”" },
+    a: {
+      ru: "Только проверенная профессиональная косметика и расходники. Подберём уход под ваши волосы и кожу, без экспериментов на вас.",
+      en: "Only trusted professional cosmetics and supplies. We match the care to your hair and skin — no experiments on you.",
+    },
+  },
+  {
+    q: { ru: "«Цены окончательные или будут сюрпризы?»", en: "“Are the prices final or will there be surprises?”" },
+    a: {
+      ru: "В прайсе — стартовые цены; финальную стоимость мастер называет до начала, когда видит объём работы. Никаких скрытых доплат.",
+      en: "The price list shows starting prices; the master confirms the final cost before starting, once the scope is clear. No hidden fees.",
+    },
+  },
+  {
+    q: { ru: "«Как записаться и есть ли скидка на первый визит?»", en: "“How do I book, and is there a first-visit discount?”" },
+    a: {
+      ru: "Запись онлайн за пару минут — видно мастеров и свободные окна. На первый визит действует −10%. Оплатить можно и подарочным сертификатом.",
+      en: "Book online in a couple of minutes — masters and free slots at a glance. First visit is −10%. You can also pay with a gift certificate.",
+    },
+  },
+];
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -260,6 +309,14 @@ export default function SalonPage() {
         <LoyaltyCerts />
         <MerchMarquee />
         <Reviews />
+        <Faq
+          items={SALON_FAQ}
+          sectionId="salon-faq"
+          photo="/assets/tild6530-383_-2___1_.jpg"
+          eyebrow={{ ru: "вопросы", en: "FAQ" }}
+          titleTop={{ ru: "Салон ÁLIS —", en: "ÁLIS salon —" }}
+          titleBottom={{ ru: "что спрашивают", en: "what people ask" }}
+        />
       </div>
       <Footer />
     </main>
