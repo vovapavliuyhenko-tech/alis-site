@@ -79,7 +79,6 @@ export default function TeamPage() {
       <TeamHero
         reverse
         logoTop
-        roundedTop
         photo="/assets/tild6536-613_-2___1__4.jpg"
         eyebrow={{ ru: "почему к нам", en: "why join us" }}
         title={{ ru: "Растите в мастерстве и в доходе", en: "Grow in craft and in income" }}

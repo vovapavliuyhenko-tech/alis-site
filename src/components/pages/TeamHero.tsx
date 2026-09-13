@@ -18,7 +18,6 @@ export default function TeamHero({
   pinned = false,
   logo = false,
   logoTop = false,
-  roundedTop = false,
 }: {
   photo: string;
   eyebrow: Loc;
@@ -29,7 +28,6 @@ export default function TeamHero({
   pinned?: boolean;
   logo?: boolean;
   logoTop?: boolean;
-  roundedTop?: boolean;
 }) {
   const { lang } = useLang();
   const en = lang === "en";
@@ -45,8 +43,8 @@ export default function TeamHero({
     <div
       className={`relative flex h-full flex-col items-center justify-between bg-white px-8 text-center lg:px-14 ${
         logo
-          ? "pt-32 pb-16 lg:pt-44 lg:pb-20" // 1-й блок: весь контент ниже
-          : "pt-16 pb-8 lg:pt-20 lg:pb-10" // 2-й блок: кнопка ниже
+          ? "pt-14 pb-14 lg:pt-16 lg:pb-16" // 1-й блок: лого сверху и снизу
+          : "pt-14 pb-10 lg:pt-16 lg:pb-12" // 2-й блок: кнопка ниже
       }`}
     >
       {/* Верх — логотип или надстрочник */}
@@ -85,19 +83,22 @@ export default function TeamHero({
   return (
     <section
       data-hide-fab
-      className={`${pinned ? "sticky top-0 z-0" : "relative z-10"} ${roundedTop ? "rounded-t-[40px]" : ""} grid h-svh min-h-[600px] grid-cols-1 overflow-hidden lg:grid-cols-2`}
+      className={`${pinned ? "sticky top-0 z-0" : "relative z-10"} h-svh min-h-[600px] px-2 pb-2 pt-[72px] lg:px-3 lg:pb-3 lg:pt-[84px]`}
     >
-      {reverse ? (
-        <>
-          {Panel}
-          {Photo}
-        </>
-      ) : (
-        <>
-          {Photo}
-          {Panel}
-        </>
-      )}
+      {/* Скруглённая карточка с небольшим отступом от краёв экрана */}
+      <div className="grid h-full grid-cols-1 overflow-hidden rounded-[28px] border border-[#6E7248]/10 shadow-[0_14px_50px_rgba(23,25,26,0.12)] lg:grid-cols-2">
+        {reverse ? (
+          <>
+            {Panel}
+            {Photo}
+          </>
+        ) : (
+          <>
+            {Photo}
+            {Panel}
+          </>
+        )}
+      </div>
     </section>
   );
 }

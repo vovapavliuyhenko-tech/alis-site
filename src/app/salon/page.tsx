@@ -238,7 +238,6 @@ export default function SalonPage() {
       <TeamHero
         reverse
         logoTop
-        roundedTop
         photo="/assets/tild6230-643__.jpg"
         eyebrow={{ ru: "почему мы", en: "why us" }}
         title={{ ru: "Весь образ за один визит — и −10%", en: "Your whole look in one visit — and −10%" }}

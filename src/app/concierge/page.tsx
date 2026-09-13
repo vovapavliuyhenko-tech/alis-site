@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import TeamHero from "@/components/pages/TeamHero";
 import ServiceStack from "@/components/pages/ServiceStack";
 import { type ServiceCategory } from "@/components/pages/ServiceTabs";
 import QuizConsult from "@/components/QuizConsult";
@@ -40,6 +41,34 @@ export default function ConciergePage() {
     <main>
       <ScrollReveal />
       <Header />
+
+      {/* 1 — Герой-сплит (закреплён): боль — в день события некогда ехать в салон */}
+      <TeamHero
+        pinned
+        logo
+        photo="/assets/tild6536-613_-2___1__4.jpg"
+        eyebrow={{ ru: "бьюти-консьерж", en: "beauty concierge" }}
+        title={{ ru: "В день события некогда ехать в салон?", en: "No time for the salon on the big day?" }}
+        sub={{
+          ru: "Свадьба, съёмка, выход в свет — счёт на минуты. А вам нужно быть собранной и в кадре, а не в дороге и в очереди.",
+          en: "A wedding, a shoot, a special night — every minute counts. You need to be ready and in the frame, not stuck in traffic or a queue.",
+        }}
+        cta={{ label: { ru: "форматы выезда", en: "on-location formats" }, href: "#uslugi" }}
+      />
+
+      {/* 2 — Зеркальный герой (наезжает поверх): решение + оффер */}
+      <TeamHero
+        reverse
+        logoTop
+        photo="/assets/tild6230-643__.jpg"
+        eyebrow={{ ru: "почему мы", en: "why us" }}
+        title={{ ru: "Мы приедем и соберём образ на месте", en: "We come to you and create the look on site" }}
+        sub={{
+          ru: "Команда мастеров приезжает со своим оборудованием и работает в 4–6 рук. Причёска, макияж, ногти — точно к таймингу. Первый выезд — со скидкой 10%.",
+          en: "A team arrives with its own kit and works in 4–6 hands. Hair, makeup, nails — right on schedule. First booking — 10% off.",
+        }}
+        cta={{ label: { ru: "оставить заявку", en: "leave a request" }, href: "#booking" }}
+      />
 
       <div className="relative z-10 bg-white">
         <div id="uslugi" className="scroll-mt-24">
