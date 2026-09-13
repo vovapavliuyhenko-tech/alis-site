@@ -27,7 +27,7 @@ export default function LoyaltyCerts() {
   ];
 
   return (
-    <section className="bg-[#f7f3ed] py-16 lg:py-24">
+    <section className="bg-white py-16 lg:py-24">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#6E7248]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#6E7248]">
@@ -87,7 +87,7 @@ export default function LoyaltyCerts() {
               draggable={false}
               loading="lazy"
               decoding="async"
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-[700ms] ease-out group-hover:scale-105"
+              className="absolute inset-0 h-full w-full object-cover transition-all duration-[700ms] ease-out group-hover:scale-105 group-hover:blur-md"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10 transition-colors duration-500 group-hover:from-black/80" />
             <span className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-white/50 text-[16px] text-white transition-all duration-300 group-hover:border-transparent group-hover:bg-[#f4efe6] group-hover:text-[#6E7248]">
@@ -104,9 +104,6 @@ export default function LoyaltyCerts() {
                   "Any service or amount. The best way to gift care — and never miss.",
                 )}
               </p>
-              <span className="mt-4 inline-block font-display text-[13px] uppercase tracking-[0.14em] text-[#f4efe6] underline-offset-4 group-hover:underline">
-                {t("Купить сертификат", "Buy a certificate")}
-              </span>
             </div>
           </a>
 
