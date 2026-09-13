@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamHero from "@/components/pages/TeamHero";
 import SalonServices from "@/components/pages/SalonServices";
+import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -255,6 +256,7 @@ export default function SalonPage() {
           categories={SALON_CATEGORIES}
           cta={{ label: { ru: "Записаться", en: "Book now" }, href: YCLIENTS }}
         />
+        <LoyaltyCerts />
         <Reviews />
       </div>
       <Footer />
