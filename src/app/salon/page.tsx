@@ -5,6 +5,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import TeamHero from "@/components/pages/TeamHero";
 import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
+import MerchMarquee from "@/components/shop/MerchMarquee";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -257,6 +258,7 @@ export default function SalonPage() {
           cta={{ label: { ru: "Записаться", en: "Book now" }, href: YCLIENTS }}
         />
         <LoyaltyCerts />
+        <MerchMarquee />
         <Reviews />
       </div>
       <Footer />

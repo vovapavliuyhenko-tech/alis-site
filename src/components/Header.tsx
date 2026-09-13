@@ -50,7 +50,6 @@ const LEFT: NavItem[] = [
 ];
 
 const RIGHT: NavItem[] = [
-  { label: { ru: "Магазин", en: "Shop" }, href: "/shop" },
   { label: { ru: "Сотрудничество", en: "Cooperation" }, href: "/cooperation" },
   { label: { ru: "Контакты", en: "Contacts" }, href: "/contacts" },
 ];

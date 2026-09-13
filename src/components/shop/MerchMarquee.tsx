@@ -1,19 +1,11 @@
 "use client";
-// БЛОК МЕРЧА — бегущая лента карточек товаров (по мотивам блока «Атмосфера»):
-// авто-скролл + ручное листание. У карточки фото, сердечко (в избранное), название,
-// цена и кнопка «Подробнее» — открывает модалку товара. Двуязычно.
+// БЛОК МЕРЧА — бегущая лента карточек товаров по мотивам магазина PALOMA:
+// авто-скролл + ручное листание (drag) + круглые стрелки ←/→. Карточка: фото,
+// серифное название, цена и широкая кнопка «Подробнее» (открывает модалку). Двуязычно.
 import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { useShop } from "@/lib/shop";
 import { PRODUCTS, fmtPrice } from "@/lib/products";
-
-function Heart({ filled }: { filled: boolean }) {
-  return (
-    <svg viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.7" className="h-5 w-5">
-      <path d="M12 20s-7-4.35-7-9a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 4.65-7 9-7 9Z" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 export default function MerchMarquee() {
   const { lang } = useLang();
@@ -48,8 +40,13 @@ export default function MerchMarquee() {
     return () => { stop(); io.disconnect(); };
   }, []);
 
+  const nudge = (dir: number) => {
+    const el = scroller.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * Math.min(360, el.clientWidth * 0.8), behavior: "smooth" });
+  };
+
   const onDown = (e: React.PointerEvent) => {
-    // Не перехватываем перетаскивание, если жмут на кнопку/сердечко
     if ((e.target as HTMLElement).closest("button")) return;
     const el = scroller.current;
     if (!el) return;
@@ -69,27 +66,20 @@ export default function MerchMarquee() {
   const Track = ({ hidden = false }: { hidden?: boolean }) => (
     <ul aria-hidden={hidden} className="flex shrink-0">
       {PRODUCTS.map((p, i) => (
-        <li key={i} className="mr-3 w-[220px] shrink-0 lg:mr-4 lg:w-[280px]">
-          <div className="group relative overflow-hidden rounded-[16px]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={p.img} alt="" draggable={false} loading="lazy" decoding="async" className="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            <button
-              onClick={() => s.toggleFav(p.id)}
-              aria-label={t("В избранное", "Add to favourites")}
-              className={`absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full backdrop-blur transition-colors ${
-                s.isFav(p.id) ? "bg-[#6E7248] text-[#f4efe6]" : "bg-white/80 text-[#6E7248] hover:bg-white"
-              }`}
-            >
-              <Heart filled={s.isFav(p.id)} />
-            </button>
-          </div>
-          <div className="mt-3 flex items-baseline justify-between gap-2">
-            <h3 className="truncate font-display text-[15px] uppercase tracking-[0.02em] text-[#6E7248] lg:text-[16px]">{p.name[lang]}</h3>
-            <span className="shrink-0 text-[14px] text-[#2a2320]/70">{fmtPrice(p.price, en)}</span>
-          </div>
+        <li key={i} className="mr-4 w-[260px] shrink-0 lg:mr-5 lg:w-[340px]">
           <button
             onClick={() => s.openProduct(p.id)}
-            className="mt-3 flex w-full items-center justify-center rounded-xl border border-[#6E7248]/40 py-2.5 font-display text-[11px] uppercase tracking-[0.14em] text-[#6E7248] transition-colors duration-300 hover:border-transparent hover:bg-[#6E7248] hover:text-[#f4efe6]"
+            className="group block w-full overflow-hidden rounded-[10px]"
+            aria-label={p.name[lang]}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={p.img} alt="" draggable={false} loading="lazy" decoding="async" className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+          </button>
+          <h3 className="mt-4 font-serif-display text-[22px] leading-tight text-[#2a2320] lg:text-[26px]">{p.name[lang]}</h3>
+          <p className="mt-1 font-serif-display text-[15px] text-[#2a2320]/55 lg:text-[16px]">{fmtPrice(p.price, en)}</p>
+          <button
+            onClick={() => s.openProduct(p.id)}
+            className="mt-4 flex w-full items-center justify-center rounded-[10px] border border-[#6E7248]/35 py-3 text-[11px] uppercase tracking-[0.18em] text-[#6E7248] transition-colors duration-300 hover:border-transparent hover:bg-[#6E7248] hover:text-[#f4efe6]"
           >
             {t("Подробнее", "View")}
           </button>
@@ -107,16 +97,34 @@ export default function MerchMarquee() {
         </h2>
       </div>
 
-      <div
-        ref={scroller}
-        onPointerDown={onDown}
-        onPointerMove={onMove}
-        onPointerUp={onUp}
-        onPointerCancel={onUp}
-        className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden px-[3%] [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
-      >
-        <Track />
-        <Track hidden />
+      {/* Лента + круглые стрелки навигации */}
+      <div className="relative">
+        <div
+          ref={scroller}
+          onPointerDown={onDown}
+          onPointerMove={onMove}
+          onPointerUp={onUp}
+          onPointerCancel={onUp}
+          className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden px-[3%] [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+        >
+          <Track />
+          <Track hidden />
+        </div>
+
+        <button
+          onClick={() => nudge(-1)}
+          aria-label={t("Назад", "Previous")}
+          className="absolute left-4 top-[30%] z-10 hidden h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[18px] text-[#6E7248] shadow-[0_8px_24px_rgba(0,0,0,0.14)] backdrop-blur transition-colors hover:bg-white lg:flex"
+        >
+          ←
+        </button>
+        <button
+          onClick={() => nudge(1)}
+          aria-label={t("Вперёд", "Next")}
+          className="absolute right-4 top-[30%] z-10 hidden h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[18px] text-[#6E7248] shadow-[0_8px_24px_rgba(0,0,0,0.14)] backdrop-blur transition-colors hover:bg-white lg:flex"
+        >
+          →
+        </button>
       </div>
 
       <div className="mx-auto mt-10 h-[3px] w-[94%] max-w-[1440px] overflow-hidden rounded-full bg-[#C2C0B6]/40">
