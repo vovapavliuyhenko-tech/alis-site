@@ -78,21 +78,18 @@ export default function ConciergeOffer() {
 
           <p className="mt-9 text-[10px] uppercase tracking-[0.2em] text-[#6E7248]/50">{t("что входит", "what's included")}</p>
           <ul className="mt-2 flex flex-col">
-            {INCLUDED.map((it, i) => {
-              const accent = i === INCLUDED.length - 1;
-              return (
-                <li key={it.ru} className={`flex items-center gap-4 py-4 ${i > 0 ? "border-t border-[#6E7248]/12" : ""}`}>
-                  <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${accent ? "bg-[#6E7248] text-[#f4efe6]" : "bg-[#6E7248]/10 text-[#6E7248]"}`}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
-                      <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
-                  <span className={`text-[14px] leading-snug lg:text-[15px] ${accent ? "font-medium text-[#6E7248]" : "text-[#2a2320]"}`}>
-                    {it[lang]}
-                  </span>
-                </li>
-              );
-            })}
+            {INCLUDED.map((it, i) => (
+              <li key={it.ru} className={`flex items-center gap-4 py-4 ${i > 0 ? "border-t border-[#6E7248]/12" : ""}`}>
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#6E7248] text-[#f4efe6]">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
+                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+                <span className="text-[14px] leading-snug text-[#2a2320] lg:text-[15px]">
+                  {it[lang]}
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
 
