@@ -33,7 +33,7 @@ export default function TeamHero({
   const en = lang === "en";
 
   const Photo = (
-    <div className="relative hidden lg:block">
+    <div className="relative hidden overflow-hidden rounded-[26px] border border-[#6E7248]/10 shadow-[0_14px_44px_rgba(23,25,26,0.10)] lg:block">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={photo} alt="" draggable={false} loading={pinned ? "eager" : "lazy"} decoding="async" className="absolute inset-0 h-full w-full object-cover" />
     </div>
@@ -41,7 +41,7 @@ export default function TeamHero({
 
   const Panel = (
     <div
-      className={`relative flex h-full flex-col items-center justify-between bg-white px-8 text-center lg:px-14 ${
+      className={`relative flex h-full flex-col items-center justify-between overflow-hidden rounded-[26px] border border-[#6E7248]/10 bg-white px-8 text-center shadow-[0_14px_44px_rgba(23,25,26,0.10)] lg:px-14 ${
         logo
           ? "pt-14 pb-14 lg:pt-16 lg:pb-16" // 1-й блок: лого сверху и снизу
           : "pt-14 pb-10 lg:pt-16 lg:pb-12" // 2-й блок: кнопка ниже
@@ -83,10 +83,10 @@ export default function TeamHero({
   return (
     <section
       data-hide-fab
-      className={`${pinned ? "sticky top-0 z-0" : "relative z-10"} h-svh min-h-[600px] px-2 pb-2 pt-[72px] lg:px-3 lg:pb-3 lg:pt-[84px]`}
+      className={`${pinned ? "sticky top-0 z-0" : "relative z-10"} h-svh min-h-[600px] bg-white px-2 pb-2 pt-[72px] lg:px-2.5 lg:pb-2.5 lg:pt-[80px]`}
     >
-      {/* Скруглённая карточка с небольшим отступом от краёв экрана */}
-      <div className="grid h-full grid-cols-1 overflow-hidden rounded-[28px] border border-[#6E7248]/10 shadow-[0_14px_50px_rgba(23,25,26,0.12)] lg:grid-cols-2">
+      {/* Две отдельные скруглённые карточки (фото + панель) с минимальным зазором */}
+      <div className="grid h-full grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2.5">
         {reverse ? (
           <>
             {Panel}
