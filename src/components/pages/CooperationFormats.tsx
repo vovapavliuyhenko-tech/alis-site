@@ -81,7 +81,7 @@ export default function CooperationFormats() {
   const { lang } = useLang();
 
   return (
-    <section className="bg-gradient-to-br from-[#f4f1ea] via-white to-[#eef0e8] px-3 pt-[76px] pb-6 sm:px-4 lg:pt-[88px] lg:pb-8">
+    <section className="bg-white px-3 pt-[76px] pb-6 sm:px-4 lg:pt-[88px] lg:pb-8">
       <div className="grid grid-cols-1 items-stretch gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Слева — большое фото на всю высоту блока */}
         <div className="relative min-h-[300px] overflow-hidden rounded-[30px] lg:min-h-[560px]">
@@ -94,7 +94,7 @@ export default function CooperationFormats() {
           {FORMATS.map((f) => (
             <article
               key={f.title.ru}
-              className="flex min-h-[240px] flex-col justify-between rounded-[30px] border border-white/60 bg-white/40 p-6 shadow-[0_16px_44px_rgba(23,25,26,0.07)] backdrop-blur-xl lg:min-h-0 lg:p-7"
+              className="flex min-h-[240px] flex-col justify-between rounded-[30px] border border-[#6E7248]/20 bg-white p-6 lg:min-h-0 lg:p-7"
             >
               <h3 className="max-w-[18ch] text-[17px] font-semibold leading-[1.2] text-[#444] lg:text-[19px]">
                 {f.title[lang]}
