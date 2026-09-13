@@ -242,21 +242,28 @@ export default function ConciergeChat() {
         </div>
       )}
 
-      {/* Плавающая кнопка */}
-      <button
-        onClick={() => setOpen((v) => !v)}
-        aria-label={t("Открыть чат", "Open chat")}
-        className="pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full bg-[#6E7248] text-[#f4efe6] shadow-[0_10px_30px_rgba(59,13,26,0.4)] transition-transform hover:scale-105"
-      >
-        {open ? (
+      {/* Лаунчер: в закрытом виде — плашка-приглашение, в открытом — крестик */}
+      {open ? (
+        <button
+          onClick={() => setOpen(false)}
+          aria-label={t("Закрыть чат", "Close chat")}
+          className="pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#6E7248] text-[#f4efe6] shadow-[0_10px_30px_rgba(59,13,26,0.4)] transition-transform hover:scale-105"
+        >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /></svg>
-        ) : (
-          <>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            <span className="absolute right-0 top-0 h-3.5 w-3.5 rounded-full border-2 border-white bg-[#4ade80]" />
-          </>
-        )}
-      </button>
+        </button>
+      ) : (
+        <button
+          onClick={() => setOpen(true)}
+          aria-label={t("Открыть чат", "Open chat")}
+          className="pointer-events-auto flex items-center gap-2.5 rounded-full bg-[#6E7248] py-3.5 pl-5 pr-6 text-[14px] font-medium text-[#f4efe6] shadow-[0_10px_30px_rgba(59,13,26,0.4)] transition-transform hover:scale-[1.03]"
+        >
+          <span className="relative flex h-6 w-6 shrink-0 items-center justify-center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#6E7248] bg-[#4ade80]" />
+          </span>
+          {t("Напишите нам, мы онлайн!", "Message us, we're online!")}
+        </button>
+      )}
     </div>
   );
 }
