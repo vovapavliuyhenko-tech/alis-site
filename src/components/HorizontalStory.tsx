@@ -145,7 +145,7 @@ export default function HorizontalStory({
                   <span className="text-[12px] uppercase tracking-[0.3em] text-[#6E7248]">
                     {lang === "en" ? "Step" : "Этап"} 0{i + 1}
                   </span>
-                  <h3 className="mt-6 font-display text-[34px] uppercase leading-[1.06] tracking-[0.04em] text-[#17191a] md:mt-10 md:text-[3.4vw]">
+                  <h3 className="mt-6 font-display text-[22px] uppercase leading-[1.1] tracking-[0.04em] text-[#17191a] md:mt-8 md:text-[28px]">
                     {(() => {
                       const w = s.heading[lang].split(" ");
                       const cut = Math.max(1, w.length - 2);
@@ -157,6 +157,9 @@ export default function HorizontalStory({
                       );
                     })()}
                   </h3>
+                  <p className="mt-5 max-w-md text-[13px] leading-relaxed text-[#17191a]/65 md:mt-6 md:text-[14px]">
+                    {s.desc[lang]}
+                  </p>
                 </div>
                 <div className="mt-10 md:mt-0">
                   <Flourish />
@@ -176,14 +179,6 @@ export default function HorizontalStory({
                   decoding="async"
                   className="absolute inset-3 h-[calc(100%-1.5rem)] w-[calc(100%-1.5rem)] rounded-[24px] object-cover md:inset-4 md:h-[calc(100%-2rem)] md:w-[calc(100%-2rem)]"
                 />
-                <div className="absolute inset-x-[6%] bottom-[6%] rounded-[18px] bg-white/95 px-6 py-6 text-center backdrop-blur-sm md:px-10 md:py-8">
-                  <p className="font-serif text-[24px] uppercase tracking-[0.15em] text-[#6E7248] md:text-[30px]">
-                    {s.name[lang]}
-                  </p>
-                  <p className="mx-auto mt-3 max-w-md text-[13px] leading-relaxed text-[#17191a]/70 md:text-[14px]">
-                    {s.desc[lang]}
-                  </p>
-                </div>
               </div>
             </article>
           ))}
