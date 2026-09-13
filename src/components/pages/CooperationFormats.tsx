@@ -84,7 +84,7 @@ export default function CooperationFormats() {
     <section className="bg-white px-3 pt-[76px] pb-6 sm:px-4 lg:pt-[88px] lg:pb-8">
       <div className="grid grid-cols-1 items-stretch gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Слева — большое фото на всю высоту блока */}
-        <div className="relative min-h-[320px] overflow-hidden rounded-[30px] lg:min-h-[680px]">
+        <div className="relative min-h-[300px] overflow-hidden rounded-[30px] lg:min-h-[560px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={PHOTO} alt="" loading="eager" decoding="async" draggable={false} className="absolute inset-0 h-full w-full object-cover" />
         </div>
@@ -94,12 +94,12 @@ export default function CooperationFormats() {
           {FORMATS.map((f) => (
             <article
               key={f.title.ru}
-              className="flex min-h-[300px] flex-col justify-between rounded-[30px] bg-[#EAEAE4] p-7 lg:min-h-0 lg:p-9"
+              className="flex min-h-[240px] flex-col justify-between rounded-[30px] bg-[#EAEAE4] p-6 lg:min-h-0 lg:p-7"
             >
-              <h3 className="max-w-[18ch] text-[18px] font-semibold leading-[1.2] text-[#444] lg:text-[20px]">
+              <h3 className="max-w-[18ch] text-[17px] font-semibold leading-[1.2] text-[#444] lg:text-[19px]">
                 {f.title[lang]}
               </h3>
-              <span aria-hidden className="my-6 block">{f.icon}</span>
+              <span aria-hidden className="my-3 block">{f.icon}</span>
               <p className="text-[14px] leading-relaxed text-[#444]/75 lg:text-[15px]">
                 {f.desc[lang]}
               </p>

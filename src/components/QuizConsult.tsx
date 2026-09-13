@@ -119,7 +119,7 @@ export default function QuizConsult() {
             <span className="h-1.5 w-1.5 rounded-full bg-[#6E7248]" />
             {t("бесплатная консультация", "free consultation")}
           </span>
-          <h2 className="mt-5 font-display text-[24px] uppercase tracking-[0.06em] leading-[1.12] text-[#2a2320] lg:text-[36px]">
+          <h2 className="mt-5 font-display text-[22px] uppercase tracking-[0.06em] leading-[1.2] text-[#2a2320] lg:text-[28px]">
             {t("Подберём выезд", "We'll tailor your outcall")}{" "}
             <span className="text-[#6E7248]">{t("за 1 минуту", "in 1 minute")}</span>
           </h2>

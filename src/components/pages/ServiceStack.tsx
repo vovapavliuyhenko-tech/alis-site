@@ -127,7 +127,7 @@ export default function ServiceStack({
             <span className="h-1.5 w-1.5 rounded-full bg-[#6E7248]" />
             {eyebrow[lang]}
           </span>
-          <h2 className="mt-5 font-display text-[26px] font-normal uppercase leading-[1.1] tracking-[0.03em] text-[#6E7248] lg:text-[40px]">
+          <h2 className="mt-5 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.03em] text-[#6E7248] lg:text-[28px]">
             {title[lang]}
           </h2>
         </div>
