@@ -94,11 +94,11 @@ export default function LoyaltyCerts() {
               <span className="transition-transform duration-300 group-hover:rotate-45">↗</span>
             </span>
             <div className="absolute inset-x-6 bottom-6">
-              <p className="text-[11px] uppercase tracking-[0.2em] text-white/70">{t("подарок", "a gift")}</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-white/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">{t("подарок", "a gift")}</p>
               <h3 className="mt-2 font-display text-[22px] uppercase leading-[1.15] tracking-[0.02em] text-white lg:text-[26px]">
                 {t("Подарочный сертификат ÁLIS", "ÁLIS gift certificate")}
               </h3>
-              <p className="mt-2 max-w-md text-[13px] leading-relaxed text-white/80">
+              <p className="mt-2 max-w-md text-[13px] leading-relaxed text-white/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 {t(
                   "Любая услуга или сумма. Лучший способ подарить заботу — и точно не промахнуться.",
                   "Any service or amount. The best way to gift care — and never miss.",
