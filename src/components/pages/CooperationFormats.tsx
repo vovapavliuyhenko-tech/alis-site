@@ -82,6 +82,14 @@ export default function CooperationFormats() {
 
   return (
     <section className="bg-white section-y">
+      <div className="mx-auto mb-12 w-[92%] max-w-[1280px] text-center lg:mb-16">
+        <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
+          {lang === "en" ? "formats" : "форматы"}
+        </p>
+        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
+          {lang === "en" ? "Ways to partner with us" : "Как с нами сотрудничать"}
+        </h2>
+      </div>
       <div className="mx-auto grid w-[92%] max-w-[1280px] grid-cols-1 items-stretch gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Слева — большое фото на всю высоту блока */}
         <div className="relative min-h-[300px] overflow-hidden rounded-[30px] lg:min-h-[560px]">
