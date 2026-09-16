@@ -36,7 +36,7 @@ export default function ContactsBlock() {
   ];
 
   return (
-    <section className="bg-[#F9F8F6] px-3 pt-28 pb-16 sm:px-4 lg:pt-36 lg:pb-20">
+    <section className="bg-[#F9F8F6] px-3 pt-28 pb-12 sm:px-4 lg:pt-36 lg:pb-[60px]">
       {/* Слева реквизиты и кнопки, справа карта — одна скруглённая панель */}
       <div className="overflow-hidden rounded-[30px] border border-[#46131E]/15 bg-white lg:grid lg:grid-cols-2">
         {/* Левая колонка */}

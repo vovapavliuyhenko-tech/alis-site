@@ -23,7 +23,7 @@ export default function ConciergeStages({
 
   return (
     <section id={sectionId} className="relative scroll-mt-24 bg-[#F9F8F6]">
-      <div className="r-reveal mx-auto w-[92%] max-w-[1280px] pt-16 pb-12 text-center lg:pt-24 lg:pb-16">
+      <div className="r-reveal mx-auto w-[92%] max-w-[1280px] pt-12 pb-12 text-center lg:pt-[60px] lg:pb-16">
         <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">{eyebrow[lang]}</p>
         <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
           {title[lang]}
