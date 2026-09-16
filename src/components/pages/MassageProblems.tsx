@@ -51,10 +51,10 @@ const ITEMS: Item[] = [
 function Capsule({ item, lang }: { item: Item; lang: "ru" | "en" }) {
   return (
     <div
-      className="group relative flex min-h-[176px] w-full max-w-[515px] flex-col justify-between rounded-[34px] border border-transparent bg-[#46131E] px-10 py-9 text-center transition-colors duration-300 hover:border-[#46131E]/35 hover:bg-white sm:px-16 lg:min-h-[200px] lg:px-[74px]"
+      className="group relative flex min-h-[176px] w-full max-w-[515px] flex-col justify-between rounded-[34px] border border-[#46131E]/35 bg-white px-10 py-9 text-center transition-colors duration-300 hover:border-transparent hover:bg-[#46131E] sm:px-16 lg:min-h-[200px] lg:px-[74px]"
     >
-      <h3 className="mx-auto max-w-[300px] text-[16px] font-semibold leading-[1.25] text-[#f4efe6] transition-colors duration-300 group-hover:text-[#46131E] lg:text-[17px]">{item.title[lang]}</h3>
-      <p className="mx-auto mt-4 max-w-[330px] text-[12.5px] leading-[1.45] text-[#f4efe6]/80 transition-colors duration-300 group-hover:text-[#46131E]/70">{item.desc[lang]}</p>
+      <h3 className="mx-auto max-w-[300px] text-[16px] font-semibold leading-[1.25] text-[#46131E] transition-colors duration-300 group-hover:text-[#f4efe6] lg:text-[17px]">{item.title[lang]}</h3>
+      <p className="mx-auto mt-4 max-w-[330px] text-[12.5px] leading-[1.45] text-[#46131E]/70 transition-colors duration-300 group-hover:text-[#f4efe6]/80">{item.desc[lang]}</p>
     </div>
   );
 }
@@ -66,7 +66,7 @@ export default function MassageProblems() {
   const right = ITEMS.filter((_, i) => i % 2 === 1); // 02, 04
 
   return (
-    <section id="problems" className="bg-[#F9F8F6] section-y">
+    <section id="problems" className="bg-white section-y">
       <div className="mx-auto w-[94%] max-w-[1400px]">
         {/* Заголовок секции */}
         <div className="r-reveal text-center">
