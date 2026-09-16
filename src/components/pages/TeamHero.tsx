@@ -33,7 +33,7 @@ export default function TeamHero({
   const en = lang === "en";
 
   const Photo = (
-    <div className="relative hidden overflow-hidden rounded-[26px] border border-[#6E7248]/10 shadow-[0_14px_44px_rgba(23,25,26,0.10)] lg:block">
+    <div className="relative hidden overflow-hidden rounded-[26px] border border-[#722F37]/10 shadow-[0_14px_44px_rgba(23,25,26,0.10)] lg:block">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={photo} alt="" draggable={false} loading={pinned ? "eager" : "lazy"} decoding="async" className="absolute inset-0 h-full w-full object-cover" />
     </div>
@@ -41,7 +41,7 @@ export default function TeamHero({
 
   const Panel = (
     <div
-      className={`relative flex h-full flex-col items-center justify-between overflow-hidden rounded-[26px] border border-[#6E7248]/10 bg-white px-8 text-center shadow-[0_14px_44px_rgba(23,25,26,0.10)] lg:px-14 ${
+      className={`relative flex h-full flex-col items-center justify-between overflow-hidden rounded-[26px] border border-[#722F37]/10 bg-white px-8 text-center shadow-[0_14px_44px_rgba(23,25,26,0.10)] lg:px-14 ${
         logo
           ? "pt-14 pb-14 lg:pt-16 lg:pb-16" // 1-й блок: лого сверху и снизу
           : "pt-14 pb-10 lg:pt-16 lg:pb-12" // 2-й блок: кнопка ниже
@@ -51,14 +51,14 @@ export default function TeamHero({
       {logoTop ? (
         <LogoLockup variant="wine" className="scale-[0.6]" />
       ) : (
-        <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#6E7248]">
+        <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#722F37]">
           {eyebrow[lang]}
         </span>
       )}
 
       {/* Середина — крупный заголовок + текст */}
       <div className="flex flex-col items-center">
-        <h2 className="max-w-[15ch] font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
+        <h2 className="max-w-[15ch] font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#722F37] lg:text-[28px]">
           {title[lang]}
         </h2>
         <p className="mt-6 max-w-md text-[13px] leading-relaxed text-[#2a2320]/70 sm:text-[14px]">
@@ -72,7 +72,7 @@ export default function TeamHero({
       ) : (
         <a
           href={cta.href}
-          className="flex w-full items-center justify-center rounded-2xl border border-[#6E7248] bg-[#6E7248] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#6E7248] sm:text-[14px]"
+          className="flex w-full items-center justify-center rounded-2xl border border-[#722F37] bg-[#722F37] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#722F37] sm:text-[14px]"
         >
           {en ? cta.label.en : cta.label.ru}
         </a>

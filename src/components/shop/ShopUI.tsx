@@ -69,14 +69,14 @@ export default function ShopUI() {
                     <div className="flex min-w-0 flex-1 flex-col">
                       <div className="flex items-start justify-between gap-3">
                         <span className="text-[14px] font-medium text-[#2a2320]">{p.name[lang]}</span>
-                        <button onClick={() => s.remove(it.id)} aria-label={t("Удалить", "Remove")} className="text-[#2a2320]/40 transition-colors hover:text-[#6E7248]"><IconClose /></button>
+                        <button onClick={() => s.remove(it.id)} aria-label={t("Удалить", "Remove")} className="text-[#2a2320]/40 transition-colors hover:text-[#722F37]"><IconClose /></button>
                       </div>
-                      <span className="mt-1 text-[13px] text-[#6E7248]">{fmtPrice(p.price, en)}</span>
+                      <span className="mt-1 text-[13px] text-[#722F37]">{fmtPrice(p.price, en)}</span>
                       <div className="mt-auto flex items-center gap-3">
-                        <div className="flex items-center rounded-full border border-[#6E7248]/25">
-                          <button onClick={() => s.setQty(it.id, it.qty - 1)} className="flex h-8 w-8 items-center justify-center text-[#6E7248]">−</button>
+                        <div className="flex items-center rounded-full border border-[#722F37]/25">
+                          <button onClick={() => s.setQty(it.id, it.qty - 1)} className="flex h-8 w-8 items-center justify-center text-[#722F37]">−</button>
                           <span className="w-6 text-center text-[13px] tabular-nums text-[#2a2320]">{it.qty}</span>
-                          <button onClick={() => s.setQty(it.id, it.qty + 1)} className="flex h-8 w-8 items-center justify-center text-[#6E7248]">+</button>
+                          <button onClick={() => s.setQty(it.id, it.qty + 1)} className="flex h-8 w-8 items-center justify-center text-[#722F37]">+</button>
                         </div>
                       </div>
                     </div>
@@ -84,7 +84,7 @@ export default function ShopUI() {
                 );
               })}
             </div>
-            <div className="border-t border-[#6E7248]/15 pt-5">
+            <div className="border-t border-[#722F37]/15 pt-5">
               <div className="flex items-center justify-between">
                 <span className="text-[13px] uppercase tracking-[0.14em] text-[#2a2320]/60">{t("Итого", "Total")}</span>
                 <span className="font-display text-[22px] text-[#2a2320]">{fmtPrice(s.cartTotal, en)}</span>
@@ -93,7 +93,7 @@ export default function ShopUI() {
                 href={whatsappHref()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 flex w-full items-center justify-center rounded-2xl border border-[#6E7248] bg-[#6E7248] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#6E7248]"
+                className="mt-5 flex w-full items-center justify-center rounded-2xl border border-[#722F37] bg-[#722F37] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#722F37]"
               >
                 {t("Оформить в WhatsApp", "Order via WhatsApp")}
               </a>
@@ -120,13 +120,13 @@ export default function ShopUI() {
                   <img src={p.img} alt="" className="h-20 w-16 shrink-0 rounded-[12px] object-cover" />
                   <div className="flex min-w-0 flex-1 flex-col">
                     <div className="flex items-start justify-between gap-3">
-                      <Link href={`/product/${id}`} onClick={s.closeAll} className="text-left text-[14px] font-medium text-[#2a2320] hover:text-[#6E7248]">{p.name[lang]}</Link>
-                      <button onClick={() => s.toggleFav(id)} aria-label={t("Убрать", "Remove")} className="text-[#6E7248]"><IconHeart filled /></button>
+                      <Link href={`/product/${id}`} onClick={s.closeAll} className="text-left text-[14px] font-medium text-[#2a2320] hover:text-[#722F37]">{p.name[lang]}</Link>
+                      <button onClick={() => s.toggleFav(id)} aria-label={t("Убрать", "Remove")} className="text-[#722F37]"><IconHeart filled /></button>
                     </div>
-                    <span className="mt-1 text-[13px] text-[#6E7248]">{fmtPrice(p.price, en)}</span>
+                    <span className="mt-1 text-[13px] text-[#722F37]">{fmtPrice(p.price, en)}</span>
                     <button
                       onClick={() => { s.add(id); s.openCart(); }}
-                      className="mt-auto w-fit rounded-full border border-[#6E7248]/40 px-4 py-1.5 text-[11px] uppercase tracking-[0.1em] text-[#6E7248] transition-colors hover:border-[#6E7248] hover:bg-[#6E7248] hover:text-[#f4efe6]"
+                      className="mt-auto w-fit rounded-full border border-[#722F37]/40 px-4 py-1.5 text-[11px] uppercase tracking-[0.1em] text-[#722F37] transition-colors hover:border-[#722F37] hover:bg-[#722F37] hover:text-[#f4efe6]"
                     >
                       {t("В корзину", "Add to cart")}
                     </button>
@@ -148,9 +148,9 @@ function Drawer({ open, onClose, title, children }: { open: boolean; onClose: ()
         open ? "translate-x-0" : "translate-x-full"
       }`}
     >
-      <div className="flex items-center justify-between border-b border-[#6E7248]/15 px-6 py-5">
-        <span className="font-display text-[16px] uppercase tracking-[0.14em] text-[#6E7248]">{title}</span>
-        <button onClick={onClose} aria-label="close" className="flex h-9 w-9 items-center justify-center rounded-full text-[#2a2320] transition-colors hover:bg-[#6E7248]/10">
+      <div className="flex items-center justify-between border-b border-[#722F37]/15 px-6 py-5">
+        <span className="font-display text-[16px] uppercase tracking-[0.14em] text-[#722F37]">{title}</span>
+        <button onClick={onClose} aria-label="close" className="flex h-9 w-9 items-center justify-center rounded-full text-[#2a2320] transition-colors hover:bg-[#722F37]/10">
           <IconClose />
         </button>
       </div>

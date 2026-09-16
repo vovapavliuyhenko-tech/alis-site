@@ -64,9 +64,9 @@ export default function ConciergeOffer() {
     <section id="offer" className="scroll-mt-24 bg-white px-3 py-16 sm:px-4 lg:py-24">
       <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая колонка — оффер */}
-        <div className="flex flex-col justify-center rounded-[28px] border border-[#6E7248]/15 bg-[#F9F8F6] p-8 lg:p-12">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-[#6E7248]">{t("коммерческое предложение", "our proposal")}</p>
-          <h2 className="mt-5 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
+        <div className="flex flex-col justify-center rounded-[28px] border border-[#722F37]/15 bg-[#F9F8F6] p-8 lg:p-12">
+          <p className="text-[11px] uppercase tracking-[0.24em] text-[#722F37]">{t("коммерческое предложение", "our proposal")}</p>
+          <h2 className="mt-5 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#722F37] lg:text-[28px]">
             {t("Бьюти-консьерж под ключ", "Beauty concierge, turnkey")}
           </h2>
           <p className="mt-5 max-w-md text-[13px] leading-relaxed text-[#2a2320]/60 lg:text-[14px]">
@@ -76,11 +76,11 @@ export default function ConciergeOffer() {
             )}
           </p>
 
-          <p className="mt-9 text-[10px] uppercase tracking-[0.2em] text-[#6E7248]/50">{t("что входит", "what's included")}</p>
+          <p className="mt-9 text-[10px] uppercase tracking-[0.2em] text-[#722F37]/50">{t("что входит", "what's included")}</p>
           <ul className="mt-2 flex flex-col">
             {INCLUDED.map((it, i) => (
-              <li key={it.ru} className={`flex items-center gap-4 py-4 ${i > 0 ? "border-t border-[#6E7248]/12" : ""}`}>
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#6E7248] text-[#f4efe6]">
+              <li key={it.ru} className={`flex items-center gap-4 py-4 ${i > 0 ? "border-t border-[#722F37]/12" : ""}`}>
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#722F37] text-[#f4efe6]">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
                     <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -94,7 +94,7 @@ export default function ConciergeOffer() {
         </div>
 
         {/* Правая колонка — форма заявки */}
-        <div id="booking" className="scroll-mt-24 flex flex-col rounded-[28px] bg-[#6E7248] px-6 py-12 text-[#f4efe6] sm:px-10 lg:px-14 lg:py-16">
+        <div id="booking" className="scroll-mt-24 flex flex-col rounded-[28px] bg-[#722F37] px-6 py-12 text-[#f4efe6] sm:px-10 lg:px-14 lg:py-16">
           {sent ? (
             <div className="flex flex-1 flex-col justify-center gap-8 text-center">
               <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#8a5a3c] font-display text-[22px]">✓</span>
@@ -147,7 +147,7 @@ export default function ConciergeOffer() {
                 </label>
               </div>
 
-              <button type="submit" className="mx-auto flex w-full max-w-lg items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#6E7248] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]">
+              <button type="submit" className="mx-auto flex w-full max-w-lg items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#722F37] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]">
                 {t("Оставить заявку", "Leave a request")}
               </button>
             </form>

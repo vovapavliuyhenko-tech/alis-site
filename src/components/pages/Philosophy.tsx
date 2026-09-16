@@ -39,7 +39,7 @@ export default function Philosophy() {
 
         <a
           href="/concierge"
-          className="r-reveal mt-8 inline-flex items-center justify-center gap-2 rounded-xl border border-transparent bg-[#6E7248] px-12 py-4 text-[12px] font-medium uppercase tracking-[0.08em] text-[#F4F1EA] transition-all duration-300 hover:border-white/40 hover:bg-white/15 hover:backdrop-blur-md sm:text-[13px]"
+          className="r-reveal mt-8 inline-flex items-center justify-center gap-2 rounded-xl border border-transparent bg-[#722F37] px-12 py-4 text-[12px] font-medium uppercase tracking-[0.08em] text-[#F4F1EA] transition-all duration-300 hover:border-white/40 hover:bg-white/15 hover:backdrop-blur-md sm:text-[13px]"
         >
           {en ? "about the concierge" : "о бьюти-консьерже"}
           <span aria-hidden>→</span>
