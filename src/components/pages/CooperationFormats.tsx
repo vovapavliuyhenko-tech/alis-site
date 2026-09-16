@@ -45,34 +45,34 @@ const IconBloggers = (
 const FORMATS: Format[] = [
   {
     icon: IconEvents,
-    title: { ru: "Гости готовы к кадру — без очередей", en: "Guests camera-ready — no queues" },
+    title: { ru: "Бьюти-команда приезжает к вам", en: "The beauty team comes to you" },
     desc: {
-      ru: "Привозим бьюти-команду к вам. Волосы, макияж, ногти — в 4–6 рук, параллельно. Все собраны точно к началу.",
-      en: "We bring the beauty team to you. Hair, makeup, nails — in 4–6 hands, in parallel. Everyone ready right on time.",
-    },
-  },
-  {
-    icon: IconBrands,
-    title: { ru: "Ваш бренд — в руках тех, кто платит за красоту", en: "Your brand in the hands of people who pay for beauty" },
-    desc: {
-      ru: "Даём вашей косметике живой контакт с гостями и мастерами. Тесты, честные отзывы, контент. Аудитория, которая уже покупает уход.",
-      en: "We put your cosmetics in real contact with guests and masters. Tests, honest reviews, content. An audience that already buys care.",
+      ru: "Волосы, макияж и ногти — в 4–6 рук на вашей площадке. Никуда не едете и ничего не организуете — просто открываете дверь.",
+      en: "Hair, makeup and nails — in 4–6 hands at your place. No travel, no logistics — you just open the door.",
     },
   },
   {
     icon: IconVenues,
-    title: { ru: "Бьюти под ключ — забота с ваших плеч", en: "Beauty turnkey — off your plate" },
+    title: { ru: "Готовы точно к сроку", en: "Ready right on time" },
     desc: {
-      ru: "Отель, ресторан, event-агентство? Берём весь бьюти-блок на себя. Вы отвечаете за событие — мы за то, как выглядят гости.",
-      en: "Hotel, restaurant, event agency? We take the whole beauty block. You own the event — we own how the guests look.",
+      ru: "Работаем строго по таймингу события. К выходу, съёмке или свадьбе все собраны минута в минуту — без спешки и нервов.",
+      en: "We work strictly to your event timing. For the exit, shoot or wedding — everyone ready to the minute, calm and unhurried.",
     },
   },
   {
     icon: IconBloggers,
-    title: { ru: "Партнёрство в долгую, не разовый бартер", en: "A long-term partnership, not a one-off barter" },
+    title: { ru: "Единый образ для всех", en: "One look for everyone" },
     desc: {
-      ru: "Работаем с теми, кто разделяет наши ценности. Реальный сервис вместо галочки. Растём вместе: вы — в контенте, мы — в доверии.",
-      en: "We work with those who share our values. Real service, not a checkbox. We grow together: you in content, us in trust.",
+      ru: "Невеста, подруги, гости — в одном стиле и настроении. Образ собран целиком и смотрится красиво и вживую, и в кадре.",
+      en: "Bride, friends, guests — one style and mood. The whole look comes together and reads beautifully in life and on camera.",
+    },
+  },
+  {
+    icon: IconBrands,
+    title: { ru: "Салонный уровень на выезде", en: "Salon-level, on location" },
+    desc: {
+      ru: "Своё оборудование и профессиональная косметика. Дома, в отеле или на площадке — как в кресле у мастера, и −10% на первый выезд.",
+      en: "Own equipment and professional cosmetics. At home, in a hotel or on set — like in the master's chair, and −10% on your first booking.",
     },
   },
 ];
@@ -84,10 +84,10 @@ export default function CooperationFormats() {
     <section className="bg-white section-y">
       <div className="mx-auto mb-12 w-[92%] max-w-[1280px] text-center lg:mb-16">
         <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
-          {lang === "en" ? "formats" : "форматы"}
+          {lang === "en" ? "beauty concierge" : "бьюти-консьерж"}
         </p>
         <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
-          {lang === "en" ? "Ways to partner with us" : "Как с нами сотрудничать"}
+          {lang === "en" ? "Why our beauty concierge" : "Чем хорош наш бьюти-консьерж"}
         </h2>
       </div>
       <div className="mx-auto grid w-[92%] max-w-[1280px] grid-cols-1 items-stretch gap-3 sm:gap-4 lg:grid-cols-2">
