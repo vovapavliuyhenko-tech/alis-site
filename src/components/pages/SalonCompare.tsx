@@ -50,9 +50,12 @@ export default function SalonCompare() {
       raf = requestAnimationFrame(() => {
         const el = gridRef.current;
         if (!el) return;
-        const top = el.getBoundingClientRect().top;
+        const rect = el.getBoundingClientRect();
         const vh = window.innerHeight;
-        const p = (vh - top) / (vh * 0.6);
+        // Эффект стартует, когда СЕРЕДИНА блока дошла до середины экрана,
+        // и завершается, пока она поднимается к верхней трети.
+        const center = rect.top + rect.height / 2;
+        const p = (vh * 0.5 - center) / (vh * 0.35);
         setK(Math.max(0, Math.min(1, p)));
       });
     };
