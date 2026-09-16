@@ -30,11 +30,10 @@ export default function LoyaltyCerts() {
     <section className="bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#46131E]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#46131E]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#46131E]" />
+          <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
             {t("лояльность и подарки", "loyalty & gifts")}
-          </span>
-          <h2 className="mt-5 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.03em] text-[#46131E] lg:text-[28px]">
+          </p>
+          <h2 className="mt-3 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
             {t("Возвращаться — выгодно", "Coming back pays off")}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-[13px] leading-relaxed text-[#2a2320]/60 lg:text-[14px]">

@@ -114,7 +114,7 @@ export default function Faq({
       <div className="mx-auto grid w-[92%] max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         {/* Левая колонка — заголовок рядом с фото, зафиксирована */}
         <div className="lg:sticky lg:top-24 lg:self-start">
-          <h2 className="r-reveal font-serif-display text-[22px] font-normal uppercase leading-[1.15] tracking-[0.02em] text-[#46131E] sm:text-[26px] lg:text-[28px]">
+          <h2 className="r-reveal font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
             {titleTop[lang]}
             <br />
             {titleBottom[lang]}

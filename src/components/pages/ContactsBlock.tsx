@@ -41,14 +41,10 @@ export default function ContactsBlock() {
       <div className="overflow-hidden rounded-[30px] border border-[#46131E]/15 bg-white lg:grid lg:grid-cols-2">
         {/* Левая колонка */}
         <div className="flex flex-col p-8 lg:p-12">
-          <p className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-[#46131E]">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-4 w-4">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M8 12h8M12 8v8" strokeLinecap="round" />
-            </svg>
+          <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
             {t("контакты", "contacts")}
           </p>
-          <h2 className="mt-5 font-display text-[28px] font-normal uppercase leading-[1.05] tracking-[0.01em] text-[#46131E] sm:text-[36px] lg:text-[46px]">
+          <h2 className="mt-3 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
             {t("Как нас найти", "How to find us")}
           </h2>
 

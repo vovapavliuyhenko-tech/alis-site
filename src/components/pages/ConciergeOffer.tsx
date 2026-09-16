@@ -65,8 +65,8 @@ export default function ConciergeOffer() {
       <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая колонка — оффер */}
         <div className="flex flex-col justify-center rounded-[28px] border border-[#46131E]/15 bg-[#F9F8F6] p-8 lg:p-12">
-          <p className="text-[11px] uppercase tracking-[0.24em] text-[#46131E]">{t("коммерческое предложение", "our proposal")}</p>
-          <h2 className="mt-5 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
+          <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">{t("коммерческое предложение", "our proposal")}</p>
+          <h2 className="mt-3 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
             {t("Бьюти-консьерж под ключ", "Beauty concierge, turnkey")}
           </h2>
           <p className="mt-5 max-w-md text-[13px] leading-relaxed text-[#2a2320]/60 lg:text-[14px]">

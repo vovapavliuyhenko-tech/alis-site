@@ -196,11 +196,10 @@ export default function Reviews() {
       <div className="mx-auto w-[92%] max-w-[1200px]">
         {/* Заголовок */}
         <div className="mb-14 flex flex-col items-center text-center lg:mb-20">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#46131E]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#46131E]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#46131E]" />
-            {lang === "en" ? "Reviews" : "Отзывы"}
-          </span>
-          <h2 className="mt-5 font-display text-[22px] font-normal uppercase tracking-[0.04em] leading-[1.2] text-[#46131E] lg:text-[28px]">
+          <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
+            {lang === "en" ? "reviews" : "отзывы"}
+          </p>
+          <h2 className="mt-3 font-display text-[22px] font-normal uppercase tracking-[0.02em] leading-[1.2] text-[#46131E] lg:text-[28px]">
             {lang === "en" ? "What our " : "Что говорят "}
             <span className="text-[#46131E]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
           </h2>

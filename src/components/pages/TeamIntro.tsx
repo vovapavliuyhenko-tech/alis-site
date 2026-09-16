@@ -1,19 +1,28 @@
 "use client";
-// ГЕРОЙ страницы «Команда» — как главный экран PALOMA (Tilda «Zoom cover»):
-// секция высокая, внутри — ЗАЛИПАЮЩИЙ (sticky) экран с фоном, логотипом и кнопкой.
-// Пока прокручиваешь высоту секции, фон стоит, а логотип опускается вниз,
-// увеличивается «во всю» и растворяется. Снизу — бордовая кнопка (hover-стекло).
+// ГЕРОЙ-обложка (как главный экран PALOMA / Tilda «Zoom cover»): секция высокая,
+// внутри — ЗАЛИПАЮЩИЙ (sticky) экран с фоном, логотипом и кнопкой. Пока
+// прокручиваешь высоту секции, фон стоит, а логотип опускается вниз, увеличивается
+// «во всю» и растворяется. Над логотипом — подпись (команда / салон / консьерж).
+// Переиспользуется на страницах «Команда», «Салон», «Бьюти-консьерж».
 import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { LogoLockup } from "@/components/Logo";
 
-// Фото — заменить на съёмку/видео команды. object-cover, тянется на весь экран.
-const BG_PHOTO = "/assets/alis/img_6009.jpg";
+type Loc = { ru: string; en: string };
 
-export default function TeamIntro() {
+// Фото — заменить на съёмку/видео. object-cover, тянется на весь экран.
+const DEFAULT_PHOTO = "/assets/alis/img_6009.jpg";
+
+export default function TeamIntro({
+  caption = { ru: "команда", en: "team" },
+  cta = { label: { ru: "Смотреть вакансии", en: "See vacancies" }, href: "#vacancies" },
+  photo = DEFAULT_PHOTO,
+}: {
+  caption?: Loc;
+  cta?: { label: Loc; href: string };
+  photo?: string;
+}) {
   const { lang } = useLang();
-  const en = lang === "en";
-  const t = (ru: string, e: string) => (en ? e : ru);
 
   const secRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLImageElement>(null);
@@ -57,7 +66,7 @@ export default function TeamIntro() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           ref={bgRef}
-          src={BG_PHOTO}
+          src={photo}
           alt=""
           aria-hidden
           className="absolute inset-0 -z-20 h-full w-full origin-center object-cover object-center will-change-transform"
@@ -72,11 +81,11 @@ export default function TeamIntro() {
           }}
         />
 
-        {/* Центр — логотип ÁLIS BEAUTY с надписью «команда» сверху */}
+        {/* Центр — логотип ÁLIS BEAUTY с подписью сверху */}
         <div className="flex flex-1 items-center justify-center px-4 text-center">
           <div ref={logoRef} className="origin-center flex flex-col items-center will-change-transform">
             <span className="mb-6 text-[11px] font-light uppercase tracking-[0.4em] text-white/90 lg:mb-8">
-              {t("команда", "team")}
+              {caption[lang]}
             </span>
             <LogoLockup variant="cream" className="brightness-0 invert drop-shadow-[0_2px_40px_rgba(0,0,0,.25)]" />
           </div>
@@ -85,10 +94,10 @@ export default function TeamIntro() {
         {/* Низ — широкая бордовая кнопка-пилюля; hover — матовое стекло, как на главной */}
         <div className="px-4 pb-4 lg:px-5 lg:pb-5">
           <a
-            href="#vacancies"
+            href={cta.href}
             className="flex w-full items-center justify-center gap-2 rounded-2xl border border-transparent bg-[#46131E] px-8 py-5 text-[13px] font-medium uppercase tracking-[0.14em] text-[#F4F1EA] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md lg:text-[14px]"
           >
-            {t("Смотреть вакансии", "See vacancies")}
+            {cta.label[lang]}
             <span aria-hidden>→</span>
           </a>
         </div>
