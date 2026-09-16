@@ -73,6 +73,14 @@ export default function SalonCompare() {
   return (
     <section className="bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1280px]">
+        <div className="mb-12 text-center lg:mb-16">
+          <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
+            {lang === "en" ? "compare" : "сравните"}
+          </p>
+          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
+            {lang === "en" ? "Where a master works better" : "Где мастеру работается лучше"}
+          </h2>
+        </div>
         <div ref={gridRef} className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-[0.78fr_1fr_1fr_0.78fr] lg:gap-6">
           {/* Фото слева — наклон наружу (влево) */}
           <div className="hidden lg:block">
