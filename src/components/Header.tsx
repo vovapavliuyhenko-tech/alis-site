@@ -167,14 +167,7 @@ export default function Header() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto grid h-[68px] w-full max-w-[1280px] grid-cols-[1fr_auto_1fr] items-center px-5 sm:px-8">
-        {/* Левая группа (desktop) */}
-        <nav className="hidden items-center gap-8 text-[14px] uppercase tracking-[0.14em] lg:flex">
-          {LEFT.map((item) => (
-            <NavLink key={item.label.ru} item={item} />
-          ))}
-        </nav>
-
+      <div className="relative mx-auto flex h-[68px] w-full max-w-[1400px] items-center px-5 sm:px-8">
         {/* Гамбургер (моб.) — слева */}
         <button
           onClick={() => setOpen((v) => !v)}
@@ -186,20 +179,23 @@ export default function Header() {
           </svg>
         </button>
 
-        {/* Логотип по центру: вензель + надпись */}
-        <a href="/" className="flex items-center gap-2.5 justify-self-center">
+        {/* Логотип: на моб. — по центру, на десктопе — слева */}
+        <a href="/" className="flex shrink-0 items-center gap-2.5 max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2">
           <LogoEmblem variant={overHero ? "cream" : "wine"} className="h-10 w-auto max-w-none shrink-0" />
           <LogoWord variant={overHero ? "cream" : "wine"} className="h-[19px] w-auto max-w-none shrink-0" />
         </a>
 
-        {/* Правая группа (desktop) */}
-        <div className="hidden items-center justify-end gap-8 text-[14px] uppercase tracking-[0.14em] lg:flex">
-          {RIGHT.map((item) => (
+        {/* Навигация (десктоп) — равномерно по центру */}
+        <nav className="ml-10 hidden flex-1 items-center justify-center gap-7 text-[13px] uppercase tracking-[0.13em] lg:flex xl:gap-9">
+          {ALL_NAV.map((item) => (
             <NavLink key={item.label.ru} item={item} />
           ))}
-          {/* Тумблер RU/EN */}
-          <div className={`relative flex items-center rounded-full border p-0.5 text-[12px] font-medium ${overHero ? "border-white/40" : "border-[#6E7248]/25"}`}>
-            {/* бегунок */}
+        </nav>
+
+        {/* Действия справа — язык, избранное, корзина (+ запись на моб.) */}
+        <div className="ml-auto flex items-center gap-3 lg:gap-4">
+          {/* Тумблер RU/EN (десктоп) */}
+          <div className={`relative hidden items-center rounded-full border p-0.5 text-[12px] font-medium lg:flex ${overHero ? "border-white/40" : "border-[#6E7248]/25"}`}>
             <span
               aria-hidden
               className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${overHero ? "bg-white" : "bg-[#6E7248]"}`}
@@ -210,7 +206,7 @@ export default function Header() {
                 key={l}
                 onClick={() => setLang(l)}
                 aria-pressed={lang === l}
-                className={`relative z-10 w-10 rounded-full py-2 uppercase tracking-wide transition-colors duration-300 ${
+                className={`relative z-10 w-9 rounded-full py-2 uppercase tracking-wide transition-colors duration-300 ${
                   lang === l
                     ? overHero ? "text-[#17191a]" : "text-[#f4efe6]"
                     : overHero ? "text-white/70 hover:text-white" : "text-[#6E7248]/60 hover:text-[#6E7248]"
@@ -220,17 +216,15 @@ export default function Header() {
               </button>
             ))}
           </div>
-          <ShopIcons />
-        </div>
 
-        {/* Правый край на моб. — иконки магазина + запись */}
-        <div className="flex items-center justify-self-end lg:hidden">
           <ShopIcons />
+
+          {/* Запись (моб.) */}
           <a
             href={YCLIENTS}
             target="_blank"
             rel="noopener noreferrer"
-            className={`ml-1 text-[12px] uppercase tracking-[0.12em] ${ink}`}
+            className={`ml-1 text-[12px] uppercase tracking-[0.12em] lg:hidden ${ink}`}
           >
             {lang === "en" ? "Book" : "Запись"}
           </a>
