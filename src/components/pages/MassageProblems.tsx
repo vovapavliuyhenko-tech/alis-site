@@ -13,37 +13,37 @@ const ITEMS: Item[] = [
   {
     n: "01",
     filled: true,
-    title: { ru: "Полдня по разным салонам", en: "Half a day across different salons" },
+    title: { ru: "Красота по разным местам", en: "Beauty scattered around town" },
     desc: {
-      ru: "Парикмахер в одном конце города, ногти — в другом, брови — на завтра. День уходит на дорогу, а не на себя.",
-      en: "Hair at one end of town, nails at another, brows tomorrow. The day goes to traffic, not to you.",
+      ru: "Волосы, ногти и брови — в трёх салонах и в разные дни. Много времени и дороги.",
+      en: "Hair, nails and brows — three salons, three different days. Lots of time and travel.",
     },
   },
   {
     n: "02",
     filled: false,
-    title: { ru: "Образ не собирается в одно", en: "The look never comes together" },
+    title: { ru: "Образ не складывается", en: "The look doesn't come together" },
     desc: {
-      ru: "Причёску сделали. Но макияж не в тон, а руки — отдельная история. По кускам красиво. Вместе — нет.",
-      en: "The hair is done. But the makeup is off-tone and the nails are a separate story. Pretty in pieces. Not as a whole.",
+      ru: "Причёска есть, но макияж и руки — вразнобой. По отдельности хорошо, вместе — нет.",
+      en: "The hair is done, but makeup and nails don't match. Nice apart, off as a whole.",
     },
   },
   {
     n: "03",
     filled: true,
-    title: { ru: "Событие близко, а времени нет", en: "The event is close, and there's no time" },
+    title: { ru: "Событие близко, а времени нет", en: "The event is close, no time left" },
     desc: {
-      ru: "Свадьба, съёмка, важный выход. Нужно всё и сразу — а записи к мастерам не стыкуются.",
-      en: "A wedding, a shoot, a big night out. You need it all at once — but the bookings never line up.",
+      ru: "Свадьба или съёмка на носу, а свободные записи к мастерам не совпадают.",
+      en: "A wedding or shoot is near, but free slots with masters never line up.",
     },
   },
   {
     n: "04",
     filled: false,
-    title: { ru: "Стараетесь, а выглядите уставшей", en: "You try, but still look tired" },
+    title: { ru: "Стараетесь, а вид уставший", en: "You try, but still look tired" },
     desc: {
-      ru: "Корни, сухие кончики, руки без ухода. Зеркало напоминает об этом каждое утро.",
-      en: "Roots, dry ends, hands without care. The mirror reminds you every morning.",
+      ru: "Отросшие корни, сухие кончики, руки без ухода — и так каждое утро.",
+      en: "Grown-out roots, dry ends, hands without care — every single morning.",
     },
   },
 ];
@@ -72,7 +72,7 @@ export default function MassageProblems() {
         {/* Заголовок секции */}
         <div className="text-center">
           <p className="text-[10px] lowercase tracking-[0.05em] text-[#6E7248]">
-            {en ? "let's be honest" : "давайте честно"}
+            {en ? "sound familiar?" : "знакомо?"}
           </p>
           <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#6E7248] lg:text-[28px]">
             {en ? "What eats your time and energy?" : "Что забирает ваше время и силы?"}
