@@ -96,7 +96,7 @@ export default function MerchMarquee({
           <p className="mt-1 font-serif-display text-[15px] text-[#2a2320]/55 lg:text-[16px]">{fmtPrice(p.price, en)}</p>
           <Link
             href={`/product/${p.id}`}
-            className="mt-4 flex w-full items-center justify-center rounded-[10px] border border-[#591C28]/35 py-3 text-[11px] uppercase tracking-[0.18em] text-[#591C28] transition-colors duration-300 hover:border-transparent hover:bg-[#591C28] hover:text-[#f4efe6]"
+            className="mt-4 flex w-full items-center justify-center rounded-[10px] border border-[#46131E]/35 py-3 text-[11px] uppercase tracking-[0.18em] text-[#46131E] transition-colors duration-300 hover:border-transparent hover:bg-[#46131E] hover:text-[#f4efe6]"
           >
             {t("Подробнее", "View")}
           </Link>
@@ -108,12 +108,12 @@ export default function MerchMarquee({
   return (
     <section id={sectionId} className="scroll-mt-24 overflow-hidden bg-white pt-16 pb-20 lg:pt-20 lg:pb-24">
       <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] text-center lg:mb-16">
-        <p className="text-[10px] lowercase tracking-[0.05em] text-[#591C28]">{eyebrow[lang]}</p>
-        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#591C28] lg:text-[28px]">
+        <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">{eyebrow[lang]}</p>
+        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
           {title[lang]}
         </h2>
         {catalogHref && (
-          <Link href={catalogHref} className="mt-4 inline-block text-[11px] uppercase tracking-[0.16em] text-[#591C28] underline-offset-4 transition-colors hover:underline">
+          <Link href={catalogHref} className="mt-4 inline-block text-[11px] uppercase tracking-[0.16em] text-[#46131E] underline-offset-4 transition-colors hover:underline">
             {t("в каталог", "view all")} →
           </Link>
         )}
@@ -137,21 +137,21 @@ export default function MerchMarquee({
         <button
           onClick={() => nudge(-1)}
           aria-label={t("Назад", "Previous")}
-          className="absolute left-4 top-[30%] z-10 hidden h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[18px] text-[#591C28] shadow-[0_8px_24px_rgba(0,0,0,0.14)] backdrop-blur transition-colors hover:bg-white lg:flex"
+          className="absolute left-4 top-[30%] z-10 hidden h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[18px] text-[#46131E] shadow-[0_8px_24px_rgba(0,0,0,0.14)] backdrop-blur transition-colors hover:bg-white lg:flex"
         >
           ←
         </button>
         <button
           onClick={() => nudge(1)}
           aria-label={t("Вперёд", "Next")}
-          className="absolute right-4 top-[30%] z-10 hidden h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[18px] text-[#591C28] shadow-[0_8px_24px_rgba(0,0,0,0.14)] backdrop-blur transition-colors hover:bg-white lg:flex"
+          className="absolute right-4 top-[30%] z-10 hidden h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[18px] text-[#46131E] shadow-[0_8px_24px_rgba(0,0,0,0.14)] backdrop-blur transition-colors hover:bg-white lg:flex"
         >
           →
         </button>
       </div>
 
       <div className="mx-auto mt-10 h-[3px] w-[94%] max-w-[1440px] overflow-hidden rounded-full bg-[#C2C0B6]/40">
-        <div ref={barRef} className="h-full rounded-full bg-[#591C28]" style={{ width: "0%" }} />
+        <div ref={barRef} className="h-full rounded-full bg-[#46131E]" style={{ width: "0%" }} />
       </div>
     </section>
   );

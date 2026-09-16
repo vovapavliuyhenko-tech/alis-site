@@ -28,11 +28,11 @@ export default function SalonServices({
     <section id="uslugi" className="scroll-mt-24 bg-white py-24 lg:py-32">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <div className="mb-12 text-center lg:mb-16">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#591C28]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#591C28]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#591C28]" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#46131E]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#46131E]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#46131E]" />
             {eyebrow[lang]}
           </span>
-          <h2 className="mt-5 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.03em] text-[#591C28] lg:text-[28px]">
+          <h2 className="mt-5 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.03em] text-[#46131E] lg:text-[28px]">
             {title[lang]}
           </h2>
         </div>
@@ -45,7 +45,7 @@ export default function SalonServices({
               <div
                 key={c.label.ru}
                 className={`overflow-hidden rounded-[20px] border transition-colors duration-300 ${
-                  isOpen ? "border-transparent bg-[#591C28]" : "border-[#591C28]/12 bg-white"
+                  isOpen ? "border-transparent bg-[#46131E]" : "border-[#46131E]/12 bg-white"
                 }`}
               >
                 {/* Заголовок-строка */}
@@ -56,13 +56,13 @@ export default function SalonServices({
                   className="group grid w-full grid-cols-[auto_1fr_auto] items-center gap-5 px-6 py-4 text-left lg:gap-8 lg:px-8 lg:py-4"
                 >
                   {/* Номер */}
-                  <span className={`font-display text-[13px] tabular-nums transition-colors duration-300 lg:text-[15px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#591C28]"}`}>
+                  <span className={`font-display text-[13px] tabular-nums transition-colors duration-300 lg:text-[15px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#46131E]"}`}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
                   {/* Название + подпись */}
                   <span className="min-w-0">
-                    <span className={`block font-display text-[14px] font-normal uppercase leading-[1.2] tracking-[0.02em] transition-colors duration-300 sm:text-[15px] lg:text-[17px] ${isOpen ? "text-[#f4efe6]" : "text-[#591C28]"}`}>
+                    <span className={`block font-display text-[14px] font-normal uppercase leading-[1.2] tracking-[0.02em] transition-colors duration-300 sm:text-[15px] lg:text-[17px] ${isOpen ? "text-[#f4efe6]" : "text-[#46131E]"}`}>
                       {c.label[lang]}
                     </span>
                     <span className={`mt-1 block text-[11px] transition-colors duration-300 lg:text-[12px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#2a2320]/55"}`}>
@@ -72,10 +72,10 @@ export default function SalonServices({
 
                   {/* Цена «от» + стрелка-переключатель */}
                   <span className="flex items-center gap-4 lg:gap-6">
-                    <span className={`hidden whitespace-nowrap rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 sm:inline ${isOpen ? "bg-[#f4efe6]/15 text-[#f4efe6]" : "bg-[#591C28]/10 text-[#591C28]"}`}>
+                    <span className={`hidden whitespace-nowrap rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 sm:inline ${isOpen ? "bg-[#f4efe6]/15 text-[#f4efe6]" : "bg-[#46131E]/10 text-[#46131E]"}`}>
                       {c.from[lang]}
                     </span>
-                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-all duration-300 lg:h-12 lg:w-12 ${isOpen ? "border-[#f4efe6] bg-[#f4efe6] text-[#591C28]" : "border-[#591C28]/30 text-[#591C28]"}`}>
+                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-all duration-300 lg:h-12 lg:w-12 ${isOpen ? "border-[#f4efe6] bg-[#f4efe6] text-[#46131E]" : "border-[#46131E]/30 text-[#46131E]"}`}>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`h-4 w-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
                         <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -118,7 +118,7 @@ export default function SalonServices({
           href={cta.href}
           target={cta.href.startsWith("http") ? "_blank" : undefined}
           rel={cta.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          className="mt-3 flex w-full items-center justify-center rounded-[20px] border border-[#591C28] bg-[#591C28] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#591C28] sm:text-[14px]"
+          className="mt-3 flex w-full items-center justify-center rounded-[20px] border border-[#46131E] bg-[#46131E] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#46131E] sm:text-[14px]"
         >
           {cta.label[lang]}
         </a>

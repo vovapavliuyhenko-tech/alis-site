@@ -19,10 +19,10 @@ function Heart({ filled }: { filled: boolean }) {
 function Accordion({ title, children }: { title: string; children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-t border-[#591C28]/15">
+    <div className="border-t border-[#46131E]/15">
       <button onClick={() => setOpen((v) => !v)} className="flex w-full items-center justify-between py-4 text-left">
         <span className="text-[13px] uppercase tracking-[0.14em] text-[#2a2320]">{title}</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={`h-4 w-4 text-[#591C28] transition-transform duration-300 ${open ? "rotate-180" : ""}`}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={`h-4 w-4 text-[#46131E] transition-transform duration-300 ${open ? "rotate-180" : ""}`}>
           <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
@@ -47,11 +47,11 @@ export default function ProductView({ product }: { product: Product }) {
       <div className="mx-auto w-[92%] max-w-[1200px] pb-20 lg:pb-28">
         {/* Хлебные крошки */}
         <nav className="mb-6 flex items-center gap-2 text-[12px] uppercase tracking-[0.12em] text-[#2a2320]/45">
-          <Link href="/salon" className="transition-colors hover:text-[#591C28]">{t("Салон", "Salon")}</Link>
+          <Link href="/salon" className="transition-colors hover:text-[#46131E]">{t("Салон", "Salon")}</Link>
           <span>/</span>
-          <Link href="/salon#uslugi" className="transition-colors hover:text-[#591C28]">{t("Мерч", "Merch")}</Link>
+          <Link href="/salon#uslugi" className="transition-colors hover:text-[#46131E]">{t("Мерч", "Merch")}</Link>
           <span>/</span>
-          <span className="text-[#591C28]">{product.name[lang]}</span>
+          <span className="text-[#46131E]">{product.name[lang]}</span>
         </nav>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-14">
@@ -63,8 +63,8 @@ export default function ProductView({ product }: { product: Product }) {
 
           {/* Инфо */}
           <div className="lg:py-2">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-[#591C28]">{product.tag[lang]}</p>
-            <h1 className="mt-3 font-display text-[30px] uppercase leading-[1.08] tracking-[0.02em] text-[#591C28] lg:text-[42px]">
+            <p className="text-[11px] uppercase tracking-[0.2em] text-[#46131E]">{product.tag[lang]}</p>
+            <h1 className="mt-3 font-display text-[30px] uppercase leading-[1.08] tracking-[0.02em] text-[#46131E] lg:text-[42px]">
               {product.name[lang]}
             </h1>
             <p className="mt-4 font-display text-[26px] text-[#2a2320] lg:text-[30px]">{fmtPrice(product.price, en)}</p>
@@ -73,14 +73,14 @@ export default function ProductView({ product }: { product: Product }) {
 
             {/* Количество + в корзину */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <div className="flex items-center justify-between rounded-2xl border border-[#591C28]/25 px-2 sm:w-[130px]">
-                <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="flex h-12 w-10 items-center justify-center text-[18px] text-[#591C28]">−</button>
+              <div className="flex items-center justify-between rounded-2xl border border-[#46131E]/25 px-2 sm:w-[130px]">
+                <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="flex h-12 w-10 items-center justify-center text-[18px] text-[#46131E]">−</button>
                 <span className="w-8 text-center text-[15px] tabular-nums text-[#2a2320]">{qty}</span>
-                <button onClick={() => setQty((q) => q + 1)} className="flex h-12 w-10 items-center justify-center text-[18px] text-[#591C28]">+</button>
+                <button onClick={() => setQty((q) => q + 1)} className="flex h-12 w-10 items-center justify-center text-[18px] text-[#46131E]">+</button>
               </div>
               <button
                 onClick={() => { s.add(product.id, qty); s.openCart(); }}
-                className="flex flex-1 items-center justify-center rounded-2xl border border-[#591C28] bg-[#591C28] px-8 py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#591C28]"
+                className="flex flex-1 items-center justify-center rounded-2xl border border-[#46131E] bg-[#46131E] px-8 py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#46131E]"
               >
                 {t("В корзину", "Add to cart")}
               </button>
@@ -89,7 +89,7 @@ export default function ProductView({ product }: { product: Product }) {
             <button
               onClick={() => s.toggleFav(product.id)}
               className={`mt-3 flex w-full items-center justify-center gap-2 rounded-2xl border py-3.5 font-display text-[12px] uppercase tracking-[0.14em] transition-colors duration-300 ${
-                s.isFav(product.id) ? "border-[#591C28] bg-[#591C28]/10 text-[#591C28]" : "border-[#591C28]/40 text-[#591C28] hover:border-[#591C28]"
+                s.isFav(product.id) ? "border-[#46131E] bg-[#46131E]/10 text-[#46131E]" : "border-[#46131E]/40 text-[#46131E] hover:border-[#46131E]"
               }`}
             >
               <Heart filled={s.isFav(product.id)} />

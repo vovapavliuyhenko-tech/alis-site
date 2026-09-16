@@ -33,7 +33,7 @@ const UTP: Utp[] = [
 // Минималистичная иконка-видоискатель (уголки)
 function ViewfinderIcon() {
   return (
-    <svg viewBox="0 0 44 44" className="h-6 w-6 text-[#591C28]" fill="none">
+    <svg viewBox="0 0 44 44" className="h-6 w-6 text-[#46131E]" fill="none">
       <path d="M3 14V3h11" stroke="currentColor" strokeWidth="2" />
       <path d="M30 3h11v11" stroke="currentColor" strokeWidth="2" />
       <path d="M41 30v11H30" stroke="currentColor" strokeWidth="2" />
@@ -52,22 +52,22 @@ export default function About() {
       <div className="mx-auto w-[92%] max-w-[1240px]">
         {/* Заголовок секции */}
         <div className="mb-14 max-w-2xl lg:mb-20">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#591C28]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#591C28]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#591C28]" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#46131E]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#46131E]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#46131E]" />
             {en ? "About us" : "О нас"}
           </span>
-          <h2 className="mt-5 font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#591C28] lg:text-[36px]">
-            {en ? "Why they choose" : "Почему выбирают"} <span className="text-[#591C28]">ÁLIS</span>
+          <h2 className="mt-5 font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#46131E] lg:text-[36px]">
+            {en ? "Why they choose" : "Почему выбирают"} <span className="text-[#46131E]">ÁLIS</span>
           </h2>
         </div>
 
         <div className="grid gap-5 lg:grid-cols-3 lg:gap-6">
           {/* Портрет основателя — отдельной карточкой */}
-          <article className="flex flex-col overflow-hidden rounded-[20px] border border-[#591C28]/12 bg-white lg:row-span-2">
+          <article className="flex flex-col overflow-hidden rounded-[20px] border border-[#46131E]/12 bg-white lg:row-span-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/assets/tild3236-393__.jpg" alt="Дайана Тарзян" className="aspect-[4/5] w-full object-cover" draggable={false} />
             <div className="p-6 lg:p-7">
-              <p className="font-display text-[18px] tracking-[0.02em] text-[#591C28]">{en ? "Daiana Tarzyan" : "Дайана Тарзян"}</p>
+              <p className="font-display text-[18px] tracking-[0.02em] text-[#46131E]">{en ? "Daiana Tarzyan" : "Дайана Тарзян"}</p>
               <p className="mt-2 text-[12px] uppercase leading-relaxed tracking-[0.1em] text-[#17191a]/50">
                 {en ? "founder of ÁLIS aesthetics studios and ÁLIS BEAUTY CONCIERGE" : "основатель сети студий эстетики ÁLIS и ÁLIS BEAUTY CONCIERGE"}
               </p>
@@ -78,12 +78,12 @@ export default function About() {
           {UTP.map((u) => (
             <article
               key={u.title.ru}
-              className="group flex flex-col rounded-[20px] border border-[#591C28]/12 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#591C28]/30 hover:shadow-[0_18px_44px_rgba(59,13,26,0.10)] lg:p-7"
+              className="group flex flex-col rounded-[20px] border border-[#46131E]/12 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#46131E]/30 hover:shadow-[0_18px_44px_rgba(59,13,26,0.10)] lg:p-7"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#591C28]/10">
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#46131E]/10">
                 <ViewfinderIcon />
               </span>
-              <h3 className="mt-5 font-display text-[17px] uppercase leading-tight tracking-[0.03em] text-[#591C28] lg:text-[19px]">
+              <h3 className="mt-5 font-display text-[17px] uppercase leading-tight tracking-[0.03em] text-[#46131E] lg:text-[19px]">
                 {u.title[lang]}
               </h3>
               <p className="mt-3 text-[13px] leading-relaxed text-[#17191a]/55 lg:text-[13.5px]">{u.desc[lang]}</p>

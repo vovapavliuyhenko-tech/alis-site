@@ -62,7 +62,7 @@ export default function AdminPage() {
               }
             }}
             placeholder="Пароль"
-            className="w-full border-b border-[#17191a]/25 bg-transparent pb-3 text-[16px] text-[#17191a] outline-none focus:border-[#591C28]"
+            className="w-full border-b border-[#17191a]/25 bg-transparent pb-3 text-[16px] text-[#17191a] outline-none focus:border-[#46131E]"
           />
           <button
             onClick={() => {
@@ -71,12 +71,12 @@ export default function AdminPage() {
                 setAuthed(true);
               }
             }}
-            className="mt-6 w-full rounded-full border border-[#591C28] bg-[#591C28] py-3 text-[14px] font-medium text-[#f4efe6] transition-colors hover:bg-transparent hover:text-[#591C28]"
+            className="mt-6 w-full rounded-full border border-[#46131E] bg-[#46131E] py-3 text-[14px] font-medium text-[#f4efe6] transition-colors hover:bg-transparent hover:text-[#46131E]"
           >
             Войти
           </button>
           <p className="mt-4 text-[12px] text-[#17191a]/35">Пароль прототипа: <code>alis</code></p>
-          <a href="/" className="mt-6 block text-[13px] text-[#591C28] underline underline-offset-4">← на сайт</a>
+          <a href="/" className="mt-6 block text-[13px] text-[#46131E] underline underline-offset-4">← на сайт</a>
         </div>
       </main>
     );
@@ -91,7 +91,7 @@ export default function AdminPage() {
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <h1 className="font-serif text-[30px]">Запись — управление</h1>
           <div className="flex items-center gap-3 text-[13px]">
-            <a href="/#online" className="text-[#591C28] underline underline-offset-4">Открыть витрину</a>
+            <a href="/#online" className="text-[#46131E] underline underline-offset-4">Открыть витрину</a>
             <button
               onClick={() => { if (confirm("Сбросить все данные к значениям по умолчанию?")) { resetStore(); setStore(loadStore()); } }}
               className="text-[#17191a]/50 hover:text-[#17191a]"
@@ -100,7 +100,7 @@ export default function AdminPage() {
             </button>
             <button
               onClick={() => { sessionStorage.removeItem("alis-admin"); setAuthed(false); }}
-              className="rounded-full border border-[#17191a]/20 px-4 py-1.5 hover:border-[#591C28]"
+              className="rounded-full border border-[#17191a]/20 px-4 py-1.5 hover:border-[#46131E]"
             >
               Выйти
             </button>
@@ -114,7 +114,7 @@ export default function AdminPage() {
               key={k}
               onClick={() => setTab(k)}
               className={`-mb-px border-b-2 px-4 py-2.5 text-[14px] transition-colors ${
-                tab === k ? "border-[#591C28] text-[#591C28]" : "border-transparent text-[#17191a]/50 hover:text-[#17191a]"
+                tab === k ? "border-[#46131E] text-[#46131E]" : "border-transparent text-[#17191a]/50 hover:text-[#17191a]"
               }`}
             >
               {label}
@@ -159,23 +159,23 @@ function ServicesTab({ store, commit }: { store: Store; commit: (s: Store) => vo
             {store.services.map((s) => (
               <tr key={s.id} className="border-t border-[#17191a]/10">
                 <td className="py-3 pr-4">
-                  <input value={s.title} onChange={(e) => update(s.id, { title: e.target.value })} className="w-full rounded-lg border border-[#17191a]/15 px-3 py-2 outline-none focus:border-[#591C28]" />
+                  <input value={s.title} onChange={(e) => update(s.id, { title: e.target.value })} className="w-full rounded-lg border border-[#17191a]/15 px-3 py-2 outline-none focus:border-[#46131E]" />
                 </td>
                 <td className="py-3 pr-4">
-                  <input type="number" value={s.price} onChange={(e) => update(s.id, { price: Number(e.target.value) })} className="w-28 rounded-lg border border-[#17191a]/15 px-3 py-2 tabular-nums outline-none focus:border-[#591C28]" />
+                  <input type="number" value={s.price} onChange={(e) => update(s.id, { price: Number(e.target.value) })} className="w-28 rounded-lg border border-[#17191a]/15 px-3 py-2 tabular-nums outline-none focus:border-[#46131E]" />
                 </td>
                 <td className="py-3 pr-4">
-                  <input type="number" step={5} value={s.durationMin} onChange={(e) => update(s.id, { durationMin: Number(e.target.value) })} className="w-24 rounded-lg border border-[#17191a]/15 px-3 py-2 tabular-nums outline-none focus:border-[#591C28]" />
+                  <input type="number" step={5} value={s.durationMin} onChange={(e) => update(s.id, { durationMin: Number(e.target.value) })} className="w-24 rounded-lg border border-[#17191a]/15 px-3 py-2 tabular-nums outline-none focus:border-[#46131E]" />
                 </td>
                 <td className="py-3 text-right">
-                  <button onClick={() => del(s.id)} className="text-[13px] text-[#591C28]/70 hover:text-[#591C28]">удалить</button>
+                  <button onClick={() => del(s.id)} className="text-[13px] text-[#46131E]/70 hover:text-[#46131E]">удалить</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <button onClick={add} className="mt-6 rounded-full border border-[#591C28] px-5 py-2.5 text-[13px] text-[#591C28] transition-colors hover:bg-[#591C28] hover:text-[#f4efe6]">
+      <button onClick={add} className="mt-6 rounded-full border border-[#46131E] px-5 py-2.5 text-[13px] text-[#46131E] transition-colors hover:bg-[#46131E] hover:text-[#f4efe6]">
         + услуга
       </button>
     </div>
@@ -201,14 +201,14 @@ function MastersTab({ store, commit }: { store: Store; commit: (s: Store) => voi
       {store.masters.map((m) => (
         <div key={m.id} className="rounded-2xl border border-[#17191a]/10 p-5">
           <div className="mb-5 flex flex-wrap items-center gap-4">
-            <input value={m.name} onChange={(e) => update(m.id, { name: e.target.value })} className="rounded-lg border border-[#17191a]/15 px-3 py-2 text-[15px] outline-none focus:border-[#591C28]" />
-            <input value={m.role} onChange={(e) => update(m.id, { role: e.target.value })} className="rounded-lg border border-[#17191a]/15 px-3 py-2 text-[13px] outline-none focus:border-[#591C28]" />
+            <input value={m.name} onChange={(e) => update(m.id, { name: e.target.value })} className="rounded-lg border border-[#17191a]/15 px-3 py-2 text-[15px] outline-none focus:border-[#46131E]" />
+            <input value={m.role} onChange={(e) => update(m.id, { role: e.target.value })} className="rounded-lg border border-[#17191a]/15 px-3 py-2 text-[13px] outline-none focus:border-[#46131E]" />
             <label className="flex items-center gap-2 text-[13px] text-[#17191a]/60">
               шаг слота
-              <input type="number" step={5} value={m.stepMin} onChange={(e) => update(m.id, { stepMin: Number(e.target.value) })} className="w-20 rounded-lg border border-[#17191a]/15 px-3 py-2 tabular-nums outline-none focus:border-[#591C28]" />
+              <input type="number" step={5} value={m.stepMin} onChange={(e) => update(m.id, { stepMin: Number(e.target.value) })} className="w-20 rounded-lg border border-[#17191a]/15 px-3 py-2 tabular-nums outline-none focus:border-[#46131E]" />
               мин
             </label>
-            <button onClick={() => del(m.id)} className="ml-auto text-[13px] text-[#591C28]/70 hover:text-[#591C28]">удалить мастера</button>
+            <button onClick={() => del(m.id)} className="ml-auto text-[13px] text-[#46131E]/70 hover:text-[#46131E]">удалить мастера</button>
           </div>
 
           {/* Услуги мастера */}
@@ -220,7 +220,7 @@ function MastersTab({ store, commit }: { store: Store; commit: (s: Store) => voi
                 <button
                   key={s.id}
                   onClick={() => update(m.id, { serviceIds: on ? m.serviceIds.filter((x) => x !== s.id) : [...m.serviceIds, s.id] })}
-                  className={`rounded-full border px-3.5 py-1.5 text-[13px] transition-colors ${on ? "border-[#591C28] bg-[#591C28] text-[#f4efe6]" : "border-[#17191a]/15 text-[#17191a]/70 hover:border-[#591C28]/50"}`}
+                  className={`rounded-full border px-3.5 py-1.5 text-[13px] transition-colors ${on ? "border-[#46131E] bg-[#46131E] text-[#f4efe6]" : "border-[#17191a]/15 text-[#17191a]/70 hover:border-[#46131E]/50"}`}
                 >
                   {s.title}
                 </button>
@@ -235,7 +235,7 @@ function MastersTab({ store, commit }: { store: Store; commit: (s: Store) => voi
               <div key={i} className="flex items-center gap-2 rounded-lg border border-[#17191a]/10 px-3 py-2">
                 <button
                   onClick={() => { const week = m.week.map((x, j) => (j === i ? { ...x, on: !x.on } : x)); update(m.id, { week }); }}
-                  className={`flex h-6 w-12 shrink-0 items-center rounded-full px-0.5 transition-colors ${d.on ? "bg-[#591C28]" : "bg-[#17191a]/15"}`}
+                  className={`flex h-6 w-12 shrink-0 items-center rounded-full px-0.5 transition-colors ${d.on ? "bg-[#46131E]" : "bg-[#17191a]/15"}`}
                   aria-label={d.on ? "выходной" : "рабочий"}
                 >
                   <span className={`h-5 w-5 rounded-full bg-white transition-transform ${d.on ? "translate-x-6" : ""}`} />
@@ -255,7 +255,7 @@ function MastersTab({ store, commit }: { store: Store; commit: (s: Store) => voi
           </div>
         </div>
       ))}
-      <button onClick={add} className="rounded-full border border-[#591C28] px-5 py-2.5 text-[13px] text-[#591C28] transition-colors hover:bg-[#591C28] hover:text-[#f4efe6]">
+      <button onClick={add} className="rounded-full border border-[#46131E] px-5 py-2.5 text-[13px] text-[#46131E] transition-colors hover:bg-[#46131E] hover:text-[#f4efe6]">
         + мастер
       </button>
     </div>
@@ -269,7 +269,7 @@ function setDay(m: Master, i: number, patch: Partial<DaySchedule>, update: (id: 
 
 function TimeInput({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   return (
-    <input type="time" value={value} onChange={(e) => onChange(e.target.value)} className="rounded-lg border border-[#17191a]/15 px-2 py-1 text-[13px] tabular-nums outline-none focus:border-[#591C28]" />
+    <input type="time" value={value} onChange={(e) => onChange(e.target.value)} className="rounded-lg border border-[#17191a]/15 px-2 py-1 text-[13px] tabular-nums outline-none focus:border-[#46131E]" />
   );
 }
 
@@ -309,7 +309,7 @@ function BookingsTab({ store, commit }: { store: Store; commit: (s: Store) => vo
                 <td className="py-3 pr-4">{m?.name || "—"}</td>
                 <td className="py-3 pr-4">{b.name || "—"}</td>
                 <td className="py-3 pr-4 whitespace-nowrap">{b.phone || "—"}</td>
-                <td className="py-3 text-right"><button onClick={() => del(b.id)} className="text-[13px] text-[#591C28]/70 hover:text-[#591C28]">отменить</button></td>
+                <td className="py-3 text-right"><button onClick={() => del(b.id)} className="text-[13px] text-[#46131E]/70 hover:text-[#46131E]">отменить</button></td>
               </tr>
             );
           })}

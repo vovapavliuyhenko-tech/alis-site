@@ -23,10 +23,10 @@ export default function ServiceBento() {
     <section id="services" className="scroll-mt-24 bg-white py-16 lg:py-20">
       <div className="mx-auto w-[94%] max-w-[1440px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
-          <p className="text-[10px] lowercase tracking-[0.05em] text-[#591C28]">
+          <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
             {en ? "services" : "услуги"}
           </p>
-          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#591C28] lg:text-[28px]">
+          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
             {en ? "Everything for your look" : "Всё для вашего образа"}
           </h2>
         </div>

@@ -73,7 +73,7 @@ const STAGES: Stage[] = [
 // Декоративный росчерк-цветок
 function Flourish() {
   return (
-    <svg viewBox="0 0 40 40" className="h-9 w-9 text-[#591C28]" fill="none">
+    <svg viewBox="0 0 40 40" className="h-9 w-9 text-[#46131E]" fill="none">
       <path d="M20 22c0-6-4-9-9-9 3 4 4 7 4 9-2 0-5 1-8 4 5 0 9-2 13-4z" stroke="currentColor" strokeWidth="1.1" />
       <path d="M20 22c0-6 4-9 9-9-3 4-4 7-4 9 2 0 5 1 8 4-5 0-9-2-13-4z" stroke="currentColor" strokeWidth="1.1" />
       <path d="M20 22v14" stroke="currentColor" strokeWidth="1.1" />
@@ -142,7 +142,7 @@ export default function HorizontalStory({
               {/* Левая кремовая половина */}
               <div className="flex flex-col justify-between bg-white px-6 py-12 md:w-[46%] md:px-[4vw] md:pb-[6vh] md:pt-[12vh]">
                 <div>
-                  <span className="text-[12px] uppercase tracking-[0.3em] text-[#591C28]">
+                  <span className="text-[12px] uppercase tracking-[0.3em] text-[#46131E]">
                     {lang === "en" ? "Step" : "Этап"} 0{i + 1}
                   </span>
                   <h3 className="mt-6 font-display text-[34px] uppercase leading-[1.06] tracking-[0.04em] text-[#17191a] md:mt-10 md:text-[3.4vw]">
@@ -152,7 +152,7 @@ export default function HorizontalStory({
                       return (
                         <>
                           {w.slice(0, cut).join(" ")}{" "}
-                          <span className="text-[#591C28]">{w.slice(cut).join(" ")}</span>
+                          <span className="text-[#46131E]">{w.slice(cut).join(" ")}</span>
                         </>
                       );
                     })()}

@@ -23,18 +23,18 @@ export default function PageHero({
       {ghost && (
         <span
           aria-hidden
-          className="pointer-events-none absolute -right-4 top-16 select-none font-display font-semibold leading-none tracking-[0.04em] text-[#591C28]/[0.04] lg:top-20"
+          className="pointer-events-none absolute -right-4 top-16 select-none font-display font-semibold leading-none tracking-[0.04em] text-[#46131E]/[0.04] lg:top-20"
           style={{ fontSize: "clamp(6rem, 20vw, 16rem)" }}
         >
           {ghost}
         </span>
       )}
       <div className="relative mx-auto w-[92%] max-w-[1180px]">
-        <span className="inline-flex items-center gap-2 rounded-full bg-[#591C28]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#591C28]">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#591C28]" />
+        <span className="inline-flex items-center gap-2 rounded-full bg-[#46131E]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#46131E]">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#46131E]" />
           {eyebrow[lang]}
         </span>
-        <h1 className="mt-6 font-display text-[36px] uppercase tracking-[0.05em] leading-[1.05] text-[#591C28] lg:text-[64px]">
+        <h1 className="mt-6 font-display text-[36px] uppercase tracking-[0.05em] leading-[1.05] text-[#46131E] lg:text-[64px]">
           {title[lang]}
         </h1>
         <span className="mt-6 block h-px w-16 bg-[#8a5a3c]" />

@@ -95,7 +95,7 @@ function FlipTile({ t }: { t: Tile }) {
       {/* Техническая строка под плиткой */}
       <figcaption className="mt-3 grid grid-cols-3 items-center font-mono text-[10.5px] lowercase tracking-wide text-[#17191a]/45">
         <span className="tabular-nums">{t.n}</span>
-        <span className="text-center text-[#591C28]">{t.label[lang]}</span>
+        <span className="text-center text-[#46131E]">{t.label[lang]}</span>
         <span className="text-right">{t.caption[lang]}</span>
       </figcaption>
     </figure>
@@ -112,11 +112,11 @@ export default function FlipGallery() {
       <div className="mx-auto w-[92%] max-w-[1400px]">
         {/* Заголовок */}
         <div className="mb-14 max-w-2xl lg:mb-20">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#591C28]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#591C28]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#591C28]" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#46131E]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#46131E]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#46131E]" />
             {en ? "Portfolio" : "Портфолио"}
           </span>
-          <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#591C28] lg:text-[36px]">
+          <h2 className="mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] text-[#46131E] lg:text-[36px]">
             {en ? "Our works" : "Наши работы"}
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">

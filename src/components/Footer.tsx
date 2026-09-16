@@ -40,7 +40,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="footer" className="relative overflow-hidden rounded-t-[40px] bg-[#591C28] text-[#f4efe6]">
+    <footer id="footer" className="relative overflow-hidden rounded-t-[40px] bg-[#46131E] text-[#f4efe6]">
       {/* Гигантский бренд-вотермарк снизу — тот же логотип, что в шапке */}
       <LogoWord
         variant="cream"
