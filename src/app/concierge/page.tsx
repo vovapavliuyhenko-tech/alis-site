@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
+import ConciergeBenefits from "@/components/pages/ConciergeBenefits";
 import SalonServices from "@/components/pages/SalonServices";
 import HorizontalStory, { type Stage } from "@/components/HorizontalStory";
 import ConciergeOffer from "@/components/pages/ConciergeOffer";
@@ -156,6 +157,10 @@ export default function ConciergePage() {
       <div className="relative z-10 bg-white">
         {/* Маркер конца героя — после него у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
+
+        {/* 2 — Преимущества бьюти-консьержа (фото + сетка карточек) */}
+        <ConciergeBenefits />
+
         {/* 3 — Услуги и прайс (плашки как на «Салоне») */}
         <SalonServices
           eyebrow={{ ru: "услуги и прайс", en: "services & prices" }}
