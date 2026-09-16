@@ -167,33 +167,41 @@ export default function Header() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="relative mx-auto flex h-[68px] w-full max-w-[1400px] items-center px-5 sm:px-8">
-        {/* Гамбургер (моб.) — слева */}
-        <button
-          onClick={() => setOpen((v) => !v)}
-          aria-label={lang === "en" ? "Menu" : "Меню"}
-          className={`flex h-10 w-10 items-center justify-center lg:hidden ${ink}`}
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-            {open ? <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /> : <path d="M4 8h16M4 16h16" strokeLinecap="round" />}
-          </svg>
-        </button>
+      <div className="mx-auto grid h-[68px] w-full max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center px-5 sm:px-8">
+        {/* Левая часть: гамбургер (моб.) + левое меню (прижато к логотипу) */}
+        <div className="flex items-center">
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-label={lang === "en" ? "Menu" : "Меню"}
+            className={`flex h-10 w-10 items-center justify-center lg:hidden ${ink}`}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              {open ? <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /> : <path d="M4 8h16M4 16h16" strokeLinecap="round" />}
+            </svg>
+          </button>
+          <nav className="hidden w-full items-center justify-end gap-7 text-[13px] uppercase tracking-[0.13em] lg:flex xl:gap-9">
+            {LEFT.map((item) => (
+              <NavLink key={item.label.ru} item={item} />
+            ))}
+          </nav>
+        </div>
 
-        {/* Логотип: на моб. — по центру, на десктопе — слева */}
-        <a href="/" className="flex shrink-0 items-center gap-2.5 max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2">
+        {/* Логотип по центру: вензель + надпись */}
+        <a href="/" className="mx-6 flex items-center gap-2.5 justify-self-center lg:mx-10">
           <LogoEmblem variant={overHero ? "cream" : "wine"} className="h-10 w-auto max-w-none shrink-0" />
           <LogoWord variant={overHero ? "cream" : "wine"} className="h-[19px] w-auto max-w-none shrink-0" />
         </a>
 
-        {/* Навигация (десктоп) — равномерно по центру */}
-        <nav className="ml-10 hidden flex-1 items-center justify-center gap-7 text-[13px] uppercase tracking-[0.13em] lg:flex xl:gap-9">
-          {ALL_NAV.map((item) => (
-            <NavLink key={item.label.ru} item={item} />
-          ))}
-        </nav>
+        {/* Правая часть: правое меню (прижато к логотипу) + действия у края */}
+        <div className="flex items-center">
+          <nav className="hidden items-center gap-7 text-[13px] uppercase tracking-[0.13em] lg:flex xl:gap-9">
+            {RIGHT.map((item) => (
+              <NavLink key={item.label.ru} item={item} />
+            ))}
+          </nav>
 
-        {/* Действия справа — язык, избранное, корзина (+ запись на моб.) */}
-        <div className="ml-auto flex items-center gap-3 lg:gap-4">
+          {/* Действия — язык, избранное, корзина (+ запись на моб.) */}
+          <div className="ml-auto flex items-center gap-3 lg:ml-7 lg:gap-4 xl:ml-9">
           {/* Тумблер RU/EN (десктоп) */}
           <div className={`relative hidden items-center rounded-full border p-0.5 text-[12px] font-medium lg:flex ${overHero ? "border-white/40" : "border-[#6E7248]/25"}`}>
             <span
@@ -228,6 +236,7 @@ export default function Header() {
           >
             {lang === "en" ? "Book" : "Запись"}
           </a>
+          </div>
         </div>
       </div>
 
