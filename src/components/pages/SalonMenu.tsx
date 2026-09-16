@@ -229,7 +229,7 @@ export default function SalonMenu() {
           {cat.items.map((it, i) => {
             const isOpen = open === i;
             return (
-              <div key={it.name.ru} className="border-b border-dashed border-[#17191a]/20 first:border-t">
+              <div key={it.name.ru} className="border-b border-[#17191a]/20 first:border-t">
                 {/* Заголовок строки */}
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}

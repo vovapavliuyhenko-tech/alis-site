@@ -15,28 +15,28 @@ const PHOTO = "/assets/tild6230-643__.jpg"; // плейсхолдер — зам
 const stroke = { fill: "none", stroke: "currentColor", strokeWidth: 1.2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
 const IconEvents = (
   <svg viewBox="0 0 48 48" className="h-11 w-11 text-[#46131E]/70">
-    <circle cx="24" cy="21" r="13" {...stroke} strokeDasharray="3 3.4" />
+    <circle cx="24" cy="21" r="13" {...stroke} />
     <path d="M24 15v12M18 21h12" {...stroke} />
     <path d="M14 40c3-3 6-3 10-3s7 0 10 3" {...stroke} opacity="0.7" />
   </svg>
 );
 const IconBrands = (
   <svg viewBox="0 0 48 48" className="h-11 w-11 text-[#46131E]/70">
-    <circle cx="24" cy="21" r="13" {...stroke} strokeDasharray="3 3.4" />
+    <circle cx="24" cy="21" r="13" {...stroke} />
     <path d="M24 14c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9Z" {...stroke} />
     <path d="M15 39h18" {...stroke} opacity="0.7" />
   </svg>
 );
 const IconVenues = (
   <svg viewBox="0 0 48 48" className="h-11 w-11 text-[#46131E]/70">
-    <circle cx="24" cy="21" r="13" {...stroke} strokeDasharray="3 3.4" />
+    <circle cx="24" cy="21" r="13" {...stroke} />
     <path d="M24 15c3 0 5.5 2.4 5.5 5.5C29.5 24.5 24 29 24 29s-5.5-4.5-5.5-8.5C18.5 17.4 21 15 24 15Z" {...stroke} />
     <circle cx="24" cy="20.5" r="1.8" {...stroke} />
   </svg>
 );
 const IconBloggers = (
   <svg viewBox="0 0 48 48" className="h-11 w-11 text-[#46131E]/70">
-    <circle cx="24" cy="21" r="13" {...stroke} strokeDasharray="3 3.4" />
+    <circle cx="24" cy="21" r="13" {...stroke} />
     <path d="M24 27.5c-3-2.4-6-4.6-6-7.6a3.3 3.3 0 0 1 6-1.9 3.3 3.3 0 0 1 6 1.9c0 3-3 5.2-6 7.6Z" {...stroke} />
     <path d="M15 39c3-2 6-2 9-2s6 0 9 2" {...stroke} opacity="0.7" />
   </svg>
