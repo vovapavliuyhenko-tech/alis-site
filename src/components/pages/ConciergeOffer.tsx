@@ -14,13 +14,8 @@ const FIELDS: Field[] = [
   { key: "event", label: { ru: "Повод и дата", en: "Occasion & date" }, required: false, textarea: true },
 ];
 
-const INCLUDED: Loc[] = [
-  { ru: "Команда мастеров на выезд — в 4–6 рук", en: "A team of masters on location — in 4–6 hands" },
-  { ru: "Своё оборудование и профессиональная косметика", en: "Own equipment and professional cosmetics" },
-  { ru: "Работа строго по таймингу события", en: "Work strictly to the event timing" },
-  { ru: "Единый стиль для всех участниц", en: "One consistent style for everyone" },
-  { ru: "−10% на первый выезд", en: "−10% on your first booking" },
-];
+// Фото слева — заменить на съёмку выезда/команды на событии.
+const PHOTO = "/assets/alis/img_2751.jpg";
 
 function formatPhone(v: string): string {
   let d = v.replace(/\D/g, "");
@@ -61,36 +56,12 @@ export default function ConciergeOffer() {
   };
 
   return (
-    <section id="offer" className="scroll-mt-24 bg-white px-3 section-y sm:px-4">
-      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
-        {/* Левая колонка — оффер */}
-        <div className="flex flex-col justify-center rounded-[28px] border border-[#46131E]/15 bg-[#F9F8F6] p-8 lg:p-12">
-          <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">{t("коммерческое предложение", "our proposal")}</p>
-          <h2 className="mt-3 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
-            {t("Бьюти-консьерж под ключ", "Beauty concierge, turnkey")}
-          </h2>
-          <p className="mt-5 max-w-md text-[13px] leading-relaxed text-[#2a2320]/60 lg:text-[14px]">
-            {t(
-              "Событие требует безупречного вида — а у вас нет времени на салон и организацию. Берём бьюти-часть на себя полностью.",
-              "The occasion demands a flawless look — but there's no time for the salon and logistics. We take the whole beauty part on ourselves.",
-            )}
-          </p>
-
-          <p className="mt-9 text-[10px] uppercase tracking-[0.2em] text-[#46131E]/50">{t("что входит", "what's included")}</p>
-          <ul className="mt-2 flex flex-col">
-            {INCLUDED.map((it, i) => (
-              <li key={it.ru} className={`flex items-center gap-4 py-4 ${i > 0 ? "border-t border-[#46131E]/12" : ""}`}>
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#46131E] text-[#f4efe6]">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
-                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-                <span className="text-[14px] leading-snug text-[#2a2320] lg:text-[15px]">
-                  {it[lang]}
-                </span>
-              </li>
-            ))}
-          </ul>
+    <section id="offer" className="scroll-mt-24 bg-white section-y">
+      <div className="mx-auto grid w-[92%] max-w-[1280px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
+        {/* Левая колонка — фото */}
+        <div className="relative min-h-[320px] overflow-hidden rounded-[28px] lg:min-h-[600px]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={PHOTO} alt="" loading="lazy" decoding="async" draggable={false} className="absolute inset-0 h-full w-full object-cover" />
         </div>
 
         {/* Правая колонка — форма заявки */}
