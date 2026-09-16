@@ -66,7 +66,7 @@ export default function LoyaltyCerts() {
               href={YCLIENTS}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 flex w-full items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#46131E] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
+              className="mt-8 flex w-full items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#46131E] transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-blur-md hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
             >
               {t("Записаться", "Book now")}
             </a>

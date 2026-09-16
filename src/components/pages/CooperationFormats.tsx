@@ -104,11 +104,11 @@ export default function CooperationFormats() {
               key={f.title.ru}
               className="flex min-h-[240px] flex-col justify-between rounded-[30px] border border-[#46131E]/20 bg-white p-6 lg:min-h-0 lg:p-7"
             >
-              <h3 className="max-w-[18ch] text-[17px] font-semibold leading-[1.2] text-[#444] lg:text-[19px]">
+              <h3 className="max-w-[20ch] text-[14px] font-semibold leading-[1.25] text-[#444] lg:text-[15px]">
                 {f.title[lang]}
               </h3>
               <span aria-hidden className="my-3 block">{f.icon}</span>
-              <p className="text-[14px] leading-relaxed text-[#444]/75 lg:text-[15px]">
+              <p className="text-[12.5px] leading-[1.5] text-[#444]/75 lg:text-[13px]">
                 {f.desc[lang]}
               </p>
             </article>
