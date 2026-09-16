@@ -70,15 +70,15 @@ export default function Hero() {
       </div>
 
       {/* КАРТОЧКА-ОТЗЫВ (справа, компактная) */}
-      <figure className="mx-6 mb-6 flex items-stretch gap-3.5 rounded-[18px] border border-white/35 bg-white/15 p-3.5 text-white shadow-[0_8px_40px_rgba(0,0,0,0.18)] backdrop-blur-2xl max-[520px]:flex-col lg:absolute lg:bottom-[var(--btm)] lg:right-[var(--pad)] lg:mx-0 lg:mb-0 lg:w-[430px] lg:p-4">
+      <figure className="mx-6 mb-6 flex items-stretch gap-3.5 rounded-[18px] border border-white/35 bg-white/15 p-3.5 text-white shadow-[0_8px_40px_rgba(0,0,0,0.18)] backdrop-blur-2xl max-[520px]:flex-col lg:absolute lg:bottom-[var(--btm)] lg:right-[var(--pad)] lg:mx-0 lg:mb-0 lg:w-[400px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={SPECIALIST_PHOTO}
           alt={t("Евгения Романова", "Evgenia Romanova")}
-          className="w-[112px] shrink-0 self-stretch rounded-[12px] bg-[#cfc8bd]/40 object-cover max-[520px]:h-[150px] max-[520px]:w-full"
+          className="w-[92px] shrink-0 self-stretch rounded-[12px] bg-[#cfc8bd]/40 object-cover max-[520px]:h-[140px] max-[520px]:w-full"
         />
-        <div className="flex min-w-0 flex-col justify-center gap-2">
-          <blockquote className="text-[12px] leading-[1.5] text-white/90">
+        <div className="flex min-w-0 flex-col justify-between gap-2 py-0.5">
+          <blockquote className="text-[11.5px] leading-[1.4] text-white/90">
             {t(
               "«Собираем весь образ за один визит — и дарим −10% на первое посещение. Приходите: разницу почувствуете сразу».",
               "“We build your whole look in one visit — and give −10% on your first. Come in: you'll feel the difference at once.”",
