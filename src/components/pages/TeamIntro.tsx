@@ -5,6 +5,7 @@
 // Снизу — широкая бордовая кнопка-пилюля с hover-эффектом «матовое стекло».
 import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
+import { LogoLockup } from "@/components/Logo";
 
 // Фото — заменить на съёмку/видео команды. object-cover, тянется на весь экран.
 const BG_PHOTO = "/assets/alis/img_6009.jpg";
@@ -16,7 +17,7 @@ export default function TeamIntro() {
 
   const secRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLImageElement>(null);
-  const wordRef = useRef<HTMLHeadingElement>(null);
+  const wordRef = useRef<HTMLDivElement>(null);
 
   // Скролл-эффект PALOMA: слово масштабируется вверх и растворяется; фон чуть зумит.
   useEffect(() => {
@@ -70,15 +71,14 @@ export default function TeamIntro() {
         }}
       />
 
-      {/* Центр — крупное слово (масштаб/растворение на скролле) */}
+      {/* Центр — логотип ÁLIS BEAUTY с надписью «команда» сверху (масштаб/растворение на скролле) */}
       <div className="flex flex-1 items-center justify-center px-4 text-center">
-        <h1
-          ref={wordRef}
-          className="origin-center font-serif-display font-light uppercase leading-[0.95] tracking-[0.02em] text-white will-change-transform [text-shadow:0_2px_40px_rgba(0,0,0,.25)]"
-          style={{ fontSize: "clamp(22px,4.6vw,72px)", fontWeight: 300 }}
-        >
-          {t("Команда", "Team")}
-        </h1>
+        <div ref={wordRef} className="origin-center flex flex-col items-center will-change-transform">
+          <span className="mb-6 text-[11px] font-light uppercase tracking-[0.4em] text-white/90 lg:mb-8">
+            {t("команда", "team")}
+          </span>
+          <LogoLockup variant="cream" className="drop-shadow-[0_2px_40px_rgba(0,0,0,.25)]" />
+        </div>
       </div>
 
       {/* Низ — широкая бордовая кнопка-пилюля; hover — матовое стекло, как на главной */}
