@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import CooperationFormats from "@/components/pages/CooperationFormats";
 import CooperationForm from "@/components/pages/CooperationForm";
+import Brands from "@/components/Brands";
 import Faq from "@/components/Faq";
 
 type Loc = { ru: string; en: string };
@@ -69,7 +70,10 @@ export default function CooperationPage() {
         {/* 2 — Фото + сетка карточек с вариантами сотрудничества */}
         <CooperationFormats />
 
-        {/* 3 — Форма заявки на партнёрство */}
+        {/* 3 — Бегущая лента «Кто нам доверяет» */}
+        <Brands heading />
+
+        {/* 4 — Форма заявки на партнёрство */}
         <CooperationForm />
 
         {/* 3 — Частые вопросы про сотрудничество */}

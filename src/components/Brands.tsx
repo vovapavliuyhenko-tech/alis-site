@@ -3,6 +3,7 @@
 // лента брендов. Каждый бренд в СВОЁМ типографическом стиле (микс), между ними —
 // росчерк. Пауза при наведении. Двуязычно (RU/EN).
 import type { ReactNode } from "react";
+import { useLang } from "@/lib/i18n";
 
 // Каждый бренд — со своим стилем, приближённым к его вордмарку
 const BRANDS: ReactNode[] = [
@@ -67,9 +68,20 @@ function Track({ hidden = false }: { hidden?: boolean }) {
   );
 }
 
-export default function Brands() {
+export default function Brands({ heading = false }: { heading?: boolean }) {
+  const { lang } = useLang();
   return (
     <section className="overflow-hidden bg-white section-y">
+      {heading && (
+        <div className="mx-auto mb-12 w-[92%] max-w-[1280px] text-center lg:mb-16">
+          <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
+            {lang === "en" ? "partners" : "партнёры"}
+          </p>
+          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
+            {lang === "en" ? "Who trusts us" : "Кто нам доверяет"}
+          </h2>
+        </div>
+      )}
       <div className="group relative flex overflow-hidden">
         <Track />
         <Track hidden />
