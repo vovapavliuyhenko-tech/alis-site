@@ -7,13 +7,14 @@ import { useLang } from "@/lib/i18n";
 
 // Кадры одного формата — единый портретный размер, минимальный зазор.
 const ITEMS: string[] = [
-  "/assets/tild6230-643__.jpg",
-  "/assets/tild3236-393__.jpg",
-  "/assets/tild6530-383_-2___1_.jpg",
-  "/assets/tild3638-373_-2___1__3.jpg",
-  "/assets/tild3561-646_-2___1__5.jpg",
-  "/assets/tild6536-613_-2___1__4.jpg",
-  "/shop/ss-portrait.jpg",
+  "/assets/alis/img_2672.jpg",
+  "/assets/alis/img_2749.jpg",
+  "/assets/alis/img_2751.jpg",
+  "/assets/alis/img_3283.jpg",
+  "/assets/alis/img_6011.jpg",
+  "/assets/alis/img_8578.jpg",
+  "/assets/alis/img_6048.jpg",
+  "/assets/alis/img_5910.webp",
 ];
 
 function Track({ hidden = false }: { hidden?: boolean }) {

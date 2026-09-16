@@ -6,7 +6,7 @@
 import { useLang } from "@/lib/i18n";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
-const CERT_PHOTO = "/assets/tild3561-646_-2___1__5.jpg"; // плейсхолдер
+const CERT_PHOTO = "/assets/alis/img_1855.jpg";
 
 type Loc = { ru: string; en: string };
 

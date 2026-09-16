@@ -4,7 +4,7 @@
 // надстрочник, заголовок, короткое кредо и кнопка — в стиле сайта. Двуязычно.
 import { useLang } from "@/lib/i18n";
 
-const PHOTO = "/assets/tild3236-393__.jpg";
+const PHOTO = "/assets/alis/img_6009.jpg";
 
 export default function Philosophy() {
   const { lang } = useLang();

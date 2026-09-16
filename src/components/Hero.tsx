@@ -9,7 +9,7 @@ import { useLang } from "@/lib/i18n";
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
 // Плейсхолдеры — заменить на настоящее фото массажа и портрет специалиста.
-const BG_PHOTO = "/assets/tild6230-643__.jpg";
+const BG_PHOTO = "/assets/alis/img_2745.jpg";
 const SPECIALIST_PHOTO = "/assets/tild6536-613_-2___1__4.jpg";
 
 // Единые отступы блока
