@@ -13,37 +13,37 @@ const ITEMS: Item[] = [
   {
     n: "01",
     filled: true,
-    title: { ru: "Красота по разным местам", en: "Beauty scattered around town" },
+    title: { ru: "Всё в одном месте", en: "Everything in one place" },
     desc: {
-      ru: "Волосы, ногти и брови — в трёх салонах и в разные дни. Много времени и дороги.",
-      en: "Hair, nails and brows — three salons, three different days. Lots of time and travel.",
+      ru: "Волосы, ногти, брови и макияж — в одной студии за один визит. Без разъездов по городу.",
+      en: "Hair, nails, brows and makeup — one studio, one visit. No driving across town.",
     },
   },
   {
     n: "02",
     filled: false,
-    title: { ru: "Образ не складывается", en: "The look doesn't come together" },
+    title: { ru: "Образ собран целиком", en: "One complete look" },
     desc: {
-      ru: "Причёска есть, но макияж и руки — вразнобой. По отдельности хорошо, вместе — нет.",
-      en: "The hair is done, but makeup and nails don't match. Nice apart, off as a whole.",
+      ru: "Мастера работают в паре и видят весь образ. Ничего не выбивается — вы выглядите гармонично.",
+      en: "Masters work in pairs and see the whole image. Nothing clashes — you look put together.",
     },
   },
   {
     n: "03",
     filled: true,
-    title: { ru: "Событие близко, а времени нет", en: "The event is close, no time left" },
+    title: { ru: "Готовим точно к событию", en: "Ready right on time" },
     desc: {
-      ru: "Свадьба или съёмка на носу, а свободные записи к мастерам не совпадают.",
-      en: "A wedding or shoot is near, but free slots with masters never line up.",
+      ru: "Свадьба, съёмка или выход — соберём к нужному часу. Подстроимся под вашу дату и время.",
+      en: "A wedding, shoot or big night — we finish by your hour. We fit your date and time.",
     },
   },
   {
     n: "04",
     filled: false,
-    title: { ru: "Стараетесь, а вид уставший", en: "You try, but still look tired" },
+    title: { ru: "Свежий вид надолго", en: "Stays fresh for longer" },
     desc: {
-      ru: "Отросшие корни, сухие кончики, руки без ухода — и так каждое утро.",
-      en: "Grown-out roots, dry ends, hands without care — every single morning.",
+      ru: "Корни, кончики, руки и кожа — под контролем. Уход, который держится и радует каждое утро.",
+      en: "Roots, ends, hands and skin — all handled. Care that lasts and pleases every morning.",
     },
   },
 ];
@@ -67,20 +67,20 @@ export default function MassageProblems() {
   const right = ITEMS.filter((_, i) => i % 2 === 1); // 02, 04
 
   return (
-    <section id="problems" className="bg-[#F9F8F6] pt-6 pb-16 lg:pt-8 lg:pb-24">
+    <section id="problems" className="bg-[#F9F8F6] section-y">
       <div className="mx-auto w-[94%] max-w-[1400px]">
         {/* Заголовок секции */}
         <div className="text-center">
           <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
-            {en ? "sound familiar?" : "знакомо?"}
+            {en ? "why ális" : "почему ális"}
           </p>
           <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
-            {en ? "What eats your time and energy?" : "Что забирает ваше время и силы?"}
+            {en ? "Why people choose ÁLIS" : "Почему выбирают ÁLIS"}
           </h2>
         </div>
 
         {/* Орбита: левая колонка — центр-круг — правая колонка */}
-        <div className="relative mt-14 grid items-center gap-7 lg:mt-20 lg:grid-cols-[1fr_auto_1fr] lg:gap-5">
+        <div className="relative mt-14 grid items-center gap-7 lg:mt-20 lg:grid-cols-[1fr_auto_1fr] lg:gap-x-[64px] lg:gap-y-5">
           <div className="flex flex-col items-center gap-7 lg:items-end lg:gap-10">
             {left.map((it) => (
               <Capsule key={it.n} item={it} lang={lang} />

@@ -61,7 +61,7 @@ export default function ConciergeOffer() {
   };
 
   return (
-    <section id="offer" className="scroll-mt-24 bg-white px-3 py-16 sm:px-4 lg:py-24">
+    <section id="offer" className="scroll-mt-24 bg-white px-3 section-y sm:px-4">
       <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая колонка — оффер */}
         <div className="flex flex-col justify-center rounded-[28px] border border-[#46131E]/15 bg-[#F9F8F6] p-8 lg:p-12">

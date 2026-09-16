@@ -110,7 +110,7 @@ export default function Faq({
   }, []);
 
   return (
-    <section ref={sectionRef} id={sectionId} className="scroll-mt-24 bg-white py-16 lg:py-20">
+    <section ref={sectionRef} id={sectionId} className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto grid w-[92%] max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         {/* Левая колонка — заголовок рядом с фото, зафиксирована */}
         <div className="lg:sticky lg:top-24 lg:self-start">

@@ -80,7 +80,7 @@ export default function PhotoMarquee() {
   };
 
   return (
-    <section className="overflow-hidden bg-[#F9F8F6] pt-16 pb-6 lg:pt-24 lg:pb-8">
+    <section className="overflow-hidden bg-[#F9F8F6] section-y">
       <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] text-center lg:mb-16">
         <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
           {en ? "the atmosphere" : "атмосфера"}

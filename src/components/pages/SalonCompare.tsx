@@ -71,7 +71,7 @@ export default function SalonCompare() {
   const cardTilt = 4.5 * e; // средние карточки — друг к другу
 
   return (
-    <section className="bg-white py-24 lg:py-32">
+    <section className="bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <div ref={gridRef} className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-[0.78fr_1fr_1fr_0.78fr] lg:gap-6">
           {/* Фото слева — наклон наружу (влево) */}

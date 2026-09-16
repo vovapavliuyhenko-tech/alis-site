@@ -27,7 +27,7 @@ export default function LoyaltyCerts() {
   ];
 
   return (
-    <section className="bg-white py-16 lg:py-24">
+    <section className="bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#46131E]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#46131E]">

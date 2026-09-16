@@ -57,8 +57,8 @@ export default function JoinForm() {
   };
 
   return (
-    <section id="join" className="scroll-mt-24 bg-white px-3 pt-3 pb-16 sm:px-4 sm:pt-4 sm:pb-24">
-      <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
+    <section id="join" className="scroll-mt-24 bg-white px-3 section-y sm:px-4">
+      <div className="mx-auto grid max-w-[1040px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая бордовая панель */}
         <div className="flex flex-col rounded-[28px] bg-[#46131E] px-6 py-12 text-[#f4efe6] sm:px-10 lg:min-h-[620px] lg:px-14 lg:py-16">
             {sent ? (

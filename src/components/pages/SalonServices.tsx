@@ -25,7 +25,7 @@ export default function SalonServices({
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="uslugi" className="scroll-mt-24 bg-white py-24 lg:py-32">
+    <section id="uslugi" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <div className="mb-12 text-center lg:mb-16">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#46131E]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#46131E]">

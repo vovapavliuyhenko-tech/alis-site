@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import TeamHero from "@/components/pages/TeamHero";
+import TeamIntro from "@/components/pages/TeamIntro";
 import SalonCompare from "@/components/pages/SalonCompare";
 import Vacancies from "@/components/pages/Vacancies";
 import JoinForm from "@/components/pages/JoinForm";
@@ -61,35 +61,13 @@ export default function TeamPage() {
       <ScrollReveal />
       <Header />
 
-      {/* 1 — Герой-сплит (PALOMA): фото слева, ЗАКРЕПЛЁН — второй блок наезжает поверх */}
-      <TeamHero
-        pinned
-        logo
-        photo="/assets/tild3236-393__.jpg"
-        eyebrow={{ ru: "работа в ÁLIS", en: "work at ÁLIS" }}
-        title={{ ru: "Устали сидеть в пустом кресле?", en: "Tired of sitting in an empty chair?" }}
-        sub={{
-          ru: "Поток гостей приводит салон и онлайн-запись. Вы работаете руками — клиентов ищем мы. Стабильно, без простоев.",
-          en: "The salon and online booking bring the guests. You do the craft — we find the clients. Steady, no idle time.",
-        }}
-        cta={{ label: { ru: "смотреть вакансии", en: "see vacancies" }, href: "#vacancies" }}
-      />
-
-      {/* 2 — Такой же герой, фото справа (зеркально), тоже наезжает поверх */}
-      <TeamHero
-        reverse
-        logoTop
-        photo="/assets/tild6536-613_-2___1__4.jpg"
-        eyebrow={{ ru: "почему к нам", en: "why join us" }}
-        title={{ ru: "Растите в мастерстве и в доходе", en: "Grow in craft and in income" }}
-        sub={{
-          ru: "Честный процент, материалы за счёт салона, гибкий график. Наставничество и разборы — и поток, чтобы применять новое каждый день.",
-          en: "Fair commission, materials on the salon, a flexible schedule. Mentorship and reviews — plus the flow to use new skills every day.",
-        }}
-        cta={{ label: { ru: "оставить заявку", en: "apply now" }, href: "#join" }}
-      />
+      {/* 1 — Единый блок-герой про команду (в стиле первого блока главной) */}
+      <TeamIntro />
 
       <div className="relative z-10 bg-white">
+        {/* Маркер конца героя — после него у шапки появляется подложка */}
+        <div id="hero-end" aria-hidden className="h-0" />
+
         {/* 2 — Мини-сравнение с поворотом карточек перед вакансиями */}
         <SalonCompare />
 

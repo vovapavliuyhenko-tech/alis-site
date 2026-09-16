@@ -69,7 +69,7 @@ function Track({ hidden = false }: { hidden?: boolean }) {
 
 export default function Brands() {
   return (
-    <section className="overflow-hidden bg-white pt-6 pb-14 lg:pt-8 lg:pb-20">
+    <section className="overflow-hidden bg-white section-y">
       <div className="group relative flex overflow-hidden">
         <Track />
         <Track hidden />

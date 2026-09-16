@@ -99,7 +99,7 @@ export default function Header() {
 
   // Над первым экраном главной (тёмное фото) — шапка светлая; после прокрутки
   // и на внутренних страницах — тёмная на белой подложке.
-  const overHero = pathname === "/" && !solid;
+  const overHero = !solid;
   const ink = overHero ? "text-white" : "text-[#17191a]";
   const inkSoft = overHero ? "text-white/80" : "text-[#17191a]/75";
   const hoverInk = overHero ? "hover:text-white" : "hover:text-[#46131E]";

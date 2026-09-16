@@ -20,7 +20,7 @@ export default function ServiceBento() {
   const en = lang === "en";
 
   return (
-    <section id="services" className="scroll-mt-24 bg-white py-16 lg:py-20">
+    <section id="services" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[94%] max-w-[1440px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
           <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">

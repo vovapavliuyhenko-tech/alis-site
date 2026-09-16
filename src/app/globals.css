@@ -63,6 +63,11 @@ html { scrollbar-color: var(--wine) #ffffff; scrollbar-width: thin; }
 /* Единый заголовочный шрифт (Forum) — тот же, что у .font-display */
 .font-serif-display { font-family: var(--font-heading), Georgia, 'Times New Roman', serif; }
 
+/* ===== Единый вертикальный ритм между блоками по всему сайту (как на главной) =====
+   Меняешь ритм всего сайта здесь, в одном месте. */
+.section-y { padding-top: 4rem; padding-bottom: 4rem; }
+@media (min-width: 1024px) { .section-y { padding-top: 5rem; padding-bottom: 5rem; } }
+
 /* ===== Кнопка «Онлайн запись»: пульс + расходящиеся кольца ===== */
 .fab-pulse { animation: fabPulse 2.6s ease-in-out infinite; }
 @keyframes fabPulse {
