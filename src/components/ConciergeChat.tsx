@@ -81,6 +81,24 @@ export default function ConciergeChat() {
   const t = (ru: string, e: string) => (en ? e : ru);
 
   const [open, setOpen] = useState(false);
+  // Лаунчер не показываем на первом блоке (герое) — только когда прокрутили до
+  // второго блока (маркер #hero-end поднялся выше середины экрана).
+  const [passedHero, setPassedHero] = useState(false);
+  useEffect(() => {
+    const check = () => {
+      const s = document.getElementById("hero-end");
+      if (!s) { setPassedHero(true); return; }
+      setPassedHero(s.getBoundingClientRect().top <= window.innerHeight * 0.5);
+    };
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    return () => {
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
+  }, []);
+
   const greeting = (): Msg => ({
     from: "bot",
     text: en
@@ -242,7 +260,8 @@ export default function ConciergeChat() {
         </div>
       )}
 
-      {/* Лаунчер: в закрытом виде — плашка-приглашение, в открытом — крестик */}
+      {/* Лаунчер: в закрытом виде — плашка-приглашение, в открытом — крестик.
+          На первом блоке (герое) скрыт — появляется со второго блока. */}
       {open ? (
         <button
           onClick={() => setOpen(false)}
@@ -251,7 +270,7 @@ export default function ConciergeChat() {
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /></svg>
         </button>
-      ) : (
+      ) : passedHero ? (
         <button
           onClick={() => setOpen(true)}
           aria-label={t("Открыть чат", "Open chat")}
@@ -263,7 +282,7 @@ export default function ConciergeChat() {
           </span>
           {t("Напишите нам, мы онлайн!", "Message us, we're online!")}
         </button>
-      )}
+      ) : null}
     </div>
   );
 }
