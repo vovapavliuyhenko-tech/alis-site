@@ -30,9 +30,6 @@ export default function ConciergeStages({ stages, sectionId }: { stages: Stage[]
                 <p className="mt-5 max-w-md text-[13px] leading-relaxed text-[#17191a]/65 lg:text-[13.5px]">
                   {s.desc[lang]}
                 </p>
-                <p className="mt-6 font-serif text-[15px] italic text-[#46131E]/80 lg:text-[16px]">
-                  {s.quote[lang]}
-                </p>
               </div>
 
               {/* Фото — половина экрана в ширину */}
