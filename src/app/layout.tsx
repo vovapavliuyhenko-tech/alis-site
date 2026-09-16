@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Forum, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import { ShopProvider } from "@/lib/shop";
@@ -11,13 +11,13 @@ import CustomCursor from "@/components/CustomCursor";
 import CookieConsent from "@/components/CookieConsent";
 import BookingFab from "@/components/BookingFab";
 
-// Единая пара шрифтов на всём сайте (обе — с полной кириллицей, без фолбэков):
-// Forum — все заголовки и логотип (элегантные римские капители).
-// Montserrat — весь остальной текст и подзаголовки.
-const heading = Forum({
+// Montserrat на всём сайте (с полной кириллицей). Заголовки временно тоже
+// Montserrat — до подключения файла AGOptCyrillic (тогда --font-heading заменим
+// на localFont AGOptCyrillic).
+const heading = Montserrat({
   variable: "--font-heading",
   subsets: ["latin", "cyrillic"],
-  weight: "400",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 const body = Montserrat({
