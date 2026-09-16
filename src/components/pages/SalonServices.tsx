@@ -52,13 +52,8 @@ export default function SalonServices({
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
-                  className="group grid w-full grid-cols-[auto_1fr_auto] items-center gap-5 px-6 py-4 text-left lg:gap-8 lg:px-8 lg:py-4"
+                  className="group grid w-full grid-cols-[1fr_auto] items-center gap-5 px-6 py-4 text-left lg:gap-8 lg:px-8 lg:py-4"
                 >
-                  {/* Номер */}
-                  <span className={`font-display text-[13px] tabular-nums transition-colors duration-300 lg:text-[15px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#46131E]"}`}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-
                   {/* Название + подпись */}
                   <span className="min-w-0">
                     <span className={`block font-display text-[14px] font-normal uppercase leading-[1.2] tracking-[0.02em] transition-colors duration-300 sm:text-[15px] lg:text-[17px] ${isOpen ? "text-[#f4efe6]" : "text-[#46131E]"}`}>
