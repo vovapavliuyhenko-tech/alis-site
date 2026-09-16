@@ -44,35 +44,35 @@ const IconBloggers = (
 
 const FORMATS: Format[] = [
   {
-    icon: IconEvents,
-    title: { ru: "Бьюти-команда приезжает к вам", en: "The beauty team comes to you" },
+    icon: IconBrands,
+    title: { ru: "Аудитория, что платит за красоту", en: "An audience that pays for beauty" },
     desc: {
-      ru: "Волосы, макияж и ногти — в 4–6 рук на вашей площадке. Никуда не едете и ничего не организуете — просто открываете дверь.",
-      en: "Hair, makeup and nails — in 4–6 hands at your place. No travel, no logistics — you just open the door.",
+      ru: "Ваш продукт видят гости и мастера, которые уже покупают уход и услуги. Живой контакт вместо холодной рекламы.",
+      en: "Your product reaches guests and masters who already buy care and services. Real contact instead of cold ads.",
     },
   },
   {
-    icon: IconVenues,
-    title: { ru: "Готовы точно к сроку", en: "Ready right on time" },
+    icon: IconEvents,
+    title: { ru: "Бьюти-блок под ключ", en: "The beauty block, turnkey" },
     desc: {
-      ru: "Работаем строго по таймингу события. К выходу, съёмке или свадьбе все собраны минута в минуту — без спешки и нервов.",
-      en: "We work strictly to your event timing. For the exit, shoot or wedding — everyone ready to the minute, calm and unhurried.",
+      ru: "Отель, ресторан, event-агентство? Берём красоту гостей на себя. Вы отвечаете за событие — мы за то, как все выглядят.",
+      en: "Hotel, restaurant, event agency? We take the guests' beauty on ourselves. You own the event — we own how everyone looks.",
     },
   },
   {
     icon: IconBloggers,
-    title: { ru: "Единый образ для всех", en: "One look for everyone" },
+    title: { ru: "Партнёрство в долгую", en: "A long-term partnership" },
     desc: {
-      ru: "Невеста, подруги, гости — в одном стиле и настроении. Образ собран целиком и смотрится красиво и вживую, и в кадре.",
-      en: "Bride, friends, guests — one style and mood. The whole look comes together and reads beautifully in life and on camera.",
+      ru: "Работаем с теми, кто разделяет наши ценности. Реальный сервис, а не разовый бартер. Растём вместе, а не ставим галочку.",
+      en: "We work with those who share our values. Real service, not a one-off barter. We grow together, not tick a box.",
     },
   },
   {
-    icon: IconBrands,
-    title: { ru: "Салонный уровень на выезде", en: "Salon-level, on location" },
+    icon: IconVenues,
+    title: { ru: "Контент и репутация", en: "Content and reputation" },
     desc: {
-      ru: "Своё оборудование и профессиональная косметика. Дома, в отеле или на площадке — как в кресле у мастера, и −10% на первый выезд.",
-      en: "Own equipment and professional cosmetics. At home, in a hotel or on set — like in the master's chair, and −10% on your first booking.",
+      ru: "Совместные съёмки, честные отзывы, спецпредложения для вашей аудитории. Вы — в контенте, мы — в доверии гостей.",
+      en: "Joint shoots, honest reviews, special offers for your audience. You gain content, we gain the guests' trust.",
     },
   },
 ];
@@ -84,10 +84,10 @@ export default function CooperationFormats() {
     <section className="bg-white section-y">
       <div className="mx-auto mb-12 w-[92%] max-w-[1280px] text-center lg:mb-16">
         <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
-          {lang === "en" ? "beauty concierge" : "бьюти-консьерж"}
+          {lang === "en" ? "for partners" : "партнёрам"}
         </p>
         <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
-          {lang === "en" ? "Why our beauty concierge" : "Чем хорош наш бьюти-консьерж"}
+          {lang === "en" ? "Why partner with ÁLIS" : "Плюсы сотрудничества с ÁLIS"}
         </h2>
       </div>
       <div className="mx-auto grid w-[92%] max-w-[1280px] grid-cols-1 items-stretch gap-3 sm:gap-4 lg:grid-cols-2">
