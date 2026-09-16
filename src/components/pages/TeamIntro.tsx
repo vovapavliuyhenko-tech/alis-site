@@ -74,8 +74,8 @@ export default function TeamIntro() {
       <div className="flex flex-1 items-center justify-center px-4 text-center">
         <h1
           ref={wordRef}
-          className="origin-center font-serif-display font-normal uppercase leading-[0.92] tracking-[0.01em] text-white will-change-transform [text-shadow:0_2px_40px_rgba(0,0,0,.25)]"
-          style={{ fontSize: "clamp(28px,6.8vw,110px)" }}
+          className="origin-center font-serif-display font-light uppercase leading-[0.95] tracking-[0.02em] text-white will-change-transform [text-shadow:0_2px_40px_rgba(0,0,0,.25)]"
+          style={{ fontSize: "clamp(22px,4.6vw,72px)", fontWeight: 300 }}
         >
           {t("Команда", "Team")}
         </h1>
