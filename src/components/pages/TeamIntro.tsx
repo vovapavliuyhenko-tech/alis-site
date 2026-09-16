@@ -1,89 +1,92 @@
 "use client";
-// ГЕРОЙ страницы «Команда» — в стиле первого блока главной: полноэкранное фоновое
-// фото, слева внизу вводный текст, крупный заголовок и широкая кнопка; справа внизу
-// компактная матовая карточка со словами основателя. Всё — про команду ÁLIS.
-import type { CSSProperties } from "react";
+// ГЕРОЙ страницы «Команда» — по образцу главного экрана PALOMA: полноэкранное
+// фоновое фото, по центру гигантское слово «КОМАНДА», под ним строка-тег из трёх
+// слов, снизу широкая кнопка-пилюля. Фон плавно увеличивается (зум) при скролле.
+import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 
-// Фото — заменить на съёмку команды/салона.
+// Фото — заменить на съёмку/видео команды. object-cover, тянется на весь экран.
 const BG_PHOTO = "/assets/alis/img_6009.jpg";
-const FOUNDER_PHOTO = "/assets/tild6536-613_-2___1__4.jpg";
-
-const vars = {
-  "--pad": "clamp(20px,3.2vw,54px)",
-  "--btm": "clamp(26px,3.4vw,48px)",
-} as CSSProperties;
 
 export default function TeamIntro() {
   const { lang } = useLang();
   const en = lang === "en";
   const t = (ru: string, e: string) => (en ? e : ru);
 
+  const secRef = useRef<HTMLElement>(null);
+  const bgRef = useRef<HTMLImageElement>(null);
+
+  // Зум фона при скролле: масштаб растёт от 1 до ~1.35 по мере ухода героя вверх.
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const sec = secRef.current;
+        const bg = bgRef.current;
+        if (!sec || !bg) return;
+        const h = sec.offsetHeight || window.innerHeight;
+        const progress = Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / h));
+        bg.style.transform = `scale(${(1 + progress * 0.35).toFixed(4)})`;
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <section
-      style={vars}
-      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[#b9b3a9] text-white"
+      ref={secRef}
+      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[#3a3631] text-white"
     >
-      {/* Фоновое фото */}
+      {/* Фоновое фото + зум при скролле */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={BG_PHOTO} alt="" aria-hidden className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
-      {/* Затемнение для читаемости: сверху (под шапку) и в левом-нижнем углу */}
+      <img
+        ref={bgRef}
+        src={BG_PHOTO}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 -z-20 h-full w-full origin-center object-cover object-center will-change-transform"
+      />
+      {/* Лёгкое затемнение для читаемости белого текста */}
       <div
         aria-hidden
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(20,18,16,.42) 0%, rgba(20,18,16,0) 24%), linear-gradient(200deg, rgba(20,18,16,0) 40%, rgba(20,18,16,.5) 100%)",
+            "linear-gradient(to bottom, rgba(20,18,16,.38) 0%, rgba(20,18,16,.12) 30%, rgba(20,18,16,.12) 62%, rgba(20,18,16,.34) 100%)",
         }}
       />
 
-      {/* НИЖНИЙ КОНТЕНТ (слева) */}
-      <div className="mt-auto px-6 pb-7 lg:absolute lg:bottom-[var(--btm)] lg:left-0 lg:mt-0 lg:max-w-[min(760px,58vw)] lg:pb-0 lg:pl-[var(--pad)] lg:pr-6">
-        <p className="text-[11.5px] leading-relaxed text-white/90">
-          {t("Поток гостей приводит салон и онлайн-запись.", "The salon and online booking bring the guests.")}
-          <br />
-          {t("Вы работаете руками — клиентов ищем мы. Стабильно, без простоев.", "You do the craft — we find the clients. Steady, no idle time.")}
-          <br />
-          <strong className="font-semibold">
-            {t("Честный процент и материалы за счёт салона.", "Fair commission, materials on the salon.")}
-          </strong>
-        </p>
-
-        <h1 className="mt-5 font-serif-display text-[18px] font-medium uppercase leading-[1.2] tracking-[0.02em] text-white [text-shadow:0_1px_24px_rgba(0,0,0,.22)] sm:text-[22px] lg:mt-6 lg:whitespace-nowrap lg:text-[clamp(20px,2.1vw,32px)]">
-          {t("Место в команде, где кресло не пустует", "A place on a team where the chair is never empty")}
-          <br />
-          {t("и мастер растёт каждый день", "and every master grows each day")}
+      {/* Центр — гигантское слово + строка-тег */}
+      <div className="flex flex-1 flex-col items-center justify-center px-4 text-center">
+        <h1 className="font-serif-display font-normal uppercase leading-[0.92] tracking-[0.01em] text-white [text-shadow:0_2px_40px_rgba(0,0,0,.25)]" style={{ fontSize: "clamp(52px,13.5vw,210px)" }}>
+          {t("Команда", "Team")}
         </h1>
-
-        <a
-          href="#vacancies"
-          className="mt-7 inline-flex w-full items-center justify-center rounded-xl border border-transparent bg-[#46131E] px-10 py-4 text-[14px] font-medium tracking-[0.01em] text-[#F4F1EA] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md lg:mt-8 lg:w-auto lg:min-w-[min(520px,68vw)]"
-        >
-          {t("Смотреть вакансии", "See vacancies")}
-        </a>
+        <div className="mt-4 flex w-full max-w-[min(760px,82vw)] items-center justify-between text-[clamp(13px,2.2vw,30px)] font-light lowercase tracking-[0.02em] text-white/95 lg:mt-6">
+          <span>{t("мастерство", "craft")}</span>
+          <span>{t("сервис", "service")}</span>
+          <span>{t("забота", "care")}</span>
+        </div>
       </div>
 
-      {/* КАРТОЧКА — слова основателя (справа, компактная) */}
-      <figure className="mx-6 mb-6 flex items-stretch gap-3.5 rounded-[18px] border border-white/35 bg-white/15 p-3.5 text-white shadow-[0_8px_40px_rgba(0,0,0,0.18)] backdrop-blur-2xl max-[520px]:flex-col lg:absolute lg:bottom-[var(--btm)] lg:right-[var(--pad)] lg:mx-0 lg:mb-0 lg:w-[400px]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={FOUNDER_PHOTO}
-          alt={t("Дайана Тарзян", "Diana Tarzyan")}
-          className="w-[92px] shrink-0 self-stretch rounded-[12px] bg-[#cfc8bd]/40 object-cover max-[520px]:h-[140px] max-[520px]:w-full"
-        />
-        <div className="flex min-w-0 flex-col justify-between gap-2 py-0.5">
-          <blockquote className="text-[11.5px] leading-[1.4] text-white/90">
-            {t(
-              "«Мы даём поток гостей, честный процент и материалы. Ваше дело — мастерство. Растите с нами, а не выживайте в одиночку».",
-              "“We give you the flow of guests, a fair commission and materials. Your job is the craft. Grow with us — don't survive alone.”",
-            )}
-          </blockquote>
-          <figcaption className="text-[11.5px] leading-[1.4] text-white/70">
-            <strong className="font-semibold text-white">{t("Дайана Тарзян,", "Diana Tarzyan,")}</strong>{" "}
-            {t("основатель сети студий эстетики ÁLIS", "founder of the ÁLIS aesthetics studios")}
-          </figcaption>
-        </div>
-      </figure>
+      {/* Низ — широкая кнопка-пилюля во всю ширину */}
+      <div className="px-4 pb-4 lg:px-5 lg:pb-5">
+        <a
+          href="#vacancies"
+          className="flex w-full items-center justify-center gap-2 rounded-2xl bg-white/95 px-8 py-5 text-[13px] font-medium uppercase tracking-[0.14em] text-[#1c1a18] backdrop-blur-sm transition-colors duration-300 hover:bg-white lg:text-[14px]"
+        >
+          {t("Смотреть вакансии", "See vacancies")}
+          <span aria-hidden>→</span>
+        </a>
+      </div>
     </section>
   );
 }
