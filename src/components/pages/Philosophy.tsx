@@ -12,10 +12,10 @@ export default function Philosophy() {
 
   return (
     <section className="relative flex min-h-[88vh] items-center justify-center overflow-hidden">
-      {/* Зафиксированный фон — не двигается при скролле */}
+      {/* Зафиксированный фон — фото стоит на месте, контент проходит поверх при скролле */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-fixed bg-center"
         style={{ backgroundImage: `url(${PHOTO})` }}
       />
       {/* Затемнение для читаемости */}
