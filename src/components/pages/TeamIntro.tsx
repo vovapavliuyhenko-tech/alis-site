@@ -102,9 +102,7 @@ export default function TeamIntro({
             href={cta.href}
             onMouseEnter={() => setBtnHover(true)}
             onMouseLeave={() => setBtnHover(false)}
-            className={`flex w-full items-center justify-center gap-2 rounded-2xl border px-8 py-5 text-[13px] font-medium uppercase tracking-[0.14em] transition-all duration-300 hover:-translate-y-0.5 lg:text-[14px] ${
-              btnHover ? "border-[#f4efe6] bg-[#f4efe6] text-[#46131E]" : "border-transparent bg-[#46131E] text-[#F4F1EA]"
-            }`}
+            className="flex w-full items-center justify-center gap-2 rounded-2xl border border-transparent bg-[#46131E] px-8 py-5 text-[13px] font-medium uppercase tracking-[0.14em] text-[#F4F1EA] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md lg:text-[14px]"
           >
             {cta.label[lang]}
             <span aria-hidden>→</span>
