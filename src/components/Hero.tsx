@@ -53,7 +53,7 @@ export default function Hero() {
           </strong>
         </p>
 
-        <h1 className="mt-5 font-serif-display text-[20px] font-normal uppercase leading-[1.12] tracking-[0.08em] text-white [text-shadow:0_1px_24px_rgba(0,0,0,.22)] sm:text-[25px] lg:mt-6 lg:whitespace-nowrap lg:text-[clamp(22px,2.4vw,34px)]">
+        <h1 className="mt-5 font-serif-display text-[20px] font-medium uppercase leading-[1.12] tracking-[0.08em] text-white [text-shadow:0_1px_24px_rgba(0,0,0,.22)] sm:text-[25px] lg:mt-6 lg:whitespace-nowrap lg:text-[clamp(22px,2.4vw,34px)]">
           {t("Полный образ", "A complete look")}
           <br />
           {t("за один визит,", "in a single visit,")}
