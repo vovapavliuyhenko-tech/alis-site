@@ -114,7 +114,7 @@ export default function Faq({
       <div className="mx-auto grid w-[92%] max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         {/* Левая колонка — заголовок рядом с фото, зафиксирована */}
         <div className="lg:sticky lg:top-24 lg:self-start">
-          <h2 className="r-reveal font-serif-display text-[22px] font-normal uppercase leading-[1.15] tracking-[0.02em] text-[#722F37] sm:text-[26px] lg:text-[28px]">
+          <h2 className="r-reveal font-serif-display text-[22px] font-normal uppercase leading-[1.15] tracking-[0.02em] text-[#591C28] sm:text-[26px] lg:text-[28px]">
             {titleTop[lang]}
             <br />
             {titleBottom[lang]}
@@ -136,14 +136,14 @@ export default function Faq({
                 <article
                   className={`flex min-h-[190px] flex-col justify-center rounded-[20px] border p-5 transition-colors duration-300 lg:p-6 ${
                     isActive
-                      ? "border-transparent bg-[#722F37]"
-                      : "border-[#722F37]/30 bg-white hover:border-transparent hover:bg-[#EAEAE4]"
+                      ? "border-transparent bg-[#591C28]"
+                      : "border-[#591C28]/30 bg-white hover:border-transparent hover:bg-[#EAEAE4]"
                   }`}
                 >
-                  <p className={`font-serif text-[16px] italic leading-snug lg:text-[19px] ${isActive ? "text-[#F4F1EA]" : "text-[#722F37]"}`}>
+                  <p className={`font-serif text-[16px] italic leading-snug lg:text-[19px] ${isActive ? "text-[#F4F1EA]" : "text-[#591C28]"}`}>
                     {it.q[lang]}
                   </p>
-                  <span className={`mt-4 mb-4 block h-px w-10 ${isActive ? "bg-[#F4F1EA]/60" : "bg-[#722F37]"}`} />
+                  <span className={`mt-4 mb-4 block h-px w-10 ${isActive ? "bg-[#F4F1EA]/60" : "bg-[#591C28]"}`} />
                   <p className={`text-[12.5px] font-light leading-relaxed lg:text-[13.5px] ${isActive ? "text-[#F4F1EA]/80" : "text-[#444444]/70"}`}>
                     {it.a[lang]}
                   </p>

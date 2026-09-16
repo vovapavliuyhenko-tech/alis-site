@@ -39,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ru" className={`${heading.variable} ${body.variable} antialiased`}>
       <head>
-        <meta name="theme-color" content="#722F37" />
+        <meta name="theme-color" content="#591C28" />
         {/* Фолбэк: если JS выключен, элементы появления видны сразу */}
         <noscript>
           <style>{`.r-reveal{opacity:1 !important;transform:none !important;}`}</style>

@@ -102,7 +102,7 @@ export default function Header() {
   const overHero = pathname === "/" && !solid;
   const ink = overHero ? "text-white" : "text-[#17191a]";
   const inkSoft = overHero ? "text-white/80" : "text-[#17191a]/75";
-  const hoverInk = overHero ? "hover:text-white" : "hover:text-[#722F37]";
+  const hoverInk = overHero ? "hover:text-white" : "hover:text-[#591C28]";
 
   // Пункт меню + (опц.) выпадашка
   const NavLink = ({ item }: { item: NavItem }) =>
@@ -118,13 +118,13 @@ export default function Header() {
         </a>
         {/* Мега-панель: во всю ширину, светлый фон, пункты в колонках */}
         <div className="invisible fixed inset-x-0 top-[68px] opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-          <div className="border-t border-[#722F37]/15 bg-[#F9F8F6]/98 shadow-[0_24px_50px_rgba(0,0,0,0.08)] backdrop-blur-md">
+          <div className="border-t border-[#591C28]/15 bg-[#F9F8F6]/98 shadow-[0_24px_50px_rgba(0,0,0,0.08)] backdrop-blur-md">
             <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-center gap-x-8 gap-y-1 px-8 py-4">
               {item.sub.map((s) => (
                 <a
                   key={s.label.ru}
                   href={s.href}
-                  className="rounded-lg px-4 py-2 text-[12.5px] uppercase tracking-[0.12em] text-[#722F37] transition-colors hover:bg-[#722F37]/10 hover:text-[#722F37]"
+                  className="rounded-lg px-4 py-2 text-[12.5px] uppercase tracking-[0.12em] text-[#591C28] transition-colors hover:bg-[#591C28]/10 hover:text-[#591C28]"
                 >
                   {s.label[lang]}
                 </a>
@@ -142,7 +142,7 @@ export default function Header() {
     );
 
   const Badge = ({ n }: { n: number }) => (
-    <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#722F37] px-1 text-[10px] font-medium leading-none text-[#f4efe6]">
+    <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#591C28] px-1 text-[10px] font-medium leading-none text-[#f4efe6]">
       {n}
     </span>
   );
@@ -203,10 +203,10 @@ export default function Header() {
           {/* Действия — язык, избранное, корзина (+ запись на моб.) */}
           <div className="ml-auto flex items-center gap-3 lg:ml-7 lg:gap-4 xl:ml-9">
           {/* Тумблер RU/EN (десктоп) */}
-          <div className={`relative hidden items-center rounded-full border p-0.5 text-[12px] font-medium lg:flex ${overHero ? "border-white/40" : "border-[#722F37]/25"}`}>
+          <div className={`relative hidden items-center rounded-full border p-0.5 text-[12px] font-medium lg:flex ${overHero ? "border-white/40" : "border-[#591C28]/25"}`}>
             <span
               aria-hidden
-              className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${overHero ? "bg-white" : "bg-[#722F37]"}`}
+              className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${overHero ? "bg-white" : "bg-[#591C28]"}`}
               style={{ transform: lang === "en" ? "translateX(100%)" : "translateX(0)" }}
             />
             {(["ru", "en"] as Lang[]).map((l) => (
@@ -217,7 +217,7 @@ export default function Header() {
                 className={`relative z-10 w-9 rounded-full py-2 uppercase tracking-wide transition-colors duration-300 ${
                   lang === l
                     ? overHero ? "text-[#17191a]" : "text-[#f4efe6]"
-                    : overHero ? "text-white/70 hover:text-white" : "text-[#722F37]/60 hover:text-[#722F37]"
+                    : overHero ? "text-white/70 hover:text-white" : "text-[#591C28]/60 hover:text-[#591C28]"
                 }`}
               >
                 {l}
@@ -267,7 +267,7 @@ export default function Header() {
                   onClick={() => setLang(l)}
                   aria-pressed={lang === l}
                   className={`rounded-full border px-4 py-2 uppercase tracking-wide transition-colors ${
-                    lang === l ? "border-[#722F37] bg-[#722F37] text-[#f4efe6]" : "border-[#17191a]/15 text-[#17191a]/60"
+                    lang === l ? "border-[#591C28] bg-[#591C28] text-[#f4efe6]" : "border-[#17191a]/15 text-[#17191a]/60"
                   }`}
                 >
                   {l}

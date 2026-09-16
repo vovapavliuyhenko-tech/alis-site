@@ -30,11 +30,11 @@ export default function LoyaltyCerts() {
     <section className="bg-white py-16 lg:py-24">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#722F37]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#722F37]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#722F37]" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#591C28]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#591C28]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#591C28]" />
             {t("лояльность и подарки", "loyalty & gifts")}
           </span>
-          <h2 className="mt-5 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.03em] text-[#722F37] lg:text-[28px]">
+          <h2 className="mt-5 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.03em] text-[#591C28] lg:text-[28px]">
             {t("Возвращаться — выгодно", "Coming back pays off")}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-[13px] leading-relaxed text-[#2a2320]/60 lg:text-[14px]">
@@ -47,7 +47,7 @@ export default function LoyaltyCerts() {
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
           {/* Лояльность — высокая оливковая карточка слева */}
-          <div className="r-reveal flex min-h-[320px] flex-col justify-between rounded-[26px] bg-[#722F37] p-8 text-[#f4efe6] sm:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-h-0 lg:p-10">
+          <div className="r-reveal flex min-h-[320px] flex-col justify-between rounded-[26px] bg-[#591C28] p-8 text-[#f4efe6] sm:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-h-0 lg:p-10">
             <div>
               <p className="text-[11px] uppercase tracking-[0.2em] text-[#f4efe6]/60">
                 {t("программа лояльности", "loyalty programme")}
@@ -67,7 +67,7 @@ export default function LoyaltyCerts() {
               href={YCLIENTS}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 flex w-full items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#722F37] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
+              className="mt-8 flex w-full items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#591C28] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
             >
               {t("Записаться", "Book now")}
             </a>
@@ -90,7 +90,7 @@ export default function LoyaltyCerts() {
               className="absolute inset-0 h-full w-full object-cover transition-all duration-[700ms] ease-out group-hover:scale-105 group-hover:blur-md"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10 transition-colors duration-500 group-hover:from-black/80" />
-            <span className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-white/50 text-[16px] text-white transition-all duration-300 group-hover:border-transparent group-hover:bg-[#f4efe6] group-hover:text-[#722F37]">
+            <span className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-white/50 text-[16px] text-white transition-all duration-300 group-hover:border-transparent group-hover:bg-[#f4efe6] group-hover:text-[#591C28]">
               <span className="transition-transform duration-300 group-hover:rotate-45">↗</span>
             </span>
             <div className="absolute inset-x-6 bottom-6">
@@ -115,11 +115,11 @@ export default function LoyaltyCerts() {
                 i === 0 ? "lg:col-start-2 lg:row-start-2" : "lg:col-start-3 lg:row-start-2"
               }`}
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#722F37]/10 font-display text-[15px] text-[#722F37]">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#591C28]/10 font-display text-[15px] text-[#591C28]">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
-                <h3 className="font-display text-[17px] uppercase leading-[1.2] tracking-[0.02em] text-[#722F37] lg:text-[19px]">
+                <h3 className="font-display text-[17px] uppercase leading-[1.2] tracking-[0.02em] text-[#591C28] lg:text-[19px]">
                   {tile.title[lang]}
                 </h3>
                 <p className="mt-2 text-[13px] leading-relaxed text-[#2a2320]/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">

@@ -7,7 +7,7 @@ type Variant = "wine" | "cream";
 
 // Оливковый акцент вместо бордового «wine»: PNG используется как маска, форма
 // заливается оливковым. Пропорции сохраняем через aspect-ratio.
-const OLIVE = "#722F37";
+const OLIVE = "#591C28";
 const EMBLEM_RATIO = 734 / 1108;
 const WORD_RATIO = 1515 / 234;
 

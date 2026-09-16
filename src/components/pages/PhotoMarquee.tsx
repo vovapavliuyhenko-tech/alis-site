@@ -82,10 +82,10 @@ export default function PhotoMarquee() {
   return (
     <section className="overflow-hidden bg-[#F9F8F6] pt-16 pb-20 lg:pt-20 lg:pb-28">
       <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] text-center lg:mb-16">
-        <p className="text-[10px] lowercase tracking-[0.05em] text-[#722F37]">
+        <p className="text-[10px] lowercase tracking-[0.05em] text-[#591C28]">
           {en ? "the atmosphere" : "атмосфера"}
         </p>
-        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#722F37] lg:text-[28px]">
+        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#591C28] lg:text-[28px]">
           {en ? "You'll want to come back" : "Сюда хочется вернуться"}
         </h2>
       </div>
@@ -105,7 +105,7 @@ export default function PhotoMarquee() {
 
       {/* Полоса прогресса под фото */}
       <div className="mx-auto mt-10 h-[3px] w-[94%] max-w-[1440px] overflow-hidden rounded-full bg-[#C2C0B6]/40">
-        <div ref={barRef} className="h-full rounded-full bg-[#722F37]" style={{ width: "0%" }} />
+        <div ref={barRef} className="h-full rounded-full bg-[#591C28]" style={{ width: "0%" }} />
       </div>
     </section>
   );

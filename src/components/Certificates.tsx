@@ -49,7 +49,7 @@ export default function Certificates() {
   return (
     <section id="certificates" className="scroll-mt-24 bg-white py-24 lg:py-28">
       <div className="mx-auto w-[92%] max-w-[1200px]">
-        <div className="relative overflow-hidden rounded-[32px] bg-[#722F37] px-7 py-10 text-[#f4efe6] sm:px-10 lg:px-16 lg:py-16">
+        <div className="relative overflow-hidden rounded-[32px] bg-[#591C28] px-7 py-10 text-[#f4efe6] sm:px-10 lg:px-16 lg:py-16">
           {/* Мягкое свечение */}
           <span aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#f4efe6]/10 blur-[90px]" />
 
@@ -72,7 +72,7 @@ export default function Certificates() {
                   t("Оформление за пару минут — онлайн или на ресепшене", "Ready in a couple of minutes — online or at reception"),
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-3 text-[14px] leading-snug text-[#f4efe6]/90 lg:text-[15px]">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#722F37]">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#591C28]">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f4efe6" strokeWidth="2.5"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     </span>
                     {b}
@@ -82,7 +82,7 @@ export default function Certificates() {
 
               <button
                 onClick={() => setOpen(true)}
-                className="group/btn r-reveal mt-9 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#f4efe6] px-10 py-4 text-[14px] font-medium uppercase tracking-[0.12em] text-[#722F37] transition-transform duration-300 hover:scale-[1.02] sm:w-auto sm:min-w-[340px]"
+                className="group/btn r-reveal mt-9 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#f4efe6] px-10 py-4 text-[14px] font-medium uppercase tracking-[0.12em] text-[#591C28] transition-transform duration-300 hover:scale-[1.02] sm:w-auto sm:min-w-[340px]"
               >
                 {t("Купить сертификат", "Buy a certificate")}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover/btn:translate-x-1"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -178,7 +178,7 @@ export default function Certificates() {
 
             {!sent ? (
               <>
-                <h3 className="font-serif text-[24px] text-[#722F37] lg:text-[28px]">
+                <h3 className="font-serif text-[24px] text-[#591C28] lg:text-[28px]">
                   {t("Оформить сертификат", "Order a certificate")}
                 </h3>
                 <p className="mt-2 text-[13px] text-[#17191a]/55">
@@ -194,8 +194,8 @@ export default function Certificates() {
                       onClick={() => setNominal(n)}
                       className={`rounded-full border px-4 py-2 text-[14px] transition-colors ${
                         nominal === n
-                          ? "border-[#722F37] bg-[#722F37] text-[#f4efe6]"
-                          : "border-[#17191a]/15 text-[#17191a] hover:border-[#722F37]"
+                          ? "border-[#591C28] bg-[#591C28] text-[#f4efe6]"
+                          : "border-[#17191a]/15 text-[#17191a] hover:border-[#591C28]"
                       }`}
                     >
                       {n} ₽
@@ -205,8 +205,8 @@ export default function Certificates() {
                     onClick={() => setNominal("custom")}
                     className={`rounded-full border px-4 py-2 text-[14px] transition-colors ${
                       nominal === "custom"
-                        ? "border-[#722F37] bg-[#722F37] text-[#f4efe6]"
-                        : "border-[#17191a]/15 text-[#17191a] hover:border-[#722F37]"
+                        ? "border-[#591C28] bg-[#591C28] text-[#f4efe6]"
+                        : "border-[#17191a]/15 text-[#17191a] hover:border-[#591C28]"
                     }`}
                   >
                     {t("Свой номинал", "Custom")}
@@ -218,7 +218,7 @@ export default function Certificates() {
                     onChange={(e) => setCustom(e.target.value.replace(/[^\d]/g, ""))}
                     inputMode="numeric"
                     placeholder={t("Сумма, ₽ (только онлайн)", "Amount, ₽ (online only)")}
-                    className="mt-3 w-full rounded-2xl border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#722F37]"
+                    className="mt-3 w-full rounded-2xl border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#591C28]"
                   />
                 )}
 
@@ -228,22 +228,22 @@ export default function Certificates() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={t("Ваше имя", "Your name")}
-                    className="w-full rounded-2xl border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#722F37]"
+                    className="w-full rounded-2xl border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#591C28]"
                   />
                   <input
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+7 (___) ___-__-__"
                     inputMode="tel"
-                    className="w-full rounded-2xl border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#722F37]"
+                    className="w-full rounded-2xl border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#591C28]"
                   />
                 </div>
 
                 <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[12px] leading-snug text-[#17191a]/55">
-                  <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#722F37]" />
+                  <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[#591C28]" />
                   <span>
                     {t("Даю согласие на обработку персональных данных и соглашаюсь с ", "I consent to the processing of personal data and agree to the ")}
-                    <a href="/policy" className="text-[#722F37] underline underline-offset-2">
+                    <a href="/policy" className="text-[#591C28] underline underline-offset-2">
                       {t("политикой конфиденциальности", "privacy policy")}
                     </a>
                   </span>
@@ -252,21 +252,21 @@ export default function Certificates() {
                 <button
                   onClick={submit}
                   disabled={!canSend}
-                  className="mt-6 w-full rounded-full bg-[#722F37] py-3.5 text-[14px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
+                  className="mt-6 w-full rounded-full bg-[#591C28] py-3.5 text-[14px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
                 >
                   {t("Оформить сертификат", "Order certificate")}
                 </button>
               </>
             ) : (
               <div className="py-6 text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#722F37]/10">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#722F37" strokeWidth="2"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#591C28]/10">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#591C28" strokeWidth="2"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </div>
-                <h3 className="mt-5 font-serif text-[24px] text-[#722F37]">{t("Заявка принята!", "Request received!")}</h3>
+                <h3 className="mt-5 font-serif text-[24px] text-[#591C28]">{t("Заявка принята!", "Request received!")}</h3>
                 <p className="mx-auto mt-2 max-w-sm text-[14px] text-[#17191a]/60">
                   {t(`Сертификат на ${chosen} ₽ — мы свяжемся с вами для оформления оплаты.`, `Certificate for ${chosen} ₽ — we'll contact you to arrange payment.`)}
                 </p>
-                <button onClick={close} className="mt-6 rounded-full border border-[#722F37] px-7 py-3 text-[13px] text-[#722F37] transition-colors hover:bg-[#722F37] hover:text-[#f4efe6]">
+                <button onClick={close} className="mt-6 rounded-full border border-[#591C28] px-7 py-3 text-[13px] text-[#591C28] transition-colors hover:bg-[#591C28] hover:text-[#f4efe6]">
                   {t("Готово", "Done")}
                 </button>
               </div>
