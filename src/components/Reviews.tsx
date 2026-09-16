@@ -223,14 +223,14 @@ export default function Reviews() {
               <article
                 key={r.name.ru}
                 style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)` }}
-                className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[128px] flex h-[256px] w-[300px] flex-col rounded-[18px] border border-[#46131E]/12 bg-white p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
+                className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[150px] flex h-[300px] w-[300px] flex-col overflow-hidden rounded-[18px] border border-[#46131E]/12 bg-white p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[12px] tracking-[0.32em] text-[#8a5a3c]">★★★★★</span>
                   <span className="font-serif text-[34px] leading-none text-[#46131E]/20">&rdquo;</span>
                 </div>
 
-                <p className="mt-3 flex-1 font-serif text-[12.5px] leading-[1.55] text-[#17191a]/85">
+                <p className="mt-3 min-h-0 flex-1 overflow-hidden font-serif text-[12.5px] leading-[1.55] text-[#17191a]/85 [-webkit-box-orient:vertical] [-webkit-line-clamp:8] [display:-webkit-box]">
                   {r.text[lang]}
                 </p>
 
