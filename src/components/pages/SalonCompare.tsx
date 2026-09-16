@@ -52,10 +52,10 @@ export default function SalonCompare() {
         if (!el) return;
         const rect = el.getBoundingClientRect();
         const vh = window.innerHeight;
-        // Эффект стартует, когда СЕРЕДИНА блока поднялась чуть выше середины экрана,
-        // и завершается, пока она идёт к верхней трети.
+        // Поворот стартует, когда ряд только заходит снизу в экран, и завершается
+        // ещё до центра — к моменту, когда блок виден целиком, карточки уже повёрнуты.
         const center = rect.top + rect.height / 2;
-        const p = (vh * 0.42 - center) / (vh * 0.32);
+        const p = (vh * 0.95 - center) / (vh * 0.4);
         setK(Math.max(0, Math.min(1, p)));
       });
     };
