@@ -4,7 +4,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import ConciergeBenefits from "@/components/pages/ConciergeBenefits";
 import SalonServices from "@/components/pages/SalonServices";
-import HorizontalStory, { type Stage } from "@/components/HorizontalStory";
+import { type Stage } from "@/components/HorizontalStory";
+import ConciergeStages from "@/components/pages/ConciergeStages";
 import ConciergeOffer from "@/components/pages/ConciergeOffer";
 import Faq from "@/components/Faq";
 import ConciergeChat from "@/components/ConciergeChat";
@@ -169,8 +170,8 @@ export default function ConciergePage() {
           cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }}
         />
 
-        {/* 4 — Этапы работы (горизонтальный блок) */}
-        <div id="process" className="scroll-mt-24"><HorizontalStory stages={CONCIERGE_STAGES} sectionId="process" /></div>
+        {/* 4 — Этапы работы (шторка: текст/фото, накладываются при скролле) */}
+        <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" />
 
         {/* 5 — Коммерческое предложение + заявка */}
         <ConciergeOffer />
