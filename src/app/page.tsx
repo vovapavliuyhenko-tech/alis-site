@@ -21,9 +21,8 @@ export default function Home() {
       <div className="relative z-10 bg-[#F9F8F6]">
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
-        <MassageProblems />
-        {/* Прежние блоки ÁLIS в стиле референса */}
         <PhotoMarquee />
+        <MassageProblems />
         <Philosophy />
         <ServiceBento />
         <Brands />
