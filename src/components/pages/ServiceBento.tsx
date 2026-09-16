@@ -49,11 +49,6 @@ export default function ServiceBento() {
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/20 transition-colors duration-500 group-hover:from-black/55 group-hover:via-black/25 group-hover:to-black/45" />
 
-              {/* Кружок со стрелкой справа сверху — на ховере светлеет, стрелка поворачивается */}
-              <span className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/50 text-[15px] text-white transition-colors duration-300 group-hover:border-transparent group-hover:bg-[#F4F1EA] group-hover:text-[#6E7248] lg:h-10 lg:w-10">
-                <span className="transition-transform duration-300 group-hover:rotate-12">↗</span>
-              </span>
-
               {/* Название слева сверху + подпись, проявляется на наведении */}
               <div className="absolute inset-x-6 top-5">
                 <h3 className="font-serif-display text-[22px] uppercase tracking-[0.03em] text-white lg:text-[24px]">
