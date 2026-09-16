@@ -66,7 +66,7 @@ export default function MassageProblems() {
   const right = ITEMS.filter((_, i) => i % 2 === 1); // 02, 04
 
   return (
-    <section id="problems" className="bg-white section-y">
+    <section id="problems" className="bg-[#F9F8F6] section-y">
       <div className="mx-auto w-[94%] max-w-[1400px]">
         {/* Заголовок секции */}
         <div className="r-reveal text-center">

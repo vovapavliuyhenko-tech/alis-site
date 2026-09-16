@@ -71,7 +71,7 @@ function Track({ hidden = false }: { hidden?: boolean }) {
 export default function Brands({ heading = false }: { heading?: boolean }) {
   const { lang } = useLang();
   return (
-    <section className="overflow-hidden bg-white section-y">
+    <section className="overflow-hidden bg-[#F9F8F6] section-y">
       {heading && (
         <div className="mx-auto mb-12 w-[92%] max-w-[1280px] text-center lg:mb-16">
           <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">

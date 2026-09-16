@@ -40,7 +40,7 @@ export default function Vacancies() {
   const en = lang === "en";
 
   return (
-    <section id="vacancies" className="scroll-mt-24 bg-white section-y">
+    <section id="vacancies" className="scroll-mt-24 bg-[#F9F8F6] section-y">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
           <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">

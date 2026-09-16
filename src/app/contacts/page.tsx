@@ -9,7 +9,7 @@ export default function ContactsPage() {
     <main>
       <ScrollReveal />
       <Header />
-      <div className="relative z-10 bg-white">
+      <div className="relative z-10 bg-[#F9F8F6]">
         <ContactsBlock />
       </div>
       <Footer />

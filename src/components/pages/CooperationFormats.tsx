@@ -81,7 +81,7 @@ export default function CooperationFormats() {
   const { lang } = useLang();
 
   return (
-    <section className="bg-white section-y">
+    <section className="bg-[#F9F8F6] section-y">
       <div className="r-reveal mx-auto mb-12 w-[92%] max-w-[1280px] text-center lg:mb-16">
         <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
           {lang === "en" ? "for partners" : "партнёрам"}

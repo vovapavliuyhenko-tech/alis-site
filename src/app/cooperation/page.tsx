@@ -63,7 +63,7 @@ export default function CooperationPage() {
         photo="/assets/alis/img_6011.jpg"
       />
 
-      <div className="relative z-10 bg-white">
+      <div className="relative z-10 bg-[#F9F8F6]">
         {/* Маркер конца героя — после него у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
 

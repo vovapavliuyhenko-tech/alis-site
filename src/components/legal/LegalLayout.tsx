@@ -16,7 +16,7 @@ export default function LegalLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="bg-white">
+    <main className="bg-[#F9F8F6]">
       <Header />
       <div className="h-16 bg-white" />
       <article className="mx-auto w-[90%] max-w-[860px] py-14 lg:py-20">

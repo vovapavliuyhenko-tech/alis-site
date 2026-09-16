@@ -22,7 +22,7 @@ export default function ConciergeStages({
   const { lang } = useLang();
 
   return (
-    <section id={sectionId} className="relative scroll-mt-24 bg-white">
+    <section id={sectionId} className="relative scroll-mt-24 bg-[#F9F8F6]">
       <div className="r-reveal mx-auto w-[92%] max-w-[1280px] pt-16 pb-12 text-center lg:pt-24 lg:pb-16">
         <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">{eyebrow[lang]}</p>
         <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
@@ -39,7 +39,7 @@ export default function ConciergeStages({
           >
             <div className="grid h-full grid-cols-1 lg:grid-cols-2">
               {/* Текст — по центру, мелкий */}
-              <div className={`flex flex-col items-center justify-center bg-white px-8 py-14 text-center lg:px-[6vw] ${photoRight ? "lg:order-1" : "lg:order-2"}`}>
+              <div className={`flex flex-col items-center justify-center bg-[#F9F8F6] px-8 py-14 text-center lg:px-[6vw] ${photoRight ? "lg:order-1" : "lg:order-2"}`}>
                 <span className="text-[11px] uppercase tracking-[0.3em] text-[#46131E]">
                   {lang === "en" ? "Step" : "Этап"} 0{i + 1}
                 </span>

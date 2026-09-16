@@ -43,7 +43,7 @@ export default function ProductView({ product }: { product: Product }) {
   const [qty, setQty] = useState(1);
 
   return (
-    <div className="relative z-10 bg-white pt-[84px] lg:pt-[100px]">
+    <div className="relative z-10 bg-[#F9F8F6] pt-[84px] lg:pt-[100px]">
       <div className="mx-auto w-[92%] max-w-[1200px] pb-20 lg:pb-28">
         {/* Хлебные крошки */}
         <nav className="mb-6 flex items-center gap-2 text-[12px] uppercase tracking-[0.12em] text-[#2a2320]/45">
