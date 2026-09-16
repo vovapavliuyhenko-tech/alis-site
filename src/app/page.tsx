@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
 import Philosophy from "@/components/pages/Philosophy";
 import ServiceBento from "@/components/pages/ServiceBento";
-import Brands from "@/components/Brands";
 import Faq from "@/components/Faq";
 import ScrollReveal from "@/components/ScrollReveal";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -25,7 +24,6 @@ export default function Home() {
         <MassageProblems />
         <Philosophy />
         <ServiceBento />
-        <Brands />
         <Faq />
       </div>
       <Footer />

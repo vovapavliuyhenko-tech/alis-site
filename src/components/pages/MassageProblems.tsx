@@ -51,11 +51,10 @@ const ITEMS: Item[] = [
 function Capsule({ item, lang }: { item: Item; lang: "ru" | "en" }) {
   return (
     <div
-      className="group relative flex min-h-[176px] w-full max-w-[515px] flex-col items-center justify-center rounded-[34px] border border-transparent bg-[#46131E] px-10 py-9 text-center transition-colors duration-300 hover:border-[#46131E]/35 hover:bg-white sm:px-16 lg:min-h-[200px] lg:px-[74px]"
+      className="group relative flex min-h-[176px] w-full max-w-[515px] flex-col justify-between rounded-[34px] border border-transparent bg-[#46131E] px-10 py-9 text-center transition-colors duration-300 hover:border-[#46131E]/35 hover:bg-white sm:px-16 lg:min-h-[200px] lg:px-[74px]"
     >
-      <span className="text-[10px] tracking-[0.14em] text-[#f4efe6]/55 transition-colors duration-300 group-hover:text-[#46131E]/50">{`{ ${item.n} }`}</span>
-      <h3 className="mt-2.5 max-w-[300px] text-[14px] font-semibold leading-[1.2] text-[#f4efe6] transition-colors duration-300 group-hover:text-[#46131E]">{item.title[lang]}</h3>
-      <p className="mt-2 max-w-[330px] text-[12.5px] leading-[1.45] text-[#f4efe6]/80 transition-colors duration-300 group-hover:text-[#46131E]/70">{item.desc[lang]}</p>
+      <h3 className="mx-auto max-w-[300px] text-[16px] font-semibold leading-[1.25] text-[#f4efe6] transition-colors duration-300 group-hover:text-[#46131E] lg:text-[17px]">{item.title[lang]}</h3>
+      <p className="mx-auto mt-4 max-w-[330px] text-[12.5px] leading-[1.45] text-[#f4efe6]/80 transition-colors duration-300 group-hover:text-[#46131E]/70">{item.desc[lang]}</p>
     </div>
   );
 }
