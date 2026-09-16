@@ -1,7 +1,8 @@
 "use client";
 // ГЕРОЙ страницы «Команда» — по образцу главного экрана PALOMA: полноэкранное
-// фоновое фото, по центру гигантское слово «КОМАНДА», под ним строка-тег из трёх
-// слов, снизу широкая кнопка-пилюля. Фон плавно увеличивается (зум) при скролле.
+// фоновое фото, по центру крупное слово «КОМАНДА». При скролле слово плавно
+// увеличивается и растворяется (как на paloma.website), фон чуть наезжает.
+// Снизу — широкая бордовая кнопка-пилюля с hover-эффектом «матовое стекло».
 import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 
@@ -15,8 +16,9 @@ export default function TeamIntro() {
 
   const secRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLImageElement>(null);
+  const wordRef = useRef<HTMLHeadingElement>(null);
 
-  // Зум фона при скролле: масштаб растёт от 1 до ~1.35 по мере ухода героя вверх.
+  // Скролл-эффект PALOMA: слово масштабируется вверх и растворяется; фон чуть зумит.
   useEffect(() => {
     let raf = 0;
     const onScroll = () => {
@@ -24,11 +26,14 @@ export default function TeamIntro() {
       raf = requestAnimationFrame(() => {
         raf = 0;
         const sec = secRef.current;
-        const bg = bgRef.current;
-        if (!sec || !bg) return;
+        if (!sec) return;
         const h = sec.offsetHeight || window.innerHeight;
-        const progress = Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / h));
-        bg.style.transform = `scale(${(1 + progress * 0.35).toFixed(4)})`;
+        const p = Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / h));
+        if (wordRef.current) {
+          wordRef.current.style.transform = `scale(${(1 + p * 0.7).toFixed(4)})`;
+          wordRef.current.style.opacity = `${Math.max(0, 1 - p * 1.15).toFixed(4)}`;
+        }
+        if (bgRef.current) bgRef.current.style.transform = `scale(${(1 + p * 0.18).toFixed(4)})`;
       });
     };
     onScroll();
@@ -46,7 +51,7 @@ export default function TeamIntro() {
       ref={secRef}
       className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[#3a3631] text-white"
     >
-      {/* Фоновое фото + зум при скролле */}
+      {/* Фоновое фото + лёгкий зум при скролле */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         ref={bgRef}
@@ -65,23 +70,22 @@ export default function TeamIntro() {
         }}
       />
 
-      {/* Центр — гигантское слово + строка-тег */}
-      <div className="flex flex-1 flex-col items-center justify-center px-4 text-center">
-        <h1 className="font-serif-display font-normal uppercase leading-[0.92] tracking-[0.01em] text-white [text-shadow:0_2px_40px_rgba(0,0,0,.25)]" style={{ fontSize: "clamp(52px,13.5vw,210px)" }}>
+      {/* Центр — крупное слово (масштаб/растворение на скролле) */}
+      <div className="flex flex-1 items-center justify-center px-4 text-center">
+        <h1
+          ref={wordRef}
+          className="origin-center font-serif-display font-normal uppercase leading-[0.92] tracking-[0.01em] text-white will-change-transform [text-shadow:0_2px_40px_rgba(0,0,0,.25)]"
+          style={{ fontSize: "clamp(28px,6.8vw,110px)" }}
+        >
           {t("Команда", "Team")}
         </h1>
-        <div className="mt-4 flex w-full max-w-[min(760px,82vw)] items-center justify-between text-[clamp(13px,2.2vw,30px)] font-light lowercase tracking-[0.02em] text-white/95 lg:mt-6">
-          <span>{t("мастерство", "craft")}</span>
-          <span>{t("сервис", "service")}</span>
-          <span>{t("забота", "care")}</span>
-        </div>
       </div>
 
-      {/* Низ — широкая кнопка-пилюля во всю ширину */}
+      {/* Низ — широкая бордовая кнопка-пилюля; hover — матовое стекло, как на главной */}
       <div className="px-4 pb-4 lg:px-5 lg:pb-5">
         <a
           href="#vacancies"
-          className="flex w-full items-center justify-center gap-2 rounded-2xl bg-white/95 px-8 py-5 text-[13px] font-medium uppercase tracking-[0.14em] text-[#1c1a18] backdrop-blur-sm transition-colors duration-300 hover:bg-white lg:text-[14px]"
+          className="flex w-full items-center justify-center gap-2 rounded-2xl border border-transparent bg-[#46131E] px-8 py-5 text-[13px] font-medium uppercase tracking-[0.14em] text-[#F4F1EA] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md lg:text-[14px]"
         >
           {t("Смотреть вакансии", "See vacancies")}
           <span aria-hidden>→</span>
