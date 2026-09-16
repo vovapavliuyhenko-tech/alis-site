@@ -93,11 +93,11 @@ export default function CooperationForm() {
                 {FIELDS.map((f) => (
                   <label
                     key={f.key}
-                    className={`block rounded-2xl border bg-white/[0.06] px-5 py-3 transition-colors focus-within:border-[#8a5a3c] ${
+                    className={`block rounded-2xl border bg-white px-5 py-3 transition-colors focus-within:border-[#8a5a3c] ${
                       errors[f.key] ? "border-[#e7a0a0]" : "border-transparent"
                     }`}
                   >
-                    <span className="mb-1 block text-[10px] uppercase tracking-[0.16em] text-[#f4efe6]/55">
+                    <span className="mb-1 block text-[10px] uppercase tracking-[0.16em] text-[#46131E]/60">
                       {f.label[lang]}
                       {f.required && <span className="text-[#8a5a3c]"> *</span>}
                     </span>
@@ -106,7 +106,7 @@ export default function CooperationForm() {
                         rows={2}
                         value={values[f.key] || ""}
                         onChange={(e) => set(f.key, e.target.value)}
-                        className="w-full resize-none bg-transparent text-[15px] text-[#f4efe6] outline-none placeholder:text-[#f4efe6]/30"
+                        className="w-full resize-none bg-transparent text-[15px] text-[#2a2320] outline-none placeholder:text-[#2a2320]/35"
                       />
                     ) : (
                       <input
@@ -116,7 +116,7 @@ export default function CooperationForm() {
                         value={f.key === "phone" ? (values[f.key] || "+7 ") : values[f.key] || ""}
                         onFocus={f.key === "phone" ? () => { if (!values.phone) set("phone", "+7 "); } : undefined}
                         onChange={(e) => set(f.key, f.key === "phone" ? formatPhone(e.target.value) : e.target.value)}
-                        className="w-full bg-transparent text-[15px] text-[#f4efe6] outline-none placeholder:text-[#f4efe6]/30"
+                        className="w-full bg-transparent text-[15px] text-[#2a2320] outline-none placeholder:text-[#2a2320]/35"
                       />
                     )}
                   </label>
