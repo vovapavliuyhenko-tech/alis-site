@@ -16,7 +16,7 @@ export default function ConciergeStages({ stages, sectionId }: { stages: Stage[]
         return (
           <div
             key={s.name.ru}
-            className="relative h-svh min-h-[560px] w-full overflow-hidden rounded-t-[28px] shadow-[0_-18px_50px_rgba(23,25,26,0.10)] lg:sticky lg:top-0"
+            className="relative h-svh min-h-[560px] w-full overflow-hidden rounded-t-[28px] lg:sticky lg:top-0"
           >
             <div className="grid h-full grid-cols-1 lg:grid-cols-2">
               {/* Текст — по центру, мелкий */}

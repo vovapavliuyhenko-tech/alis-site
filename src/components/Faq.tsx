@@ -137,7 +137,7 @@ export default function Faq({
                   className={`flex min-h-[190px] flex-col justify-center rounded-[20px] border p-5 transition-colors duration-300 lg:p-6 ${
                     isActive
                       ? "border-transparent bg-[#46131E]"
-                      : "border-[#46131E]/30 bg-white hover:border-transparent hover:bg-[#EAEAE4]"
+                      : "border-[#46131E]/30 bg-white"
                   }`}
                 >
                   <p className={`font-serif text-[16px] italic leading-snug lg:text-[19px] ${isActive ? "text-[#F4F1EA]" : "text-[#46131E]"}`}>
