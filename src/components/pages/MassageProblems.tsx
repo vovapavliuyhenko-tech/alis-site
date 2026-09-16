@@ -70,7 +70,7 @@ export default function MassageProblems() {
     <section id="problems" className="bg-[#F9F8F6] section-y">
       <div className="mx-auto w-[94%] max-w-[1400px]">
         {/* Заголовок секции */}
-        <div className="text-center">
+        <div className="r-reveal text-center">
           <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
             {en ? "why ális" : "почему ális"}
           </p>

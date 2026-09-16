@@ -42,7 +42,7 @@ export default function Vacancies() {
   return (
     <section id="vacancies" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1280px]">
-        <div className="mb-12 text-center lg:mb-16">
+        <div className="r-reveal mb-12 text-center lg:mb-16">
           <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
             {en ? "vacancies" : "вакансии"}
           </p>

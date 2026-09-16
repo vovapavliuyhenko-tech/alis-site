@@ -82,7 +82,7 @@ export default function CooperationFormats() {
 
   return (
     <section className="bg-white section-y">
-      <div className="mx-auto mb-12 w-[92%] max-w-[1280px] text-center lg:mb-16">
+      <div className="r-reveal mx-auto mb-12 w-[92%] max-w-[1280px] text-center lg:mb-16">
         <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
           {lang === "en" ? "for partners" : "партнёрам"}
         </p>

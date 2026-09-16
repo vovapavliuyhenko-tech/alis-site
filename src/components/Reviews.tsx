@@ -195,7 +195,7 @@ export default function Reviews() {
     <section id="reviews" className="overflow-hidden bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1200px]">
         {/* Заголовок */}
-        <div className="mb-14 flex flex-col items-center text-center lg:mb-20">
+        <div className="r-reveal mb-14 flex flex-col items-center text-center lg:mb-20">
           <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
             {lang === "en" ? "reviews" : "отзывы"}
           </p>
