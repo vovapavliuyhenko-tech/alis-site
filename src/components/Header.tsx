@@ -146,13 +146,14 @@ export default function Header() {
       {n}
     </span>
   );
+  const bubble = overHero ? "bg-white/10 hover:bg-white/20" : "bg-[#46131E]/[0.06] hover:bg-[#46131E]/10";
   const ShopIcons = () => (
-    <div className="flex items-center">
-      <button onClick={shop.openFav} aria-label={lang === "en" ? "Favourites" : "Избранное"} className={`relative flex h-8 w-8 items-center justify-center transition-colors ${ink} ${hoverInk}`}>
+    <div className="flex items-center gap-1.5">
+      <button onClick={shop.openFav} aria-label={lang === "en" ? "Favourites" : "Избранное"} className={`relative flex h-9 w-9 items-center justify-center rounded-full transition-colors ${bubble} ${ink} ${hoverInk}`}>
         <HeartIcon />
         {shop.favCount > 0 && <Badge n={shop.favCount} />}
       </button>
-      <button onClick={shop.openCart} aria-label={lang === "en" ? "Cart" : "Корзина"} className={`relative flex h-8 w-8 items-center justify-center transition-colors ${ink} ${hoverInk}`}>
+      <button onClick={shop.openCart} aria-label={lang === "en" ? "Cart" : "Корзина"} className={`relative flex h-9 w-9 items-center justify-center rounded-full transition-colors ${bubble} ${ink} ${hoverInk}`}>
         <BagIcon />
         {shop.cartCount > 0 && <Badge n={shop.cartCount} />}
       </button>

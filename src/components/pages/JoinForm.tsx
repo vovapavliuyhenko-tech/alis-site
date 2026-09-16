@@ -77,9 +77,16 @@ export default function JoinForm() {
               </div>
             ) : (
               <form onSubmit={submit} noValidate className="flex flex-1 flex-col justify-between gap-10">
-                <h2 className="mx-auto w-full max-w-lg text-center font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] lg:text-[28px]">
-                  {en ? "Become part of ÁLIS" : "Стать частью команды ÁLIS"}
-                </h2>
+                <div className="mx-auto w-full max-w-lg text-center">
+                  <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] lg:text-[28px]">
+                    {en ? "Become part of ÁLIS" : "Стать частью команды ÁLIS"}
+                  </h2>
+                  <p className="mt-3 text-[13px] leading-relaxed text-[#f4efe6]/70">
+                    {en
+                      ? "Leave your contacts — we'll tell you about the terms and invite you to a trial day."
+                      : "Оставьте контакты — расскажем об условиях и позовём на пробный день."}
+                  </p>
+                </div>
 
                 <div className="mx-auto flex w-full max-w-lg flex-col gap-3">
                 {FIELDS.map((f) => (
@@ -125,7 +132,7 @@ export default function JoinForm() {
 
                 <button
                   type="submit"
-                  className="mx-auto flex w-full max-w-lg items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#46131E] transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-blur-md hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
+                  className="mx-auto flex w-full max-w-lg items-center justify-center rounded-2xl border border-transparent bg-[#f4efe6] py-4 text-[14px] font-medium tracking-[0.01em] text-[#46131E] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md"
                 >
                   {en ? "send" : "отправить"}
                 </button>
