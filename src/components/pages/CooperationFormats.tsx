@@ -81,8 +81,8 @@ export default function CooperationFormats() {
   const { lang } = useLang();
 
   return (
-    <section className="bg-white px-3 pt-[76px] pb-6 sm:px-4 lg:pt-[88px] lg:pb-8">
-      <div className="grid grid-cols-1 items-stretch gap-3 sm:gap-4 lg:grid-cols-2">
+    <section className="bg-white section-y">
+      <div className="mx-auto grid w-[92%] max-w-[1280px] grid-cols-1 items-stretch gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Слева — большое фото на всю высоту блока */}
         <div className="relative min-h-[300px] overflow-hidden rounded-[30px] lg:min-h-[560px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}

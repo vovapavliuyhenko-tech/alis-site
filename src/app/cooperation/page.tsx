@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import TeamIntro from "@/components/pages/TeamIntro";
 import CooperationFormats from "@/components/pages/CooperationFormats";
 import CooperationForm from "@/components/pages/CooperationForm";
 import Faq from "@/components/Faq";
@@ -54,13 +55,21 @@ export default function CooperationPage() {
       <ScrollReveal />
       <Header />
 
-      {/* 1 — Фото + сетка карточек с вариантами сотрудничества */}
-      <div className="relative z-10 bg-white">
-        <CooperationFormats />
-      </div>
+      {/* 1 — Герой-обложка (как на «Команде»): логотип + зум-эффект PALOMA */}
+      <TeamIntro
+        caption={{ ru: "сотрудничество", en: "partnership" }}
+        cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#request" }}
+        photo="/assets/alis/img_6011.jpg"
+      />
 
       <div className="relative z-10 bg-white">
-        {/* 2 — Форма заявки на партнёрство */}
+        {/* Маркер конца героя — после него у шапки появляется подложка */}
+        <div id="hero-end" aria-hidden className="h-0" />
+
+        {/* 2 — Фото + сетка карточек с вариантами сотрудничества */}
+        <CooperationFormats />
+
+        {/* 3 — Форма заявки на партнёрство */}
         <CooperationForm />
 
         {/* 3 — Частые вопросы про сотрудничество */}
