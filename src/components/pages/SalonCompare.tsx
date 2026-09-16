@@ -52,10 +52,10 @@ export default function SalonCompare() {
         if (!el) return;
         const rect = el.getBoundingClientRect();
         const vh = window.innerHeight;
-        // Эффект стартует, когда СЕРЕДИНА блока дошла до середины экрана,
-        // и завершается, пока она поднимается к верхней трети.
+        // Эффект стартует, когда СЕРЕДИНА блока поднялась чуть выше середины экрана,
+        // и завершается, пока она идёт к верхней трети.
         const center = rect.top + rect.height / 2;
-        const p = (vh * 0.5 - center) / (vh * 0.35);
+        const p = (vh * 0.42 - center) / (vh * 0.32);
         setK(Math.max(0, Math.min(1, p)));
       });
     };
