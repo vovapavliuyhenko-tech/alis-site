@@ -43,7 +43,7 @@ export default function Hero() {
 
       {/* НИЖНИЙ КОНТЕНТ (слева) */}
       <div className="mt-auto px-6 pb-7 lg:absolute lg:bottom-[var(--btm)] lg:left-0 lg:mt-0 lg:max-w-[min(760px,58vw)] lg:pb-0 lg:pl-[var(--pad)] lg:pr-6">
-        <p className="text-[11.5px] leading-relaxed text-white/90">
+        <p className="text-[13px] leading-relaxed text-white/90">
           {t("Волосы, ногти, брови и макияж — сразу.", "Hair, nails, brows and makeup — all at once.")}
           <br />
           {t("Приходите уставшей — выходите собранной. За один визит.", "Come in tired — leave put together. In one visit.")}
@@ -78,13 +78,13 @@ export default function Hero() {
           className="w-[92px] shrink-0 self-stretch rounded-[12px] bg-[#cfc8bd]/40 object-cover max-[520px]:h-[140px] max-[520px]:w-full"
         />
         <div className="flex min-w-0 flex-col justify-between gap-2 py-0.5">
-          <blockquote className="text-[11.5px] leading-[1.4] text-white/90">
+          <blockquote className="text-[12.5px] leading-[1.45] text-white/90">
             {t(
               "«Собираем весь образ за один визит — и дарим −10% на первое посещение. Приходите: разницу почувствуете сразу».",
               "“We build your whole look in one visit — and give −10% on your first. Come in: you'll feel the difference at once.”",
             )}
           </blockquote>
-          <figcaption className="text-[11.5px] leading-[1.4] text-white/70">
+          <figcaption className="text-[12px] leading-[1.4] text-white/70">
             <strong className="font-semibold text-white">{t("Дайана Тарзян,", "Diana Tarzyan,")}</strong>{" "}
             {t("основатель сети студий эстетики ÁLIS и ÁLIS BEAUTY Concierge", "founder of the ÁLIS & ÁLIS BEAUTY Concierge aesthetics studios")}
           </figcaption>
