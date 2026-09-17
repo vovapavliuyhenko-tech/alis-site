@@ -80,8 +80,8 @@ export default function Hero() {
         <div className="flex min-w-0 flex-col justify-between gap-2 py-0.5">
           <blockquote className="text-[12.5px] leading-[1.45] text-white/90">
             {t(
-              "«Собираем весь образ за один визит — и дарим −10% на первое посещение. Приходите: разницу почувствуете сразу».",
-              "“We build your whole look in one visit — and give −10% on your first. Come in: you'll feel the difference at once.”",
+              "«Весь образ за один визит — и −10% на первое посещение».",
+              "“Your whole look in one visit — and −10% on your first.”",
             )}
           </blockquote>
           <figcaption className="text-[12px] leading-[1.4] text-white/70">
