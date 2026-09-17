@@ -32,11 +32,12 @@ export default function CookieConsent() {
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-[100] px-4 pb-4 sm:px-6 sm:pb-6">
-      <div className="mx-auto flex max-w-[330px] flex-col gap-2 rounded-xl border border-[#17191a]/10 bg-white/95 px-3.5 py-2.5 shadow-[0_16px_50px_rgba(23,25,26,0.18)] backdrop-blur-md">
+      <div className="mx-auto flex max-w-[290px] flex-col gap-2 rounded-xl border border-[#17191a]/10 bg-white/95 px-3.5 py-2.5 shadow-[0_16px_50px_rgba(23,25,26,0.18)] backdrop-blur-md">
         <p className="text-[11px] leading-snug text-[#17191a]/70">
           {en ? (
             <>
-              We use cookies to improve the site. See our{" "}
+              We use cookies to improve the site.
+              <br />
               <a href="/cookies" className="text-[#46131E] underline underline-offset-2 hover:opacity-70">
                 Cookie
               </a>{" "}
@@ -48,7 +49,8 @@ export default function CookieConsent() {
             </>
           ) : (
             <>
-              Используем cookie, чтобы сайт работал удобнее.{" "}
+              Используем cookie, чтобы сайт работал удобнее.
+              <br />
               <a href="/cookies" className="text-[#46131E] underline underline-offset-2 hover:opacity-70">
                 Политика cookie
               </a>{" "}
