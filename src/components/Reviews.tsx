@@ -192,7 +192,7 @@ export default function Reviews() {
   }, []);
 
   return (
-    <section id="reviews" className="overflow-hidden bg-[#F9F8F6] section-y">
+    <section id="reviews" className="overflow-hidden bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1200px]">
         {/* Заголовок */}
         <div className="r-reveal mb-14 flex flex-col items-center text-center lg:mb-20">

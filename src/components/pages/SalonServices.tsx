@@ -25,7 +25,7 @@ export default function SalonServices({
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="uslugi" className="scroll-mt-24 bg-[#F9F8F6] section-y">
+    <section id="uslugi" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <div className="mb-12 text-center lg:mb-16">
           <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">

@@ -155,7 +155,7 @@ export default function ConciergePage() {
         cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }}
       />
 
-      <div className="relative z-10 bg-[#F9F8F6]">
+      <div className="relative z-10 bg-white">
         {/* Маркер конца героя — после него у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
 

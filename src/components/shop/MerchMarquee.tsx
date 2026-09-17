@@ -106,7 +106,7 @@ export default function MerchMarquee({
   );
 
   return (
-    <section id={sectionId} className="scroll-mt-24 overflow-hidden bg-[#F9F8F6] section-y">
+    <section id={sectionId} className="scroll-mt-24 overflow-hidden bg-white section-y">
       <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] text-center lg:mb-16">
         <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">{eyebrow[lang]}</p>
         <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
