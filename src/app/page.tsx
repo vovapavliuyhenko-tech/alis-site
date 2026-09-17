@@ -17,7 +17,7 @@ export default function Home() {
       <ScrollReveal />
       <Header />
       <Hero />
-      <div className="relative z-10 bg-[#F9F8F6]">
+      <div className="relative z-10 bg-white">
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
         <PhotoMarquee />
