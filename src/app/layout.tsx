@@ -4,10 +4,8 @@ import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import { ShopProvider } from "@/lib/shop";
 import ShopUI from "@/components/shop/ShopUI";
-import Preloader from "@/components/Preloader";
 import ServiceWorker from "@/components/ServiceWorker";
 import SmoothAnchor from "@/components/SmoothAnchor";
-import CustomCursor from "@/components/CustomCursor";
 import CookieConsent from "@/components/CookieConsent";
 import BookingFab from "@/components/BookingFab";
 import Typograph from "@/components/Typograph";
@@ -47,7 +45,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </noscript>
       </head>
       <body>
-        <Preloader />
         <LanguageProvider>
           <ShopProvider>
             {children}
@@ -57,7 +54,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <CookieConsent />
           </ShopProvider>
         </LanguageProvider>
-        <CustomCursor />
         <SmoothAnchor />
         <ServiceWorker />
       </body>
