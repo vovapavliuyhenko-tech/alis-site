@@ -104,7 +104,7 @@ export default function CooperationFormats() {
               key={f.title.ru}
               className="group flex min-h-[240px] flex-col justify-between rounded-[30px] border border-[#46131E]/20 bg-white p-6 transition-colors duration-300 hover:border-transparent hover:bg-[#46131E] lg:min-h-0 lg:p-7"
             >
-              <h3 className="max-w-[20ch] text-[14px] font-semibold leading-[1.25] text-[#444] transition-colors duration-300 group-hover:text-[#f4efe6] lg:text-[15px]">
+              <h3 className="max-w-[20ch] font-serif-display text-[16px] font-medium uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] transition-colors duration-300 group-hover:text-[#f4efe6] lg:text-[18px]">
                 {f.title[lang]}
               </h3>
               <span aria-hidden className="my-3 block">{f.icon}</span>
