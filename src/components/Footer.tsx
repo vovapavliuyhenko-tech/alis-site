@@ -108,7 +108,7 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-1 md:items-end md:text-right">
             {LEGAL.map((l) => (
-              <a key={l.href} href={l.href} className="transition-colors hover:text-[#f4efe6]">{l.label}</a>
+              <a key={l.href} href={l.href} className="underline-offset-4 transition-colors hover:text-white hover:underline">{l.label}</a>
             ))}
           </div>
         </div>
