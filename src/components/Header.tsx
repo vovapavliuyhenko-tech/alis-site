@@ -116,20 +116,20 @@ export default function Header() {
             <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </a>
-        {/* Мега-панель: во всю ширину, светлый фон, пункты в колонках */}
-        <div className="invisible fixed inset-x-0 top-[68px] opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-          <div className="border-t border-[#46131E]/15 bg-[#F9F8F6]/98 shadow-[0_24px_50px_rgba(0,0,0,0.08)] backdrop-blur-md">
-            <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-center gap-x-8 gap-y-1 px-8 py-4">
-              {item.sub.map((s) => (
-                <a
-                  key={s.label.ru}
-                  href={s.href}
-                  className="rounded-lg px-4 py-2 text-[12.5px] uppercase tracking-[0.12em] text-[#46131E] transition-colors hover:bg-[#46131E]/10 hover:text-[#46131E]"
-                >
-                  {s.label[lang]}
-                </a>
-              ))}
-            </div>
+        {/* Компактная выпадашка — раскрывается прямо из-под пункта */}
+        <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2.5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+          <div className="relative min-w-[230px] origin-top scale-95 rounded-2xl border border-[#46131E]/12 bg-white/95 p-2 shadow-[0_20px_50px_rgba(23,25,26,0.16)] backdrop-blur-md transition-transform duration-200 group-hover:scale-100">
+            {/* «Клювик» к пункту меню */}
+            <span aria-hidden className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 rounded-[3px] border-l border-t border-[#46131E]/12 bg-white/95" />
+            {item.sub.map((s) => (
+              <a
+                key={s.label.ru}
+                href={s.href}
+                className="block rounded-xl px-4 py-2.5 text-center text-[12px] uppercase tracking-[0.12em] text-[#46131E] transition-colors hover:bg-[#46131E]/[0.08]"
+              >
+                {s.label[lang]}
+              </a>
+            ))}
           </div>
         </div>
       </div>

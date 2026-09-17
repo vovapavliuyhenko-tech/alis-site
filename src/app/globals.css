@@ -68,6 +68,9 @@ html { scrollbar-color: var(--wine) #ffffff; scrollbar-width: thin; }
 .section-y { padding-top: 3rem; padding-bottom: 3rem; }
 @media (min-width: 1024px) { .section-y { padding-top: 60px; padding-bottom: 60px; } }
 
+/* Аккуратные переносы: меньше «сирот» и висячих коротких слов в конце строки */
+h1, h2, h3, h4, p, li, blockquote, figcaption { text-wrap: pretty; }
+
 /* ===== Кнопка «Онлайн запись»: пульс + расходящиеся кольца ===== */
 .fab-pulse { animation: fabPulse 2.6s ease-in-out infinite; }
 @keyframes fabPulse {
