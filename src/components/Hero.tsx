@@ -29,18 +29,21 @@ export default function Hero() {
         }}
       />
 
-      <div className="flex w-full max-w-[1320px] flex-col items-center px-6 pb-[clamp(56px,11vh,120px)] text-center">
+      <div className="flex w-full max-w-[1320px] flex-col items-center px-6 pb-[clamp(32px,6vh,72px)] text-center">
         <h1 className="font-serif-display text-[24px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[30px] lg:text-[clamp(30px,2.5vw,44px)]">
           {t("Отражаем внутреннюю красоту", "Reflecting inner beauty")}
           <br />
           {t("во внешней", "on the outside")}
         </h1>
+      </div>
 
+      {/* Кнопка — во всю ширину экрана внизу блока */}
+      <div className="w-full px-4 pb-4 lg:px-6 lg:pb-6">
         <a
           href={YCLIENTS}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-7 inline-flex min-w-[300px] items-center justify-center rounded-xl border border-white/70 bg-white/[0.18] px-12 py-5 text-[14px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#17191a] hover:bg-[#17191a] lg:mt-8 lg:min-w-[400px] lg:py-[22px] lg:text-[15px]"
+          className="flex w-full items-center justify-center rounded-xl border border-white/70 bg-white/[0.18] py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] text-white backdrop-blur-md transition-colors duration-300 hover:border-[#17191a] hover:bg-[#17191a] lg:py-4 lg:text-[14px]"
         >
           {t("Оформить визит", "Arrange a visit")}
         </a>
