@@ -50,7 +50,7 @@ const RIGHT: NavItem[] = [
       { label: { ru: "Агентствам и бизнесу", en: "For agencies & business" }, href: "/cooperation#business" },
     ],
   },
-  { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team#vacancies" },
+  { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team" },
   { label: { ru: "Контакты", en: "Contacts" }, href: "/contacts" },
 ];
 
