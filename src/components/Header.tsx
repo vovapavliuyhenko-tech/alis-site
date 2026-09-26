@@ -106,7 +106,7 @@ export default function Header() {
   // Пункт меню + (опц.) выпадашка
   const NavLink = ({ item }: { item: NavItem }) =>
     item.sub ? (
-      <div className="group relative flex h-[68px] items-center xl:h-[80px] min-[1680px]:h-[96px]">
+      <div className="group relative flex h-[68px] items-center min-[1280px]:h-[80px] min-[1680px]:h-[96px]">
         <a href={item.href} className={`flex items-center gap-1 py-2 ${inkSoft} transition-colors ${hoverInk}`}>
           <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 group-hover:after:w-full">
             {item.label[lang]}
@@ -167,7 +167,7 @@ export default function Header() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto grid h-[68px] w-full max-w-[1760px] xl:h-[80px] min-[1680px]:h-[96px] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-5 sm:px-8">
+      <div className="mx-auto grid h-[68px] w-full max-w-[1760px] min-[1280px]:h-[80px] min-[1680px]:h-[96px] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-5 sm:px-8">
         {/* Левая часть: гамбургер (моб.) + левое меню (прижато к логотипу) */}
         <div className="flex items-center">
           <button
@@ -179,7 +179,7 @@ export default function Header() {
               {open ? <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /> : <path d="M4 8h16M4 16h16" strokeLinecap="round" />}
             </svg>
           </button>
-          <nav className="hidden w-full items-center justify-end gap-5 whitespace-nowrap text-[12.5px] uppercase tracking-[0.06em] xl:flex min-[1440px]:gap-7 min-[1440px]:text-[14px] min-[1680px]:gap-10 min-[1680px]:text-[16px]">
+          <nav className="hidden w-full items-center justify-end gap-4 whitespace-nowrap text-[11.5px] uppercase tracking-[0.1em] xl:flex min-[1440px]:gap-7 min-[1440px]:text-[12.5px] min-[1680px]:gap-9 min-[1680px]:text-[14px]">
             {LEFT.map((item) => (
               <NavLink key={item.label.ru} item={item} />
             ))}
@@ -187,20 +187,20 @@ export default function Header() {
         </div>
 
         {/* Логотип по центру: только надпись (вензель убран по фидбеку) */}
-        <a href="/" className="mx-6 flex items-center justify-self-center min-[1680px]:mx-14">
-          <LogoWord variant={overHero ? "cream" : "wine"} className="h-[19px] w-auto max-w-none shrink-0 xl:h-[22px] min-[1440px]:h-[28px] min-[1680px]:h-[34px]" />
+        <a href="/" className="mx-6 flex items-center justify-self-center min-[1280px]:mx-8 min-[1440px]:mx-12 min-[1680px]:mx-16">
+          <LogoWord variant={overHero ? "cream" : "wine"} className="h-[19px] w-auto max-w-none shrink-0 min-[1280px]:h-[20px] min-[1440px]:h-[24px] min-[1680px]:h-[30px]" />
         </a>
 
         {/* Правая часть: правое меню (прижато к логотипу) + действия у края */}
         <div className="flex items-center">
-          <nav className="hidden items-center gap-5 whitespace-nowrap text-[12.5px] uppercase tracking-[0.06em] xl:flex min-[1440px]:gap-7 min-[1440px]:text-[14px] min-[1680px]:gap-10 min-[1680px]:text-[16px]">
+          <nav className="hidden items-center gap-4 whitespace-nowrap text-[11.5px] uppercase tracking-[0.1em] xl:flex min-[1440px]:gap-7 min-[1440px]:text-[12.5px] min-[1680px]:gap-9 min-[1680px]:text-[14px]">
             {RIGHT.map((item) => (
               <NavLink key={item.label.ru} item={item} />
             ))}
           </nav>
 
           {/* Действия — язык, избранное, корзина (+ запись на моб.) */}
-          <div className="ml-auto flex items-center gap-2 xl:ml-4 min-[1680px]:ml-8 min-[1680px]:gap-3">
+          <div className="ml-auto flex items-center gap-2 min-[1280px]:ml-4 min-[1440px]:ml-8 min-[1680px]:ml-10 min-[1680px]:gap-3">
           {/* Тумблер RU/EN (десктоп) */}
           <div className={`relative hidden items-center rounded-full border p-0.5 text-[11px] font-medium xl:flex ${overHero ? "border-white/40" : "border-[#17191a]/25"}`}>
             <span
