@@ -1,7 +1,7 @@
 "use client";
-// Плавающая круглая кнопка «Онлайн запись» → YClients. Видна сразу, в т.ч. на
-// первом экране (как на референсе bemont.ru), пульсирует и излучает кольца. Над бордовым футером инвертирует цвет
-// (кремовая с бордовым текстом), чтобы не сливаться. Скрыта на /concierge.
+// Плавающая круглая кнопка «Онлайн запись» → YClients. На первом блоке любой
+// страницы скрыта, появляется после прокрутки; пульсирует и излучает кольца. Над
+// тёмным футером инвертирует цвет (кремовая с тёмным текстом). Скрыта на /concierge.
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
@@ -16,12 +16,14 @@ export default function BookingFab() {
 
   useEffect(() => {
     const update = () => {
-      // Скрываем кнопку, пока в кадре блок с атрибутом data-hide-fab (напр. пиннинг-герой)
-      const hideZone = document.querySelector("[data-hide-fab]");
-      const overHide = hideZone
-        ? hideZone.getBoundingClientRect().bottom > window.innerHeight * 0.6
-        : false;
-      setShown(!overHide);
+      // Скрываем кнопку на первом блоке любой страницы: первый <section> в <main>
+      // или блок с data-hide-fab (пиннинг-герой) — что встречается раньше.
+      // Кнопка появляется, когда первый блок почти ушёл из кадра.
+      const firstBlock = document.querySelector("main section, [data-hide-fab]");
+      const overFirst = firstBlock
+        ? firstBlock.getBoundingClientRect().bottom > window.innerHeight * 0.6
+        : window.scrollY < window.innerHeight * 0.7;
+      setShown(!overFirst);
       const footer = document.getElementById("footer");
       const fh = footer ? footer.offsetHeight : 0;
       const docH = document.documentElement.scrollHeight;

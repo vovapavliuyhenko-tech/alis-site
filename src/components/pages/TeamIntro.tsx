@@ -4,7 +4,7 @@
 // прокручиваешь высоту секции, фон стоит, а логотип опускается вниз, увеличивается
 // «во всю» и растворяется. Над логотипом — подпись (команда / салон / консьерж).
 // Переиспользуется на страницах «Команда», «Салон», «Бьюти-консьерж».
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { LogoLockup } from "@/components/Logo";
 
@@ -23,7 +23,6 @@ export default function TeamIntro({
   photo?: string;
 }) {
   const { lang } = useLang();
-  const [btnHover, setBtnHover] = useState(false); // hover кнопки → логотип и подпись бордовые
 
   const secRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLImageElement>(null);
@@ -72,7 +71,7 @@ export default function TeamIntro({
           aria-hidden
           className="absolute inset-0 -z-20 h-full w-full origin-center object-cover object-center will-change-transform"
         />
-        {/* Лёгкое затемнение для читаемости светлого логотипа */}
+        {/* Лёгкое затемнение по краям (под шапку и кнопку) */}
         <div
           aria-hidden
           className="absolute inset-0 -z-10"
@@ -85,24 +84,18 @@ export default function TeamIntro({
         {/* Центр — логотип ÁLIS BEAUTY с подписью сверху */}
         <div className="flex flex-1 items-center justify-center px-4 text-center">
           <div ref={logoRef} className="origin-center flex flex-col items-center will-change-transform">
-            <span className={`mb-6 text-[11px] font-light uppercase tracking-[0.4em] transition-colors duration-300 lg:mb-8 ${btnHover ? "text-[#17191a]" : "text-white/90"}`}>
+            <span className="mb-6 text-[11px] font-light uppercase tracking-[0.4em] text-[#17191a] lg:mb-8">
               {caption[lang]}
             </span>
-            {btnHover ? (
-              <LogoLockup variant="wine" className="drop-shadow-[0_2px_40px_rgba(255,255,255,.25)]" />
-            ) : (
-              <LogoLockup variant="cream" className="brightness-0 invert drop-shadow-[0_2px_40px_rgba(0,0,0,.25)]" />
-            )}
+            <LogoLockup variant="wine" className="drop-shadow-[0_2px_40px_rgba(255,255,255,.25)]" />
           </div>
         </div>
 
-        {/* Низ — широкая кнопка-пилюля; hover → кремовая, а логотип и подпись над ней бордовеют */}
+        {/* Низ — широкая стеклянная кнопка-пилюля; hover → белая с тёмным текстом */}
         <div className="px-4 pb-4 lg:px-5 lg:pb-5">
           <a
             href={cta.href}
-            onMouseEnter={() => setBtnHover(true)}
-            onMouseLeave={() => setBtnHover(false)}
-            className="flex w-full items-center justify-center gap-2 rounded-2xl border border-transparent bg-[#17191a] px-8 py-5 text-[13px] font-medium uppercase tracking-[0.14em] text-[#F4F1EA] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md lg:text-[14px]"
+            className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/40 bg-white/15 px-8 py-5 text-[13px] font-medium uppercase tracking-[0.14em] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a] lg:text-[14px]"
           >
             {cta.label[lang]}
             <span aria-hidden>→</span>
