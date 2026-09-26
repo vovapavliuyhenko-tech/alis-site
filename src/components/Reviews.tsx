@@ -196,15 +196,12 @@ export default function Reviews() {
       <div className="mx-auto w-[92%] max-w-[1200px]">
         {/* Заголовок */}
         <div className="r-reveal mb-14 flex flex-col items-center text-center lg:mb-20">
-          <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
-            {lang === "en" ? "reviews" : "отзывы"}
-          </p>
-          <h2 className="mt-3 font-display text-[22px] font-normal uppercase tracking-[0.02em] leading-[1.2] text-[#46131E] lg:text-[28px]">
+          <h2 className="mt-3 font-display text-[22px] font-normal uppercase tracking-[0.02em] leading-[1.2] text-[#17191a] lg:text-[28px]">
             {lang === "en" ? "What our " : "Что говорят "}
-            <span className="text-[#46131E]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
+            <span className="text-[#17191a]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
           </h2>
           <p className="mt-4 inline-flex items-center gap-2 text-[14px] text-[#17191a]/60">
-            <span className="text-[#46131E]">★★★★★</span>
+            <span className="text-[#17191a]">★★★★★</span>
             <span className="font-medium text-[#17191a]">4.9</span>
             {lang === "en" ? "· 75+ reviews on Yandex and 2GIS" : "· 75+ отзывов на Яндекс и 2ГИС"}
           </p>
@@ -223,18 +220,18 @@ export default function Reviews() {
               <article
                 key={r.name.ru}
                 style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)` }}
-                className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[150px] flex h-[300px] w-[300px] flex-col overflow-hidden rounded-[18px] border border-[#46131E]/12 bg-white p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
+                className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[150px] flex h-[300px] w-[300px] flex-col overflow-hidden rounded-[18px] border border-[#17191a]/12 bg-white p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[12px] tracking-[0.32em] text-[#8a5a3c]">★★★★★</span>
-                  <span className="font-serif text-[34px] leading-none text-[#46131E]/20">&rdquo;</span>
+                  <span className="font-serif text-[34px] leading-none text-[#17191a]/20">&rdquo;</span>
                 </div>
 
                 <p className="mt-3 min-h-0 flex-1 overflow-hidden font-serif text-[12.5px] leading-[1.55] text-[#17191a]/85 [-webkit-box-orient:vertical] [-webkit-line-clamp:8] [display:-webkit-box]">
                   {r.text[lang]}
                 </p>
 
-                <div className="mt-4 flex items-center gap-2.5 border-t border-[#46131E]/10 pt-4">
+                <div className="mt-4 flex items-center gap-2.5 border-t border-[#17191a]/10 pt-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={r.photo}
@@ -246,7 +243,7 @@ export default function Reviews() {
                   />
                   <div>
                     <p className="text-[12.5px] font-medium text-[#17191a]">{r.name[lang]}</p>
-                    <p className="text-[10px] uppercase tracking-[0.12em] text-[#46131E]">
+                    <p className="text-[10px] uppercase tracking-[0.12em] text-[#17191a]">
                       {r.role[lang]}
                     </p>
                   </div>
@@ -274,7 +271,7 @@ export default function Reviews() {
               href={p.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-[#46131E]/25 px-4 py-2 text-[13px] text-[#46131E] transition-colors hover:bg-[#46131E] hover:text-[#f4efe6]"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#17191a]/25 px-4 py-2 text-[13px] text-[#17191a] transition-colors hover:bg-[#17191a] hover:text-[#f4efe6]"
             >
               {p.label}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" /></svg>

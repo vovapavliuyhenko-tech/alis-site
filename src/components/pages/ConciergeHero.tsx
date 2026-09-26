@@ -19,9 +19,9 @@ export default function ConciergeHero() {
 
         {/* Заголовок с акцентами */}
         <h1 className="mt-4 font-display text-[22px] font-normal uppercase leading-[1.1] tracking-[0.02em] text-[#2a2320] sm:text-[30px] lg:text-[38px]">
-          <span className="text-[#46131E]">ÁLIS BEAUTY</span> —{" "}
+          <span className="text-[#17191a]">ÁLIS BEAUTY</span> —{" "}
           {t("выездной бьюти-консьерж", "an on-location beauty concierge")}{" "}
-          <span className="text-[#46131E]">{t("под ключ", "turnkey")}</span>
+          <span className="text-[#17191a]">{t("под ключ", "turnkey")}</span>
         </h1>
 
         {/* Подзаголовок */}
@@ -36,7 +36,7 @@ export default function ConciergeHero() {
       {/* Кнопка-заявка — растянута на всю ширину снизу блока */}
       <a
         href="#booking"
-        className="relative z-10 flex w-full items-center justify-center rounded-2xl border border-[#46131E] bg-[#46131E] py-4 font-display text-[13px] uppercase tracking-[0.14em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#46131E] sm:py-5 sm:text-[14px]"
+        className="relative z-10 flex w-full items-center justify-center rounded-2xl border border-[#17191a] bg-[#17191a] py-4 font-display text-[13px] uppercase tracking-[0.14em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-5 sm:text-[14px]"
       >
         {t("оставить заявку", "leave a request")}
       </a>

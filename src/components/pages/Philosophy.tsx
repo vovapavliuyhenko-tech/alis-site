@@ -1,7 +1,7 @@
 "use client";
-// ФИЛОСОФИЯ САЛОНА — full-screen обложка с ЗАФИКСИРОВАННЫМ фоном (bg-fixed):
+// БЛОК «КОНСЬЕРЖ» на главной — full-screen обложка с ЗАФИКСИРОВАННЫМ фоном (bg-fixed):
 // при скролле фото стоит на месте, контент проходит поверх. По центру —
-// надстрочник, заголовок, короткое кредо и кнопка — в стиле сайта. Двуязычно.
+// крупный заголовок и кнопка перехода на страницу бьюти-консьержа. Двуязычно.
 import { useLang } from "@/lib/i18n";
 
 const PHOTO = "/assets/alis/img_6009.jpg";
@@ -21,27 +21,18 @@ export default function Philosophy() {
       {/* Затемнение для читаемости */}
       <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/55" />
 
-      {/* Контент — раскладка и ритм как в Hero */}
-      <div className="relative z-10 mx-auto flex w-[90%] max-w-2xl flex-col items-center text-center text-white">
-        <p className="r-reveal text-[10px] lowercase tracking-[0.05em] text-white/75">
-          {en ? "ÁLIS beauty concierge" : "бьюти-консьерж ÁLIS"}
-        </p>
-
-        <h2 className="r-reveal mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-white lg:text-[28px]">
-          {en ? "Beauty comes to you" : "Красота с выездом"}
+      <div className="relative z-10 mx-auto flex w-[90%] max-w-[1100px] flex-col items-center text-center text-white">
+        <h2 className="r-reveal font-serif-display text-[28px] font-normal uppercase leading-[1.15] tracking-[0.04em] text-white sm:text-[36px] lg:text-[clamp(36px,3.4vw,56px)]">
+          {en ? "A beauty salon" : "Салон красоты там,"}
+          <br />
+          {en ? "wherever suits you" : "где вам удобно"}
         </h2>
-
-        <p className="r-reveal mt-5 max-w-md text-[12.5px] leading-relaxed text-white/80 sm:text-[13.5px]">
-          {en
-            ? "A wedding, a shoot, a big event — and no time for the salon. Our team comes to you and creates the whole look on site, right on schedule."
-            : "Свадьба, съёмка, важное событие — а ехать в салон некогда. Команда мастеров приедет к вам и соберёт образ на месте, точно к таймингу."}
-        </p>
 
         <a
           href="/concierge"
-          className="r-reveal mt-8 inline-flex items-center justify-center gap-2 rounded-xl border border-transparent bg-[#46131E] px-12 py-4 text-[12px] font-medium uppercase tracking-[0.08em] text-[#F4F1EA] transition-all duration-300 hover:border-white/40 hover:bg-white/15 hover:backdrop-blur-md sm:text-[13px]"
+          className="r-reveal mt-9 inline-flex items-center justify-center gap-2 rounded-full border border-white/60 bg-white/10 px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a] lg:mt-11"
         >
-          {en ? "about the concierge" : "о бьюти-консьерже"}
+          {en ? "All about the ÁLIS BEAUTY concierge service" : "Всё о консьерж-сервисе от ÁLIS BEAUTY"}
           <span aria-hidden>→</span>
         </a>
       </div>

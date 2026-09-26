@@ -85,7 +85,7 @@ export default function TeamIntro({
         {/* Центр — логотип ÁLIS BEAUTY с подписью сверху */}
         <div className="flex flex-1 items-center justify-center px-4 text-center">
           <div ref={logoRef} className="origin-center flex flex-col items-center will-change-transform">
-            <span className={`mb-6 text-[11px] font-light uppercase tracking-[0.4em] transition-colors duration-300 lg:mb-8 ${btnHover ? "text-[#46131E]" : "text-white/90"}`}>
+            <span className={`mb-6 text-[11px] font-light uppercase tracking-[0.4em] transition-colors duration-300 lg:mb-8 ${btnHover ? "text-[#17191a]" : "text-white/90"}`}>
               {caption[lang]}
             </span>
             {btnHover ? (
@@ -102,7 +102,7 @@ export default function TeamIntro({
             href={cta.href}
             onMouseEnter={() => setBtnHover(true)}
             onMouseLeave={() => setBtnHover(false)}
-            className="flex w-full items-center justify-center gap-2 rounded-2xl border border-transparent bg-[#46131E] px-8 py-5 text-[13px] font-medium uppercase tracking-[0.14em] text-[#F4F1EA] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md lg:text-[14px]"
+            className="flex w-full items-center justify-center gap-2 rounded-2xl border border-transparent bg-[#17191a] px-8 py-5 text-[13px] font-medium uppercase tracking-[0.14em] text-[#F4F1EA] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md lg:text-[14px]"
           >
             {cta.label[lang]}
             <span aria-hidden>→</span>

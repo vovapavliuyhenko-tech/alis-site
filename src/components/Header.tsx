@@ -93,7 +93,7 @@ export default function Header() {
   const overHero = !solid;
   const ink = overHero ? "text-white" : "text-[#17191a]";
   const inkSoft = overHero ? "text-white/80" : "text-[#17191a]/75";
-  const hoverInk = overHero ? "hover:text-white" : "hover:text-[#46131E]";
+  const hoverInk = overHero ? "hover:text-white" : "hover:text-[#17191a]";
 
   // Пункт меню + (опц.) выпадашка
   const NavLink = ({ item }: { item: NavItem }) =>
@@ -109,14 +109,14 @@ export default function Header() {
         </a>
         {/* Компактная выпадашка — раскрывается прямо из-под пункта */}
         <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2.5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-          <div className="relative min-w-[230px] origin-top scale-95 rounded-2xl border border-[#46131E]/12 bg-white/95 p-2 shadow-[0_20px_50px_rgba(23,25,26,0.16)] backdrop-blur-md transition-transform duration-200 group-hover:scale-100">
+          <div className="relative min-w-[230px] origin-top scale-95 rounded-2xl border border-[#17191a]/12 bg-white/95 p-2 shadow-[0_20px_50px_rgba(23,25,26,0.16)] backdrop-blur-md transition-transform duration-200 group-hover:scale-100">
             {/* «Клювик» к пункту меню */}
-            <span aria-hidden className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 rounded-[3px] border-l border-t border-[#46131E]/12 bg-white/95" />
+            <span aria-hidden className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 rounded-[3px] border-l border-t border-[#17191a]/12 bg-white/95" />
             {item.sub.map((s) => (
               <a
                 key={s.label.ru}
                 href={s.href}
-                className="block rounded-xl px-4 py-2.5 text-center text-[12px] uppercase tracking-[0.12em] text-[#46131E] transition-colors hover:bg-[#46131E]/[0.08]"
+                className="block rounded-xl px-4 py-2.5 text-center text-[12px] uppercase tracking-[0.12em] text-[#17191a] transition-colors hover:bg-[#17191a]/[0.08]"
               >
                 {s.label[lang]}
               </a>
@@ -133,11 +133,11 @@ export default function Header() {
     );
 
   const Badge = ({ n }: { n: number }) => (
-    <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#46131E] px-1 text-[10px] font-medium leading-none text-[#f4efe6]">
+    <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#17191a] px-1 text-[10px] font-medium leading-none text-[#f4efe6]">
       {n}
     </span>
   );
-  const bubble = overHero ? "bg-white/10 hover:bg-white/20" : "bg-[#46131E]/[0.06] hover:bg-[#46131E]/10";
+  const bubble = overHero ? "bg-white/10 hover:bg-white/20" : "bg-[#17191a]/[0.06] hover:bg-[#17191a]/10";
   const ShopIcons = () => (
     <div className="flex items-center gap-1.5">
       <button onClick={shop.openFav} aria-label={lang === "en" ? "Favourites" : "Избранное"} className={`relative flex h-9 w-9 items-center justify-center rounded-full transition-colors ${bubble} ${ink} ${hoverInk}`}>
@@ -194,10 +194,10 @@ export default function Header() {
           {/* Действия — язык, избранное, корзина (+ запись на моб.) */}
           <div className="ml-auto flex items-center gap-3 lg:ml-7 lg:gap-4 xl:ml-9">
           {/* Тумблер RU/EN (десктоп) */}
-          <div className={`relative hidden items-center rounded-full border p-0.5 text-[12px] font-medium lg:flex ${overHero ? "border-white/40" : "border-[#46131E]/25"}`}>
+          <div className={`relative hidden items-center rounded-full border p-0.5 text-[12px] font-medium lg:flex ${overHero ? "border-white/40" : "border-[#17191a]/25"}`}>
             <span
               aria-hidden
-              className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${overHero ? "bg-white" : "bg-[#46131E]"}`}
+              className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${overHero ? "bg-white" : "bg-[#17191a]"}`}
               style={{ transform: lang === "en" ? "translateX(100%)" : "translateX(0)" }}
             />
             {(["ru", "en"] as Lang[]).map((l) => (
@@ -208,7 +208,7 @@ export default function Header() {
                 className={`relative z-10 w-9 rounded-full py-2 uppercase tracking-wide transition-colors duration-300 ${
                   lang === l
                     ? overHero ? "text-[#17191a]" : "text-[#f4efe6]"
-                    : overHero ? "text-white/70 hover:text-white" : "text-[#46131E]/60 hover:text-[#46131E]"
+                    : overHero ? "text-white/70 hover:text-white" : "text-[#17191a]/60 hover:text-[#17191a]"
                 }`}
               >
                 {l}
@@ -248,7 +248,7 @@ export default function Header() {
                   onClick={() => setLang(l)}
                   aria-pressed={lang === l}
                   className={`rounded-full border px-4 py-2 uppercase tracking-wide transition-colors ${
-                    lang === l ? "border-[#46131E] bg-[#46131E] text-[#f4efe6]" : "border-[#17191a]/15 text-[#17191a]/60"
+                    lang === l ? "border-[#17191a] bg-[#17191a] text-[#f4efe6]" : "border-[#17191a]/15 text-[#17191a]/60"
                   }`}
                 >
                   {l}

@@ -51,10 +51,10 @@ const ITEMS: Item[] = [
 function Capsule({ item, lang }: { item: Item; lang: "ru" | "en" }) {
   return (
     <div
-      className="group relative flex min-h-[176px] w-full max-w-[515px] flex-col justify-between rounded-[34px] border border-[#46131E]/35 bg-white px-10 py-9 text-center transition-colors duration-300 hover:border-transparent hover:bg-[#46131E] sm:px-16 lg:min-h-[200px] lg:px-[74px]"
+      className="group relative flex min-h-[176px] w-full max-w-[515px] flex-col justify-between rounded-[34px] border border-[#17191a]/35 bg-white px-10 py-9 text-center transition-colors duration-300 hover:border-transparent hover:bg-[#17191a] sm:px-16 lg:min-h-[200px] lg:px-[74px]"
     >
-      <h3 className="mx-auto max-w-[300px] font-serif-display text-[18px] font-medium uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] transition-colors duration-300 group-hover:text-[#f4efe6] lg:text-[20px]">{item.title[lang]}</h3>
-      <p className="mx-auto mt-4 max-w-[330px] text-[12.5px] leading-[1.45] text-[#46131E]/70 transition-colors duration-300 group-hover:text-[#f4efe6]/80">{item.desc[lang]}</p>
+      <h3 className="mx-auto max-w-[300px] font-serif-display text-[18px] font-medium uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] transition-colors duration-300 group-hover:text-[#f4efe6] lg:text-[20px]">{item.title[lang]}</h3>
+      <p className="mx-auto mt-4 max-w-[330px] text-[12.5px] leading-[1.45] text-[#17191a]/70 transition-colors duration-300 group-hover:text-[#f4efe6]/80">{item.desc[lang]}</p>
     </div>
   );
 }
@@ -70,10 +70,7 @@ export default function MassageProblems() {
       <div className="mx-auto w-[94%] max-w-[1400px]">
         {/* Заголовок секции */}
         <div className="r-reveal text-center">
-          <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
-            {en ? "why ális" : "почему ális"}
-          </p>
-          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
+          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {en ? "Why people choose ÁLIS" : "Почему выбирают ÁLIS"}
           </h2>
         </div>
@@ -89,10 +86,10 @@ export default function MassageProblems() {
           {/* Центральное круглое фото + соединительные линии */}
           <div className="relative mx-auto my-2 shrink-0 lg:my-0">
             {/* пунктирные соединители (только десктоп) */}
-            <span className="pointer-events-none absolute right-full top-[26%] hidden h-0.5 w-[64px] border-t-2 border-[#46131E]/70 lg:block" />
-            <span className="pointer-events-none absolute right-full top-[74%] hidden h-0.5 w-[64px] border-t-2 border-[#46131E]/70 lg:block" />
-            <span className="pointer-events-none absolute left-full top-[26%] hidden h-0.5 w-[64px] border-t-2 border-[#46131E]/70 lg:block" />
-            <span className="pointer-events-none absolute left-full top-[74%] hidden h-0.5 w-[64px] border-t-2 border-[#46131E]/70 lg:block" />
+            <span className="pointer-events-none absolute right-full top-[26%] hidden h-0.5 w-[64px] border-t-2 border-[#17191a]/70 lg:block" />
+            <span className="pointer-events-none absolute right-full top-[74%] hidden h-0.5 w-[64px] border-t-2 border-[#17191a]/70 lg:block" />
+            <span className="pointer-events-none absolute left-full top-[26%] hidden h-0.5 w-[64px] border-t-2 border-[#17191a]/70 lg:block" />
+            <span className="pointer-events-none absolute left-full top-[74%] hidden h-0.5 w-[64px] border-t-2 border-[#17191a]/70 lg:block" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={CIRCLE_PHOTO}

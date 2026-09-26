@@ -38,11 +38,11 @@ export default function CookieConsent() {
             <>
               We use cookies to improve the site.
               <br />
-              <a href="/cookies" className="text-[#46131E] underline underline-offset-2 hover:opacity-70">
+              <a href="/cookies" className="text-[#17191a] underline underline-offset-2 hover:opacity-70">
                 Cookie
               </a>{" "}
               &amp;{" "}
-              <a href="/policy" className="text-[#46131E] underline underline-offset-2 hover:opacity-70">
+              <a href="/policy" className="text-[#17191a] underline underline-offset-2 hover:opacity-70">
                 Privacy Policy
               </a>
               .
@@ -51,11 +51,11 @@ export default function CookieConsent() {
             <>
               Используем cookie, чтобы сайт работал удобнее.
               <br />
-              <a href="/cookies" className="text-[#46131E] underline underline-offset-2 hover:opacity-70">
+              <a href="/cookies" className="text-[#17191a] underline underline-offset-2 hover:opacity-70">
                 Политика cookie
               </a>{" "}
               и{" "}
-              <a href="/policy" className="text-[#46131E] underline underline-offset-2 hover:opacity-70">
+              <a href="/policy" className="text-[#17191a] underline underline-offset-2 hover:opacity-70">
                 конфиденциальности
               </a>
               .
@@ -71,7 +71,7 @@ export default function CookieConsent() {
           </button>
           <button
             onClick={() => decide("accepted")}
-            className="rounded-full bg-[#46131E] px-4 py-1.5 text-[11px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.03]"
+            className="rounded-full bg-[#17191a] px-4 py-1.5 text-[11px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.03]"
           >
             {en ? "Accept" : "Принять"}
           </button>

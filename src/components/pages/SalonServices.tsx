@@ -28,10 +28,7 @@ export default function SalonServices({
     <section id="uslugi" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <div className="mb-12 text-center lg:mb-16">
-          <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
-            {eyebrow[lang]}
-          </p>
-          <h2 className="mt-3 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
+          <h2 className="mt-3 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {title[lang]}
           </h2>
         </div>
@@ -44,7 +41,7 @@ export default function SalonServices({
               <div
                 key={c.label.ru}
                 className={`overflow-hidden rounded-[20px] border transition-colors duration-300 ${
-                  isOpen ? "border-transparent bg-[#46131E]" : "border-[#46131E]/12 bg-white"
+                  isOpen ? "border-transparent bg-[#17191a]" : "border-[#17191a]/12 bg-white"
                 }`}
               >
                 {/* Заголовок-строка */}
@@ -56,7 +53,7 @@ export default function SalonServices({
                 >
                   {/* Название + подпись */}
                   <span className="min-w-0">
-                    <span className={`block font-display text-[14px] font-normal uppercase leading-[1.2] tracking-[0.02em] transition-colors duration-300 sm:text-[15px] lg:text-[17px] ${isOpen ? "text-[#f4efe6]" : "text-[#46131E]"}`}>
+                    <span className={`block font-display text-[14px] font-normal uppercase leading-[1.2] tracking-[0.02em] transition-colors duration-300 sm:text-[15px] lg:text-[17px] ${isOpen ? "text-[#f4efe6]" : "text-[#17191a]"}`}>
                       {c.label[lang]}
                     </span>
                     <span className={`mt-1 block text-[11px] transition-colors duration-300 lg:text-[12px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#2a2320]/55"}`}>
@@ -66,10 +63,10 @@ export default function SalonServices({
 
                   {/* Цена «от» + стрелка-переключатель */}
                   <span className="flex items-center gap-4 lg:gap-6">
-                    <span className={`hidden whitespace-nowrap rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 sm:inline ${isOpen ? "bg-[#f4efe6]/15 text-[#f4efe6]" : "bg-[#46131E]/10 text-[#46131E]"}`}>
+                    <span className={`hidden whitespace-nowrap rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 sm:inline ${isOpen ? "bg-[#f4efe6]/15 text-[#f4efe6]" : "bg-[#17191a]/10 text-[#17191a]"}`}>
                       {c.from[lang]}
                     </span>
-                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-all duration-300 lg:h-12 lg:w-12 ${isOpen ? "border-[#f4efe6] bg-[#f4efe6] text-[#46131E]" : "border-[#46131E]/30 text-[#46131E]"}`}>
+                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-all duration-300 lg:h-12 lg:w-12 ${isOpen ? "border-[#f4efe6] bg-[#f4efe6] text-[#17191a]" : "border-[#17191a]/30 text-[#17191a]"}`}>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`h-4 w-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
                         <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -112,7 +109,7 @@ export default function SalonServices({
           href={cta.href}
           target={cta.href.startsWith("http") ? "_blank" : undefined}
           rel={cta.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          className="mt-3 flex w-full items-center justify-center rounded-[20px] border border-[#46131E] bg-[#46131E] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#46131E]/40 hover:bg-[#46131E]/10 hover:text-[#46131E] hover:backdrop-blur-md sm:text-[14px]"
+          className="mt-3 flex w-full items-center justify-center rounded-[20px] border border-[#17191a] bg-[#17191a] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#17191a]/40 hover:bg-[#17191a]/10 hover:text-[#17191a] hover:backdrop-blur-md sm:text-[14px]"
         >
           {cta.label[lang]}
         </a>

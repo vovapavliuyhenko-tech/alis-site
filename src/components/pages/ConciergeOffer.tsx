@@ -65,7 +65,7 @@ export default function ConciergeOffer() {
         </div>
 
         {/* Правая колонка — форма заявки */}
-        <div id="booking" className="scroll-mt-24 flex flex-col rounded-[28px] bg-[#46131E] px-6 py-12 text-[#f4efe6] sm:px-10 lg:px-14 lg:py-16">
+        <div id="booking" className="scroll-mt-24 flex flex-col rounded-[28px] bg-[#17191a] px-6 py-12 text-[#f4efe6] sm:px-10 lg:px-14 lg:py-16">
           {sent ? (
             <div className="flex flex-1 flex-col justify-center gap-8 text-center">
               <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#8a5a3c] font-display text-[22px]">✓</span>
@@ -118,7 +118,7 @@ export default function ConciergeOffer() {
                 </label>
               </div>
 
-              <button type="submit" className="mx-auto flex w-full max-w-lg items-center justify-center rounded-2xl border border-transparent bg-[#f4efe6] py-4 text-[14px] font-medium tracking-[0.01em] text-[#46131E] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md">
+              <button type="submit" className="mx-auto flex w-full max-w-lg items-center justify-center rounded-2xl border border-transparent bg-[#f4efe6] py-4 text-[14px] font-medium tracking-[0.01em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md">
                 {t("Оставить заявку", "Leave a request")}
               </button>
             </form>

@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 
 // Кадры одного формата — единый портретный размер, минимальный зазор.
+// TODO: заказчица сама отберёт фото работ мастеров — заменить список.
 const ITEMS: string[] = [
   "/assets/alis/img_2672.jpg",
   "/assets/alis/img_2749.jpg",
@@ -82,11 +83,8 @@ export default function PhotoMarquee() {
   return (
     <section className="overflow-hidden bg-white section-y">
       <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] text-center lg:mb-16">
-        <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
-          {en ? "the atmosphere" : "атмосфера"}
-        </p>
-        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
-          {en ? "You'll want to come back" : "Сюда хочется вернуться"}
+        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
+          {en ? "Created by ÁLIS BEAUTY specialists" : "То, что создают специалисты ÁLIS BEAUTY"}
         </h2>
       </div>
 
@@ -105,7 +103,7 @@ export default function PhotoMarquee() {
 
       {/* Полоса прогресса под фото */}
       <div className="mx-auto mt-10 h-[3px] w-[94%] max-w-[1440px] overflow-hidden rounded-full bg-[#C2C0B6]/40">
-        <div ref={barRef} className="h-full rounded-full bg-[#46131E]" style={{ width: "0%" }} />
+        <div ref={barRef} className="h-full rounded-full bg-[#17191a]" style={{ width: "0%" }} />
       </div>
     </section>
   );

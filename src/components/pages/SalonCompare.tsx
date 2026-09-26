@@ -77,10 +77,7 @@ export default function SalonCompare() {
     <section className="bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1280px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
-          <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
-            {lang === "en" ? "compare" : "сравните"}
-          </p>
-          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
+          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {lang === "en" ? "Where a master works better" : "Где мастеру работается лучше"}
           </h2>
         </div>
@@ -103,7 +100,7 @@ export default function SalonCompare() {
           {COLS.map((c, i) => {
             const dir = i === 0 ? 1 : -1;
             const wine = i === 1; // правая — главная, бордовая
-            const bg = wine ? "#46131E" : "#ffffff";
+            const bg = wine ? "#17191a" : "#ffffff";
             const border = wine ? "transparent" : "rgba(23,25,26,0.14)";
             const headColor = wine ? "#f4efe6" : INK;
             const subColor = wine ? "rgba(244,239,230,0.78)" : "rgba(23,25,26,0.72)";

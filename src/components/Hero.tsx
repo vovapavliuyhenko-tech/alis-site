@@ -1,7 +1,6 @@
 "use client";
 // HERO главной — полноэкранное фоновое фото, по мотивам референса bemont.ru:
-// текст по центру в нижней части кадра — мелкая строка-подводка, крупный
-// заголовок капсом и кнопка «Оформить визит». Верхнюю навигацию несёт глобальная
+// текст по центру в нижней части кадра — заголовок капсом и кнопка «Оформить визит». Верхнюю навигацию несёт глобальная
 // шапка ÁLIS (светлая над этим блоком). Двуязычно.
 import { useLang } from "@/lib/i18n";
 
@@ -31,11 +30,7 @@ export default function Hero() {
       />
 
       <div className="flex w-full max-w-[1320px] flex-col items-center px-6 pb-[130px] text-center sm:pb-[clamp(56px,11vh,120px)]">
-        <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/85 sm:text-[11px]">
-          {t("Салон красоты и бьюти-консьерж в Новороссийске", "Beauty salon & beauty concierge in Novorossiysk")}
-        </p>
-
-        <h1 className="mt-3 font-serif-display text-[24px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[30px] lg:mt-4 lg:text-[clamp(30px,2.5vw,44px)]">
+        <h1 className="font-serif-display text-[24px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[30px] lg:text-[clamp(30px,2.5vw,44px)]">
           {t("Отражаем внутреннюю красоту", "Reflecting inner beauty")}
           <br />
           {t("во внешней", "on the outside")}
@@ -45,7 +40,7 @@ export default function Hero() {
           href={YCLIENTS}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-7 inline-flex min-w-[280px] items-center justify-center rounded-full border border-white/60 bg-white/10 px-16 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#46131E] hover:bg-[#46131E] lg:mt-8 lg:min-w-[340px]"
+          className="mt-7 inline-flex min-w-[280px] items-center justify-center rounded-full border border-white/60 bg-white/10 px-16 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#17191a] hover:bg-[#17191a] lg:mt-8 lg:min-w-[340px]"
         >
           {t("Оформить визит", "Arrange a visit")}
         </a>

@@ -14,28 +14,28 @@ const PHOTO = "/assets/tild6230-643__.jpg"; // плейсхолдер — зам
 // Тонкие линейные иконки (пунктирный круг + мотив) в стиле реф-сайта.
 const stroke = { fill: "none", stroke: "currentColor", strokeWidth: 1.2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
 const IconEvents = (
-  <svg viewBox="0 0 48 48" className="h-11 w-11 text-[#46131E]/70 transition-colors duration-300 group-hover:text-[#f4efe6]">
+  <svg viewBox="0 0 48 48" className="h-11 w-11 text-[#17191a]/70 transition-colors duration-300 group-hover:text-[#f4efe6]">
     <circle cx="24" cy="21" r="13" {...stroke} />
     <path d="M24 15v12M18 21h12" {...stroke} />
     <path d="M14 40c3-3 6-3 10-3s7 0 10 3" {...stroke} opacity="0.7" />
   </svg>
 );
 const IconBrands = (
-  <svg viewBox="0 0 48 48" className="h-11 w-11 text-[#46131E]/70 transition-colors duration-300 group-hover:text-[#f4efe6]">
+  <svg viewBox="0 0 48 48" className="h-11 w-11 text-[#17191a]/70 transition-colors duration-300 group-hover:text-[#f4efe6]">
     <circle cx="24" cy="21" r="13" {...stroke} />
     <path d="M24 14c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9Z" {...stroke} />
     <path d="M15 39h18" {...stroke} opacity="0.7" />
   </svg>
 );
 const IconVenues = (
-  <svg viewBox="0 0 48 48" className="h-11 w-11 text-[#46131E]/70 transition-colors duration-300 group-hover:text-[#f4efe6]">
+  <svg viewBox="0 0 48 48" className="h-11 w-11 text-[#17191a]/70 transition-colors duration-300 group-hover:text-[#f4efe6]">
     <circle cx="24" cy="21" r="13" {...stroke} />
     <path d="M24 15c3 0 5.5 2.4 5.5 5.5C29.5 24.5 24 29 24 29s-5.5-4.5-5.5-8.5C18.5 17.4 21 15 24 15Z" {...stroke} />
     <circle cx="24" cy="20.5" r="1.8" {...stroke} />
   </svg>
 );
 const IconBloggers = (
-  <svg viewBox="0 0 48 48" className="h-11 w-11 text-[#46131E]/70 transition-colors duration-300 group-hover:text-[#f4efe6]">
+  <svg viewBox="0 0 48 48" className="h-11 w-11 text-[#17191a]/70 transition-colors duration-300 group-hover:text-[#f4efe6]">
     <circle cx="24" cy="21" r="13" {...stroke} />
     <path d="M24 27.5c-3-2.4-6-4.6-6-7.6a3.3 3.3 0 0 1 6-1.9 3.3 3.3 0 0 1 6 1.9c0 3-3 5.2-6 7.6Z" {...stroke} />
     <path d="M15 39c3-2 6-2 9-2s6 0 9 2" {...stroke} opacity="0.7" />
@@ -83,10 +83,7 @@ export default function CooperationFormats() {
   return (
     <section className="bg-white section-y">
       <div className="r-reveal mx-auto mb-12 w-[92%] max-w-[1280px] text-center lg:mb-16">
-        <p className="text-[10px] lowercase tracking-[0.05em] text-[#46131E]">
-          {lang === "en" ? "for partners" : "партнёрам"}
-        </p>
-        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] lg:text-[28px]">
+        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
           {lang === "en" ? "Why partner with ÁLIS" : "Плюсы сотрудничества с ÁLIS"}
         </h2>
       </div>
@@ -102,9 +99,9 @@ export default function CooperationFormats() {
           {FORMATS.map((f) => (
             <article
               key={f.title.ru}
-              className="group flex min-h-[240px] flex-col justify-between rounded-[30px] border border-[#46131E]/20 bg-white p-6 transition-colors duration-300 hover:border-transparent hover:bg-[#46131E] lg:min-h-0 lg:p-7"
+              className="group flex min-h-[240px] flex-col justify-between rounded-[30px] border border-[#17191a]/20 bg-white p-6 transition-colors duration-300 hover:border-transparent hover:bg-[#17191a] lg:min-h-0 lg:p-7"
             >
-              <h3 className="max-w-[20ch] font-serif-display text-[16px] font-medium uppercase leading-[1.2] tracking-[0.02em] text-[#46131E] transition-colors duration-300 group-hover:text-[#f4efe6] lg:text-[18px]">
+              <h3 className="max-w-[20ch] font-serif-display text-[16px] font-medium uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] transition-colors duration-300 group-hover:text-[#f4efe6] lg:text-[18px]">
                 {f.title[lang]}
               </h3>
               <span aria-hidden className="my-3 block">{f.icon}</span>
