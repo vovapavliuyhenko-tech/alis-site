@@ -5,8 +5,8 @@ import Requisites from "@/components/legal/Requisites";
 import { COMPANY, LEGAL_UPDATED } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Публичная оферта — ALIS beauty",
-  description: "Публичная оферта на оказание услуг ИП Тарзян Д.И. (ALIS beauty).",
+  title: "Публичная оферта — ÁLIS BEAUTY",
+  description: "Публичная оферта на оказание услуг ИП Тарзян Д.И. (ÁLIS BEAUTY).",
 };
 
 export default function OfferPage() {

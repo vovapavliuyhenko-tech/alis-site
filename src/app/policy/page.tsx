@@ -5,8 +5,8 @@ import Requisites from "@/components/legal/Requisites";
 import { COMPANY, LEGAL_UPDATED } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Политика конфиденциальности — ALIS beauty",
-  description: "Политика в отношении обработки персональных данных ИП Тарзян Д.И. (ALIS beauty).",
+  title: "Политика конфиденциальности — ÁLIS BEAUTY",
+  description: "Политика в отношении обработки персональных данных ИП Тарзян Д.И. (ÁLIS BEAUTY).",
 };
 
 export default function PolicyPage() {

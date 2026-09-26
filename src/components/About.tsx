@@ -1,5 +1,5 @@
 "use client";
-// ОБО МНЕ / «ПОЧЕМУ ВЫБИРАЮТ ÁLIS» — преимущества карточками в единых рамках
+// ОБО МНЕ / «ПОЧЕМУ ВЫБИРАЮТ ÁLIS BEAUTY» — преимущества карточками в единых рамках
 // (как контакт-карточки): иконка-чип, заголовок, описание; портрет основателя
 // отдельной карточкой. Наведение — лёгкий подъём и подсветка обводки. Двуязычно.
 import { useLang } from "@/lib/i18n";
@@ -57,7 +57,7 @@ export default function About() {
             {en ? "About us" : "О нас"}
           </span>
           <h2 className="mt-5 font-display text-[24px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-[#17191a] lg:text-[36px]">
-            {en ? "Why they choose" : "Почему выбирают"} <span className="text-[#17191a]">ÁLIS</span>
+            {en ? "Why they choose" : "Почему выбирают"} <span className="text-[#17191a]">ÁLIS BEAUTY</span>
           </h2>
         </div>
 
@@ -69,7 +69,7 @@ export default function About() {
             <div className="p-6 lg:p-7">
               <p className="font-display text-[18px] tracking-[0.02em] text-[#17191a]">{en ? "Daiana Tarzyan" : "Дайана Тарзян"}</p>
               <p className="mt-2 text-[12px] uppercase leading-relaxed tracking-[0.1em] text-[#17191a]/50">
-                {en ? "founder of ÁLIS aesthetics studios and ÁLIS BEAUTY CONCIERGE" : "основатель сети студий эстетики ÁLIS и ÁLIS BEAUTY CONCIERGE"}
+                {en ? "founder of ÁLIS BEAUTY aesthetics studios and ÁLIS BEAUTY CONCIERGE" : "основатель сети студий эстетики ÁLIS BEAUTY и ÁLIS BEAUTY CONCIERGE"}
               </p>
             </div>
           </article>

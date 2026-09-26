@@ -1,6 +1,6 @@
 "use client";
 // КВИЗ «БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ» — выездной бьюти-консьерж по РФ и за границей.
-// По мотивам квиза traffic-masters: слева карточка-персона (основатель ALIS) с
+// По мотивам квиза traffic-masters: слева карточка-персона (основатель ÁLIS BEAUTY) с
 // репликой, справа прогресс-бар, счётчик шагов, вопрос с вариантами (клик —
 // следующий шаг), финальный шаг — контакты. Палитра сайта: Burgundy + Olive + крем.
 import { useState } from "react";
@@ -146,7 +146,7 @@ export default function QuizConsult() {
               />
               <div>
                 <p className="font-serif text-[18px] text-[#2a2320]">{t("Дайана Тарзян", "Daiana Tarzyan")}</p>
-                <p className="text-[12px] text-[#17191a]/55">{t("основатель ALIS", "founder of ALIS")}</p>
+                <p className="text-[12px] text-[#17191a]/55">{t("основатель ÁLIS BEAUTY", "founder of ÁLIS BEAUTY")}</p>
               </div>
             </div>
             <div key={step} className="booking-step relative rounded-2xl border border-[#17191a]/12 bg-[#17191a]/[0.04] p-4 text-[13px] leading-relaxed text-[#2a2320]/80">

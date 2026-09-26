@@ -3,7 +3,7 @@
 export const COMPANY = {
   fullName: "Индивидуальный предприниматель Тарзян Дайана Ивановна",
   shortName: "ИП Тарзян Д.И.",
-  brand: "ALIS beauty",
+  brand: "ÁLIS BEAUTY",
   regAddress: "353905, г. Новороссийск, ул. Шевченко, д. 22",
   bizAddress: "353905, г. Новороссийск, ул. Пархоменко, д. 53",
   email: "alisbeautyclub@gmail.com",

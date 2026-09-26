@@ -1,7 +1,7 @@
 "use client";
 // ПОДАРОЧНЫЕ СЕРТИФИКАТЫ — акцентная бордовая плашка во всю ширину.
 // Слева: заголовок, продающий текст, кнопка «Купить сертификат».
-// Справа: стилизованная карточка сертификата ALIS с номиналом.
+// Справа: стилизованная карточка сертификата ÁLIS BEAUTY с номиналом.
 // Кнопка открывает модальную форму заказа: выбор номинала → имя/телефон → успех.
 // Светлая тема сайта, бордовый акцент. Двуязычно (RU/EN).
 import { useEffect, useState } from "react";
@@ -61,14 +61,14 @@ export default function Certificates() {
               </span>
               <h2 className="r-reveal mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] lg:text-[44px]">
                 {t("Лучший подарок —", "The best gift is")}{" "}
-                <span className="text-[#8a5a3c]">{t("красота ALIS", "ALIS beauty")}</span>
+                <span className="text-[#8a5a3c]">{t("красота ÁLIS BEAUTY", "ÁLIS BEAUTY")}</span>
               </h2>
 
               {/* Выгоды */}
               <ul className="r-reveal mt-7 space-y-3.5">
                 {[
                   t("Номинал 3 000 – 15 000 ₽ — на ваш выбор", "Amount 3,000–15,000 ₽ — your choice"),
-                  t("Действует на процедуры и продукцию ALIS beauty", "Valid for procedures and ALIS beauty products"),
+                  t("Действует на процедуры и продукцию ÁLIS BEAUTY", "Valid for procedures and ÁLIS BEAUTY products"),
                   t("Оформление за пару минут — онлайн или на ресепшене", "Ready in a couple of minutes — online or at reception"),
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-3 text-[14px] leading-snug text-[#f4efe6]/90 lg:text-[15px]">
@@ -134,7 +134,7 @@ export default function Certificates() {
                   <div className="absolute inset-0 overflow-hidden rounded-[20px] border-2 border-[#8a5a3c]/50 bg-gradient-to-br from-[#7C2432] to-[#48101E] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden]">
                     <div className="flex h-full flex-col justify-between">
                       <div className="flex items-start justify-between">
-                        <span className="font-serif text-[26px] tracking-[0.14em] text-[#f4efe6]">ÁLIS</span>
+                        <span className="font-serif text-[26px] tracking-[0.14em] text-[#f4efe6]">ÁLIS BEAUTY</span>
                         <span className="text-[10px] uppercase tracking-[0.2em] text-[#f4efe6]/55">gift card</span>
                       </div>
                       <div>
@@ -153,7 +153,7 @@ export default function Certificates() {
                   </div>
                   {/* Оборотная сторона */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-[20px] border-2 border-[#8a5a3c]/50 bg-gradient-to-br from-[#48101E] to-[#7C2432] p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                    <span className="font-serif text-[30px] tracking-[0.14em] text-[#f4efe6]">ÁLIS</span>
+                    <span className="font-serif text-[30px] tracking-[0.14em] text-[#f4efe6]">ÁLIS BEAUTY</span>
                     <span className="text-[11px] uppercase tracking-[0.22em] text-[#f4efe6]/60">{t("с любовью, beauty", "with love, beauty")}</span>
                   </div>
                 </div>

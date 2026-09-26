@@ -102,7 +102,7 @@ export default function ConciergeChat() {
   const greeting = (): Msg => ({
     from: "bot",
     text: en
-      ? "Hello! I'm Diana, your ÁLIS concierge. Leave your name and phone — I'll get back to you fast, or ask me anything below."
+      ? "Hello! I'm Diana, your ÁLIS BEAUTY concierge. Leave your name and phone — I'll get back to you fast, or ask me anything below."
       : "Здравствуйте! Я Дайана, консьерж ÁLIS. Оставьте имя и телефон — отвечу быстро. Или спросите меня о чём угодно ниже.",
   });
   const [msgs, setMsgs] = useState<Msg[]>([greeting()]);
@@ -188,7 +188,7 @@ export default function ConciergeChat() {
             </span>
             <div className="flex-1">
               <p className="text-[14px] font-medium leading-tight">{t("Дайана", "Diana")}</p>
-              <p className="text-[11px] text-[#f4efe6]/65">{t("Консьерж ÁLIS · онлайн", "ÁLIS concierge · online")}</p>
+              <p className="text-[11px] text-[#f4efe6]/65">{t("Консьерж ÁLIS BEAUTY · онлайн", "ÁLIS BEAUTY concierge · online")}</p>
             </div>
             <button onClick={() => setOpen(false)} aria-label={t("Свернуть", "Close")} className="text-[#f4efe6]/70 transition-colors hover:text-[#f4efe6]">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14" strokeLinecap="round" /></svg>

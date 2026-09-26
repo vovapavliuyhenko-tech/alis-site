@@ -141,7 +141,7 @@ export default function ContactsCTA() {
         {/* Белая карточка (как на референсе) */}
         <div className="flex flex-col justify-center rounded-[24px] border border-[#17191a]/12 bg-white px-6 py-7 text-[#17191a] shadow-[0_18px_44px_rgba(0,0,0,0.06)] lg:min-h-[520px] lg:px-9 lg:py-10">
           <h2 className="r-reveal font-display text-[22px] font-normal leading-[1.1] tracking-[0.02em] lg:text-[30px]">
-            ÁLIS Beauty <span className="opacity-70">{t("на Пархоменко", "on Parkhomenko")}</span>
+            ÁLIS BEAUTY <span className="opacity-70">{t("на Пархоменко", "on Parkhomenko")}</span>
           </h2>
           <p className="r-reveal mt-2 text-[12.5px] italic leading-relaxed text-[#17191a]/55 lg:text-[13.5px]">
             {t("Премиальный салон красоты · Новороссийск", "Premium beauty salon · Novorossiysk")}

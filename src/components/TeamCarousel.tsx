@@ -1,5 +1,5 @@
 "use client";
-// РУКОВОДСТВО ÁLIS — контактный блок «к кому обратиться»: директор, управляющий,
+// РУКОВОДСТВО ÁLIS BEAUTY — контактный блок «к кому обратиться»: директор, управляющий,
 // менеджер. Мастеров показываем не здесь, а в онлайн-записи. Карточки с ролью,
 // коротким описанием зоны ответственности и кнопкой «Связаться». Имена и фото —
 // плейсхолдеры, замените на реальные. Двуязычно (RU/EN).
@@ -44,7 +44,7 @@ export default function TeamCarousel() {
           </span>
           <h2 className="mt-5 font-display text-[28px] uppercase tracking-[0.06em] leading-[1.12] text-[#2a2320] lg:text-[44px]">
             {en ? "Who to reach out to" : "К кому обратиться"}{" "}
-            <span className="text-[#17191a]">{en ? "at ÁLIS" : "в ÁLIS"}</span>
+            <span className="text-[#17191a]">{en ? "at ÁLIS BEAUTY" : "в ÁLIS BEAUTY"}</span>
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
             {en

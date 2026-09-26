@@ -12,7 +12,7 @@ type Loc = { ru: string; en: string };
 export default function MerchMarquee({
   sectionId = "merch",
   eyebrow = { ru: "мерч", en: "merch" },
-  title = { ru: "Немного ÁLIS — с собой", en: "A little ÁLIS to take home" },
+  title = { ru: "Немного ÁLIS BEAUTY — с собой", en: "A little ÁLIS BEAUTY to take home" },
   exclude,
   catalogHref,
 }: {

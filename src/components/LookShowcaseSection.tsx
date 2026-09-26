@@ -1,7 +1,7 @@
 "use client";
 // ДВА БЛОКА-ВИТРИНЫ с эффектом «шторки»: первый блок залипает (sticky), второй
 // наезжает поверх него при скролле — и он ЗЕРКАЛЬНЫЙ (фото с другой стороны).
-// Данные — образы ALIS и домашний уход. Двуязычно.
+// Данные — образы ÁLIS BEAUTY и домашний уход. Двуязычно.
 import LookShowcase, { type Look } from "@/components/LookShowcase";
 
 const LOOKS: Look[] = [
@@ -38,7 +38,7 @@ export default function LookShowcaseSection() {
       {/* Блок 2 — наезжает шторкой, зеркальный */}
       <div className="relative z-10">
         <LookShowcase
-          title={{ ru: "Уход ALIS дома", en: "ALIS care at home" }}
+          title={{ ru: "Уход ÁLIS BEAUTY дома", en: "ÁLIS BEAUTY care at home" }}
           subtitle={{
             ru: "Та же косметика, которой мы работаем в студии — заберите домой.",
             en: "The same cosmetics we use in the studio — take them home.",

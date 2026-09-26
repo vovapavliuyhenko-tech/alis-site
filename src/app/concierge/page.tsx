@@ -155,7 +155,9 @@ export default function ConciergePage() {
         cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }}
       />
 
-      <div className="relative z-10 bg-white">
+      {/* Порядок для клиента: чем хорош → форматы и цены → как проходит → ответы на
+          вопросы → КП и заявка. space-y — дополнительный воздух между блоками. */}
+      <div className="relative z-10 space-y-6 bg-white pb-6 lg:space-y-12 lg:pb-12">
         {/* Маркер конца героя — после него у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
 
@@ -164,7 +166,6 @@ export default function ConciergePage() {
 
         {/* 3 — Услуги и прайс (плашки как на «Салоне») */}
         <SalonServices
-          eyebrow={{ ru: "услуги и прайс", en: "services & prices" }}
           title={{ ru: "Форматы выезда", en: "On-location formats" }}
           categories={CONCIERGE_CATEGORIES}
           cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }}
@@ -173,18 +174,17 @@ export default function ConciergePage() {
         {/* 4 — Этапы работы (шторка: текст/фото, накладываются при скролле) */}
         <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" />
 
-        {/* 5 — Коммерческое предложение + заявка */}
-        <ConciergeOffer />
-
-        {/* 6 — Частые вопросы */}
+        {/* 5 — Частые вопросы */}
         <Faq
           items={CONCIERGE_FAQ}
           sectionId="concierge-faq"
           photo="/assets/tild3236-393__.jpg"
-          eyebrow={{ ru: "вопросы", en: "FAQ" }}
           titleTop={{ ru: "Бьюти-консьерж —", en: "Beauty concierge —" }}
           titleBottom={{ ru: "что спрашивают", en: "what people ask" }}
         />
+
+        {/* 6 — Коммерческое предложение + заявка (финальный шаг; #offer и #booking) */}
+        <ConciergeOffer />
       </div>
       <Footer />
       <ConciergeChat />

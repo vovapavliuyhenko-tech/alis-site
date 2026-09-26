@@ -1,5 +1,5 @@
 "use client";
-// АДМИНКА ЗАПИСИ ALIS (прототип). Логин по паролю (прототип — не для прода).
+// АДМИНКА ЗАПИСИ ÁLIS BEAUTY (прототип). Логин по паролю (прототип — не для прода).
 // Вкладки: услуги (цены/длительность), мастера (услуги + график по дням недели),
 // брони (входящие записи). Данные — localStorage (общий стор с витриной записи).
 import { useEffect, useState } from "react";
@@ -49,7 +49,7 @@ export default function AdminPage() {
     return (
       <main className="flex min-h-svh items-center justify-center bg-white px-6">
         <div className="w-full max-w-sm">
-          <h1 className="mb-2 font-serif text-[28px] text-[#17191a]">Админка ALIS</h1>
+          <h1 className="mb-2 font-serif text-[28px] text-[#17191a]">Админка ÁLIS BEAUTY</h1>
           <p className="mb-6 text-[13px] text-[#17191a]/50">Введите пароль для управления записью.</p>
           <input
             type="password"

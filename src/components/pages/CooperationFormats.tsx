@@ -84,7 +84,7 @@ export default function CooperationFormats() {
     <section className="bg-white section-y">
       <div className="r-reveal mx-auto mb-12 w-[92%] max-w-[1400px] text-center lg:mb-16">
         <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
-          {lang === "en" ? "Why partner with ÁLIS" : "Плюсы сотрудничества с ÁLIS"}
+          {lang === "en" ? "Why partner with ÁLIS BEAUTY" : "Плюсы сотрудничества с ÁLIS BEAUTY"}
         </h2>
       </div>
       <div className="mx-auto grid w-[92%] max-w-[1400px] grid-cols-1 items-stretch gap-3 sm:gap-4 lg:grid-cols-2">

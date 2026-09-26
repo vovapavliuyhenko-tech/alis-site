@@ -100,8 +100,8 @@ export default function ProductView({ product }: { product: Product }) {
             <div className="mt-10">
               <Accordion title={t("Что важно знать", "Good to know")}>
                 {t(
-                  "Фирменный мерч ÁLIS ограниченным тиражом. Уход и состав указаны на бирке. Обмен и возврат — в течение 14 дней при сохранении вида.",
-                  "Limited-run ÁLIS merch. Care and materials are on the tag. Exchange and return within 14 days if the item is unused.",
+                  "Фирменный мерч ÁLIS BEAUTY ограниченным тиражом. Уход и состав указаны на бирке. Обмен и возврат — в течение 14 дней при сохранении вида.",
+                  "Limited-run ÁLIS BEAUTY merch. Care and materials are on the tag. Exchange and return within 14 days if the item is unused.",
                 )}
               </Accordion>
               <Accordion title={t("Доставка и оплата", "Delivery & payment")}>

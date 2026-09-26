@@ -58,7 +58,7 @@ export default function OnlineBooking() {
         {/* Виджет YClients — заподлицо, по ширине контента, без рамки-карточки */}
         <iframe
           src={YCLIENTS_URL}
-          title={lang === "en" ? "Online booking — ALIS" : "Онлайн-запись — ALIS"}
+          title={lang === "en" ? "Online booking — ÁLIS BEAUTY" : "Онлайн-запись — ÁLIS BEAUTY"}
           loading="lazy"
           allow="payment"
           className="mx-auto block h-[82vh] min-h-[760px] w-full max-w-[760px] lg:min-h-[960px]"

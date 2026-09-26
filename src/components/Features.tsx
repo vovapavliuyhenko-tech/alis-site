@@ -1,5 +1,5 @@
 "use client";
-// АВТОРСКИЕ ДЕТАЛИ ALIS — bento-сетка (по мотивам блока «фишки» veterok.me): крупный
+// АВТОРСКИЕ ДЕТАЛИ ÁLIS BEAUTY — bento-сетка (по мотивам блока «фишки» veterok.me): крупный
 // serif-заголовок в две строки (курсив + прямой), подзаголовок, и сетка из 4 колонок
 // со смещением: карточки-статы, тёмная бордовая карточка, фото и текст-ячейки.
 // Появление каскадом при скролле. Светлая тема, бордовые акценты. Двуязычно.
@@ -110,14 +110,14 @@ export default function Features() {
         {/* Заголовок */}
         <div className="mx-auto mb-14 max-w-2xl text-center lg:mb-20">
           <h2 className="font-serif text-[32px] leading-[1.1] text-[#17191a] lg:text-[52px]">
-            <span className="italic">{en ? "ALIS signature details," : "Авторские детали ALIS,"}</span>
+            <span className="italic">{en ? "ÁLIS BEAUTY signature details," : "Авторские детали ÁLIS BEAUTY,"}</span>
             <br />
             <span className="font-semibold">{en ? "our clients fall for" : "в которые влюбляются клиенты"}</span>
           </h2>
           <p className="mx-auto mt-5 max-w-md text-[14px] leading-relaxed text-[#17191a]/55 lg:text-[15px]">
             {en
-              ? "The ALIS team has created a formula for the perfect look: highlight your beauty, hold it all day and give you confidence."
-              : "Команда ALIS создала формулу идеального образа: подчеркнуть вашу красоту, сохранить стойкость на весь день и подарить уверенность."}
+              ? "The ÁLIS BEAUTY team has created a formula for the perfect look: highlight your beauty, hold it all day and give you confidence."
+              : "Команда ÁLIS BEAUTY создала формулу идеального образа: подчеркнуть вашу красоту, сохранить стойкость на весь день и подарить уверенность."}
           </p>
         </div>
 

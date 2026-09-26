@@ -71,7 +71,7 @@ export default function MassageProblems() {
         {/* Заголовок секции */}
         <div className="r-reveal text-center">
           <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
-            {en ? "Why people choose ÁLIS" : "Почему выбирают ÁLIS"}
+            {en ? "Why people choose ÁLIS BEAUTY" : "Почему выбирают ÁLIS BEAUTY"}
           </h2>
         </div>
 

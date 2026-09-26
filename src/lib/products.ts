@@ -12,18 +12,18 @@ export type Product = {
 export const PRODUCTS: Product[] = [
   {
     id: "hoodie",
-    name: { ru: "Худи ÁLIS", en: "ÁLIS hoodie" },
+    name: { ru: "Худи ÁLIS BEAUTY", en: "ÁLIS BEAUTY hoodie" },
     price: 4900,
     img: "/assets/tild6530-383_-2___1_.jpg",
     tag: { ru: "одежда", en: "apparel" },
     desc: {
       ru: "Мягкое худи оверсайз из плотного хлопкового футера с вышивкой ÁLIS. Унисекс, тёплое и уютное — как атмосфера салона.",
-      en: "A soft oversized hoodie in dense cotton fleece with an ÁLIS embroidery. Unisex, warm and cosy — like the salon's mood.",
+      en: "A soft oversized hoodie in dense cotton fleece with an ÁLIS BEAUTY embroidery. Unisex, warm and cosy — like the salon's mood.",
     },
   },
   {
     id: "tshirt",
-    name: { ru: "Футболка ÁLIS", en: "ÁLIS tee" },
+    name: { ru: "Футболка ÁLIS BEAUTY", en: "ÁLIS BEAUTY tee" },
     price: 2400,
     img: "/assets/tild3236-393__.jpg",
     tag: { ru: "одежда", en: "apparel" },
@@ -34,7 +34,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "shopper",
-    name: { ru: "Шоппер ÁLIS", en: "ÁLIS shopper" },
+    name: { ru: "Шоппер ÁLIS BEAUTY", en: "ÁLIS BEAUTY shopper" },
     price: 1500,
     img: "/assets/tild6230-643__.jpg",
     tag: { ru: "аксессуары", en: "accessories" },
@@ -45,7 +45,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "candle",
-    name: { ru: "Аромасвеча ÁLIS", en: "ÁLIS candle" },
+    name: { ru: "Аромасвеча ÁLIS BEAUTY", en: "ÁLIS BEAUTY candle" },
     price: 1900,
     img: "/assets/tild3561-646_-2___1__5.jpg",
     tag: { ru: "дом", en: "home" },
@@ -56,7 +56,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "mug",
-    name: { ru: "Термокружка ÁLIS", en: "ÁLIS tumbler" },
+    name: { ru: "Термокружка ÁLIS BEAUTY", en: "ÁLIS BEAUTY tumbler" },
     price: 1700,
     img: "/assets/tild3638-373_-2___1__3.jpg",
     tag: { ru: "аксессуары", en: "accessories" },

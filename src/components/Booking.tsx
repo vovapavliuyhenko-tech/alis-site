@@ -201,7 +201,7 @@ const UI = {
     successSub2: (a: string) => `, чтобы обсудить «${a}»`,
     again: "Оставить ещё одну заявку",
     founder: "Дайана Тарзян",
-    founderRole: "основатель ALIS",
+    founderRole: "основатель ÁLIS BEAUTY",
   },
   en: {
     eyebrow: "request",
@@ -222,7 +222,7 @@ const UI = {
     successSub2: (a: string) => ` to discuss “${a}”`,
     again: "Submit another request",
     founder: "Daiana Tarzyan",
-    founderRole: "founder of ALIS",
+    founderRole: "founder of ÁLIS BEAUTY",
   },
 };
 

@@ -81,7 +81,7 @@ export default function TeamPage() {
           items={TEAM_FAQ}
           sectionId="team-faq"
           photo="/assets/tild6536-613_-2___1__4.jpg"
-          titleTop={{ ru: "Работа в ÁLIS —", en: "Working at ÁLIS —" }}
+          titleTop={{ ru: "Работа в ÁLIS BEAUTY —", en: "Working at ÁLIS BEAUTY —" }}
           titleBottom={{ ru: "что спрашивают", en: "what people ask" }}
         />
 

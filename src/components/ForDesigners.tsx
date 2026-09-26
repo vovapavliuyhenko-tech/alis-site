@@ -1,4 +1,4 @@
-// БЛОК «ALIS BEAUTY CONCIERGE»: консьерж-сервис салона.
+// БЛОК «ÁLIS BEAUTY CONCIERGE»: консьерж-сервис салона.
 const FACTS = [
   { k: "Формат", v: "Выезд мастеров и сопровождение" },
   { k: "География", v: "Новороссийск, Сочи, Краснодар и др." },
@@ -20,10 +20,10 @@ export default function ForDesigners() {
           {/* Левая колонка — оффер */}
           <div>
             <h3 className="r-reveal max-w-xl text-[26px] font-medium leading-tight text-white lg:text-[34px]">
-              ALIS Beauty Concierge — забота о каждой детали вашего образа
+              ÁLIS BEAUTY Concierge — забота о каждой детали вашего образа
             </h3>
             <p className="r-reveal mt-7 max-w-md text-[14px] leading-relaxed text-white/70">
-              Наш уникальный concierge-сервис: мастера ALIS приедут к вам, соберут
+              Наш уникальный concierge-сервис: мастера ÁLIS BEAUTY приедут к вам, соберут
               образ и будут рядом на съёмке, свадьбе или мероприятии — чтобы у вас
               остались исключительно приятные ощущения и спокойная атмосфера.
             </p>

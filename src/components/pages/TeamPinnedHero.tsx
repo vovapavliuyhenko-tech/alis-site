@@ -86,7 +86,7 @@ export default function TeamPinnedHero() {
                     {en ? "we" : "мы"}
                   </span>
                   <h1 className="mt-4 font-display text-[20px] font-normal uppercase leading-[1.12] tracking-[0.04em] text-white sm:text-[26px] lg:text-[32px]">
-                    {en ? "The ÁLIS team" : "Команда ÁLIS"}
+                    {en ? "The ÁLIS BEAUTY team" : "Команда ÁLIS BEAUTY"}
                   </h1>
                 </>
               )}

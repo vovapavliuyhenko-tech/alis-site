@@ -23,13 +23,13 @@ const COLS: { head: Loc; points: Loc[]; foot: Loc }[] = [
     foot: { ru: "Обычный салон — как повезёт", en: "Ordinary salon — hit or miss" },
   },
   {
-    head: { ru: "В команде ÁLIS", en: "On the ÁLIS team" },
+    head: { ru: "В команде ÁLIS BEAUTY", en: "On the ÁLIS BEAUTY team" },
     points: [
       { ru: "стабильный поток гостей и записи", en: "a steady flow of guests and bookings" },
       { ru: "честный процент и прозрачная оплата", en: "fair commission, transparent pay" },
       { ru: "проверенные материалы, обучение и рост", en: "trusted materials, training and growth" },
     ],
-    foot: { ru: "ÁLIS — стабильно и по-честному", en: "ÁLIS — stable and fair" },
+    foot: { ru: "ÁLIS BEAUTY — стабильно и по-честному", en: "ÁLIS BEAUTY — stable and fair" },
   },
 ];
 

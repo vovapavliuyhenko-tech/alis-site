@@ -57,7 +57,7 @@ export default function ConciergeOffer() {
 
   return (
     <section id="offer" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto grid w-[92%] max-w-[1280px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
+      <div className="mx-auto grid w-[92%] max-w-[1400px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая колонка — фото */}
         <div className="relative min-h-[320px] overflow-hidden rounded-[28px] lg:min-h-[600px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}

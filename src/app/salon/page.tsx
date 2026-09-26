@@ -301,7 +301,7 @@ export default function SalonPage() {
           items={SALON_FAQ}
           sectionId="salon-faq"
           photo="/assets/tild6530-383_-2___1_.jpg"
-          titleTop={{ ru: "Салон ÁLIS —", en: "ÁLIS salon —" }}
+          titleTop={{ ru: "Салон ÁLIS BEAUTY —", en: "ÁLIS BEAUTY salon —" }}
           titleBottom={{ ru: "что спрашивают", en: "what people ask" }}
         />
 

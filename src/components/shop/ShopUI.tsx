@@ -35,7 +35,7 @@ export default function ShopUI() {
       return `• ${p?.name[lang]} × ${it.qty} — ${fmtPrice((p?.price || 0) * it.qty, en)}`;
     });
     const msg =
-      t("Здравствуйте! Хочу заказать мерч ÁLIS:", "Hello! I'd like to order ÁLIS merch:") +
+      t("Здравствуйте! Хочу заказать мерч ÁLIS BEAUTY:", "Hello! I'd like to order ÁLIS BEAUTY merch:") +
       "\n" + lines.join("\n") +
       "\n\n" + t("Итого:", "Total:") + " " + fmtPrice(s.cartTotal, en);
     return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;

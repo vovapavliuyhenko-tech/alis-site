@@ -1,5 +1,5 @@
 "use client";
-// ГАЛЕРЕЯ РАБОТ ALIS: сетка из 8 плиток фиксированного расположения, каждая
+// ГАЛЕРЕЯ РАБОТ ÁLIS BEAUTY: сетка из 8 плиток фиксированного расположения, каждая
 // ПЕРЕВОРАЧИВАЕТСЯ при наведении. Сверху — фильтр по категориям услуг: при
 // переключении меняются только сами фотографии и подпись, а количество и
 // раскладка остаются прежними.
@@ -22,7 +22,7 @@ const PLACES = [
 ];
 
 const CATS: { id: CatId; label: Loc; short: Loc; caption: Loc }[] = [
-  { id: "all", label: { ru: "Все", en: "All" }, short: { ru: "/образ", en: "/look" }, caption: { ru: "образ ALIS", en: "ALIS look" } },
+  { id: "all", label: { ru: "Все", en: "All" }, short: { ru: "/образ", en: "/look" }, caption: { ru: "образ ÁLIS BEAUTY", en: "ÁLIS BEAUTY look" } },
   { id: "bride", label: { ru: "Свадебные", en: "Bridal" }, short: { ru: "/невеста", en: "/bride" }, caption: { ru: "свадебный образ", en: "bridal look" } },
   { id: "evening", label: { ru: "Вечерние", en: "Evening" }, short: { ru: "/вечер", en: "/evening" }, caption: { ru: "вечерний макияж", en: "evening makeup" } },
   { id: "day", label: { ru: "Дневные", en: "Daytime" }, short: { ru: "/день", en: "/day" }, caption: { ru: "дневной образ", en: "daytime look" } },
