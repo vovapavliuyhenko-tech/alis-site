@@ -108,7 +108,7 @@ export default function MerchMarquee({
   return (
     <section id={sectionId} className="scroll-mt-24 overflow-hidden bg-white section-y">
       <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] text-center lg:mb-16">
-        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
+        <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
           {title[lang]}
         </h2>
         {catalogHref && (

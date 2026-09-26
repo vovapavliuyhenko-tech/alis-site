@@ -65,8 +65,8 @@ html { scrollbar-color: var(--wine) #ffffff; scrollbar-width: thin; }
 
 /* ===== Единый вертикальный ритм между блоками по всему сайту (как на главной) =====
    Меняешь ритм всего сайта здесь, в одном месте. */
-.section-y { padding-top: 3rem; padding-bottom: 3rem; }
-@media (min-width: 1024px) { .section-y { padding-top: 60px; padding-bottom: 60px; } }
+.section-y { padding-top: 56px; padding-bottom: 56px; }
+@media (min-width: 1024px) { .section-y { padding-top: 96px; padding-bottom: 96px; } }
 
 /* Аккуратные переносы: меньше «сирот» и висячих коротких слов в конце строки */
 h1, h2, h3, h4, p, li, blockquote, figcaption { text-wrap: pretty; }

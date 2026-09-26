@@ -41,7 +41,7 @@ export default function ContactsBlock() {
       <div className="overflow-hidden rounded-[30px] border border-[#17191a]/15 bg-white lg:grid lg:grid-cols-2">
         {/* Левая колонка */}
         <div className="flex flex-col p-8 lg:p-12">
-          <h2 className="mt-3 font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
+          <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {t("Как нас найти", "How to find us")}
           </h2>
 

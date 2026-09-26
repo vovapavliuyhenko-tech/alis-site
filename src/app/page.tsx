@@ -18,9 +18,10 @@ export default function Home() {
       <div className="relative z-10 bg-white">
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
-        <PhotoMarquee />
-        <Philosophy />
+        {/* Порядок для клиента: что делаем → выезд → работы мастеров → контакты (подвал) */}
         <ServiceBento />
+        <Philosophy />
+        <PhotoMarquee />
       </div>
       <Footer />
     </main>

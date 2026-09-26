@@ -70,7 +70,7 @@ export default function MassageProblems() {
       <div className="mx-auto w-[94%] max-w-[1400px]">
         {/* Заголовок секции */}
         <div className="r-reveal text-center">
-          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
+          <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {en ? "Why people choose ÁLIS" : "Почему выбирают ÁLIS"}
           </h2>
         </div>

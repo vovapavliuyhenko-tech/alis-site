@@ -23,7 +23,7 @@ export default function ServiceBento() {
     <section id="services" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[94%] max-w-[1440px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
-          <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
+          <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {en ? "Everything for your look" : "Всё для вашего образа"}
           </h2>
         </div>
@@ -55,8 +55,28 @@ export default function ServiceBento() {
                   {c.note[lang]}
                 </p>
               </div>
+
+              {/* Стрелка — видно, что карточка кликабельна (в т.ч. на телефоне без hover) */}
+              <span
+                aria-hidden
+                className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/50 bg-white/10 text-white backdrop-blur-md transition-colors duration-300 group-hover:bg-white group-hover:text-[#17191a]"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                  <path d="M7 17 17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
             </a>
           ))}
+        </div>
+
+        <div className="r-reveal mt-10 flex justify-center lg:mt-14">
+          <a
+            href="/salon#uslugi"
+            className="inline-flex min-w-[280px] items-center justify-center gap-2 rounded-full border border-[#17191a] px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-[#17191a] hover:text-white"
+          >
+            {en ? "All services & prices" : "Все услуги и цены"}
+            <span aria-hidden>→</span>
+          </a>
         </div>
       </div>
     </section>

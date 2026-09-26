@@ -83,7 +83,7 @@ export default function CooperationFormats() {
   return (
     <section className="bg-white section-y">
       <div className="r-reveal mx-auto mb-12 w-[92%] max-w-[1280px] text-center lg:mb-16">
-        <h2 className="mt-3 font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
+        <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
           {lang === "en" ? "Why partner with ÁLIS" : "Плюсы сотрудничества с ÁLIS"}
         </h2>
       </div>
