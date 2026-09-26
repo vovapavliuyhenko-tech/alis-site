@@ -1,15 +1,15 @@
 "use client";
 // БЛОК «ДЛЯ КОГО» (страница «Сотрудничество»): два раздела — «Частным лицам» (#private)
-// и «Агентствам и бизнесу» (#business), на них ведут пункты меню. Прежние
-// формулировки убраны по фидбеку; TODO: тексты — из коммерческого предложения
-// (пришлёт заказчица). Ч/б. Двуязычно.
+// и «Агентствам и бизнесу» (#business), на них ведут пункты меню. Две фото-панели:
+// при наведении панель расширяется, фото приближается, снизу выезжает кнопка заявки.
+// TODO: тексты — из коммерческого предложения; фото — пришлёт заказчица. Ч/б. Двуязычно.
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
 
-const AUDIENCES: { id: string; title: Loc }[] = [
-  { id: "private", title: { ru: "Частным лицам", en: "For individuals" } },
-  { id: "business", title: { ru: "Агентствам и бизнесу", en: "For agencies & business" } },
+const AUDIENCES: { id: string; title: Loc; img: string }[] = [
+  { id: "private", title: { ru: "Частным лицам", en: "For individuals" }, img: "/assets/alis/img_2746.jpg" },
+  { id: "business", title: { ru: "Агентствам и бизнесу", en: "For agencies & business" }, img: "/assets/alis/e12b89f7-f193-44ac-9015-777b094a0bcd.jpg" },
 ];
 
 export default function CooperationFormats() {
@@ -17,24 +17,51 @@ export default function CooperationFormats() {
 
   return (
     <section className="bg-white section-y">
-      <div className="mx-auto grid w-[92%] max-w-[1400px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
-        {AUDIENCES.map((a) => (
-          <article
+      <div className="mx-auto flex w-[92%] max-w-[1400px] flex-col gap-3 sm:gap-4 lg:h-[min(600px,70vh)] lg:flex-row">
+        {AUDIENCES.map((a, i) => (
+          <a
             key={a.id}
             id={a.id}
-            className="r-reveal flex min-h-[260px] scroll-mt-28 flex-col justify-between gap-10 rounded-[30px] border border-[#17191a]/15 bg-white p-8 lg:min-h-[340px] lg:p-12"
+            href="#request"
+            className="r-reveal group relative isolate flex h-[420px] scroll-mt-28 flex-col justify-end overflow-hidden rounded-[30px] text-white transition-[flex-grow] duration-700 ease-[cubic-bezier(.2,.7,.2,1)] lg:h-auto lg:min-w-0 lg:flex-[1_1_0%] lg:hover:flex-[1.6_1_0%]"
           >
-            <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
-              {a.title[lang]}
-            </h2>
-            <a
-              href="#request"
-              className="inline-flex w-fit items-center gap-2 rounded-full border border-[#17191a] px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-[#17191a] hover:text-white"
-            >
-              {lang === "en" ? "Leave a partnership request" : "Оставить заявку на сотрудничество"}
-              <span aria-hidden>→</span>
-            </a>
-          </article>
+            {/* Фото: медленное приближение при наведении */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={a.img}
+              alt=""
+              loading="lazy"
+              className="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
+            />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-black/25 to-black/10 transition-opacity duration-700 group-hover:opacity-80" />
+
+            {/* Номер и стрелка сверху */}
+            <div className="absolute inset-x-7 top-7 flex items-start justify-between lg:inset-x-10 lg:top-10">
+              <span className="font-serif-display text-[14px] tracking-[0.14em] text-white/75">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-white/10 backdrop-blur-md transition-all duration-500 group-hover:rotate-45 group-hover:border-white group-hover:bg-white group-hover:text-[#17191a]">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                  <path d="M7 17 17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </div>
+
+            {/* Заголовок + кнопка, выезжающая снизу на наведении */}
+            <div className="p-7 lg:p-10">
+              <h2 className="font-serif-display text-[26px] font-normal uppercase leading-[1.1] tracking-[0.02em] transition-transform duration-500 lg:text-[clamp(28px,2.6vw,42px)] lg:group-hover:-translate-y-1">
+                {a.title[lang]}
+              </h2>
+              <div className="grid transition-all duration-500 ease-out lg:grid-rows-[0fr] lg:opacity-0 lg:group-hover:grid-rows-[1fr] lg:group-hover:opacity-100">
+                <div className="overflow-hidden">
+                  <span className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-white bg-white py-3.5 text-[13px] font-medium uppercase tracking-[0.16em] text-[#17191a] lg:py-4">
+                    {lang === "en" ? "Leave a partnership request" : "Оставить заявку на сотрудничество"}
+                    <span aria-hidden>→</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
         ))}
       </div>
     </section>
