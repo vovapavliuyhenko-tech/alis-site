@@ -1,22 +1,14 @@
 "use client";
-// HERO «Студия массажа» — полноэкранное фоновое фото. Верхнюю навигацию несёт
-// глобальная шапка ÁLIS (светлая над этим блоком). Внизу слева — вводный текст,
-// крупный серифный заголовок и широкая кнопка записи; внизу справа — компактная
-// матовая карточка-отзыв. Двуязычно. Фото — плейсхолдеры (заменить на съёмки).
-import type { CSSProperties } from "react";
+// HERO главной — полноэкранное фоновое фото, по мотивам референса bemont.ru:
+// текст по центру в нижней части кадра — мелкая строка-подводка, крупный
+// заголовок капсом и кнопка «Оформить визит». Верхнюю навигацию несёт глобальная
+// шапка ÁLIS (светлая над этим блоком). Двуязычно.
 import { useLang } from "@/lib/i18n";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
-// Плейсхолдеры — заменить на настоящее фото массажа и портрет специалиста.
+// TODO: заменить на светлое фото — его подберёт Зера.
 const BG_PHOTO = "/assets/alis/img_2745.jpg";
-const SPECIALIST_PHOTO = "/assets/tild6536-613_-2___1__4.jpg";
-
-// Единые отступы блока
-const vars = {
-  "--pad": "clamp(20px,3.2vw,54px)",
-  "--btm": "clamp(26px,3.4vw,48px)",
-} as CSSProperties;
 
 export default function Hero() {
   const { lang } = useLang();
@@ -24,72 +16,40 @@ export default function Hero() {
   const t = (ru: string, e: string) => (en ? e : ru);
 
   return (
-    <section
-      style={vars}
-      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[#b9b3a9] text-white"
-    >
+    <section className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden bg-[#b9b3a9] text-white">
       {/* Фоновое фото */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={BG_PHOTO} alt="" aria-hidden className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
-      {/* Затемнение для читаемости: сверху (под шапку) и в левом-нижнем углу */}
+      {/* Лёгкое затемнение: сверху — под шапку, снизу — под текст */}
       <div
         aria-hidden
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(20,18,16,.42) 0%, rgba(20,18,16,0) 24%), linear-gradient(200deg, rgba(20,18,16,0) 40%, rgba(20,18,16,.5) 100%)",
+            "linear-gradient(to bottom, rgba(20,18,16,.38) 0%, rgba(20,18,16,0) 22%), linear-gradient(to top, rgba(20,18,16,.5) 0%, rgba(20,18,16,.12) 45%, rgba(20,18,16,0) 70%)",
         }}
       />
 
-      {/* НИЖНИЙ КОНТЕНТ (слева) */}
-      <div className="mt-auto px-6 pb-7 lg:absolute lg:bottom-[var(--btm)] lg:left-0 lg:mt-0 lg:max-w-[min(760px,58vw)] lg:pb-0 lg:pl-[var(--pad)] lg:pr-6">
-        <p className="text-[13px] leading-relaxed text-white/90">
-          {t("Волосы, ногти, брови и макияж — сразу.", "Hair, nails, brows and makeup — all at once.")}
-          <br />
-          {t("Приходите уставшей — выходите собранной. За один визит.", "Come in tired — leave put together. In one visit.")}
-          <br />
-          <strong className="font-semibold">
-            {t("Первый визит — скидка −10%.", "First visit — 10% off.")}
-          </strong>
+      <div className="flex w-full max-w-[1320px] flex-col items-center px-6 pb-[130px] text-center sm:pb-[clamp(56px,11vh,120px)]">
+        <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/90 sm:text-[13px]">
+          {t("Салон красоты и бьюти-консьерж в Новороссийске", "Beauty salon & beauty concierge in Novorossiysk")}
         </p>
 
-        <h1 className="mt-5 font-serif-display text-[18px] font-medium uppercase leading-[1.2] tracking-[0.02em] text-white [text-shadow:0_1px_24px_rgba(0,0,0,.22)] sm:text-[22px] lg:mt-6 lg:whitespace-nowrap lg:text-[clamp(20px,2.1vw,32px)]">
-          {t("Весь образ — за один визит", "Your whole look in a single visit")}
+        <h1 className="mt-4 font-serif-display text-[30px] font-normal uppercase leading-[1.08] tracking-[0.01em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[44px] lg:mt-5 lg:text-[clamp(40px,3.9vw,68px)]">
+          {t("Отражаем внутреннюю красоту", "Reflecting inner beauty")}
           <br />
-          {t("и −10% на первое посещение", "and −10% on your first")}
+          {t("во внешней", "on the outside")}
         </h1>
 
         <a
           href={YCLIENTS}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-7 inline-flex w-full items-center justify-center rounded-xl border border-transparent bg-[#46131E] px-10 py-4 text-[14px] font-medium tracking-[0.01em] text-[#F4F1EA] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md lg:mt-8 lg:w-auto lg:min-w-[min(520px,68vw)]"
+          className="mt-8 inline-flex items-center justify-center rounded-full border border-white/60 bg-white/10 px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#46131E] hover:bg-[#46131E] lg:mt-10"
         >
-          {t("Записаться", "Book now")}
+          {t("Оформить визит", "Arrange a visit")}
         </a>
       </div>
-
-      {/* КАРТОЧКА-ОТЗЫВ (справа, компактная) */}
-      <figure className="mx-6 mb-6 flex items-stretch gap-3.5 rounded-[18px] border border-white/35 bg-white/15 p-3.5 text-white shadow-[0_8px_40px_rgba(0,0,0,0.18)] backdrop-blur-2xl max-[520px]:flex-col lg:absolute lg:bottom-[var(--btm)] lg:right-[var(--pad)] lg:mx-0 lg:mb-0 lg:max-h-[165px] lg:w-[400px]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={SPECIALIST_PHOTO}
-          alt={t("Евгения Романова", "Evgenia Romanova")}
-          className="w-[92px] shrink-0 self-stretch rounded-[12px] bg-[#cfc8bd]/40 object-cover max-[520px]:h-[140px] max-[520px]:w-full"
-        />
-        <div className="flex min-w-0 flex-col justify-between gap-2 py-0.5">
-          <blockquote className="text-[12.5px] leading-[1.45] text-white/90">
-            {t(
-              "«Весь образ за один визит — и −10% на первое посещение».",
-              "“Your whole look in one visit — and −10% on your first.”",
-            )}
-          </blockquote>
-          <figcaption className="text-[12px] leading-[1.4] text-white/70">
-            <strong className="font-semibold text-white">{t("Дайана Тарзян,", "Diana Tarzyan,")}</strong>{" "}
-            {t("основатель сети студий эстетики ÁLIS и ÁLIS BEAUTY Concierge", "founder of the ÁLIS & ÁLIS BEAUTY Concierge aesthetics studios")}
-          </figcaption>
-        </div>
-      </figure>
     </section>
   );
 }

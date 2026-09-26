@@ -1,6 +1,6 @@
 "use client";
-// Плавающая круглая кнопка «Онлайн запись» → YClients. Появляется после первого
-// экрана, пульсирует и излучает кольца. Над бордовым футером инвертирует цвет
+// Плавающая круглая кнопка «Онлайн запись» → YClients. Видна сразу, в т.ч. на
+// первом экране (как на референсе bemont.ru), пульсирует и излучает кольца. Над бордовым футером инвертирует цвет
 // (кремовая с бордовым текстом), чтобы не сливаться. Скрыта на /concierge.
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -21,7 +21,7 @@ export default function BookingFab() {
       const overHide = hideZone
         ? hideZone.getBoundingClientRect().bottom > window.innerHeight * 0.6
         : false;
-      setShown(window.scrollY > window.innerHeight * 0.7 && !overHide);
+      setShown(!overHide);
       const footer = document.getElementById("footer");
       const fh = footer ? footer.offsetHeight : 0;
       const docH = document.documentElement.scrollHeight;

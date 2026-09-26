@@ -27,10 +27,11 @@ export default function Footer() {
   const link = "block text-[14px] text-[#f4efe6]/60 transition-colors hover:text-[#f4efe6]";
 
   const MENU = [
-    { label: t("Салон", "Salon"), href: "/salon" },
-    { label: t("Команда", "Team"), href: "/team" },
+    { label: t("Салон красоты", "Beauty salon"), href: "/salon" },
     { label: t("Бьюти-консьерж", "Concierge"), href: "/concierge" },
+    { label: t("Магазин", "Shop"), href: "/salon#merch" },
     { label: t("Сотрудничество", "Cooperation"), href: "/cooperation" },
+    { label: t("Вакансии", "Vacancies"), href: "/team#vacancies" },
     { label: t("Контакты", "Contacts"), href: "/contacts" },
   ];
   const LEGAL = [

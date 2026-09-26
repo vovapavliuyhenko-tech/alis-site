@@ -7,9 +7,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLang, type Lang } from "@/lib/i18n";
 import { useShop } from "@/lib/shop";
-import { LogoEmblem, LogoWord } from "@/components/Logo";
-
-const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
+import { LogoWord } from "@/components/Logo";
 
 type NavItem = {
   label: { ru: string; en: string };
@@ -20,23 +18,14 @@ type NavItem = {
 // Левая группа (до логотипа) и правая (после)
 const LEFT: NavItem[] = [
   {
-    label: { ru: "Салон", en: "Salon" },
+    label: { ru: "Салон красоты", en: "Beauty salon" },
     href: "/salon",
     sub: [
       { label: { ru: "Услуги и прайс", en: "Services & prices" }, href: "/salon#uslugi" },
+      { label: { ru: "Команда", en: "Team" }, href: "/team" },
       { label: { ru: "Лояльность", en: "Loyalty" }, href: "/salon#loyalty" },
       { label: { ru: "Сертификаты", en: "Certificates" }, href: "/salon#certificates" },
-      { label: { ru: "Магазин", en: "Shop" }, href: "/salon#merch" },
       { label: { ru: "Отзывы", en: "Reviews" }, href: "/salon#reviews" },
-    ],
-  },
-  {
-    label: { ru: "Команда", en: "Team" },
-    href: "/team",
-    sub: [
-      { label: { ru: "Наша команда", en: "Our team" }, href: "/team#team" },
-      { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team#vacancies" },
-      { label: { ru: "Стать мастером бьюти-консьержа", en: "Become a concierge master" }, href: "/team#become" },
     ],
   },
   {
@@ -48,10 +37,12 @@ const LEFT: NavItem[] = [
       { label: { ru: "Как забронировать", en: "How to book" }, href: "/concierge#booking" },
     ],
   },
+  { label: { ru: "Магазин", en: "Shop" }, href: "/salon#merch" },
 ];
 
 const RIGHT: NavItem[] = [
   { label: { ru: "Сотрудничество", en: "Cooperation" }, href: "/cooperation" },
+  { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team#vacancies" },
   { label: { ru: "Контакты", en: "Contacts" }, href: "/contacts" },
 ];
 
@@ -180,22 +171,21 @@ export default function Header() {
               {open ? <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /> : <path d="M4 8h16M4 16h16" strokeLinecap="round" />}
             </svg>
           </button>
-          <nav className="hidden w-full items-center justify-end gap-7 text-[13px] uppercase tracking-[0.13em] lg:flex xl:gap-9">
+          <nav className="hidden w-full items-center justify-end gap-6 whitespace-nowrap text-[13px] uppercase tracking-[0.13em] lg:flex xl:gap-9">
             {LEFT.map((item) => (
               <NavLink key={item.label.ru} item={item} />
             ))}
           </nav>
         </div>
 
-        {/* Логотип по центру: вензель + надпись */}
-        <a href="/" className="mx-6 flex items-center gap-2.5 justify-self-center lg:mx-10">
-          <LogoEmblem variant={overHero ? "cream" : "wine"} className="h-10 w-auto max-w-none shrink-0" />
+        {/* Логотип по центру: только надпись (вензель убран по фидбеку) */}
+        <a href="/" className="mx-6 flex items-center justify-self-center lg:mx-10">
           <LogoWord variant={overHero ? "cream" : "wine"} className="h-[19px] w-auto max-w-none shrink-0" />
         </a>
 
         {/* Правая часть: правое меню (прижато к логотипу) + действия у края */}
         <div className="flex items-center">
-          <nav className="hidden items-center gap-7 text-[13px] uppercase tracking-[0.13em] lg:flex xl:gap-9">
+          <nav className="hidden items-center gap-6 whitespace-nowrap text-[13px] uppercase tracking-[0.13em] lg:flex xl:gap-9">
             {RIGHT.map((item) => (
               <NavLink key={item.label.ru} item={item} />
             ))}
@@ -227,16 +217,6 @@ export default function Header() {
           </div>
 
           <ShopIcons />
-
-          {/* Запись (моб.) */}
-          <a
-            href={YCLIENTS}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`ml-1 text-[12px] uppercase tracking-[0.12em] lg:hidden ${ink}`}
-          >
-            {lang === "en" ? "Book" : "Запись"}
-          </a>
           </div>
         </div>
       </div>
