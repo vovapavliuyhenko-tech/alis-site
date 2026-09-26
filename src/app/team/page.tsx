@@ -64,28 +64,29 @@ export default function TeamPage() {
       {/* 1 — Единый блок-герой про команду (в стиле первого блока главной) */}
       <TeamIntro />
 
-      <div className="relative z-10 bg-white">
+      {/* Порядок для кандидата: почему у нас → вакансии → ответы на вопросы → анкета.
+          space-y — дополнительный воздух между блоками поверх общего section-y. */}
+      <div className="relative z-10 space-y-6 bg-white pb-6 lg:space-y-12 lg:pb-12">
         {/* Маркер конца героя — после него у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
 
         {/* 2 — Мини-сравнение с поворотом карточек перед вакансиями */}
         <SalonCompare />
 
-        {/* 3 — Вакансии */}
-        <div id="vacancies" className="scroll-mt-24"><Vacancies /></div>
+        {/* 3 — Вакансии (id="vacancies" — внутри секции) */}
+        <Vacancies />
 
-        {/* 4 — Форма «стать частью команды» */}
-        <div id="join" className="scroll-mt-24"><JoinForm /></div>
-
-        {/* 5 — FAQ про работу в команде */}
+        {/* 4 — FAQ про работу в команде */}
         <Faq
           items={TEAM_FAQ}
           sectionId="team-faq"
           photo="/assets/tild6536-613_-2___1__4.jpg"
-          eyebrow={{ ru: "вопросы", en: "FAQ" }}
           titleTop={{ ru: "Работа в ÁLIS —", en: "Working at ÁLIS —" }}
           titleBottom={{ ru: "что спрашивают", en: "what people ask" }}
         />
+
+        {/* 5 — Анкета «стать частью команды» (финальный шаг; id="join" — внутри секции) */}
+        <JoinForm />
       </div>
 
       <Footer />

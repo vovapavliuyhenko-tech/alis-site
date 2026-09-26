@@ -75,7 +75,7 @@ export default function SalonCompare() {
 
   return (
     <section className="bg-white section-y">
-      <div className="mx-auto w-[92%] max-w-[1280px]">
+      <div className="mx-auto w-[92%] max-w-[1400px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
           <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {lang === "en" ? "Where a master works better" : "Где мастеру работается лучше"}
