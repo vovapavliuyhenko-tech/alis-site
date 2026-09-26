@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import TeamIntro from "@/components/pages/TeamIntro";
 import LoyaltyProgram from "@/components/pages/LoyaltyProgram";
 
 export const metadata: Metadata = {
@@ -14,7 +15,12 @@ export default function LoyaltyPage() {
     <main>
       <ScrollReveal />
       <Header />
-      <div className="relative z-10 bg-white pb-6 pt-20 lg:pb-12 lg:pt-24">
+      {/* Обложка с заголовком страницы (фото временное — пришлёт заказчица) */}
+      <TeamIntro title={{ ru: "Программа лояльности", en: "Loyalty programme" }} photo="/assets/alis/img_2749.jpg" />
+
+      {/* Маркер конца обложки — после него у шапки появляется подложка */}
+      <div id="hero-end" aria-hidden className="h-0" />
+      <div className="relative z-10 bg-white pb-6 lg:pb-12">
         <LoyaltyProgram />
       </div>
       <Footer />

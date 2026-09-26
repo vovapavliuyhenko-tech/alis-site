@@ -16,6 +16,7 @@ export default function CooperationPage() {
 
       {/* 1 — Обложка: фото + кнопка к заявке (без логотипа и эффектов) */}
       <TeamIntro
+        title={{ ru: "Сотрудничество", en: "Cooperation" }}
         cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#request" }}
         photo="/assets/alis/img_6011.jpg"
       />

@@ -31,12 +31,6 @@ export default function LoyaltyProgram() {
   return (
     <section id="loyalty" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1400px]">
-        <div className="mb-12 text-center lg:mb-16">
-          <h1 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
-            {t("Программа лояльности", "Loyalty programme")}
-          </h1>
-        </div>
-
         <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-[0.9fr_1.1fr]">
           {/* Приветственный бонус */}
           <div className="flex min-h-[340px] flex-col justify-between rounded-[30px] bg-[#17191a] p-8 text-[#f4efe6] lg:min-h-[480px] lg:p-12">
