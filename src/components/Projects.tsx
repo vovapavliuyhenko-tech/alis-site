@@ -45,7 +45,7 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
                 {lang === "en" ? "hover" : "наведите"}
               </span>
               <p className="absolute inset-x-0 bottom-5 text-center text-[12px] lowercase tracking-wide text-[#f4efe6]/85">
-                instagram / telegram
+                соцсети
               </p>
             </div>
 

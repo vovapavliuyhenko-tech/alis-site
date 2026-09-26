@@ -57,7 +57,7 @@ export default function JoinSection({
               rel="noopener noreferrer"
               className={`inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] transition-transform duration-300 hover:scale-[1.02] ${dark ? "bg-[#f4efe6] text-[#17191a]" : "bg-[#17191a] text-[#f4efe6]"}`}
             >
-              {t("Написать в Instagram", "Message on Instagram")}
+              {t("Написать нам", "Message us")}
             </a>
             <a href={`tel:${PHONE_SALON.replace(/[^\d+]/g, "")}`} className={`text-[13px] ${dark ? "text-[#f4efe6]/70" : "text-[#2a2320]/60"}`}>
               {t("или позвонить", "or call")} {PHONE_SALON}

@@ -9,7 +9,7 @@ import { useLang } from "@/lib/i18n";
 function items(en: boolean): ReactNode[] {
   return [
     <span key="p1" className="font-display text-[28px] uppercase tracking-[0.04em] text-[#17191a] lg:text-[38px]">
-      {en ? "−10% on the first visit" : "−10% на первый визит"}
+      {en ? "500 bonus rubles on your first visit" : "500 бонусных рублей на первый визит"}
     </span>,
     <span key="p2" className="font-serif text-[26px] italic text-[#17191a] lg:text-[34px]">
       {en ? "perks for regulars" : "бонусы постоянным гостям"}

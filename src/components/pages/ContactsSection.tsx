@@ -47,8 +47,8 @@ export default function ContactsSection() {
             <p className={eyebrow}>{t("Соцсети", "Social")}</p>
             <div className="flex flex-wrap gap-3">
               {[
-                { label: "Instagram — Новороссийск", href: IG_RU },
-                { label: "Instagram — Global", href: IG_GLOBAL },
+                { label: "Салон красоты — @alisbeauty.ru", href: IG_RU },
+                { label: "Консьерж-сервис — @alisbeauty.global", href: IG_GLOBAL },
               ].map((s) => (
                 <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer" className="rounded-full border border-[#17191a]/25 px-4 py-2 text-[13px] text-[#17191a] transition-colors hover:bg-[#17191a] hover:text-[#f4efe6]">
                   {s.label}

@@ -18,10 +18,10 @@ const ITEMS: string[] = [
   "/assets/alis/img_5910.webp",
 ];
 
-function Track({ hidden = false }: { hidden?: boolean }) {
+function Track({ items, hidden = false }: { items: string[]; hidden?: boolean }) {
   return (
     <ul aria-hidden={hidden} className="flex shrink-0">
-      {ITEMS.map((src, i) => (
+      {items.map((src, i) => (
         <li key={i} className="mr-2 aspect-[3/4] h-[320px] shrink-0 lg:mr-3 lg:h-[440px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={src} alt="" draggable={false} loading="lazy" decoding="async" className="h-full w-full rounded-[14px] object-cover" />
@@ -31,9 +31,19 @@ function Track({ hidden = false }: { hidden?: boolean }) {
   );
 }
 
-export default function PhotoMarquee() {
+type Loc = { ru: string; en: string };
+
+// Переиспользуется: главная (работы мастеров) и «Консьерж-сервис» (#gallery).
+export default function PhotoMarquee({
+  items = ITEMS,
+  title = { ru: "То, что создают специалисты ÁLIS BEAUTY", en: "Created by ÁLIS BEAUTY specialists" },
+  sectionId,
+}: {
+  items?: string[];
+  title?: Loc;
+  sectionId?: string;
+} = {}) {
   const { lang } = useLang();
-  const en = lang === "en";
 
   const scroller = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
@@ -81,10 +91,10 @@ export default function PhotoMarquee() {
   };
 
   return (
-    <section className="overflow-hidden bg-white section-y">
+    <section id={sectionId} className="scroll-mt-24 overflow-hidden bg-white section-y">
       <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] text-center lg:mb-16">
         <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
-          {en ? "Created by ÁLIS BEAUTY specialists" : "То, что создают специалисты ÁLIS BEAUTY"}
+          {title[lang]}
         </h2>
       </div>
 
@@ -97,8 +107,8 @@ export default function PhotoMarquee() {
         onPointerCancel={onUp}
         className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
       >
-        <Track />
-        <Track hidden />
+        <Track items={items} />
+        <Track items={items} hidden />
       </div>
 
       {/* Полоса прогресса под фото */}

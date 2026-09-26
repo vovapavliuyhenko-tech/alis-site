@@ -82,9 +82,9 @@ export default function ContactsCTA() {
   ];
 
   const SOCIALS = [
-    { icon: IcWhatsApp, title: "WhatsApp", sub: t("Написать в чат", "Message us"), href: `https://wa.me/${WA}` },
-    { icon: IcInstagram, title: "Instagram", sub: "@alisbeauty.ru", href: IG },
-    { icon: IcInstagram, title: "Instagram Global", sub: "@alisbeauty.global", href: IG_GLOBAL },
+    { icon: IcWhatsApp, title: t("Написать нам", "Message us"), sub: t("В мессенджере", "Via messenger"), href: `https://wa.me/${WA}` },
+    { icon: IcInstagram, title: t("Салон красоты", "Beauty salon"), sub: "@alisbeauty.ru", href: IG },
+    { icon: IcInstagram, title: t("Консьерж-сервис", "Concierge service"), sub: "@alisbeauty.global", href: IG_GLOBAL },
     { icon: IcPhone, title: t("Позвонить", "Call"), sub: PHONE, href: `tel:${tel}` },
     { icon: IcMap, title: t("Яндекс Карты", "Yandex Maps"), sub: t("Маршрут и отзывы", "Route & reviews"), href: MAP_URL },
     { icon: IcMail, title: "E-mail", sub: EMAIL, href: `mailto:${EMAIL}` },
@@ -146,7 +146,7 @@ export default function ContactsCTA() {
           <p className="r-reveal mt-2 text-[12.5px] italic leading-relaxed text-[#17191a]/55 lg:text-[13.5px]">
             {t("Премиальный салон красоты · Новороссийск", "Premium beauty salon · Novorossiysk")}
             <br />
-            {t("Запись по телефону, в WhatsApp или онлайн", "Book by phone, on WhatsApp or online")}
+            {t("Запись по телефону, в мессенджере или онлайн", "Book by phone, via messenger or online")}
           </p>
 
           <div className="r-reveal mt-5 h-[2px] w-full" style={{ background: WINE }} />

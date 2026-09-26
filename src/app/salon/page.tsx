@@ -5,56 +5,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
-import MerchMarquee from "@/components/shop/MerchMarquee";
-import Faq from "@/components/Faq";
-
-type LocT = { ru: string; en: string };
-
-// FAQ по странице салона — снимаем главные возражения гостя.
-const SALON_FAQ: { q: LocT; a: LocT }[] = [
-  {
-    q: { ru: "«Правда весь образ за один визит?»", en: "“Really the whole look in one visit?”" },
-    a: {
-      ru: "Да. Команда работает в 4–6 рук: волосы, ногти, брови и макияж — параллельно. Приходите уставшей — выходите собранной.",
-      en: "Yes. A team works in 4–6 hands: hair, nails, brows and makeup — in parallel. Come in tired, leave put together.",
-    },
-  },
-  {
-    q: { ru: "«Сколько времени займёт полный образ?»", en: "“How long does the full look take?”" },
-    a: {
-      ru: "Тайминг согласуем заранее под ваши услуги и событие. За счёт параллельной работы мастеров укладываемся быстрее, чем по отдельным салонам.",
-      en: "We agree the timing in advance for your services and event. Working in parallel, we finish faster than separate salons would.",
-    },
-  },
-  {
-    q: { ru: "«Хочу только одну услугу — это можно?»", en: "“Can I book just one service?”" },
-    a: {
-      ru: "Конечно. Можно прийти на одну услугу или собрать полный образ — как удобно вам. Всё видно при онлайн-записи.",
-      en: "Of course. Book a single service or the full look — whatever suits you. It's all visible in online booking.",
-    },
-  },
-  {
-    q: { ru: "«На какой косметике работаете?»", en: "“What products do you use?”" },
-    a: {
-      ru: "Только проверенная профессиональная косметика и расходники. Подберём уход под ваши волосы и кожу, без экспериментов на вас.",
-      en: "Only trusted professional cosmetics and supplies. We match the care to your hair and skin — no experiments on you.",
-    },
-  },
-  {
-    q: { ru: "«Цены окончательные или будут сюрпризы?»", en: "“Are the prices final or will there be surprises?”" },
-    a: {
-      ru: "В прайсе — стартовые цены; финальную стоимость мастер называет до начала, когда видит объём работы. Никаких скрытых доплат.",
-      en: "The price list shows starting prices; the master confirms the final cost before starting, once the scope is clear. No hidden fees.",
-    },
-  },
-  {
-    q: { ru: "«Как записаться и есть ли скидка на первый визит?»", en: "“How do I book, and is there a first-visit discount?”" },
-    a: {
-      ru: "Запись онлайн за пару минут — видно мастеров и свободные окна. На первый визит действует −10%. Оплатить можно и подарочным сертификатом.",
-      en: "Book online in a couple of minutes — masters and free slots at a glance. First visit is −10%. You can also pay with a gift certificate.",
-    },
-  },
-];
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -75,7 +25,7 @@ const p = (v: string) => ({ ru: v, en: v }); // цена одинакова дл
 const SALON_CATEGORIES = [
   {
     label: { ru: "Маникюр", en: "Manicure" },
-    sub: { ru: "Классический, гель-лак, японский, пилочный", en: "Classic, gel polish, Japanese, file" },
+    sub: { ru: "Классический, гель-лак, японский, пилочный, наращивание и дизайн", en: "Classic, gel polish, Japanese, file, extensions & design" },
     from: { ru: "от 1 000 ₽", en: "from 1 000 ₽" },
     groups: [
       {
@@ -99,6 +49,25 @@ const SALON_CATEGORIES = [
           { name: { ru: "Без покрытия", en: "No coating" }, price: p("2 000 – 2 400 ₽"), time: H1 },
           { name: { ru: "С покрытием лак", en: "With polish" }, price: p("2 300 – 2 800 ₽"), time: H130 },
           { name: { ru: "С покрытием гель-лак", en: "With gel polish" }, price: p("2 600 – 3 000 ₽"), time: H130 },
+        ],
+      },
+      {
+        title: { ru: "Наращивание, дизайн и уход", en: "Extensions, design & care" },
+        rows: [
+          { name: { ru: "Наращивание ногтей", en: "Nail extensions" }, price: p("2 700 – 4 500 ₽"), time: H3 },
+          { name: { ru: "Коррекция наращенных ногтей", en: "Extension refill" }, price: p("2 800 – 4 500 ₽"), time: H2 },
+          { name: { ru: "Ремонт ногтя", en: "Nail repair" }, price: p("300 ₽"), time: M15 },
+          { name: { ru: "Дизайн ногтя", en: "Nail design" }, price: p("100 – 500 ₽") },
+          { name: { ru: "SPA-уход для рук Zielinski&Rozen", en: "Zielinski&Rozen hand SPA care" }, price: p("500 ₽"), time: M20 },
+          { name: { ru: "BANDI SPA (доп. к маникюру/педикюру)", en: "BANDI SPA (mani/pedi add-on)" }, price: p("600 ₽"), time: M20 },
+        ],
+      },
+      {
+        title: { ru: "Для мужчин", en: "For men" },
+        rows: [
+          { name: { ru: "Мужской сервис (маникюр + педикюр)", en: "Men's service (mani + pedi)" }, price: p("4 400 ₽"), time: H130 },
+          { name: { ru: "Мужской маникюр", en: "Men's manicure" }, price: p("1 400 ₽"), time: H1 },
+          { name: { ru: "Мужской маникюр (топ-мастер)", en: "Men's manicure (top master)" }, price: p("1 600 ₽"), time: H1 },
         ],
       },
     ],
@@ -148,32 +117,23 @@ const SALON_CATEGORIES = [
           { name: { ru: "Японский педикюр", en: "Japanese pedicure" }, price: p("2 850 – 3 100 ₽"), time: H130 },
         ],
       },
-    ],
-  },
-  {
-    label: { ru: "Наращивание, дизайн и уход", en: "Extensions, design & care" },
-    sub: { ru: "Наращивание, коррекция, дизайн, SPA", en: "Extensions, refill, design, SPA" },
-    from: { ru: "от 100 ₽", en: "from 100 ₽" },
-    groups: [
       {
+        title: { ru: "Для мужчин", en: "For men" },
         rows: [
-          { name: { ru: "Особенный сервис (маникюр + педикюр)", en: "Signature service (mani + pedi)" }, price: p("5 700 ₽"), time: H2 },
-          { name: { ru: "Наращивание ногтей", en: "Nail extensions" }, price: p("2 700 – 4 500 ₽"), time: H3 },
-          { name: { ru: "Коррекция наращенных ногтей", en: "Extension refill" }, price: p("2 800 – 4 500 ₽"), time: H2 },
-          { name: { ru: "Ремонт ногтя", en: "Nail repair" }, price: p("300 ₽"), time: M15 },
-          { name: { ru: "Дизайн ногтя", en: "Nail design" }, price: p("100 – 500 ₽") },
-          { name: { ru: "SPA-уход для рук Zielinski&Rozen", en: "Zielinski&Rozen hand SPA care" }, price: p("500 ₽"), time: M20 },
-          { name: { ru: "BANDI SPA (доп. к маникюру/педикюру)", en: "BANDI SPA (mani/pedi add-on)" }, price: p("600 ₽"), time: M20 },
+          { name: { ru: "Мужской классический педикюр", en: "Men's classic pedicure" }, price: p("2 700 ₽"), time: H135 },
+          { name: { ru: "Мужской педикюр smart-дисками", en: "Men's smart-disc pedicure" }, price: p("2 700 ₽"), time: H130 },
+          { name: { ru: "Мужской педикюр smart-дисками (топ-мастер)", en: "Men's smart-disc pedicure (top master)" }, price: p("3 000 ₽"), time: H130 },
         ],
       },
     ],
   },
   {
-    label: { ru: "Стрижки и укладки", en: "Cuts & styling" },
-    sub: { ru: "Стрижки, укладки, брашинг", en: "Cuts, styling, brushing" },
-    from: { ru: "от 700 ₽", en: "from 700 ₽" },
+    label: { ru: "Парикмахерские услуги", en: "Hair services" },
+    sub: { ru: "Стрижки, укладки, окрашивание, уход, причёски и свадебные образы", en: "Cuts, styling, colouring, care, hairstyles & bridal looks" },
+    from: { ru: "от 400 ₽", en: "from 400 ₽" },
     groups: [
       {
+        title: { ru: "Стрижки", en: "Cuts" },
         rows: [
           { name: { ru: "Детская стрижка (девочки до 14 лет)", en: "Kids' haircut (girls under 14)" }, price: p("1 800 ₽"), time: H1 },
           { name: { ru: "Стрижка кончиков на сухую", en: "Dry ends trim" }, price: p("1 800 ₽"), time: M30 },
@@ -200,13 +160,19 @@ const SALON_CATEGORIES = [
           { name: { ru: "Длинные волосы", en: "Long hair" }, price: p("3 500 ₽"), time: H1 },
         ],
       },
-    ],
-  },
-  {
-    label: { ru: "Уход за волосами и образы", en: "Hair care & looks" },
-    sub: { ru: "SPA-уходы, глоссирование, свадебные образы", en: "SPA care, glossing, bridal looks" },
-    from: { ru: "от 400 ₽", en: "from 400 ₽" },
-    groups: [
+      {
+        title: { ru: "Окрашивание", en: "Colouring" },
+        rows: [
+          { name: { ru: "Консультация колориста", en: "Colourist consultation" }, price: p("1 000 ₽"), time: H1 },
+          { name: { ru: "Окрашивание в один тон", en: "Single-tone colouring" }, price: p("от 6 000 ₽"), time: H2 },
+          { name: { ru: "Окрашивание GLOW UP + уход", en: "GLOW UP colouring + care" }, price: p("5 000 – 12 000 ₽"), time: H2 },
+          { name: { ru: "ARGAN & KERATIN от pH (корни)", en: "ARGAN & KERATIN by pH (roots)" }, price: p("5 000 – 6 500 ₽"), time: H2 },
+          { name: { ru: "ARGAN & KERATIN от pH (длина)", en: "ARGAN & KERATIN by pH (length)" }, price: p("6 500 – 16 500 ₽"), time: H130 },
+          { name: { ru: "Davines (Mask)", en: "Davines (Mask)" }, price: p("6 000 – 17 000 ₽"), time: H2 },
+          { name: { ru: "Davines (View)", en: "Davines (View)" }, price: p("5 000 – 13 000 ₽"), time: H2 },
+          { name: { ru: "Davines (Mask) — корни", en: "Davines (Mask) — roots" }, price: p("5 500 – 7 500 ₽"), time: H130 },
+        ],
+      },
       {
         title: { ru: "Уход", en: "Care" },
         rows: [
@@ -228,37 +194,31 @@ const SALON_CATEGORIES = [
     ],
   },
   {
-    label: { ru: "Окрашивание волос", en: "Hair colouring" },
-    sub: { ru: "Тонирование, сложное окрашивание, уход", en: "Toning, complex colouring, care" },
-    from: { ru: "от 1 000 ₽", en: "from 1 000 ₽" },
-    groups: [
-      {
-        rows: [
-          { name: { ru: "Консультация колориста", en: "Colourist consultation" }, price: p("1 000 ₽"), time: H1 },
-          { name: { ru: "Окрашивание в один тон", en: "Single-tone colouring" }, price: p("от 6 000 ₽"), time: H2 },
-          { name: { ru: "Окрашивание GLOW UP + уход", en: "GLOW UP colouring + care" }, price: p("5 000 – 12 000 ₽"), time: H2 },
-          { name: { ru: "ARGAN & KERATIN от pH (корни)", en: "ARGAN & KERATIN by pH (roots)" }, price: p("5 000 – 6 500 ₽"), time: H2 },
-          { name: { ru: "ARGAN & KERATIN от pH (длина)", en: "ARGAN & KERATIN by pH (length)" }, price: p("6 500 – 16 500 ₽"), time: H130 },
-          { name: { ru: "Davines (Mask)", en: "Davines (Mask)" }, price: p("6 000 – 17 000 ₽"), time: H2 },
-          { name: { ru: "Davines (View)", en: "Davines (View)" }, price: p("5 000 – 13 000 ₽"), time: H2 },
-          { name: { ru: "Davines (Mask) — корни", en: "Davines (Mask) — roots" }, price: p("5 500 – 7 500 ₽"), time: H130 },
-        ],
-      },
-    ],
+    // TODO: прайс на брови — пришлёт заказчица
+    label: { ru: "Оформление бровей", en: "Brows" },
+    sub: { ru: "Коррекция, окрашивание, укладка", en: "Shaping, tinting, styling" },
+    from: { ru: "по запросу", en: "on request" },
+    groups: [{ rows: [
+          { name: { ru: "Прайс скоро появится — уточняйте при записи", en: "Price list coming soon — ask when booking" }, price: p("по запросу") },
+    ] }],
   },
   {
-    label: { ru: "Для мужчин", en: "For men" },
-    sub: { ru: "Мужской маникюр, педикюр, комплекс", en: "Men's manicure, pedicure, combo" },
-    from: { ru: "от 1 400 ₽", en: "from 1 400 ₽" },
+    // TODO: прайс на макияж — пришлёт заказчица
+    label: { ru: "Макияж", en: "Makeup" },
+    sub: { ru: "Дневной, вечерний, свадебный", en: "Day, evening, bridal" },
+    from: { ru: "по запросу", en: "on request" },
+    groups: [{ rows: [
+          { name: { ru: "Прайс скоро появится — уточняйте при записи", en: "Price list coming soon — ask when booking" }, price: p("по запросу") },
+    ] }],
+  },
+  {
+    label: { ru: "Особенный сервис (услуги в 4 руки)", en: "Signature service (4 hands)" },
+    sub: { ru: "Два мастера одновременно — быстрее и комфортнее", en: "Two masters at once — faster and more comfortable" },
+    from: { ru: "от 5 700 ₽", en: "from 5 700 ₽" },
     groups: [
       {
         rows: [
-          { name: { ru: "Мужской сервис (маникюр + педикюр)", en: "Men's service (mani + pedi)" }, price: p("4 400 ₽"), time: H130 },
-          { name: { ru: "Мужской маникюр", en: "Men's manicure" }, price: p("1 400 ₽"), time: H1 },
-          { name: { ru: "Мужской маникюр (топ-мастер)", en: "Men's manicure (top master)" }, price: p("1 600 ₽"), time: H1 },
-          { name: { ru: "Мужской классический педикюр", en: "Men's classic pedicure" }, price: p("2 700 ₽"), time: H135 },
-          { name: { ru: "Мужской педикюр smart-дисками", en: "Men's smart-disc pedicure" }, price: p("2 700 ₽"), time: H130 },
-          { name: { ru: "Мужской педикюр smart-дисками (топ-мастер)", en: "Men's smart-disc pedicure (top master)" }, price: p("3 000 ₽"), time: H130 },
+          { name: { ru: "Особенный сервис (маникюр + педикюр)", en: "Signature service (mani + pedi)" }, price: p("5 700 ₽"), time: H2 },
         ],
       },
     ],
@@ -271,14 +231,11 @@ export default function SalonPage() {
       <ScrollReveal />
       <Header />
 
-      {/* 1 — Единый герой-обложка (как на «Команде»), подпись «салон» */}
-      <TeamIntro
-        caption={{ ru: "салон", en: "salon" }}
-        cta={{ label: { ru: "Смотреть услуги", en: "See services" }, href: "#uslugi" }}
-      />
+      {/* 1 — Обложка: только фото, без логотипа, кнопки и эффектов (по фидбеку) */}
+      <TeamIntro />
 
-      {/* Порядок для клиента: услуги и цены → отзывы → лояльность и сертификаты →
-          частые вопросы → магазин. space-y — дополнительный воздух между блоками. */}
+      {/* Порядок для клиента: услуги с ценами → отзывы → бонусы и сертификаты.
+          space-y — дополнительный воздух между блоками. */}
       <div className="relative z-10 space-y-6 bg-white pb-6 lg:space-y-12 lg:pb-12">
         {/* Маркер конца героя — после него у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
@@ -287,26 +244,14 @@ export default function SalonPage() {
         <SalonServices
           title={{ ru: "Услуги салона", en: "Salon services" }}
           categories={SALON_CATEGORIES}
-          cta={{ label: { ru: "Оформить визит · −10% на первое посещение", en: "Arrange a visit · −10% on your first" }, href: YCLIENTS }}
+          cta={{ label: { ru: "Оформить визит · 500 бонусных рублей на первый визит", en: "Arrange a visit · 500 bonus rubles on your first visit" }, href: YCLIENTS }}
         />
 
         {/* 3 — Отзывы гостей */}
         <Reviews />
 
-        {/* 4 — Лояльность и подарочные сертификаты */}
+        {/* 4 — Бонусы и подарочные сертификаты */}
         <LoyaltyCerts />
-
-        {/* 5 — Частые вопросы про салон */}
-        <Faq
-          items={SALON_FAQ}
-          sectionId="salon-faq"
-          photo="/assets/tild6530-383_-2___1_.jpg"
-          titleTop={{ ru: "Салон ÁLIS BEAUTY —", en: "ÁLIS BEAUTY salon —" }}
-          titleBottom={{ ru: "что спрашивают", en: "what people ask" }}
-        />
-
-        {/* 6 — Магазин (мерч), сюда ведёт пункт «Магазин» в шапке */}
-        <MerchMarquee />
       </div>
       <Footer />
     </main>

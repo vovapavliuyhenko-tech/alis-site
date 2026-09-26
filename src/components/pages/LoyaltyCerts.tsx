@@ -1,6 +1,6 @@
 "use client";
 // БЛОК «ЛОЯЛЬНОСТЬ + СЕРТИФИКАТЫ» (страница «Салон») — bento-сетка в стиле блока
-// услуг: слева высокая оливковая карточка лояльности (−10% и привилегии), справа
+// услуг: слева высокая оливковая карточка лояльности (500 бонусных рублей и привилегии), справа
 // сверху широкая карточка подарочного сертификата с фото (зум + раскрытие на
 // наведении), снизу два бежевых тайла бонусов. Тексты по AIDA. Двуязычно.
 import { useLang } from "@/lib/i18n";
@@ -22,7 +22,7 @@ export default function LoyaltyCerts() {
   ];
 
   const TILES: { title: Loc; note: Loc }[] = [
-    { title: { ru: "Бонусы постоянным", en: "Regulars' bonuses" }, note: { ru: "Копятся с каждым визитом и возвращаются скидкой.", en: "They add up with every visit and come back as a discount." } },
+    { title: { ru: "Бонусы постоянным", en: "Regulars' bonuses" }, note: { ru: "Копятся с каждым визитом.", en: "They add up with every visit." } },
     { title: { ru: "Особые условия", en: "Special terms" }, note: { ru: "Для своих — раньше всех и на лучших условиях.", en: "For our own — first in line, on the best terms." } },
   ];
 
@@ -48,8 +48,8 @@ export default function LoyaltyCerts() {
               <p className="text-[11px] uppercase tracking-[0.2em] text-[#f4efe6]/60">
                 {t("программа лояльности", "loyalty programme")}
               </p>
-              <p className="mt-6 font-display text-[64px] leading-none tracking-[0.01em] lg:text-[72px]">−10%</p>
-              <p className="mt-2 text-[15px] text-[#f4efe6]/80">{t("на первый визит", "on your first visit")}</p>
+              <p className="mt-6 font-display text-[64px] leading-none tracking-[0.01em] lg:text-[72px]">500 ₽</p>
+              <p className="mt-2 text-[15px] text-[#f4efe6]/80">{t("бонусных рублей на первый визит", "bonus rubles on your first visit")}</p>
               <ul className="mt-8 flex flex-col gap-3 text-[14px] text-[#f4efe6]/85">
                 {PERKS.map((p) => (
                   <li key={p.ru} className="flex items-start gap-3">

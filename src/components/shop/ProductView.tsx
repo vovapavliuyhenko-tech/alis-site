@@ -47,9 +47,9 @@ export default function ProductView({ product }: { product: Product }) {
       <div className="mx-auto w-[92%] max-w-[1200px] pb-20 lg:pb-28">
         {/* Хлебные крошки */}
         <nav className="mb-6 flex items-center gap-2 text-[12px] uppercase tracking-[0.12em] text-[#2a2320]/45">
-          <Link href="/salon" className="transition-colors hover:text-[#17191a]">{t("Салон", "Salon")}</Link>
+          <Link href="/shop" className="transition-colors hover:text-[#17191a]">{t("Магазин", "Shop")}</Link>
           <span>/</span>
-          <Link href="/salon#uslugi" className="transition-colors hover:text-[#17191a]">{t("Мерч", "Merch")}</Link>
+          <Link href="/shop" className="transition-colors hover:text-[#17191a]">{t("Мерч", "Merch")}</Link>
           <span>/</span>
           <span className="text-[#17191a]">{product.name[lang]}</span>
         </nav>
@@ -106,8 +106,8 @@ export default function ProductView({ product }: { product: Product }) {
               </Accordion>
               <Accordion title={t("Доставка и оплата", "Delivery & payment")}>
                 {t(
-                  "Забрать можно в салоне на Пархоменко, 53 или оформить доставку. Заказ подтверждаем в WhatsApp — там же согласуем оплату и способ получения.",
-                  "Pick up at the salon on Parkhomenko 53 or arrange delivery. We confirm the order on WhatsApp — payment and pickup are agreed there.",
+                  "Забрать можно в салоне на Пархоменко, 53 или оформить доставку. Заказ подтверждаем в мессенджере — там же согласуем оплату и способ получения.",
+                  "Pick up at the salon on Parkhomenko 53 or arrange delivery. We confirm the order via messenger — payment and pickup are agreed there.",
                 )}
               </Accordion>
             </div>
@@ -121,7 +121,7 @@ export default function ProductView({ product }: { product: Product }) {
         eyebrow={{ ru: "смотреть ещё", en: "see more" }}
         title={{ ru: "С этим часто покупают", en: "Often bought together" }}
         exclude={product.id}
-        catalogHref="/salon#merch"
+        catalogHref="/shop"
       />
     </div>
   );

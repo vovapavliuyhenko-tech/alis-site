@@ -261,7 +261,7 @@ export default function Reviews() {
 
         {/* Ссылки на реальные площадки с отзывами */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <span className="text-[13px] text-[#17191a]/55">{lang === "en" ? "Read real reviews:" : "Читать реальные отзывы:"}</span>
+          <span className="text-[13px] text-[#17191a]/55">{lang === "en" ? "Read reviews or leave your own:" : "Читать отзывы или оставить свой:"}</span>
           {[
             { label: "Яндекс", href: "https://yandex.ru/maps/org/lis_byuti/63024642190/reviews/" },
             { label: "2ГИС", href: "https://2gis.ru/novorossiysk/firm/70000001086737494/tab/reviews" },

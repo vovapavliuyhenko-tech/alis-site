@@ -65,7 +65,7 @@ export default function CooperationForm() {
           {sent ? (
             <div className="flex flex-1 flex-col justify-between gap-10">
               <h2 className="mx-auto w-full max-w-lg text-center font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] lg:text-[28px]">
-                {en ? "Let's work together" : "Давайте сотрудничать"}
+                {en ? "Leave a partnership request" : "Оставить заявку на сотрудничество"}
               </h2>
               <div className="mx-auto flex w-full max-w-lg flex-col items-center rounded-[20px] bg-white/[0.06] p-8 text-center">
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#8a5a3c] font-display text-[22px] text-[#f4efe6]">✓</span>
@@ -80,13 +80,8 @@ export default function CooperationForm() {
             <form onSubmit={submit} noValidate className="flex flex-1 flex-col justify-between gap-10">
               <div className="mx-auto w-full max-w-lg text-center">
                 <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] lg:text-[28px]">
-                  {en ? "Let's work together" : "Давайте сотрудничать"}
+                  {en ? "Leave a partnership request" : "Оставить заявку на сотрудничество"}
                 </h2>
-                <p className="mt-3 text-[13px] leading-relaxed text-[#f4efe6]/70">
-                  {en
-                    ? "Tell us about your goal — we'll shape a format for cooperation and get back to you."
-                    : "Расскажите о задаче — подберём формат сотрудничества и свяжемся с вами."}
-                </p>
               </div>
 
               <div className="mx-auto flex w-full max-w-lg flex-col gap-3">

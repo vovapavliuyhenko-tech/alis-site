@@ -7,10 +7,9 @@ import SalonServices from "@/components/pages/SalonServices";
 import { type Stage } from "@/components/HorizontalStory";
 import ConciergeStages from "@/components/pages/ConciergeStages";
 import ConciergeOffer from "@/components/pages/ConciergeOffer";
-import Faq from "@/components/Faq";
+import PhotoMarquee from "@/components/pages/PhotoMarquee";
 import ConciergeChat from "@/components/ConciergeChat";
 
-type LocT = { ru: string; en: string };
 const req = { ru: "по запросу", en: "on request" };
 
 // Услуги и прайс выездного сервиса — в формате «Салона» (раскрывающиеся плашки).
@@ -104,43 +103,14 @@ const CONCIERGE_STAGES: Stage[] = [
   },
 ];
 
-// FAQ по бьюти-консьержу.
-const CONCIERGE_FAQ: { q: LocT; a: LocT }[] = [
-  {
-    q: { ru: "«Вы правда приезжаете со всем своим?»", en: "“Do you really come with everything?”" },
-    a: {
-      ru: "Да. Привозим оборудование, косметику и расходники. От вас — только место и розетка. Всё остальное организуем сами.",
-      en: "Yes. We bring equipment, cosmetics and supplies. All we need from you is a spot and a socket. We handle the rest.",
-    },
-  },
-  {
-    q: { ru: "«За сколько нужно бронировать выезд?»", en: "“How far ahead should I book?”" },
-    a: {
-      ru: "Чем раньше — тем лучше, особенно на свадебный сезон. Но и срочные запросы берём: напишите дату, подскажем по свободным окнам.",
-      en: "The earlier the better, especially in wedding season. We also take urgent requests: send the date and we'll check availability.",
-    },
-  },
-  {
-    q: { ru: "«Сколько человек успеваете собрать?»", en: "“How many people can you get ready?”" },
-    a: {
-      ru: "Работаем командой в 4–6 рук и рассчитываем состав под число гостей и тайминг — все будут готовы к началу.",
-      en: "We work as a team in 4–6 hands and size the crew to the number of guests and the timing — everyone is ready on time.",
-    },
-  },
-  {
-    q: { ru: "«Можно репетицию образа заранее?»", en: "“Can we do a trial look in advance?”" },
-    a: {
-      ru: "Да, для свадеб и съёмок это лучший вариант: подбираем и фиксируем образ на фото до события, чтобы в день всё прошло идеально.",
-      en: "Yes — for weddings and shoots it's the best option: we choose and capture the look before the day so it goes perfectly.",
-    },
-  },
-  {
-    q: { ru: "«Куда вы выезжаете?»", en: "“Where do you travel?”" },
-    a: {
-      ru: "База — Новороссийск и окрестности. Выезд в другие города обсуждаем отдельно под конкретное событие.",
-      en: "We're based in and around Novorossiysk. Trips to other cities are arranged per event.",
-    },
-  },
+// Фотогалерея выездов — TODO: заменить на фото, которые пришлёт заказчица.
+const GALLERY = [
+  "/assets/alis/img_2751.jpg",
+  "/assets/alis/img_2749.jpg",
+  "/assets/alis/img_6011.jpg",
+  "/assets/alis/img_3283.jpg",
+  "/assets/alis/img_8578.jpg",
+  "/assets/alis/img_6048.jpg",
 ];
 
 export default function ConciergePage() {
@@ -149,41 +119,32 @@ export default function ConciergePage() {
       <ScrollReveal />
       <Header />
 
-      {/* 1 — Единый герой-обложка (как на «Команде»), подпись «бьюти-консьерж» */}
-      <TeamIntro
-        caption={{ ru: "бьюти-консьерж", en: "beauty concierge" }}
-        cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }}
-      />
+      {/* 1 — Обложка: фото + кнопка к заявке (без логотипа и эффектов) */}
+      <TeamIntro cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }} />
 
-      {/* Порядок для клиента: чем хорош → форматы и цены → как проходит → ответы на
-          вопросы → КП и заявка. space-y — дополнительный воздух между блоками. */}
+      {/* Порядок = пункты меню: о сервисе → услуги и прайс → фотогалерея → этапы →
+          как забронировать. space-y — дополнительный воздух между блоками. */}
       <div className="relative z-10 space-y-6 bg-white pb-6 lg:space-y-12 lg:pb-12">
         {/* Маркер конца героя — после него у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
 
-        {/* 2 — Преимущества бьюти-консьержа (фото + сетка карточек) */}
+        {/* 2 — О сервисе (#about) */}
         <ConciergeBenefits />
 
-        {/* 3 — Услуги и прайс (плашки как на «Салоне») */}
+        {/* 3 — Услуги и прайс (#uslugi). TODO: новый прайс пришлёт заказчица */}
         <SalonServices
-          title={{ ru: "Форматы выезда", en: "On-location formats" }}
+          title={{ ru: "Услуги и прайс", en: "Services & prices" }}
           categories={CONCIERGE_CATEGORIES}
           cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }}
         />
 
-        {/* 4 — Этапы работы (шторка: текст/фото, накладываются при скролле) */}
+        {/* 4 — Фотогалерея (#gallery) */}
+        <PhotoMarquee sectionId="gallery" title={{ ru: "Фотогалерея", en: "Gallery" }} items={GALLERY} />
+
+        {/* 5 — Этапы работы (тексты будут уточнены заказчицей) */}
         <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" />
 
-        {/* 5 — Частые вопросы */}
-        <Faq
-          items={CONCIERGE_FAQ}
-          sectionId="concierge-faq"
-          photo="/assets/tild3236-393__.jpg"
-          titleTop={{ ru: "Бьюти-консьерж —", en: "Beauty concierge —" }}
-          titleBottom={{ ru: "что спрашивают", en: "what people ask" }}
-        />
-
-        {/* 6 — Коммерческое предложение + заявка (финальный шаг; #offer и #booking) */}
+        {/* 6 — Как забронировать: заявка (#offer, #booking) */}
         <ConciergeOffer />
       </div>
       <Footer />

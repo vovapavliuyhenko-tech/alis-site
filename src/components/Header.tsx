@@ -29,19 +29,27 @@ const LEFT: NavItem[] = [
     ],
   },
   {
-    label: { ru: "Бьюти-консьерж", en: "Concierge" },
+    label: { ru: "Консьерж-сервис", en: "Concierge service" },
     href: "/concierge",
     sub: [
+      { label: { ru: "О сервисе", en: "About the service" }, href: "/concierge#about" },
       { label: { ru: "Услуги и прайс", en: "Services & prices" }, href: "/concierge#uslugi" },
-      { label: { ru: "Коммерческое предложение", en: "Proposal" }, href: "/concierge#offer" },
+      { label: { ru: "Фотогалерея", en: "Gallery" }, href: "/concierge#gallery" },
       { label: { ru: "Как забронировать", en: "How to book" }, href: "/concierge#booking" },
     ],
   },
-  { label: { ru: "Магазин", en: "Shop" }, href: "/salon#merch" },
+  { label: { ru: "Магазин", en: "Shop" }, href: "/shop" },
 ];
 
 const RIGHT: NavItem[] = [
-  { label: { ru: "Сотрудничество", en: "Cooperation" }, href: "/cooperation" },
+  {
+    label: { ru: "Сотрудничество", en: "Cooperation" },
+    href: "/cooperation",
+    sub: [
+      { label: { ru: "Частным лицам", en: "For individuals" }, href: "/cooperation#private" },
+      { label: { ru: "Агентствам и бизнесу", en: "For agencies & business" }, href: "/cooperation#business" },
+    ],
+  },
   { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team#vacancies" },
   { label: { ru: "Контакты", en: "Contacts" }, href: "/contacts" },
 ];

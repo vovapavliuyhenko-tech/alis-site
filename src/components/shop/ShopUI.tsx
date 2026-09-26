@@ -95,7 +95,7 @@ export default function ShopUI() {
                 rel="noopener noreferrer"
                 className="mt-5 flex w-full items-center justify-center rounded-2xl border border-[#17191a] bg-[#17191a] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-blur-md hover:bg-transparent hover:text-[#17191a]"
               >
-                {t("Оформить в WhatsApp", "Order via WhatsApp")}
+                {t("Оформить заказ в мессенджере", "Order via messenger")}
               </a>
               <p className="mt-3 text-center text-[11px] text-[#2a2320]/45">
                 {t("Состав заказа отправится сообщением — подтвердим наличие и доставку.", "Your order is sent as a message — we'll confirm stock and delivery.")}

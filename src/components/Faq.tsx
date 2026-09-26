@@ -38,8 +38,8 @@ const ITEMS: Item[] = [
   {
     q: { ru: "«Не хочу сюрпризов в чеке»", en: "“I don't want surprises on the bill.”" },
     a: {
-      ru: "Стоимость называем до начала, после осмотра. Нужен дополнительный шаг — остановимся и спросим. Точные цены видно в онлайн-записи, а на первое посещение — −10%.",
-      en: "We name the price before we start, after examining you. If an extra step is needed, we stop and ask. Exact prices are in the online booking, and your first visit is −10%.",
+      ru: "Стоимость называем до начала, после осмотра. Нужен дополнительный шаг — остановимся и спросим. Точные цены видно в онлайн-записи, а на первое посещение — 500 бонусных рублей.",
+      en: "We name the price before we start, after examining you. If an extra step is needed, we stop and ask. Exact prices are in the online booking, and you get 500 bonus rubles on your first visit.",
     },
   },
   {

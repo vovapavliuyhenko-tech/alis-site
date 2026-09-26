@@ -20,8 +20,8 @@ export default function SalonPrice() {
           </h2>
           <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-[#f4efe6]/75 lg:text-[15px]">
             {en
-              ? "Choose a service, master and time — and see the exact price right away. Your first visit is −10%."
-              : "Выберите услугу, мастера и время — и сразу увидите точную стоимость. На первое посещение действует скидка −10%."}
+              ? "Choose a service, master and time — and see the exact price right away. You get 500 bonus rubles on your first visit."
+              : "Выберите услугу, мастера и время — и сразу увидите точную стоимость. На первый визит — 500 бонусных рублей."}
           </p>
           <a
             href={YCLIENTS}

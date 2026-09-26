@@ -1,11 +1,14 @@
 "use client";
-// СТРАНИЦА КОНТАКТОВ — верхняя часть как на референсе we-are-padel: слева
-// надстрочник, крупный заголовок «Как нас найти», реквизиты и три мягкие кнопки
-// (WhatsApp + два Instagram) с ↘-стрелкой; справа — интерактивная карта Яндекс.
+// СТРАНИЦА КОНТАКТОВ: слева две группы контактов (салон красоты / консьерж-сервис)
+// и три мягкие кнопки с ↘-стрелкой; справа — интерактивная карта Яндекс.
+// Названия соцсетей и мессенджеров на сайте не пишем (требование заказчицы).
 import { useLang } from "@/lib/i18n";
 
 const PHONE = "+7 988 888 77 58";
 const PHONE_RAW = "79888887758";
+const PHONE_SERVICE = "+7 988 888 77 28";
+const PHONE_SERVICE_RAW = "79888887728";
+const EMAIL = "alisbeautyclub@gmail.com";
 const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
 
 // Пин для кнопки «Открыть в Яндекс Картах».
@@ -23,46 +26,64 @@ export default function ContactsBlock() {
   const en = lang === "en";
   const t = (ru: string, e: string) => (en ? e : ru);
 
-  const INFO: { label: Loc; value: string; href?: string; accent?: boolean }[] = [
-    { label: { ru: "Телефон", en: "Phone" }, value: PHONE, href: `tel:+${PHONE_RAW}` },
-    { label: { ru: "Время работы", en: "Hours" }, value: t("Без выходных, 9:00–21:00", "Open daily, 9:00–21:00") },
-    { label: { ru: "Адрес", en: "Address" }, value: t("г. Новороссийск, ул. Пархоменко, 53", "Novorossiysk, Parkhomenko St., 53"), href: MAP_URL, accent: true },
+  // Две группы контактов: салон красоты и консьерж-сервис
+  const GROUPS: { title: Loc; rows: { label: Loc; value: string; href?: string }[] }[] = [
+    {
+      title: { ru: "Салон красоты", en: "Beauty salon" },
+      rows: [
+        { label: { ru: "Телефон", en: "Phone" }, value: PHONE, href: `tel:+${PHONE_RAW}` },
+        { label: { ru: "Адрес", en: "Address" }, value: t("г. Новороссийск, ул. Пархоменко, 53", "Novorossiysk, Parkhomenko St., 53"), href: MAP_URL },
+        { label: { ru: "Время работы", en: "Hours" }, value: t("Без перерывов и выходных, 9:00–21:00", "No breaks, open daily, 9:00–21:00") },
+      ],
+    },
+    {
+      title: { ru: "Консьерж-сервис", en: "Concierge service" },
+      rows: [
+        { label: { ru: "Телефон", en: "Phone" }, value: PHONE_SERVICE, href: `tel:+${PHONE_SERVICE_RAW}` },
+        { label: { ru: "Почта", en: "E-mail" }, value: EMAIL, href: `mailto:${EMAIL}` },
+      ],
+    },
   ];
 
+  // Названия соцсетей и мессенджеров на сайте не указываем — подписи нейтральные
   const BTNS: { label: Loc; handle?: string; href: string }[] = [
-    { label: { ru: "Написать в WhatsApp", en: "Message on WhatsApp" }, href: `https://wa.me/${PHONE_RAW}` },
-    { label: { ru: "Следить в Instagram", en: "Follow on Instagram" }, handle: "@alisbeauty.ru", href: "https://www.instagram.com/alisbeauty.ru" },
-    { label: { ru: "Следить в Instagram", en: "Follow on Instagram" }, handle: "@alisbeauty.global", href: "https://www.instagram.com/alisbeauty.global" },
+    { label: { ru: "Написать нам", en: "Message us" }, href: `https://wa.me/${PHONE_RAW}` },
+    { label: { ru: "Салон красоты", en: "Beauty salon" }, handle: "@alisbeauty.ru", href: "https://www.instagram.com/alisbeauty.ru" },
+    { label: { ru: "Консьерж-сервис", en: "Concierge service" }, handle: "@alisbeauty.global", href: "https://www.instagram.com/alisbeauty.global" },
   ];
-
   return (
     <section className="bg-white px-3 pt-28 pb-12 sm:px-4 lg:pt-36 lg:pb-[60px]">
       {/* Слева реквизиты и кнопки, справа карта — одна скруглённая панель */}
       <div className="overflow-hidden rounded-[30px] border border-[#17191a]/15 bg-white lg:grid lg:grid-cols-2">
         {/* Левая колонка */}
         <div className="flex flex-col p-8 lg:p-12">
-          <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
-            {t("Как нас найти", "How to find us")}
-          </h2>
-
-          <dl className="mt-8 flex flex-col gap-6 lg:mt-10">
-            {INFO.map((r) => (
-              <div key={r.label.ru} className="grid grid-cols-[110px_1fr] items-baseline gap-5 lg:grid-cols-[150px_1fr]">
-                <dt className="text-[13px] text-[#2a2320]/45">{r.label[lang]}</dt>
-                <dd className={`text-[15px] font-medium leading-snug lg:text-[16px] ${r.accent ? "text-[#17191a]" : "text-[#2a2320]"}`}>
-                  {r.href ? (
-                    <a href={r.href} target={r.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="transition-colors hover:text-[#17191a]">
-                      {r.value}
-                    </a>
-                  ) : (
-                    r.value
-                  )}
-                </dd>
+          <div className="flex flex-col gap-10">
+            {GROUPS.map((g) => (
+              <div key={g.title.ru}>
+                <h2 className="font-display text-[18px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-[#17191a] lg:text-[20px]">
+                  {g.title[lang]}
+                </h2>
+                <dl className="mt-5 flex flex-col gap-4">
+                  {g.rows.map((r) => (
+                    <div key={r.label.ru} className="grid grid-cols-[110px_1fr] items-baseline gap-5 lg:grid-cols-[150px_1fr]">
+                      <dt className="text-[13px] text-[#2a2320]/45">{r.label[lang]}</dt>
+                      <dd className="text-[15px] font-medium leading-snug text-[#17191a] lg:text-[16px]">
+                        {r.href ? (
+                          <a href={r.href} target={r.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="transition-opacity hover:opacity-60">
+                            {r.value}
+                          </a>
+                        ) : (
+                          r.value
+                        )}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             ))}
-          </dl>
+          </div>
 
-          {/* Три мягкие кнопки — WhatsApp и два Instagram */}
+          {/* Три кнопки: написать нам и соцсети салона/консьерж-сервиса (без названий площадок) */}
           <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
             {BTNS.map((b, i) => (
               <a
@@ -70,7 +91,7 @@ export default function ContactsBlock() {
                 href={b.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex min-h-[124px] flex-col rounded-[20px] bg-[#F4E9EC] p-5 transition-colors duration-300 hover:bg-[#ecdde1] lg:min-h-[140px] lg:p-6"
+                className="group relative flex min-h-[124px] flex-col rounded-[20px] bg-[#17191a]/[0.05] p-5 transition-colors duration-300 hover:bg-[#17191a]/10 lg:min-h-[140px] lg:p-6"
               >
                 <span className="max-w-[80%] font-display text-[13px] uppercase leading-[1.3] tracking-[0.06em] text-[#17191a] lg:text-[14px]">
                   {b.label[lang]}
@@ -112,7 +133,7 @@ export default function ContactsBlock() {
             href={MAP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute bottom-4 right-4 inline-flex items-center justify-center rounded-full bg-[#17191a] px-6 py-3.5 font-display text-[12px] uppercase tracking-[0.14em] text-[#f4efe6] shadow-[0_10px_30px_rgba(70,19,30,0.4)] transition-colors hover:bg-[#34101a] lg:px-8 lg:py-4 lg:text-[13px]"
+            className="absolute bottom-4 right-4 inline-flex items-center justify-center rounded-full bg-[#17191a] px-6 py-3.5 font-display text-[12px] uppercase tracking-[0.14em] text-[#f4efe6] shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-colors hover:bg-black lg:px-8 lg:py-4 lg:text-[13px]"
           >
             {t("Построить маршрут", "Get directions")}
           </a>

@@ -62,7 +62,7 @@ export default function ConsultForm() {
                 {[
                   t("Ответим в течение часа в рабочее время", "We reply within an hour during work hours"),
                   t("Без спама и навязчивых продаж", "No spam or pushy sales"),
-                  t("−10% на первое посещение", "−10% off your first visit"),
+                  t("500 бонусных рублей на первый визит", "500 bonus rubles on your first visit"),
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-3">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#17191a]" />
@@ -82,7 +82,7 @@ export default function ConsultForm() {
                 </span>
                 <p className="mt-6 font-display text-[24px] uppercase tracking-[0.04em] text-[#17191a]">{t("Заявка отправлена", "Request sent")}</p>
                 <p className="mt-3 max-w-xs text-[14px] leading-relaxed text-[#17191a]/60">
-                  {t("Мы открыли WhatsApp с вашим сообщением — отправьте его, и мы свяжемся с вами.", "We've opened WhatsApp with your message — send it and we'll get in touch.")}
+                  {t("Мы открыли мессенджер с вашим сообщением — отправьте его, и мы свяжемся с вами.", "We've opened a messenger with your message — send it and we'll get in touch.")}
                 </p>
               </div>
             ) : (
