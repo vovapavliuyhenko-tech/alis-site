@@ -36,7 +36,7 @@ export default function Footer() {
     { label: t("Салон красоты", "Beauty salon"), href: "/salon" },
     { label: t("Консьерж-сервис", "Concierge service"), href: "/concierge" },
     { label: t("Магазин", "Shop"), href: "/shop" },
-    { label: t("Подарочный сертификат", "Gift certificate"), href: "/certificate" },
+    { label: t("Подарочный сертификат", "Gift certificate"), href: "https://o8981.yclients.ru/certificates" },
     { label: t("Программа лояльности", "Loyalty programme"), href: "/loyalty" },
     { label: t("Сотрудничество", "Cooperation"), href: "/cooperation" },
     { label: t("Вакансии", "Vacancies"), href: "/team" },
@@ -80,7 +80,7 @@ export default function Footer() {
             <p className={title}>{t("Меню", "Menu")}</p>
             <div className="space-y-2">
               {MENU.map((m) => (
-                <a key={m.href} href={m.href} className={link}>{m.label}</a>
+                <a key={m.href} href={m.href} {...(m.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={link}>{m.label}</a>
               ))}
             </div>
           </div>

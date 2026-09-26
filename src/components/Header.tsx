@@ -24,7 +24,7 @@ const LEFT: NavItem[] = [
       { label: { ru: "Услуги и прайс", en: "Services & prices" }, href: "/salon#uslugi" },
       { label: { ru: "Команда", en: "Team" }, href: "/team" },
       { label: { ru: "Программа лояльности", en: "Loyalty programme" }, href: "/loyalty" },
-      { label: { ru: "Подарочный сертификат", en: "Gift certificate" }, href: "/certificate" },
+      { label: { ru: "Подарочный сертификат", en: "Gift certificate" }, href: "https://o8981.yclients.ru/certificates" },
       { label: { ru: "Отзывы", en: "Reviews" }, href: "/salon#reviews" },
     ],
   },
@@ -124,6 +124,7 @@ export default function Header() {
               <a
                 key={s.label.ru}
                 href={s.href}
+                {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="block rounded-xl px-4 py-2.5 text-center text-[12px] uppercase tracking-[0.12em] text-[#17191a] transition-colors hover:bg-[#17191a]/[0.08]"
               >
                 {s.label[lang]}
@@ -241,7 +242,7 @@ export default function Header() {
                 {item.sub && (
                   <div className="mb-1 flex flex-col gap-0.5 pl-3">
                     {item.sub.map((s) => (
-                      <a key={s.label.ru} href={s.href} onClick={() => setOpen(false)} className="py-1.5 text-[13px] text-[#17191a]/55">
+                      <a key={s.label.ru} href={s.href} {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setOpen(false)} className="py-1.5 text-[13px] text-[#17191a]/55">
                         {s.label[lang]}
                       </a>
                     ))}

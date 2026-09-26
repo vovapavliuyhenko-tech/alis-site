@@ -71,7 +71,9 @@ export default function LoyaltyCerts() {
 
           {/* Сертификат — широкая карточка с фото сверху справа */}
           <a
-            href="/certificate"
+            href="https://o8981.yclients.ru/certificates"
+            target="_blank"
+            rel="noopener noreferrer"
             id="certificates"
             className="group relative min-h-[240px] scroll-mt-28 overflow-hidden rounded-[26px] sm:col-span-2 lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:min-h-0"
           >
