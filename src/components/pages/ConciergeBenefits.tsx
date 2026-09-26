@@ -1,30 +1,14 @@
 "use client";
 // БЛОК «О СЕРВИСЕ» (страница «Консьерж-сервис», якорь #about). Тексты — со старого
 // сайта alisbeauty.ru (по просьбе заказчицы). Меньше чтения, больше движения:
-//  1) главная мысль крупно — слова «проявляются» по мере прокрутки;
-//  2) строка с меняющимся поводом (свадебная церемония → день рождения → …);
-//  3) пять преимуществ — раскрывающиеся фото-панели: видно только заголовки,
+// пять преимуществ — раскрывающиеся фото-панели: видно только заголовки,
 //     описание — у активной панели (сама листается, на наведении — выбранная).
 // Ч/б. Двуязычно. TODO: фото панелей заменить на съёмку, которую пришлёт заказчица.
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
 
-const LEAD: Loc = {
-  ru: "Единственный в своём роде консьерж-сервис, организованный на базе салона красоты",
-  en: "A one-of-a-kind concierge service built on the basis of a beauty salon",
-};
-const LINE: Loc = {
-  ru: "Мы будем рядом и поможем создать незабываемый образ для",
-  en: "We'll be by your side and help create an unforgettable look for your",
-};
-const OCCASIONS: Loc[] = [
-  { ru: "свадебной церемонии", en: "wedding ceremony" },
-  { ru: "дня рождения", en: "birthday" },
-  { ru: "семейного праздника", en: "family celebration" },
-  { ru: "значимой даты", en: "special date" },
-];
 const POINTS: { title: Loc; desc: Loc; img: string }[] = [
   {
     title: { ru: "Мастерство и опыт", en: "Skill & experience" },
@@ -73,47 +57,7 @@ const AUTO_MS = 4500;
 export default function ConciergeBenefits() {
   const { lang } = useLang();
 
-  // 1) Проявление слов заголовка по прокрутке: 0 → 1 пока блок проходит экран
-  const leadRef = useRef<HTMLParagraphElement>(null);
-  const [progress, setProgress] = useState(0);
-  useEffect(() => {
-    const el = leadRef.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setProgress(1);
-      return;
-    }
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const r = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      // старт — верх текста у 90% экрана, финиш — низ текста у 45%
-      const p = (vh * 0.95 - r.top) / (vh * 0.95 - vh * 0.6 + r.height);
-      setProgress(Math.min(1, Math.max(0, p)));
-    };
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
-  const words = LEAD[lang].split(" ");
-
-  // 2) Меняющийся повод
-  const [occ, setOcc] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => setOcc((i) => (i + 1) % OCCASIONS.length), 2400);
-    return () => clearInterval(id);
-  }, []);
-
-  // 3) Панели преимуществ: авто-листание, пауза при наведении
+  // Панели преимуществ: авто-листание, пауза при наведении
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   useEffect(() => {
@@ -129,47 +73,9 @@ export default function ConciergeBenefits() {
           {lang === "en" ? "About ÁLIS BEAUTY CONCIERGE" : "О сервисе ÁLIS BEAUTY CONCIERGE"}
         </h2>
 
-        {/* Главная мысль — слова темнеют по мере прокрутки */}
-        <p
-          ref={leadRef}
-          className="mx-auto mt-4 max-w-[760px] text-center font-serif-display text-[22px] font-normal leading-[1.25] tracking-[0.01em] text-[#17191a] sm:text-[26px] lg:mt-5 lg:text-[clamp(26px,2vw,34px)]"
-        >
-          {words.map((w, i) => {
-            const t = Math.min(1, Math.max(0, progress * words.length - i));
-            return (
-              <span
-                key={i}
-                className="inline-block transition-[opacity,transform] duration-300 ease-out"
-                style={{ opacity: 0.12 + 0.88 * t, transform: `translateY(${(1 - t) * 10}px)` }}
-              >
-                {w}
-                {i < words.length - 1 ? " " : ""}
-              </span>
-            );
-          })}
-        </p>
-
-        {/* Строка с меняющимся поводом */}
-        <p className="mx-auto mt-4 max-w-[900px] text-center text-[14px] leading-[1.6] text-[#17191a]/65 lg:mt-5 lg:text-[16px]">
-          {LINE[lang]}{" "}
-          <span className="relative inline-grid justify-items-start text-left text-[#17191a] [clip-path:inset(0_-2px)]">
-            {OCCASIONS.map((o, i) => (
-              <span
-                key={o.ru}
-                aria-hidden={i !== occ}
-                className={`col-start-1 row-start-1 whitespace-nowrap underline decoration-[#17191a]/60 decoration-1 underline-offset-[5px] transition-all duration-700 ease-[cubic-bezier(.2,.7,.2,1)] ${
-                  i === occ ? "translate-y-0 opacity-100" : i === (occ + OCCASIONS.length - 1) % OCCASIONS.length ? "-translate-y-full opacity-0" : "translate-y-full opacity-0"
-                }`}
-              >
-                {o[lang]}
-              </span>
-            ))}
-          </span>
-        </p>
-
         {/* Пять преимуществ — раскрывающиеся фото-панели */}
         <div
-          className="mt-8 flex flex-col gap-2 lg:mt-10 lg:h-[min(420px,48vh)] lg:flex-row lg:gap-3"
+          className="mt-6 flex flex-col gap-2 lg:mt-8 lg:h-[min(520px,62vh)] lg:flex-row lg:gap-3"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -184,7 +90,7 @@ export default function ConciergeBenefits() {
                 onClick={() => setActive(i)}
                 aria-expanded={on}
                 className={`group relative isolate overflow-hidden rounded-[20px] text-left text-white transition-[flex-grow,height] duration-700 ease-[cubic-bezier(.2,.7,.2,1)] lg:h-auto lg:min-w-0 ${
-                  on ? "h-[340px] lg:flex-[3.6_1_0%]" : "h-[84px] lg:flex-[1_1_0%]"
+                  on ? "h-[380px] lg:flex-[3.6_1_0%]" : "h-[84px] lg:flex-[1_1_0%]"
                 }`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
