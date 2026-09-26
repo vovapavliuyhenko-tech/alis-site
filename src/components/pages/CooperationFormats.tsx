@@ -1,9 +1,13 @@
 "use client";
 // БЛОК «ДЛЯ КОГО» (страница «Сотрудничество»): два раздела — «Частным лицам» (#private)
-// и «Агентствам и бизнесу» (#business), на них ведут пункты меню. Оформлен как
-// «оглавление» вакансий: крупные строки с номером и стрелкой; при наведении строка
-// заливается чёрным, название сдвигается, в пустоте всплывает фото под наклоном.
+// и «Агентствам и бизнесу» (#business), на них ведут пункты меню. Две фото-панели
+// одинаковой ширины (без раздвижения). Эффекты:
+//  • появление — фото открывается «шторкой» снизу и плавно отдаляется, заголовок
+//    выезжает по буквам;
+//  • наведение — фото мягко следует за курсором (параллакс), за курсором идёт мягкий
+//    свет, снизу проявляется кнопка заявки со «стеклом».
 // TODO: тексты — из коммерческого предложения; фото — пришлёт заказчица. Ч/б. Двуязычно.
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -13,50 +17,145 @@ const AUDIENCES: { id: string; title: Loc; img: string }[] = [
   { id: "business", title: { ru: "Агентствам и бизнесу", en: "For agencies & business" }, img: "/assets/alis/e12b89f7-f193-44ac-9015-777b094a0bcd.jpg" },
 ];
 
-export default function CooperationFormats() {
+function Panel({ a, i }: { a: (typeof AUDIENCES)[number]; i: number }) {
   const { lang } = useLang();
+  const ref = useRef<HTMLAnchorElement>(null);
+  const [shown, setShown] = useState(false);
+
+  // Появление при прокрутке
+  useEffect(() => {
+    // Наблюдаем за родителем: сама панель скрыта clip-path, и браузер считает её невидимой
+    const el = ref.current?.parentElement;
+    if (!el) return;
+    // Уже на экране при загрузке (например, переход по якорю) — показываем сразу
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.85 && r.bottom > 0) {
+      setShown(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  // Параллакс и свет за курсором — через CSS-переменные, без перерисовки React
+  const onMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    el.style.setProperty("--mx", `${x * 100}%`);
+    el.style.setProperty("--my", `${y * 100}%`);
+    el.style.setProperty("--px", `${(0.5 - x) * 18}px`);
+    el.style.setProperty("--py", `${(0.5 - y) * 18}px`);
+  };
+  const onLeave = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.setProperty("--px", "0px");
+    el.style.setProperty("--py", "0px");
+  };
+
+  const words = a.title[lang].split(" ");
+  const starts = words.map((_, wi) => words.slice(0, wi).join("").length + wi);
+  const delay = i * 180;
 
   return (
+    <a
+      ref={ref}
+      id={a.id}
+      href="#request"
+      onPointerMove={onMove}
+      onPointerLeave={onLeave}
+      className="group relative isolate flex h-[420px] scroll-mt-28 flex-col justify-end overflow-hidden rounded-[30px] bg-[#17191a] text-white lg:h-[min(560px,66vh)]"
+      style={{
+        clipPath: shown ? "inset(0 0 0 0 round 30px)" : "inset(100% 0 0 0 round 30px)",
+        transition: `clip-path 1.2s cubic-bezier(.7,0,.2,1) ${delay}ms`,
+      }}
+    >
+      {/* Фото: отдаляется при появлении, следует за курсором */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={a.img}
+        alt=""
+        loading="lazy"
+        className="absolute inset-[-24px] -z-20 h-[calc(100%+48px)] w-[calc(100%+48px)] max-w-none object-cover"
+        style={{
+          transform: `translate3d(var(--px,0px), var(--py,0px), 0) scale(${shown ? 1 : 1.25})`,
+          transition: `transform 1.6s cubic-bezier(.2,.7,.2,1) ${shown ? delay : 0}ms`,
+        }}
+      />
+      {/* Затемнение + свет за курсором */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-black/20 to-black/10" />
+      <div
+        className="absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        style={{ background: "radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.16), transparent 60%)" }}
+      />
+
+      {/* Номер и стрелка */}
+      <div className="absolute inset-x-7 top-7 flex items-start justify-between lg:inset-x-10 lg:top-10">
+        <span className="font-serif-display text-[14px] tracking-[0.14em] text-white/75">{String(i + 1).padStart(2, "0")}</span>
+        <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-white/10 backdrop-blur-md transition-colors duration-500 group-hover:border-white group-hover:bg-white group-hover:text-[#17191a]">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+            <path d="M7 17 17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
+      </div>
+
+      <div className="p-7 lg:p-10">
+        {/* Заголовок выезжает по буквам */}
+        <h2
+          aria-label={a.title[lang]}
+          className="font-serif-display text-[26px] font-normal uppercase leading-[1.1] tracking-[0.02em] lg:text-[clamp(28px,2.4vw,40px)]"
+        >
+          {/* Слова не переносятся посередине: буквы сгруппированы по словам */}
+          {words.map((w, wi) => (
+            <Fragment key={wi}>{wi > 0 ? " " : ""}<span aria-hidden className="inline-block whitespace-nowrap">
+              {[...w].map((ch, k) => {
+                const n = starts[wi] + k;
+                return (
+                  <span key={k} className="inline-block overflow-hidden align-bottom">
+                    <span
+                      className="inline-block"
+                      style={{
+                        transform: shown ? "translateY(0)" : "translateY(110%)",
+                        transition: `transform .9s cubic-bezier(.2,.7,.2,1) ${delay + 500 + n * 28}ms`,
+                      }}
+                    >
+                      {ch}
+                    </span>
+                  </span>
+                );
+              })}
+            </span></Fragment>
+          ))}
+        </h2>
+
+        {/* Кнопка: на телефоне видна всегда, на десктопе проявляется на наведении */}
+        <span className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/15 py-3.5 text-[13px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-all duration-500 ease-out group-hover:border-white group-hover:bg-white group-hover:text-[#17191a] lg:translate-y-3 lg:py-4 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100">
+          {lang === "en" ? "Leave a partnership request" : "Оставить заявку на сотрудничество"}
+          <span aria-hidden>→</span>
+        </span>
+      </div>
+    </a>
+  );
+}
+
+export default function CooperationFormats() {
+  return (
     <section className="bg-white section-y">
-      <div className="mx-auto flex w-[92%] max-w-[1400px] flex-col gap-3">
+      <div className="mx-auto grid w-[92%] max-w-[1400px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {AUDIENCES.map((a, i) => (
-          <a
-            key={a.id}
-            id={a.id}
-            href="#request"
-            className="r-reveal group relative grid scroll-mt-28 grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[20px] border border-[#17191a]/12 px-6 py-8 transition-colors duration-300 hover:border-transparent hover:bg-[#17191a] lg:gap-8 lg:px-10 lg:py-12"
-          >
-            {/* Номер */}
-            <span className="font-display text-[13px] tabular-nums text-[#17191a] transition-colors duration-300 group-hover:text-[#f4efe6]/70 lg:text-[15px]">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-
-            {/* Название */}
-            <h2 className="min-w-0 font-display text-[18px] font-normal uppercase leading-[1.15] tracking-[0.01em] text-[#17191a] transition-all duration-300 group-hover:translate-x-2 group-hover:text-[#f4efe6] sm:text-[22px] lg:text-[32px]">
-              {a.title[lang]}
-            </h2>
-
-            {/* Подпись заявки + стрелка в кружке */}
-            <span className="flex items-center gap-4 lg:gap-6">
-              <span className="hidden whitespace-nowrap text-[12px] uppercase tracking-[0.14em] text-[#17191a]/60 transition-colors duration-300 group-hover:text-[#f4efe6] md:inline">
-                {lang === "en" ? "Leave a request" : "Оставить заявку"}
-              </span>
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#17191a]/30 text-[#17191a] transition-all duration-300 group-hover:border-[#f4efe6] group-hover:bg-[#f4efe6] group-hover:text-[#17191a] lg:h-14 lg:w-14">
-                <span className="text-[16px] leading-none transition-transform duration-300 group-hover:-rotate-45 lg:text-[20px]">→</span>
-              </span>
-            </span>
-
-            {/* Всплывающее фото в пустоте (только на десктопе) */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={a.img}
-              alt=""
-              aria-hidden
-              draggable={false}
-              loading="lazy"
-              className={`pointer-events-none absolute left-[62%] top-1/2 z-20 hidden aspect-[3/4] w-[220px] -translate-x-1/2 -translate-y-1/2 scale-95 rounded-[22px] object-cover opacity-0 shadow-[0_28px_60px_rgba(0,0,0,0.28)] transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:block lg:w-[250px] ${i % 2 ? "rotate-[6deg]" : "rotate-[-6deg]"}`}
-            />
-          </a>
+          <Panel key={a.id} a={a} i={i} />
         ))}
       </div>
     </section>
