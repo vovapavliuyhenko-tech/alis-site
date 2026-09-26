@@ -89,7 +89,7 @@ export default function ConciergeBenefits() {
       const r = el.getBoundingClientRect();
       const vh = window.innerHeight;
       // старт — верх текста у 90% экрана, финиш — низ текста у 45%
-      const p = (vh * 0.9 - r.top) / (vh * 0.9 - vh * 0.45 + r.height);
+      const p = (vh * 0.95 - r.top) / (vh * 0.95 - vh * 0.6 + r.height);
       setProgress(Math.min(1, Math.max(0, p)));
     };
     const onScroll = () => {
@@ -123,7 +123,7 @@ export default function ConciergeBenefits() {
   }, [active, paused]);
 
   return (
-    <section id="about" className="scroll-mt-24 overflow-hidden bg-white section-y">
+    <section id="about" className="scroll-mt-24 overflow-hidden bg-white py-12 lg:py-16">
       <div className="mx-auto w-[92%] max-w-[1400px]">
         <h2 className="text-center text-[12px] font-medium uppercase tracking-[0.18em] text-[#17191a]/55">
           {lang === "en" ? "About ÁLIS BEAUTY CONCIERGE" : "О сервисе ÁLIS BEAUTY CONCIERGE"}
@@ -132,7 +132,7 @@ export default function ConciergeBenefits() {
         {/* Главная мысль — слова темнеют по мере прокрутки */}
         <p
           ref={leadRef}
-          className="mx-auto mt-6 max-w-[1100px] text-center font-serif-display text-[28px] font-normal leading-[1.18] tracking-[0.01em] text-[#17191a] sm:text-[36px] lg:mt-8 lg:text-[clamp(40px,3.6vw,60px)]"
+          className="mx-auto mt-4 max-w-[760px] text-center font-serif-display text-[22px] font-normal leading-[1.25] tracking-[0.01em] text-[#17191a] sm:text-[26px] lg:mt-5 lg:text-[clamp(26px,2vw,34px)]"
         >
           {words.map((w, i) => {
             const t = Math.min(1, Math.max(0, progress * words.length - i));
@@ -150,14 +150,14 @@ export default function ConciergeBenefits() {
         </p>
 
         {/* Строка с меняющимся поводом */}
-        <p className="mx-auto mt-8 max-w-[900px] text-center text-[15px] leading-[1.6] text-[#17191a]/65 lg:mt-10 lg:text-[18px]">
+        <p className="mx-auto mt-4 max-w-[900px] text-center text-[14px] leading-[1.6] text-[#17191a]/65 lg:mt-5 lg:text-[16px]">
           {LINE[lang]}{" "}
-          <span className="relative inline-grid text-[#17191a] [clip-path:inset(0_-2px)]">
+          <span className="relative inline-grid justify-items-start text-left text-[#17191a] [clip-path:inset(0_-2px)]">
             {OCCASIONS.map((o, i) => (
               <span
                 key={o.ru}
                 aria-hidden={i !== occ}
-                className={`col-start-1 row-start-1 whitespace-nowrap border-b border-[#17191a] transition-all duration-700 ease-[cubic-bezier(.2,.7,.2,1)] ${
+                className={`col-start-1 row-start-1 whitespace-nowrap underline decoration-[#17191a]/60 decoration-1 underline-offset-[5px] transition-all duration-700 ease-[cubic-bezier(.2,.7,.2,1)] ${
                   i === occ ? "translate-y-0 opacity-100" : i === (occ + OCCASIONS.length - 1) % OCCASIONS.length ? "-translate-y-full opacity-0" : "translate-y-full opacity-0"
                 }`}
               >
@@ -169,7 +169,7 @@ export default function ConciergeBenefits() {
 
         {/* Пять преимуществ — раскрывающиеся фото-панели */}
         <div
-          className="mt-14 flex flex-col gap-2 lg:mt-20 lg:h-[560px] lg:flex-row lg:gap-3"
+          className="mt-8 flex flex-col gap-2 lg:mt-10 lg:h-[min(420px,48vh)] lg:flex-row lg:gap-3"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -216,7 +216,7 @@ export default function ConciergeBenefits() {
                 {/* Заголовок (мобильная версия — всегда; десктоп — у активной) и описание */}
                 <div className="absolute inset-x-5 bottom-5 lg:inset-x-8 lg:bottom-8">
                   <h3
-                    className={`font-serif-display text-[17px] uppercase leading-[1.2] tracking-[0.03em] transition-all duration-500 lg:text-[26px] ${
+                    className={`font-serif-display text-[17px] uppercase leading-[1.2] tracking-[0.03em] transition-all duration-500 lg:text-[22px] ${
                       on ? "lg:translate-y-0 lg:opacity-100 lg:delay-300" : "lg:translate-y-4 lg:opacity-0"
                     }`}
                   >
