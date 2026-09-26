@@ -68,7 +68,7 @@ export default function ConciergeOffer() {
         <div id="booking" className="scroll-mt-24 flex flex-col rounded-[28px] bg-[#17191a] px-6 py-12 text-[#f4efe6] sm:px-10 lg:px-14 lg:py-16">
           {sent ? (
             <div className="flex flex-1 flex-col justify-center gap-8 text-center">
-              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#8a5a3c] font-display text-[22px]">✓</span>
+              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#9a9a9a] font-display text-[22px]">✓</span>
               <div>
                 <h3 className="font-display text-[22px] uppercase tracking-[0.02em]">{t("Заявка отправлена", "Request sent")}</h3>
                 <p className="mx-auto mt-3 max-w-sm text-[14px] leading-relaxed text-[#f4efe6]/70">
@@ -89,10 +89,10 @@ export default function ConciergeOffer() {
 
               <div className="mx-auto flex w-full max-w-lg flex-col gap-3">
                 {FIELDS.map((f) => (
-                  <label key={f.key} className={`block rounded-2xl border bg-white/[0.06] px-5 py-3 transition-colors focus-within:border-[#8a5a3c] ${errors[f.key] ? "border-[#e7a0a0]" : "border-transparent"}`}>
+                  <label key={f.key} className={`block rounded-2xl border bg-white/[0.06] px-5 py-3 transition-colors focus-within:border-[#9a9a9a] ${errors[f.key] ? "border-[#e7a0a0]" : "border-transparent"}`}>
                     <span className="mb-1 block text-[10px] uppercase tracking-[0.16em] text-[#f4efe6]/55">
                       {f.label[lang]}
-                      {f.required && <span className="text-[#8a5a3c]"> *</span>}
+                      {f.required && <span className="text-[#9a9a9a]"> *</span>}
                     </span>
                     {f.textarea ? (
                       <textarea rows={2} value={values[f.key] || ""} onChange={(e) => set(f.key, e.target.value)} className="w-full resize-none bg-transparent text-[15px] text-[#f4efe6] outline-none placeholder:text-[#f4efe6]/30" />
@@ -111,7 +111,7 @@ export default function ConciergeOffer() {
                 ))}
 
                 <label className="mt-1 flex cursor-pointer items-start gap-3">
-                  <input type="checkbox" checked={consent} onChange={(e) => { setConsent(e.target.checked); if (errors.consent) setErrors((x) => ({ ...x, consent: false })); }} className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#8a5a3c]" />
+                  <input type="checkbox" checked={consent} onChange={(e) => { setConsent(e.target.checked); if (errors.consent) setErrors((x) => ({ ...x, consent: false })); }} className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#9a9a9a]" />
                   <span className={`text-[11px] leading-relaxed ${errors.consent ? "text-[#e7a0a0]" : "text-[#f4efe6]/55"}`}>
                     {t("Отправляя форму, вы соглашаетесь с обработкой персональных данных.", "By submitting, you agree to the processing of your personal data.")}
                   </span>

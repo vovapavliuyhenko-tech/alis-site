@@ -36,11 +36,14 @@ export default function Footer() {
     { label: t("Салон красоты", "Beauty salon"), href: "/salon" },
     { label: t("Консьерж-сервис", "Concierge service"), href: "/concierge" },
     { label: t("Магазин", "Shop"), href: "/shop" },
+    { label: t("Подарочный сертификат", "Gift certificate"), href: "/certificate" },
+    { label: t("Программа лояльности", "Loyalty programme"), href: "/loyalty" },
     { label: t("Сотрудничество", "Cooperation"), href: "/cooperation" },
     { label: t("Вакансии", "Vacancies"), href: "/team#vacancies" },
     { label: t("Контакты", "Contacts"), href: "/contacts" },
   ];
   const LEGAL = [
+    { label: t("Документы", "Documents"), href: "/docs" },
     { label: t("Политика конфиденциальности", "Privacy policy"), href: "/policy" },
     { label: t("Публичная оферта", "Public offer"), href: "/offer" },
     { label: "Cookie", href: "/cookies" },

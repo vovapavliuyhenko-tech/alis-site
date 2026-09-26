@@ -223,7 +223,7 @@ export default function Reviews() {
                 className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[150px] flex h-[300px] w-[300px] flex-col overflow-hidden rounded-[18px] border border-[#17191a]/12 bg-white p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[12px] tracking-[0.32em] text-[#8a5a3c]">★★★★★</span>
+                  <span className="text-[12px] tracking-[0.32em] text-[#9a9a9a]">★★★★★</span>
                   <span className="font-serif text-[34px] leading-none text-[#17191a]/20">&rdquo;</span>
                 </div>
 
@@ -239,7 +239,7 @@ export default function Reviews() {
                     draggable={false}
                     loading="lazy"
                     decoding="async"
-                    className="h-9 w-9 rounded-full object-cover ring-1 ring-[#8a5a3c]/40"
+                    className="h-9 w-9 rounded-full object-cover ring-1 ring-[#9a9a9a]/40"
                   />
                   <div>
                     <p className="text-[12.5px] font-medium text-[#17191a]">{r.name[lang]}</p>

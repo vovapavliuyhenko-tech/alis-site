@@ -181,6 +181,7 @@ html.has-custom-cursor * { cursor: none !important; }
 .legal-prose li { margin: 0 0 0.5rem; padding-left: 0.2rem; }
 .legal-prose li::marker { color: var(--wine); }
 .legal-prose a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
+.legal-prose a.doc-card { color: inherit; text-decoration: none; }
 .legal-prose a:hover { opacity: 0.75; }
 .legal-prose strong { color: #17191a; font-weight: 600; }
 .legal-prose table { margin: 1rem 0; }

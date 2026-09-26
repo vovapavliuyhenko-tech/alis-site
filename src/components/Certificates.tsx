@@ -1,9 +1,9 @@
 "use client";
-// ПОДАРОЧНЫЕ СЕРТИФИКАТЫ — акцентная бордовая плашка во всю ширину.
+// ПОДАРОЧНЫЕ СЕРТИФИКАТЫ (страница /certificate) — тёмная плашка во всю ширину.
 // Слева: заголовок, продающий текст, кнопка «Купить сертификат».
 // Справа: стилизованная карточка сертификата ÁLIS BEAUTY с номиналом.
 // Кнопка открывает модальную форму заказа: выбор номинала → имя/телефон → успех.
-// Светлая тема сайта, бордовый акцент. Двуязычно (RU/EN).
+// Ч/б палитра. Двуязычно (RU/EN).
 import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
@@ -47,8 +47,8 @@ export default function Certificates() {
   };
 
   return (
-    <section id="certificates" className="scroll-mt-24 bg-white py-24 lg:py-28">
-      <div className="mx-auto w-[92%] max-w-[1200px]">
+    <section id="certificates" className="scroll-mt-24 bg-white section-y">
+      <div className="mx-auto w-[92%] max-w-[1400px]">
         <div className="relative overflow-hidden rounded-[32px] bg-[#17191a] px-7 py-10 text-[#f4efe6] sm:px-10 lg:px-16 lg:py-16">
           {/* Мягкое свечение */}
           <span aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#f4efe6]/10 blur-[90px]" />
@@ -61,7 +61,7 @@ export default function Certificates() {
               </span>
               <h2 className="r-reveal mt-5 font-display text-[30px] font-normal uppercase tracking-[0.05em] leading-[1.12] lg:text-[44px]">
                 {t("Лучший подарок —", "The best gift is")}{" "}
-                <span className="text-[#8a5a3c]">{t("красота ÁLIS BEAUTY", "ÁLIS BEAUTY")}</span>
+                <span className="text-[#f4efe6]/60">{t("красота ÁLIS BEAUTY", "ÁLIS BEAUTY")}</span>
               </h2>
 
               {/* Выгоды */}
@@ -72,7 +72,7 @@ export default function Certificates() {
                   t("Оформление за пару минут — онлайн или на ресепшене", "Ready in a couple of minutes — online or at reception"),
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-3 text-[14px] leading-snug text-[#f4efe6]/90 lg:text-[15px]">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#17191a]">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#f4efe6]/15">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f4efe6" strokeWidth="2.5"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     </span>
                     {b}
@@ -94,14 +94,14 @@ export default function Certificates() {
               <div className="relative w-full max-w-[360px]">
                 {/* Искры — точки, разлетаются при наведении */}
                 {[
-                  { l: "46%", t: "-7%", s: 9, d: 0, c: "#8a5a3c" },
+                  { l: "46%", t: "-7%", s: 9, d: 0, c: "#bdbdbd" },
                   { l: "72%", t: "8%", s: 6, d: 0.12, c: "#f4efe6" },
-                  { l: "94%", t: "26%", s: 10, d: 0.06, c: "#8a5a3c" },
+                  { l: "94%", t: "26%", s: 10, d: 0.06, c: "#bdbdbd" },
                   { l: "6%", t: "16%", s: 6, d: 0.2, c: "#f4efe6" },
-                  { l: "18%", t: "-4%", s: 7, d: 0.28, c: "#8a5a3c" },
-                  { l: "88%", t: "78%", s: 8, d: 0.1, c: "#8a5a3c" },
+                  { l: "18%", t: "-4%", s: 7, d: 0.28, c: "#bdbdbd" },
+                  { l: "88%", t: "78%", s: 8, d: 0.1, c: "#bdbdbd" },
                   { l: "-2%", t: "62%", s: 6, d: 0.18, c: "#f4efe6" },
-                  { l: "60%", t: "94%", s: 7, d: 0.24, c: "#8a5a3c" },
+                  { l: "60%", t: "94%", s: 7, d: 0.24, c: "#bdbdbd" },
                 ].map((p, i) => (
                   <span
                     key={i}
@@ -124,14 +124,14 @@ export default function Certificates() {
                     className="cert-spark pointer-events-none absolute opacity-0 group-hover:[animation:certtwinkle_1.1s_ease_forwards]"
                     style={{ left: p.l, top: p.t, width: p.s, height: p.s, animationDelay: `${p.d}s` }}
                   >
-                    <path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z" fill="#8a5a3c" />
+                    <path d="M12 0c1 6 5 10 12 12-7 2-11 6-12 12-1-6-5-10-12-12 7-2 11-6 12-12z" fill="#f4efe6" />
                   </svg>
                 ))}
 
                 {/* Карта: front + back, непрерывное вращение под углом */}
                 <div className="cert-rotate relative aspect-[1.6/1] [transform-style:preserve-3d]">
                   {/* Лицевая сторона */}
-                  <div className="absolute inset-0 overflow-hidden rounded-[20px] border-2 border-[#8a5a3c]/50 bg-gradient-to-br from-[#7C2432] to-[#48101E] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden]">
+                  <div className="absolute inset-0 overflow-hidden rounded-[20px] border-2 border-[#f4efe6]/25 bg-gradient-to-br from-[#3a3c3d] to-[#0e0f10] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden]">
                     <div className="flex h-full flex-col justify-between">
                       <div className="flex items-start justify-between">
                         <span className="font-serif text-[26px] tracking-[0.14em] text-[#f4efe6]">ÁLIS BEAUTY</span>
@@ -144,7 +144,7 @@ export default function Certificates() {
                         <p className="mt-1 font-serif text-[30px] text-[#f4efe6] lg:text-[34px]">3 000 – 15 000 ₽</p>
                       </div>
                       <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.16em] text-[#f4efe6]/45">
-                        <span>alis beauty</span>
+                        <span>ÁLIS BEAUTY</span>
                         <span>{t("процедуры · продукция", "procedures · products")}</span>
                       </div>
                     </div>
@@ -152,9 +152,9 @@ export default function Certificates() {
                     <span aria-hidden className="pointer-events-none absolute top-0 left-[-60%] h-full w-[45%] -skew-x-[18deg] bg-gradient-to-r from-transparent via-[#f4efe6]/35 to-transparent transition-[left] duration-[900ms] ease-out group-hover:left-[120%]" />
                   </div>
                   {/* Оборотная сторона */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-[20px] border-2 border-[#8a5a3c]/50 bg-gradient-to-br from-[#48101E] to-[#7C2432] p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-[20px] border-2 border-[#f4efe6]/25 bg-gradient-to-br from-[#0e0f10] to-[#3a3c3d] p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden] [transform:rotateY(180deg)]">
                     <span className="font-serif text-[30px] tracking-[0.14em] text-[#f4efe6]">ÁLIS BEAUTY</span>
-                    <span className="text-[11px] uppercase tracking-[0.22em] text-[#f4efe6]/60">{t("с любовью, beauty", "with love, beauty")}</span>
+                    <span className="text-[11px] uppercase tracking-[0.22em] text-[#f4efe6]/60">{t("с любовью, ÁLIS BEAUTY", "with love, ÁLIS BEAUTY")}</span>
                   </div>
                 </div>
               </div>

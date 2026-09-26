@@ -67,7 +67,7 @@ export default function JoinForm() {
                   {en ? "Become part of ÁLIS BEAUTY" : "Стать частью команды ÁLIS BEAUTY"}
                 </h2>
                 <div className="mx-auto flex w-full max-w-lg flex-col items-center rounded-[20px] bg-white/[0.06] p-8 text-center">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#8a5a3c] font-display text-[22px] text-[#f4efe6]">✓</span>
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#9a9a9a] font-display text-[22px] text-[#f4efe6]">✓</span>
                   <h3 className="mt-5 font-display text-[22px] uppercase tracking-[0.02em]">{en ? "Thank you!" : "Спасибо!"}</h3>
                   <p className="mt-3 max-w-sm text-[14px] leading-relaxed text-[#f4efe6]/70">
                     {en ? "We've received your application and will get back to you soon." : "Мы получили вашу заявку и скоро свяжемся с вами."}
@@ -92,13 +92,13 @@ export default function JoinForm() {
                 {FIELDS.map((f) => (
                   <label
                     key={f.key}
-                    className={`block rounded-2xl border bg-white/[0.06] px-5 py-3 transition-colors focus-within:border-[#8a5a3c] ${
+                    className={`block rounded-2xl border bg-white/[0.06] px-5 py-3 transition-colors focus-within:border-[#9a9a9a] ${
                       errors[f.key] ? "border-[#e7a0a0]" : "border-transparent"
                     }`}
                   >
                     <span className="mb-1 block text-[10px] uppercase tracking-[0.16em] text-[#f4efe6]/55">
                       {f.label[lang]}
-                      {f.required && <span className="text-[#8a5a3c]"> *</span>}
+                      {f.required && <span className="text-[#9a9a9a]"> *</span>}
                     </span>
                     <input
                       type={f.type || "text"}
@@ -120,7 +120,7 @@ export default function JoinForm() {
                       setConsent(e.target.checked);
                       if (errors.consent) setErrors((x) => ({ ...x, consent: false }));
                     }}
-                    className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#8a5a3c]"
+                    className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#9a9a9a]"
                   />
                   <span className={`text-[11px] leading-relaxed ${errors.consent ? "text-[#e7a0a0]" : "text-[#f4efe6]/55"}`}>
                     {en
