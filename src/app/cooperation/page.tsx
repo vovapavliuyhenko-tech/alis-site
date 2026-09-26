@@ -48,8 +48,8 @@ const COOP_FAQ: { q: Loc; a: Loc }[] = [
   },
 ];
 
-// Страница «Сотрудничество» — три блока:
-// 1) фото + карточки с вариантами сотрудничества, 2) форма заявки, 3) частые вопросы.
+// Страница «Сотрудничество»: обложка → плюсы сотрудничества → «Кто нам доверяет»
+// → частые вопросы → форма заявки.
 export default function CooperationPage() {
   return (
     <main>
@@ -63,7 +63,9 @@ export default function CooperationPage() {
         photo="/assets/alis/img_6011.jpg"
       />
 
-      <div className="relative z-10 bg-white">
+      {/* Порядок для клиента: что предлагаем → кто доверяет → ответы на вопросы → заявка.
+          space-y — дополнительный воздух между блоками поверх общего section-y. */}
+      <div className="relative z-10 space-y-6 bg-white pb-6 lg:space-y-12 lg:pb-12">
         {/* Маркер конца героя — после него у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
 
@@ -73,18 +75,17 @@ export default function CooperationPage() {
         {/* 3 — Бегущая лента «Кто нам доверяет» */}
         <Brands heading />
 
-        {/* 4 — Форма заявки на партнёрство */}
-        <CooperationForm />
-
-        {/* 3 — Частые вопросы про сотрудничество */}
+        {/* 4 — Частые вопросы про сотрудничество */}
         <Faq
           items={COOP_FAQ}
           sectionId="coop-faq"
           photo="/assets/tild3236-393__.jpg"
-          eyebrow={{ ru: "вопросы", en: "FAQ" }}
           titleTop={{ ru: "Сотрудничество —", en: "Cooperation —" }}
           titleBottom={{ ru: "что спрашивают", en: "what people ask" }}
         />
+
+        {/* 5 — Форма заявки на партнёрство (финальный шаг, сюда ведёт кнопка в обложке) */}
+        <CooperationForm />
       </div>
 
       <Footer />
