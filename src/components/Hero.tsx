@@ -40,7 +40,7 @@ export default function Hero() {
           href={YCLIENTS}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-7 inline-flex min-w-[280px] items-center justify-center rounded-full border border-white/60 bg-white/10 px-16 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#17191a] hover:bg-[#17191a] lg:mt-8 lg:min-w-[340px]"
+          className="mt-7 inline-flex min-w-[300px] items-center justify-center rounded-xl border border-white/70 bg-white/[0.18] px-12 py-5 text-[14px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#17191a] hover:bg-[#17191a] lg:mt-8 lg:min-w-[400px] lg:py-[22px] lg:text-[15px]"
         >
           {t("Оформить визит", "Arrange a visit")}
         </a>

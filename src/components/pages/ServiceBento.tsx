@@ -72,7 +72,7 @@ export default function ServiceBento() {
         <div className="r-reveal mt-10 flex justify-center lg:mt-14">
           <a
             href="/salon#uslugi"
-            className="inline-flex min-w-[280px] items-center justify-center gap-2 rounded-full border border-[#17191a] px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-[#17191a] hover:text-white"
+            className="inline-flex min-w-[300px] items-center justify-center gap-2 rounded-xl border border-[#17191a] px-10 py-4 text-[13px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-[#17191a] hover:text-white"
           >
             {en ? "All services & prices" : "Все услуги и цены"}
             <span aria-hidden>→</span>
