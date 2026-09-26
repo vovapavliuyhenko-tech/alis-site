@@ -88,10 +88,10 @@ function Panel({ a, i }: { a: (typeof AUDIENCES)[number]; i: number }) {
         src={a.img}
         alt=""
         loading="lazy"
-        className="absolute inset-[-24px] -z-20 h-[calc(100%+48px)] w-[calc(100%+48px)] max-w-none object-cover"
+        className="absolute inset-[-24px] -z-20 h-[calc(100%+48px)] w-[calc(100%+48px)] max-w-none object-cover [filter:blur(0px)] group-hover:[filter:blur(10px)]"
         style={{
           transform: `translate3d(var(--px,0px), var(--py,0px), 0) scale(${shown ? 1 : 1.25})`,
-          transition: `transform 1.6s cubic-bezier(.2,.7,.2,1) ${shown ? delay : 0}ms`,
+          transition: `transform 1.6s cubic-bezier(.2,.7,.2,1) ${shown ? delay : 0}ms, filter .8s ease`,
         }}
       />
       {/* Затемнение + свет за курсором */}
@@ -102,7 +102,7 @@ function Panel({ a, i }: { a: (typeof AUDIENCES)[number]; i: number }) {
       />
 
       {/* Номер и стрелка */}
-      <div className="absolute inset-x-7 top-7 flex items-start justify-between lg:inset-x-10 lg:top-10">
+      <div className="absolute inset-x-8 top-8 flex items-start justify-between lg:inset-x-14 lg:top-14">
         <span className="font-serif-display text-[14px] tracking-[0.14em] text-white/75">{String(i + 1).padStart(2, "0")}</span>
         <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-white/10 backdrop-blur-md transition-colors duration-500 group-hover:border-white group-hover:bg-white group-hover:text-[#17191a]">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -111,7 +111,7 @@ function Panel({ a, i }: { a: (typeof AUDIENCES)[number]; i: number }) {
         </span>
       </div>
 
-      <div className="p-7 lg:p-10">
+      <div className="p-8 lg:p-14">
         {/* Заголовок выезжает по буквам */}
         <h2
           aria-label={a.title[lang]}
@@ -140,10 +140,10 @@ function Panel({ a, i }: { a: (typeof AUDIENCES)[number]; i: number }) {
           ))}
         </h2>
 
-        {/* Кнопка: на телефоне видна всегда, на десктопе проявляется на наведении */}
-        <span className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/15 py-3.5 text-[13px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-all duration-500 ease-out group-hover:border-white group-hover:bg-white group-hover:text-[#17191a] lg:translate-y-3 lg:py-4 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100">
-          {lang === "en" ? "Leave a partnership request" : "Оставить заявку на сотрудничество"}
-          <span aria-hidden>→</span>
+        {/* Минималистичная ссылка вместо кнопки: тонкая линия, которая вытягивается на наведении */}
+        <span className="mt-5 inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.2em] text-white/80 transition-colors duration-500 group-hover:text-white lg:mt-6">
+          <span className="h-px w-8 bg-current transition-all duration-700 ease-out group-hover:w-16" />
+          {lang === "en" ? "Leave a request" : "Оставить заявку"}
         </span>
       </div>
     </a>
