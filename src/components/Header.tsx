@@ -98,7 +98,7 @@ export default function Header() {
   // Пункт меню + (опц.) выпадашка
   const NavLink = ({ item }: { item: NavItem }) =>
     item.sub ? (
-      <div className="group relative flex h-[68px] items-center">
+      <div className="group relative flex h-[68px] items-center xl:h-[80px] min-[1680px]:h-[96px]">
         <a href={item.href} className={`flex items-center gap-1 py-2 ${inkSoft} transition-colors ${hoverInk}`}>
           <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 group-hover:after:w-full">
             {item.label[lang]}
@@ -139,12 +139,12 @@ export default function Header() {
   );
   const bubble = overHero ? "bg-white/10 hover:bg-white/20" : "bg-[#17191a]/[0.06] hover:bg-[#17191a]/10";
   const ShopIcons = () => (
-    <div className="flex items-center gap-1.5">
-      <button onClick={shop.openFav} aria-label={lang === "en" ? "Favourites" : "Избранное"} className={`relative flex h-9 w-9 items-center justify-center rounded-full transition-colors ${bubble} ${ink} ${hoverInk}`}>
+    <div className="flex items-center gap-1">
+      <button onClick={shop.openFav} aria-label={lang === "en" ? "Favourites" : "Избранное"} className={`relative flex h-8 w-8 items-center justify-center rounded-full transition-colors ${bubble} ${ink} ${hoverInk}`}>
         <HeartIcon />
         {shop.favCount > 0 && <Badge n={shop.favCount} />}
       </button>
-      <button onClick={shop.openCart} aria-label={lang === "en" ? "Cart" : "Корзина"} className={`relative flex h-9 w-9 items-center justify-center rounded-full transition-colors ${bubble} ${ink} ${hoverInk}`}>
+      <button onClick={shop.openCart} aria-label={lang === "en" ? "Cart" : "Корзина"} className={`relative flex h-8 w-8 items-center justify-center rounded-full transition-colors ${bubble} ${ink} ${hoverInk}`}>
         <BagIcon />
         {shop.cartCount > 0 && <Badge n={shop.cartCount} />}
       </button>
@@ -159,19 +159,19 @@ export default function Header() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto grid h-[68px] w-full max-w-[1400px] grid-cols-[1fr_auto_1fr] items-center px-5 sm:px-8">
+      <div className="mx-auto grid h-[68px] w-full max-w-[1760px] xl:h-[80px] min-[1680px]:h-[96px] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-5 sm:px-8">
         {/* Левая часть: гамбургер (моб.) + левое меню (прижато к логотипу) */}
         <div className="flex items-center">
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label={lang === "en" ? "Menu" : "Меню"}
-            className={`flex h-10 w-10 items-center justify-center lg:hidden ${ink}`}
+            className={`flex h-10 w-10 items-center justify-center xl:hidden ${ink}`}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               {open ? <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /> : <path d="M4 8h16M4 16h16" strokeLinecap="round" />}
             </svg>
           </button>
-          <nav className="hidden w-full items-center justify-end gap-6 whitespace-nowrap text-[13px] uppercase tracking-[0.13em] lg:flex xl:gap-9">
+          <nav className="hidden w-full items-center justify-end gap-5 whitespace-nowrap text-[12.5px] uppercase tracking-[0.06em] xl:flex min-[1440px]:gap-7 min-[1440px]:text-[14px] min-[1680px]:gap-10 min-[1680px]:text-[16px]">
             {LEFT.map((item) => (
               <NavLink key={item.label.ru} item={item} />
             ))}
@@ -179,22 +179,22 @@ export default function Header() {
         </div>
 
         {/* Логотип по центру: только надпись (вензель убран по фидбеку) */}
-        <a href="/" className="mx-6 flex items-center justify-self-center lg:mx-10">
-          <LogoWord variant={overHero ? "cream" : "wine"} className="h-[19px] w-auto max-w-none shrink-0" />
+        <a href="/" className="mx-6 flex items-center justify-self-center min-[1680px]:mx-14">
+          <LogoWord variant={overHero ? "cream" : "wine"} className="h-[19px] w-auto max-w-none shrink-0 xl:h-[22px] min-[1440px]:h-[28px] min-[1680px]:h-[34px]" />
         </a>
 
         {/* Правая часть: правое меню (прижато к логотипу) + действия у края */}
         <div className="flex items-center">
-          <nav className="hidden items-center gap-6 whitespace-nowrap text-[13px] uppercase tracking-[0.13em] lg:flex xl:gap-9">
+          <nav className="hidden items-center gap-5 whitespace-nowrap text-[12.5px] uppercase tracking-[0.06em] xl:flex min-[1440px]:gap-7 min-[1440px]:text-[14px] min-[1680px]:gap-10 min-[1680px]:text-[16px]">
             {RIGHT.map((item) => (
               <NavLink key={item.label.ru} item={item} />
             ))}
           </nav>
 
           {/* Действия — язык, избранное, корзина (+ запись на моб.) */}
-          <div className="ml-auto flex items-center gap-3 lg:ml-7 lg:gap-4 xl:ml-9">
+          <div className="ml-auto flex items-center gap-2 xl:ml-4 min-[1680px]:ml-8 min-[1680px]:gap-3">
           {/* Тумблер RU/EN (десктоп) */}
-          <div className={`relative hidden items-center rounded-full border p-0.5 text-[12px] font-medium lg:flex ${overHero ? "border-white/40" : "border-[#17191a]/25"}`}>
+          <div className={`relative hidden items-center rounded-full border p-0.5 text-[11px] font-medium xl:flex ${overHero ? "border-white/40" : "border-[#17191a]/25"}`}>
             <span
               aria-hidden
               className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${overHero ? "bg-white" : "bg-[#17191a]"}`}
@@ -205,7 +205,7 @@ export default function Header() {
                 key={l}
                 onClick={() => setLang(l)}
                 aria-pressed={lang === l}
-                className={`relative z-10 w-9 rounded-full py-2 uppercase tracking-wide transition-colors duration-300 ${
+                className={`relative z-10 w-8 rounded-full py-1.5 uppercase tracking-wide transition-colors duration-300 ${
                   lang === l
                     ? overHero ? "text-[#17191a]" : "text-[#f4efe6]"
                     : overHero ? "text-white/70 hover:text-white" : "text-[#17191a]/60 hover:text-[#17191a]"
@@ -223,7 +223,7 @@ export default function Header() {
 
       {/* Мобильное меню */}
       {open && (
-        <div className="absolute inset-x-0 top-[68px] max-h-[80vh] overflow-y-auto border-t border-[#17191a]/10 bg-white/97 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.15)] backdrop-blur-md lg:hidden">
+        <div className="absolute inset-x-0 top-[68px] max-h-[80vh] overflow-y-auto border-t border-[#17191a]/10 bg-white/97 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.15)] backdrop-blur-md xl:hidden">
           <nav className="flex flex-col">
             {ALL_NAV.map((item) => (
               <div key={item.label.ru} className="border-b border-[#17191a]/8 py-2 last:border-0">
