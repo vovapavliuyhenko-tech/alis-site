@@ -193,7 +193,7 @@ export default function Reviews() {
 
   return (
     <section id="reviews" className="overflow-hidden bg-white section-y">
-      <div className="mx-auto w-[92%] max-w-[1200px]">
+      <div className="mx-auto w-[92%] max-w-[1400px]">
         {/* Заголовок */}
         <div className="r-reveal mb-14 flex flex-col items-center text-center lg:mb-20">
           <h2 className="font-display text-[22px] font-normal uppercase tracking-[0.02em] leading-[1.2] text-[#17191a] lg:text-[28px]">

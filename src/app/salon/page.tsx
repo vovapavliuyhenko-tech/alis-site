@@ -277,26 +277,36 @@ export default function SalonPage() {
         cta={{ label: { ru: "Смотреть услуги", en: "See services" }, href: "#uslugi" }}
       />
 
-      <div className="relative z-10 bg-white">
+      {/* Порядок для клиента: услуги и цены → отзывы → лояльность и сертификаты →
+          частые вопросы → магазин. space-y — дополнительный воздух между блоками. */}
+      <div className="relative z-10 space-y-6 bg-white pb-6 lg:space-y-12 lg:pb-12">
         {/* Маркер конца героя — после него у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
+
+        {/* 2 — Услуги и прайс */}
         <SalonServices
-          eyebrow={{ ru: "услуги и цены", en: "services & prices" }}
           title={{ ru: "Услуги салона", en: "Salon services" }}
           categories={SALON_CATEGORIES}
-          cta={{ label: { ru: "Записаться · −10% на первый визит", en: "Book now · −10% on your first visit" }, href: YCLIENTS }}
+          cta={{ label: { ru: "Оформить визит · −10% на первое посещение", en: "Arrange a visit · −10% on your first" }, href: YCLIENTS }}
         />
-        <MerchMarquee />
-        <LoyaltyCerts />
+
+        {/* 3 — Отзывы гостей */}
         <Reviews />
+
+        {/* 4 — Лояльность и подарочные сертификаты */}
+        <LoyaltyCerts />
+
+        {/* 5 — Частые вопросы про салон */}
         <Faq
           items={SALON_FAQ}
           sectionId="salon-faq"
           photo="/assets/tild6530-383_-2___1_.jpg"
-          eyebrow={{ ru: "вопросы", en: "FAQ" }}
           titleTop={{ ru: "Салон ÁLIS —", en: "ÁLIS salon —" }}
           titleBottom={{ ru: "что спрашивают", en: "what people ask" }}
         />
+
+        {/* 6 — Магазин (мерч), сюда ведёт пункт «Магазин» в шапке */}
+        <MerchMarquee />
       </div>
       <Footer />
     </main>

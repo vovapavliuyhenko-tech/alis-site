@@ -27,8 +27,8 @@ export default function LoyaltyCerts() {
   ];
 
   return (
-    <section className="bg-white section-y">
-      <div className="mx-auto w-[92%] max-w-[1280px]">
+    <section id="loyalty" className="scroll-mt-24 bg-white section-y">
+      <div className="mx-auto w-[92%] max-w-[1400px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
           <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {t("Возвращаться — выгодно", "Coming back pays off")}
@@ -65,7 +65,7 @@ export default function LoyaltyCerts() {
               rel="noopener noreferrer"
               className="mt-8 flex w-full items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-blur-md hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
             >
-              {t("Записаться", "Book now")}
+              {t("Оформить визит", "Arrange a visit")}
             </a>
           </div>
 
@@ -74,7 +74,8 @@ export default function LoyaltyCerts() {
             href={YCLIENTS}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative min-h-[240px] overflow-hidden rounded-[26px] sm:col-span-2 lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:min-h-0"
+            id="certificates"
+            className="group relative min-h-[240px] scroll-mt-28 overflow-hidden rounded-[26px] sm:col-span-2 lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:min-h-0"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
