@@ -22,7 +22,7 @@ export default function Philosophy() {
       <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/55" />
 
       <div className="relative z-10 mx-auto flex w-[90%] max-w-[1100px] flex-col items-center text-center text-white">
-        <h2 className="r-reveal font-serif-display text-[28px] font-normal uppercase leading-[1.15] tracking-[0.04em] text-white sm:text-[36px] lg:text-[clamp(36px,3.4vw,56px)]">
+        <h2 className="r-reveal font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.05em] text-white sm:text-[26px] lg:text-[clamp(26px,2.1vw,36px)]">
           {en ? "A beauty salon" : "Салон красоты там,"}
           <br />
           {en ? "wherever suits you" : "где вам удобно"}
@@ -30,7 +30,7 @@ export default function Philosophy() {
 
         <a
           href="/concierge"
-          className="r-reveal mt-9 inline-flex items-center justify-center gap-2 rounded-full border border-white/60 bg-white/10 px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a] lg:mt-11"
+          className="r-reveal mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-white/60 bg-white/10 px-9 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a] lg:mt-8"
         >
           {en ? "All about the ÁLIS BEAUTY concierge service" : "Всё о консьерж-сервисе от ÁLIS BEAUTY"}
           <span aria-hidden>→</span>
