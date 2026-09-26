@@ -1,22 +1,32 @@
 "use client";
 // БЛОК «О СЕРВИСЕ» (страница «Консьерж-сервис», якорь #about). Тексты — со старого
-// сайта alisbeauty.ru (по просьбе заказчицы): вступление о сервисе и пять
-// преимуществ. Ч/б, без фото (фото пришлёт заказчица). Двуязычно.
+// сайта alisbeauty.ru (по просьбе заказчицы). Журнальная раскладка: слева главная мысль
+// крупно, справа текст и метки-поводы; ниже пять преимуществ. Ч/б. Двуязычно.
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
 
-const INTRO: Loc[] = [
+// Вступление разбито на части для журнальной подачи (текст тот же, со старого сайта)
+const LEAD: Loc = {
+  ru: "Единственный в своём роде консьерж-сервис, организованный на базе салона красоты",
+  en: "A one-of-a-kind concierge service built on the basis of a beauty salon",
+};
+const BODY: Loc[] = [
   {
-    ru: "Единственный в своём роде консьерж-сервис, организованный на базе салона красоты. Мы будем рядом и поможем создать незабываемый образ для свадебной церемонии, дня рождения, семейного праздника или другой значимой даты.",
-    en: "A one-of-a-kind concierge service built on the basis of a beauty salon. We'll be by your side and help create an unforgettable look for a wedding ceremony, birthday, family celebration or any other special date.",
+    ru: "Мы будем рядом и поможем создать незабываемый образ для вашего события.",
+    en: "We'll be by your side and help create an unforgettable look for your occasion.",
   },
   {
     ru: "Наша опытная команда визажистов, стилистов и координаторов создала надёжный сервис полного образа для любых мероприятий — от подбора макияжа до подбора цвета и фактуры туфель для целостности образа.",
     en: "Our experienced team of makeup artists, stylists and coordinators has built a reliable full-look service for any event — from choosing the makeup to matching the colour and texture of your shoes.",
   },
 ];
-
+const OCCASIONS: Loc[] = [
+  { ru: "Свадебная церемония", en: "Wedding ceremony" },
+  { ru: "День рождения", en: "Birthday" },
+  { ru: "Семейный праздник", en: "Family celebration" },
+  { ru: "Значимая дата", en: "Special date" },
+];
 const POINTS: { title: Loc; desc: Loc }[] = [
   {
     title: { ru: "Мастерство и опыт", en: "Skill & experience" },
@@ -61,17 +71,32 @@ export default function ConciergeBenefits() {
   return (
     <section id="about" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1400px]">
-        <div className="r-reveal mx-auto mb-12 max-w-[820px] text-center lg:mb-16">
-          <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
-            {lang === "en" ? "About ÁLIS BEAUTY CONCIERGE" : "О сервисе ÁLIS BEAUTY CONCIERGE"}
-          </h2>
-          {INTRO.map((p) => (
-            <p key={p.ru} className="mt-5 text-[14px] leading-relaxed text-[#17191a]/70 lg:text-[15px]">
-              {p[lang]}
+        {/* Вступление: слева заголовок и главная мысль крупно, справа текст и поводы */}
+        <div className="r-reveal mb-14 grid gap-10 border-t border-[#17191a]/15 pt-10 lg:mb-20 lg:grid-cols-[1.15fr_1fr] lg:gap-20 lg:pt-14">
+          <div>
+            <h2 className="text-[12px] font-medium uppercase tracking-[0.18em] text-[#17191a]/55">
+              {lang === "en" ? "About ÁLIS BEAUTY CONCIERGE" : "О сервисе ÁLIS BEAUTY CONCIERGE"}
+            </h2>
+            <p className="mt-6 font-serif-display text-[26px] font-normal leading-[1.2] tracking-[0.01em] text-[#17191a] lg:text-[clamp(30px,2.5vw,40px)]">
+              {LEAD[lang]}
             </p>
-          ))}
-        </div>
+          </div>
 
+          <div className="flex flex-col justify-end">
+            {BODY.map((p) => (
+              <p key={p.ru} className="mb-4 text-[14px] leading-[1.7] text-[#17191a]/65 last:mb-0 lg:text-[15px]">
+                {p[lang]}
+              </p>
+            ))}
+            <ul className="mt-7 flex flex-wrap gap-2">
+              {OCCASIONS.map((o) => (
+                <li key={o.ru} className="rounded-full border border-[#17191a]/20 px-4 py-2 text-[12px] uppercase tracking-[0.08em] text-[#17191a]">
+                  {o[lang]}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
         {/* Пять преимуществ: номер, заголовок, описание */}
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-5">
           {POINTS.map((pt, i) => (
