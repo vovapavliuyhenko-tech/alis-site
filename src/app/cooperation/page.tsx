@@ -21,9 +21,10 @@ export default function CooperationPage() {
       />
 
       {/* space-y — дополнительный воздух между блоками поверх общего section-y */}
+      {/* Маркер конца героя — после него у шапки появляется подложка. Стоит СНАРУЖИ белой
+          обёртки: иначе отступ первого блока «проваливается» и видна полоса фона. */}
+      <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 space-y-6 bg-white pb-6 lg:space-y-12 lg:pb-12">
-        {/* Маркер конца героя — после него у шапки появляется подложка */}
-        <div id="hero-end" aria-hidden className="h-0" />
 
         {/* 2 — Для кого: #private и #business */}
         <CooperationFormats />
