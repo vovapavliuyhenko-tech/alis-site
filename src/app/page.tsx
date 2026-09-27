@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
-import Philosophy from "@/components/pages/Philosophy";
+import PhotoStatement from "@/components/pages/PhotoStatement";
 import ServiceBento from "@/components/pages/ServiceBento";
 import ScrollReveal from "@/components/ScrollReveal";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -20,7 +20,12 @@ export default function Home() {
         <div id="hero-end" aria-hidden className="h-0" />
         {/* Порядок для клиента: что делаем → выезд → работы мастеров → контакты (подвал) */}
         <ServiceBento />
-        <Philosophy />
+        {/* Выездной сервис — блок-«высказывание» по референсу revatiwear.ru */}
+        <PhotoStatement
+          photo="/assets/alis/img_6009.jpg"
+          text={{ ru: "Салон красоты там, где вам удобно", en: "A beauty salon wherever suits you" }}
+          link={{ label: { ru: "Всё о консьерж-сервисе от ÁLIS BEAUTY", en: "All about the ÁLIS BEAUTY concierge service" }, href: "/concierge" }}
+        />
         <PhotoMarquee />
       </div>
       <Footer />
