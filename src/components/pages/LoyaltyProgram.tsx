@@ -30,8 +30,8 @@ export default function LoyaltyProgram() {
 
   return (
     <section id="loyalty" className="scroll-mt-24 bg-white section-y">
-      <div className="px-[6px]">
-        <div className="grid grid-cols-1 gap-[2px] lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="mx-auto w-[92%] max-w-[1400px]">
+        <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-[0.9fr_1.1fr]">
           {/* Приветственный бонус */}
           <div className="flex min-h-[340px] flex-col justify-between rounded-[12px] bg-[#17191a] p-8 text-[#f4efe6] lg:min-h-[480px] lg:p-12">
             <div>
@@ -51,7 +51,7 @@ export default function LoyaltyProgram() {
           </div>
 
           {/* Привилегии */}
-          <div className="flex flex-col gap-[2px]">
+          <div className="flex flex-col gap-3 sm:gap-4">
             {PERKS.map((p, i) => (
               <article key={p.title.ru} className="flex flex-1 items-start gap-5 rounded-[12px] border border-[#17191a]/15 bg-white p-7 lg:p-9">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#17191a]/[0.06] font-display text-[15px] text-[#17191a]">
