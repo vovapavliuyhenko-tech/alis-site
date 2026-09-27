@@ -58,7 +58,7 @@ export default function TeamCarousel() {
           {LEADS.map((l) => (
             <div
               key={l.role.ru}
-              className="flex flex-col rounded-[20px] border border-[#17191a]/8 bg-white p-6 shadow-[0_10px_40px_rgba(23,25,26,0.06)] lg:p-7"
+              className="flex flex-col rounded-[12px] border border-[#17191a]/8 bg-white p-6 shadow-[0_10px_40px_rgba(23,25,26,0.06)] lg:p-7"
             >
               <div className="flex items-center gap-4">
                 <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#17191a] font-display text-[22px] font-semibold text-[#f4efe6]">

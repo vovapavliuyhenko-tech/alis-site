@@ -57,7 +57,7 @@ export default function TeamPinnedHero() {
     <div ref={wrapRef} data-hide-fab className="relative" style={{ height: `${SCENES.length * 135}vh` }}>
       <div className="sticky top-0 h-svh min-h-[560px] w-full px-2 pb-2 pt-[72px] sm:px-2.5 sm:pb-2.5 sm:pt-[80px]">
         {/* Скруглённая «сцена» с небольшим отступом от краёв */}
-        <div className="relative h-full w-full overflow-hidden rounded-[26px]">
+        <div className="relative h-full w-full overflow-hidden rounded-[12px]">
         {/* Фон стоит на месте */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={BG} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
@@ -104,7 +104,7 @@ export default function TeamPinnedHero() {
                   href={YCLIENTS}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-2xl border border-white bg-white px-14 py-5 font-display text-[12px] uppercase tracking-[0.16em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white sm:text-[13px]"
+                  className="inline-flex items-center justify-center rounded-[12px] border border-white bg-white px-14 py-5 font-display text-[12px] uppercase tracking-[0.16em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white sm:text-[13px]"
                 >
                   {en ? "our masters" : "наши мастера"}
                 </a>

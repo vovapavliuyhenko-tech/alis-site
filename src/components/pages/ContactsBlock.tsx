@@ -54,7 +54,7 @@ export default function ContactsBlock() {
   return (
     <section className="bg-white px-3 pt-28 pb-12 sm:px-4 lg:pt-36 lg:pb-[60px]">
       {/* Слева реквизиты и кнопки, справа карта — одна скруглённая панель */}
-      <div className="overflow-hidden rounded-[30px] border border-[#17191a]/15 bg-white lg:grid lg:grid-cols-2">
+      <div className="overflow-hidden rounded-[12px] border border-[#17191a]/15 bg-white lg:grid lg:grid-cols-2">
         {/* Левая колонка */}
         <div className="flex flex-col p-8 lg:p-12">
           <div className="flex flex-col gap-10">
@@ -91,7 +91,7 @@ export default function ContactsBlock() {
                 href={b.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex min-h-[124px] flex-col rounded-[20px] bg-[#17191a]/[0.05] p-5 transition-colors duration-300 hover:bg-[#17191a]/10 lg:min-h-[140px] lg:p-6"
+                className="group relative flex min-h-[124px] flex-col rounded-[12px] bg-[#17191a]/[0.05] p-5 transition-colors duration-300 hover:bg-[#17191a]/10 lg:min-h-[140px] lg:p-6"
               >
                 <span className="max-w-[80%] font-display text-[13px] uppercase leading-[1.3] tracking-[0.06em] text-[#17191a] lg:text-[14px]">
                   {b.label[lang]}

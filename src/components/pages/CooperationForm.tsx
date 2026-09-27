@@ -61,13 +61,13 @@ export default function CooperationForm() {
     <section id="request" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto grid w-[92%] max-w-[1400px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая оливковая панель */}
-        <div className="flex flex-col rounded-[28px] bg-[#17191a] px-6 py-12 text-[#f4efe6] sm:px-10 lg:min-h-[620px] lg:px-14 lg:py-16">
+        <div className="flex flex-col rounded-[12px] bg-[#17191a] px-6 py-12 text-[#f4efe6] sm:px-10 lg:min-h-[620px] lg:px-14 lg:py-16">
           {sent ? (
             <div className="flex flex-1 flex-col justify-between gap-10">
               <h2 className="mx-auto w-full max-w-lg text-center font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] lg:text-[28px]">
                 {en ? "Leave a partnership request" : "Оставить заявку на сотрудничество"}
               </h2>
-              <div className="mx-auto flex w-full max-w-lg flex-col items-center rounded-[20px] bg-white/[0.06] p-8 text-center">
+              <div className="mx-auto flex w-full max-w-lg flex-col items-center rounded-[12px] bg-white/[0.06] p-8 text-center">
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#9a9a9a] font-display text-[22px] text-[#f4efe6]">✓</span>
                 <h3 className="mt-5 font-display text-[22px] uppercase tracking-[0.02em]">{en ? "Thank you!" : "Спасибо!"}</h3>
                 <p className="mt-3 max-w-sm text-[14px] leading-relaxed text-[#f4efe6]/70">
@@ -88,7 +88,7 @@ export default function CooperationForm() {
                 {FIELDS.map((f) => (
                   <label
                     key={f.key}
-                    className={`block rounded-2xl border bg-white/[0.06] px-5 py-3 transition-colors focus-within:border-[#9a9a9a] ${
+                    className={`block rounded-[12px] border bg-white/[0.06] px-5 py-3 transition-colors focus-within:border-[#9a9a9a] ${
                       errors[f.key] ? "border-[#e7a0a0]" : "border-transparent"
                     }`}
                   >
@@ -137,7 +137,7 @@ export default function CooperationForm() {
 
               <button
                 type="submit"
-                className="mx-auto flex w-full max-w-lg items-center justify-center rounded-2xl border border-transparent bg-[#f4efe6] py-4 text-[14px] font-medium tracking-[0.01em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md"
+                className="mx-auto flex w-full max-w-lg items-center justify-center rounded-[12px] border border-transparent bg-[#f4efe6] py-4 text-[14px] font-medium tracking-[0.01em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md"
               >
                 {en ? "send" : "отправить"}
               </button>
@@ -146,7 +146,7 @@ export default function CooperationForm() {
         </div>
 
         {/* Правая колонка — большое фото на всю высоту */}
-        <div className="relative min-h-[320px] overflow-hidden rounded-[28px] lg:min-h-[600px]">
+        <div className="relative min-h-[320px] overflow-hidden rounded-[12px] lg:min-h-[600px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={PHOTO} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
         </div>

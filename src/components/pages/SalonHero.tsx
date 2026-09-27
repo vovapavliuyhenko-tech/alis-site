@@ -50,7 +50,7 @@ export default function SalonHero() {
           href={YCLIENTS}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-display flex w-full items-center justify-center rounded-2xl border border-[#17191a] bg-[#17191a] py-5 text-[12px] uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:text-[13px]"
+          className="font-display flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-5 text-[12px] uppercase tracking-[0.2em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:text-[13px]"
         >
           {t("Записаться", "Book now")}
         </a>

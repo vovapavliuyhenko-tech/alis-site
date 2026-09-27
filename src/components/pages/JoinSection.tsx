@@ -28,7 +28,7 @@ export default function JoinSection({
   return (
     <section className={`scroll-mt-24 py-16 lg:py-24 ${dark ? "bg-white" : "bg-white"}`}>
       <div className="mx-auto w-[92%] max-w-[1180px]">
-        <div className={`overflow-hidden rounded-[28px] px-7 py-12 sm:px-10 lg:px-14 lg:py-16 ${dark ? "bg-[#17191a] text-[#f4efe6]" : "border border-[#17191a]/10 bg-[#faf7f2] text-[#2a2320]"}`}>
+        <div className={`overflow-hidden rounded-[12px] px-7 py-12 sm:px-10 lg:px-14 lg:py-16 ${dark ? "bg-[#17191a] text-[#f4efe6]" : "border border-[#17191a]/10 bg-[#faf7f2] text-[#2a2320]"}`}>
           <span className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] ${dark ? "bg-[#17191a]/25 text-[#f4efe6]" : "bg-[#17191a]/12 text-[#17191a]"}`}>
             {eyebrow[lang]}
           </span>

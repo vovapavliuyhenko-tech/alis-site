@@ -117,7 +117,7 @@ export default function Header() {
         </a>
         {/* Компактная выпадашка — раскрывается прямо из-под пункта */}
         <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2.5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-          <div className="relative min-w-[230px] origin-top scale-95 rounded-2xl border border-[#17191a]/12 bg-white/95 p-2 shadow-[0_20px_50px_rgba(23,25,26,0.16)] backdrop-blur-md transition-transform duration-200 group-hover:scale-100">
+          <div className="relative min-w-[230px] origin-top scale-95 rounded-[12px] border border-[#17191a]/12 bg-white/95 p-2 shadow-[0_20px_50px_rgba(23,25,26,0.16)] backdrop-blur-md transition-transform duration-200 group-hover:scale-100">
             {/* «Клювик» к пункту меню */}
             <span aria-hidden className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 rounded-[3px] border-l border-t border-[#17191a]/12 bg-white/95" />
             {item.sub.map((s) => (

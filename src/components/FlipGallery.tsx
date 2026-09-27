@@ -80,12 +80,12 @@ function FlipTile({ t }: { t: Tile }) {
       <div className="group aspect-[3/4] w-full [perspective:1600px]">
         <div className="relative h-full w-full transition-transform duration-[1500ms] [transform-style:preserve-3d] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:[transform:rotateY(180deg)]">
           {/* Лицо */}
-          <div className="absolute inset-0 overflow-hidden rounded-[22px] [backface-visibility:hidden]">
+          <div className="absolute inset-0 overflow-hidden rounded-[12px] [backface-visibility:hidden]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={t.front} alt={t.caption[lang]} draggable={false} className="h-full w-full object-cover" />
           </div>
           {/* Оборот — вторая работа */}
-          <div className="absolute inset-0 overflow-hidden rounded-[22px] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+          <div className="absolute inset-0 overflow-hidden rounded-[12px] [backface-visibility:hidden] [transform:rotateY(180deg)]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={t.back} alt={t.caption[lang]} draggable={false} className="h-full w-full object-cover" />
           </div>

@@ -67,7 +67,7 @@ export default function ConciergeBenefits() {
   }, [active, paused]);
 
   return (
-    <section id="about" className="scroll-mt-24 overflow-hidden bg-white py-12 lg:py-16">
+    <section id="about" className="scroll-mt-24 overflow-hidden bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1400px]">
         <h2 className="text-center font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
           {lang === "en" ? "About ÁLIS BEAUTY CONCIERGE" : "О сервисе ÁLIS BEAUTY CONCIERGE"}
@@ -89,7 +89,7 @@ export default function ConciergeBenefits() {
                 onFocus={() => setActive(i)}
                 onClick={() => setActive(i)}
                 aria-expanded={on}
-                className={`group relative isolate overflow-hidden rounded-[20px] text-left text-white transition-[flex-grow,height] duration-700 ease-[cubic-bezier(.2,.7,.2,1)] lg:h-auto lg:min-w-0 ${
+                className={`group relative isolate overflow-hidden rounded-[12px] text-left text-white transition-[flex-grow,height] duration-700 ease-[cubic-bezier(.2,.7,.2,1)] lg:h-auto lg:min-w-0 ${
                   on ? "h-[380px] lg:flex-[3.6_1_0%]" : "h-[84px] lg:flex-[1_1_0%]"
                 }`}
               >

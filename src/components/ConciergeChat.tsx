@@ -178,7 +178,7 @@ export default function ConciergeChat() {
   return (
     <div className="pointer-events-none fixed bottom-4 right-4 z-[120] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
       {open && (
-        <div className="pointer-events-auto flex h-[76vh] max-h-[600px] w-[calc(100vw-2rem)] max-w-[380px] flex-col overflow-hidden rounded-[24px] border border-[#17191a]/10 bg-white shadow-[0_24px_70px_rgba(0,0,0,0.28)]">
+        <div className="pointer-events-auto flex h-[76vh] max-h-[600px] w-[calc(100vw-2rem)] max-w-[380px] flex-col overflow-hidden rounded-[12px] border border-[#17191a]/10 bg-white shadow-[0_24px_70px_rgba(0,0,0,0.28)]">
           {/* Шапка с аватаром администратора */}
           <div className="flex items-center gap-3 bg-[#17191a] px-5 py-4 text-[#f4efe6]">
             <span className="relative shrink-0">
@@ -199,7 +199,7 @@ export default function ConciergeChat() {
           <div ref={bodyRef} className="flex-1 space-y-3 overflow-y-auto bg-[#faf7f2] px-4 py-4">
             {msgs.map((m, i) => (
               <div key={i} className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}>
-                <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[13.5px] leading-relaxed ${m.from === "user" ? "bg-[#17191a] text-[#f4efe6]" : "border border-[#17191a]/8 bg-white text-[#2a2320]"}`}>
+                <div className={`max-w-[85%] rounded-[12px] px-4 py-2.5 text-[13.5px] leading-relaxed ${m.from === "user" ? "bg-[#17191a] text-[#f4efe6]" : "border border-[#17191a]/8 bg-white text-[#2a2320]"}`}>
                   <p>{m.text}</p>
                   {m.actions?.map((a) => (
                     <a key={a.href} href={a.href} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-[#17191a] px-3.5 py-1.5 text-[12px] font-medium text-[#f4efe6] transition-transform hover:scale-[1.03]">
@@ -212,7 +212,7 @@ export default function ConciergeChat() {
 
             {/* Форма быстрой заявки */}
             {!formSent && (
-              <form onSubmit={submitLead} className="rounded-2xl border border-[#17191a]/20 bg-white p-4 shadow-sm">
+              <form onSubmit={submitLead} className="rounded-[12px] border border-[#17191a]/20 bg-white p-4 shadow-sm">
                 <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-[#17191a]">{t("Быстрая заявка", "Quick request")}</p>
                 <input
                   value={name}

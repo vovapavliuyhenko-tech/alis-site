@@ -27,7 +27,7 @@ export default function FeatureCards({
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
           {cards.map((c) => (
-            <div key={c.title.ru} className="rounded-[20px] border border-[#17191a]/8 bg-[#faf7f2] p-7 transition-colors hover:border-[#17191a]/30 lg:p-8">
+            <div key={c.title.ru} className="rounded-[12px] border border-[#17191a]/8 bg-[#faf7f2] p-7 transition-colors hover:border-[#17191a]/30 lg:p-8">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#17191a] text-[#f4efe6]">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d={c.icon} strokeLinecap="round" strokeLinejoin="round" /></svg>
               </span>

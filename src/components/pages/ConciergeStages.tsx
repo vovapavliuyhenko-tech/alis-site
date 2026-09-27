@@ -22,7 +22,7 @@ export default function ConciergeStages({
   const { lang } = useLang();
 
   return (
-    <section id={sectionId} className="relative scroll-mt-24 bg-white">
+    <section id={sectionId} className="relative scroll-mt-24 bg-white section-y">
       <div className="r-reveal mx-auto w-[92%] max-w-[1400px] pt-12 pb-12 text-center lg:pt-[60px] lg:pb-16">
         <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
           {title[lang]}

@@ -63,7 +63,7 @@ export default function About() {
 
         <div className="grid gap-5 lg:grid-cols-3 lg:gap-6">
           {/* Портрет основателя — отдельной карточкой */}
-          <article className="flex flex-col overflow-hidden rounded-[20px] border border-[#17191a]/12 bg-white lg:row-span-2">
+          <article className="flex flex-col overflow-hidden rounded-[12px] border border-[#17191a]/12 bg-white lg:row-span-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/assets/tild3236-393__.jpg" alt="Дайана Тарзян" className="aspect-[4/5] w-full object-cover" draggable={false} />
             <div className="p-6 lg:p-7">
@@ -78,9 +78,9 @@ export default function About() {
           {UTP.map((u) => (
             <article
               key={u.title.ru}
-              className="group flex flex-col rounded-[20px] border border-[#17191a]/12 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#17191a]/30 hover:shadow-[0_18px_44px_rgba(59,13,26,0.10)] lg:p-7"
+              className="group flex flex-col rounded-[12px] border border-[#17191a]/12 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#17191a]/30 hover:shadow-[0_18px_44px_rgba(59,13,26,0.10)] lg:p-7"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#17191a]/10">
+              <span className="flex h-11 w-11 items-center justify-center rounded-[12px] bg-[#17191a]/10">
                 <ViewfinderIcon />
               </span>
               <h3 className="mt-5 font-display text-[17px] uppercase leading-tight tracking-[0.03em] text-[#17191a] lg:text-[19px]">

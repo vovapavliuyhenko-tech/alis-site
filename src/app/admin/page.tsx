@@ -199,7 +199,7 @@ function MastersTab({ store, commit }: { store: Store; commit: (s: Store) => voi
   return (
     <div className="space-y-6">
       {store.masters.map((m) => (
-        <div key={m.id} className="rounded-2xl border border-[#17191a]/10 p-5">
+        <div key={m.id} className="rounded-[12px] border border-[#17191a]/10 p-5">
           <div className="mb-5 flex flex-wrap items-center gap-4">
             <input value={m.name} onChange={(e) => update(m.id, { name: e.target.value })} className="rounded-lg border border-[#17191a]/15 px-3 py-2 text-[15px] outline-none focus:border-[#17191a]" />
             <input value={m.role} onChange={(e) => update(m.id, { role: e.target.value })} className="rounded-lg border border-[#17191a]/15 px-3 py-2 text-[13px] outline-none focus:border-[#17191a]" />

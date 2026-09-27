@@ -57,7 +57,7 @@ function Tile({ s, i, started }: { s: Service; i: number; started: boolean }) {
     transitionDelay: started ? `${i * 90}ms` : "0ms",
   };
   return (
-    <a href="https://n1054895.yclients.com/company/976464/personal/menu" target="_blank" rel="noopener noreferrer" style={reveal} className="group relative block aspect-[4/5] overflow-hidden rounded-[22px] bg-[#f1ede6]">
+    <a href="https://n1054895.yclients.com/company/976464/personal/menu" target="_blank" rel="noopener noreferrer" style={reveal} className="group relative block aspect-[4/5] overflow-hidden rounded-[12px] bg-[#f1ede6]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={s.img}
@@ -146,7 +146,7 @@ export default function Services() {
               transition: "opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)",
               transitionDelay: started ? `${SERVICES.length * 90}ms` : "0ms",
             }}
-            className="group relative flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-[22px] border-2 border-[#17191a] bg-[#17191a] p-5 text-[#ffffff] lg:p-6"
+            className="group relative flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-[12px] border-2 border-[#17191a] bg-[#17191a] p-5 text-[#ffffff] lg:p-6"
           >
             {/* Кремовый круг, расходящийся из-под кнопки */}
             <span

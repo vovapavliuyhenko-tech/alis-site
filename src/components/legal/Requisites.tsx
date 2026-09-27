@@ -21,7 +21,7 @@ const ROWS: [string, string][] = [
 
 export default function Requisites() {
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#17191a]/10">
+    <div className="overflow-hidden rounded-[12px] border border-[#17191a]/10">
       <table className="w-full border-collapse text-[14px]">
         <tbody>
           {ROWS.map(([k, v], i) => (

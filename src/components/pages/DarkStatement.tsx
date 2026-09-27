@@ -32,7 +32,7 @@ export default function DarkStatement({
   return (
     <section className="scroll-mt-24 bg-white py-14 lg:py-20">
       <div className="mx-auto w-[92%] max-w-[1180px]">
-        <div className="relative overflow-hidden rounded-[32px] bg-[#17191a] px-7 py-16 text-[#f4efe6] sm:px-10 lg:px-16 lg:py-24">
+        <div className="relative overflow-hidden rounded-[12px] bg-[#17191a] px-7 py-16 text-[#f4efe6] sm:px-10 lg:px-16 lg:py-24">
           <span aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#9a9a9a]/10 blur-[90px]" />
           <span aria-hidden className="pointer-events-none absolute -bottom-24 right-1/4 h-72 w-72 rounded-full bg-[#17191a]/25 blur-[90px]" />
           <div className="relative max-w-3xl">

@@ -91,7 +91,7 @@ export default function SalonCompare() {
               draggable={false}
               loading="lazy"
               decoding="async"
-              className="h-full w-full rounded-[22px] object-cover shadow-[0_18px_44px_rgba(0,0,0,0.14)]"
+              className="h-full w-full rounded-[12px] object-cover shadow-[0_18px_44px_rgba(0,0,0,0.14)]"
               style={{ transform: `rotate(${-photoTilt}deg)`, transformOrigin: "bottom center", willChange: "transform" }}
             />
           </div>
@@ -109,7 +109,7 @@ export default function SalonCompare() {
             return (
               <article
                 key={c.head.ru}
-                className="flex min-h-[420px] flex-col rounded-[22px] border p-9 lg:p-10"
+                className="flex min-h-[420px] flex-col rounded-[12px] border p-9 lg:p-10"
                 style={{
                   backgroundColor: bg,
                   borderColor: border,
@@ -146,7 +146,7 @@ export default function SalonCompare() {
               draggable={false}
               loading="lazy"
               decoding="async"
-              className="h-full w-full rounded-[22px] object-cover shadow-[0_18px_44px_rgba(0,0,0,0.14)]"
+              className="h-full w-full rounded-[12px] object-cover shadow-[0_18px_44px_rgba(0,0,0,0.14)]"
               style={{ transform: `rotate(${photoTilt}deg)`, transformOrigin: "bottom center", willChange: "transform" }}
             />
           </div>

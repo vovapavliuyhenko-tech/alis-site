@@ -82,7 +82,7 @@ export default function LookShowcase({
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
 
-            <div className="relative mx-auto aspect-[4/5] w-[62%] overflow-hidden rounded-[16px] bg-[#f1ede6] lg:w-[58%]">
+            <div className="relative mx-auto aspect-[4/5] w-[62%] overflow-hidden rounded-[12px] bg-[#f1ede6] lg:w-[58%]">
               {looks.map((l, i) => (
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img

@@ -177,7 +177,7 @@ export default function HorizontalStory({
                   alt={s.name[lang]}
                   loading="lazy"
                   decoding="async"
-                  className="absolute inset-3 h-[calc(100%-1.5rem)] w-[calc(100%-1.5rem)] rounded-[24px] object-cover md:inset-4 md:h-[calc(100%-2rem)] md:w-[calc(100%-2rem)]"
+                  className="absolute inset-3 h-[calc(100%-1.5rem)] w-[calc(100%-1.5rem)] rounded-[12px] object-cover md:inset-4 md:h-[calc(100%-2rem)] md:w-[calc(100%-2rem)]"
                 />
               </div>
             </article>

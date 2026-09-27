@@ -15,7 +15,7 @@ export default function Home() {
       <ScrollReveal />
       <Header />
       <Hero />
-      <div className="relative z-10 bg-white">
+      <div className="relative z-10 bg-white page-end">
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
         {/* Порядок для клиента: что делаем → выезд → работы мастеров → контакты (подвал) */}

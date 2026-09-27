@@ -172,7 +172,7 @@ export function ProductChoice({ id, title }: { id?: string; title: Loc }) {
   const big = PRODUCTS.slice(0, 2);
   const small = PRODUCTS.slice(2, 6);
   return (
-    <section id={id} className={`scroll-mt-20 bg-white pb-[clamp(72px,12.4vw,178px)] ${SHOP_GAP}`}>
+    <section id={id} className={`scroll-mt-20 bg-white ${SHOP_GAP}`}>
       <SectionTitle>{title[lang]}</SectionTitle>
       <div className="px-[6px]">
         <div className="grid grid-cols-1 gap-[2px] sm:grid-cols-2">

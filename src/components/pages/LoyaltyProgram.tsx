@@ -33,7 +33,7 @@ export default function LoyaltyProgram() {
       <div className="mx-auto w-[92%] max-w-[1400px]">
         <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-[0.9fr_1.1fr]">
           {/* Приветственный бонус */}
-          <div className="flex min-h-[340px] flex-col justify-between rounded-[30px] bg-[#17191a] p-8 text-[#f4efe6] lg:min-h-[480px] lg:p-12">
+          <div className="flex min-h-[340px] flex-col justify-between rounded-[12px] bg-[#17191a] p-8 text-[#f4efe6] lg:min-h-[480px] lg:p-12">
             <div>
               <p className="font-display text-[64px] leading-none tracking-[0.01em] lg:text-[88px]">500 ₽</p>
               <p className="mt-3 text-[15px] text-[#f4efe6]/80 lg:text-[17px]">
@@ -44,7 +44,7 @@ export default function LoyaltyProgram() {
               href={YCLIENTS}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-10 flex w-full items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
+              className="mt-10 flex w-full items-center justify-center rounded-[12px] border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
             >
               {t("Оформить визит", "Arrange a visit")}
             </a>
@@ -53,7 +53,7 @@ export default function LoyaltyProgram() {
           {/* Привилегии */}
           <div className="flex flex-col gap-3 sm:gap-4">
             {PERKS.map((p, i) => (
-              <article key={p.title.ru} className="flex flex-1 items-start gap-5 rounded-[30px] border border-[#17191a]/15 bg-white p-7 lg:p-9">
+              <article key={p.title.ru} className="flex flex-1 items-start gap-5 rounded-[12px] border border-[#17191a]/15 bg-white p-7 lg:p-9">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#17191a]/[0.06] font-display text-[15px] text-[#17191a]">
                   {String(i + 1).padStart(2, "0")}
                 </span>

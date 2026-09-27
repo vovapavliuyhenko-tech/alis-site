@@ -164,7 +164,7 @@ export default function BookingWidget() {
           </h2>
         </div>
 
-        <div className="rounded-[26px] border border-[#17191a]/10 bg-white p-6 shadow-[0_10px_40px_rgba(23,25,26,0.06)] lg:p-10">
+        <div className="rounded-[12px] border border-[#17191a]/10 bg-white p-6 shadow-[0_10px_40px_rgba(23,25,26,0.06)] lg:p-10">
           {/* Шаги-хлебные крошки */}
           {step < 4 && (
             <div className="mb-8 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-[#17191a]/45">
@@ -187,7 +187,7 @@ export default function BookingWidget() {
                   <button
                     key={s.id}
                     onClick={() => { setServiceId(s.id); setMasterId(null); setDate(null); setTime(null); setStep(1); }}
-                    className={`flex items-center justify-between gap-4 rounded-2xl border px-5 py-4 text-left transition-colors ${
+                    className={`flex items-center justify-between gap-4 rounded-[12px] border px-5 py-4 text-left transition-colors ${
                       serviceId === s.id
                         ? "border-[#17191a] bg-[#17191a]/5"
                         : "border-[#17191a]/12 hover:border-[#17191a]/50"
@@ -213,7 +213,7 @@ export default function BookingWidget() {
                   <button
                     key={m.id}
                     onClick={() => { setMasterId(m.id); setDate(null); setTime(null); setStep(2); }}
-                    className={`flex items-center gap-4 rounded-2xl border px-4 py-4 text-left transition-colors ${
+                    className={`flex items-center gap-4 rounded-[12px] border px-4 py-4 text-left transition-colors ${
                       masterId === m.id ? "border-[#17191a] bg-[#17191a]/5" : "border-[#17191a]/12 hover:border-[#17191a]/50"
                     }`}
                   >
@@ -348,7 +348,7 @@ export default function BookingWidget() {
                   </button>
                 </div>
                 {/* Сводка */}
-                <div className="rounded-2xl border border-[#17191a]/10 bg-[#17191a]/[0.02] p-5 text-[14px]">
+                <div className="rounded-[12px] border border-[#17191a]/10 bg-[#17191a]/[0.02] p-5 text-[14px]">
                   <p className="mb-3 text-[12px] uppercase tracking-wide text-[#17191a]/40">Ваша запись</p>
                   <Row k="Услуга" v={service?.title} />
                   <Row k="Мастер" v={master?.name} />

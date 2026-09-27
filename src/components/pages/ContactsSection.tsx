@@ -63,7 +63,7 @@ export default function ContactsSection() {
           href={MAP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative flex min-h-[320px] items-end overflow-hidden rounded-[24px] bg-[#17191a] p-8 text-[#f4efe6]"
+          className="group relative flex min-h-[320px] items-end overflow-hidden rounded-[12px] bg-[#17191a] p-8 text-[#f4efe6]"
         >
           <span aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#17191a]/25 blur-[80px]" />
           <div className="relative">

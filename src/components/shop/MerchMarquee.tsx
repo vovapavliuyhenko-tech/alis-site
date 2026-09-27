@@ -88,7 +88,7 @@ export default function MerchMarquee({
     <ul aria-hidden={hidden} className="flex shrink-0">
       {items.map((p, i) => (
         <li key={i} className="mr-4 w-[260px] shrink-0 lg:mr-5 lg:w-[340px]">
-          <Link href={`/product/${p.id}`} className="group block w-full overflow-hidden rounded-[10px]" aria-label={p.name[lang]} draggable={false}>
+          <Link href={`/product/${p.id}`} className="group block w-full overflow-hidden rounded-[12px]" aria-label={p.name[lang]} draggable={false}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={p.img} alt="" draggable={false} loading="lazy" decoding="async" className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
           </Link>
@@ -96,7 +96,7 @@ export default function MerchMarquee({
           <p className="mt-1 font-serif-display text-[15px] text-[#2a2320]/55 lg:text-[16px]">{fmtPrice(p.price, en)}</p>
           <Link
             href={`/product/${p.id}`}
-            className="mt-4 flex w-full items-center justify-center rounded-[10px] border border-[#17191a]/35 py-3 text-[11px] uppercase tracking-[0.18em] text-[#17191a] transition-colors duration-300 hover:border-transparent hover:bg-[#17191a] hover:text-[#f4efe6]"
+            className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#17191a]/35 py-3 text-[11px] uppercase tracking-[0.18em] text-[#17191a] transition-colors duration-300 hover:border-transparent hover:bg-[#17191a] hover:text-[#f4efe6]"
           >
             {t("Подробнее", "View")}
           </Link>

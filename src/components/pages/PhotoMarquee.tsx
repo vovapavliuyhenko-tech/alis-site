@@ -24,7 +24,7 @@ function Track({ items, hidden = false }: { items: string[]; hidden?: boolean })
       {items.map((src, i) => (
         <li key={i} className="mr-2 aspect-[3/4] h-[320px] shrink-0 lg:mr-3 lg:h-[440px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt="" draggable={false} loading="lazy" decoding="async" className="h-full w-full rounded-[14px] object-cover" />
+          <img src={src} alt="" draggable={false} loading="lazy" decoding="async" className="h-full w-full rounded-[12px] object-cover" />
         </li>
       ))}
     </ul>

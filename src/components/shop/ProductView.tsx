@@ -56,7 +56,7 @@ export default function ProductView({ product }: { product: Product }) {
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-14">
           {/* Фото */}
-          <div className="overflow-hidden rounded-[20px]">
+          <div className="overflow-hidden rounded-[12px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={product.img} alt={product.name[lang]} className="aspect-[4/5] w-full object-cover" />
           </div>
@@ -73,14 +73,14 @@ export default function ProductView({ product }: { product: Product }) {
 
             {/* Количество + в корзину */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <div className="flex items-center justify-between rounded-2xl border border-[#17191a]/25 px-2 sm:w-[130px]">
+              <div className="flex items-center justify-between rounded-[12px] border border-[#17191a]/25 px-2 sm:w-[130px]">
                 <button onClick={() => setQty((q) => Math.max(1, q - 1))} className="flex h-12 w-10 items-center justify-center text-[18px] text-[#17191a]">−</button>
                 <span className="w-8 text-center text-[15px] tabular-nums text-[#2a2320]">{qty}</span>
                 <button onClick={() => setQty((q) => q + 1)} className="flex h-12 w-10 items-center justify-center text-[18px] text-[#17191a]">+</button>
               </div>
               <button
                 onClick={() => { s.add(product.id, qty); s.openCart(); }}
-                className="flex flex-1 items-center justify-center rounded-2xl border border-[#17191a] bg-[#17191a] px-8 py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-blur-md hover:bg-transparent hover:text-[#17191a]"
+                className="flex flex-1 items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] px-8 py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-blur-md hover:bg-transparent hover:text-[#17191a]"
               >
                 {t("В корзину", "Add to cart")}
               </button>
@@ -88,7 +88,7 @@ export default function ProductView({ product }: { product: Product }) {
 
             <button
               onClick={() => s.toggleFav(product.id)}
-              className={`mt-3 flex w-full items-center justify-center gap-2 rounded-2xl border py-3.5 font-display text-[12px] uppercase tracking-[0.14em] transition-colors duration-300 ${
+              className={`mt-3 flex w-full items-center justify-center gap-2 rounded-[12px] border py-3.5 font-display text-[12px] uppercase tracking-[0.14em] transition-colors duration-300 ${
                 s.isFav(product.id) ? "border-[#17191a] bg-[#17191a]/10 text-[#17191a]" : "border-[#17191a]/40 text-[#17191a] hover:border-[#17191a]"
               }`}
             >

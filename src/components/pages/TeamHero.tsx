@@ -33,7 +33,7 @@ export default function TeamHero({
   const en = lang === "en";
 
   const Photo = (
-    <div className="relative hidden overflow-hidden rounded-[26px] border border-[#17191a]/10 shadow-[0_14px_44px_rgba(23,25,26,0.10)] lg:block">
+    <div className="relative hidden overflow-hidden rounded-[12px] border border-[#17191a]/10 shadow-[0_14px_44px_rgba(23,25,26,0.10)] lg:block">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={photo} alt="" draggable={false} loading={pinned ? "eager" : "lazy"} decoding="async" className="absolute inset-0 h-full w-full object-cover" />
     </div>
@@ -41,7 +41,7 @@ export default function TeamHero({
 
   const Panel = (
     <div
-      className={`relative flex h-full flex-col items-center justify-between overflow-hidden rounded-[26px] border border-[#17191a]/10 bg-white px-8 text-center shadow-[0_14px_44px_rgba(23,25,26,0.10)] lg:px-14 ${
+      className={`relative flex h-full flex-col items-center justify-between overflow-hidden rounded-[12px] border border-[#17191a]/10 bg-white px-8 text-center shadow-[0_14px_44px_rgba(23,25,26,0.10)] lg:px-14 ${
         logo
           ? "pt-14 pb-14 lg:pt-16 lg:pb-16" // 1-й блок: лого сверху и снизу
           : "pt-14 pb-10 lg:pt-16 lg:pb-12" // 2-й блок: кнопка ниже
@@ -72,7 +72,7 @@ export default function TeamHero({
       ) : (
         <a
           href={cta.href}
-          className="flex w-full items-center justify-center rounded-2xl border border-[#17191a] bg-[#17191a] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-blur-md hover:bg-transparent hover:text-[#17191a] sm:text-[14px]"
+          className="flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-blur-md hover:bg-transparent hover:text-[#17191a] sm:text-[14px]"
         >
           {en ? cta.label.en : cta.label.ru}
         </a>

@@ -59,13 +59,13 @@ export default function ConciergeOffer() {
     <section id="offer" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto grid w-[92%] max-w-[1400px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая колонка — фото */}
-        <div className="relative min-h-[320px] overflow-hidden rounded-[28px] lg:min-h-[600px]">
+        <div className="relative min-h-[320px] overflow-hidden rounded-[12px] lg:min-h-[600px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={PHOTO} alt="" loading="lazy" decoding="async" draggable={false} className="absolute inset-0 h-full w-full object-cover" />
         </div>
 
         {/* Правая колонка — форма заявки */}
-        <div id="booking" className="scroll-mt-24 flex flex-col rounded-[28px] bg-[#17191a] px-6 py-12 text-[#f4efe6] sm:px-10 lg:px-14 lg:py-16">
+        <div id="booking" className="scroll-mt-24 flex flex-col rounded-[12px] bg-[#17191a] px-6 py-12 text-[#f4efe6] sm:px-10 lg:px-14 lg:py-16">
           {sent ? (
             <div className="flex flex-1 flex-col justify-center gap-8 text-center">
               <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#9a9a9a] font-display text-[22px]">✓</span>
@@ -89,7 +89,7 @@ export default function ConciergeOffer() {
 
               <div className="mx-auto flex w-full max-w-lg flex-col gap-3">
                 {FIELDS.map((f) => (
-                  <label key={f.key} className={`block rounded-2xl border bg-white/[0.06] px-5 py-3 transition-colors focus-within:border-[#9a9a9a] ${errors[f.key] ? "border-[#e7a0a0]" : "border-transparent"}`}>
+                  <label key={f.key} className={`block rounded-[12px] border bg-white/[0.06] px-5 py-3 transition-colors focus-within:border-[#9a9a9a] ${errors[f.key] ? "border-[#e7a0a0]" : "border-transparent"}`}>
                     <span className="mb-1 block text-[10px] uppercase tracking-[0.16em] text-[#f4efe6]/55">
                       {f.label[lang]}
                       {f.required && <span className="text-[#9a9a9a]"> *</span>}
@@ -118,7 +118,7 @@ export default function ConciergeOffer() {
                 </label>
               </div>
 
-              <button type="submit" className="mx-auto flex w-full max-w-lg items-center justify-center rounded-2xl border border-transparent bg-[#f4efe6] py-4 text-[14px] font-medium tracking-[0.01em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md">
+              <button type="submit" className="mx-auto flex w-full max-w-lg items-center justify-center rounded-[12px] border border-transparent bg-[#f4efe6] py-4 text-[14px] font-medium tracking-[0.01em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md">
                 {t("Оставить заявку", "Leave a request")}
               </button>
             </form>

@@ -111,7 +111,7 @@ export default function ContactsCTA() {
 
       <div className="mx-auto grid w-[94%] max-w-[1400px] items-stretch gap-4 lg:grid-cols-2 lg:gap-6">
         {/* Видео слева (постер-заглушка, пока не добавлен ролик) + кнопка звука */}
-        <div className="r-reveal relative overflow-hidden rounded-[24px] border border-[#17191a]/10 shadow-[0_18px_44px_rgba(0,0,0,0.08)]">
+        <div className="r-reveal relative overflow-hidden rounded-[12px] border border-[#17191a]/10 shadow-[0_18px_44px_rgba(0,0,0,0.08)]">
           <video
             ref={videoRef}
             className="h-[360px] w-full object-cover lg:h-full lg:min-h-[520px]"
@@ -139,7 +139,7 @@ export default function ContactsCTA() {
         </div>
 
         {/* Белая карточка (как на референсе) */}
-        <div className="flex flex-col justify-center rounded-[24px] border border-[#17191a]/12 bg-white px-6 py-7 text-[#17191a] shadow-[0_18px_44px_rgba(0,0,0,0.06)] lg:min-h-[520px] lg:px-9 lg:py-10">
+        <div className="flex flex-col justify-center rounded-[12px] border border-[#17191a]/12 bg-white px-6 py-7 text-[#17191a] shadow-[0_18px_44px_rgba(0,0,0,0.06)] lg:min-h-[520px] lg:px-9 lg:py-10">
           <h2 className="r-reveal font-display text-[22px] font-normal leading-[1.1] tracking-[0.02em] lg:text-[30px]">
             ÁLIS BEAUTY <span className="opacity-70">{t("на Пархоменко", "on Parkhomenko")}</span>
           </h2>
@@ -193,7 +193,7 @@ export default function ContactsCTA() {
             href={href}
             target={href.startsWith("http") ? "_blank" : undefined}
             rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="r-reveal group flex items-center gap-3.5 rounded-[18px] border bg-white px-4 py-3 transition-colors duration-300 hover:bg-[#17191a]"
+            className="r-reveal group flex items-center gap-3.5 rounded-[12px] border bg-white px-4 py-3 transition-colors duration-300 hover:bg-[#17191a]"
             style={{ borderColor: `${WINE}33` }}
           >
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#17191a]/8 text-[#17191a] transition-colors duration-300 group-hover:bg-[#f4efe6]/15 group-hover:text-[#f4efe6]">

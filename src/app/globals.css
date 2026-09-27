@@ -65,8 +65,11 @@ html { scrollbar-color: var(--wine) #ffffff; scrollbar-width: thin; }
 
 /* ===== Единый вертикальный ритм между блоками по всему сайту (как на главной) =====
    Меняешь ритм всего сайта здесь, в одном месте. */
-.section-y { padding-top: 56px; padding-bottom: 56px; }
-@media (min-width: 1024px) { .section-y { padding-top: 96px; padding-bottom: 96px; } }
+/* Ритм как на странице магазина: отступ сверху у каждого блока (178px на 1440, меньше
+   на узких), снизу — у обёртки страницы (.page-end). Смежные блоки не удваивают промежуток. */
+.section-y { padding-top: clamp(72px, 12.4vw, 178px); padding-bottom: 0; }
+.page-end { padding-bottom: clamp(72px, 12.4vw, 178px); }
+.gap-top { margin-top: clamp(72px, 12.4vw, 178px); }
 
 /* Аккуратные переносы: меньше «сирот» и висячих коротких слов в конце строки */
 h1, h2, h3, h4, p, li, blockquote, figcaption { text-wrap: pretty; }

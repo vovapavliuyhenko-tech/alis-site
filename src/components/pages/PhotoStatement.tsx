@@ -23,7 +23,7 @@ export default function PhotoStatement({
   const { lang } = useLang();
 
   return (
-    <section className="relative isolate flex min-h-[clamp(620px,56.2vw,900px)] flex-col items-center justify-center overflow-hidden px-4 py-16 text-center text-white">
+    <section className="gap-top relative isolate flex min-h-[clamp(620px,56.2vw,900px)] flex-col items-center justify-center overflow-hidden px-4 py-16 text-center text-white">
       {/* Размытый фон — то же (или другое) фото, сильно размыто и затемнено */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

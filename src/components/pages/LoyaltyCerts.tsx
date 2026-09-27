@@ -43,7 +43,7 @@ export default function LoyaltyCerts() {
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
           {/* Лояльность — высокая оливковая карточка слева */}
-          <div className="r-reveal flex min-h-[320px] flex-col justify-between rounded-[26px] bg-[#17191a] p-8 text-[#f4efe6] sm:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-h-0 lg:p-10">
+          <div className="r-reveal flex min-h-[320px] flex-col justify-between rounded-[12px] bg-[#17191a] p-8 text-[#f4efe6] sm:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-h-0 lg:p-10">
             <div>
               <p className="text-[11px] uppercase tracking-[0.2em] text-[#f4efe6]/60">
                 {t("программа лояльности", "loyalty programme")}
@@ -63,7 +63,7 @@ export default function LoyaltyCerts() {
               href={YCLIENTS}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 flex w-full items-center justify-center rounded-2xl border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-blur-md hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
+              className="mt-8 flex w-full items-center justify-center rounded-[12px] border border-[#f4efe6] bg-[#f4efe6] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-blur-md hover:bg-transparent hover:text-[#f4efe6] sm:text-[14px]"
             >
               {t("Оформить визит", "Arrange a visit")}
             </a>
@@ -75,7 +75,7 @@ export default function LoyaltyCerts() {
             target="_blank"
             rel="noopener noreferrer"
             id="certificates"
-            className="group relative min-h-[240px] scroll-mt-28 overflow-hidden rounded-[26px] sm:col-span-2 lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:min-h-0"
+            className="group relative min-h-[240px] scroll-mt-28 overflow-hidden rounded-[12px] sm:col-span-2 lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:min-h-0"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -108,7 +108,7 @@ export default function LoyaltyCerts() {
           {TILES.map((tile, i) => (
             <div
               key={tile.title.ru}
-              className={`group flex min-h-[160px] flex-col justify-between rounded-[26px] bg-[#EAEAE4] p-7 lg:min-h-0 ${
+              className={`group flex min-h-[160px] flex-col justify-between rounded-[12px] bg-[#EAEAE4] p-7 lg:min-h-0 ${
                 i === 0 ? "lg:col-start-2 lg:row-start-2" : "lg:col-start-3 lg:row-start-2"
               }`}
             >

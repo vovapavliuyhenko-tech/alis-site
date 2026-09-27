@@ -313,7 +313,7 @@ export default function Booking() {
         </div>
 
         {/* Карточка-квиз — кремовое стекло */}
-        <div className="overflow-hidden rounded-[26px] border border-[#17191a]/10 bg-white/55 shadow-[0_20px_60px_rgba(42,38,34,0.15)] backdrop-blur-2xl">
+        <div className="overflow-hidden rounded-[12px] border border-[#17191a]/10 bg-white/55 shadow-[0_20px_60px_rgba(42,38,34,0.15)] backdrop-blur-2xl">
           <div className="grid lg:grid-cols-[300px_1fr]">
             {/* Левая колонка — персона */}
             <div className="flex flex-col gap-6 border-b border-[#17191a]/10 p-8 lg:border-b-0 lg:border-r">
@@ -332,7 +332,7 @@ export default function Booking() {
 
               {/* Реплика */}
               {!isSuccess && (
-                <div className="relative rounded-2xl border border-[#17191a]/10 bg-white/70 p-4 backdrop-blur-md">
+                <div className="relative rounded-[12px] border border-[#17191a]/10 bg-white/70 p-4 backdrop-blur-md">
                   <span className="absolute -top-1.5 left-8 h-3.5 w-3.5 rotate-45 border-l border-t border-[#17191a]/10 bg-white/70" />
                   <p key={step} className="booking-step text-[14px] leading-relaxed text-[#17191a]/75">
                     {note}
@@ -381,7 +381,7 @@ export default function Booking() {
                               <button
                                 key={opt.ru}
                                 onClick={onClick}
-                                className={`flex items-center gap-3.5 rounded-2xl border px-5 py-4 text-left text-[15px] transition-all ${
+                                className={`flex items-center gap-3.5 rounded-[12px] border px-5 py-4 text-left text-[15px] transition-all ${
                                   selected
                                     ? "border-[#17191a] bg-[#17191a] text-[#f4efe6]"
                                     : "border-[#17191a]/15 bg-white/50 text-[#17191a]/85 hover:border-[#17191a]/50 hover:bg-white/80"

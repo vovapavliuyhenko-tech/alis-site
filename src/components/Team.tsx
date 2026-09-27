@@ -119,7 +119,7 @@ export default function Team() {
                 transitionDelay: started ? `${i * 110}ms` : "0ms",
               }}
             >
-              <div className="relative aspect-[3/4] overflow-hidden rounded-[22px] shadow-[0_10px_30px_rgba(23,25,26,0.08)] transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-[12px] shadow-[0_10px_30px_rgba(23,25,26,0.08)] transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
                 {/* Фото: ч/б → цвет, лёгкий зум */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img

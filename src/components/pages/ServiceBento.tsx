@@ -33,7 +33,7 @@ export default function ServiceBento() {
             <a
               key={c.title.ru}
               href="/salon#uslugi"
-              className={`r-reveal group relative overflow-hidden rounded-[20px] ${c.span} ${i === 0 ? "col-span-2 aspect-[4/3] lg:col-span-1 lg:aspect-auto lg:h-full" : "aspect-[4/5] lg:aspect-auto lg:h-full"}`}
+              className={`r-reveal group relative overflow-hidden rounded-[12px] ${c.span} ${i === 0 ? "col-span-2 aspect-[4/3] lg:col-span-1 lg:aspect-auto lg:h-full" : "aspect-[4/5] lg:aspect-auto lg:h-full"}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

@@ -132,7 +132,7 @@ export default function QuizConsult() {
         </div>
 
         {/* Карточка квиза */}
-        <div className="grid overflow-hidden rounded-[28px] border border-[#17191a]/10 bg-white shadow-[0_18px_60px_rgba(23,25,26,0.08)] md:grid-cols-[300px_1fr]">
+        <div className="grid overflow-hidden rounded-[12px] border border-[#17191a]/10 bg-white shadow-[0_18px_60px_rgba(23,25,26,0.08)] md:grid-cols-[300px_1fr]">
           {/* Левая часть — персона */}
           <div className="flex flex-col gap-5 border-b border-[#17191a]/8 bg-[#faf7f2] p-7 md:border-b-0 md:border-r lg:p-9">
             <div className="flex items-center gap-4">
@@ -149,7 +149,7 @@ export default function QuizConsult() {
                 <p className="text-[12px] text-[#17191a]/55">{t("основатель ÁLIS BEAUTY", "founder of ÁLIS BEAUTY")}</p>
               </div>
             </div>
-            <div key={step} className="booking-step relative rounded-2xl border border-[#17191a]/12 bg-[#17191a]/[0.04] p-4 text-[13px] leading-relaxed text-[#2a2320]/80">
+            <div key={step} className="booking-step relative rounded-[12px] border border-[#17191a]/12 bg-[#17191a]/[0.04] p-4 text-[13px] leading-relaxed text-[#2a2320]/80">
               <span aria-hidden className="absolute -top-2 left-8 h-4 w-4 rotate-45 border-l border-t border-[#17191a]/12 bg-[#17191a]/[0.04] md:-left-2 md:top-8 md:border-l md:border-t-0 md:border-b" />
               {BUBBLES[Math.min(step, BUBBLES.length - 1)][lang]}
             </div>
@@ -231,7 +231,7 @@ export default function QuizConsult() {
                       </button>
                       <button
                         onClick={submit}
-                        className="group/btn inline-flex items-center gap-3 rounded-2xl bg-[#17191a] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02]"
+                        className="group/btn inline-flex items-center gap-3 rounded-[12px] bg-[#17191a] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02]"
                       >
                         {t("Получить расчёт", "Get my plan")}
                         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]/15 transition-transform duration-300 group-hover/btn:translate-x-0.5">
@@ -252,7 +252,7 @@ export default function QuizConsult() {
                           <button
                             key={opt.ru}
                             onClick={() => pick(opt[lang])}
-                            className={`group flex items-center gap-3.5 rounded-2xl border px-5 py-4 text-left text-[14px] transition-all duration-200 lg:text-[15px] ${
+                            className={`group flex items-center gap-3.5 rounded-[12px] border px-5 py-4 text-left text-[14px] transition-all duration-200 lg:text-[15px] ${
                               active
                                 ? "border-[#17191a] bg-[#17191a]/[0.05] text-[#2a2320]"
                                 : "border-[#17191a]/12 bg-white text-[#2a2320] hover:border-[#17191a]/60"
@@ -280,7 +280,7 @@ export default function QuizConsult() {
                       <button
                         onClick={next}
                         disabled={!answered}
-                        className="group/btn inline-flex items-center gap-3 rounded-2xl bg-[#17191a] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
+                        className="group/btn inline-flex items-center gap-3 rounded-[12px] bg-[#17191a] px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:scale-100"
                       >
                         {t("Следующий вопрос", "Next question")}
                         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f4efe6]/15 transition-transform duration-300 group-hover/btn:translate-x-0.5">

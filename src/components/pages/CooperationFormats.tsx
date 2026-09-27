@@ -76,9 +76,9 @@ function Panel({ a, i }: { a: (typeof AUDIENCES)[number]; i: number }) {
       href="#request"
       onPointerMove={onMove}
       onPointerLeave={onLeave}
-      className="group relative isolate flex h-[320px] scroll-mt-28 flex-col justify-end overflow-hidden rounded-[30px] bg-[#17191a] text-white lg:h-[min(400px,48vh)]"
+      className="group relative isolate flex h-[320px] scroll-mt-28 flex-col justify-end overflow-hidden rounded-[12px] bg-[#17191a] text-white lg:h-[min(400px,48vh)]"
       style={{
-        clipPath: shown ? "inset(0 0 0 0 round 30px)" : "inset(100% 0 0 0 round 30px)",
+        clipPath: shown ? "inset(0 0 0 0 round 12px)" : "inset(100% 0 0 0 round 12px)",
         transition: `clip-path 1.2s cubic-bezier(.7,0,.2,1) ${delay}ms`,
       }}
     >

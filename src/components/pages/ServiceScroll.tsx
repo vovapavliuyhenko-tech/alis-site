@@ -72,7 +72,7 @@ export default function ServiceScroll({
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           {/* ЛЕВО — зафиксированное фото активной категории */}
           <div className="hidden lg:block">
-            <div className="sticky top-24 aspect-[4/5] overflow-hidden rounded-[26px]">
+            <div className="sticky top-24 aspect-[4/5] overflow-hidden rounded-[12px]">
               {categories.map((c, i) => (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -107,7 +107,7 @@ export default function ServiceScroll({
                 className="border-t border-[#17191a]/12 py-8 first:border-t-0 first:pt-0 lg:min-h-[62vh] lg:py-12"
               >
                 {/* Фото категории — только на мобильном */}
-                <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-[22px] lg:hidden">
+                <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-[12px] lg:hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={PHOTOS[i % PHOTOS.length]} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />

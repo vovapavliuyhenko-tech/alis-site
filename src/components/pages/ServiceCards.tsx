@@ -47,7 +47,7 @@ export default function ServiceCards({
           {categories.map((c, i) => (
             <article
               key={c.label.ru}
-              className="group overflow-hidden rounded-[24px] border border-[#17191a]/12 bg-white shadow-[0_16px_44px_rgba(0,0,0,0.06)]"
+              className="group overflow-hidden rounded-[12px] border border-[#17191a]/12 bg-white shadow-[0_16px_44px_rgba(0,0,0,0.06)]"
             >
               {/* Фото-шапка с названием категории */}
               <div className="relative aspect-[16/9] overflow-hidden">

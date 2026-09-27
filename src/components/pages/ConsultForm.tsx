@@ -40,7 +40,7 @@ export default function ConsultForm() {
   return (
     <section id="request" className="scroll-mt-24 bg-white py-24 lg:py-28">
       <div className="mx-auto w-[92%] max-w-[1200px]">
-        <div className="grid overflow-hidden rounded-[32px] bg-[#17191a] text-[#f4efe6] lg:grid-cols-2">
+        <div className="grid overflow-hidden rounded-[12px] bg-[#17191a] text-[#f4efe6] lg:grid-cols-2">
           {/* Левая часть — оффер */}
           <div className="relative flex flex-col justify-center px-7 py-12 sm:px-10 lg:px-14 lg:py-16">
             <span aria-hidden className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-[#17191a]/25 blur-[90px]" />

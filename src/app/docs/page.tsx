@@ -28,7 +28,7 @@ export default function DocsPage() {
           <a
             key={d.href}
             href={d.href}
-            className="doc-card group flex items-center justify-between gap-6 rounded-2xl border border-[#17191a]/12 px-6 py-5 transition-colors hover:border-[#17191a] hover:bg-[#17191a]"
+            className="doc-card group flex items-center justify-between gap-6 rounded-[12px] border border-[#17191a]/12 px-6 py-5 transition-colors hover:border-[#17191a] hover:bg-[#17191a]"
           >
             <span>
               <span className="block text-[16px] font-medium text-[#17191a] transition-colors group-hover:text-white">{d.title}</span>

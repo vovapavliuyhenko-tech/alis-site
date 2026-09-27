@@ -49,7 +49,7 @@ export default function Certificates() {
   return (
     <section id="certificates" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[92%] max-w-[1400px]">
-        <div className="relative overflow-hidden rounded-[32px] bg-[#17191a] px-7 py-10 text-[#f4efe6] sm:px-10 lg:px-16 lg:py-16">
+        <div className="relative overflow-hidden rounded-[12px] bg-[#17191a] px-7 py-10 text-[#f4efe6] sm:px-10 lg:px-16 lg:py-16">
           {/* Мягкое свечение */}
           <span aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#f4efe6]/10 blur-[90px]" />
 
@@ -131,7 +131,7 @@ export default function Certificates() {
                 {/* Карта: front + back, непрерывное вращение под углом */}
                 <div className="cert-rotate relative aspect-[1.6/1] [transform-style:preserve-3d]">
                   {/* Лицевая сторона */}
-                  <div className="absolute inset-0 overflow-hidden rounded-[20px] border-2 border-[#f4efe6]/25 bg-gradient-to-br from-[#3a3c3d] to-[#0e0f10] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden]">
+                  <div className="absolute inset-0 overflow-hidden rounded-[12px] border-2 border-[#f4efe6]/25 bg-gradient-to-br from-[#3a3c3d] to-[#0e0f10] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden]">
                     <div className="flex h-full flex-col justify-between">
                       <div className="flex items-start justify-between">
                         <span className="font-serif text-[26px] tracking-[0.14em] text-[#f4efe6]">ÁLIS BEAUTY</span>
@@ -152,7 +152,7 @@ export default function Certificates() {
                     <span aria-hidden className="pointer-events-none absolute top-0 left-[-60%] h-full w-[45%] -skew-x-[18deg] bg-gradient-to-r from-transparent via-[#f4efe6]/35 to-transparent transition-[left] duration-[900ms] ease-out group-hover:left-[120%]" />
                   </div>
                   {/* Оборотная сторона */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-[20px] border-2 border-[#f4efe6]/25 bg-gradient-to-br from-[#0e0f10] to-[#3a3c3d] p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-[12px] border-2 border-[#f4efe6]/25 bg-gradient-to-br from-[#0e0f10] to-[#3a3c3d] p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-[#f4efe6]/10 [backface-visibility:hidden] [transform:rotateY(180deg)]">
                     <span className="font-serif text-[30px] tracking-[0.14em] text-[#f4efe6]">ÁLIS BEAUTY</span>
                     <span className="text-[11px] uppercase tracking-[0.22em] text-[#f4efe6]/60">{t("с любовью, ÁLIS BEAUTY", "with love, ÁLIS BEAUTY")}</span>
                   </div>
@@ -167,7 +167,7 @@ export default function Certificates() {
       {open && (
         <div className="fixed inset-0 z-[120] flex items-end justify-center p-0 sm:items-center sm:p-4" role="dialog" aria-modal="true">
           <div className="absolute inset-0 bg-[#17191a]/60 backdrop-blur-sm" onClick={close} />
-          <div className="relative w-full max-w-[520px] rounded-t-[24px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:rounded-[24px] sm:p-8">
+          <div className="relative w-full max-w-[520px] rounded-t-[24px] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:rounded-[12px] sm:p-8">
             <button
               onClick={close}
               aria-label={t("Закрыть", "Close")}
@@ -218,7 +218,7 @@ export default function Certificates() {
                     onChange={(e) => setCustom(e.target.value.replace(/[^\d]/g, ""))}
                     inputMode="numeric"
                     placeholder={t("Сумма, ₽ (только онлайн)", "Amount, ₽ (online only)")}
-                    className="mt-3 w-full rounded-2xl border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#17191a]"
+                    className="mt-3 w-full rounded-[12px] border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#17191a]"
                   />
                 )}
 
@@ -228,14 +228,14 @@ export default function Certificates() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={t("Ваше имя", "Your name")}
-                    className="w-full rounded-2xl border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#17191a]"
+                    className="w-full rounded-[12px] border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#17191a]"
                   />
                   <input
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+7 (___) ___-__-__"
                     inputMode="tel"
-                    className="w-full rounded-2xl border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#17191a]"
+                    className="w-full rounded-[12px] border border-[#17191a]/15 px-4 py-3 text-[15px] outline-none focus:border-[#17191a]"
                   />
                 </div>
 

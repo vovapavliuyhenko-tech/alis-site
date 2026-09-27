@@ -40,7 +40,7 @@ export default function SalonServices({
             return (
               <div
                 key={c.label.ru}
-                className={`overflow-hidden rounded-[20px] border transition-colors duration-300 ${
+                className={`overflow-hidden rounded-[12px] border transition-colors duration-300 ${
                   isOpen ? "border-transparent bg-[#17191a]" : "border-[#17191a]/12 bg-white"
                 }`}
               >
@@ -109,7 +109,7 @@ export default function SalonServices({
           href={cta.href}
           target={cta.href.startsWith("http") ? "_blank" : undefined}
           rel={cta.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          className="mt-3 flex w-full items-center justify-center rounded-[20px] border border-[#17191a] bg-[#17191a] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#17191a]/40 hover:bg-[#17191a]/10 hover:text-[#17191a] hover:backdrop-blur-md sm:text-[14px]"
+          className="mt-3 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#17191a]/40 hover:bg-[#17191a]/10 hover:text-[#17191a] hover:backdrop-blur-md sm:text-[14px]"
         >
           {cta.label[lang]}
         </a>

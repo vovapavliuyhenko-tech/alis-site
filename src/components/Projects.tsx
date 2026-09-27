@@ -31,7 +31,7 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
         <div className="group relative aspect-[3/4] w-[86%] max-w-[360px] [perspective:1400px]">
           <div className="relative h-full w-full transition-transform duration-[2000ms] [transform-style:preserve-3d] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:[transform:rotateY(180deg)]">
             {/* ЛИЦО — фото работы */}
-            <div className="absolute inset-0 overflow-hidden rounded-[22px] shadow-2xl [backface-visibility:hidden]">
+            <div className="absolute inset-0 overflow-hidden rounded-[12px] shadow-2xl [backface-visibility:hidden]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={s.thumb} alt={s.title[lang]} className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
@@ -50,7 +50,7 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
             </div>
 
             {/* ОБОРОТ — заголовок сверху, текст по центру, кнопка во всю ширину внизу */}
-            <div className="absolute inset-0 flex flex-col rounded-[22px] border border-[#17191a]/10 bg-white px-8 py-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+            <div className="absolute inset-0 flex flex-col rounded-[12px] border border-[#17191a]/10 bg-white px-8 py-8 text-center shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
               <p className="flex flex-1 items-center justify-center text-[15px] leading-relaxed text-[#17191a]/80">
                 {s.blurb[lang]}
               </p>

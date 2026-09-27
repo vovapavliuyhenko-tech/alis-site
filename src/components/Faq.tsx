@@ -120,7 +120,7 @@ export default function Faq({
             {titleBottom[lang]}
           </h2>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={photo} alt="" loading="lazy" decoding="async" className="mt-8 aspect-[3/4] w-full max-w-[260px] rounded-[22px] object-cover lg:mt-10" draggable={false} />
+          <img src={photo} alt="" loading="lazy" decoding="async" className="mt-8 aspect-[3/4] w-full max-w-[260px] rounded-[12px] object-cover lg:mt-10" draggable={false} />
         </div>
 
         {/* Правая колонка — карточки идут вплотную и НАЕЗЖАЮТ друг на друга при скролле */}
@@ -134,7 +134,7 @@ export default function Faq({
                 className="sticky top-24 pb-3 last:pb-0"
               >
                 <article
-                  className={`flex min-h-[190px] flex-col justify-center rounded-[20px] border p-5 transition-colors duration-300 lg:p-6 ${
+                  className={`flex min-h-[190px] flex-col justify-center rounded-[12px] border p-5 transition-colors duration-300 lg:p-6 ${
                     isActive
                       ? "border-transparent bg-[#17191a]"
                       : "border-[#17191a]/30 bg-white"

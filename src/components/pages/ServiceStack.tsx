@@ -24,9 +24,9 @@ function Panel({ cat, img, lang, cta }: { cat: ServiceCategory; img: string; lan
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="flex flex-col rounded-[28px] border border-[#17191a]/30 bg-white p-8 lg:min-h-[640px] lg:p-14">
+    <div className="flex flex-col rounded-[12px] border border-[#17191a]/30 bg-white p-8 lg:min-h-[640px] lg:p-14">
       {/* Фото категории — только на мобильном (на десктопе фото зафиксировано слева) */}
-      <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-[20px] lg:hidden">
+      <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-[12px] lg:hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={img} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
       </div>
@@ -69,7 +69,7 @@ function Panel({ cat, img, lang, cta }: { cat: ServiceCategory; img: string; lan
       <a
         href={cta.href}
         {...(cta.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-        className="mt-8 block w-full rounded-2xl border border-[#17191a] bg-[#17191a] px-6 py-4 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] lg:mt-auto lg:pt-4"
+        className="mt-8 block w-full rounded-[12px] border border-[#17191a] bg-[#17191a] px-6 py-4 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] lg:mt-auto lg:pt-4"
       >
         {cta.label[lang]}
       </a>
@@ -135,7 +135,7 @@ export default function ServiceStack({
         <div className="grid gap-2 lg:grid-cols-2">
           {/* ЛЕВО — одно зафиксированное фото */}
           <div className="hidden lg:block">
-            <div className="sticky top-24 h-[640px] overflow-hidden rounded-[28px]">
+            <div className="sticky top-24 h-[640px] overflow-hidden rounded-[12px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={photo} alt="" className="h-full w-full object-cover" draggable={false} />
             </div>

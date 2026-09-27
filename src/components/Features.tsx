@@ -45,20 +45,20 @@ function Cell({ c, i, started }: { c: Cell; i: number; started: boolean }) {
 
   if (c.t === "stat")
     return (
-      <div style={reveal} className="flex min-h-[280px] flex-col items-center justify-center rounded-[28px] bg-[#f1ede6] p-8 text-center lg:min-h-[320px]">
+      <div style={reveal} className="flex min-h-[280px] flex-col items-center justify-center rounded-[12px] bg-[#f1ede6] p-8 text-center lg:min-h-[320px]">
         <div className="font-serif text-[42px] leading-none text-[#17191a] lg:text-[52px]">{c.num}</div>
         <p className="mt-4 max-w-[220px] text-[13.5px] leading-relaxed text-[#17191a]/60 lg:text-[14px]">{c.cap[lang]}</p>
       </div>
     );
   if (c.t === "dark")
     return (
-      <div style={reveal} className="flex min-h-[320px] flex-col items-center justify-center rounded-[28px] bg-[#17191a] p-8 text-center lg:min-h-[360px]">
+      <div style={reveal} className="flex min-h-[320px] flex-col items-center justify-center rounded-[12px] bg-[#17191a] p-8 text-center lg:min-h-[360px]">
         <p className="font-serif text-[22px] leading-snug text-[#f4efe6] lg:text-[26px]">{c.text[lang]}</p>
       </div>
     );
   if (c.t === "feat")
     return (
-      <div style={reveal} className="flex min-h-[220px] flex-col items-center justify-center rounded-[28px] bg-[#f1ede6] p-8 text-center">
+      <div style={reveal} className="flex min-h-[220px] flex-col items-center justify-center rounded-[12px] bg-[#f1ede6] p-8 text-center">
         <p className="text-[17px] leading-snug text-[#17191a]/85 lg:text-[19px]">{c.text[lang]}</p>
       </div>
     );
@@ -70,7 +70,7 @@ function Cell({ c, i, started }: { c: Cell; i: number; started: boolean }) {
     );
   // photo
   return (
-    <div style={reveal} className="overflow-hidden rounded-[28px]">
+    <div style={reveal} className="overflow-hidden rounded-[12px]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={c.img} alt="" className="aspect-[3/4] w-full object-cover" />
     </div>

@@ -53,7 +53,7 @@ export default function SalonPinnedHero() {
   return (
     <div ref={wrapRef} data-hide-fab className="relative" style={{ height: `${SCENES.length * 135}vh` }}>
       <div className="sticky top-0 h-svh min-h-[560px] w-full px-2 pb-2 pt-[72px] sm:px-2.5 sm:pb-2.5 sm:pt-[80px]">
-        <div className="relative h-full w-full overflow-hidden rounded-[26px]">
+        <div className="relative h-full w-full overflow-hidden rounded-[12px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={BG} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/30 to-black/55" />
@@ -98,7 +98,7 @@ export default function SalonPinnedHero() {
                     href={YCLIENTS}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-2xl border border-white bg-white px-14 py-5 font-display text-[12px] uppercase tracking-[0.16em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white sm:text-[13px]"
+                    className="inline-flex items-center justify-center rounded-[12px] border border-white bg-white px-14 py-5 font-display text-[12px] uppercase tracking-[0.16em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white sm:text-[13px]"
                   >
                     {en ? "book now" : "записаться"}
                   </a>

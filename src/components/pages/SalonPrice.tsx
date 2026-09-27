@@ -11,7 +11,7 @@ export default function SalonPrice() {
   return (
     <section className="scroll-mt-24 bg-white py-16 lg:py-24">
       <div className="mx-auto w-[92%] max-w-[1180px]">
-        <div className="overflow-hidden rounded-[28px] bg-[#17191a] px-7 py-12 text-[#f4efe6] sm:px-10 lg:px-14 lg:py-16">
+        <div className="overflow-hidden rounded-[12px] bg-[#17191a] px-7 py-12 text-[#f4efe6] sm:px-10 lg:px-14 lg:py-16">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#17191a]/25 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em]">
             {en ? "Prices" : "Прайс"}
           </span>

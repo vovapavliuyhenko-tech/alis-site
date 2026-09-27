@@ -34,7 +34,7 @@ export default function SplitMedia({
       <div className={`mx-auto grid w-[92%] max-w-[1180px] items-center gap-8 lg:grid-cols-2 lg:gap-14 ${mirror ? "" : ""}`}>
         {/* Медиа */}
         <div className={`relative ${mirror ? "lg:order-2" : "lg:order-1"}`}>
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[24px] lg:aspect-[5/6]">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[12px] lg:aspect-[5/6]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={image} alt={title[lang]} className="h-full w-full object-cover" />
             {tag && (
