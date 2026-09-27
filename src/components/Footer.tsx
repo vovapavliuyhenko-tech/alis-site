@@ -71,7 +71,7 @@ export default function Footer() {
         </div>
 
         {/* Колонки + крупный контакт справа */}
-        <div className="grid gap-10 pt-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.4fr_auto] lg:gap-10 lg:pt-12">
+        <div className="grid gap-10 pt-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.6fr_auto] lg:gap-10 lg:pt-12">
           {/* Соцсети */}
           <div>
             <p className={title}>{t("Социальные сети", "Social")}</p>
@@ -98,7 +98,7 @@ export default function Footer() {
             <p className={title}>{t("Меню", "Menu")}</p>
             <div className="grid grid-cols-2 gap-x-8 gap-y-2.5">
               {MENU.map((m) => (
-                <a key={m.href} href={m.href} {...(m.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={link}>{m.label}</a>
+                <a key={m.href} href={m.href} {...(m.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${link} whitespace-nowrap`}>{m.label}</a>
               ))}
             </div>
           </div>
