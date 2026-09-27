@@ -177,7 +177,7 @@ export function ProductChoice({ id, title }: { id?: string; title: Loc }) {
       <div className="px-[6px]">
         <div className="grid grid-cols-1 gap-[2px] sm:grid-cols-2">
           {big.map((p) => (
-            <Card key={p.id} p={p} ratio="aspect-square" />
+            <Card key={p.id} p={p} ratio="aspect-[4/3]" />
           ))}
         </div>
         <div className="mt-[2px] grid grid-cols-2 gap-[2px] lg:grid-cols-4">
