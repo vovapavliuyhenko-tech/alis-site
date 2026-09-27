@@ -2,8 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import PhotoStatement from "@/components/pages/PhotoStatement";
-import TeamIntro from "@/components/pages/TeamIntro";
-import { ShopStatement, ProductCarousel, ProductChoice } from "@/components/shop/ShopBlocks";
+import { ShopHero, ShopStatement, ProductCarousel, ProductChoice } from "@/components/shop/ShopBlocks";
 
 // Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и размеры блоков — по референсу
 // revatiwear.ru (блок категорий пока не нужен). Фото — временные, пришлёт заказчица.
@@ -12,8 +11,8 @@ export default function ShopPage() {
     <main>
       <ScrollReveal />
       <Header />
-      {/* 1 — Обложка с заголовком страницы, как на остальных страницах (фото временное) */}
-      <TeamIntro title={{ ru: "Магазин", en: "Shop" }} photo="/assets/tild6530-383_-2___1_.jpg" />
+      {/* 1 — Обложка: фото на весь экран и крупный логотип */}
+      <ShopHero photo="/assets/tild6530-383_-2___1_.jpg" caption={{ ru: "Магазин", en: "Shop" }} />
 
       {/* Маркер конца обложки — после него у шапки появляется подложка */}
       <div id="hero-end" aria-hidden className="h-0" />
