@@ -50,7 +50,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="footer" className="relative overflow-hidden bg-[#17191a] text-[#f4efe6]">
+    <footer id="footer" className="relative z-20 -mt-10 overflow-hidden rounded-t-[40px] bg-[#17191a] text-[#f4efe6]">
       <div className="relative z-10 mx-auto w-[94%] max-w-[1680px] pb-10 pt-16 lg:pt-20">
         {/* Колонки + крупный контакт справа */}
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr_1fr_auto] lg:gap-8">
