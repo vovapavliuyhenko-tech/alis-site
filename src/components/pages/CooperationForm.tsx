@@ -59,7 +59,7 @@ export default function CooperationForm() {
 
   return (
     <section id="request" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto grid w-[92%] max-w-[1400px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
+      <div className="mx-auto grid w-[96%] max-w-[1760px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {/* Левая оливковая панель */}
         <div className="flex flex-col rounded-[12px] bg-[#17191a] px-6 py-12 text-[#f4efe6] sm:px-10 lg:min-h-[620px] lg:px-14 lg:py-16">
           {sent ? (

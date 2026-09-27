@@ -48,7 +48,7 @@ export default function Certificates() {
 
   return (
     <section id="certificates" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto w-[92%] max-w-[1400px]">
+      <div className="mx-auto w-[96%] max-w-[1760px]">
         <div className="relative overflow-hidden rounded-[12px] bg-[#17191a] px-7 py-10 text-[#f4efe6] sm:px-10 lg:px-16 lg:py-16">
           {/* Мягкое свечение */}
           <span aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#f4efe6]/10 blur-[90px]" />

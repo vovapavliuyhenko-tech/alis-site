@@ -92,7 +92,7 @@ export default function PhotoMarquee({
 
   return (
     <section id={sectionId} className="scroll-mt-24 overflow-hidden bg-white section-y">
-      <div className="r-reveal mx-auto mb-12 w-[94%] max-w-[1440px] text-center lg:mb-16">
+      <div className="r-reveal mx-auto mb-12 w-[96%] max-w-[1760px] text-center lg:mb-16">
         <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
           {title[lang]}
         </h2>
@@ -112,7 +112,7 @@ export default function PhotoMarquee({
       </div>
 
       {/* Полоса прогресса под фото */}
-      <div className="mx-auto mt-10 h-[3px] w-[94%] max-w-[1440px] overflow-hidden rounded-full bg-[#C2C0B6]/40">
+      <div className="mx-auto mt-10 h-[3px] w-[96%] max-w-[1760px] overflow-hidden rounded-full bg-[#C2C0B6]/40">
         <div ref={barRef} className="h-full rounded-full bg-[#17191a]" style={{ width: "0%" }} />
       </div>
     </section>

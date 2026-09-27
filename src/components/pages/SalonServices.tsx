@@ -26,7 +26,7 @@ export default function SalonServices({
 
   return (
     <section id="uslugi" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto w-[92%] max-w-[1400px]">
+      <div className="mx-auto w-[96%] max-w-[1760px]">
         <div className="mb-12 text-center lg:mb-16">
           <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {title[lang]}

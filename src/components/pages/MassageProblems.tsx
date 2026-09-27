@@ -67,7 +67,7 @@ export default function MassageProblems() {
 
   return (
     <section id="problems" className="bg-white section-y">
-      <div className="mx-auto w-[94%] max-w-[1400px]">
+      <div className="mx-auto w-[96%] max-w-[1760px]">
         {/* Заголовок секции */}
         <div className="r-reveal text-center">
           <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">

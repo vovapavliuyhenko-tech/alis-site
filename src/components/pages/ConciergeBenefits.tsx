@@ -68,7 +68,7 @@ export default function ConciergeBenefits() {
 
   return (
     <section id="about" className="scroll-mt-24 overflow-hidden bg-white section-y">
-      <div className="mx-auto w-[92%] max-w-[1400px]">
+      <div className="mx-auto w-[96%] max-w-[1760px]">
         <h2 className="text-center font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
           {lang === "en" ? "About ÁLIS BEAUTY CONCIERGE" : "О сервисе ÁLIS BEAUTY CONCIERGE"}
         </h2>

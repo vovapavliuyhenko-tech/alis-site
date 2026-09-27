@@ -111,7 +111,7 @@ export default function Faq({
 
   return (
     <section ref={sectionRef} id={sectionId} className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto grid w-[92%] max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+      <div className="mx-auto grid w-[96%] max-w-[1760px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         {/* Левая колонка — заголовок рядом с фото, зафиксирована */}
         <div className="lg:sticky lg:top-24 lg:self-start">
           <h2 className="r-reveal font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">

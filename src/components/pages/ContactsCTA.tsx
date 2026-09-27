@@ -93,7 +93,7 @@ export default function ContactsCTA() {
   return (
     <section id="contacts" className="scroll-mt-24 bg-white pb-20 pt-2 lg:pb-28 lg:pt-4">
       {/* Шапка блока — в едином стиле с главной/командой */}
-      <div className="r-reveal mx-auto mb-10 w-[94%] max-w-[1400px] lg:mb-12">
+      <div className="r-reveal mx-auto mb-10 w-[96%] max-w-[1760px] lg:mb-12">
         <span className="inline-flex items-center gap-2 rounded-full bg-[#17191a]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#17191a]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#17191a]" />
           {t("контакты", "contacts")}
@@ -109,7 +109,7 @@ export default function ContactsCTA() {
         </p>
       </div>
 
-      <div className="mx-auto grid w-[94%] max-w-[1400px] items-stretch gap-4 lg:grid-cols-2 lg:gap-6">
+      <div className="mx-auto grid w-[96%] max-w-[1760px] items-stretch gap-4 lg:grid-cols-2 lg:gap-6">
         {/* Видео слева (постер-заглушка, пока не добавлен ролик) + кнопка звука */}
         <div className="r-reveal relative overflow-hidden rounded-[12px] border border-[#17191a]/10 shadow-[0_18px_44px_rgba(0,0,0,0.08)]">
           <video
@@ -186,7 +186,7 @@ export default function ContactsCTA() {
       </div>
 
       {/* Соц-сети — кнопки-карточки */}
-      <div className="mx-auto mt-3 grid w-[94%] max-w-[1400px] gap-3 sm:grid-cols-2 lg:mt-4 lg:grid-cols-3 lg:gap-4">
+      <div className="mx-auto mt-3 grid w-[96%] max-w-[1760px] gap-3 sm:grid-cols-2 lg:mt-4 lg:grid-cols-3 lg:gap-4">
         {SOCIALS.map(({ icon: Icon, title, sub, href }) => (
           <a
             key={title}

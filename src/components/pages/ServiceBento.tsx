@@ -21,7 +21,7 @@ export default function ServiceBento() {
 
   return (
     <section id="services" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto w-[94%] max-w-[1440px]">
+      <div className="mx-auto w-[96%] max-w-[1760px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
           <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {en ? "Everything for your look" : "Всё для вашего образа"}

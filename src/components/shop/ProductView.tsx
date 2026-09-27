@@ -44,7 +44,7 @@ export default function ProductView({ product }: { product: Product }) {
 
   return (
     <div className="relative z-10 bg-white pt-[84px] lg:pt-[100px]">
-      <div className="mx-auto w-[92%] max-w-[1200px] pb-20 lg:pb-28">
+      <div className="mx-auto w-[96%] max-w-[1760px] pb-20 lg:pb-28">
         {/* Хлебные крошки */}
         <nav className="mb-6 flex items-center gap-2 text-[12px] uppercase tracking-[0.12em] text-[#2a2320]/45">
           <Link href="/shop" className="transition-colors hover:text-[#17191a]">{t("Магазин", "Shop")}</Link>
@@ -58,7 +58,7 @@ export default function ProductView({ product }: { product: Product }) {
           {/* Фото */}
           <div className="overflow-hidden rounded-[12px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={product.img} alt={product.name[lang]} className="aspect-[4/5] w-full object-cover" />
+            <img src={product.img} alt={product.name[lang]} className="aspect-[4/5] w-full object-cover lg:aspect-square" />
           </div>
 
           {/* Инфо */}

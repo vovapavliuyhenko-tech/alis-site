@@ -109,7 +109,7 @@ export default function FlipGallery() {
 
   return (
     <section id="works" className="scroll-mt-24 bg-white py-24 lg:py-32">
-      <div className="mx-auto w-[92%] max-w-[1400px]">
+      <div className="mx-auto w-[96%] max-w-[1760px]">
         {/* Заголовок */}
         <div className="mb-14 max-w-2xl lg:mb-20">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#17191a]/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#17191a]">

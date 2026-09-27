@@ -156,7 +156,7 @@ export function ProductCarousel({ title, linkHref }: { title: Loc; linkHref: str
         onPointerUp={onUp}
         onPointerCancel={onUp}
         onClickCapture={onClickCapture}
-        className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden px-[6px] [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+        className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden px-[2%] [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
       >
         {track(false)}
         {track(true)}
@@ -174,7 +174,7 @@ export function ProductChoice({ id, title }: { id?: string; title: Loc }) {
   return (
     <section id={id} className={`scroll-mt-20 bg-white ${SHOP_GAP}`}>
       <SectionTitle>{title[lang]}</SectionTitle>
-      <div className="px-[6px]">
+      <div className="px-[2%]">
         <div className="grid grid-cols-1 gap-[2px] sm:grid-cols-2">
           {big.map((p) => (
             <Card key={p.id} p={p} ratio="aspect-[4/3]" />

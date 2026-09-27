@@ -41,7 +41,7 @@ export default function Vacancies() {
 
   return (
     <section id="vacancies" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto w-[92%] max-w-[1400px]">
+      <div className="mx-auto w-[96%] max-w-[1760px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
           <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.03em] text-[#17191a] lg:text-[28px]">
             {en ? "Grow with ÁLIS BEAUTY" : "Расти вместе с ÁLIS BEAUTY"}
