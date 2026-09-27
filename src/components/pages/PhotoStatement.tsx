@@ -23,7 +23,7 @@ export default function PhotoStatement({
   const { lang } = useLang();
 
   return (
-    <section className="gap-top relative isolate flex min-h-[clamp(620px,56.2vw,900px)] flex-col items-center justify-center overflow-hidden px-4 py-16 text-center text-white">
+    <section className="gap-top relative isolate flex min-h-[clamp(480px,42vw,680px)] flex-col items-center justify-center overflow-hidden px-4 py-16 text-center text-white">
       {/* Размытый фон — то же (или другое) фото, сильно размыто и затемнено */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -36,7 +36,7 @@ export default function PhotoStatement({
       <div aria-hidden className="absolute inset-0 -z-10 bg-black/35" />
 
       {/* Вертикальное фото с логотипом */}
-      <div className="r-reveal relative w-[200px] overflow-hidden rounded-[12px] sm:w-[230px] lg:w-[clamp(220px,17.6vw,300px)]">
+      <div className="r-reveal relative w-[170px] overflow-hidden rounded-[12px] sm:w-[190px] lg:w-[clamp(180px,13vw,230px)]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={photo} alt="" loading="lazy" className="aspect-[253/380] w-full object-cover" />
         <div className="absolute inset-0 flex items-center justify-center">
@@ -45,12 +45,12 @@ export default function PhotoStatement({
       </div>
 
       {/* Текст и ссылка */}
-      <p className="r-reveal mt-7 max-w-[479px] text-[13px] leading-[17px] text-white lg:text-[14px] lg:leading-[19px]">
+      <p className="r-reveal mt-5 max-w-[479px] text-[13px] leading-[17px] text-white lg:text-[14px] lg:leading-[19px]">
         {text[lang]}
       </p>
       <a
         href={link.href}
-        className="r-reveal mt-6 text-[12px] text-white underline decoration-1 underline-offset-[5px] transition-opacity hover:opacity-70"
+        className="r-reveal mt-4 text-[12px] text-white underline decoration-1 underline-offset-[5px] transition-opacity hover:opacity-70"
       >
         {link.label[lang]}
       </a>

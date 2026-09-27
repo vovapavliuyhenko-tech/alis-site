@@ -140,7 +140,7 @@ export function ProductCarousel({ title, linkHref }: { title: Loc; linkHref: str
     <ul aria-hidden={hidden || undefined} className="flex shrink-0 gap-[2px] pr-[2px]">
       {PRODUCTS.map((p) => (
         <li key={p.id} className="w-[62vw] shrink-0 sm:w-[40vw] lg:w-[24.65vw]">
-          <Card p={p} />
+          <Card p={p} ratio="aspect-[3/4]" />
         </li>
       ))}
     </ul>
@@ -182,7 +182,7 @@ export function ProductChoice({ id, title }: { id?: string; title: Loc }) {
         </div>
         <div className="mt-[2px] grid grid-cols-2 gap-[2px] lg:grid-cols-4">
           {small.map((p) => (
-            <Card key={p.id} p={p} ratio="aspect-[3/4]" />
+            <Card key={p.id} p={p} ratio="aspect-square" />
           ))}
         </div>
       </div>
