@@ -76,7 +76,7 @@ function Panel({ a, i }: { a: (typeof AUDIENCES)[number]; i: number }) {
       href="#request"
       onPointerMove={onMove}
       onPointerLeave={onLeave}
-      className="group relative isolate flex h-[420px] scroll-mt-28 flex-col justify-end overflow-hidden rounded-[30px] bg-[#17191a] text-white lg:h-[min(560px,66vh)]"
+      className="group relative isolate flex h-[320px] scroll-mt-28 flex-col justify-end overflow-hidden rounded-[30px] bg-[#17191a] text-white lg:h-[min(400px,48vh)]"
       style={{
         clipPath: shown ? "inset(0 0 0 0 round 30px)" : "inset(100% 0 0 0 round 30px)",
         transition: `clip-path 1.2s cubic-bezier(.7,0,.2,1) ${delay}ms`,
@@ -102,20 +102,20 @@ function Panel({ a, i }: { a: (typeof AUDIENCES)[number]; i: number }) {
       />
 
       {/* Номер и стрелка */}
-      <div className="absolute inset-x-8 top-8 flex items-start justify-between lg:inset-x-14 lg:top-14">
-        <span className="font-serif-display text-[14px] tracking-[0.14em] text-white/75">{String(i + 1).padStart(2, "0")}</span>
-        <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-white/10 backdrop-blur-md transition-colors duration-500 group-hover:border-white group-hover:bg-white group-hover:text-[#17191a]">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <div className="absolute inset-x-7 top-7 flex items-start justify-between lg:inset-x-10 lg:top-10">
+        <span className="font-serif-display text-[12px] tracking-[0.14em] text-white/70">{String(i + 1).padStart(2, "0")}</span>
+        <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/50 bg-white/10 backdrop-blur-md transition-colors duration-500 group-hover:border-white group-hover:bg-white group-hover:text-[#17191a]">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
             <path d="M7 17 17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
       </div>
 
-      <div className="p-8 lg:p-14">
+      <div className="p-7 lg:p-10">
         {/* Заголовок выезжает по буквам */}
         <h2
           aria-label={a.title[lang]}
-          className="font-serif-display text-[26px] font-normal uppercase leading-[1.1] tracking-[0.02em] lg:text-[clamp(28px,2.4vw,40px)]"
+          className="font-serif-display text-[20px] font-normal uppercase leading-[1.15] tracking-[0.03em] lg:text-[clamp(20px,1.6vw,26px)]"
         >
           {/* Слова не переносятся посередине: буквы сгруппированы по словам */}
           {words.map((w, wi) => (
@@ -141,8 +141,8 @@ function Panel({ a, i }: { a: (typeof AUDIENCES)[number]; i: number }) {
         </h2>
 
         {/* Минималистичная ссылка вместо кнопки: тонкая линия, которая вытягивается на наведении */}
-        <span className="mt-5 inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.2em] text-white/80 transition-colors duration-500 group-hover:text-white lg:mt-6">
-          <span className="h-px w-8 bg-current transition-all duration-700 ease-out group-hover:w-16" />
+        <span className="mt-3 inline-flex items-center gap-2.5 text-[10.5px] uppercase tracking-[0.2em] text-white/75 transition-colors duration-500 group-hover:text-white lg:mt-4 lg:text-[11px]">
+          <span className="h-px w-6 bg-current transition-all duration-700 ease-out group-hover:w-12" />
           {lang === "en" ? "Leave a request" : "Оставить заявку"}
         </span>
       </div>
