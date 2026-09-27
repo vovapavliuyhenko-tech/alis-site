@@ -36,7 +36,7 @@ export default function PhotoStatement({
       <div aria-hidden className="absolute inset-0 -z-10 bg-black/35" />
 
       {/* Вертикальное фото с логотипом */}
-      <div className="r-reveal relative w-[200px] overflow-hidden sm:w-[230px] lg:w-[clamp(220px,17.6vw,300px)]">
+      <div className="r-reveal relative w-[200px] overflow-hidden rounded-[12px] sm:w-[230px] lg:w-[clamp(220px,17.6vw,300px)]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={photo} alt="" loading="lazy" className="aspect-[253/380] w-full object-cover" />
         <div className="absolute inset-0 flex items-center justify-center">

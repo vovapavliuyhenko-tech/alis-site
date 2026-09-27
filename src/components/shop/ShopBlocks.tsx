@@ -44,7 +44,7 @@ export function ShopStatement({ photo, text }: { photo: string; text: Loc }) {
   return (
     <section className={`bg-white px-4 text-center ${SHOP_GAP}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={photo} alt="" loading="lazy" className="r-reveal mx-auto aspect-[125/166] w-[110px] object-cover lg:w-[125px]" />
+      <img src={photo} alt="" loading="lazy" className="r-reveal mx-auto aspect-[125/166] w-[110px] rounded-[12px] object-cover lg:w-[125px]" />
       <p className="r-reveal mx-auto mt-[18px] max-w-[378px] text-[13px] leading-[17px] text-[#242424]">{text[lang]}</p>
     </section>
   );
