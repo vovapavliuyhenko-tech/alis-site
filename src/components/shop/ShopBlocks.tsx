@@ -55,7 +55,7 @@ function Card({ p, className = "", ratio = "aspect-[2/3]" }: { p: Product; class
   const { lang } = useLang();
   return (
     <Link href={`/product/${p.id}`} draggable={false} className={`group block ${className}`}>
-      <div className={`overflow-hidden bg-[#f2f1ee] ${ratio}`}>
+      <div className={`overflow-hidden rounded-[12px] bg-[#f2f1ee] ${ratio}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={p.img}
