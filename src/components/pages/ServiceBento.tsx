@@ -21,14 +21,14 @@ export default function ServiceBento() {
 
   return (
     <section id="services" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto w-[94%] max-w-[1440px]">
+      <div className="px-[6px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
           <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {en ? "Everything for your look" : "Всё для вашего образа"}
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
+        <div className="grid grid-cols-2 gap-[2px] lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2">
           {CATS.map((c, i) => (
             <a
               key={c.title.ru}

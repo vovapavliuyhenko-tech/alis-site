@@ -22,7 +22,7 @@ function Track({ items, hidden = false }: { items: string[]; hidden?: boolean })
   return (
     <ul aria-hidden={hidden} className="flex shrink-0">
       {items.map((src, i) => (
-        <li key={i} className="mr-2 aspect-[3/4] h-[320px] shrink-0 lg:mr-3 lg:h-[440px]">
+        <li key={i} className="mr-[2px] aspect-[3/4] h-[320px] shrink-0 lg:h-[440px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={src} alt="" draggable={false} loading="lazy" decoding="async" className="h-full w-full rounded-[12px] object-cover" />
         </li>
@@ -105,14 +105,14 @@ export default function PhotoMarquee({
         onPointerMove={onMove}
         onPointerUp={onUp}
         onPointerCancel={onUp}
-        className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+        className="flex cursor-grab touch-pan-y overflow-x-auto px-[6px] overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
       >
         <Track items={items} />
         <Track items={items} hidden />
       </div>
 
       {/* Полоса прогресса под фото */}
-      <div className="mx-auto mt-10 h-[3px] w-[94%] max-w-[1440px] overflow-hidden rounded-full bg-[#C2C0B6]/40">
+      <div className="mx-[6px] mt-10 h-[3px] overflow-hidden rounded-full bg-[#C2C0B6]/40">
         <div ref={barRef} className="h-full rounded-full bg-[#17191a]" style={{ width: "0%" }} />
       </div>
     </section>

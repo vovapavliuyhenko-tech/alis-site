@@ -153,7 +153,7 @@ function Panel({ a, i }: { a: (typeof AUDIENCES)[number]; i: number }) {
 export default function CooperationFormats() {
   return (
     <section className="bg-white section-y">
-      <div className="mx-auto grid w-[92%] max-w-[1400px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-[2px] px-[6px] lg:grid-cols-2">
         {AUDIENCES.map((a, i) => (
           <Panel key={a.id} a={a} i={i} />
         ))}

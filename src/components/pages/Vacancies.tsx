@@ -41,7 +41,7 @@ export default function Vacancies() {
 
   return (
     <section id="vacancies" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto w-[92%] max-w-[1400px]">
+      <div className="px-[6px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
           <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.03em] text-[#17191a] lg:text-[28px]">
             {en ? "Grow with ÁLIS BEAUTY" : "Расти вместе с ÁLIS BEAUTY"}
@@ -49,7 +49,7 @@ export default function Vacancies() {
         </div>
 
         {/* Оглавление-журнал: закруглённые строки-карточки, при наведении — полупрозрачно-бордовые */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-[2px]">
           {VACANCIES.map((v, i) => (
             <a
               key={v.role.ru}

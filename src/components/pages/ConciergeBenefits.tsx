@@ -68,14 +68,14 @@ export default function ConciergeBenefits() {
 
   return (
     <section id="about" className="scroll-mt-24 overflow-hidden bg-white section-y">
-      <div className="mx-auto w-[92%] max-w-[1400px]">
+      <div className="px-[6px]">
         <h2 className="text-center font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
           {lang === "en" ? "About ÁLIS BEAUTY CONCIERGE" : "О сервисе ÁLIS BEAUTY CONCIERGE"}
         </h2>
 
         {/* Пять преимуществ — раскрывающиеся фото-панели */}
         <div
-          className="mt-10 flex flex-col gap-2 lg:mt-14 lg:h-[min(520px,62vh)] lg:flex-row lg:gap-3"
+          className="mt-10 flex flex-col gap-[2px] lg:mt-14 lg:h-[min(520px,62vh)] lg:flex-row"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >

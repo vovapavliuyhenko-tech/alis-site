@@ -28,7 +28,7 @@ export default function LoyaltyCerts() {
 
   return (
     <section id="loyalty" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto w-[92%] max-w-[1400px]">
+      <div className="px-[6px]">
         <div className="r-reveal mb-12 text-center lg:mb-16">
           <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {t("Возвращаться — выгодно", "Coming back pays off")}
@@ -41,7 +41,7 @@ export default function LoyaltyCerts() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
+        <div className="grid grid-cols-1 gap-[2px] sm:grid-cols-2 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2">
           {/* Лояльность — высокая оливковая карточка слева */}
           <div className="r-reveal flex min-h-[320px] flex-col justify-between rounded-[12px] bg-[#17191a] p-8 text-[#f4efe6] sm:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-h-0 lg:p-10">
             <div>

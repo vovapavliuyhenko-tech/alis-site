@@ -26,7 +26,7 @@ export default function SalonServices({
 
   return (
     <section id="uslugi" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto w-[92%] max-w-[1400px]">
+      <div className="px-[6px]">
         <div className="mb-12 text-center lg:mb-16">
           <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {title[lang]}
@@ -34,7 +34,7 @@ export default function SalonServices({
         </div>
 
         {/* Оглавление-журнал: строки-категории, по клику раскрывается прайс-плашка */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-[2px]">
           {categories.map((c, i) => {
             const isOpen = open === i;
             return (
@@ -109,7 +109,7 @@ export default function SalonServices({
           href={cta.href}
           target={cta.href.startsWith("http") ? "_blank" : undefined}
           rel={cta.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          className="mt-3 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#17191a]/40 hover:bg-[#17191a]/10 hover:text-[#17191a] hover:backdrop-blur-md sm:text-[14px]"
+          className="mt-[2px] flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#17191a]/40 hover:bg-[#17191a]/10 hover:text-[#17191a] hover:backdrop-blur-md sm:text-[14px]"
         >
           {cta.label[lang]}
         </a>
