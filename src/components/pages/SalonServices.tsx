@@ -17,7 +17,7 @@ export default function SalonServices({
   cta,
 }: {
   eyebrow?: Loc; // больше не выводится (надстрочники убраны по фидбеку)
-  title: Loc;
+  title?: Loc; // без заголовка, если не передан
   categories: Category[];
   cta: { label: Loc; href: string };
 }) {
@@ -27,11 +27,13 @@ export default function SalonServices({
   return (
     <section id="uslugi" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <div className="mb-12 text-center lg:mb-16">
-          <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
-            {title[lang]}
-          </h2>
-        </div>
+        {title && (
+          <div className="mb-12 text-center lg:mb-16">
+            <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
+              {title[lang]}
+            </h2>
+          </div>
+        )}
 
         {/* Оглавление-журнал: строки-категории, по клику раскрывается прайс-плашка */}
         <div className="flex flex-col gap-3">

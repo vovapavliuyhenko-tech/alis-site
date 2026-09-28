@@ -134,16 +134,15 @@ export default function ConciergePage() {
 
         {/* 3 — Услуги и прайс (#uslugi). TODO: новый прайс пришлёт заказчица */}
         <SalonServices
-          title={{ ru: "Услуги и прайс", en: "Services & prices" }}
           categories={CONCIERGE_CATEGORIES}
           cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }}
         />
 
         {/* 4 — Фотогалерея (#gallery) */}
-        <PhotoMarquee sectionId="gallery" title={{ ru: "Фотогалерея", en: "Gallery" }} items={GALLERY} />
+        <PhotoMarquee sectionId="gallery" title={null} items={GALLERY} />
 
         {/* 5 — Этапы работы (тексты будут уточнены заказчицей) */}
-        <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" />
+        <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={null} />
 
         {/* 6 — Как забронировать: заявка (#offer, #booking) */}
         <ConciergeOffer />

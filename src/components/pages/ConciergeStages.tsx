@@ -17,17 +17,19 @@ export default function ConciergeStages({
   stages: Stage[];
   sectionId?: string;
   eyebrow?: Loc;
-  title?: Loc;
+  title?: Loc | null; // null — без заголовка
 }) {
   const { lang } = useLang();
 
   return (
     <section id={sectionId} className="relative scroll-mt-24 bg-white section-y">
-      <div className="r-reveal mx-auto w-[96%] max-w-[1760px] pt-12 pb-12 text-center lg:pt-[60px] lg:pb-16">
-        <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
-          {title[lang]}
-        </h2>
-      </div>
+      {title && (
+        <div className="r-reveal mx-auto w-[96%] max-w-[1760px] pt-12 pb-12 text-center lg:pt-[60px] lg:pb-16">
+          <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
+            {title[lang]}
+          </h2>
+        </div>
+      )}
 
       {stages.map((s, i) => {
         const photoRight = i % 2 === 0; // 1-й: текст слева, фото справа; далее чередуется
