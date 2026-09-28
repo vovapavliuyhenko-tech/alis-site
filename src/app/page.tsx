@@ -26,7 +26,6 @@ export default function Home() {
           photo="/assets/alis/img_6009.jpg"
           text={{ ru: "Салон красоты там, где вам удобно", en: "A beauty salon wherever suits you" }}
           note={{ ru: "Мы будем рядом и поможем создать незабываемый образ для вашего события.", en: "We’ll be by your side and help create an unforgettable look for your occasion." }}
-          foot={{ ru: "ÁLIS BEAUTY CONCIERGE", en: "ÁLIS BEAUTY CONCIERGE" }}
           link={{ label: { ru: "Всё о консьерж-сервисе от ÁLIS BEAUTY", en: "All about the ÁLIS BEAUTY concierge service" }, href: "/concierge" }}
         />
       </div>
