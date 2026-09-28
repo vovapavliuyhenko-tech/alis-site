@@ -2,9 +2,9 @@
 // БЛОК «КАРТОЧКА НА ФОТО» по формату paloma.website («Цветы по подписке»), в стиле
 // ÁLIS BEAUTY: фото почти на весь экран, по центру — квадратная белая карточка.
 // Внутри сверху вниз, с ровным воздухом между строками, как у PALOMA:
-// логотип → заголовок → короткий текст → подчёркнутая ссылка → мелкая подпись внизу.
+// заголовок → короткий текст → подчёркнутая ссылка → мелкая подпись внизу.
 // Ч/б. Используется на главной (консьерж-сервис) и в магазине.
-import { LogoEmblem, LogoWord } from "@/components/Logo";
+
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -41,12 +41,6 @@ export default function PhotoStatement({
 
       {/* Квадратная белая карточка */}
       <div className="r-reveal flex aspect-square w-full max-w-[min(400px,68svh)] flex-col items-center justify-between rounded-[12px] bg-white px-7 py-8 text-center text-[#17191a] lg:max-w-[min(440px,68svh)] lg:px-10 lg:py-10">
-        {/* Логотип — вместо «звёздочки» PALOMA */}
-        <div>
-          <LogoEmblem variant="wine" className="mx-auto !block h-[22px] w-auto lg:h-[24px]" />
-          <LogoWord variant="wine" className="mx-auto mt-2 !block h-[8px] w-auto" />
-        </div>
-
         {/* Заголовок */}
         <h2 className="!text-[19px] !font-light !leading-[1.25] text-[#17191a] lg:!text-[22px]">{text[lang]}</h2>
 
