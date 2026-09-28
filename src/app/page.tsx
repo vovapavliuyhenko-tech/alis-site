@@ -15,10 +15,11 @@ export default function Home() {
       <ScrollReveal />
       <Header />
       <Hero />
-      <div className="relative z-10 bg-white page-end">
+      <div className="relative z-10 bg-white">
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
-        {/* Порядок для клиента: что делаем → выезд → работы мастеров → контакты (подвал) */}
+        {/* Порядок для клиента: работы мастеров → что делаем → выезд → контакты (подвал) */}
+        <PhotoMarquee />
         <ServiceBento />
         {/* Выездной сервис — блок-«высказывание» по референсу revatiwear.ru */}
         <PhotoStatement
@@ -26,7 +27,6 @@ export default function Home() {
           text={{ ru: "Салон красоты там, где вам удобно", en: "A beauty salon wherever suits you" }}
           link={{ label: { ru: "Всё о консьерж-сервисе от ÁLIS BEAUTY", en: "All about the ÁLIS BEAUTY concierge service" }, href: "/concierge" }}
         />
-        <PhotoMarquee />
       </div>
       <Footer />
     </main>
