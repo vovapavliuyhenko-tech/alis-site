@@ -26,7 +26,7 @@ export default function SalonHoverList({ items, href = "#uslugi" }: { items: Hov
       pos.current.x += (target.current.x - pos.current.x) * 0.12;
       pos.current.y += (target.current.y - pos.current.y) * 0.12;
       if (float.current) {
-        float.current.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) translate(48px, -50%)`;
+        float.current.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) translate(0, -50%)`;
       }
       raf = requestAnimationFrame(tick);
     };
@@ -37,7 +37,8 @@ export default function SalonHoverList({ items, href = "#uslugi" }: { items: Hov
   const onMove = (e: React.MouseEvent) => {
     const r = wrap.current?.getBoundingClientRect();
     if (!r) return;
-    target.current = { x: e.clientX - r.left, y: e.clientY - r.top };
+    // По горизонтали фото держится правее названий (не меньше 58% ширины), по высоте — за курсором
+    target.current = { x: Math.max(e.clientX - r.left + 48, r.width * 0.58), y: e.clientY - r.top };
   };
 
   return (
