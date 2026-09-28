@@ -91,7 +91,7 @@ export default function ContactsBlock() {
                 href={b.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex min-h-[124px] flex-col rounded-[12px] bg-[#17191a]/[0.05] p-5 transition-colors duration-300 hover:bg-[#17191a]/10 lg:min-h-[140px] lg:p-6"
+                className="group relative flex min-h-[124px] flex-col rounded-[12px] border border-[#17191a]/15 bg-white p-5 transition-colors duration-300 hover:border-[#17191a]/40 lg:min-h-[140px] lg:p-6"
               >
                 <span className="max-w-[80%] text-[14px] leading-[1.3] text-[#242424] lg:text-[15px]">
                   {b.label[lang]}
