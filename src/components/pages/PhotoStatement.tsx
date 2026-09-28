@@ -40,31 +40,31 @@ export default function PhotoStatement({
       <div aria-hidden className="absolute inset-0 -z-10 bg-black/30" />
 
       {/* Квадратная белая карточка */}
-      <div className="r-reveal flex aspect-square w-full max-w-[440px] flex-col items-center justify-between rounded-[12px] bg-white px-8 py-10 text-center text-[#17191a] sm:max-w-[520px] lg:max-w-[600px] lg:px-14 lg:py-14">
+      <div className="r-reveal flex aspect-square w-full max-w-[min(400px,68svh)] flex-col items-center justify-between rounded-[12px] bg-white px-7 py-8 text-center text-[#17191a] lg:max-w-[min(440px,68svh)] lg:px-10 lg:py-10">
         {/* Логотип — вместо «звёздочки» PALOMA */}
         <div>
-          <LogoEmblem variant="wine" className="mx-auto !block h-[26px] w-auto lg:h-[30px]" />
-          <LogoWord variant="wine" className="mx-auto mt-2 !block h-[9px] w-auto lg:h-[10px]" />
+          <LogoEmblem variant="wine" className="mx-auto !block h-[22px] w-auto lg:h-[24px]" />
+          <LogoWord variant="wine" className="mx-auto mt-2 !block h-[8px] w-auto" />
         </div>
 
         {/* Заголовок */}
-        <h2 className="!text-[22px] !font-light !leading-[1.2] text-[#17191a] lg:!text-[30px]">{text[lang]}</h2>
+        <h2 className="!text-[19px] !font-light !leading-[1.25] text-[#17191a] lg:!text-[22px]">{text[lang]}</h2>
 
         {/* Текст */}
         {note && (
-          <p className="max-w-[400px] text-[14px] leading-[1.6] text-[#242424] lg:text-[15px]">{note[lang]}</p>
+          <p className="max-w-[300px] text-[13px] leading-[1.55] text-[#242424]">{note[lang]}</p>
         )}
 
         {/* Ссылка */}
         <a
           href={link.href}
-          className="inline-block border-b border-[#17191a] pb-0.5 text-[14px] text-[#17191a] transition-opacity hover:opacity-60 lg:text-[15px]"
+          className="inline-block border-b border-[#17191a] pb-0.5 text-[13px] text-[#17191a] transition-opacity hover:opacity-60"
         >
           {link.label[lang]}
         </a>
 
         {/* Мелкая подпись внизу */}
-        {foot && <p className="text-[12px] text-[#17191a]/40">{foot[lang]}</p>}
+        {foot && <p className="text-[11px] text-[#17191a]/40">{foot[lang]}</p>}
       </div>
     </section>
   );
