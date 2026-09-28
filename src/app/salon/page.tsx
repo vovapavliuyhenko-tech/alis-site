@@ -6,6 +6,7 @@ import TeamIntro from "@/components/pages/TeamIntro";
 import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
+import SalonHoverList from "@/components/pages/SalonHoverList";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -226,6 +227,17 @@ const SALON_CATEGORIES = [
   },
 ];
 
+// Фото направлений для второго блока (временные — заменить на съёмку салона)
+const DIRECTION_PHOTOS = [
+  "/assets/tild3638-373_-2___1__3.jpg",
+  "/assets/tild3561-646_-2___1__5.jpg",
+  "/assets/tild6530-383_-2___1_.jpg",
+  "/assets/tild3236-393__.jpg",
+  "/assets/tild6230-643__.jpg",
+  "/assets/alis/img_2749.jpg",
+];
+const DIRECTIONS = SALON_CATEGORIES.map((c, i) => ({ label: c.label, sub: c.sub, img: DIRECTION_PHOTOS[i % DIRECTION_PHOTOS.length] }));
+
 export default function SalonPage() {
   return (
     <main>
@@ -241,6 +253,9 @@ export default function SalonPage() {
           обёртки: иначе отступ первого блока «проваливается» и видна полоса фона. */}
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white page-end">
+        {/* 2 — Направления салона: крупный список с фото за курсором */}
+        <SalonHoverList items={DIRECTIONS} />
+
 
         {/* 2 — Услуги и прайс */}
         <SalonServices
