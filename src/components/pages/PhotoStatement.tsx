@@ -23,7 +23,7 @@ export default function PhotoStatement({
   const { lang } = useLang();
 
   return (
-    <section className="gap-top relative isolate flex min-h-[clamp(460px,38vw,620px)] items-center justify-center overflow-hidden px-4 py-16 lg:py-20">
+    <section className="gap-top relative isolate flex min-h-[92svh] items-center justify-center overflow-hidden px-4 py-16 lg:py-20">
       {/* Фон — фото на весь экран, слегка затемнено */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -36,7 +36,7 @@ export default function PhotoStatement({
       <div aria-hidden className="absolute inset-0 -z-10 bg-black/30" />
 
       {/* Белая карточка */}
-      <div className="r-reveal relative w-full max-w-[460px] rounded-[12px] bg-white px-8 py-10 text-center text-[#17191a] lg:px-12 lg:py-12">
+      <div className="r-reveal relative flex aspect-square w-full max-w-[400px] flex-col items-center justify-center rounded-[12px] bg-white px-8 text-center text-[#17191a] lg:max-w-[440px] lg:px-12">
         {/* Полный логотип: вензель + надпись ÁLIS BEAUTY */}
         <LogoEmblem variant="wine" className="mx-auto !block h-[30px] w-auto" />
         <LogoWord variant="wine" className="mx-auto mt-2.5 !block h-[11px] w-auto" />
