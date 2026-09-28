@@ -1,10 +1,10 @@
 "use client";
-// БЛОК «ФОТО-ВЫСКАЗЫВАНИЕ» по референсу revatiwear.ru (блок «Больше о нас»):
-// размытое фото на весь экран, по центру — вертикальное фото с логотипом,
-// под ним короткий текст и подчёркнутая ссылка. Размеры сняты с референса
-// при ширине 1440: блок 809px, фото 253×380, текст 13/17px шириной 479px,
-// ссылка 12px. Используется на главной (вместо блока консьерж-сервиса) и в магазине.
-import { LogoWord } from "@/components/Logo";
+// БЛОК «КАРТОЧКА НА ФОТО» по формату paloma.website («Цветы по подписке»), в стиле
+// ÁLIS BEAUTY: фото на весь экран, по центру — белая карточка со скруглением,
+// сверху вензель, крупная фраза, подчёркнутая ссылка. Маленькое вертикальное фото
+// «выходит» за нижний правый край карточки (как жираф у PALOMA). Ч/б.
+// Используется на главной (консьерж-сервис) и в магазине.
+import { LogoEmblem } from "@/components/Logo";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -23,37 +23,43 @@ export default function PhotoStatement({
   const { lang } = useLang();
 
   return (
-    <section className="gap-top relative isolate flex min-h-[clamp(480px,42vw,680px)] flex-col items-center justify-center overflow-hidden px-4 py-16 text-center text-white">
-      {/* Размытый фон — то же (или другое) фото, сильно размыто и затемнено */}
+    <section className="gap-top relative isolate flex min-h-[clamp(560px,48vw,760px)] items-center justify-center overflow-hidden px-4 py-16 lg:py-20">
+      {/* Фон — фото на весь экран, слегка затемнено */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={bg ?? photo}
         alt=""
         aria-hidden
         loading="lazy"
-        className="absolute inset-0 -z-20 h-full w-full scale-110 object-cover blur-[18px]"
+        className="absolute inset-0 -z-20 h-full w-full object-cover"
       />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-black/35" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-black/30" />
 
-      {/* Вертикальное фото с логотипом */}
-      <div className="r-reveal relative w-[170px] overflow-hidden rounded-[12px] sm:w-[190px] lg:w-[clamp(180px,13vw,230px)]">
+      {/* Белая карточка */}
+      <div className="r-reveal relative w-full max-w-[800px] rounded-[12px] bg-white px-6 pb-14 pt-12 text-center text-[#17191a] sm:px-12 lg:pb-20 lg:pt-16">
+        <LogoEmblem variant="wine" className="mx-auto h-[42px] w-auto lg:h-[52px]" />
+
+        <p className="mx-auto mt-8 max-w-[560px] text-[24px] font-light leading-[1.25] lg:mt-10 lg:text-[34px]">
+          {text[lang]}
+        </p>
+
+        <a
+          href={link.href}
+          className="mt-10 inline-block border-b border-[#17191a] pb-1 text-[14px] text-[#17191a] transition-opacity hover:opacity-60 lg:mt-14 lg:text-[16px]"
+        >
+          {link.label[lang]}
+        </a>
+
+        {/* Маленькое фото, выходящее за нижний правый край карточки */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={photo} alt="" loading="lazy" className="aspect-[253/380] w-full object-cover" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <LogoWord variant="cream" className="h-auto w-[33%] drop-shadow-[0_1px_6px_rgba(0,0,0,.25)]" />
-        </div>
+        <img
+          src={photo}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="pointer-events-none absolute -bottom-8 right-6 hidden aspect-[3/4] w-[120px] rotate-[4deg] rounded-[12px] object-cover shadow-[0_18px_40px_rgba(0,0,0,0.25)] sm:block lg:-bottom-12 lg:right-10 lg:w-[160px]"
+        />
       </div>
-
-      {/* Текст и ссылка */}
-      <p className="r-reveal mt-5 max-w-[479px] text-[13px] leading-[17px] text-white lg:text-[14px] lg:leading-[19px]">
-        {text[lang]}
-      </p>
-      <a
-        href={link.href}
-        className="r-reveal mt-4 text-[12px] text-white underline decoration-1 underline-offset-[5px] transition-opacity hover:opacity-70"
-      >
-        {link.label[lang]}
-      </a>
     </section>
   );
 }
