@@ -17,17 +17,10 @@ const CATS: Cat[] = [
 
 export default function ServiceBento() {
   const { lang } = useLang();
-  const en = lang === "en";
 
   return (
     <section id="services" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <div className="r-reveal mb-12 text-center lg:mb-16">
-          <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
-            {en ? "Everything for your look" : "Всё для вашего образа"}
-          </h2>
-        </div>
-
         <div className="grid grid-cols-2 gap-3 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
           {CATS.map((c, i) => (
             <a

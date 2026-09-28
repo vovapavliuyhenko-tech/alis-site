@@ -19,7 +19,7 @@ export default function Home() {
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
         {/* Порядок для клиента: работы мастеров → что делаем → выезд → контакты (подвал) */}
-        <PhotoMarquee />
+        <PhotoMarquee title={null} />
         <ServiceBento />
         {/* Выездной сервис — блок-«высказывание» по референсу revatiwear.ru */}
         <PhotoStatement
