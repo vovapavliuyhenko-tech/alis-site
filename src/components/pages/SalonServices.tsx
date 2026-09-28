@@ -56,7 +56,7 @@ export default function SalonServices({
                     <span className={`block text-[16px] font-normal leading-[1.3] transition-colors duration-300 lg:text-[18px] ${isOpen ? "text-[#f4efe6]" : "text-[#17191a]"}`}>
                       {c.label[lang]}
                     </span>
-                    <span className={`mt-2 block text-[12.5px] transition-colors duration-300 lg:text-[13.5px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#2a2320]/55"}`}>
+                    <span className={`mt-1.5 block text-[12px] transition-colors duration-300 lg:text-[13px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#2a2320]/55"}`}>
                       {c.sub[lang]}
                     </span>
                   </span>

@@ -245,3 +245,12 @@ main h3 {
   main h2 { font-size: 24px; }
   main h3 { font-size: 18px; }
 }
+
+/* Подзаголовки/описания под названием карточки — мельче, чтобы не спорили с названием */
+main h3 + p {
+  font-size: 12px;
+  line-height: 1.55;
+}
+@media (min-width: 1024px) {
+  main h3 + p { font-size: 13px; }
+}
