@@ -5,6 +5,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
+import PhotoMarquee from "@/components/pages/PhotoMarquee";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -248,6 +249,8 @@ export default function SalonPage() {
         />
 
         {/* 3 — Отзывы гостей */}
+        {/* Галерея работ — как на странице консьерж-сервиса (фото временные) */}
+        <PhotoMarquee sectionId="gallery" title={null} />
         <Reviews />
 
         {/* 4 — Бонусы и подарочные сертификаты */}
