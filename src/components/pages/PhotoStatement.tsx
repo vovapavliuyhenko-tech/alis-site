@@ -39,8 +39,8 @@ export default function PhotoStatement({
       />
       <div aria-hidden className="absolute inset-0 -z-10 bg-black/30" />
 
-      {/* Белая карточка — по высоте содержимого, с ровными отступами */}
-      <div className="r-reveal flex w-full max-w-[400px] flex-col items-center gap-5 rounded-[12px] bg-white px-7 py-10 text-center text-[#17191a] lg:max-w-[440px] lg:gap-6 lg:px-10 lg:py-12">
+      {/* Белая карточка — почти квадрат, чуть ниже по высоте (8:7) */}
+      <div className="r-reveal flex aspect-[8/7] w-full max-w-[min(400px,68svh)] flex-col items-center justify-between rounded-[12px] bg-white px-7 py-8 text-center text-[#17191a] lg:max-w-[min(440px,68svh)] lg:px-10 lg:py-10">
         {/* Заголовок */}
         <h2 className="!text-[19px] !font-light !leading-[1.25] text-[#17191a] lg:!text-[22px]">{text[lang]}</h2>
 
