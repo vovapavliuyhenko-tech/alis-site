@@ -26,7 +26,7 @@ export default function SalonHoverList({ items, href = "#uslugi" }: { items: Hov
       pos.current.x += (target.current.x - pos.current.x) * 0.12;
       pos.current.y += (target.current.y - pos.current.y) * 0.12;
       if (float.current) {
-        float.current.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) translate(-50%, -50%)`;
+        float.current.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) translate(48px, -50%)`;
       }
       raf = requestAnimationFrame(tick);
     };
