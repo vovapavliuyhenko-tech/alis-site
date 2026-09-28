@@ -1,151 +1,22 @@
 "use client";
-// БЛОК 3 (страница «Команда») — «стать частью команды», сплит на весь экран по
-// мотивам cryome «Глубокое увлажнение»: слева цветная (бордовая) панель с
-// заголовком по центру и полями-строками на светлых плашках; справа большое
-// фото на всю высоту. Минимум отступов, помещается в экран. Отправка — заглушка.
-import { useState } from "react";
-import { useLang } from "@/lib/i18n";
-
-type Loc = { ru: string; en: string };
-type Field = { key: string; label: Loc; required: boolean; textarea?: boolean; type?: string };
-
-const PHOTO = "/assets/tild6530-383_-2___1_.jpg";
-
-const FIELDS: Field[] = [
-  { key: "name", label: { ru: "Имя", en: "Name" }, required: true },
-  { key: "phone", label: { ru: "Телефон", en: "Phone" }, required: true, type: "tel" },
-];
-
-// Маска телефона: +7 (XXX) XXX-XX-XX по мере ввода цифр.
-function formatPhone(v: string): string {
-  let d = v.replace(/\D/g, "");
-  if (d.startsWith("8")) d = "7" + d.slice(1);
-  if (!d.startsWith("7")) d = "7" + d;
-  d = d.slice(0, 11);
-  const p = d.slice(1); // до 10 цифр без кода страны
-  let out = "+7";
-  if (p.length > 0) out += " (" + p.slice(0, 3);
-  if (p.length >= 3) out += ")";
-  if (p.length > 3) out += " " + p.slice(3, 6);
-  if (p.length > 6) out += "-" + p.slice(6, 8);
-  if (p.length > 8) out += "-" + p.slice(8, 10);
-  return out;
-}
+// Анкета «стать частью команды» (#join) — единая тёмная форма без фото (RequestForm).
+import RequestForm from "@/components/pages/RequestForm";
 
 export default function JoinForm() {
-  const { lang } = useLang();
-  const en = lang === "en";
-  const [values, setValues] = useState<Record<string, string>>({});
-  const [consent, setConsent] = useState(false);
-  const [errors, setErrors] = useState<Record<string, boolean>>({});
-  const [sent, setSent] = useState(false);
-
-  const set = (k: string, v: string) => {
-    setValues((s) => ({ ...s, [k]: v }));
-    if (errors[k]) setErrors((e) => ({ ...e, [k]: false }));
-  };
-
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const nextErr: Record<string, boolean> = {};
-    FIELDS.forEach((f) => {
-      if (f.required && !(values[f.key] || "").trim()) nextErr[f.key] = true;
-    });
-    if (!consent) nextErr.consent = true;
-    setErrors(nextErr);
-    if (Object.keys(nextErr).length === 0) setSent(true); // заглушка
-  };
-
   return (
-    <section id="join" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto grid w-[96%] max-w-[1760px] grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
-        {/* Левая бордовая панель */}
-        <div className="flex flex-col rounded-[12px] bg-[#17191a] px-6 py-12 text-[#f4efe6] sm:px-10 lg:min-h-[620px] lg:px-14 lg:py-16">
-            {sent ? (
-              <div className="flex flex-1 flex-col justify-between gap-10">
-                <h2 className="mx-auto w-full max-w-lg text-center font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] lg:text-[28px]">
-                  {en ? "Become part of ÁLIS BEAUTY" : "Стать частью команды ÁLIS BEAUTY"}
-                </h2>
-                <div className="mx-auto flex w-full max-w-lg flex-col items-center rounded-[12px] bg-white/[0.06] p-8 text-center">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#9a9a9a] font-display text-[22px] text-[#f4efe6]">✓</span>
-                  <h3 className="mt-5 font-display text-[22px] uppercase tracking-[0.02em]">{en ? "Thank you!" : "Спасибо!"}</h3>
-                  <p className="mt-3 max-w-sm text-[14px] leading-relaxed text-[#f4efe6]/70">
-                    {en ? "We've received your application and will get back to you soon." : "Мы получили вашу заявку и скоро свяжемся с вами."}
-                  </p>
-                </div>
-                <span aria-hidden />
-              </div>
-            ) : (
-              <form onSubmit={submit} noValidate className="flex flex-1 flex-col justify-between gap-10">
-                <div className="mx-auto w-full max-w-lg text-center">
-                  <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] lg:text-[28px]">
-                    {en ? "Become part of ÁLIS BEAUTY" : "Стать частью команды ÁLIS BEAUTY"}
-                  </h2>
-                  <p className="mt-3 text-[13px] leading-relaxed text-[#f4efe6]/70">
-                    {en
-                      ? "Leave your contacts — we'll tell you about the terms and invite you to a trial day."
-                      : "Оставьте контакты — расскажем об условиях и позовём на пробный день."}
-                  </p>
-                </div>
-
-                <div className="mx-auto flex w-full max-w-lg flex-col gap-3">
-                {FIELDS.map((f) => (
-                  <label
-                    key={f.key}
-                    className={`block rounded-[12px] border bg-white/[0.06] px-5 py-3 transition-colors focus-within:border-[#9a9a9a] ${
-                      errors[f.key] ? "border-[#e7a0a0]" : "border-transparent"
-                    }`}
-                  >
-                    <span className="mb-1 block text-[10px] uppercase tracking-[0.16em] text-[#f4efe6]/55">
-                      {f.label[lang]}
-                      {f.required && <span className="text-[#9a9a9a]"> *</span>}
-                    </span>
-                    <input
-                      type={f.type || "text"}
-                      inputMode={f.key === "phone" ? "tel" : undefined}
-                      placeholder={f.key === "phone" ? "+7 (___) ___-__-__" : undefined}
-                      value={f.key === "phone" ? (values[f.key] || "+7 ") : values[f.key] || ""}
-                      onFocus={f.key === "phone" ? () => { if (!values.phone) set("phone", "+7 "); } : undefined}
-                      onChange={(e) => set(f.key, f.key === "phone" ? formatPhone(e.target.value) : e.target.value)}
-                      className="w-full bg-transparent text-[15px] text-[#f4efe6] outline-none placeholder:text-[#f4efe6]/30"
-                    />
-                  </label>
-                ))}
-
-                <label className="mt-1 flex cursor-pointer items-start gap-3">
-                  <input
-                    type="checkbox"
-                    checked={consent}
-                    onChange={(e) => {
-                      setConsent(e.target.checked);
-                      if (errors.consent) setErrors((x) => ({ ...x, consent: false }));
-                    }}
-                    className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#9a9a9a]"
-                  />
-                  <span className={`text-[11px] leading-relaxed ${errors.consent ? "text-[#e7a0a0]" : "text-[#f4efe6]/55"}`}>
-                    {en
-                      ? "By submitting, you agree to the processing of your personal data."
-                      : "Отправляя форму, вы соглашаетесь с обработкой персональных данных."}
-                  </span>
-                </label>
-                </div>
-
-                <button
-                  type="submit"
-                  className="mx-auto flex w-full max-w-lg items-center justify-center rounded-[12px] border border-transparent bg-[#f4efe6] py-4 text-[14px] font-medium tracking-[0.01em] text-[#17191a] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:text-white hover:backdrop-blur-md"
-                >
-                  {en ? "send" : "отправить"}
-                </button>
-              </form>
-            )}
-        </div>
-
-        {/* Правая колонка — большое фото на всю высоту */}
-        <div className="relative min-h-[320px] overflow-hidden rounded-[12px] lg:min-h-[600px]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={PHOTO} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
-        </div>
-      </div>
-    </section>
+    <RequestForm
+      id="join"
+      title={{ ru: "Стать частью команды ÁLIS BEAUTY", en: "Become part of ÁLIS BEAUTY" }}
+      text={{
+        ru: "Оставьте контакты — расскажем об условиях и позовём на пробный день.",
+        en: "Leave your contacts — we'll tell you about the terms and invite you to a trial day.",
+      }}
+      fields={[
+        { key: "name", label: { ru: "Имя", en: "Name" }, required: true },
+        { key: "phone", label: { ru: "Телефон", en: "Phone" }, required: true, type: "tel" },
+      ]}
+      submit={{ ru: "Отправить", en: "Send" }}
+      success={{ ru: "Мы получили вашу заявку и скоро свяжемся с вами.", en: "We've received your application and will get back to you soon." }}
+    />
   );
 }
