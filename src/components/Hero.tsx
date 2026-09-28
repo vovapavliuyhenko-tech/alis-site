@@ -30,7 +30,7 @@ export default function Hero() {
       />
 
       <div className="flex w-full max-w-[1320px] flex-col items-center px-6 pb-[clamp(32px,6vh,72px)] text-center">
-        <h1 className="font-serif-display text-[24px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[30px] lg:text-[clamp(30px,2.5vw,44px)]">
+        <h1 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
           {t("Отражаем внутреннюю красоту", "Reflecting inner beauty")}
           <br />
           {t("во внешней", "on the outside")}

@@ -1,7 +1,6 @@
 "use client";
-// ОБЛОЖКА внутренних страниц: полноэкранное фото без логотипа и эффектов прокрутки.
-// По центру экрана — заголовок страницы как на референсе bemont.ru («НАШИ ВРАЧИ /
-// КОМАНДА»): мелкая строка сверху и название. Без кнопок (убраны по фидбеку).
+// ОБЛОЖКА внутренних страниц — точно как первый блок главной (Hero), но без кнопки:
+// фото на весь экран, затемнение снизу, заголовок капсом по центру в нижней части кадра.
 // Используется на всех страницах, кроме главной и контактов.
 import { useLang } from "@/lib/i18n";
 
@@ -9,45 +8,36 @@ type Loc = { ru: string; en: string };
 
 // Фото — заменить на съёмку. object-cover, тянется на весь экран.
 const DEFAULT_PHOTO = "/assets/alis/img_6009.jpg";
-const BRAND: Loc = { ru: "ÁLIS BEAUTY", en: "ÁLIS BEAUTY" };
 
 export default function TeamIntro({
   title,
-  kicker = BRAND,
   photo = DEFAULT_PHOTO,
 }: {
   title: Loc;
-  kicker?: Loc;
+  kicker?: Loc; // больше не выводится — обложка как на главной, только заголовок
   photo?: string;
 }) {
   const { lang } = useLang();
 
   return (
-    <section className="relative isolate flex h-[100svh] flex-col items-center justify-center overflow-hidden bg-[#3a3631] px-6 text-center text-white">
+    <section className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden bg-[#b9b3a9] text-white">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={photo}
-        alt=""
-        aria-hidden
-        className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
-      />
-      {/* Затемнение: сверху — под светлую шапку, по центру — лёгкое, под заголовок */}
+      <img src={photo} alt="" aria-hidden className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
+      {/* Затемнение как на главной: сверху — под шапку, снизу — под заголовок */}
       <div
         aria-hidden
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(20,18,16,.38) 0%, rgba(20,18,16,0) 26%), radial-gradient(ellipse at center, rgba(20,18,16,.22) 0%, rgba(20,18,16,0) 65%)",
+            "linear-gradient(to bottom, rgba(20,18,16,.38) 0%, rgba(20,18,16,0) 22%), linear-gradient(to top, rgba(20,18,16,.5) 0%, rgba(20,18,16,.12) 45%, rgba(20,18,16,0) 70%)",
         }}
       />
 
-      {/* Заголовок страницы — строго по центру экрана */}
-      <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/90 sm:text-[12px]">
-        {kicker[lang]}
-      </p>
-      <h1 className="mt-3 font-serif-display text-[26px] font-normal uppercase leading-[1.15] tracking-[0.06em] text-white [text-shadow:0_2px_24px_rgba(0,0,0,.2)] sm:text-[32px] lg:mt-4 lg:text-[clamp(32px,2.6vw,44px)]">
-        {title[lang]}
-      </h1>
+      <div className="flex w-full max-w-[1320px] flex-col items-center px-6 pb-[clamp(56px,11vh,120px)] text-center">
+        <h1 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
+          {title[lang]}
+        </h1>
+      </div>
     </section>
   );
 }
