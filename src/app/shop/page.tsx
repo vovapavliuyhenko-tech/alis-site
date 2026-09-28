@@ -26,6 +26,8 @@ export default function ShopPage() {
         <PhotoStatement
           photo="/assets/tild6536-613_-2___1__4.jpg"
           text={{ ru: "Отражаем внутреннюю красоту во внешней", en: "Reflecting inner beauty on the outside" }}
+          note={{ ru: "Немного ÁLIS BEAUTY — с собой", en: "A little ÁLIS BEAUTY to take home" }}
+          foot={{ ru: "Без перерывов и выходных, 9:00–21:00", en: "No breaks, open daily, 9:00–21:00" }}
           link={{ label: { ru: "Больше о нас", en: "More about us" }, href: "/salon" }}
         />
       </div>
