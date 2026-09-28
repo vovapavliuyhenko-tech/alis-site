@@ -2,7 +2,7 @@
 // БЛОК «ДЛЯ КОГО» (страница «Сотрудничество»): «Частным лицам» (#private) и
 // «Агентствам и бизнесу» (#business) — на них ведут пункты меню. Минимализм в духе
 // карточек магазина: чистое фото без надписей и затемнения, под ним одна строка —
-// название слева и «Оставить заявку →» справа. На наведении фото чуть приближается.
+// название слева и «Оставить заявку →» справа. На наведении фото чуть приближается и размывается.
 // TODO: тексты — из коммерческого предложения; фото — пришлёт заказчица. Ч/б. Двуязычно.
 import { useLang } from "@/lib/i18n";
 
@@ -28,7 +28,7 @@ export default function CooperationFormats() {
                 src={a.img}
                 alt=""
                 loading="lazy"
-                className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                className="aspect-[3/2] w-full object-cover transition-[transform,filter] duration-700 ease-out group-hover:scale-[1.03] group-hover:blur-[6px]"
               />
             </div>
             <div className="flex items-baseline justify-between gap-4 px-1 pt-4 text-[#242424]">
