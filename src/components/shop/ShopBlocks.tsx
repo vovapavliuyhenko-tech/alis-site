@@ -167,13 +167,13 @@ export function ProductCarousel({ title, linkHref }: { title?: Loc; linkHref: st
 }
 
 /* ---------- «Выбор покупателей»: 2 большие + 4 маленькие ---------- */
-export function ProductChoice({ id, title }: { id?: string; title: Loc }) {
+export function ProductChoice({ id, title }: { id?: string; title?: Loc }) {
   const { lang } = useLang();
   const big = PRODUCTS.slice(0, 2);
   const small = PRODUCTS.slice(2, 6);
   return (
     <section id={id} className={`scroll-mt-20 bg-white ${SHOP_GAP}`}>
-      <SectionTitle>{title[lang]}</SectionTitle>
+      {title && <SectionTitle>{title[lang]}</SectionTitle>}
       <div className="px-[2%]">
         <div className="grid grid-cols-1 gap-[2px] sm:grid-cols-2">
           {big.map((p) => (

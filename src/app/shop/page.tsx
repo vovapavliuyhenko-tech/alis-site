@@ -21,7 +21,7 @@ export default function ShopPage() {
         {/* 2 — Лента товаров (без заголовка) */}
         <ProductCarousel linkHref="#choice" />
         {/* 4 — Выбор покупателей: две большие карточки и ряд из четырёх */}
-        <ProductChoice id="choice" title={{ ru: "Выбор покупателей", en: "Customers' choice" }} />
+        <ProductChoice id="choice" />
         {/* 5 — Фото-высказывание с размытым фоном */}
         <PhotoStatement
           photo="/assets/tild6536-613_-2___1__4.jpg"
