@@ -228,7 +228,7 @@ export default function ConciergeChat() {
                   placeholder="+7 (___) ___-__-__"
                   className={`mt-2 w-full rounded-xl border bg-[#faf7f2] px-4 py-2.5 text-[14px] text-[#2a2320] outline-none transition-colors placeholder:text-[#2a2320]/40 focus:border-[#17191a] ${formErr && phone.replace(/\D/g, "").length < 11 ? "border-[#e7a0a0]" : "border-transparent"}`}
                 />
-                <button type="submit" className="mt-3 w-full rounded-xl bg-[#17191a] py-2.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-colors hover:bg-[#34101a]">
+                <button type="submit" className="mt-3 w-full rounded-xl bg-[#46131E] py-2.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[#f4efe6] transition-colors hover:bg-[#34101a]">
                   {t("Отправить", "Send")}
                 </button>
               </form>
@@ -253,7 +253,7 @@ export default function ConciergeChat() {
               placeholder={t("Введите сообщение", "Type a message")}
               className="flex-1 rounded-full bg-[#faf7f2] px-4 py-2.5 text-[14px] text-[#2a2320] outline-none placeholder:text-[#2a2320]/40"
             />
-            <button onClick={sendMsg} aria-label={t("Отправить", "Send")} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[#f4efe6] transition-transform hover:scale-105">
+            <button onClick={sendMsg} aria-label={t("Отправить", "Send")} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#46131E] text-[#f4efe6] transition-transform hover:scale-105">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
           </div>
@@ -266,7 +266,7 @@ export default function ConciergeChat() {
         <button
           onClick={() => setOpen(false)}
           aria-label={t("Закрыть чат", "Close chat")}
-          className="pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[#f4efe6] shadow-[0_10px_30px_rgba(59,13,26,0.4)] transition-transform hover:scale-105"
+          className="pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#46131E] text-[#f4efe6] shadow-[0_10px_30px_rgba(59,13,26,0.4)] transition-transform hover:scale-105"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /></svg>
         </button>
@@ -274,7 +274,7 @@ export default function ConciergeChat() {
         <button
           onClick={() => setOpen(true)}
           aria-label={t("Открыть чат", "Open chat")}
-          className="pointer-events-auto flex items-center gap-2.5 rounded-full bg-[#17191a] py-3.5 pl-5 pr-6 text-[14px] font-medium text-[#f4efe6] shadow-[0_10px_30px_rgba(59,13,26,0.4)] transition-transform hover:scale-[1.03]"
+          className="pointer-events-auto flex items-center gap-2.5 rounded-full bg-[#46131E] py-3.5 pl-5 pr-6 text-[14px] font-medium text-[#f4efe6] shadow-[0_10px_30px_rgba(59,13,26,0.4)] transition-transform hover:scale-[1.03]"
         >
           <span className="relative flex h-6 w-6 shrink-0 items-center justify-center">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" strokeLinecap="round" strokeLinejoin="round" /></svg>
