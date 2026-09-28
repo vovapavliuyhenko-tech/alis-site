@@ -37,17 +37,10 @@ const VACANCIES: Vacancy[] = [
 
 export default function Vacancies() {
   const { lang } = useLang();
-  const en = lang === "en";
 
   return (
     <section id="vacancies" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <div className="r-reveal mb-12 text-center lg:mb-16">
-          <h2 className="font-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.03em] text-[#17191a] lg:text-[28px]">
-            {en ? "Grow with ÁLIS BEAUTY" : "Расти вместе с ÁLIS BEAUTY"}
-          </h2>
-        </div>
-
         {/* Оглавление-журнал: закруглённые строки-карточки, при наведении — полупрозрачно-бордовые */}
         <div className="flex flex-col gap-3">
           {VACANCIES.map((v, i) => (
