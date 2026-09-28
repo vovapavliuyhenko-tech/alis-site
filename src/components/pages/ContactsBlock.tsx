@@ -93,7 +93,7 @@ export default function ContactsBlock() {
                 rel="noopener noreferrer"
                 className="group relative flex min-h-[124px] flex-col rounded-[12px] bg-[#17191a]/[0.05] p-5 transition-colors duration-300 hover:bg-[#17191a]/10 lg:min-h-[140px] lg:p-6"
               >
-                <span className="max-w-[80%] font-display text-[13px] uppercase leading-[1.3] tracking-[0.06em] text-[#17191a] lg:text-[14px]">
+                <span className="max-w-[80%] text-[14px] leading-[1.3] text-[#242424] lg:text-[15px]">
                   {b.label[lang]}
                 </span>
                 {b.handle && <span className="mt-1 text-[12px] text-[#17191a]/60">{b.handle}</span>}

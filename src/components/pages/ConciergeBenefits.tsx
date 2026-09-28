@@ -112,7 +112,7 @@ export default function ConciergeBenefits() {
 
                 {/* Свёрнутая панель на десктопе — вертикальный заголовок */}
                 <span
-                  className={`absolute bottom-6 left-1/2 hidden origin-center -translate-x-1/2 whitespace-nowrap font-serif-display text-[15px] uppercase tracking-[0.08em] transition-opacity duration-300 [writing-mode:vertical-rl] rotate-180 lg:block ${
+                  className={`absolute bottom-6 left-1/2 hidden origin-center -translate-x-1/2 whitespace-nowrap text-[15px] transition-opacity duration-300 [writing-mode:vertical-rl] rotate-180 lg:block ${
                     on ? "opacity-0" : "opacity-100 delay-300"
                   }`}
                 >
