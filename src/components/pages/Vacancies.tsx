@@ -47,27 +47,27 @@ export default function Vacancies() {
             <a
               key={v.role.ru}
               href="#join"
-              className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[12px] border border-[#17191a]/12 px-6 py-6 transition-colors duration-300 hover:border-transparent hover:bg-[#17191a] lg:gap-8 lg:px-8 lg:py-8"
+              className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[12px] border border-[#17191a]/12 px-6 py-6 bg-white transition-[border-color,box-shadow] duration-500 hover:border-[#17191a]/20 hover:shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:gap-8 lg:px-8 lg:py-8"
             >
               {/* Номер */}
-              <span className="font-display text-[13px] tabular-nums text-[#17191a] transition-colors duration-300 group-hover:text-[#f4efe6]/70 lg:text-[15px]">
+              <span className="font-display text-[13px] tabular-nums text-[#17191a] transition-colors duration-300 lg:text-[15px]">
                 {String(i + 1).padStart(2, "0")}
               </span>
 
               {/* Название + описание */}
               <div className="min-w-0">
-                <h3 className="font-display text-[16px] font-normal uppercase leading-[1.15] tracking-[0.01em] text-[#17191a] transition-all duration-300 group-hover:translate-x-2 group-hover:text-[#f4efe6] sm:text-[19px] lg:text-[24px]">
+                <h3 className="font-display text-[16px] font-normal uppercase leading-[1.15] tracking-[0.01em] text-[#17191a] transition-all duration-300 group-hover:translate-x-2 sm:text-[19px] lg:text-[24px]">
                   {v.role[lang]}
                 </h3>
-                <p className="mt-2 text-[12.5px] text-[#2a2320]/55 transition-colors duration-300 group-hover:text-[#f4efe6]/70 lg:text-[13.5px]">{v.desc[lang]}</p>
+                <p className="mt-2 text-[12.5px] text-[#2a2320]/55 transition-colors duration-300 lg:text-[13.5px]">{v.desc[lang]}</p>
               </div>
 
               {/* График + стрелка в кружке */}
               <span className="flex items-center gap-4 lg:gap-6">
-                <span className="hidden whitespace-nowrap rounded-full bg-[#17191a]/10 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 group-hover:bg-[#f4efe6]/15 group-hover:text-[#f4efe6] sm:inline">
+                <span className="hidden whitespace-nowrap rounded-full bg-[#17191a]/10 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 group-hover:bg-[#46131E]/[0.07] group-hover:text-[#46131E] sm:inline">
                   {v.schedule[lang]}
                 </span>
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#17191a]/30 text-[#17191a] transition-all duration-300 group-hover:border-[#f4efe6] group-hover:bg-[#f4efe6] group-hover:text-[#17191a] lg:h-12 lg:w-12">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#17191a]/30 text-[#17191a] transition-all duration-300 group-hover:border-[#46131E] group-hover:bg-[#46131E] group-hover:text-white lg:h-12 lg:w-12">
                   <span className="text-[16px] leading-none transition-transform duration-300 group-hover:-rotate-45 lg:text-[18px]">→</span>
                 </span>
               </span>

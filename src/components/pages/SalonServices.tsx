@@ -42,8 +42,10 @@ export default function SalonServices({
             return (
               <div
                 key={c.label.ru}
-                className={`overflow-hidden rounded-[12px] border transition-colors duration-300 ${
-                  isOpen ? "border-transparent bg-[#17191a]" : "border-[#17191a]/12 bg-white"
+                className={`overflow-hidden rounded-[12px] border transition-[border-color,box-shadow] duration-500 ${
+                  isOpen
+                    ? "border-[#17191a]/20 bg-white shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)]"
+                    : "border-[#17191a]/12 bg-white hover:border-[#17191a]/25"
                 }`}
               >
                 {/* Заголовок-строка */}
@@ -55,20 +57,20 @@ export default function SalonServices({
                 >
                   {/* Название + подпись */}
                   <span className="min-w-0">
-                    <span className={`block text-[16px] font-normal leading-[1.3] transition-colors duration-300 lg:text-[18px] ${isOpen ? "text-[#f4efe6]" : "text-[#17191a]"}`}>
+                    <span className={`block text-[16px] font-normal leading-[1.3] transition-colors duration-300 lg:text-[18px] text-[#17191a]`}>
                       {c.label[lang]}
                     </span>
-                    <span className={`mt-1.5 block text-[12px] transition-colors duration-300 lg:text-[13px] ${isOpen ? "text-[#f4efe6]/70" : "text-[#2a2320]/55"}`}>
+                    <span className={`mt-1.5 block text-[12px] transition-colors duration-300 lg:text-[13px] text-[#2a2320]/55`}>
                       {c.sub[lang]}
                     </span>
                   </span>
 
                   {/* Цена «от» + стрелка-переключатель */}
                   <span className="flex items-center gap-4 lg:gap-6">
-                    <span className={`hidden whitespace-nowrap rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 sm:inline ${isOpen ? "bg-[#f4efe6]/15 text-[#f4efe6]" : "bg-[#17191a]/10 text-[#17191a]"}`}>
+                    <span className={`hidden whitespace-nowrap rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 sm:inline ${isOpen ? "bg-[#46131E]/[0.07] text-[#46131E]" : "bg-[#17191a]/[0.06] text-[#17191a]"}`}>
                       {c.from[lang]}
                     </span>
-                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-all duration-300 lg:h-12 lg:w-12 ${isOpen ? "border-[#f4efe6] bg-[#f4efe6] text-[#17191a]" : "border-[#17191a]/30 text-[#17191a]"}`}>
+                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-all duration-300 lg:h-12 lg:w-12 ${isOpen ? "border-[#46131E] bg-[#46131E] text-white" : "border-[#17191a]/25 text-[#17191a] group-hover:border-[#46131E] group-hover:text-[#46131E]"}`}>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`h-4 w-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
                         <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -83,16 +85,16 @@ export default function SalonServices({
                       {c.groups.map((g, gi) => (
                         <div key={gi} className={gi > 0 ? "mt-5" : ""}>
                           {g.title && (
-                            <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/55">{g.title[lang]}</p>
+                            <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-[#17191a]/45">{g.title[lang]}</p>
                           )}
-                          <ul className="divide-y divide-[#f4efe6]/15 border-t border-[#f4efe6]/15">
+                          <ul className="divide-y divide-[#17191a]/[0.08] border-t border-[#17191a]/10">
                             {g.rows.map((r) => (
                               <li key={r.name.ru} className="grid grid-cols-[1fr_auto] items-baseline gap-4 py-3 lg:py-3.5">
                                 <span className="min-w-0">
-                                  <span className="block text-[14px] font-medium text-[#f4efe6] lg:text-[15px]">{r.name[lang]}</span>
-                                  {r.time && <span className="mt-0.5 block text-[12px] text-[#f4efe6]/60">{r.time[lang]}</span>}
+                                  <span className="block text-[14px] text-[#242424] lg:text-[15px]">{r.name[lang]}</span>
+                                  {r.time && <span className="mt-0.5 block text-[12px] text-[#17191a]/45">{r.time[lang]}</span>}
                                 </span>
-                                <span className="whitespace-nowrap font-display text-[15px] tracking-[0.01em] text-[#f4efe6] lg:text-[17px]">{r.price[lang]}</span>
+                                <span className="whitespace-nowrap text-[14px] text-[#17191a] lg:text-[15px]">{r.price[lang]}</span>
                               </li>
                             ))}
                           </ul>
