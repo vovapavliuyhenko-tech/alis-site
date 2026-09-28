@@ -232,15 +232,6 @@ export default function Reviews() {
                 </p>
 
                 <div className="mt-4 flex items-center gap-2.5 border-t border-[#17191a]/10 pt-4">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={r.photo}
-                    alt={r.name[lang]}
-                    draggable={false}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-9 w-9 rounded-full object-cover ring-1 ring-[#9a9a9a]/40"
-                  />
                   <div>
                     <p className="text-[12.5px] font-medium text-[#17191a]">{r.name[lang]}</p>
                     <p className="text-[10px] uppercase tracking-[0.12em] text-[#17191a]">

@@ -243,7 +243,6 @@ export default function SalonPage() {
 
         {/* 2 — Услуги и прайс */}
         <SalonServices
-          title={{ ru: "Услуги салона", en: "Salon services" }}
           categories={SALON_CATEGORIES}
           cta={{ label: { ru: "Оформить визит · 500 бонусных рублей на первый визит", en: "Arrange a visit · 500 bonus rubles on your first visit" }, href: YCLIENTS }}
         />
