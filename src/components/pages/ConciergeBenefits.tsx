@@ -9,7 +9,9 @@ import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
 
-const POINTS: { title: Loc; desc: Loc; img: string }[] = [
+export type BenefitPoint = { title: Loc; desc: Loc; img: string };
+
+const POINTS: BenefitPoint[] = [
   {
     title: { ru: "Мастерство и опыт", en: "Skill & experience" },
     desc: {
@@ -54,7 +56,8 @@ const POINTS: { title: Loc; desc: Loc; img: string }[] = [
 
 const AUTO_MS = 4500;
 
-export default function ConciergeBenefits() {
+// points — свои пункты (например, для страницы салона); по умолчанию — преимущества консьержа
+export default function ConciergeBenefits({ points = POINTS }: { points?: BenefitPoint[] }) {
   const { lang } = useLang();
 
   // Панели преимуществ: авто-листание, пауза при наведении
@@ -62,9 +65,9 @@ export default function ConciergeBenefits() {
   const [paused, setPaused] = useState(false);
   useEffect(() => {
     if (paused) return;
-    const id = setTimeout(() => setActive((i) => (i + 1) % POINTS.length), AUTO_MS);
+    const id = setTimeout(() => setActive((i) => (i + 1) % points.length), AUTO_MS);
     return () => clearTimeout(id);
-  }, [active, paused]);
+  }, [active, paused, points.length]);
 
   return (
     <section id="about" className="scroll-mt-24 overflow-hidden bg-white section-y">
@@ -75,7 +78,7 @@ export default function ConciergeBenefits() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          {POINTS.map((pt, i) => {
+          {points.map((pt, i) => {
             const on = i === active;
             return (
               <button

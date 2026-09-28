@@ -6,7 +6,7 @@ import TeamIntro from "@/components/pages/TeamIntro";
 import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
-import SalonAbout from "@/components/pages/SalonAbout";
+import ConciergeBenefits, { type BenefitPoint } from "@/components/pages/ConciergeBenefits";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -227,6 +227,41 @@ const SALON_CATEGORIES = [
   },
 ];
 
+// Преимущества салона для фото-панелей. Тексты — слова основательницы со старого
+// сайта alisbeauty.ru и согласованные факты. Фото — временные.
+const SALON_POINTS: BenefitPoint[] = [
+  {
+    title: { ru: "Команда с открытым сердцем", en: "A team with open hearts" },
+    desc: { ru: "Люди, горящие своим делом и творчеством, с чистой душой и открытым сердцем.", en: "People who burn with their craft and creativity, with pure souls and open hearts." },
+    img: "/assets/alis/img_0569.jpg",
+  },
+  {
+    title: { ru: "Внутренняя красота — во внешней", en: "Inner beauty, on the outside" },
+    desc: { ru: "Наша команда поможет отразить вашу внутреннюю красоту во внешнем облике.", en: "Our team will help reflect your inner beauty in your outer look." },
+    img: "/assets/alis/img_2745.jpg",
+  },
+  {
+    title: { ru: "Забота о каждой детали", en: "Care for every detail" },
+    desc: { ru: "Качественный сервис и внимание к каждой детали — чтобы у гостей были исключительно приятные ощущения.", en: "Quality service and attention to every detail, so our guests feel nothing but good." },
+    img: "/assets/tild3638-373_-2___1__3.jpg",
+  },
+  {
+    title: { ru: "Спокойная атмосфера", en: "A calm atmosphere" },
+    desc: { ru: "Атмосфера, в которой можно настроиться на любовь.", en: "An atmosphere where you can tune in to love." },
+    img: "/assets/alis/img_0521.jpg",
+  },
+  {
+    title: { ru: "Без перерывов и выходных", en: "No breaks, open daily" },
+    desc: { ru: "Ждём вас каждый день с 9:00 до 21:00.", en: "We're open every day from 9:00 to 21:00." },
+    img: "/assets/alis/img_2672.jpg",
+  },
+  {
+    title: { ru: "500 бонусных рублей на первый визит", en: "500 bonus rubles on your first visit" },
+    desc: { ru: "Приветственный бонус для новых гостей салона.", en: "A welcome bonus for new salon guests." },
+    img: "/assets/alis/img_1834.jpg",
+  },
+];
+
 export default function SalonPage() {
   return (
     <main>
@@ -242,8 +277,8 @@ export default function SalonPage() {
           обёртки: иначе отступ первого блока «проваливается» и видна полоса фона. */}
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white page-end">
-        {/* 2 — О салоне: слова основательницы и преимущества */}
-        <SalonAbout />
+        {/* 2 — Преимущества салона: фото-панели, как на странице консьерж-сервиса */}
+        <ConciergeBenefits points={SALON_POINTS} />
 
 
         {/* 2 — Услуги и прайс */}
