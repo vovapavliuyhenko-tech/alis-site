@@ -97,8 +97,8 @@ export default function ConciergeBenefits() {
                   className={`absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-[1200ms] ease-out ${on ? "scale-100" : "scale-110"}`}
                 />
                 <div
-                  className={`absolute inset-0 -z-10 transition-colors duration-700 ${on ? "bg-black/35" : "bg-black/60"}`}
-                  style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,0) 60%)" }}
+                  className={`absolute inset-0 -z-10 transition-colors duration-700 ${on ? "bg-black/5" : "bg-black/30"}`}
+                  style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,.5), rgba(0,0,0,0) 45%)" }}
                 />
 
                 {/* Номер */}
