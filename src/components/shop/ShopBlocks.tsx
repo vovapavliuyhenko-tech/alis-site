@@ -88,7 +88,7 @@ function SectionLink({ href, children }: { href: string; children: React.ReactNo
 }
 
 /* ---------- «Новые поступления»: бесконечная лента с перетаскиванием ---------- */
-export function ProductCarousel({ title, linkHref }: { title: Loc; linkHref: string }) {
+export function ProductCarousel({ title, linkHref }: { title?: Loc; linkHref: string }) {
   const { lang } = useLang();
   const scroller = useRef<HTMLDivElement>(null);
   const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false });
@@ -148,7 +148,7 @@ export function ProductCarousel({ title, linkHref }: { title: Loc; linkHref: str
 
   return (
     <section className={`overflow-hidden bg-white ${SHOP_GAP}`}>
-      <SectionTitle>{title[lang]}</SectionTitle>
+      {title && <SectionTitle>{title[lang]}</SectionTitle>}
       <div
         ref={scroller}
         onPointerDown={onDown}

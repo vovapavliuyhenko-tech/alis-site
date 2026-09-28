@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import PhotoStatement from "@/components/pages/PhotoStatement";
 import TeamIntro from "@/components/pages/TeamIntro";
-import { ShopStatement, ProductCarousel, ProductChoice } from "@/components/shop/ShopBlocks";
+import { ProductCarousel, ProductChoice } from "@/components/shop/ShopBlocks";
 
 // Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и размеры блоков — по референсу
 // revatiwear.ru (блок категорий пока не нужен). Фото — временные, пришлёт заказчица.
@@ -18,13 +18,8 @@ export default function ShopPage() {
       {/* Маркер конца обложки — после него у шапки появляется подложка */}
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white">
-        {/* 2 — Маленькое фото и фраза */}
-        <ShopStatement
-          photo="/assets/tild3236-393__.jpg"
-          text={{ ru: "Немного ÁLIS BEAUTY — с собой", en: "A little ÁLIS BEAUTY to take home" }}
-        />
-        {/* 3 — Новые поступления: лента товаров */}
-        <ProductCarousel title={{ ru: "Новые поступления", en: "New arrivals" }} linkHref="#choice" />
+        {/* 2 — Лента товаров (без заголовка) */}
+        <ProductCarousel linkHref="#choice" />
         {/* 4 — Выбор покупателей: две большие карточки и ряд из четырёх */}
         <ProductChoice id="choice" title={{ ru: "Выбор покупателей", en: "Customers' choice" }} />
         {/* 5 — Фото-высказывание с размытым фоном */}
