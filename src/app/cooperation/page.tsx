@@ -3,11 +3,9 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import CooperationFormats from "@/components/pages/CooperationFormats";
-import CooperationForm from "@/components/pages/CooperationForm";
-import Brands from "@/components/Brands";
 
 // Страница «Сотрудничество»: обложка → «Частным лицам» / «Агентствам и бизнесу»
-// (пункты меню) → лента партнёров → заявка на сотрудничество.
+// (пункты меню) → после выбора: заявка под категорию → лента партнёров.
 export default function CooperationPage() {
   return (
     <main>
@@ -26,14 +24,8 @@ export default function CooperationPage() {
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white page-end">
 
-        {/* 2 — Для кого: #private и #business */}
+        {/* 2 — Выбор «Частным лицам» / «Агентствам и бизнесу» → форма под выбор → партнёры */}
         <CooperationFormats />
-
-        {/* 3 — Бегущая лента партнёров (без заголовка — убран по фидбеку) */}
-        <Brands />
-
-        {/* 4 — Заявка на сотрудничество (#request) */}
-        <CooperationForm />
       </div>
 
       <Footer />
