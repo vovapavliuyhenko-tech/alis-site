@@ -68,7 +68,7 @@ export default function RequestForm({
   };
 
   const line = (err?: boolean) =>
-    `w-full border-b bg-transparent py-2.5 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#46131E] ${
+    `w-full border-b bg-transparent py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#46131E] ${
       err ? "border-[#c0392b]" : "border-[#17191a]/15"
     }`;
 
@@ -76,14 +76,16 @@ export default function RequestForm({
     <section id={id} className="scroll-mt-24 bg-white section-y">
       <div
         id={innerId}
-        className="mx-auto grid w-[96%] max-w-[1760px] scroll-mt-24 grid-cols-1 gap-8 rounded-[12px] bg-[#f6f4f1] px-6 py-8 text-[#17191a] shadow-[inset_3px_0_0_#46131E] sm:px-10 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-16 lg:py-8"
+        className="mx-auto grid w-[96%] max-w-[1760px] scroll-mt-24 grid-cols-1 gap-8 rounded-[12px] bg-[#f6f4f1] px-6 py-8 text-[#17191a] shadow-[inset_3px_0_0_#46131E] sm:px-10 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:px-16 lg:py-10"
       >
-        {/* Слева — заголовок и текст */}
-        <div className="lg:pt-2">
-          <h2 className="text-[#17191a]">{title[lang]}</h2>
+        {/* Слева — заголовок и строка сверху, пункты с галочками снизу (по высоте формы) */}
+        <div className="flex flex-col justify-between gap-6 lg:py-3">
+          <div>
+            <h2 className="text-[#17191a]">{title[lang]}</h2>
           {text && <p className="mt-4 max-w-[460px] text-[14px] leading-[1.6] text-[#17191a]/60 lg:text-[15px]">{text[lang]}</p>}
+          </div>
           {bullets && bullets.length > 0 && (
-            <ul className="mt-5 space-y-2.5 lg:mt-6">
+            <ul className="space-y-2.5">
               {bullets.map((b) => (
                 <li key={b.ru} className="flex items-start gap-3 text-[14px] leading-[1.5] text-[#242424] lg:text-[15px]">
                   <span aria-hidden className="mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#46131E] text-[10px] text-white">✓</span>
@@ -101,7 +103,7 @@ export default function RequestForm({
             <p className="mt-3 max-w-[420px] text-[14px] leading-[1.6] text-[#17191a]/60">{success[lang]}</p>
           </div>
         ) : (
-          <form onSubmit={onSubmit} noValidate className="flex flex-col gap-1 rounded-[12px] bg-white px-6 py-5 lg:px-8 lg:py-6">
+          <form onSubmit={onSubmit} noValidate className="flex flex-col gap-2 rounded-[12px] bg-white px-6 py-7 lg:px-9 lg:py-9">
             {fields.map((f) =>
               f.textarea ? (
                 <textarea
