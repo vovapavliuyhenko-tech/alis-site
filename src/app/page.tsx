@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
-import PhotoStatement from "@/components/pages/PhotoStatement";
+import PhotoBanner from "@/components/pages/PhotoBanner";
 import ConciergeStages from "@/components/pages/ConciergeStages";
 import { type Stage } from "@/components/HorizontalStory";
 import ServiceBento from "@/components/pages/ServiceBento";
@@ -49,12 +49,12 @@ export default function Home() {
         {/* Порядок для клиента: работы мастеров → что делаем → выезд → контакты (подвал) */}
         <PhotoMarquee title={null} />
         <ServiceBento />
-        {/* Выездной сервис — блок-«высказывание» по референсу revatiwear.ru */}
-        <PhotoStatement
+        {/* Консьерж-сервис — фото-баннер, как «подарочный сертификат» в магазине */}
+        <PhotoBanner
           photo="/assets/alis/img_6009.jpg"
-          text={{ ru: "Салон красоты там, где вам удобно", en: "A beauty salon wherever suits you" }}
-          note={{ ru: "Мы будем рядом и поможем создать незабываемый образ для вашего события.", en: "We’ll be by your side and help create an unforgettable look for your occasion." }}
-          link={{ label: { ru: "Всё о консьерж-сервисе от ÁLIS BEAUTY", en: "All about the ÁLIS BEAUTY concierge service" }, href: "/concierge" }}
+          label={{ ru: "ÁLIS BEAUTY CONCIERGE", en: "ÁLIS BEAUTY CONCIERGE" }}
+          title={{ ru: "Салон красоты там, где вам удобно", en: "A beauty salon wherever suits you" }}
+          button={{ label: { ru: "Всё о консьерж-сервисе", en: "About the concierge service" }, href: "/concierge" }}
         />
         {/* Как записаться — 3 шага (как этапы на странице консьерж-сервиса) */}
         <ConciergeStages stages={VISIT_STEPS} sectionId="how" title={null} stepLabel={{ ru: "Шаг", en: "Step" }} />
