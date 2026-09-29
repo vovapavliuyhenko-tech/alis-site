@@ -22,7 +22,6 @@ const LEFT: NavItem[] = [
     href: "/salon",
     sub: [
       { label: { ru: "Услуги и прайс", en: "Services & prices" }, href: "/salon#uslugi" },
-      { label: { ru: "Команда", en: "Team" }, href: "/team" },
       { label: { ru: "Программа лояльности", en: "Loyalty programme" }, href: "/loyalty" },
       { label: { ru: "Подарочный сертификат", en: "Gift certificate" }, href: "https://o8981.yclients.ru/certificates" },
       { label: { ru: "Отзывы", en: "Reviews" }, href: "/salon#reviews" },
@@ -51,7 +50,7 @@ const RIGHT: NavItem[] = [
       { label: { ru: "Агентствам и бизнесу", en: "For agencies & business" }, href: "/cooperation#business" },
     ],
   },
-  { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team#vacancies" },
+  { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team" },
   { label: { ru: "Контакты", en: "Contacts" }, href: "/contacts" },
 ];
 
