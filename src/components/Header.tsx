@@ -39,6 +39,7 @@ const LEFT: NavItem[] = [
     ],
   },
   { label: { ru: "Магазин", en: "Shop" }, href: "/shop" },
+  { label: { ru: "Новости", en: "News" }, href: "/news" },
 ];
 
 const RIGHT: NavItem[] = [
