@@ -38,7 +38,7 @@ export default function ConciergeStages({
         return (
           <div
             key={s.name.ru}
-            className="relative h-svh min-h-[560px] w-full overflow-hidden rounded-t-[28px] shadow-[0_-8px_20px_-10px_rgba(23,25,26,0.2)] lg:sticky lg:top-0"
+            className="relative h-svh min-h-[560px] w-full overflow-hidden rounded-[28px] shadow-[0_-8px_20px_-10px_rgba(23,25,26,0.2)] lg:sticky lg:top-0"
           >
             <div className="grid h-full grid-cols-1 lg:grid-cols-2">
               {/* Текст — по центру, мелкий */}
