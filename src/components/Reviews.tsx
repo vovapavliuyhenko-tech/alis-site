@@ -197,8 +197,7 @@ export default function Reviews() {
         {/* Заголовок */}
         <div className="r-reveal mb-14 flex flex-col items-center text-center lg:mb-20">
           <h2 className="font-display text-[22px] font-normal uppercase tracking-[0.02em] leading-[1.2] text-[#17191a] lg:text-[28px]">
-            {lang === "en" ? "What our " : "Что говорят "}
-            <span className="text-[#17191a]">{lang === "en" ? "guests say" : "наши гостьи"}</span>
+            {lang === "en" ? "Read reviews or leave your own" : "Читать отзывы или оставить свой"}
           </h2>
           <p className="mt-4 inline-flex items-center gap-2 text-[14px] text-[#17191a]/60">
             <span className="text-[#17191a]">★★★★★</span>
@@ -252,7 +251,6 @@ export default function Reviews() {
 
         {/* Ссылки на реальные площадки с отзывами */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <span className="text-[13px] text-[#17191a]/55">{lang === "en" ? "Read reviews or leave your own:" : "Читать отзывы или оставить свой:"}</span>
           {[
             { label: "Яндекс", href: "https://yandex.ru/maps/org/lis_byuti/63024642190/reviews/" },
             { label: "2ГИС", href: "https://2gis.ru/novorossiysk/firm/70000001086737494/tab/reviews" },
