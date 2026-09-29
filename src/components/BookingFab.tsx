@@ -31,7 +31,15 @@ export default function BookingFab() {
       setOnFooter(revealed > 90);
       // В самом низу страницы прячем кнопку — иначе она закрывает ссылки нижней строки подвала
       const atEnd = window.scrollY + window.innerHeight >= docH - 140;
-      setShown(!overFirst && !atEnd);
+      // Не закрываем текст: если в зоне кнопки (правый нижний угол) оказался блок
+      // с data-fab-avoid (например, заголовок и кнопка фото-баннера) — прячемся
+      const zoneTop = window.innerHeight - 130;
+      const zoneLeft = window.innerWidth - 130;
+      const covers = Array.from(document.querySelectorAll("[data-fab-avoid]")).some((el) => {
+        const r = el.getBoundingClientRect();
+        return r.bottom > zoneTop && r.top < window.innerHeight && r.right > zoneLeft;
+      });
+      setShown(!overFirst && !atEnd && !covers);
     };
     update();
     window.addEventListener("scroll", update, { passive: true });

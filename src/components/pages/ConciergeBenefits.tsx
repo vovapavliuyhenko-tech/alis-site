@@ -101,11 +101,11 @@ export default function ConciergeBenefits({ points = POINTS }: { points?: Benefi
                 />
                 <div
                   className={`absolute inset-0 -z-10 transition-colors duration-700 ${on ? "bg-black/5" : "bg-black/30"}`}
-                  style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,.5), rgba(0,0,0,0) 45%)" }}
+                  style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,.7), rgba(0,0,0,.25) 45%, rgba(0,0,0,0) 70%)" }}
                 />
 
                 {/* Номер */}
-                <span className="absolute left-5 top-5 font-serif-display text-[13px] tracking-[0.12em] text-white/70 lg:left-6 lg:top-6">
+                <span className="absolute left-5 top-5 font-serif-display text-[13px] tracking-[0.12em] text-white/90 lg:left-6 lg:top-6">
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
@@ -128,7 +128,7 @@ export default function ConciergeBenefits({ points = POINTS }: { points?: Benefi
                     {pt.title[lang]}
                   </h3>
                   <p
-                    className={`max-w-[460px] text-[14px] leading-[1.55] text-white/85 transition-all duration-500 lg:text-[15px] ${
+                    className={`max-w-[460px] !text-[15px] leading-[1.55] text-white transition-all duration-500 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] lg:!text-[16px] ${
                       on ? "mt-3 max-h-40 translate-y-0 opacity-100 delay-300" : "max-h-0 translate-y-4 opacity-0"
                     }`}
                   >

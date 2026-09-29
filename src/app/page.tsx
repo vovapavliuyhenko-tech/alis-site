@@ -7,7 +7,6 @@ import ConciergeStages from "@/components/pages/ConciergeStages";
 import { type Stage } from "@/components/HorizontalStory";
 import ServiceBento from "@/components/pages/ServiceBento";
 import ScrollReveal from "@/components/ScrollReveal";
-import SmoothScroll from "@/components/SmoothScroll";
 
 // Клон massage-romanova.ru — стиль эталона + прежние блоки ÁLIS.
 
@@ -39,7 +38,6 @@ const VISIT_STEPS: Stage[] = [
 export default function Home() {
   return (
     <main>
-      <SmoothScroll />
       <ScrollReveal />
       <Header />
       <Hero />

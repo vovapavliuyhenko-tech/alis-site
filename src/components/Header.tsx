@@ -104,8 +104,10 @@ export default function Header() {
     const html = document.documentElement;
     const prev = html.style.overflow;
     html.style.overflow = "hidden";
+    html.classList.add("menu-open"); // прячет плавающую кнопку записи (globals.css)
     return () => {
       html.style.overflow = prev;
+      html.classList.remove("menu-open");
     };
   }, [open]);
 
@@ -113,7 +115,7 @@ export default function Header() {
   // и на внутренних страницах — тёмная на белой подложке.
   const overHero = !solid;
   const ink = overHero ? "text-white" : "text-[#17191a]";
-  const inkSoft = overHero ? "text-white/80" : "text-[#17191a]/75";
+  const inkSoft = overHero ? "text-white/90" : "text-[#17191a]/90";
   const hoverInk = overHero ? "hover:text-white" : "hover:text-[#17191a]";
 
   // Пункт меню + (опц.) выпадашка
@@ -138,7 +140,7 @@ export default function Header() {
                 key={s.label.ru}
                 href={s.href}
                 {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="block rounded-xl px-4 py-2.5 text-center text-[12px] uppercase tracking-[0.12em] text-[#17191a] transition-colors hover:bg-[#17191a]/[0.08]"
+                className="block rounded-xl px-4 py-2.5 text-center text-[13px] uppercase tracking-[0.12em] text-[#17191a] transition-colors hover:bg-[#17191a]/[0.08]"
               >
                 {s.label[lang]}
               </a>
@@ -193,7 +195,7 @@ export default function Header() {
               {open ? <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /> : <path d="M4 8h16M4 16h16" strokeLinecap="round" />}
             </svg>
           </button>
-          <nav className="hidden w-full items-center justify-end gap-4 whitespace-nowrap text-[11.5px] uppercase tracking-[0.1em] xl:flex min-[1440px]:gap-7 min-[1440px]:text-[12.5px] min-[1680px]:gap-9 min-[1680px]:text-[14px]">
+          <nav className="hidden w-full items-center justify-end gap-4 whitespace-nowrap text-[12.5px] uppercase tracking-[0.1em] xl:flex min-[1440px]:gap-7 min-[1440px]:text-[13px] min-[1680px]:gap-9 min-[1680px]:text-[14px]">
             {LEFT.map((item) => (
               <NavLink key={item.label.ru} item={item} />
             ))}
@@ -207,7 +209,7 @@ export default function Header() {
 
         {/* Правая часть: правое меню (прижато к логотипу) + действия у края */}
         <div className="flex items-center">
-          <nav className="hidden items-center gap-4 whitespace-nowrap text-[11.5px] uppercase tracking-[0.1em] xl:flex min-[1440px]:gap-7 min-[1440px]:text-[12.5px] min-[1680px]:gap-9 min-[1680px]:text-[14px]">
+          <nav className="hidden items-center gap-4 whitespace-nowrap text-[12.5px] uppercase tracking-[0.1em] xl:flex min-[1440px]:gap-7 min-[1440px]:text-[13px] min-[1680px]:gap-9 min-[1680px]:text-[14px]">
             {RIGHT.map((item) => (
               <NavLink key={item.label.ru} item={item} />
             ))}
@@ -250,13 +252,13 @@ export default function Header() {
           <nav className="flex flex-col">
             {ALL_NAV.map((item) => (
               <div key={item.label.ru} className="border-b border-[#17191a]/8 py-2 last:border-0">
-                <a href={item.href} onClick={() => setOpen(false)} className="block py-2 text-[15px] uppercase tracking-[0.12em] text-[#17191a]">
+                <a href={item.href} onClick={() => setOpen(false)} className="block py-2.5 text-[16px] uppercase tracking-[0.1em] text-[#17191a]">
                   {item.label[lang]}
                 </a>
                 {item.sub && (
                   <div className="mb-1 flex flex-col gap-0.5 pl-3">
                     {item.sub.map((s) => (
-                      <a key={s.label.ru} href={s.href} {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setOpen(false)} className="py-1.5 text-[13px] text-[#17191a]/55">
+                      <a key={s.label.ru} href={s.href} {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setOpen(false)} className="py-2 text-[15px] text-[#17191a]/80">
                         {s.label[lang]}
                       </a>
                     ))}

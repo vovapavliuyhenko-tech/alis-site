@@ -52,7 +52,7 @@ export default function PhotoBanner({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img ref={img} src={photo} alt={title[lang]} loading="lazy" className="absolute left-0 top-[-25%] -z-0 h-[150%] w-full object-cover will-change-transform" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-        <div className="r-reveal relative z-10 max-w-[560px] px-6 pb-12 lg:pb-16">
+        <div data-fab-avoid className="r-reveal relative z-10 max-w-[560px] px-6 pb-12 lg:pb-16">
           <p className="text-[12px] text-white/75">{label[lang]}</p>
           <h2 className="mt-3 !text-[26px] !font-light text-white lg:!text-[34px]">{title[lang]}</h2>
           <a

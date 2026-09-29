@@ -256,11 +256,11 @@ main h3 {
 
 /* Подзаголовки/описания под названием карточки — мельче, чтобы не спорили с названием */
 main h3 + p {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.55;
 }
 @media (min-width: 1024px) {
-  main h3 + p { font-size: 13px; }
+  main h3 + p { font-size: 14px; }
 }
 
 /* «Сотрудничество»: пока не выбрана категория, подвал скрыт (см. CooperationFormats) */
@@ -269,6 +269,8 @@ html.coop-locked .page-end { padding-bottom: 0; }
 
 /* Пока видна плашка cookie — плавающая кнопка записи стоит над ней, а не поверх */
 html.cookie-open .booking-fab { bottom: 132px; }
+/* Открыто мобильное меню — кнопку записи прячем, чтобы не висела поверх пунктов */
+html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
 
 /* Автозаполнение браузера в формах заявки — без голубой подложки */
 #request input:-webkit-autofill, #offer input:-webkit-autofill, #join input:-webkit-autofill {

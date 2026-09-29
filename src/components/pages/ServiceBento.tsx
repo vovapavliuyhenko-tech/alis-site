@@ -39,14 +39,14 @@ export default function ServiceBento() {
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-all duration-[700ms] ease-out group-hover:scale-105 group-hover:blur-lg"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/20 transition-colors duration-500 group-hover:from-black/55 group-hover:via-black/25 group-hover:to-black/45" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/20 transition-colors duration-500 group-hover:from-black/65 group-hover:via-black/35 group-hover:to-black/50" />
 
               {/* Название слева сверху + подпись, проявляется на наведении */}
               <div className="absolute inset-x-6 top-5">
                 <h3 className="font-serif-display text-[22px] uppercase tracking-[0.03em] text-white lg:text-[24px]">
                   {c.title[lang]}
                 </h3>
-                <p className="mt-2 max-w-[290px] text-[13.5px] leading-[1.5] text-white/90 opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:text-[14px]">
+                <p className="mt-2 max-w-[300px] !text-[14px] leading-[1.5] text-white opacity-0 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] lg:!text-[15px] transition-opacity duration-300 group-hover:opacity-100">
                   {c.note[lang]}
                 </p>
               </div>
