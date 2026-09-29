@@ -142,18 +142,18 @@ export default function Header() {
     );
 
   const Badge = ({ n }: { n: number }) => (
-    <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#17191a] px-1 text-[10px] font-medium leading-none text-[#f4efe6]">
+    <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#46131E] px-1 text-[10px] font-medium leading-none text-white">
       {n}
     </span>
   );
-  const bubble = overHero ? "bg-white/10 hover:bg-white/20" : "bg-[#17191a]/[0.06] hover:bg-[#17191a]/10";
+  const bubble = overHero ? "bg-white/10 hover:bg-white/20 text-white" : "bg-[#46131E]/[0.07] hover:bg-[#46131E]/[0.14] text-[#46131E]";
   const ShopIcons = () => (
     <div className="flex items-center gap-1">
-      <button onClick={shop.openFav} aria-label={lang === "en" ? "Favourites" : "Избранное"} className={`relative flex h-8 w-8 items-center justify-center rounded-full transition-colors ${bubble} ${ink} ${hoverInk}`}>
+      <button onClick={shop.openFav} aria-label={lang === "en" ? "Favourites" : "Избранное"} className={`relative flex h-8 w-8 items-center justify-center rounded-full transition-colors ${bubble}`}>
         <HeartIcon />
         {shop.favCount > 0 && <Badge n={shop.favCount} />}
       </button>
-      <button onClick={shop.openCart} aria-label={lang === "en" ? "Cart" : "Корзина"} className={`relative flex h-8 w-8 items-center justify-center rounded-full transition-colors ${bubble} ${ink} ${hoverInk}`}>
+      <button onClick={shop.openCart} aria-label={lang === "en" ? "Cart" : "Корзина"} className={`relative flex h-8 w-8 items-center justify-center rounded-full transition-colors ${bubble}`}>
         <BagIcon />
         {shop.cartCount > 0 && <Badge n={shop.cartCount} />}
       </button>
@@ -203,10 +203,10 @@ export default function Header() {
           {/* Действия — язык, избранное, корзина (+ запись на моб.) */}
           <div className="ml-auto flex items-center gap-2 min-[1280px]:ml-4 min-[1440px]:ml-8 min-[1680px]:ml-10 min-[1680px]:gap-3">
           {/* Тумблер RU/EN (десктоп) */}
-          <div className={`relative hidden items-center rounded-full border p-0.5 text-[11px] font-medium xl:flex ${overHero ? "border-white/40" : "border-[#17191a]/25"}`}>
+          <div className={`relative hidden items-center rounded-full border p-0.5 text-[11px] font-medium xl:flex ${overHero ? "border-white/40" : "border-[#46131E]/30"}`}>
             <span
               aria-hidden
-              className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${overHero ? "bg-white" : "bg-[#17191a]"}`}
+              className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${overHero ? "bg-white" : "bg-[#46131E]"}`}
               style={{ transform: lang === "en" ? "translateX(100%)" : "translateX(0)" }}
             />
             {(["ru", "en"] as Lang[]).map((l) => (
@@ -216,8 +216,8 @@ export default function Header() {
                 aria-pressed={lang === l}
                 className={`relative z-10 w-8 rounded-full py-1.5 uppercase tracking-wide transition-colors duration-300 ${
                   lang === l
-                    ? overHero ? "text-[#17191a]" : "text-[#f4efe6]"
-                    : overHero ? "text-white/70 hover:text-white" : "text-[#17191a]/60 hover:text-[#17191a]"
+                    ? overHero ? "text-[#46131E]" : "text-white"
+                    : overHero ? "text-white/70 hover:text-white" : "text-[#46131E]/60 hover:text-[#46131E]"
                 }`}
               >
                 {l}
@@ -257,7 +257,7 @@ export default function Header() {
                   onClick={() => setLang(l)}
                   aria-pressed={lang === l}
                   className={`rounded-full border px-4 py-2 uppercase tracking-wide transition-colors ${
-                    lang === l ? "border-[#17191a] bg-[#17191a] text-[#f4efe6]" : "border-[#17191a]/15 text-[#17191a]/60"
+                    lang === l ? "border-[#46131E] bg-[#46131E] text-white" : "border-[#46131E]/20 text-[#46131E]/60"
                   }`}
                 >
                   {l}
