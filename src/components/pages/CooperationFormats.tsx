@@ -95,7 +95,7 @@ export default function CooperationFormats() {
                 aria-pressed={on}
                 className={`r-reveal group block scroll-mt-28 text-left transition-opacity duration-500 ${dim ? "opacity-50 hover:opacity-100" : ""}`}
               >
-                <div className={`overflow-hidden rounded-[12px] bg-[#f2f1ee] ring-offset-4 transition-shadow duration-300 ${on ? "ring-1 ring-[#46131E]" : ""}`}>
+                <div className={`relative overflow-hidden rounded-[12px] bg-[#f2f1ee] ring-offset-4 transition-shadow duration-300 ${on ? "ring-1 ring-[#46131E]" : ""}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={a.img}
@@ -103,6 +103,13 @@ export default function CooperationFormats() {
                     loading="lazy"
                     className="aspect-[3/2] w-full object-cover transition-[transform,filter] duration-700 ease-out group-hover:scale-[1.03] group-hover:blur-[6px]"
                   />
+                  {/* При наведении по центру фото — «Выбрать →» (на размытом фоне) */}
+                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                    <span className="flex items-center gap-3 rounded-full border border-white/60 bg-white/15 px-7 py-3 text-[14px] text-white backdrop-blur-md lg:text-[15px]">
+                      {on ? (en ? "Selected ✓" : "Выбрано ✓") : (en ? "Choose" : "Выбрать")}
+                      {!on && <span aria-hidden className="inline-block animate-[alis-nudge_1.2s_ease-in-out_infinite]">→</span>}
+                    </span>
+                  </span>
                 </div>
                 <div className="flex items-baseline justify-between gap-4 px-1 pt-4 text-[#242424]">
                   <h2 className="!text-[15px] lg:!text-[16px]">{a.title[lang]}</h2>
