@@ -32,6 +32,10 @@ export default function Hero() {
       />
 
       <div className="flex w-full max-w-[1320px] flex-col items-center px-6 pb-[clamp(32px,6vh,72px)] text-center">
+        {/* Оффер первого визита — мелко над заголовком (по просьбе клиента) */}
+        <p className="mb-3 text-[12px] uppercase tracking-[0.18em] text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:mb-4 lg:text-[13px]">
+          {t("−500 ₽ на первый визит", "−500 ₽ off your first visit")}
+        </p>
         <h1 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
           {t("Отражаем внутреннюю красоту", "Reflecting inner beauty")}
           <br />
