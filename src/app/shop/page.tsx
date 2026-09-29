@@ -1,12 +1,11 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import PhotoStatement from "@/components/pages/PhotoStatement";
 import TeamIntro from "@/components/pages/TeamIntro";
-import { ProductCarousel, ProductChoice } from "@/components/shop/ShopBlocks";
+import { ShopNew, ShopCategories, ShopAll, ShopCollection, ShopLook, ShopAbout, ShopFeed } from "@/components/shop/ShopHome";
 
-// Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и размеры блоков — по референсу
-// revatiwear.ru (блок категорий пока не нужен). Фото — временные, пришлёт заказчица.
+// Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и анимации — по главной
+// aurorebrand.com, оформление — в стиле нашего сайта. Фото — временные.
 export default function ShopPage() {
   return (
     <main>
@@ -17,18 +16,14 @@ export default function ShopPage() {
 
       {/* Маркер конца обложки — после него у шапки появляется подложка */}
       <div id="hero-end" aria-hidden className="h-0" />
-      <div className="relative z-10 bg-white">
-        {/* 2 — Лента товаров (без заголовка) */}
-        <ProductCarousel linkHref="#choice" />
-        {/* 4 — Выбор покупателей: две большие карточки и ряд из четырёх */}
-        <ProductChoice id="choice" />
-        {/* 5 — Фото-высказывание с размытым фоном */}
-        <PhotoStatement
-          photo="/assets/tild6536-613_-2___1__4.jpg"
-          text={{ ru: "Отражаем внутреннюю красоту во внешней", en: "Reflecting inner beauty on the outside" }}
-          note={{ ru: "Немного ÁLIS BEAUTY — с собой", en: "A little ÁLIS BEAUTY to take home" }}
-          link={{ label: { ru: "Больше о нас", en: "More about us" }, href: "/salon" }}
-        />
+      <div className="relative z-10 bg-white page-end">
+        <ShopNew />
+        <ShopCategories />
+        <ShopAll />
+        <ShopCollection />
+        <ShopLook />
+        <ShopAbout />
+        <ShopFeed />
       </div>
       <Footer />
     </main>
