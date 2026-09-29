@@ -96,7 +96,7 @@ export default function LoyaltyCerts() {
           {TILES.map((tile, i) => (
             <div
               key={tile.title.ru}
-              className={`group flex min-h-[160px] flex-col justify-between rounded-[12px] border border-[#17191a]/15 bg-white p-7 shadow-[inset_3px_0_0_#46131E] lg:min-h-0 ${
+              className={`group flex min-h-[160px] flex-col justify-between rounded-[12px] border border-[#17191a]/15 bg-white p-7 shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:min-h-0 ${
                 i === 0 ? "lg:col-start-2 lg:row-start-2" : "lg:col-start-3 lg:row-start-2"
               }`}
             >
