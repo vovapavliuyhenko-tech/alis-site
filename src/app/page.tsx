@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
 import PhotoStatement from "@/components/pages/PhotoStatement";
 import ConciergeStages from "@/components/pages/ConciergeStages";
-import HomeVisit from "@/components/pages/HomeVisit";
 import { type Stage } from "@/components/HorizontalStory";
 import ServiceBento from "@/components/pages/ServiceBento";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -59,8 +58,6 @@ export default function Home() {
         />
         {/* Как записаться — 3 шага (как этапы на странице консьерж-сервиса) */}
         <ConciergeStages stages={VISIT_STEPS} sectionId="how" title={null} stepLabel={{ ru: "Шаг", en: "Step" }} />
-        {/* Финальный блок — куда идти: карта, адрес, часы, телефон, запись */}
-        <HomeVisit />
       </div>
       <Footer />
     </main>
