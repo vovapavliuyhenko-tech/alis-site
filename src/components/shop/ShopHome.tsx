@@ -16,19 +16,6 @@ import PhotoBanner from "@/components/pages/PhotoBanner";
 type Loc = { ru: string; en: string };
 
 /* ---------- Шапка блока: заголовок слева, ссылка справа ---------- */
-function Head({ title, link }: { title: Loc; link?: { label: Loc; href: string } }) {
-  const { lang } = useLang();
-  return (
-    <div className="r-reveal mb-8 flex items-baseline justify-between gap-6 lg:mb-10">
-      <h2 className="text-[#17191a]">{title[lang]}</h2>
-      {link && (
-        <a href={link.href} className="group shrink-0 text-[13px] text-[#17191a]/60 transition-colors hover:text-[#17191a]">
-          {link.label[lang]} <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-        </a>
-      )}
-    </div>
-  );
-}
 
 /* ---------- Карточка товара: фото, избранное, название и цена ---------- */
 function Card({ p, ratio = "aspect-[3/4]" }: { p: Product; ratio?: string }) {
@@ -67,7 +54,7 @@ function Card({ p, ratio = "aspect-[3/4]" }: { p: Product; ratio?: string }) {
 
 /* ---------- Лента товаров, как галерея на странице салона: сама листается,
    бесшовная петля, перетаскивание мышью/пальцем, полоса прогресса под карточками ---------- */
-function ProductMarquee({ items, id, title, link }: { items: Product[]; id?: string; title: Loc; link?: { label: Loc; href: string } }) {
+function ProductMarquee({ items, id }: { items: Product[]; id?: string }) {
   const scroller = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false });
@@ -128,9 +115,6 @@ function ProductMarquee({ items, id, title, link }: { items: Product[]; id?: str
 
   return (
     <section id={id} className="scroll-mt-24 overflow-hidden bg-white section-y">
-      <div className="mx-auto w-[96%] max-w-[1760px]">
-        <Head title={title} link={link} />
-      </div>
       <div
         ref={scroller}
         onPointerDown={onDown}
@@ -156,8 +140,6 @@ export function ShopNew() {
   return (
     <ProductMarquee
       items={PRODUCTS}
-      title={{ ru: "Новинки", en: "New in" }}
-      link={{ label: { ru: "Все товары", en: "All products" }, href: "#all" }}
     />
   );
 }
@@ -202,7 +184,7 @@ export function ShopCategories() {
 
 /* ---------- 3. Все товары — лента товаров (в обратном порядке, чтобы не повторять «Новинки») ---------- */
 export function ShopAll() {
-  return <ProductMarquee id="all" items={[...PRODUCTS].reverse()} title={{ ru: "Все товары", en: "All products" }} />;
+  return <ProductMarquee id="all" items={[...PRODUCTS].reverse()} />;
 }
 
 /* ---------- 4. Баннер «подарочный сертификат» — общий фото-баннер ---------- */
