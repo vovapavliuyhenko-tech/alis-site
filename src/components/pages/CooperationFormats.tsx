@@ -65,6 +65,14 @@ export default function CooperationFormats() {
     return () => window.removeEventListener("hashchange", fromHash);
   }, []);
 
+  // Пока категория не выбрана — прячем подвал: страница заканчивается на выборе,
+  // и пролистать дальше нельзя. После выбора подвал возвращается.
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle("coop-locked", !kind);
+    return () => root.classList.remove("coop-locked");
+  }, [kind]);
+
   const choose = (k: Kind) => {
     setKind(k);
     // Прокручиваем к открывшейся форме, когда она успеет появиться
@@ -108,32 +116,33 @@ export default function CooperationFormats() {
           })}
         </div>
 
-        {/* Пока ничего не выбрано — «приманка»: размытый верх формы заявки мягко
-            покачивается и уходит в белое, над ним подсказка со стрелкой вверх */}
+        {/* Пока ничего не выбрано — «приманка»: настоящая форма заявки, размытая и мягко
+            покачивающаяся, растворяется книзу (маска, без серых полос). Поверх — светлая
+            «пилюля» с подсказкой и стрелкой вверх к карточкам. */}
         {!kind && (
-          <div className="relative mx-auto mt-14 w-[96%] max-w-[1760px] lg:mt-16">
-            <div aria-hidden className="pointer-events-none relative h-[200px] overflow-hidden lg:h-[240px]">
-              <div className="animate-[alis-float_3.2s_ease-in-out_infinite] rounded-t-[12px] bg-[#17191a] px-6 pb-16 pt-10 blur-[6px] sm:px-10 lg:px-16 lg:pt-14">
-                <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-                  <div>
-                    <div className="h-6 w-[70%] rounded-full bg-[#f4efe6]/80" />
-                    <div className="mt-5 h-3 w-[85%] rounded-full bg-[#f4efe6]/35" />
-                    <div className="mt-3 h-3 w-[60%] rounded-full bg-[#f4efe6]/35" />
-                  </div>
-                  <div className="space-y-7">
-                    <div className="h-px w-full bg-[#f4efe6]/40" />
-                    <div className="h-px w-full bg-[#f4efe6]/40" />
-                    <div className="h-12 w-full rounded-[12px] bg-[#f4efe6]/80" />
-                  </div>
-                </div>
+          <div className="relative mt-14 lg:mt-16">
+            <div
+              aria-hidden
+              className="pointer-events-none h-[260px] select-none overflow-hidden lg:h-[300px] [&_section]:!pt-0"
+              style={{ WebkitMaskImage: "linear-gradient(to bottom, #000 25%, transparent 95%)", maskImage: "linear-gradient(to bottom, #000 25%, transparent 95%)" }}
+            >
+              <div className="animate-[alis-float_3.6s_ease-in-out_infinite] blur-[7px]">
+                <RequestForm
+                  id="request-preview"
+                  title={FORMS.private.title}
+                  text={FORMS.private.text}
+                  fields={FORMS.private.fields}
+                  submit={{ ru: "Оставить заявку", en: "Leave a request" }}
+                  success={{ ru: "", en: "" }}
+                />
               </div>
-              {/* Уход в белое снизу */}
-              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white via-white/80 to-transparent" />
             </div>
-            <p className="absolute inset-x-0 bottom-6 flex flex-col items-center gap-2 text-center text-[13px] text-[#17191a]/60 lg:bottom-8">
-              <span aria-hidden className="animate-[alis-nudge-up_1.4s_ease-in-out_infinite] text-[18px] text-[#46131E]">↑</span>
-              {en ? "Choose who you are above — and the request form will open." : "Выберите вариант выше — и откроется форма заявки."}
-            </p>
+            <div className="absolute inset-x-0 top-[38%] flex justify-center px-4">
+              <p className="flex items-center gap-3 rounded-full border border-[#17191a]/10 bg-white/85 px-6 py-3.5 text-[13px] text-[#17191a] shadow-[0_18px_40px_-18px_rgba(23,25,26,0.35)] backdrop-blur-md lg:text-[14px]">
+                <span aria-hidden className="animate-[alis-nudge-up_1.4s_ease-in-out_infinite] text-[16px] text-[#46131E]">↑</span>
+                {en ? "Choose who you are above — the request form will open" : "Выберите вариант выше — откроется форма заявки"}
+              </p>
+            </div>
           </div>
         )}
       </section>
