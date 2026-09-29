@@ -1,8 +1,7 @@
 "use client";
 // Новости ÁLIS BEAUTY — по образцу блога PALOMA: сетка карточек (первая — крупная, на 2 колонки),
-// рубрики-фильтры, страница новости с обложкой, текстом, галереей и «Читайте также».
+// страница новости с обложкой, текстом, галереей и «Читайте также».
 // Без r-reveal: карточки перерисовываются при смене рубрики, а ScrollReveal сканирует только при монтировании.
-import { useState } from "react";
 import Link from "next/link";
 import { useLang, type Lang } from "@/lib/i18n";
 import { NEWS, NEWS_CATS, YCLIENTS, type NewsItem } from "@/lib/news";
@@ -57,39 +56,16 @@ export function NewsCard({ n, large = false }: { n: NewsItem; large?: boolean })
 
 export function NewsGrid() {
   const { lang } = useLang();
-  const [cat, setCat] = useState<(typeof NEWS_CATS)[number]["id"]>("all");
-  const list = cat === "all" ? NEWS : NEWS.filter((n) => n.cat === cat);
-
   return (
-    <section className="section-y">
+    // Без обложки: отступ сверху под фиксированную шапку
+    <section className="pt-[112px] min-[1280px]:pt-[128px] min-[1680px]:pt-[150px]">
+      <h1 className="sr-only">{lang === "en" ? "ÁLIS BEAUTY news" : "Новости ÁLIS BEAUTY"}</h1>
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        {/* Рубрики */}
-        <div className="mb-10 flex flex-wrap gap-2 lg:mb-14">
-          {NEWS_CATS.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => setCat(c.id)}
-              aria-pressed={cat === c.id}
-              className={`rounded-full border px-4 py-2 text-[12px] uppercase tracking-[0.12em] transition-colors duration-300 ${
-                cat === c.id
-                  ? "border-[#46131E] bg-[#46131E] text-white"
-                  : "border-[#17191a]/15 text-[#17191a]/60 hover:border-[#46131E] hover:text-[#46131E]"
-              }`}
-            >
-              {c.label[lang]}
-            </button>
+        <div className="grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
+          {NEWS.map((n, i) => (
+            <NewsCard key={n.slug} n={n} large={i === 0} />
           ))}
         </div>
-
-        {list.length ? (
-          <div className="grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-            {list.map((n, i) => (
-              <NewsCard key={n.slug} n={n} large={i === 0} />
-            ))}
-          </div>
-        ) : (
-          <p className="text-[14px] text-[#17191a]/60">{lang === "en" ? "No news in this section yet." : "В этой рубрике пока нет новостей."}</p>
-        )}
       </div>
     </section>
   );
