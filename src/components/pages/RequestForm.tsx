@@ -68,7 +68,7 @@ export default function RequestForm({
   };
 
   const line = (err?: boolean) =>
-    `w-full border-b bg-transparent py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#46131E] ${
+    `w-full border-b bg-transparent py-2.5 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#46131E] ${
       err ? "border-[#c0392b]" : "border-[#17191a]/15"
     }`;
 
@@ -76,14 +76,14 @@ export default function RequestForm({
     <section id={id} className="scroll-mt-24 bg-white section-y">
       <div
         id={innerId}
-        className="mx-auto grid w-[96%] max-w-[1080px] scroll-mt-24 grid-cols-1 gap-8 rounded-[12px] bg-[#f6f4f1] px-6 py-10 text-[#17191a] shadow-[inset_3px_0_0_#46131E] sm:px-10 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-12 lg:px-12 lg:py-12"
+        className="mx-auto grid w-[96%] max-w-[1760px] scroll-mt-24 grid-cols-1 gap-8 rounded-[12px] bg-[#f6f4f1] px-6 py-8 text-[#17191a] shadow-[inset_3px_0_0_#46131E] sm:px-10 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-16 lg:py-8"
       >
         {/* Слева — заголовок и текст */}
         <div className="lg:pt-2">
           <h2 className="text-[#17191a]">{title[lang]}</h2>
           {text && <p className="mt-4 max-w-[460px] text-[14px] leading-[1.6] text-[#17191a]/60 lg:text-[15px]">{text[lang]}</p>}
           {bullets && bullets.length > 0 && (
-            <ul className="mt-7 space-y-3 lg:mt-8">
+            <ul className="mt-5 space-y-2.5 lg:mt-6">
               {bullets.map((b) => (
                 <li key={b.ru} className="flex items-start gap-3 text-[14px] leading-[1.5] text-[#242424] lg:text-[15px]">
                   <span aria-hidden className="mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#46131E] text-[10px] text-white">✓</span>
@@ -101,12 +101,12 @@ export default function RequestForm({
             <p className="mt-3 max-w-[420px] text-[14px] leading-[1.6] text-[#17191a]/60">{success[lang]}</p>
           </div>
         ) : (
-          <form onSubmit={onSubmit} noValidate className="flex flex-col gap-2 rounded-[12px] bg-white px-6 py-7 lg:px-9 lg:py-9">
+          <form onSubmit={onSubmit} noValidate className="flex flex-col gap-1 rounded-[12px] bg-white px-6 py-5 lg:px-8 lg:py-6">
             {fields.map((f) =>
               f.textarea ? (
                 <textarea
                   key={f.key}
-                  rows={2}
+                  rows={1}
                   aria-label={f.label[lang]}
                   placeholder={f.label[lang]}
                   value={values[f.key] || ""}
@@ -128,7 +128,7 @@ export default function RequestForm({
               ),
             )}
 
-            <label className="mt-4 flex cursor-pointer items-start gap-3">
+            <label className="mt-3 flex cursor-pointer items-start gap-3">
               <input
                 type="checkbox"
                 checked={consent}
@@ -148,7 +148,7 @@ export default function RequestForm({
 
             <button
               type="submit"
-              className="mt-5 flex w-full items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] py-4 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-white hover:text-[#46131E]"
+              className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-white hover:text-[#46131E]"
             >
               {submit[lang]}
             </button>
