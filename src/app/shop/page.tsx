@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
-import { ShopNew, ShopCategories, ShopAll, ShopCollection, ShopAbout, ShopFeed } from "@/components/shop/ShopHome";
+import { ShopNew, ShopCategories, ShopAll, ShopCollection, ShopAbout } from "@/components/shop/ShopHome";
 
 // Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и анимации — по главной
 // aurorebrand.com, оформление — в стиле нашего сайта. Фото — временные.
@@ -22,7 +22,6 @@ export default function ShopPage() {
         <ShopAll />
         <ShopCollection />
         <ShopAbout />
-        <ShopFeed />
       </div>
       <Footer />
     </main>

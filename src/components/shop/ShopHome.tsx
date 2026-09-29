@@ -4,7 +4,7 @@
 // скругления 12px, заголовки обычным регистром, бордовые кнопки, ч/б.
 // Блоки: «Новинки» и «Все товары» — самолистающиеся ленты с полосой прогресса (как галерея
 // салона), категории (мозаика), баннер коллекции, о бренде
-// (фото с тонкой бегущей строкой ÁLIS BEAUTY) → лента фото соцсети.
+// (фото с бегущей строкой логотипов ÁLIS BEAUTY).
 // Тексты — только уже согласованные. Фото — временные.
 import { useEffect, useRef } from "react";
 import Link from "next/link";
@@ -285,34 +285,3 @@ export function ShopAbout() {
   );
 }
 
-/* ---------- 7. Лента фото соцсети ---------- */
-const FEED = ["/assets/alis/img_2751.jpg", "/assets/alis/img_2749.jpg", "/assets/alis/img_6011.jpg", "/assets/alis/img_3283.jpg", "/assets/alis/img_8578.jpg"];
-
-export function ShopFeed() {
-  const { lang } = useLang();
-  return (
-    <section className="bg-white section-y">
-      <div className="mx-auto w-[96%] max-w-[1760px]">
-        <Head
-          title={{ ru: "Салон красоты: @alisbeauty.ru", en: "Beauty salon: @alisbeauty.ru" }}
-          link={{ label: { ru: "Смотреть", en: "View" }, href: "https://www.instagram.com/alisbeauty.ru" }}
-        />
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4">
-          {FEED.map((src, i) => (
-            <a
-              key={src}
-              href="https://www.instagram.com/alisbeauty.ru"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={lang === "en" ? "Open profile" : "Открыть профиль"}
-              className={`r-reveal group relative block overflow-hidden rounded-[12px] ${i === 4 ? "hidden lg:block" : ""}`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={src} alt="" loading="lazy" className="aspect-square w-full object-cover transition-[transform,filter] duration-700 group-hover:scale-[1.05] group-hover:blur-[3px]" />
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
