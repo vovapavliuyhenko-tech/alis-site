@@ -100,7 +100,7 @@ export default function CooperationFormats() {
                   <h2 className="!text-[15px] lg:!text-[16px]">{a.title[lang]}</h2>
                   <span className={`shrink-0 text-[13px] transition-colors duration-300 ${on ? "text-[#46131E]" : "text-[#17191a]/55 group-hover:text-[#17191a]"}`}>
                     {on ? (en ? "Selected ✓" : "Выбрано ✓") : (en ? "Choose" : "Выбрать")}{" "}
-                    {!on && <span aria-hidden className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>}
+                    {!on && <span aria-hidden className={`inline-block ${kind ? "transition-transform duration-300 group-hover:translate-x-1" : "animate-[alis-nudge_1.2s_ease-in-out_infinite] text-[#46131E]"}`}>→</span>}
                   </span>
                 </div>
               </button>
@@ -108,11 +108,33 @@ export default function CooperationFormats() {
           })}
         </div>
 
-        {/* Подсказка, пока ничего не выбрано */}
+        {/* Пока ничего не выбрано — «приманка»: размытый верх формы заявки мягко
+            покачивается и уходит в белое, над ним подсказка со стрелкой вверх */}
         {!kind && (
-          <p className="mx-auto mt-12 w-[96%] max-w-[1760px] text-center text-[13px] text-[#17191a]/45">
-            {en ? "Choose who you are — and we'll show the right request form." : "Выберите, кто вы, — и мы покажем подходящую форму заявки."}
-          </p>
+          <div className="relative mx-auto mt-14 w-[96%] max-w-[1760px] lg:mt-16">
+            <div aria-hidden className="pointer-events-none relative h-[200px] overflow-hidden lg:h-[240px]">
+              <div className="animate-[alis-float_3.2s_ease-in-out_infinite] rounded-t-[12px] bg-[#17191a] px-6 pb-16 pt-10 blur-[6px] sm:px-10 lg:px-16 lg:pt-14">
+                <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
+                  <div>
+                    <div className="h-6 w-[70%] rounded-full bg-[#f4efe6]/80" />
+                    <div className="mt-5 h-3 w-[85%] rounded-full bg-[#f4efe6]/35" />
+                    <div className="mt-3 h-3 w-[60%] rounded-full bg-[#f4efe6]/35" />
+                  </div>
+                  <div className="space-y-7">
+                    <div className="h-px w-full bg-[#f4efe6]/40" />
+                    <div className="h-px w-full bg-[#f4efe6]/40" />
+                    <div className="h-12 w-full rounded-[12px] bg-[#f4efe6]/80" />
+                  </div>
+                </div>
+              </div>
+              {/* Уход в белое снизу */}
+              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white via-white/80 to-transparent" />
+            </div>
+            <p className="absolute inset-x-0 bottom-6 flex flex-col items-center gap-2 text-center text-[13px] text-[#17191a]/60 lg:bottom-8">
+              <span aria-hidden className="animate-[alis-nudge-up_1.4s_ease-in-out_infinite] text-[18px] text-[#46131E]">↑</span>
+              {en ? "Choose who you are above — and the request form will open." : "Выберите вариант выше — и откроется форма заявки."}
+            </p>
+          </div>
         )}
       </section>
 
@@ -131,7 +153,10 @@ export default function CooperationFormats() {
           <Brands />
         </div>
       )}
-      <style>{`@keyframes alis-open { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: none } }`}</style>
+      <style>{`@keyframes alis-open { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: none } }
+@keyframes alis-float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+@keyframes alis-nudge { 0%,100% { transform: translateX(0) } 50% { transform: translateX(6px) } }
+@keyframes alis-nudge-up { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }`}</style>
     </>
   );
 }
