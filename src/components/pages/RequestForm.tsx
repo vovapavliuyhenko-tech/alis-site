@@ -76,7 +76,7 @@ export default function RequestForm({
     <section id={id} className="scroll-mt-24 bg-white section-y">
       <div
         id={innerId}
-        className="mx-auto grid w-[96%] max-w-[1760px] scroll-mt-24 grid-cols-1 gap-10 rounded-[12px] bg-[#f6f4f1] px-6 py-12 text-[#17191a] shadow-[inset_3px_0_0_#46131E] sm:px-10 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-16 lg:py-16"
+        className="mx-auto grid w-[96%] max-w-[1080px] scroll-mt-24 grid-cols-1 gap-8 rounded-[12px] bg-[#f6f4f1] px-6 py-10 text-[#17191a] shadow-[inset_3px_0_0_#46131E] sm:px-10 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-12 lg:px-12 lg:py-12"
       >
         {/* Слева — заголовок и текст */}
         <div className="lg:pt-2">
