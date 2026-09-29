@@ -4,11 +4,10 @@
 // скругления 12px, заголовки обычным регистром, бордовые кнопки, ч/б.
 // Блоки: «Новинки» и «Все товары» — самолистающиеся ленты с полосой прогресса (как галерея
 // салона), категории (мозаика), баннер коллекции, о бренде
-// (фото с крупным логотипом, выезжающим при прокрутке) → лента фото соцсети.
+// (фото с тонкой бегущей строкой ÁLIS BEAUTY) → лента фото соцсети.
 // Тексты — только уже согласованные. Фото — временные.
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { LogoWord } from "@/components/Logo";
 import { useLang } from "@/lib/i18n";
 import { useShop } from "@/lib/shop";
 import { PRODUCTS, fmtPrice, type Product } from "@/lib/products";
@@ -247,25 +246,11 @@ export function ShopCollection() {
   );
 }
 
-/* ---------- 6. О бренде: текст + фото с крупным логотипом, выезжающим при прокрутке ---------- */
+/* ---------- 6. О бренде: текст + фото, по середине фото — тонкая бегущая строка ÁLIS BEAUTY ---------- */
 export function ShopAbout() {
   const { lang } = useLang();
-  const box = useRef<HTMLDivElement>(null);
-  const word = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    let raf = 0;
-    const tick = () => {
-      const b = box.current;
-      if (b && word.current) {
-        const r = b.getBoundingClientRect();
-        const p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height)));
-        word.current.style.transform = `translate3d(${(0.5 - p) * 30}%, 0, 0)`;
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
+  // Повторяем надпись, чтобы лента была бесшовной (две одинаковые половины)
+  const run = Array.from({ length: 10 });
   return (
     <section className="bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
@@ -275,15 +260,28 @@ export function ShopAbout() {
             ? "I wanted to bring together people who burn with their craft and creativity, with pure souls and open hearts, who can see your inner beauty and connect it with the outer. — Dayana Tarzyan, founder"
             : "«Мне хотелось объединить людей, горящих своим делом и творчеством, с чистой душой и открытым сердцем, которые смогут увидеть и соединить вашу внутреннюю красоту с внешней». — Дайана Тарзян, основательница"}
         </p>
-        <div ref={box} className="relative mt-8 h-[60svh] min-h-[420px] overflow-hidden rounded-[12px] lg:mt-10">
+        <div className="relative mt-8 h-[60svh] min-h-[420px] overflow-hidden rounded-[12px] lg:mt-10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/alis/img_6009.jpg" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
-          <div ref={word} className="absolute inset-x-0 bottom-[6%] flex justify-center will-change-transform">
-            <LogoWord variant="cream" className="h-auto w-[86%]" />
+          <div className="absolute inset-0 bg-black/15" />
+          {/* Тонкая бегущая полоса по центру фото */}
+          <div aria-hidden className="absolute inset-x-0 top-1/2 -translate-y-1/2 overflow-hidden border-y border-white/40 bg-white/10 py-2.5 backdrop-blur-[2px] lg:py-3">
+            <div className="flex w-max animate-[alis-run_40s_linear_infinite]">
+              {[0, 1].map((half) => (
+                <div key={half} className="flex shrink-0">
+                  {run.map((_, k) => (
+                    <span key={k} className="flex items-center whitespace-nowrap px-6 text-[12px] uppercase tracking-[0.3em] text-white lg:px-8 lg:text-[13px]">
+                      ÁLIS BEAUTY
+                      <span className="ml-12 inline-block h-1 w-1 rounded-full bg-white/70 lg:ml-16" />
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+      <style>{`@keyframes alis-run { from { transform: translateX(0) } to { transform: translateX(-50%) } }`}</style>
     </section>
   );
 }
