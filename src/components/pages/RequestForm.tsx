@@ -79,7 +79,7 @@ export default function RequestForm({
         {/* Слева — заголовок и текст */}
         <div className="lg:pt-2">
           <h2 className="text-[#f4efe6]">{title[lang]}</h2>
-          {text && <p className="mt-4 max-w-[420px] text-[14px] leading-[1.6] text-[#f4efe6]/60">{text[lang]}</p>}
+          {text && <p className="mt-4 max-w-[460px] text-[14px] leading-[1.6] text-[#f4efe6]/75 lg:text-[15px]">{text[lang]}</p>}
         </div>
 
         {/* Справа — форма или сообщение об отправке */}

@@ -8,8 +8,8 @@ export default function JoinForm() {
       id="join"
       title={{ ru: "Стать частью команды ÁLIS BEAUTY", en: "Become part of ÁLIS BEAUTY" }}
       text={{
-        ru: "Оставьте контакты — расскажем об условиях и позовём на пробный день.",
-        en: "Leave your contacts — we'll tell you about the terms and invite you to a trial day.",
+        ru: "Надоело работать в одиночку и самой искать гостей? В ÁLIS BEAUTY — сильная команда, комфортное место и возможность расти. Оставьте контакты — расскажем об условиях и позовём на пробный день.",
+        en: "Tired of working alone and finding clients yourself? At ÁLIS BEAUTY you get a strong team, a comfortable workplace and room to grow. Leave your contacts — we'll share the terms and invite you to a trial day.",
       }}
       fields={[
         { key: "name", label: { ru: "Имя", en: "Name" }, required: true },

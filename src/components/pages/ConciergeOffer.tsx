@@ -9,8 +9,8 @@ export default function ConciergeOffer() {
       innerId="booking"
       title={{ ru: "Оставить заявку", en: "Leave a request" }}
       text={{
-        ru: "Расскажите о событии — подберём формат выезда и назовём стоимость.",
-        en: "Tell us about the event — we'll shape the format and confirm the price.",
+        ru: "Не тратьте утро праздника на дорогу в салон и поиски мастеров. Команда ÁLIS BEAUTY приедет к вам со всем оборудованием — вам останется только быть готовой вовремя.",
+        en: "Don't spend the morning of your big day travelling to a salon or hunting for artists. The ÁLIS BEAUTY team comes to you fully equipped — all you have to do is be ready on time.",
       }}
       fields={[
         { key: "name", label: { ru: "Имя", en: "Name" }, required: true },

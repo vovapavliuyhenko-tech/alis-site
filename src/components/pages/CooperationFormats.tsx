@@ -23,7 +23,10 @@ const AUDIENCES: { id: Kind; title: Loc; img: string }[] = [
 const FORMS: Record<Kind, { title: Loc; text: Loc; fields: RequestField[] }> = {
   private: {
     title: { ru: "Заявка для частных лиц", en: "Request for individuals" },
-    text: { ru: "Расскажите о событии — подберём формат и назовём стоимость.", en: "Tell us about the event — we'll shape the format and confirm the price." },
+    text: {
+      ru: "Боитесь, что в важный день что-то пойдёт не так? Мы возьмём образ на себя: макияж, причёска и тайминг под контролем — а вы просто наслаждаетесь событием.",
+      en: "Worried something might go wrong on your big day? We take the look off your hands: makeup, hair and timing under control — you simply enjoy the moment.",
+    },
     fields: [
       { key: "name", label: { ru: "Имя", en: "Name" }, required: true },
       { key: "phone", label: { ru: "Телефон", en: "Phone" }, required: true, type: "tel" },
@@ -32,7 +35,10 @@ const FORMS: Record<Kind, { title: Loc; text: Loc; fields: RequestField[] }> = {
   },
   business: {
     title: { ru: "Заявка для агентств и бизнеса", en: "Request for agencies & business" },
-    text: { ru: "Коротко опишите задачу — предложим формат сотрудничества.", en: "Briefly describe the task — we'll suggest a partnership format." },
+    text: {
+      ru: "Нужно подготовить много гостей или команду к съёмке — и без накладок? Выедем командой стилистов в любую локацию и возьмём все заботы об образах на себя.",
+      en: "Need to get lots of guests or a whole crew camera-ready — with no hiccups? We send a team of stylists to any location and take care of every look.",
+    },
     fields: [
       { key: "name", label: { ru: "Имя", en: "Name" }, required: true },
       { key: "company", label: { ru: "Компания / агентство", en: "Company / agency" }, required: true },
