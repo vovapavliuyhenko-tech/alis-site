@@ -268,7 +268,7 @@ export function ShopAbout() {
           <div className="absolute inset-0 bg-black/15" />
           {/* Бегущая строка из логотипов ÁLIS BEAUTY по центру фото */}
           <div aria-hidden className="absolute inset-x-0 top-1/2 -translate-y-1/2 overflow-hidden">
-            <div className="flex w-max animate-[alis-run_40s_linear_infinite]">
+            <div className="flex w-max animate-[alis-run_18s_linear_infinite]">
               {[0, 1].map((half) => (
                 <div key={half} className="flex shrink-0">
                   {run.map((_, k) => (
