@@ -11,10 +11,11 @@ const DEFAULT_PHOTO = "/assets/alis/img_6009.jpg";
 
 export default function TeamIntro({
   title,
+  kicker,
   photo = DEFAULT_PHOTO,
 }: {
   title: Loc;
-  kicker?: Loc; // больше не выводится — обложка как на главной, только заголовок
+  kicker?: Loc; // короткая продающая строка мелко над заголовком (как оффер на главной)
   photo?: string;
 }) {
   const { lang } = useLang();
@@ -36,6 +37,11 @@ export default function TeamIntro({
       />
 
       <div className="flex w-full max-w-[1320px] flex-col items-center px-6 pb-[clamp(56px,11vh,120px)] text-center">
+        {kicker && (
+          <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.18em] text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:mb-4 lg:text-[13px]">
+            {kicker[lang]}
+          </p>
+        )}
         <h1 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
           {title[lang]}
         </h1>

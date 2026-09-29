@@ -120,7 +120,7 @@ export default function ConciergePage() {
       <Header />
 
       {/* 1 — Обложка: фото + кнопка к заявке (без логотипа и эффектов) */}
-      <TeamIntro title={{ ru: "Консьерж-сервис", en: "Concierge service" }} kicker={{ ru: "ÁLIS BEAUTY CONCIERGE", en: "ÁLIS BEAUTY CONCIERGE" }} />
+      <TeamIntro title={{ ru: "Консьерж-сервис", en: "Concierge service" }} kicker={{ ru: "Мастера приедут туда, где вам удобно", en: "Our artists come wherever suits you" }} />
 
       {/* Порядок = пункты меню: о сервисе → услуги и прайс → фотогалерея → этапы →
           как забронировать. space-y — дополнительный воздух между блоками. */}

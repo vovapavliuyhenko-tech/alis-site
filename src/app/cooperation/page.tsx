@@ -15,6 +15,7 @@ export default function CooperationPage() {
       {/* 1 — Обложка: фото + кнопка к заявке (без логотипа и эффектов) */}
       <TeamIntro
         title={{ ru: "Сотрудничество", en: "Cooperation" }}
+        kicker={{ ru: "Для частных лиц, агентств и бизнеса", en: "For individuals, agencies and business" }}
         photo="/assets/alis/img_6011.jpg"
       />
 
