@@ -79,7 +79,7 @@ export default function RequestForm({
         className="mx-auto grid w-[96%] max-w-[1760px] scroll-mt-24 grid-cols-1 gap-8 rounded-[12px] bg-[#f6f4f1] px-6 py-8 text-[#17191a] shadow-[inset_3px_0_0_#46131E] sm:px-10 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:px-16 lg:py-10"
       >
         {/* Слева — заголовок и строка сверху, пункты с галочками снизу (по высоте формы) */}
-        <div className="flex flex-col justify-between gap-6 lg:py-3">
+        <div className="flex flex-col justify-between gap-6 lg:py-12">
           <div>
             <h2 className="text-[#17191a]">{title[lang]}</h2>
           {text && <p className="mt-4 max-w-[460px] text-[14px] leading-[1.6] text-[#17191a]/60 lg:text-[15px]">{text[lang]}</p>}
