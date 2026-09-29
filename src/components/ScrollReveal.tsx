@@ -1,8 +1,7 @@
 "use client";
 // Появление элементов при скролле: .r-reveal въезжают снизу с прозрачностью,
-// соседи — со стаггером. Работает и при smooth-scroll (Lenis): помимо scroll/
-// resize крутим rAF-тикер, пока не проявятся все элементы — не зависим от того,
-// шлёт ли Lenis нативный scroll.
+// соседи — со стаггером. Видимость отслеживает IntersectionObserver (работает и
+// с плавным скроллом SmoothScroll — он двигает страницу через window.scrollTo).
 import { useEffect } from "react";
 
 export default function ScrollReveal() {
@@ -19,38 +18,29 @@ export default function ScrollReveal() {
       if (idx > 0) el.style.transitionDelay = Math.min(idx * 0.09, 0.6) + "s";
     });
 
-    const pending = new Set(els);
-    let raf = 0;
+    // IntersectionObserver вместо проверки каждый кадр: раньше на каждом кадре
+    // пересчитывалось положение всех элементов — на телефонах прокрутка дёргалась.
+    // Порог «нижние 10% экрана» — как было.
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add("is-in");
+          io.unobserve(e.target);
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px" },
+    );
 
-    const reveal = () => {
-      const vh = window.innerHeight;
-      pending.forEach((el) => {
-        const r = el.getBoundingClientRect();
-        if (r.top < vh * 0.9 && r.bottom > 0) {
-          el.classList.add("is-in");
-          pending.delete(el);
-        }
-      });
-      if (pending.size === 0) cleanup();
-    };
+    // То, что уже на экране при загрузке, показываем сразу (не ждём первого колбэка)
+    const vh = window.innerHeight;
+    els.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.9 && r.bottom > 0) el.classList.add("is-in");
+      else io.observe(el);
+    });
 
-    // rAF-тикер: проверяем видимость каждый кадр (надёжно при Lenis-скролле)
-    const tick = () => {
-      reveal();
-      if (pending.size > 0) raf = requestAnimationFrame(tick);
-    };
-
-    const cleanup = () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", reveal);
-      window.removeEventListener("resize", reveal);
-    };
-
-    window.addEventListener("scroll", reveal, { passive: true });
-    window.addEventListener("resize", reveal);
-    raf = requestAnimationFrame(tick);
-
-    return cleanup;
+    return () => io.disconnect();
   }, []);
 
   return null;

@@ -11,6 +11,8 @@ const PHONE_SERVICE = "+7 988 888 77 28";
 const EMAIL = "alisbeautyclub@gmail.com";
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
+// Маршрут до салона в Яндекс Картах (координаты организации «Áлис Бьюти»)
+const ROUTE_URL = "https://yandex.ru/maps/?rtext=~44.704933%2C37.782638&rtt=auto";
 
 const ADDRESS = { ru: "Новороссийск, ул. Пархоменко, 53", en: "Novorossiysk, Parkhomenko St., 53" };
 const HOURS = { ru: "Без перерывов и выходных, 9:00–21:00", en: "No breaks, open daily, 9:00–21:00" };
@@ -34,7 +36,7 @@ export default function Footer() {
   // Подписи колонок — мелкие капсом, ссылки — с тонким подчёркиванием на наведении
   const title = "mb-5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/75";
   const link =
-    "relative block w-fit text-[12.5px] text-[#f4efe6]/70 transition-colors hover:text-[#f4efe6] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-[#46131E] after:transition-all after:duration-300 hover:after:w-full";
+    "relative block w-fit text-[12.5px] text-[#f4efe6]/85 transition-colors hover:text-[#f4efe6] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-[#46131E] after:transition-all after:duration-300 hover:after:w-full";
   const MENU = [
     { label: t("Салон красоты", "Beauty salon"), href: "/salon" },
     { label: t("Консьерж-сервис", "Concierge service"), href: "/concierge" },
@@ -91,7 +93,10 @@ export default function Footer() {
             <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className={`${link} max-w-[16rem] leading-relaxed`}>
               {ADDRESS[lang]}
             </a>
-            <p className="mt-3 text-[12px] leading-relaxed text-[#f4efe6]/45">{HOURS[lang]}</p>
+            <p className="mt-3 text-[12px] leading-relaxed text-[#f4efe6]/70">{HOURS[lang]}</p>
+            <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className={`${link} mt-4`}>
+              {t("Построить маршрут →", "Get directions →")}
+            </a>
           </div>
 
           {/* Меню — в две колонки, чтобы подвал был компактнее */}
@@ -110,17 +115,17 @@ export default function Footer() {
             <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[30px] leading-none tracking-[0.02em] text-[#f4efe6] transition-opacity hover:opacity-70 lg:text-[40px]">
               {PHONE_MAIN}
             </a>
-            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[12.5px] text-[#f4efe6]/55 transition-colors hover:text-[#f4efe6]">
+            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[12.5px] text-[#f4efe6]/75 transition-colors hover:text-[#f4efe6]">
               {PHONE_SECOND} — {secondNote}
             </a>
-            <a href={`mailto:${EMAIL}`} className="mt-5 inline-block text-[14px] text-[#f4efe6]/70 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#46131E] lg:text-[15px]">
+            <a href={`mailto:${EMAIL}`} className="mt-5 inline-block text-[14px] text-[#f4efe6]/85 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#46131E] lg:text-[15px]">
               {EMAIL}
             </a>
           </div>
         </div>
 
         {/* Нижний ряд: копирайт слева, документы в одну строку справа */}
-        <div className="mt-12 flex flex-col gap-4 border-t border-[#f4efe6]/10 pt-6 text-[12px] text-[#f4efe6]/45 md:flex-row md:items-center md:justify-between lg:mt-14">
+        <div className="mt-12 flex flex-col gap-4 border-t border-[#f4efe6]/10 pt-6 text-[12px] text-[#f4efe6]/65 md:flex-row md:items-center md:justify-between lg:mt-14">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <span>© {new Date().getFullYear()} ÁLIS BEAUTY</span>
             <a href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#f4efe6]">

@@ -10,6 +10,8 @@ const PHONE_SERVICE = "+7 988 888 77 28";
 const PHONE_SERVICE_RAW = "79888887728";
 const EMAIL = "alisbeautyclub@gmail.com";
 const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
+// Маршрут до салона в Яндекс Картах (координаты организации «Áлис Бьюти»)
+const ROUTE_URL = "https://yandex.ru/maps/?rtext=~44.704933%2C37.782638&rtt=auto";
 
 // Пин для кнопки «Открыть в Яндекс Картах».
 const IconPin = (
@@ -130,7 +132,7 @@ export default function ContactsBlock() {
             {t("Открыть в Яндекс Картах", "Open in Yandex Maps")}
           </a>
           <a
-            href={MAP_URL}
+            href={ROUTE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="absolute bottom-4 right-4 inline-flex items-center justify-center rounded-full bg-[#46131E] px-6 py-3.5 font-display text-[12px] uppercase tracking-[0.14em] text-[#f4efe6] shadow-[0_10px_30px_rgba(0,0,0,0.3)] border border-[#46131E] transition-all duration-300 hover:border-white/70 hover:bg-white/20 hover:backdrop-blur-md lg:px-8 lg:py-4 lg:text-[13px]"

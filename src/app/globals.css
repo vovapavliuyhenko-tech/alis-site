@@ -159,6 +159,14 @@ html.has-custom-cursor * { cursor: none !important; }
 .r-reveal.is-in {
   opacity: 1;
   transform: none;
+  will-change: auto; /* после появления слой не держим — меньше нагрузки при прокрутке */
+}
+/* На телефонах появление короче и с меньшим сдвигом — длинные анимации там выглядят как рывки */
+@media (pointer: coarse) {
+  .r-reveal {
+    transform: translateY(24px);
+    transition-duration: 0.9s;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .r-reveal { opacity: 1; transform: none; transition: none; }

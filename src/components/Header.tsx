@@ -239,7 +239,8 @@ export default function Header() {
             ))}
           </div>
 
-          <ShopIcons />
+          {/* Избранное и корзина — только в магазине, чтобы не путать гостей салона */}
+          {(pathname.startsWith("/shop") || pathname.startsWith("/product")) && <ShopIcons />}
           </div>
         </div>
       </div>

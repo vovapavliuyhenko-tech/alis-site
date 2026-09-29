@@ -23,19 +23,27 @@ export default function PhotoBanner({
   const external = button.href.startsWith("http");
 
   // Параллакс: фото смещается на 20% от прокрутки — мягкий эффект «статичного фона»
+  // На телефонах (сенсорный экран) параллакс выключен: прокрутка там идёт мимо JS и фото дёргалось.
+  // На компьютере цикл крутится только пока баннер в кадре.
   useEffect(() => {
+    const el = img.current;
+    if (!el || !matchMedia("(pointer: fine)").matches || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let raf = 0;
     const tick = () => {
-      const el = img.current;
-      if (el) {
-        const r = el.parentElement!.getBoundingClientRect();
-        const p = r.top + r.height / 2 - innerHeight / 2;
-        el.style.transform = `translate3d(0, ${-p * 0.2}px, 0)`;
-      }
+      const r = el.parentElement!.getBoundingClientRect();
+      const p = r.top + r.height / 2 - innerHeight / 2;
+      el.style.transform = `translate3d(0, ${-p * 0.2}px, 0)`;
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    const io = new IntersectionObserver(([e]) => {
+      cancelAnimationFrame(raf);
+      if (e.isIntersecting) raf = requestAnimationFrame(tick);
+    });
+    io.observe(el.parentElement!);
+    return () => {
+      cancelAnimationFrame(raf);
+      io.disconnect();
+    };
   }, []);
 
   return (
