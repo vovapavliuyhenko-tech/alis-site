@@ -2,11 +2,11 @@
 // СТРАНИЦА «МАГАЗИН» — структура и анимации по референсу aurorebrand.com (Made on Tilda),
 // оформление — в стиле ÁLIS BEAUTY: наши ширины (96% / 1760px), ритм .section-y,
 // скругления 12px, заголовки обычным регистром, бордовые кнопки, ч/б.
-// Блоки: «Новинки» (слайдер с точками) → категории (мозаика) → все товары (сетка) →
-// баннер коллекции → «образ» (фото + слайдер товаров со стрелками) → о бренде
+// Блоки: «Новинки» и «Все товары» — самолистающиеся ленты с полосой прогресса (как галерея
+// салона), категории (мозаика), баннер коллекции, о бренде
 // (фото с крупным логотипом, выезжающим при прокрутке) → лента фото соцсети.
 // Тексты — только уже согласованные. Фото — временные.
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { LogoWord } from "@/components/Logo";
 import { useLang } from "@/lib/i18n";
@@ -65,56 +65,100 @@ function Card({ p, ratio = "aspect-[3/4]" }: { p: Product; ratio?: string }) {
   );
 }
 
-/* ---------- 1. «Новинки»: слайдер по 4 карточки, точки-пагинация ---------- */
-export function ShopNew() {
-  const track = useRef<HTMLDivElement>(null);
-  const [page, setPage] = useState(0);
-  const [pages, setPages] = useState(1);
+/* ---------- Лента товаров, как галерея на странице салона: сама листается,
+   бесшовная петля, перетаскивание мышью/пальцем, полоса прогресса под карточками ---------- */
+function ProductMarquee({ items, id, title, link }: { items: Product[]; id?: string; title: Loc; link?: { label: Loc; href: string } }) {
+  const scroller = useRef<HTMLDivElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
+  const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false });
 
   useEffect(() => {
-    const el = track.current;
+    const el = scroller.current;
     if (!el) return;
-    const upd = () => {
-      setPages(Math.max(1, Math.ceil(el.scrollWidth / el.clientWidth - 0.05)));
-      setPage(Math.round(el.scrollLeft / el.clientWidth));
+    let raf = 0;
+    let running = false;
+    const step = () => {
+      const half = el.scrollWidth / 2 || 1; // две одинаковые дорожки — для бесшовности
+      if (!drag.current.active) el.scrollLeft += 0.7;
+      if (el.scrollLeft >= half) el.scrollLeft -= half;
+      else if (el.scrollLeft < 0) el.scrollLeft += half;
+      if (barRef.current) barRef.current.style.width = (Math.min(1, Math.max(0, el.scrollLeft / half)) * 100).toFixed(2) + "%";
+      raf = requestAnimationFrame(step);
     };
-    upd();
-    el.addEventListener("scroll", upd, { passive: true });
-    window.addEventListener("resize", upd);
-    return () => { el.removeEventListener("scroll", upd); window.removeEventListener("resize", upd); };
+    const start = () => { if (!running) { running = true; raf = requestAnimationFrame(step); } };
+    const stop = () => { running = false; cancelAnimationFrame(raf); };
+    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop()), { rootMargin: "200px" });
+    io.observe(el);
+    return () => { stop(); io.disconnect(); };
   }, []);
 
-  const go = (i: number) => track.current?.scrollTo({ left: i * track.current.clientWidth, behavior: "smooth" });
+  const onDown = (e: React.PointerEvent) => {
+    const el = scroller.current;
+    if (!el) return;
+    drag.current = { active: true, startX: e.clientX, startScroll: el.scrollLeft, moved: false };
+  };
+  const onMove = (e: React.PointerEvent) => {
+    const el = scroller.current;
+    if (!el || !drag.current.active) return;
+    const dx = e.clientX - drag.current.startX;
+    if (Math.abs(dx) > 4 && !drag.current.moved) {
+      drag.current.moved = true;
+      el.setPointerCapture(e.pointerId);
+    }
+    if (drag.current.moved) el.scrollLeft = drag.current.startScroll - dx;
+  };
+  const onUp = (e: React.PointerEvent) => {
+    drag.current.active = false;
+    try { scroller.current?.releasePointerCapture(e.pointerId); } catch {}
+  };
+  // После перетаскивания гасим клик, чтобы не открылась карточка
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (drag.current.moved) { e.preventDefault(); e.stopPropagation(); drag.current.moved = false; }
+  };
+
+  const track = (hidden: boolean) => (
+    <ul aria-hidden={hidden || undefined} className="flex shrink-0">
+      {items.map((p) => (
+        <li key={p.id} className="mr-3 w-[62vw] shrink-0 sm:w-[40vw] lg:mr-4 lg:w-[22vw] lg:max-w-[400px]">
+          <Card p={p} />
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
-    <section className="bg-white section-y">
+    <section id={id} className="scroll-mt-24 overflow-hidden bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <Head title={{ ru: "Новинки", en: "New in" }} link={{ label: { ru: "Все товары", en: "All products" }, href: "#all" }} />
-        <div
-          ref={track}
-          className="flex snap-x snap-mandatory gap-3 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] lg:gap-4 [&::-webkit-scrollbar]:hidden"
-        >
-          {PRODUCTS.map((p) => (
-            <div key={p.id} className="r-reveal w-[70%] shrink-0 snap-start sm:w-[calc((100%-12px)/2)] lg:w-[calc((100%-48px)/4)]">
-              <Card p={p} />
-            </div>
-          ))}
-        </div>
-        {pages > 1 && (
-          <div className="mt-8 flex justify-center gap-2">
-            {Array.from({ length: pages }).map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                aria-label={`${i + 1}`}
-                onClick={() => go(i)}
-                className={`h-[6px] rounded-full transition-all duration-500 ${i === page ? "w-8 bg-[#17191a]" : "w-[6px] bg-[#17191a]/20 hover:bg-[#17191a]/40"}`}
-              />
-            ))}
-          </div>
-        )}
+        <Head title={title} link={link} />
+      </div>
+      <div
+        ref={scroller}
+        onPointerDown={onDown}
+        onPointerMove={onMove}
+        onPointerUp={onUp}
+        onPointerCancel={onUp}
+        onClickCapture={onClickCapture}
+        className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden pl-[2%] [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+      >
+        {track(false)}
+        {track(true)}
+      </div>
+      {/* Полоса прогресса под карточками — как в галерее на странице салона */}
+      <div className="mx-auto mt-10 h-[3px] w-[96%] max-w-[1760px] overflow-hidden rounded-full bg-[#C2C0B6]/40">
+        <div ref={barRef} className="h-full rounded-full bg-[#17191a]" style={{ width: "0%" }} />
       </div>
     </section>
+  );
+}
+
+/* ---------- 1. «Новинки» — лента товаров ---------- */
+export function ShopNew() {
+  return (
+    <ProductMarquee
+      items={PRODUCTS}
+      title={{ ru: "Новинки", en: "New in" }}
+      link={{ label: { ru: "Все товары", en: "All products" }, href: "#all" }}
+    />
   );
 }
 
@@ -156,22 +200,9 @@ export function ShopCategories() {
   );
 }
 
-/* ---------- 3. Все товары: сетка 4 колонки ---------- */
+/* ---------- 3. Все товары — лента товаров (в обратном порядке, чтобы не повторять «Новинки») ---------- */
 export function ShopAll() {
-  return (
-    <section id="all" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto w-[96%] max-w-[1760px]">
-        <Head title={{ ru: "Все товары", en: "All products" }} />
-        <div className="grid grid-cols-2 gap-x-3 gap-y-10 lg:grid-cols-4 lg:gap-x-4">
-          {PRODUCTS.map((p) => (
-            <div key={p.id} className="r-reveal">
-              <Card p={p} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <ProductMarquee id="all" items={[...PRODUCTS].reverse()} title={{ ru: "Все товары", en: "All products" }} />;
 }
 
 /* ---------- 4. Баннер коллекции: фото во всю ширину, текст и кнопка по центру ---------- */
