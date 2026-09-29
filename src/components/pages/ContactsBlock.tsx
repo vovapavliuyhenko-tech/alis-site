@@ -133,7 +133,7 @@ export default function ContactsBlock() {
             href={MAP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute bottom-4 right-4 inline-flex items-center justify-center rounded-full bg-[#46131E] px-6 py-3.5 font-display text-[12px] uppercase tracking-[0.14em] text-[#f4efe6] shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-colors hover:bg-black lg:px-8 lg:py-4 lg:text-[13px]"
+            className="absolute bottom-4 right-4 inline-flex items-center justify-center rounded-full bg-[#46131E] px-6 py-3.5 font-display text-[12px] uppercase tracking-[0.14em] text-[#f4efe6] shadow-[0_10px_30px_rgba(0,0,0,0.3)] border border-[#46131E] transition-all duration-300 hover:border-white/70 hover:bg-white/20 hover:backdrop-blur-md lg:px-8 lg:py-4 lg:text-[13px]"
           >
             {t("Построить маршрут", "Get directions")}
           </a>

@@ -64,7 +64,7 @@ export default function Footer() {
             href={YCLIENTS}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center rounded-xl border border-[#f4efe6]/40 px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:border-[#f4efe6] hover:bg-[#f4efe6] hover:text-[#17191a] sm:w-auto"
+            className="inline-flex w-full items-center justify-center rounded-xl px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] border border-white/70 bg-white/15 text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a] sm:w-auto"
           >
             {t("Оформить визит", "Arrange a visit")}
           </a>

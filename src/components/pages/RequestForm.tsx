@@ -150,7 +150,7 @@ export default function RequestForm({
 
             <button
               type="submit"
-              className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-white hover:text-[#46131E]"
+              className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#46131E] hover:backdrop-blur-md"
             >
               {submit[lang]}
             </button>
