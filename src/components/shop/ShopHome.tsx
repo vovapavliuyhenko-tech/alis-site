@@ -232,15 +232,17 @@ export function ShopCollection() {
         <img ref={img} src="/assets/alis/img_2746.jpg" alt="" loading="lazy" className="absolute left-0 top-[-25%] -z-0 h-[150%] w-full object-cover will-change-transform" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
         <div className="r-reveal relative z-10 max-w-[560px] px-6 pb-12 lg:pb-16">
-          <p className="text-[12px] text-white/75">{lang === "en" ? "ÁLIS BEAUTY merch" : "Мерч ÁLIS BEAUTY"}</p>
+          <p className="text-[12px] text-white/75">{lang === "en" ? "Gift certificate" : "Подарочный сертификат"}</p>
           <h2 className="mt-3 !text-[26px] !font-light text-white lg:!text-[34px]">
             {lang === "en" ? "A little ÁLIS BEAUTY to take home" : "Немного ÁLIS BEAUTY — с собой"}
           </h2>
           <a
-            href="#all"
+            href="https://o8981.yclients.ru/certificates"
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-7 inline-flex items-center justify-center rounded-[12px] border border-white/70 bg-white/15 px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#17191a]"
           >
-            {lang === "en" ? "To the catalogue" : "В каталог"}
+            {lang === "en" ? "Buy a certificate" : "Купить сертификат"}
           </a>
         </div>
       </div>
