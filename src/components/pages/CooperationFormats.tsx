@@ -123,10 +123,10 @@ export default function CooperationFormats() {
           <div className="relative mt-14 lg:mt-16">
             <div
               aria-hidden
-              className="pointer-events-none h-[260px] select-none overflow-hidden lg:h-[300px] [&_section]:!pt-0"
-              style={{ WebkitMaskImage: "linear-gradient(to bottom, #000 25%, transparent 95%)", maskImage: "linear-gradient(to bottom, #000 25%, transparent 95%)" }}
+              className="pointer-events-none h-[130px] select-none overflow-hidden lg:h-[150px] [&_section]:!pt-0"
+              style={{ WebkitMaskImage: "linear-gradient(to bottom, #000 35%, transparent 100%)", maskImage: "linear-gradient(to bottom, #000 35%, transparent 100%)" }}
             >
-              <div className="animate-[alis-float_3.6s_ease-in-out_infinite] blur-[7px]">
+              <div className="animate-[alis-float_3.6s_ease-in-out_infinite] blur-[2.5px]">
                 <RequestForm
                   id="request-preview"
                   title={FORMS.private.title}
@@ -137,7 +137,7 @@ export default function CooperationFormats() {
                 />
               </div>
             </div>
-            <div className="absolute inset-x-0 top-[38%] flex justify-center px-4">
+            <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-center px-4">
               <p className="flex items-center gap-3 rounded-full border border-[#17191a]/10 bg-white/85 px-6 py-3.5 text-[13px] text-[#17191a] shadow-[0_18px_40px_-18px_rgba(23,25,26,0.35)] backdrop-blur-md lg:text-[14px]">
                 <span aria-hidden className="animate-[alis-nudge-up_1.4s_ease-in-out_infinite] text-[16px] text-[#46131E]">↑</span>
                 {en ? "Choose who you are above — the request form will open" : "Выберите вариант выше — откроется форма заявки"}
