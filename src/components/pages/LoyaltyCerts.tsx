@@ -96,18 +96,18 @@ export default function LoyaltyCerts() {
           {TILES.map((tile, i) => (
             <div
               key={tile.title.ru}
-              className={`group flex min-h-[160px] flex-col justify-between rounded-[12px] bg-[#EAEAE4] p-7 lg:min-h-0 ${
+              className={`group flex min-h-[160px] flex-col justify-between rounded-[12px] border border-[#17191a]/15 bg-white p-7 shadow-[inset_3px_0_0_#46131E] transition-shadow duration-300 hover:shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:min-h-0 ${
                 i === 0 ? "lg:col-start-2 lg:row-start-2" : "lg:col-start-3 lg:row-start-2"
               }`}
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#17191a]/10 font-display text-[15px] text-[#17191a]">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#46131E] font-display text-[14px] text-white">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
                 <h3 className="font-display text-[17px] uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[19px]">
                   {tile.title[lang]}
                 </h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-[#2a2320]/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <p className="mt-2 text-[13px] leading-relaxed text-[#17191a]/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   {tile.note[lang]}
                 </p>
               </div>

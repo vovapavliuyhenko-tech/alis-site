@@ -200,7 +200,7 @@ export default function Reviews() {
             {lang === "en" ? "Read reviews or leave your own" : "Читайте отзывы или оставляйте свой"}
           </h2>
           <p className="mt-4 inline-flex items-center gap-2 text-[14px] text-[#17191a]/60">
-            <span className="text-[#17191a]">★★★★★</span>
+            <span className="text-[#C9A227]">★★★★★</span>
             <span className="font-medium text-[#17191a]">4.9</span>
             {lang === "en" ? "· 75+ reviews on Yandex and 2GIS" : "· 75+ отзывов на Яндекс и 2ГИС"}
           </p>
@@ -222,7 +222,7 @@ export default function Reviews() {
                 className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[150px] flex h-[300px] w-[300px] flex-col overflow-hidden rounded-[12px] border border-[#17191a]/12 bg-white p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[12px] tracking-[0.32em] text-[#9a9a9a]">★★★★★</span>
+                  <span className="text-[12px] tracking-[0.32em] text-[#C9A227]">★★★★★</span>
                   <span className="font-serif text-[34px] leading-none text-[#17191a]/20">&rdquo;</span>
                 </div>
 
@@ -252,15 +252,16 @@ export default function Reviews() {
         {/* Ссылки на реальные площадки с отзывами */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           {[
-            { label: "Яндекс", href: "https://yandex.ru/maps/org/lis_byuti/63024642190/reviews/" },
-            { label: "2ГИС", href: "https://2gis.ru/novorossiysk/firm/70000001086737494/tab/reviews" },
+            { label: "Яндекс", href: "https://yandex.ru/maps/org/lis_byuti/63024642190/reviews/", hover: "hover:border-[#FC3F1D] hover:bg-[#FC3F1D] hover:text-white" },
+            { label: "2ГИС", href: "https://2gis.ru/novorossiysk/firm/70000001086737494/tab/reviews", hover: "hover:border-[#19AA1E] hover:bg-[#19AA1E] hover:text-white" },
           ].map((p) => (
             <a
               key={p.label}
               href={p.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-[#17191a]/25 px-4 py-2 text-[13px] text-[#17191a] transition-colors hover:bg-[#17191a] hover:text-[#f4efe6]"
+              // При наведении — фирменный цвет площадки (Яндекс — красный, 2ГИС — зелёный)
+              className={`inline-flex items-center gap-1.5 rounded-full border border-[#17191a]/25 px-4 py-2 text-[13px] text-[#17191a] transition-colors ${p.hover}`}
             >
               {p.label}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" /></svg>
