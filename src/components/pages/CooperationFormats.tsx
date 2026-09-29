@@ -116,16 +116,12 @@ export default function CooperationFormats() {
           })}
         </div>
 
-        {/* Пока ничего не выбрано — «приманка»: настоящая форма заявки, размытая и мягко
-            покачивающаяся, растворяется книзу (маска, без серых полос). Поверх — светлая
-            «пилюля» с подсказкой и стрелкой вверх к карточкам. */}
+        {/* Пока ничего не выбрано — «приманка»: верхушка настоящей формы заявки в аккуратной
+            рамке (обрезана ровно, без белого хвоста), слегка размыта и покачивается.
+            По центру — замок с анимацией (дужка приподнимается, замок покачивается). */}
         {!kind && (
-          <div className="relative mt-14 lg:mt-16">
-            <div
-              aria-hidden
-              className="pointer-events-none h-[130px] select-none overflow-hidden lg:h-[150px] [&_section]:!pt-0"
-              style={{ WebkitMaskImage: "linear-gradient(to bottom, #000 35%, transparent 100%)", maskImage: "linear-gradient(to bottom, #000 35%, transparent 100%)" }}
-            >
+          <div className="relative mx-auto mt-14 h-[150px] w-[96%] max-w-[1760px] overflow-hidden rounded-[12px] lg:mt-16 lg:h-[170px]">
+            <div aria-hidden className="pointer-events-none select-none [&_section]:!pt-0 [&_section>div]:!w-full">
               <div className="animate-[alis-float_3.6s_ease-in-out_infinite] blur-[2.5px]">
                 <RequestForm
                   id="request-preview"
@@ -137,9 +133,14 @@ export default function CooperationFormats() {
                 />
               </div>
             </div>
-            <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-center px-4">
-              <p className="flex items-center gap-3 rounded-full border border-[#17191a]/10 bg-white/85 px-6 py-3.5 text-[13px] text-[#17191a] shadow-[0_18px_40px_-18px_rgba(23,25,26,0.35)] backdrop-blur-md lg:text-[14px]">
-                <span aria-hidden className="animate-[alis-nudge-up_1.4s_ease-in-out_infinite] text-[16px] text-[#46131E]">↑</span>
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[#17191a]/35 px-4 text-center">
+              <span aria-hidden className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#46131E] shadow-[0_12px_30px_-10px_rgba(0,0,0,0.5)] animate-[alis-lock_2.6s_ease-in-out_infinite]">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M8 11V8a4 4 0 0 1 8 0v3" className="animate-[alis-shackle_2.6s_ease-in-out_infinite]" />
+                  <rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor" stroke="none" />
+                </svg>
+              </span>
+              <p className="text-[13px] text-white lg:text-[14px]">
                 {en ? "Choose who you are above — the request form will open" : "Выберите вариант выше — откроется форма заявки"}
               </p>
             </div>
@@ -165,7 +166,9 @@ export default function CooperationFormats() {
       <style>{`@keyframes alis-open { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: none } }
 @keyframes alis-float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
 @keyframes alis-nudge { 0%,100% { transform: translateX(0) } 50% { transform: translateX(6px) } }
-@keyframes alis-nudge-up { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }`}</style>
+@keyframes alis-nudge-up { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }
+@keyframes alis-lock { 0%,60%,100% { transform: rotate(0) } 66% { transform: rotate(-10deg) } 72% { transform: rotate(8deg) } 78% { transform: rotate(-5deg) } 84% { transform: rotate(3deg) } }
+@keyframes alis-shackle { 0%,20%,100% { transform: translateY(0) } 35%,50% { transform: translateY(-2.5px) } }`}</style>
     </>
   );
 }

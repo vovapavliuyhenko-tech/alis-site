@@ -257,3 +257,4 @@ main h3 + p {
 
 /* «Сотрудничество»: пока не выбрана категория, подвал скрыт (см. CooperationFormats) */
 html.coop-locked #footer { display: none; }
+html.coop-locked .page-end { padding-bottom: 0; }
