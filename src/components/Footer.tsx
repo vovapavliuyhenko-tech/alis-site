@@ -107,7 +107,7 @@ export default function Footer() {
           {/* Телефоны + email справа, крупно */}
           <div className="sm:col-span-2 lg:col-span-1 lg:text-right">
             <p className={title}>{concierge ? t("Консьерж-сервис", "Concierge service") : t("Салон красоты", "Beauty salon")}</p>
-            <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[30px] leading-none tracking-[0.02em] text-[#f4efe6] transition-colors hover:text-[#f4efe6] lg:text-[40px]">
+            <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[30px] leading-none tracking-[0.02em] text-[#f4efe6] transition-opacity hover:opacity-70 lg:text-[40px]">
               {PHONE_MAIN}
             </a>
             <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[12.5px] text-[#f4efe6]/55 transition-colors hover:text-[#f4efe6]">
