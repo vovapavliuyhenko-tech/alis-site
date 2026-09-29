@@ -9,6 +9,7 @@
 // Светлый, ч/б с бордовыми акцентами. Без бэкенда: отправка — заглушка. Двуязычно.
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
+import { sendLead } from "@/lib/sendLead";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const PHONE_SERVICE = "+7 988 888 77 28";
@@ -131,6 +132,12 @@ export default function ConciergeChat() {
   };
 
   const confirm = () => {
+    void sendLead({
+      kind: "chat",
+      name: data.name,
+      phone: data.phone,
+      details: { Повод: data.occasion, Дата: data.date, Человек: data.guests, Источник: "Онлайн-консьерж" },
+    });
     setMsgs((m) => [...m, { from: "user", text: t("Всё верно, отправить", "All correct, send") }]);
     botSay(
       t(

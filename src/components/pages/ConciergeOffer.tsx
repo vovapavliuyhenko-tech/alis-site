@@ -6,6 +6,7 @@ export default function ConciergeOffer() {
   return (
     <RequestForm
       id="offer"
+      kind="concierge"
       innerId="booking"
       title={{ ru: "Оставить заявку", en: "Leave a request" }}
       text={{

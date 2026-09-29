@@ -6,6 +6,7 @@ export default function JoinForm() {
   return (
     <RequestForm
       id="join"
+      kind="vacancy"
       title={{ ru: "Стать частью команды ÁLIS BEAUTY", en: "Become part of ÁLIS BEAUTY" }}
       text={{
         ru: "Сильная команда, комфортное место и возможность расти.",

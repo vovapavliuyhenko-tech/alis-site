@@ -172,6 +172,7 @@ export default function CooperationFormats() {
           <RequestForm
             key={kind}
             id="request"
+            kind={kind === "private" ? "coop_private" : "coop_business"}
             title={FORMS[kind].title}
             text={FORMS[kind].text}
             bullets={FORMS[kind].bullets}

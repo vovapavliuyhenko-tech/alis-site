@@ -5,6 +5,7 @@
 // Используется в «Консьерж-сервисе», «Сотрудничестве» и «Вакансиях». Отправка — заглушка.
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
+import { sendLead, type LeadKind } from "@/lib/sendLead";
 
 type Loc = { ru: string; en: string };
 export type RequestField = { key: string; label: Loc; required: boolean; textarea?: boolean; type?: string };
@@ -28,6 +29,7 @@ function formatPhone(v: string): string {
 export default function RequestForm({
   id,
   innerId,
+  kind = "other",
   title,
   text,
   bullets,
@@ -36,6 +38,7 @@ export default function RequestForm({
   success,
 }: {
   id: string; // якорь секции
+  kind?: LeadKind; // тип заявки в CRM
   innerId?: string; // дополнительный якорь на плашке (например, #booking)
   title: Loc;
   text?: Loc;
@@ -64,7 +67,14 @@ export default function RequestForm({
     });
     if (!consent) nextErr.consent = true;
     setErrors(nextErr);
-    if (Object.keys(nextErr).length === 0) setSent(true); // заглушка
+    if (Object.keys(nextErr).length === 0) {
+      // Заявка уходит в CRM: имя, телефон и компания — отдельными полями, остальное — в детали
+      const { name, phone, company, ...rest } = values;
+      const details: Record<string, string> = {};
+      for (const f of fields) if (rest[f.key]) details[f.label.ru] = rest[f.key];
+      void sendLead({ kind, name, phone, company, details: { ...details, Форма: title.ru } });
+      setSent(true);
+    }
   };
 
   const line = (err?: boolean) =>

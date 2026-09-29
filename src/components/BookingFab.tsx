@@ -39,7 +39,8 @@ export default function BookingFab() {
     };
   }, []);
 
-  if (pathname === "/concierge") return null;
+  // На консьерж-сервисе свой помощник, в рабочих панелях кнопка записи не нужна
+  if (pathname === "/concierge" || pathname.startsWith("/crm") || pathname.startsWith("/admin")) return null;
 
   const ringColor = onFooter ? "#f4efe6" : "#46131E";
 
