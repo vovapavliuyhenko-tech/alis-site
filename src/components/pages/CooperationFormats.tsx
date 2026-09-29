@@ -24,14 +24,12 @@ const FORMS: Record<Kind, { title: Loc; text: Loc; bullets: Loc[]; fields: Reque
   private: {
     title: { ru: "Заявка для частных лиц", en: "Request for individuals" },
     bullets: [
-      { ru: "Макияж, причёска и образ «под ключ» — без поисков мастеров", en: "Makeup, hair and a turnkey look — no hunting for artists" },
-      { ru: "Приезжаем к вам: домой, в отель или на площадку", en: "We come to you: home, hotel or venue" },
-      { ru: "Всё готово точно ко времени — без спешки и нервов", en: "Everything ready right on time — no rush, no stress" },
-      { ru: "Подберём формат и заранее назовём стоимость", en: "We'll shape the format and confirm the price upfront" },
+      { ru: "Макияж, причёска и образ «под ключ»", en: "Makeup, hair and a turnkey look" },
+      { ru: "Приезжаем к вам — точно ко времени", en: "We come to you — right on time" },
     ],
     text: {
-      ru: "Боитесь, что в важный день что-то пойдёт не так? Мы возьмём образ на себя: макияж, причёска и тайминг под контролем — а вы просто наслаждаетесь событием.",
-      en: "Worried something might go wrong on your big day? We take the look off your hands: makeup, hair and timing under control — you simply enjoy the moment.",
+      ru: "Возьмём образ на себя — вы просто наслаждаетесь событием.",
+      en: "We take care of the look — you simply enjoy the moment.",
     },
     fields: [
       { key: "name", label: { ru: "Имя", en: "Name" }, required: true },
@@ -42,14 +40,12 @@ const FORMS: Record<Kind, { title: Loc; text: Loc; bullets: Loc[]; fields: Reque
   business: {
     title: { ru: "Заявка для агентств и бизнеса", en: "Request for agencies & business" },
     bullets: [
-      { ru: "Команда стилистов на любое количество гостей", en: "A team of stylists for any number of guests" },
+      { ru: "Стилисты на любое количество гостей", en: "Stylists for any number of guests" },
       { ru: "Выезд в любую локацию со всем оборудованием", en: "On location anywhere, fully equipped" },
-      { ru: "Работаем точно по таймингу вашего мероприятия", en: "We work to your event's exact timing" },
-      { ru: "Пакеты услуг под задачу и масштаб проекта", en: "Service packages to fit the task and scale" },
     ],
     text: {
-      ru: "Нужно подготовить много гостей или команду к съёмке — и без накладок? Выедем командой стилистов в любую локацию и возьмём все заботы об образах на себя.",
-      en: "Need to get lots of guests or a whole crew camera-ready — with no hiccups? We send a team of stylists to any location and take care of every look.",
+      ru: "Подготовим гостей и команду — без накладок.",
+      en: "We'll get your guests and crew ready — with no hiccups.",
     },
     fields: [
       { key: "name", label: { ru: "Имя", en: "Name" }, required: true },
@@ -152,14 +148,14 @@ export default function CooperationFormats() {
                 />
               </div>
             </div>
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[#17191a]/35 px-4 text-center">
-              <span aria-hidden className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#46131E] shadow-[0_12px_30px_-10px_rgba(0,0,0,0.5)] animate-[alis-lock_2.6s_ease-in-out_infinite]">
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white/35 px-4 text-center">
+              <span aria-hidden className="flex h-12 w-12 items-center justify-center rounded-full bg-[#46131E] text-white shadow-[0_12px_30px_-10px_rgba(70,19,30,0.55)] animate-[alis-lock_2.6s_ease-in-out_infinite]">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M8 11V8a4 4 0 0 1 8 0v3" className="animate-[alis-shackle_2.6s_ease-in-out_infinite]" />
                   <rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor" stroke="none" />
                 </svg>
               </span>
-              <p className="text-[13px] text-white lg:text-[14px]">
+              <p className="text-[13px] text-[#17191a] lg:text-[14px]">
                 {en ? "Choose who you are above — the request form will open" : "Выберите вариант выше — откроется форма заявки"}
               </p>
             </div>

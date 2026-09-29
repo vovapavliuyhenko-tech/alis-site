@@ -1,7 +1,7 @@
 "use client";
-// ФОРМА ЗАЯВКИ — единая для сайта, без фото (по просьбе заказчицы, формат «Остались
-// вопросы?»): тёмная плашка во всю ширину блока. Слева заголовок и короткий текст,
-// справа поля с тонкой линией снизу, согласие и светлая кнопка. Ч/б. Двуязычно.
+// ФОРМА ЗАЯВКИ — единая для сайта, без фото. Светлая: тёплый фон #f6f4f1, бордовая полоса
+// слева; слева заголовок, короткая строка и 2 пункта с бордовыми галочками, справа — поля
+// на белой подложке и бордовая кнопка. Двуязычно.
 // Используется в «Консьерж-сервисе», «Сотрудничестве» и «Вакансиях». Отправка — заглушка.
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
@@ -68,24 +68,24 @@ export default function RequestForm({
   };
 
   const line = (err?: boolean) =>
-    `w-full border-b bg-transparent py-3 text-[15px] text-[#f4efe6] outline-none transition-colors placeholder:text-[#f4efe6]/40 focus:border-[#f4efe6] ${
-      err ? "border-[#e7a0a0]" : "border-[#f4efe6]/30"
+    `w-full border-b bg-transparent py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#46131E] ${
+      err ? "border-[#c0392b]" : "border-[#17191a]/15"
     }`;
 
   return (
     <section id={id} className="scroll-mt-24 bg-white section-y">
       <div
         id={innerId}
-        className="mx-auto grid w-[96%] max-w-[1760px] scroll-mt-24 grid-cols-1 gap-10 rounded-[12px] bg-[#17191a] px-6 py-12 text-[#f4efe6] sm:px-10 lg:grid-cols-2 lg:gap-16 lg:px-16 lg:py-16"
+        className="mx-auto grid w-[96%] max-w-[1760px] scroll-mt-24 grid-cols-1 gap-10 rounded-[12px] bg-[#f6f4f1] px-6 py-12 text-[#17191a] shadow-[inset_3px_0_0_#46131E] sm:px-10 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-16 lg:py-16"
       >
         {/* Слева — заголовок и текст */}
         <div className="lg:pt-2">
-          <h2 className="text-[#f4efe6]">{title[lang]}</h2>
-          {text && <p className="mt-4 max-w-[460px] text-[14px] leading-[1.6] text-[#f4efe6]/75 lg:text-[15px]">{text[lang]}</p>}
+          <h2 className="text-[#17191a]">{title[lang]}</h2>
+          {text && <p className="mt-4 max-w-[460px] text-[14px] leading-[1.6] text-[#17191a]/60 lg:text-[15px]">{text[lang]}</p>}
           {bullets && bullets.length > 0 && (
-            <ul className="mt-8 space-y-3.5 lg:mt-10">
+            <ul className="mt-7 space-y-3 lg:mt-8">
               {bullets.map((b) => (
-                <li key={b.ru} className="flex items-start gap-3 text-[14px] leading-[1.5] text-[#f4efe6]/85 lg:text-[15px]">
+                <li key={b.ru} className="flex items-start gap-3 text-[14px] leading-[1.5] text-[#242424] lg:text-[15px]">
                   <span aria-hidden className="mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#46131E] text-[10px] text-white">✓</span>
                   {b[lang]}
                 </li>
@@ -96,12 +96,12 @@ export default function RequestForm({
 
         {/* Справа — форма или сообщение об отправке */}
         {sent ? (
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center rounded-[12px] bg-white px-6 py-10 lg:px-10">
             <p className="text-[18px] font-light">{en ? "Thank you!" : "Спасибо!"}</p>
-            <p className="mt-3 max-w-[420px] text-[14px] leading-[1.6] text-[#f4efe6]/60">{success[lang]}</p>
+            <p className="mt-3 max-w-[420px] text-[14px] leading-[1.6] text-[#17191a]/60">{success[lang]}</p>
           </div>
         ) : (
-          <form onSubmit={onSubmit} noValidate className="flex flex-col gap-2">
+          <form onSubmit={onSubmit} noValidate className="flex flex-col gap-2 rounded-[12px] bg-white px-6 py-7 lg:px-9 lg:py-9">
             {fields.map((f) =>
               f.textarea ? (
                 <textarea
@@ -136,11 +136,11 @@ export default function RequestForm({
                   setConsent(e.target.checked);
                   if (errors.consent) setErrors((x) => ({ ...x, consent: false }));
                 }}
-                className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#f4efe6]"
+                className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#46131E]"
               />
-              <span className={`text-[11px] leading-relaxed ${errors.consent ? "text-[#e7a0a0]" : "text-[#f4efe6]/55"}`}>
+              <span className={`text-[11px] leading-relaxed ${errors.consent ? "text-[#c0392b]" : "text-[#17191a]/50"}`}>
                 {en ? "I agree to the processing of my personal data." : "Даю согласие на обработку персональных данных."}{" "}
-                <a href="/policy" className="underline underline-offset-2 hover:text-[#f4efe6]">
+                <a href="/policy" className="underline underline-offset-2 hover:text-[#46131E]">
                   {en ? "Privacy policy" : "Политика конфиденциальности"}
                 </a>
               </span>
@@ -148,7 +148,7 @@ export default function RequestForm({
 
             <button
               type="submit"
-              className="mt-5 flex w-full items-center justify-center rounded-[12px] border border-[#f4efe6] bg-[#f4efe6] py-4 text-[12px] font-medium uppercase tracking-[0.16em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-[#f4efe6]"
+              className="mt-5 flex w-full items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] py-4 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-white hover:text-[#46131E]"
             >
               {submit[lang]}
             </button>

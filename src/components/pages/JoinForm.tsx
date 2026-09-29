@@ -8,14 +8,12 @@ export default function JoinForm() {
       id="join"
       title={{ ru: "Стать частью команды ÁLIS BEAUTY", en: "Become part of ÁLIS BEAUTY" }}
       text={{
-        ru: "Надоело работать в одиночку и самой искать гостей? В ÁLIS BEAUTY — сильная команда, комфортное место и возможность расти. Оставьте контакты — расскажем об условиях и позовём на пробный день.",
-        en: "Tired of working alone and finding clients yourself? At ÁLIS BEAUTY you get a strong team, a comfortable workplace and room to grow. Leave your contacts — we'll share the terms and invite you to a trial day.",
+        ru: "Сильная команда, комфортное место и возможность расти.",
+        en: "A strong team, a comfortable workplace and room to grow.",
       }}
       bullets={[
-        { ru: "Комфортное рабочее место в салоне", en: "A comfortable workplace in the salon" },
-        { ru: "Сильная команда, которая поддержит", en: "A strong, supportive team" },
-        { ru: "Возможность расти и развиваться в профессии", en: "Room to grow in your profession" },
-        { ru: "Пробный день — знакомимся без обязательств", en: "A trial day — get to know us, no strings attached" },
+      { ru: "Комфортное рабочее место в салоне", en: "A comfortable workplace in the salon" },
+      { ru: "Пробный день — знакомимся без обязательств", en: "A trial day — no strings attached" },
       ]}
       fields={[
         { key: "name", label: { ru: "Имя", en: "Name" }, required: true },

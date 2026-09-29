@@ -259,10 +259,10 @@ main h3 + p {
 html.coop-locked #footer { display: none; }
 html.coop-locked .page-end { padding-bottom: 0; }
 
-/* Автозаполнение браузера в тёмных формах заявки — без голубой подложки */
+/* Автозаполнение браузера в формах заявки — без голубой подложки */
 #request input:-webkit-autofill, #offer input:-webkit-autofill, #join input:-webkit-autofill {
-  -webkit-text-fill-color: #f4efe6;
-  -webkit-box-shadow: 0 0 0 1000px #17191a inset;
-  caret-color: #f4efe6;
+  -webkit-text-fill-color: #17191a;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  caret-color: #17191a;
   transition: background-color 9999s ease-in-out 0s;
 }

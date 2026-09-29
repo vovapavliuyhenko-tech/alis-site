@@ -9,14 +9,12 @@ export default function ConciergeOffer() {
       innerId="booking"
       title={{ ru: "Оставить заявку", en: "Leave a request" }}
       text={{
-        ru: "Не тратьте утро праздника на дорогу в салон и поиски мастеров. Команда ÁLIS BEAUTY приедет к вам со всем оборудованием — вам останется только быть готовой вовремя.",
-        en: "Don't spend the morning of your big day travelling to a salon or hunting for artists. The ÁLIS BEAUTY team comes to you fully equipped — all you have to do is be ready on time.",
+        ru: "Приедем к вам со всем оборудованием — вы будете готовы вовремя.",
+        en: "We come to you fully equipped — you'll be ready on time.",
       }}
       bullets={[
-        { ru: "Выезд со всем оборудованием — от профессионального света до отпаривателя", en: "We arrive fully equipped — from pro lighting to a garment steamer" },
-        { ru: "Команда визажистов, стилистов и координаторов", en: "A team of makeup artists, stylists and coordinators" },
-        { ru: "Полный образ «под ключ» в день вашего события", en: "A turnkey full look on the day of your event" },
-        { ru: "Пакеты для мероприятий любой величины", en: "Packages for events of any size" },
+      { ru: "Команда визажистов, стилистов и координаторов", en: "A team of makeup artists, stylists and coordinators" },
+      { ru: "Полный образ «под ключ» в день события", en: "A turnkey full look on the day" },
       ]}
       fields={[
         { key: "name", label: { ru: "Имя", en: "Name" }, required: true },
