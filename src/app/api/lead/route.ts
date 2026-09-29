@@ -33,14 +33,14 @@ export async function POST(req: Request) {
   if (phone.length < 10 && !body.name && body.kind !== "shop") return NextResponse.json({ error: "Нужны имя или телефон" }, { status: 400 });
 
   try {
-    const id = await saveLead({
+    const { id, tg } = await saveLead({
       kind: String(body.kind ?? "other"),
       name: String(body.name ?? ""),
       phone,
       company: String(body.company ?? ""),
       details: (body.details as Record<string, unknown>) || {},
     });
-    return NextResponse.json({ ok: true, id });
+    return NextResponse.json({ ok: true, id, tg });
   } catch (e) {
     return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }

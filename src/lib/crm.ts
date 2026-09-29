@@ -87,10 +87,11 @@ export const KIND_LABEL: Record<Kind, string> = {
   other: "Заявка с сайта",
 };
 
-async function notifyTelegram(lead: Lead): Promise<boolean> {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chat = process.env.TELEGRAM_CHAT_ID;
-  if (!token || !chat) return false;
+// Возвращает "ok", "off" (не настроено) или текст ошибки Telegram — без токена
+async function notifyTelegram(lead: Lead): Promise<string> {
+  const token = (process.env.TELEGRAM_BOT_TOKEN || "").trim().replace(/^bot/, "");
+  const chat = (process.env.TELEGRAM_CHAT_ID || "").trim();
+  if (!token || !chat) return "off";
   const d = lead.details as Record<string, string>;
   const lines = [
     `🆕 ${KIND_LABEL[lead.kind]}`,
@@ -108,9 +109,11 @@ async function notifyTelegram(lead: Lead): Promise<boolean> {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ chat_id: chat, text: lines.join("\n") }),
     });
-    return r.ok;
-  } catch {
-    return false;
+    if (r.ok) return "ok";
+    const j = await r.json().catch(() => ({}));
+    return `Telegram ${r.status}: ${(j as { description?: string }).description || "ошибка"}`;
+  } catch (e) {
+    return `Telegram недоступен: ${(e as Error).message}`;
   }
 }
 
@@ -137,9 +140,9 @@ export async function saveLead(input: { kind?: string; name?: string; phone?: st
     "INSERT INTO crm_leads (id, kind, status, name, phone, company, details) VALUES ($1,$2,$3,$4,$5,$6,$7)",
     [lead.id, lead.kind, lead.status, lead.name, lead.phone, lead.company, JSON.stringify(lead.details)],
   );
-  const sent = await notifyTelegram(lead);
-  if (sent) await db().query("UPDATE crm_leads SET tg_delivered = true WHERE id = $1", [lead.id]).catch(() => {});
-  return lead.id;
+  const tg = await notifyTelegram(lead);
+  if (tg === "ok") await db().query("UPDATE crm_leads SET tg_delivered = true WHERE id = $1", [lead.id]).catch(() => {});
+  return { id: lead.id, tg };
 }
 
 export async function listLeads(f: { q?: string; status?: string; kind?: string; from?: string; to?: string; limit?: number; offset?: number }) {
