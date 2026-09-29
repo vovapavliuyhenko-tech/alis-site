@@ -216,62 +216,6 @@ export function ShopCollection() {
   );
 }
 
-/* ---------- 5. Образ: большое фото слева, справа слайдер товаров со стрелками ---------- */
-export function ShopLook() {
-  const { lang } = useLang();
-  const s = useShop();
-  const items = PRODUCTS.slice(0, 3);
-  const [i, setI] = useState(0);
-  const p = items[i];
-  return (
-    <section className="bg-white section-y">
-      <div className="mx-auto grid w-[96%] max-w-[1760px] grid-cols-1 gap-3 lg:h-[640px] lg:grid-cols-[1.5fr_1fr] lg:gap-4">
-        <div className="r-reveal relative min-h-[360px] overflow-hidden rounded-[12px]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/alis/img_2745.jpg" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-        </div>
-        <div className="r-reveal flex flex-col items-center justify-center rounded-[12px] bg-[#f4f3f1] px-8 py-12">
-          <div className="relative aspect-[3/4] w-[62%] max-w-[300px] overflow-hidden rounded-[12px] bg-white">
-            {items.map((it, k) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={it.id}
-                src={it.img}
-                alt={it.name[lang]}
-                className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 ease-out ${k === i ? "scale-100 opacity-100" : "scale-105 opacity-0"}`}
-              />
-            ))}
-          </div>
-          <div className="mt-6 text-center">
-            <Link href={`/product/${p.id}`} className="text-[15px] text-[#17191a] hover:text-[#46131E]">{p.name[lang]}</Link>
-            <p className="mt-1 text-[14px] text-[#17191a]/60">{fmtPrice(p.price, lang === "en")}</p>
-            <button
-              type="button"
-              onClick={() => { s.add(p.id, 1); s.openCart(); }}
-              className="mt-3 border-b border-[#17191a]/30 pb-0.5 text-[13px] text-[#17191a] transition-colors hover:border-[#46131E] hover:text-[#46131E]"
-            >
-              {lang === "en" ? "Add to cart (+)" : "В корзину (+)"}
-            </button>
-          </div>
-          <div className="mt-8 flex gap-2">
-            {[-1, 1].map((d) => (
-              <button
-                key={d}
-                type="button"
-                aria-label={d < 0 ? "←" : "→"}
-                onClick={() => setI((x) => (x + d + items.length) % items.length)}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#17191a]/25 text-[#17191a] transition-colors hover:border-[#46131E] hover:bg-[#46131E] hover:text-white"
-              >
-                {d < 0 ? "←" : "→"}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- 6. О бренде: текст + фото с крупным логотипом, выезжающим при прокрутке ---------- */
 export function ShopAbout() {
   const { lang } = useLang();
