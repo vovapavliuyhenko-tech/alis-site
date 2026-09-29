@@ -96,7 +96,7 @@ export default function LoyaltyCerts() {
           {TILES.map((tile, i) => (
             <div
               key={tile.title.ru}
-              className={`group flex min-h-[160px] flex-col justify-between rounded-[12px] border border-[#17191a]/15 bg-white p-7 shadow-[inset_3px_0_0_#46131E] transition-shadow duration-300 hover:shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:min-h-0 ${
+              className={`group flex min-h-[160px] flex-col justify-between rounded-[12px] border border-[#17191a]/15 bg-white p-7 shadow-[inset_3px_0_0_#46131E] lg:min-h-0 ${
                 i === 0 ? "lg:col-start-2 lg:row-start-2" : "lg:col-start-3 lg:row-start-2"
               }`}
             >
@@ -107,7 +107,7 @@ export default function LoyaltyCerts() {
                 <h3 className="font-display text-[17px] uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[19px]">
                   {tile.title[lang]}
                 </h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-[#17191a]/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <p className="mt-2 text-[13px] leading-relaxed text-[#17191a]/70">
                   {tile.note[lang]}
                 </p>
               </div>
