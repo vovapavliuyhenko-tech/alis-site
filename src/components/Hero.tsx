@@ -15,7 +15,9 @@ export default function Hero() {
   const t = (ru: string, e: string) => (en ? e : ru);
 
   return (
-    <section className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden bg-[#b9b3a9] text-white">
+    // Белая подложка — чтобы под скруглёнными нижними углами был белый фон, как у страницы
+    <div className="bg-white">
+    <section className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#b9b3a9] text-white">
       {/* Фоновое фото */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={BG_PHOTO} alt="" aria-hidden className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
@@ -49,5 +51,6 @@ export default function Hero() {
         </a>
       </div>
     </section>
+    </div>
   );
 }
