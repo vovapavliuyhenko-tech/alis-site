@@ -4,6 +4,7 @@
 // на белой подложке и бордовая кнопка. Двуязычно.
 // Используется в «Консьерж-сервисе», «Сотрудничестве» и «Вакансиях». Отправка — заглушка.
 import { useState } from "react";
+import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { sendLead, type LeadKind } from "@/lib/sendLead";
 
@@ -108,9 +109,21 @@ export default function RequestForm({
 
         {/* Справа — форма или сообщение об отправке */}
         {sent ? (
-          <div className="flex flex-col justify-center rounded-[12px] bg-white px-6 py-10 lg:px-10">
-            <p className="text-[18px] font-light">{en ? "Thank you!" : "Спасибо!"}</p>
-            <p className="mt-3 max-w-[420px] text-[14px] leading-[1.6] text-[#17191a]/60">{success[lang]}</p>
+          // Экран «Спасибо»: светлая карточка, бордовая полоса сверху, галочка прорисовывается
+          <div role="status" className="alis-thanks flex flex-col items-center justify-center rounded-[12px] bg-white px-6 py-12 text-center shadow-[inset_0_3px_0_#46131E] lg:px-10 lg:py-14">
+            <span aria-hidden className="flex h-16 w-16 items-center justify-center rounded-full bg-[#46131E] text-white">
+              <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path className="alis-check" d="M5 12.5l4.5 4.5L19 7.5" />
+              </svg>
+            </span>
+            <p className="mt-6 font-serif-display text-[28px] font-normal leading-[1.2] text-[#17191a] lg:text-[34px]">{en ? "Thank you!" : "Спасибо!"}</p>
+            <p className="mt-3 max-w-[420px] text-[15px] leading-[1.65] text-[#17191a]/80">{success[lang]}</p>
+            <Link
+              href="/"
+              className="mt-8 inline-flex items-center justify-center rounded-xl border border-[#46131E] bg-[#46131E] px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#46131E]"
+            >
+              {en ? "To the home page" : "На главную"}
+            </Link>
           </div>
         ) : (
           <form onSubmit={onSubmit} noValidate className="flex flex-col gap-2 rounded-[12px] bg-white px-6 py-7 lg:px-9 lg:py-9">
