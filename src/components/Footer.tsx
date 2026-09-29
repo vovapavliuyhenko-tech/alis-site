@@ -110,7 +110,7 @@ export default function Footer() {
             <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[30px] leading-none tracking-[0.02em] text-[#f4efe6] transition-colors hover:text-[#f4efe6] lg:text-[40px]">
               {PHONE_MAIN}
             </a>
-            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[12.5px] text-[#f4efe6]/55 transition-opacity hover:opacity-70">
+            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[12.5px] text-[#f4efe6]/55 transition-colors hover:text-[#f4efe6]">
               {PHONE_SECOND} — {secondNote}
             </a>
             <a href={`mailto:${EMAIL}`} className="mt-5 inline-block text-[14px] text-[#f4efe6]/70 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#46131E] lg:text-[15px]">
@@ -123,13 +123,13 @@ export default function Footer() {
         <div className="mt-12 flex flex-col gap-4 border-t border-[#f4efe6]/10 pt-6 text-[12px] text-[#f4efe6]/45 md:flex-row md:items-center md:justify-between lg:mt-14">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <span>© {new Date().getFullYear()} ÁLIS BEAUTY</span>
-            <a href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-70">
+            <a href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#f4efe6]">
               {t("Разработка сайта", "Website by")}
             </a>
           </div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             {LEGAL.map((l) => (
-              <a key={l.href} href={l.href} className="transition-opacity hover:opacity-70">{l.label}</a>
+              <a key={l.href} href={l.href} className="transition-colors hover:text-[#f4efe6]">{l.label}</a>
             ))}
           </div>
         </div>
