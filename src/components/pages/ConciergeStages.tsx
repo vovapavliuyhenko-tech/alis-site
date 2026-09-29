@@ -55,7 +55,7 @@ export default function ConciergeStages({
               </div>
 
               {/* Фото — половина экрана в ширину */}
-              <div className={`relative min-h-[42vh] overflow-hidden ${photoRight ? "lg:order-2 lg:rounded-tl-[12px]" : "lg:order-1 lg:rounded-tr-[12px]"}`}>
+              <div className={`relative min-h-[42vh] ${photoRight ? "lg:order-2" : "lg:order-1"}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={s.photo}
