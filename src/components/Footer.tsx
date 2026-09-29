@@ -43,7 +43,7 @@ export default function Footer() {
     { label: t("Подарочный сертификат", "Gift certificate"), href: "https://o8981.yclients.ru/certificates" },
     { label: t("Программа лояльности", "Loyalty programme"), href: "/loyalty" },
     { label: t("Сотрудничество", "Cooperation"), href: "/cooperation" },
-    { label: t("Вакансии", "Vacancies"), href: "/team" },
+    { label: t("Вакансии", "Vacancies"), href: "/team#vacancies" },
     { label: t("Контакты", "Contacts"), href: "/contacts" },
   ];
   const LEGAL = [

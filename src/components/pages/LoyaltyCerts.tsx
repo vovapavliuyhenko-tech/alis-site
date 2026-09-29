@@ -68,7 +68,7 @@ export default function LoyaltyCerts() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={CERT_PHOTO}
-              alt=""
+              alt={lang === "en" ? "ÁLIS BEAUTY gift certificate" : "Подарочный сертификат ÁLIS BEAUTY"}
               draggable={false}
               loading="lazy"
               decoding="async"

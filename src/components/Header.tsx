@@ -51,7 +51,7 @@ const RIGHT: NavItem[] = [
       { label: { ru: "Агентствам и бизнесу", en: "For agencies & business" }, href: "/cooperation#business" },
     ],
   },
-  { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team" },
+  { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team#vacancies" },
   { label: { ru: "Контакты", en: "Contacts" }, href: "/contacts" },
 ];
 
@@ -87,7 +87,9 @@ export default function Header() {
       setSolid(true);
       return;
     }
-    const onScroll = () => setSolid(sentinel.getBoundingClientRect().top <= 64);
+    // Подложка включается чуть раньше конца обложки — пока кнопка героя
+    // (внизу первого экрана) подъезжает к шапке, иначе она наезжает на логотип
+    const onScroll = () => setSolid(sentinel.getBoundingClientRect().top <= 200);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
@@ -96,6 +98,17 @@ export default function Header() {
       window.removeEventListener("resize", onScroll);
     };
   }, [pathname]);
+
+  // Открыто мобильное меню — страница под ним не прокручивается
+  useEffect(() => {
+    if (!open) return;
+    const html = document.documentElement;
+    const prev = html.style.overflow;
+    html.style.overflow = "hidden";
+    return () => {
+      html.style.overflow = prev;
+    };
+  }, [open]);
 
   // Над первым экраном главной (тёмное фото) — шапка светлая; после прокрутки
   // и на внутренних страницах — тёмная на белой подложке.

@@ -259,6 +259,9 @@ main h3 + p {
 html.coop-locked #footer { display: none; }
 html.coop-locked .page-end { padding-bottom: 0; }
 
+/* Пока видна плашка cookie — плавающая кнопка записи стоит над ней, а не поверх */
+html.cookie-open .booking-fab { bottom: 132px; }
+
 /* Автозаполнение браузера в формах заявки — без голубой подложки */
 #request input:-webkit-autofill, #offer input:-webkit-autofill, #join input:-webkit-autofill {
   -webkit-text-fill-color: #17191a;

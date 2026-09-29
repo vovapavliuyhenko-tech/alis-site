@@ -186,7 +186,7 @@ export function ShopCategories() {
               className={`r-reveal group relative overflow-hidden rounded-[12px] bg-[#f2f1ee] ${i === 0 ? "col-span-2 aspect-[4/3] lg:col-span-1 lg:row-span-2 lg:aspect-auto" : "aspect-[3/4] lg:aspect-auto"} ${i === 4 ? "col-span-2 aspect-[16/9] lg:col-span-1 lg:aspect-auto" : ""}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.img} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]" />
+              <img src={c.img} alt={c.label[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]" />
               <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
               <div className="absolute inset-x-5 top-5 flex items-start justify-between text-white lg:inset-x-6 lg:top-6">
                 <span className="text-[16px] lg:text-[18px]">{c.label[lang]}</span>

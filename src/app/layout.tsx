@@ -26,10 +26,25 @@ const body = Montserrat({
   display: "swap",
 });
 
+const SITE_TITLE = "ÁLIS BEAUTY — салон красоты в Новороссийске и выездной премиум-сервис";
+const SITE_DESC =
+  "ÁLIS BEAUTY: маникюр, педикюр, брови, макияж, окрашивание и укладки волос, а также выездной премиум-сервис для мероприятий. Новороссийск, ул. Пархоменко, 53. Отражаем внутреннюю красоту во внешнем облике.";
+// Превью ссылки в мессенджерах и соцсетях (og:image) — фото с обложки главной
+const OG_IMAGE = { url: "/assets/alis/img_2745.jpg", width: 1600, height: 1067, alt: "ÁLIS BEAUTY — салон красоты в Новороссийске" };
+
 export const metadata: Metadata = {
-  title: "ÁLIS BEAUTY — салон красоты в Новороссийске и выездной премиум-сервис",
-  description:
-    "ÁLIS BEAUTY: маникюр, педикюр, брови, макияж, окрашивание и укладки волос, а также выездной премиум-сервис для мероприятий. Новороссийск, ул. Пархоменко, 53. Отражаем внутреннюю красоту во внешнем облике.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://alis-site-one.vercel.app"),
+  title: SITE_TITLE,
+  description: SITE_DESC,
+  openGraph: {
+    type: "website",
+    locale: "ru_RU",
+    siteName: "ÁLIS BEAUTY",
+    title: SITE_TITLE,
+    description: SITE_DESC,
+    images: [OG_IMAGE],
+  },
+  twitter: { card: "summary_large_image", title: SITE_TITLE, description: SITE_DESC, images: [OG_IMAGE.url] },
   icons: { icon: "/assets/tild3364-356_favicon.svg" },
   manifest: "/manifest.webmanifest",
 };

@@ -19,12 +19,13 @@ const ITEMS: string[] = [
 ];
 
 function Track({ items, hidden = false }: { items: string[]; hidden?: boolean }) {
+  const { lang } = useLang();
   return (
     <ul aria-hidden={hidden} className="flex shrink-0">
       {items.map((src, i) => (
         <li key={i} className="mr-2 aspect-[3/4] h-[320px] shrink-0 lg:mr-3 lg:h-[440px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt="" draggable={false} loading="lazy" decoding="async" className="h-full w-full rounded-[12px] object-cover" />
+          <img src={src} alt={hidden ? "" : lang === "en" ? `ÁLIS BEAUTY — photo ${i + 1}` : `ÁLIS BEAUTY — фото ${i + 1}`} draggable={false} loading="lazy" decoding="async" className="h-full w-full rounded-[12px] object-cover" />
         </li>
       ))}
     </ul>

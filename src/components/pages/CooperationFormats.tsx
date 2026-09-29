@@ -107,7 +107,7 @@ export default function CooperationFormats() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={a.img}
-                    alt=""
+                    alt={a.title[lang]}
                     loading="lazy"
                     className="aspect-[3/2] w-full object-cover transition-[transform,filter] duration-700 ease-out group-hover:scale-[1.03] group-hover:blur-[6px]"
                   />

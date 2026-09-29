@@ -95,7 +95,7 @@ export default function ConciergeBenefits({ points = POINTS }: { points?: Benefi
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={pt.img}
-                  alt=""
+                  alt={pt.title[lang]}
                   loading="lazy"
                   className={`absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-[1200ms] ease-out ${on ? "scale-100" : "scale-110"}`}
                 />

@@ -59,7 +59,7 @@ export default function ConciergeStages({
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={s.photo}
-                  alt=""
+                  alt={s.heading[lang]}
                   aria-hidden
                   draggable={false}
                   loading="lazy"

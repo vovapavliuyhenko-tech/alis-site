@@ -42,7 +42,7 @@ export default function PhotoBanner({
     <section className="bg-white section-y">
       <div className="relative mx-auto flex h-[70svh] min-h-[480px] w-[96%] max-w-[1760px] items-end justify-center overflow-hidden rounded-[12px] text-center text-white">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img ref={img} src={photo} alt="" loading="lazy" className="absolute left-0 top-[-25%] -z-0 h-[150%] w-full object-cover will-change-transform" />
+        <img ref={img} src={photo} alt={title[lang]} loading="lazy" className="absolute left-0 top-[-25%] -z-0 h-[150%] w-full object-cover will-change-transform" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
         <div className="r-reveal relative z-10 max-w-[560px] px-6 pb-12 lg:pb-16">
           <p className="text-[12px] text-white/75">{label[lang]}</p>

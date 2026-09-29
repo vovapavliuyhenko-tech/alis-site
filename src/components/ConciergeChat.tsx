@@ -170,7 +170,7 @@ export default function ConciergeChat() {
             )}
             <span className="relative shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={ADMIN_PHOTO} alt="" className="h-10 w-10 rounded-full object-cover" />
+              <img src={ADMIN_PHOTO} alt={lang === "en" ? "ÁLIS BEAUTY concierge" : "Консьерж ÁLIS BEAUTY"} className="h-10 w-10 rounded-full object-cover" />
               <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#4ade80]" />
             </span>
             <div className="min-w-0 flex-1">
@@ -340,7 +340,7 @@ export default function ConciergeChat() {
         <button onClick={() => { setOpen(true); setScreen("home"); }} aria-label={t("Открыть чат", "Open chat")} className="pointer-events-auto group flex items-center gap-3 rounded-full bg-white py-2 pl-2 pr-5 text-[13px] text-[#17191a] shadow-[0_14px_40px_-10px_rgba(23,25,26,0.35)] ring-1 ring-[#17191a]/8 transition-transform hover:-translate-y-0.5">
           <span className="relative">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={ADMIN_PHOTO} alt="" className="h-10 w-10 rounded-full object-cover" />
+            <img src={ADMIN_PHOTO} alt={lang === "en" ? "ÁLIS BEAUTY concierge" : "Консьерж ÁLIS BEAUTY"} className="h-10 w-10 rounded-full object-cover" />
             <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#4ade80]" />
           </span>
           <span className="text-left leading-tight">

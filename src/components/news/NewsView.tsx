@@ -120,7 +120,7 @@ export function NewsArticle({ n }: { n: NewsItem }) {
           <div className="mx-auto grid w-[96%] max-w-[1760px] grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-4">
             {n.gallery.map((src) => (
               // eslint-disable-next-line @next/next/no-img-element
-              <img key={src} src={src} alt="" loading="lazy" className="aspect-[3/4] w-full rounded-[12px] object-cover last:max-lg:hidden" />
+              <img key={src} src={src} alt={n.title[lang]} loading="lazy" className="aspect-[3/4] w-full rounded-[12px] object-cover last:max-lg:hidden" />
             ))}
           </div>
         </section>

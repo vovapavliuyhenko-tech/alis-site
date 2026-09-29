@@ -2,6 +2,7 @@
 // Плавающая круглая кнопка «Онлайн запись» → YClients. На первом блоке любой
 // страницы скрыта, появляется после прокрутки; пульсирует и излучает кольца. Над
 // тёмным футером инвертирует цвет (кремовая с тёмным текстом). Скрыта на /concierge.
+// Пока открыта плашка cookie (html.cookie-open), кнопка поднимается над ней — см. globals.css.
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
@@ -23,12 +24,14 @@ export default function BookingFab() {
       const overFirst = firstBlock
         ? firstBlock.getBoundingClientRect().bottom > window.innerHeight * 0.6
         : window.scrollY < window.innerHeight * 0.7;
-      setShown(!overFirst);
       const footer = document.getElementById("footer");
       const fh = footer ? footer.offsetHeight : 0;
       const docH = document.documentElement.scrollHeight;
       const revealed = window.scrollY + window.innerHeight - (docH - fh);
       setOnFooter(revealed > 90);
+      // В самом низу страницы прячем кнопку — иначе она закрывает ссылки нижней строки подвала
+      const atEnd = window.scrollY + window.innerHeight >= docH - 140;
+      setShown(!overFirst && !atEnd);
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
@@ -46,7 +49,7 @@ export default function BookingFab() {
 
   return (
     <div
-      className={`fixed bottom-5 right-5 z-40 transition-all duration-500 sm:bottom-7 sm:right-7 ${
+      className={`booking-fab fixed bottom-5 right-5 z-40 transition-all duration-500 sm:bottom-7 sm:right-7 ${
         shown ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >

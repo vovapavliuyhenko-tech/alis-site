@@ -66,7 +66,7 @@ export default function ShopUI() {
                 return (
                   <div key={it.id} className="flex gap-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={p.img} alt="" className="h-20 w-16 shrink-0 rounded-[12px] object-cover" />
+                    <img src={p.img} alt={p.name[lang]} className="h-20 w-16 shrink-0 rounded-[12px] object-cover" />
                     <div className="flex min-w-0 flex-1 flex-col">
                       <div className="flex items-start justify-between gap-3">
                         <span className="text-[14px] font-medium text-[#2a2320]">{p.name[lang]}</span>
@@ -128,7 +128,7 @@ export default function ShopUI() {
               return (
                 <div key={id} className="flex gap-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.img} alt="" className="h-20 w-16 shrink-0 rounded-[12px] object-cover" />
+                  <img src={p.img} alt={p.name[lang]} className="h-20 w-16 shrink-0 rounded-[12px] object-cover" />
                   <div className="flex min-w-0 flex-1 flex-col">
                     <div className="flex items-start justify-between gap-3">
                       <Link href={`/product/${id}`} onClick={s.closeAll} className="text-left text-[14px] font-medium text-[#2a2320] hover:text-[#17191a]">{p.name[lang]}</Link>

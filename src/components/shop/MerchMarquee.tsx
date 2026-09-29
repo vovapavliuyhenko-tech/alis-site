@@ -90,7 +90,7 @@ export default function MerchMarquee({
         <li key={i} className="mr-4 w-[260px] shrink-0 lg:mr-5 lg:w-[340px]">
           <Link href={`/product/${p.id}`} className="group block w-full overflow-hidden rounded-[12px]" aria-label={p.name[lang]} draggable={false}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={p.img} alt="" draggable={false} loading="lazy" decoding="async" className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+            <img src={p.img} alt={p.name[lang]} draggable={false} loading="lazy" decoding="async" className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
           </Link>
           <h3 className="mt-4 font-serif-display text-[22px] leading-tight text-[#2a2320] lg:text-[26px]">{p.name[lang]}</h3>
           <p className="mt-1 font-serif-display text-[15px] text-[#2a2320]/55 lg:text-[16px]">{fmtPrice(p.price, en)}</p>

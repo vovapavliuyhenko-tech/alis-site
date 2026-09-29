@@ -5,14 +5,16 @@
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
-type Cat = { title: Loc; note: Loc; img: string; span: string; slug: string };
+// href — куда ведёт карточка: категория в услугах салона (раскрывается по якорю) или весь прайс
+type Cat = { title: Loc; note: Loc; img: string; alt: Loc; span: string; href: string };
 
+// Фото — работы по услуге (волны, маникюр, взгляд, макияж невесты, уход за волосами)
 const CATS: Cat[] = [
-  { slug: "hair", title: { ru: "Волосы", en: "Hair" }, note: { ru: "Стрижка, цвет, укладка. Выходите с причёской, а не с обещанием.", en: "Cut, colour, styling. You leave with the hairstyle, not a promise." }, img: "/assets/tild6530-383_-2___1_.jpg", span: "lg:col-start-1 lg:row-start-1 lg:row-span-2" },
-  { slug: "manicure", title: { ru: "Ногти", en: "Nails" }, note: { ru: "Маникюр и педикюр, которые держатся, а не отлетает через неделю.", en: "Manicure and pedicure that last — not chip in a week." }, img: "/assets/tild3638-373_-2___1__3.jpg", span: "lg:col-start-2 lg:row-start-1" },
-  { slug: "brows", title: { ru: "Брови и ресницы", en: "Brows & lashes" }, note: { ru: "Форма под ваше лицо. Взгляд открытый уже на выходе.", en: "Shape made for your face. An open gaze the moment you leave." }, img: "/assets/tild3236-393__.jpg", span: "lg:col-start-3 lg:row-start-1" },
-  { slug: "makeup", title: { ru: "Макияж", en: "Makeup" }, note: { ru: "Дневной, вечерний, свадебный. В тон всему образу.", en: "Day, evening, bridal. In tone with the whole look." }, img: "/assets/tild6230-643__.jpg", span: "lg:col-start-2 lg:row-start-2" },
-  { slug: "hair", title: { ru: "Уход", en: "Care" }, note: { ru: "Уход, после которого кожа и волосы говорят сами за себя.", en: "Care after which your skin and hair speak for themselves." }, img: "/assets/tild3561-646_-2___1__5.jpg", span: "lg:col-start-3 lg:row-start-2" },
+  { href: "/salon#uslugi-hair", title: { ru: "Волосы", en: "Hair" }, note: { ru: "Стрижка, цвет, укладка. Выходите с причёской, а не с обещанием.", en: "Cut, colour, styling. You leave with the hairstyle, not a promise." }, img: "/assets/alis/img_3283.jpg", alt: { ru: "Укладка локонами на длинных тёмных волосах — работа ÁLIS BEAUTY", en: "Long dark hair styled in soft waves by ÁLIS BEAUTY" }, span: "lg:col-start-1 lg:row-start-1 lg:row-span-2" },
+  { href: "/salon#uslugi-manicure", title: { ru: "Ногти", en: "Nails" }, note: { ru: "Маникюр и педикюр, которые держатся, а не отлетают через неделю.", en: "Manicure and pedicure that last — not chip in a week." }, img: "/assets/alis/img_8578.jpg", alt: { ru: "Нюдовый маникюр на коротких ногтях — работа ÁLIS BEAUTY", en: "Nude manicure on short nails by ÁLIS BEAUTY" }, span: "lg:col-start-2 lg:row-start-1" },
+  { href: "/salon#uslugi-brows", title: { ru: "Брови и ресницы", en: "Brows & lashes" }, note: { ru: "Форма под ваше лицо. Взгляд открытый уже на выходе.", en: "Shape made for your face. An open gaze the moment you leave." }, img: "/assets/alis/img_2672.jpg", alt: { ru: "Оформленные брови и ресницы, открытый взгляд — работа ÁLIS BEAUTY", en: "Shaped brows and lashes, an open gaze — by ÁLIS BEAUTY" }, span: "lg:col-start-3 lg:row-start-1" },
+  { href: "/salon#uslugi-makeup", title: { ru: "Макияж", en: "Makeup" }, note: { ru: "Дневной, вечерний, свадебный. В тон всему образу.", en: "Day, evening, bridal. In tone with the whole look." }, img: "/assets/alis/img_2746.jpg", alt: { ru: "Визажист ÁLIS BEAUTY делает свадебный макияж невесте", en: "An ÁLIS BEAUTY make-up artist doing bridal make-up" }, span: "lg:col-start-2 lg:row-start-2" },
+  { href: "/salon#uslugi", title: { ru: "Уход", en: "Care" }, note: { ru: "Уход, после которого кожа и волосы говорят сами за себя.", en: "Care after which your skin and hair speak for themselves." }, img: "/assets/alis/img_5910.webp", alt: { ru: "Гладкие блестящие волосы после ухода, гребень ÁLIS BEAUTY", en: "Smooth glossy hair after a care treatment, ÁLIS BEAUTY comb" }, span: "lg:col-start-3 lg:row-start-2" },
 ];
 
 export default function ServiceBento() {
@@ -25,13 +27,13 @@ export default function ServiceBento() {
           {CATS.map((c, i) => (
             <a
               key={c.title.ru}
-              href={`/salon#uslugi-${c.slug}`}
+              href={c.href}
               className={`r-reveal group relative overflow-hidden rounded-[12px] ${c.span} ${i === 0 ? "col-span-2 aspect-[4/3] lg:col-span-1 lg:aspect-auto lg:h-full" : "aspect-[4/5] lg:aspect-auto lg:h-full"}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={c.img}
-                alt=""
+                alt={c.alt[lang]}
                 draggable={false}
                 loading="lazy"
                 decoding="async"

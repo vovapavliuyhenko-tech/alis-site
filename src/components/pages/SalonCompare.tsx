@@ -82,7 +82,7 @@ export default function SalonCompare() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={PHOTO_L}
-              alt=""
+              alt={lang === "en" ? "ÁLIS BEAUTY artist at work" : "Мастер ÁLIS BEAUTY за работой"}
               draggable={false}
               loading="lazy"
               decoding="async"
@@ -137,7 +137,7 @@ export default function SalonCompare() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={PHOTO_R}
-              alt=""
+              alt={lang === "en" ? "Work by an ÁLIS BEAUTY artist" : "Работа мастера ÁLIS BEAUTY"}
               draggable={false}
               loading="lazy"
               decoding="async"

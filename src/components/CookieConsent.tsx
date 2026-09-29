@@ -19,6 +19,12 @@ export default function CookieConsent() {
     }
   }, []);
 
+  // Метка на <html>, пока плашка видна: плавающая кнопка записи поднимается над ней
+  useEffect(() => {
+    document.documentElement.classList.toggle("cookie-open", show);
+    return () => document.documentElement.classList.remove("cookie-open");
+  }, [show]);
+
   const decide = (value: "accepted" | "declined") => {
     try {
       localStorage.setItem(KEY, value);

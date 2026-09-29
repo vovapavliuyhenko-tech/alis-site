@@ -76,7 +76,7 @@ export default function Vacancies() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={v.img}
-                alt=""
+                alt={v.role[lang]}
                 draggable={false}
                 loading="lazy"
                 decoding="async"
