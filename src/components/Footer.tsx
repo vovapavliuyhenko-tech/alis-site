@@ -34,7 +34,7 @@ export default function Footer() {
   // Подписи колонок — мелкие капсом, ссылки — с тонким подчёркиванием на наведении
   const title = "mb-5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/75";
   const link =
-    "relative block w-fit text-[12.5px] text-[#f4efe6]/70 transition-colors hover:text-[#b8687a] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full";
+    "relative block w-fit text-[12.5px] text-[#f4efe6]/70 transition-colors hover:text-[#46131E] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full";
   const MENU = [
     { label: t("Салон красоты", "Beauty salon"), href: "/salon" },
     { label: t("Консьерж-сервис", "Concierge service"), href: "/concierge" },
@@ -107,13 +107,13 @@ export default function Footer() {
           {/* Телефоны + email справа, крупно */}
           <div className="sm:col-span-2 lg:col-span-1 lg:text-right">
             <p className={title}>{concierge ? t("Консьерж-сервис", "Concierge service") : t("Салон красоты", "Beauty salon")}</p>
-            <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[30px] leading-none tracking-[0.02em] text-[#f4efe6] transition-colors hover:text-[#b8687a] lg:text-[40px]">
+            <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[30px] leading-none tracking-[0.02em] text-[#f4efe6] transition-colors hover:text-[#46131E] lg:text-[40px]">
               {PHONE_MAIN}
             </a>
-            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[12.5px] text-[#f4efe6]/55 transition-colors hover:text-[#b8687a]">
+            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[12.5px] text-[#f4efe6]/55 transition-colors hover:text-[#46131E]">
               {PHONE_SECOND} — {secondNote}
             </a>
-            <a href={`mailto:${EMAIL}`} className="mt-5 inline-block text-[14px] text-[#f4efe6]/70 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#b8687a] hover:decoration-[#b8687a] lg:text-[15px]">
+            <a href={`mailto:${EMAIL}`} className="mt-5 inline-block text-[14px] text-[#f4efe6]/70 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#46131E] hover:decoration-[#46131E] lg:text-[15px]">
               {EMAIL}
             </a>
           </div>
@@ -123,13 +123,13 @@ export default function Footer() {
         <div className="mt-12 flex flex-col gap-4 border-t border-[#f4efe6]/10 pt-6 text-[12px] text-[#f4efe6]/45 md:flex-row md:items-center md:justify-between lg:mt-14">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <span>© {new Date().getFullYear()} ÁLIS BEAUTY</span>
-            <a href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#b8687a]">
+            <a href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#46131E]">
               {t("Разработка сайта", "Website by")}
             </a>
           </div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             {LEGAL.map((l) => (
-              <a key={l.href} href={l.href} className="transition-colors hover:text-[#b8687a]">{l.label}</a>
+              <a key={l.href} href={l.href} className="transition-colors hover:text-[#46131E]">{l.label}</a>
             ))}
           </div>
         </div>
