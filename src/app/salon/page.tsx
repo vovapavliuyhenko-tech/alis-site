@@ -26,6 +26,7 @@ const p = (v: string) => ({ ru: v, en: v }); // цена одинакова дл
 
 const SALON_CATEGORIES = [
   {
+    slug: "manicure",
     label: { ru: "Маникюр", en: "Manicure" },
     sub: { ru: "Классический, гель-лак, японский, пилочный, наращивание и дизайн", en: "Classic, gel polish, Japanese, file, extensions & design" },
     from: { ru: "от 1 000 ₽", en: "from 1 000 ₽" },
@@ -75,6 +76,7 @@ const SALON_CATEGORIES = [
     ],
   },
   {
+    slug: "pedicure",
     label: { ru: "Педикюр", en: "Pedicure" },
     sub: { ru: "Классический, smart-диски, препаратный", en: "Classic, smart discs, acid" },
     from: { ru: "от 1 000 ₽", en: "from 1 000 ₽" },
@@ -130,6 +132,7 @@ const SALON_CATEGORIES = [
     ],
   },
   {
+    slug: "hair",
     label: { ru: "Парикмахерские услуги", en: "Hair services" },
     sub: { ru: "Стрижки, укладки, окрашивание, уход, причёски и свадебные образы", en: "Cuts, styling, colouring, care, hairstyles & bridal looks" },
     from: { ru: "от 400 ₽", en: "from 400 ₽" },
@@ -197,6 +200,7 @@ const SALON_CATEGORIES = [
   },
   {
     // TODO: прайс на брови — пришлёт заказчица
+    slug: "brows",
     label: { ru: "Оформление бровей", en: "Brows" },
     sub: { ru: "Коррекция, окрашивание, укладка", en: "Shaping, tinting, styling" },
     from: { ru: "по запросу", en: "on request" },
@@ -206,6 +210,7 @@ const SALON_CATEGORIES = [
   },
   {
     // TODO: прайс на макияж — пришлёт заказчица
+    slug: "makeup",
     label: { ru: "Макияж", en: "Makeup" },
     sub: { ru: "Дневной, вечерний, свадебный", en: "Day, evening, bridal" },
     from: { ru: "по запросу", en: "on request" },
@@ -214,6 +219,7 @@ const SALON_CATEGORIES = [
     ] }],
   },
   {
+    slug: "four-hands",
     label: { ru: "Особенный сервис (услуги в 4 руки)", en: "Signature service (4 hands)" },
     sub: { ru: "Два мастера одновременно — быстрее и комфортнее", en: "Two masters at once — faster and more comfortable" },
     from: { ru: "от 5 700 ₽", en: "from 5 700 ₽" },

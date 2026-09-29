@@ -2,13 +2,13 @@
 // УСЛУГИ САЛОНА — «оглавление-журнал» как блок вакансий: крупные строки-категории
 // с номером, названием и подписью. По клику строка раскрывается в плашку с прайсом
 // (услуга · время · цена). Под категориями — растянутая кнопка записи.
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
 type Row = { name: Loc; price: Loc; time?: Loc };
 type Group = { title?: Loc; rows: Row[] };
-type Category = { label: Loc; sub: Loc; from: Loc; groups: Group[] };
+type Category = { slug?: string; label: Loc; sub: Loc; from: Loc; groups: Group[] };
 
 export default function SalonServices({
   eyebrow,
@@ -23,6 +23,23 @@ export default function SalonServices({
 }) {
   const { lang } = useLang();
   const [open, setOpen] = useState<number | null>(null);
+
+  // Переход с главной вида /salon#uslugi-manicure — раскрываем нужную категорию и
+  // прокручиваем к ней (карточки «Всё для вашего образа» ведут сюда)
+  useEffect(() => {
+    const fromHash = () => {
+      const h = window.location.hash;
+      if (!h.startsWith("#uslugi-")) return;
+      const slug = h.slice("#uslugi-".length);
+      const i = categories.findIndex((c) => c.slug === slug);
+      if (i < 0) return;
+      setOpen(i);
+      setTimeout(() => document.getElementById("cat-" + slug)?.scrollIntoView({ behavior: "smooth", block: "start" }), 300);
+    };
+    fromHash();
+    window.addEventListener("hashchange", fromHash);
+    return () => window.removeEventListener("hashchange", fromHash);
+  }, [categories]);
 
   return (
     <section id="uslugi" className="scroll-mt-24 bg-white section-y">
@@ -42,7 +59,8 @@ export default function SalonServices({
             return (
               <div
                 key={c.label.ru}
-                className={`overflow-hidden rounded-[12px] border transition-[border-color,box-shadow] duration-500 ${
+                id={c.slug ? "cat-" + c.slug : undefined}
+                className={`scroll-mt-28 overflow-hidden rounded-[12px] border transition-[border-color,box-shadow] duration-500 ${
                   isOpen
                     ? "border-[#17191a]/20 bg-white shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)]"
                     : "border-[#17191a]/12 bg-white hover:border-[#17191a]/25"

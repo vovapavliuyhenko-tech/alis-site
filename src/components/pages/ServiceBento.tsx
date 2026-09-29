@@ -5,14 +5,14 @@
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
-type Cat = { title: Loc; note: Loc; img: string; span: string };
+type Cat = { title: Loc; note: Loc; img: string; span: string; slug: string };
 
 const CATS: Cat[] = [
-  { title: { ru: "Волосы", en: "Hair" }, note: { ru: "Стрижка, цвет, укладка. Выходите с причёской, а не с обещанием.", en: "Cut, colour, styling. You leave with the hairstyle, not a promise." }, img: "/assets/tild6530-383_-2___1_.jpg", span: "lg:col-start-1 lg:row-start-1 lg:row-span-2" },
-  { title: { ru: "Ногти", en: "Nails" }, note: { ru: "Маникюр и педикюр, которые держатся, а не отлетает через неделю.", en: "Manicure and pedicure that last — not chip in a week." }, img: "/assets/tild3638-373_-2___1__3.jpg", span: "lg:col-start-2 lg:row-start-1" },
-  { title: { ru: "Брови и ресницы", en: "Brows & lashes" }, note: { ru: "Форма под ваше лицо. Взгляд открытый уже на выходе.", en: "Shape made for your face. An open gaze the moment you leave." }, img: "/assets/tild3236-393__.jpg", span: "lg:col-start-3 lg:row-start-1" },
-  { title: { ru: "Макияж", en: "Makeup" }, note: { ru: "Дневной, вечерний, свадебный. В тон всему образу.", en: "Day, evening, bridal. In tone with the whole look." }, img: "/assets/tild6230-643__.jpg", span: "lg:col-start-2 lg:row-start-2" },
-  { title: { ru: "Уход", en: "Care" }, note: { ru: "Уход, после которого кожа и волосы говорят сами за себя.", en: "Care after which your skin and hair speak for themselves." }, img: "/assets/tild3561-646_-2___1__5.jpg", span: "lg:col-start-3 lg:row-start-2" },
+  { slug: "hair", title: { ru: "Волосы", en: "Hair" }, note: { ru: "Стрижка, цвет, укладка. Выходите с причёской, а не с обещанием.", en: "Cut, colour, styling. You leave with the hairstyle, not a promise." }, img: "/assets/tild6530-383_-2___1_.jpg", span: "lg:col-start-1 lg:row-start-1 lg:row-span-2" },
+  { slug: "manicure", title: { ru: "Ногти", en: "Nails" }, note: { ru: "Маникюр и педикюр, которые держатся, а не отлетает через неделю.", en: "Manicure and pedicure that last — not chip in a week." }, img: "/assets/tild3638-373_-2___1__3.jpg", span: "lg:col-start-2 lg:row-start-1" },
+  { slug: "brows", title: { ru: "Брови и ресницы", en: "Brows & lashes" }, note: { ru: "Форма под ваше лицо. Взгляд открытый уже на выходе.", en: "Shape made for your face. An open gaze the moment you leave." }, img: "/assets/tild3236-393__.jpg", span: "lg:col-start-3 lg:row-start-1" },
+  { slug: "makeup", title: { ru: "Макияж", en: "Makeup" }, note: { ru: "Дневной, вечерний, свадебный. В тон всему образу.", en: "Day, evening, bridal. In tone with the whole look." }, img: "/assets/tild6230-643__.jpg", span: "lg:col-start-2 lg:row-start-2" },
+  { slug: "hair", title: { ru: "Уход", en: "Care" }, note: { ru: "Уход, после которого кожа и волосы говорят сами за себя.", en: "Care after which your skin and hair speak for themselves." }, img: "/assets/tild3561-646_-2___1__5.jpg", span: "lg:col-start-3 lg:row-start-2" },
 ];
 
 export default function ServiceBento() {
@@ -25,7 +25,7 @@ export default function ServiceBento() {
           {CATS.map((c, i) => (
             <a
               key={c.title.ru}
-              href="/salon#uslugi"
+              href={`/salon#uslugi-${c.slug}`}
               className={`r-reveal group relative overflow-hidden rounded-[12px] ${c.span} ${i === 0 ? "col-span-2 aspect-[4/3] lg:col-span-1 lg:aspect-auto lg:h-full" : "aspect-[4/5] lg:aspect-auto lg:h-full"}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
