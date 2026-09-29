@@ -24,19 +24,22 @@ export type Lead = {
   created_at: string;
 };
 
+// Vercel/Neon может назвать переменную по-разному (в зависимости от префикса)
+const DB_URL = process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.STORAGE_URL || "";
+
 let pool: Pool | null = null;
 let ready = false;
 
 export function dbConfigured() {
-  return !!process.env.DATABASE_URL;
+  return !!DB_URL;
 }
 
 function db() {
-  if (!process.env.DATABASE_URL) throw new Error("База данных не подключена (нет DATABASE_URL)");
+  if (!DB_URL) throw new Error("База данных не подключена (нет DATABASE_URL)");
   if (!pool) {
     pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
-      ssl: /localhost|127\.0\.0\.1/.test(process.env.DATABASE_URL) ? undefined : { rejectUnauthorized: false },
+      connectionString: DB_URL,
+      ssl: /localhost|127\.0\.0\.1/.test(DB_URL) ? undefined : { rejectUnauthorized: false },
       max: 3,
     });
   }
