@@ -32,9 +32,9 @@ export default function Footer() {
   const secondNote = concierge ? t("салон красоты", "beauty salon") : t("консьерж-сервис", "concierge service");
 
   // Подписи колонок — мелкие капсом, ссылки — с тонким подчёркиванием на наведении
-  const title = "mb-5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/40";
+  const title = "mb-5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/75";
   const link =
-    "relative block w-fit text-[14px] text-[#f4efe6]/70 transition-colors hover:text-[#f4efe6] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full";
+    "relative block w-fit text-[12.5px] text-[#f4efe6]/70 transition-colors hover:text-[#f4efe6] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full";
   const MENU = [
     { label: t("Салон красоты", "Beauty salon"), href: "/salon" },
     { label: t("Консьерж-сервис", "Concierge service"), href: "/concierge" },
@@ -76,7 +76,7 @@ export default function Footer() {
           {/* Соцсети */}
           <div>
             <p className={title}>{t("Социальные сети", "Social")}</p>
-            <div className="space-y-2.5">
+            <div className="space-y-2">
               {SOCIALS.map((s) => (
                 <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer" className={link}>
                   {s.label[lang]}
@@ -91,13 +91,13 @@ export default function Footer() {
             <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className={`${link} max-w-[16rem] leading-relaxed`}>
               {ADDRESS[lang]}
             </a>
-            <p className="mt-3 text-[13px] leading-relaxed text-[#f4efe6]/45">{HOURS[lang]}</p>
+            <p className="mt-3 text-[12px] leading-relaxed text-[#f4efe6]/45">{HOURS[lang]}</p>
           </div>
 
           {/* Меню — в две колонки, чтобы подвал был компактнее */}
           <div>
             <p className={title}>{t("Меню", "Menu")}</p>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-2.5">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-2">
               {MENU.map((m) => (
                 <a key={m.href} href={m.href} {...(m.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${link} whitespace-nowrap`}>{m.label}</a>
               ))}
@@ -110,10 +110,10 @@ export default function Footer() {
             <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[30px] leading-none tracking-[0.02em] text-[#f4efe6] transition-opacity hover:opacity-70 lg:text-[40px]">
               {PHONE_MAIN}
             </a>
-            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[14px] text-[#f4efe6]/55 transition-colors hover:text-[#f4efe6]">
+            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[12.5px] text-[#f4efe6]/55 transition-colors hover:text-[#f4efe6]">
               {PHONE_SECOND} — {secondNote}
             </a>
-            <a href={`mailto:${EMAIL}`} className="mt-5 inline-block text-[16px] text-[#f4efe6]/70 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#f4efe6] lg:text-[18px]">
+            <a href={`mailto:${EMAIL}`} className="mt-5 inline-block text-[14px] text-[#f4efe6]/70 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#f4efe6] lg:text-[15px]">
               {EMAIL}
             </a>
           </div>
