@@ -37,13 +37,13 @@ export default function Hero() {
         </h1>
       </div>
 
-      {/* Кнопка — во всю ширину экрана внизу блока: светлая, при наведении — размытое стекло */}
+      {/* Кнопка — во всю ширину экрана внизу блока: размытое стекло, при наведении — светлая */}
       <div className="w-full px-4 pb-4 lg:px-6 lg:pb-6">
         <a
           href={YCLIENTS}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex w-full items-center justify-center rounded-xl border border-white bg-white py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] text-[#17191a] backdrop-blur-md transition-colors duration-300 hover:border-white/70 hover:bg-white/[0.18] hover:text-white lg:py-4 lg:text-[14px]"
+          className="flex w-full items-center justify-center rounded-xl border border-white/70 bg-white/[0.18] py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a] lg:py-4 lg:text-[14px]"
         >
           {t("Оформить визит", "Arrange a visit")}
         </a>
