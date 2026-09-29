@@ -34,7 +34,18 @@ export default function SalonServices({
       const i = categories.findIndex((c) => c.slug === slug);
       if (i < 0) return;
       setOpen(i);
-      setTimeout(() => document.getElementById("cat-" + slug)?.scrollIntoView({ behavior: "smooth", block: "start" }), 300);
+      const go = (smooth: boolean) => {
+        const el = document.getElementById("cat-" + slug);
+        if (!el) return;
+        const top = el.getBoundingClientRect().top + window.scrollY - 110;
+        window.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
+      };
+      setTimeout(() => go(true), 350);
+      // Страховка: если плавная прокрутка не сработала — переходим сразу
+      setTimeout(() => {
+        const el = document.getElementById("cat-" + slug);
+        if (el && Math.abs(el.getBoundingClientRect().top - 110) > 160) go(false);
+      }, 1400);
     };
     fromHash();
     window.addEventListener("hashchange", fromHash);
