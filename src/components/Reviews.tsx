@@ -197,7 +197,7 @@ export default function Reviews() {
         {/* Заголовок */}
         <div className="r-reveal mb-14 flex flex-col items-center text-center lg:mb-20">
           <h2 className="font-display text-[22px] font-normal uppercase tracking-[0.02em] leading-[1.2] text-[#17191a] lg:text-[28px]">
-            {lang === "en" ? "Read reviews or leave your own" : "Читать отзывы или оставить свой"}
+            {lang === "en" ? "Read reviews or leave your own" : "Читайте отзывы или оставляйте свой"}
           </h2>
           <p className="mt-4 inline-flex items-center gap-2 text-[14px] text-[#17191a]/60">
             <span className="text-[#17191a]">★★★★★</span>
