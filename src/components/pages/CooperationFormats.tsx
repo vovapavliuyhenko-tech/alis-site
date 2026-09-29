@@ -165,7 +165,10 @@ export default function CooperationFormats() {
 
       {/* Форма под выбранную категорию + лента партнёров — только после выбора */}
       {kind && (
-        <div ref={formRef} className="scroll-mt-24 animate-[alis-open_.7s_cubic-bezier(.2,.7,.2,1)]">
+        <div className="animate-[alis-open_.7s_cubic-bezier(.2,.7,.2,1)]">
+          {/* Сначала лента партнёров, под ней — форма заявки */}
+          <Brands />
+          <div ref={formRef} className="scroll-mt-24">
           <RequestForm
             key={kind}
             id="request"
@@ -176,7 +179,7 @@ export default function CooperationFormats() {
             submit={{ ru: "Оставить заявку", en: "Leave a request" }}
             success={{ ru: "Мы получили вашу заявку и скоро свяжемся с вами.", en: "We've received your request and will get back to you soon." }}
           />
-          <Brands />
+          </div>
         </div>
       )}
       <style>{`@keyframes alis-open { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: none } }
