@@ -20,9 +20,15 @@ const AUDIENCES: { id: Kind; title: Loc; img: string }[] = [
 ];
 
 // Форма под каждую категорию
-const FORMS: Record<Kind, { title: Loc; text: Loc; fields: RequestField[] }> = {
+const FORMS: Record<Kind, { title: Loc; text: Loc; bullets: Loc[]; fields: RequestField[] }> = {
   private: {
     title: { ru: "Заявка для частных лиц", en: "Request for individuals" },
+    bullets: [
+      { ru: "Макияж, причёска и образ «под ключ» — без поисков мастеров", en: "Makeup, hair and a turnkey look — no hunting for artists" },
+      { ru: "Приезжаем к вам: домой, в отель или на площадку", en: "We come to you: home, hotel or venue" },
+      { ru: "Всё готово точно ко времени — без спешки и нервов", en: "Everything ready right on time — no rush, no stress" },
+      { ru: "Подберём формат и заранее назовём стоимость", en: "We'll shape the format and confirm the price upfront" },
+    ],
     text: {
       ru: "Боитесь, что в важный день что-то пойдёт не так? Мы возьмём образ на себя: макияж, причёска и тайминг под контролем — а вы просто наслаждаетесь событием.",
       en: "Worried something might go wrong on your big day? We take the look off your hands: makeup, hair and timing under control — you simply enjoy the moment.",
@@ -35,6 +41,12 @@ const FORMS: Record<Kind, { title: Loc; text: Loc; fields: RequestField[] }> = {
   },
   business: {
     title: { ru: "Заявка для агентств и бизнеса", en: "Request for agencies & business" },
+    bullets: [
+      { ru: "Команда стилистов на любое количество гостей", en: "A team of stylists for any number of guests" },
+      { ru: "Выезд в любую локацию со всем оборудованием", en: "On location anywhere, fully equipped" },
+      { ru: "Работаем точно по таймингу вашего мероприятия", en: "We work to your event's exact timing" },
+      { ru: "Пакеты услуг под задачу и масштаб проекта", en: "Service packages to fit the task and scale" },
+    ],
     text: {
       ru: "Нужно подготовить много гостей или команду к съёмке — и без накладок? Выедем командой стилистов в любую локацию и возьмём все заботы об образах на себя.",
       en: "Need to get lots of guests or a whole crew camera-ready — with no hiccups? We send a team of stylists to any location and take care of every look.",
@@ -163,6 +175,7 @@ export default function CooperationFormats() {
             id="request"
             title={FORMS[kind].title}
             text={FORMS[kind].text}
+            bullets={FORMS[kind].bullets}
             fields={FORMS[kind].fields}
             submit={{ ru: "Оставить заявку", en: "Leave a request" }}
             success={{ ru: "Мы получили вашу заявку и скоро свяжемся с вами.", en: "We've received your request and will get back to you soon." }}

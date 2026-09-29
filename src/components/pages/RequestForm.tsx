@@ -30,6 +30,7 @@ export default function RequestForm({
   innerId,
   title,
   text,
+  bullets,
   fields,
   submit,
   success,
@@ -38,6 +39,7 @@ export default function RequestForm({
   innerId?: string; // дополнительный якорь на плашке (например, #booking)
   title: Loc;
   text?: Loc;
+  bullets?: Loc[]; // продающие пункты под текстом («прогрев» перед отправкой)
   fields: RequestField[];
   submit: Loc;
   success: Loc;
@@ -80,6 +82,16 @@ export default function RequestForm({
         <div className="lg:pt-2">
           <h2 className="text-[#f4efe6]">{title[lang]}</h2>
           {text && <p className="mt-4 max-w-[460px] text-[14px] leading-[1.6] text-[#f4efe6]/75 lg:text-[15px]">{text[lang]}</p>}
+          {bullets && bullets.length > 0 && (
+            <ul className="mt-8 space-y-3.5 lg:mt-10">
+              {bullets.map((b) => (
+                <li key={b.ru} className="flex items-start gap-3 text-[14px] leading-[1.5] text-[#f4efe6]/85 lg:text-[15px]">
+                  <span aria-hidden className="mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#46131E] text-[10px] text-white">✓</span>
+                  {b[lang]}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         {/* Справа — форма или сообщение об отправке */}
