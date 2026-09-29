@@ -13,11 +13,13 @@ export default function ConciergeStages({
   sectionId,
   eyebrow = { ru: "как это работает", en: "how it works" },
   title = { ru: "Этапы выезда", en: "How it works" },
+  stepLabel = { ru: "Этап", en: "Step" },
 }: {
   stages: Stage[];
   sectionId?: string;
   eyebrow?: Loc;
   title?: Loc | null; // null — без заголовка
+  stepLabel?: Loc; // подпись над номером («Этап» / «Шаг»)
 }) {
   const { lang } = useLang();
 
@@ -42,7 +44,7 @@ export default function ConciergeStages({
               {/* Текст — по центру, мелкий */}
               <div className={`flex flex-col items-center justify-center bg-white px-8 py-14 text-center lg:px-[6vw] ${photoRight ? "lg:order-1" : "lg:order-2"}`}>
                 <span className="text-[11px] uppercase tracking-[0.3em] text-[#17191a]">
-                  {lang === "en" ? "Step" : "Этап"} 0{i + 1}
+                  {stepLabel[lang]} 0{i + 1}
                 </span>
                 <h3 className="mt-6 max-w-[18ch] font-serif-display text-[20px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[24px]">
                   {s.heading[lang]}
