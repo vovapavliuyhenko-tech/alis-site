@@ -208,15 +208,16 @@ export function ShopAll() {
 export function ShopCollection() {
   const { lang } = useLang();
   const img = useRef<HTMLImageElement>(null);
-  // «Статичный фон»: фото высотой в экран сдвигается навстречу прокрутке и стоит на месте,
-  // а рамка блока проезжает поверх — как background-attachment: fixed, но работает везде
+  // Параллакс фото: движется медленнее страницы — мягкий эффект «статичного фона»
   useEffect(() => {
     let raf = 0;
     const tick = () => {
       const el = img.current;
       if (el) {
         const r = el.parentElement!.getBoundingClientRect();
-        el.style.transform = `translate3d(0, ${-r.top}px, 0)`;
+        // Золотая середина: фото движется на 20% от прокрутки (медленнее страницы)
+        const p = r.top + r.height / 2 - innerHeight / 2;
+        el.style.transform = `translate3d(0, ${-p * 0.2}px, 0)`;
       }
       raf = requestAnimationFrame(tick);
     };
@@ -227,7 +228,7 @@ export function ShopCollection() {
     <section className="bg-white section-y">
       <div className="relative mx-auto flex h-[70svh] min-h-[480px] w-[96%] max-w-[1760px] items-end justify-center overflow-hidden rounded-[12px] text-center text-white">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img ref={img} src="/assets/alis/img_2746.jpg" alt="" loading="lazy" className="absolute left-0 top-0 -z-0 h-[100lvh] w-full object-cover will-change-transform" />
+        <img ref={img} src="/assets/alis/img_2746.jpg" alt="" loading="lazy" className="absolute left-0 top-[-25%] -z-0 h-[150%] w-full object-cover will-change-transform" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
         <div className="r-reveal relative z-10 max-w-[560px] px-6 pb-12 lg:pb-16">
           <p className="text-[12px] text-white/75">{lang === "en" ? "ÁLIS BEAUTY merch" : "Мерч ÁLIS BEAUTY"}</p>
