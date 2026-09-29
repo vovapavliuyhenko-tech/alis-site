@@ -38,7 +38,7 @@ export default function ConciergeStages({
         return (
           <div
             key={s.name.ru}
-            className="relative h-svh min-h-[560px] w-full overflow-hidden rounded-t-[28px] lg:sticky lg:top-0"
+            className="relative h-svh min-h-[560px] w-full overflow-hidden rounded-t-[12px] lg:sticky lg:top-0"
           >
             <div className="grid h-full grid-cols-1 lg:grid-cols-2">
               {/* Текст — по центру, мелкий */}
@@ -55,7 +55,7 @@ export default function ConciergeStages({
               </div>
 
               {/* Фото — половина экрана в ширину */}
-              <div className={`relative min-h-[42vh] ${photoRight ? "lg:order-2" : "lg:order-1"}`}>
+              <div className={`relative min-h-[42vh] overflow-hidden rounded-[12px] ${photoRight ? "lg:order-2" : "lg:order-1"}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={s.photo}
