@@ -175,7 +175,7 @@ export function ShopCategories() {
   const { lang } = useLang();
   return (
     <section className="bg-white section-y">
-      <div className="mx-auto grid w-[96%] max-w-[1760px] grid-cols-2 gap-3 lg:h-[680px] lg:grid-cols-[1.35fr_1fr_1fr] lg:grid-rows-2 lg:gap-4">
+      <div className="mx-auto grid w-[96%] max-w-[1760px] grid-cols-2 gap-3 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
         {CATS.map((c, i) => {
           const gift = c.tag === "подарок";
           return (
