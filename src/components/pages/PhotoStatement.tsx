@@ -27,7 +27,7 @@ export default function PhotoStatement({
   const { lang } = useLang();
 
   return (
-    <section className="gap-top relative isolate flex min-h-[92svh] items-center justify-center overflow-hidden px-4 py-16 lg:py-20">
+    <section className="gap-top relative isolate mx-auto flex min-h-[92svh] w-[96%] max-w-[1760px] items-center justify-center overflow-hidden rounded-[12px] px-4 py-16 lg:py-20">
       {/* Фон — фото на весь экран, слегка затемнено */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
