@@ -66,25 +66,12 @@ export default function ContactsBlock() {
     "group inline-flex items-center gap-2 rounded-xl border border-white/40 px-6 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#17191a]";
 
   return (
-    <section className="bg-white pb-[clamp(72px,10vw,140px)] pt-32 lg:pt-44">
-      {/* Заголовок */}
-      <div className="r-reveal mx-auto w-[92%] max-w-[760px] text-center">
-        <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-[#46131E]">
-          {t("Без выходных, 9:00–21:00", "Open daily, 9:00–21:00")}
-        </p>
-        <h1 className="mt-4 font-serif-display text-[30px] font-normal uppercase leading-[1.15] tracking-[0.04em] text-[#17191a] lg:text-[44px]">
-          {t("Контакты", "Contacts")}
-        </h1>
-        <p className="mx-auto mt-5 max-w-[520px] text-[15px] leading-[1.7] text-[#17191a]/75 lg:text-[16px]">
-          {t(
-            "Салон ÁLIS BEAUTY в Новороссийске, ул. Пархоменко, 53. Звоните, пишите или приходите — мы рядом каждый день.",
-            "ÁLIS BEAUTY salon in Novorossiysk, Parkhomenko St., 53. Call, message or drop in — we’re here every day.",
-          )}
-        </p>
-      </div>
+    <section className="bg-white pb-[clamp(72px,10vw,140px)] pt-24 lg:pt-40">
+      {/* Заголовок страницы — только для поисковиков и экранных чтецов (визуально убран по просьбе клиента) */}
+      <h1 className="sr-only">{t("Контакты салона красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon contacts, Novorossiysk")}</h1>
 
       {/* Две колонки: салон и консьерж-сервис, между ними тонкая линия */}
-      <div className="mx-auto mt-14 grid w-[92%] max-w-[1320px] grid-cols-1 lg:mt-24 lg:grid-cols-2">
+      <div className="mx-auto grid w-[92%] max-w-[1320px] grid-cols-1 lg:grid-cols-2">
         {COLS.map((c, i) => (
           <div
             key={c.title.ru}
