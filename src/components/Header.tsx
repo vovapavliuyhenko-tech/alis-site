@@ -248,10 +248,12 @@ export default function Header() {
 
       {/* Мобильное меню */}
       {open && (
-        <div className="absolute inset-x-0 top-[68px] max-h-[80vh] overflow-y-auto border-t border-[#17191a]/10 bg-white/97 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.15)] backdrop-blur-md xl:hidden">
+        // Мобильное меню на весь экран (как на paloma.website): пункты появляются по очереди,
+        // внизу — запись, телефон и язык
+        <div className="alis-menu fixed inset-x-0 bottom-0 top-[68px] flex flex-col overflow-y-auto border-t border-[#17191a]/10 bg-white px-5 pb-[max(20px,env(safe-area-inset-bottom))] pt-3 xl:hidden">
           <nav className="flex flex-col">
-            {ALL_NAV.map((item) => (
-              <div key={item.label.ru} className="border-b border-[#17191a]/8 py-2 last:border-0">
+            {ALL_NAV.map((item, i) => (
+              <div key={item.label.ru} style={{ animationDelay: `${60 + i * 45}ms` }} className="alis-menu-item border-b border-[#17191a]/8 py-2 last:border-0">
                 <a href={item.href} onClick={() => setOpen(false)} className="block py-2.5 text-[16px] uppercase tracking-[0.1em] text-[#17191a]">
                   {item.label[lang]}
                 </a>
@@ -266,7 +268,18 @@ export default function Header() {
                 )}
               </div>
             ))}
-            <div className="mt-4 flex items-center gap-3 text-[13px]">
+          </nav>
+          <div className="alis-menu-item mt-auto flex flex-col gap-3 pt-8" style={{ animationDelay: "420ms" }}>
+            <a
+              href="https://n1054895.yclients.com/company/976464/personal/menu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="alis-pulse-wine flex w-full items-center justify-center rounded-xl border border-[#46131E] bg-[#46131E] py-4 text-[13px] font-medium uppercase tracking-[0.16em] text-white"
+            >
+              {lang === "en" ? "Book a visit" : "Оформить визит"}
+            </a>
+            <a href="tel:+79888887758" className="py-2 text-center text-[18px] tracking-[0.02em] text-[#17191a]">+7 988 888 77 58</a>
+            <div className="flex items-center justify-center gap-3 text-[13px]">
               {(["ru", "en"] as Lang[]).map((l) => (
                 <button
                   key={l}
@@ -280,7 +293,7 @@ export default function Header() {
                 </button>
               ))}
             </div>
-          </nav>
+          </div>
         </div>
       )}
     </header>

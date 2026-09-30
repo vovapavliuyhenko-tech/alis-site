@@ -38,11 +38,11 @@ export default function ConciergeStages({
         return (
           <div
             key={s.name.ru}
-            className="relative h-svh min-h-[560px] w-full overflow-hidden rounded-[28px] shadow-[0_-10px_24px_-10px_rgba(23,25,26,0.26),0_8px_18px_-10px_rgba(23,25,26,0.18)] lg:sticky lg:top-0"
+            className="relative h-svh min-h-[560px] w-full overflow-hidden rounded-[28px] shadow-[0_-10px_24px_-10px_rgba(23,25,26,0.26),0_8px_18px_-10px_rgba(23,25,26,0.18)] sticky top-0"
           >
             <div className="grid h-full grid-cols-1 lg:grid-cols-2">
               {/* Текст — по центру, мелкий */}
-              <div className={`flex flex-col items-center justify-center bg-white px-8 py-14 text-center lg:px-[6vw] ${photoRight ? "lg:order-1" : "lg:order-2"}`}>
+              <div data-fab-avoid className={`flex flex-col items-center justify-center bg-white px-8 py-14 text-center lg:px-[6vw] ${photoRight ? "lg:order-1" : "lg:order-2"}`}>
                 <span className="text-[11px] uppercase tracking-[0.3em] text-[#17191a]">
                   {stepLabel[lang]} 0{i + 1}
                 </span>

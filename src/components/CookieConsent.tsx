@@ -37,8 +37,8 @@ export default function CookieConsent() {
   if (!show) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[100] px-4 pb-4 sm:px-6 sm:pb-6">
-      <div className="mx-auto flex max-w-[290px] flex-col gap-2 rounded-xl border border-[#17191a]/10 bg-white/95 px-3.5 py-2.5 shadow-[0_16px_50px_rgba(23,25,26,0.18)] backdrop-blur-md">
+    <div className="fixed inset-x-0 bottom-0 z-[100] px-3 pb-[max(12px,env(safe-area-inset-bottom))] sm:px-6 sm:pb-6">
+      <div className="mx-auto flex w-full flex-col gap-2 rounded-xl sm:max-w-[290px] border border-[#17191a]/10 bg-white/95 px-3.5 py-2.5 shadow-[0_16px_50px_rgba(23,25,26,0.18)] backdrop-blur-md">
         <p className="text-[11px] leading-snug text-[#17191a]/70">
           {en ? (
             <>

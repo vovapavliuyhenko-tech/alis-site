@@ -296,6 +296,21 @@ html.cookie-open .booking-fab { bottom: 132px; }
 }
 @media (prefers-reduced-motion: reduce) { .alis-scroll-line { animation: none; transform: none; } }
 
+/* Мобильное меню: панель плавно выезжает, пункты появляются по очереди */
+.alis-menu { animation: alisMenuIn .35s cubic-bezier(.16,1,.3,1) both; }
+.alis-menu-item { animation: alisMenuItem .5s cubic-bezier(.16,1,.3,1) both; }
+@keyframes alisMenuIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@keyframes alisMenuItem { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* Телефон: отклик на нажатие вместо наведения, без синей подсветки тапа */
+@media (hover: none) {
+  a, button { -webkit-tap-highlight-color: transparent; }
+  .alis-pulse:active, .alis-pulse-wine:active { transform: scale(.97); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .alis-menu, .alis-menu-item { animation: none; }
+}
+
 /* Экран «Спасибо» после заявки: карточка мягко всплывает, галочка прорисовывается */
 .alis-thanks { animation: alisThanksIn .6s cubic-bezier(.16,1,.3,1) both; }
 .alis-check { stroke-dasharray: 24; stroke-dashoffset: 24; animation: alisDraw .6s .35s ease-out forwards; }

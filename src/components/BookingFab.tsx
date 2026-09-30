@@ -61,7 +61,7 @@ export default function BookingFab() {
         shown ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >
-      <div className="relative flex h-[84px] w-[84px] items-center justify-center">
+      <div className="relative flex h-[68px] w-[68px] items-center justify-center sm:h-[84px] sm:w-[84px]">
         {/* Расходящиеся кольца-волны */}
         <span className="fab-ring" style={{ borderColor: ringColor }} />
         <span className="fab-ring fab-ring--2" style={{ borderColor: ringColor }} />
@@ -75,7 +75,7 @@ export default function BookingFab() {
             onFooter ? "bg-[#f4efe6] text-[#17191a] ring-[#f4efe6]" : "bg-[#46131E] text-[#f4efe6] ring-[#46131E]"
           }`}
         >
-          <span className="px-2 text-[11px] font-medium uppercase leading-[1.25] tracking-[0.12em]">
+          <span className="px-2 text-[9.5px] font-medium uppercase leading-[1.25] tracking-[0.1em] sm:text-[11px] sm:tracking-[0.12em]">
             {lang === "en" ? (
               <>Book<br />online</>
             ) : (
