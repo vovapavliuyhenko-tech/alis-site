@@ -1,45 +1,18 @@
-"use client";
-// ПРЕЛОАДЕР как у PALOMA: белый экран, по центру логотип, затем уходит вверх
-// «шторкой». Показывается при ПЕРВОЙ загрузке и при переходе на ЛЮБУЮ страницу
-// сайта (реагирует на смену маршрута через usePathname).
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import { LogoLockup } from "@/components/Logo";
-
+// ЭКРАН ЗАГРУЗКИ — по референсу sverhtochno-new.tilda.ws: на белом фоне по центру
+// бордовый вензель, затем из него вправо аккуратно «выползает» мелкая чёрная надпись
+// ÁLIS BEAUTY, после чего экран плавно растворяется.
+// Только CSS (без JS): виден сразу при первой отрисовке, до загрузки скриптов, и не
+// мешает, если JS выключен. При переходах внутри сайта не показывается (layout не
+// перерисовывается). При «уменьшении движения» — не показываем вовсе.
 export default function Preloader() {
-  const pathname = usePathname();
-  const [phase, setPhase] = useState<"in" | "lift" | "gone">("in");
-
-  // При каждой смене маршрута — заново проигрываем прелоадер.
-  useEffect(() => {
-    setPhase("in");
-    const t1 = window.setTimeout(() => setPhase("lift"), 900); // держим логотип
-    const t2 = window.setTimeout(() => setPhase("gone"), 1750); // после «шторки» убираем
-    return () => {
-      window.clearTimeout(t1);
-      window.clearTimeout(t2);
-    };
-  }, [pathname]);
-
-  // Блокируем скролл, пока прелоадер виден
-  useEffect(() => {
-    document.body.style.overflow = phase === "gone" ? "" : "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [phase]);
-
-  if (phase === "gone") return null;
-
   return (
-    <div
-      aria-hidden
-      className={`fixed inset-0 z-[200] flex items-center justify-center bg-white transition-transform duration-[900ms] ease-[cubic-bezier(0.76,0,0.24,1)] ${
-        phase === "lift" ? "-translate-y-full" : "translate-y-0"
-      }`}
-    >
-      <div className={`flex flex-col items-center transition-opacity duration-700 ${phase === "lift" ? "opacity-0" : "opacity-100"}`}>
-        <LogoLockup variant="wine" />
+    <div aria-hidden className="alis-preloader">
+      <div className="alis-preloader-mark">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/assets/logo-emblem-wine.png" alt="" width={734} height={1108} fetchPriority="high" className="alis-preloader-emblem" />
+        <span className="alis-preloader-word">
+          <span>ÁLIS BEAUTY</span>
+        </span>
       </div>
     </div>
   );
