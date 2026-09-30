@@ -1,6 +1,6 @@
 "use client";
 // СТРАНИЦА КОНТАКТОВ: слева две группы контактов (салон красоты / консьерж-сервис)
-// и три мягкие кнопки с ↘-стрелкой; справа — интерактивная карта Яндекс.
+// и три мягкие кнопки со стрелкой (→, при наведении поворачивается вверх ↗); справа — интерактивная карта Яндекс.
 // Названия соцсетей и мессенджеров на сайте не пишем (требование заказчицы).
 import { useLang } from "@/lib/i18n";
 
@@ -104,9 +104,9 @@ export default function ContactsBlock() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.2"
-                  className="absolute bottom-5 right-5 h-6 w-6 text-[#17191a] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5"
+                  className="absolute bottom-5 right-5 h-6 w-6 text-[#17191a] transition-transform duration-300 group-hover:-rotate-45"
                 >
-                  <path d="M8 8 16 16M16 10v6h-6" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
             ))}

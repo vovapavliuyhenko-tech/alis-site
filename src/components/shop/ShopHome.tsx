@@ -172,7 +172,7 @@ export function ShopCategories() {
               <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent transition-colors duration-500 group-hover:from-black/55 group-hover:via-black/25 group-hover:to-black/30" />
               <div className="absolute inset-x-5 top-5 flex items-start justify-between text-white lg:inset-x-6 lg:top-6">
                 <span className="text-[16px] lg:text-[18px]">{c.label[lang]}</span>
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/60 transition-all duration-500 group-hover:rotate-45 group-hover:border-white group-hover:bg-white group-hover:text-[#17191a]">↗</span>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/60 transition-all duration-500 group-hover:-rotate-45 group-hover:border-white group-hover:bg-white group-hover:text-[#17191a]">→</span>
               </div>
             </a>
           );

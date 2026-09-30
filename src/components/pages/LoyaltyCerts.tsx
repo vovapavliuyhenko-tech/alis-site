@@ -76,7 +76,7 @@ export default function LoyaltyCerts() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10 transition-colors duration-500 group-hover:from-black/80" />
             <span className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-white/50 text-[16px] text-white transition-all duration-300 group-hover:border-transparent group-hover:bg-[#f4efe6] group-hover:text-[#17191a]">
-              <span className="transition-transform duration-300 group-hover:rotate-45">↗</span>
+              <span className="transition-transform duration-300 group-hover:-rotate-45">→</span>
             </span>
             <div className="absolute inset-x-6 bottom-6">
               <p className="text-[11px] uppercase tracking-[0.2em] text-white/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">{t("подарок", "a gift")}</p>
