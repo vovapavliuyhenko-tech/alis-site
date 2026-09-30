@@ -139,6 +139,7 @@ function ProductMarquee({ items, id }: { items: Product[]; id?: string }) {
 export function ShopNew() {
   return (
     <ProductMarquee
+      id="all" // сюда ведут карточки категорий (#all) — блок «Все товары» убран
       items={PRODUCTS}
     />
   );
@@ -182,10 +183,6 @@ export function ShopCategories() {
   );
 }
 
-/* ---------- 3. Все товары — лента товаров (в обратном порядке, чтобы не повторять «Новинки») ---------- */
-export function ShopAll() {
-  return <ProductMarquee id="all" items={[...PRODUCTS].reverse()} />;
-}
 
 /* ---------- 4. Баннер «подарочный сертификат» — общий фото-баннер ---------- */
 export function ShopCollection() {
