@@ -21,7 +21,7 @@ function items(en: boolean): ReactNode[] {
       {en ? "care in every detail" : "внимание к деталям"}
     </span>,
     <span key="p5" className="font-display text-[24px] lowercase tracking-[0.02em] text-[#17191a] lg:text-[32px]">
-      {en ? "special terms for our own" : "особые условия для своих"}
+      {en ? "special terms for regulars" : "особые условия для своих"}
     </span>,
   ];
 }

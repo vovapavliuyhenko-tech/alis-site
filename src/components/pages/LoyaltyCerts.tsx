@@ -17,7 +17,7 @@ export default function LoyaltyCerts() {
 
   const PERKS: Loc[] = [
     { ru: "бонусы постоянным гостям", en: "perks for regular guests" },
-    { ru: "особые условия для своих", en: "special terms for our own" },
+    { ru: "особые условия для своих", en: "special terms for regulars" },
     { ru: "приятные сюрпризы к визитам", en: "little surprises with each visit" },
   ];
 
@@ -37,7 +37,7 @@ export default function LoyaltyCerts() {
                 {t("программа лояльности", "loyalty programme")}
               </p>
               <p className="mt-6 font-display text-[64px] leading-none tracking-[0.01em] lg:text-[72px]">500 ₽</p>
-              <p className="mt-2 text-[15px] text-[#f4efe6]/80">{t("бонусных рублей на первый визит", "bonus rubles on your first visit")}</p>
+              <p className="mt-2 text-[15px] text-[#f4efe6]/80">{t("бонусных рублей на первый визит", "bonus roubles on your first visit")}</p>
               <ul className="mt-8 flex flex-col gap-3 text-[14px] text-[#f4efe6]/85">
                 {PERKS.map((p) => (
                   <li key={p.ru} className="flex items-start gap-3">

@@ -37,7 +37,7 @@ export default function LoyaltyProgram() {
             <div>
               <p className="font-display text-[64px] leading-none tracking-[0.01em] lg:text-[88px]">500 ₽</p>
               <p className="mt-3 text-[15px] text-[#f4efe6]/80 lg:text-[17px]">
-                {t("бонусных рублей на первый визит", "bonus rubles on your first visit")}
+                {t("бонусных рублей на первый визит", "bonus roubles on your first visit")}
               </p>
             </div>
             <a
