@@ -255,13 +255,13 @@ export default function SalonPage() {
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white page-end">
         {/* 2 — О салоне: слайд-шоу фото + текст, как второй блок главной.
-            Текст — слова основательницы со старого сайта и согласованные факты. Фото — временные. */}
+            Текст — черновик на согласование с заказчицей (по словам основательницы и фактам). Фото — временные. */}
         <ShopStory
           photos={["/assets/alis/img_2745.jpg", "/assets/alis/img_0569.jpg", "/assets/tild3638-373_-2___1__3.jpg", "/assets/alis/img_0521.jpg", "/assets/alis/img_2672.jpg", "/assets/alis/img_1834.jpg"]}
-          title={{ ru: "Внутренняя красота — во внешней", en: "Inner beauty, on the outside" }}
+          title={{ ru: "Красота, которая начинается с вас", en: "Beauty that begins with you" }}
           text={{
-            ru: "Команда с открытым сердцем, забота о каждой детали и спокойная атмосфера — без перерывов и выходных с 9:00 до 21:00. На первый визит — 500 бонусных рублей.",
-            en: "A team with open hearts, care for every detail and a calm atmosphere — open daily without breaks, 9:00–21:00. 500 bonus roubles on your first visit.",
+            ru: "Мастера, влюблённые в своё дело, внимание к каждой детали и атмосфера, в которой хочется задержаться. Ждём вас каждый день с 9:00 до 21:00, а на первый визит дарим 500 бонусных рублей.",
+            en: "Artists in love with their craft, attention to every detail and an atmosphere you won’t want to leave. We welcome you every day from 9:00 to 21:00 — with 500 bonus roubles on your first visit.",
           }}
           alt={{ ru: "Салон красоты ÁLIS BEAUTY", en: "ÁLIS BEAUTY beauty salon" }}
         />
