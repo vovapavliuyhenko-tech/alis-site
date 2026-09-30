@@ -23,6 +23,10 @@ export default function ServiceBento() {
   return (
     <section id="services" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
+        {/* Заголовок слева над плитками — как «Выберите нужную категорию» в магазине (текст на согласование) */}
+        <h2 className="mb-8 !text-[16px] uppercase tracking-[0.06em] text-[#17191a] lg:mb-10 lg:!text-[18px]">
+          {lang === "en" ? "Let’s start with the first step" : "Давайте начнём с первого шага"}
+        </h2>
         <div className="grid grid-cols-2 gap-3 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
           {CATS.map((c, i) => (
             <a
