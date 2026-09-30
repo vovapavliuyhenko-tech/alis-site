@@ -8,6 +8,7 @@
 //    карточка-проверка → отправка. Прогресс-полоса сверху, «печатает…» перед ответом.
 // Светлый, ч/б с бордовыми акцентами. Без бэкенда: отправка — заглушка. Двуязычно.
 import { useEffect, useRef, useState } from "react";
+import MiniCalendar from "@/components/ui/MiniCalendar";
 import { useLang } from "@/lib/i18n";
 import { sendLead } from "@/lib/sendLead";
 
@@ -276,21 +277,12 @@ export default function ConciergeChat() {
                 </div>
               )}
               {step === "date" && (
-                <div className="flex gap-2">
-                  <input
-                    type="date"
-                    value={input}
-                    min={new Date().toISOString().slice(0, 10)}
-                    onChange={(e) => setInput(e.target.value)}
-                    className="flex-1 rounded-full bg-[#f4f3f1] px-4 py-2.5 text-[14px] text-[#17191a] outline-none"
-                  />
-                  <button
-                    onClick={() => input && answer("date", new Date(input).toLocaleDateString(en ? "en-GB" : "ru-RU", { day: "numeric", month: "long", year: "numeric" }))}
-                    disabled={!input}
-                    aria-label={t("Далее", "Next")}
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#46131E] text-white transition-opacity disabled:opacity-30"
-                  >→</button>
-                </div>
+                // Календарь в стиле сайта: клик по дню сразу отправляет ответ
+                <MiniCalendar
+                  lang={lang}
+                  value={input}
+                  onPick={(d) => answer("date", new Date(d + "T12:00:00").toLocaleDateString(en ? "en-GB" : "ru-RU", { day: "numeric", month: "long", year: "numeric" }))}
+                />
               )}
               {step === "date" && (
                 <button onClick={() => answer("date", t("Пока не знаю", "Not sure yet"))} className="mt-2 text-[12px] text-[#17191a]/50 hover:text-[#46131E]">{t("Дата пока не известна", "Date not known yet")}</button>
