@@ -100,11 +100,11 @@ export function ShopStory() {
 
 /* ---------- 2. Выберите нужную категорию ---------- */
 const PICK: { label: Loc; img: string; href: string }[] = [
-  { label: { ru: "Одежда", en: "Apparel" }, img: "/assets/alis/img_1834.jpg", href: "#all" },
-  { label: { ru: "Аксессуары", en: "Accessories" }, img: "/assets/alis/img_6048.jpg", href: "#all" },
-  { label: { ru: "Для дома", en: "Home" }, img: "/assets/tild3561-646_-2___1__5.jpg", href: "#all" },
-  { label: { ru: "Уход", en: "Care" }, img: "/assets/alis/img_5910.webp", href: "#all" },
-  { label: { ru: "Новинки", en: "New in" }, img: "/assets/alis/img_8578.jpg", href: "#all" },
+  { label: { ru: "Одежда", en: "Apparel" }, img: "/assets/alis/img_1834.jpg", href: "/shop/catalog?cat=%D0%BE%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0" },
+  { label: { ru: "Аксессуары", en: "Accessories" }, img: "/assets/alis/img_6048.jpg", href: "/shop/catalog?cat=%D0%B0%D0%BA%D1%81%D0%B5%D1%81%D1%81%D1%83%D0%B0%D1%80%D1%8B" },
+  { label: { ru: "Для дома", en: "Home" }, img: "/assets/tild3561-646_-2___1__5.jpg", href: "/shop/catalog?cat=%D0%B4%D0%BE%D0%BC" },
+  { label: { ru: "Уход", en: "Care" }, img: "/assets/alis/img_5910.webp", href: "/shop/catalog?cat=%D1%83%D1%85%D0%BE%D0%B4" },
+  { label: { ru: "Новинки", en: "New in" }, img: "/assets/alis/img_8578.jpg", href: "/shop/catalog?cat=new" },
   { label: { ru: "Сертификаты", en: "Certificates" }, img: "/assets/alis/img_1855.jpg", href: CERTS },
 ];
 
@@ -150,7 +150,7 @@ export function ShopPick() {
 
 /* ---------- 3. Узнайте о последних новинках ---------- */
 // Второй кадр для смены фото при наведении (временные)
-const ALT: Record<string, string> = {
+export const ALT_PHOTO: Record<string, string> = {
   hoodie: "/assets/alis/img_1834.jpg",
   tshirt: "/assets/alis/img_1855.jpg",
   shopper: "/assets/alis/img_6048.jpg",
@@ -158,7 +158,7 @@ const ALT: Record<string, string> = {
   mug: "/assets/alis/img_0569.jpg",
   careset: "/assets/alis/img_5910.webp",
 };
-const NEW_IDS = new Set(["hoodie", "careset"]);
+export const NEW_IDS = new Set(["hoodie", "careset"]);
 
 export function ShopTrend() {
   const { lang } = useLang();
@@ -173,7 +173,7 @@ export function ShopTrend() {
           </h2>
           <div className="flex items-baseline justify-end lg:justify-between">
             <span aria-hidden className="hidden text-[20px] font-light text-[#17191a]/40 lg:inline">+</span>
-            <Link href="/product/hoodie" className="group inline-flex items-center gap-1.5 text-[12px] uppercase tracking-[0.1em] text-[#17191a] transition-colors hover:text-[#46131E]">
+            <Link href="/shop/catalog" className="group inline-flex items-center gap-1.5 text-[12px] uppercase tracking-[0.1em] text-[#17191a] transition-colors hover:text-[#46131E]">
               {lang === "en" ? "View all" : "Смотреть все"}
               <span className="inline-block transition-transform duration-300 group-hover:-rotate-45">→</span>
             </Link>
@@ -193,7 +193,7 @@ export function ShopTrend() {
                 {lang === "en" ? "New: the ÁLIS BEAUTY collection" : "Новинка: коллекция ÁLIS BEAUTY"}
               </p>
               <Link
-                href="/product/hoodie"
+                href="/shop/catalog?cat=new"
                 className="alis-pulse group mt-6 inline-flex items-center gap-2 rounded-xl border border-white/70 bg-white/15 px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#17191a]"
               >
                 {lang === "en" ? "See new arrivals" : "Смотреть новинки"}
@@ -214,7 +214,7 @@ export function ShopTrend() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={p.img} alt={p.name[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ease-in-out group-hover:opacity-0" />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={ALT[p.id] || p.img} alt="" aria-hidden loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
+                <img src={ALT_PHOTO[p.id] || p.img} alt="" aria-hidden loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
                 {NEW_IDS.has(p.id) && (
                   <span className="absolute right-3 top-3 rounded-full bg-white px-3 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-[#46131E]">
                     New

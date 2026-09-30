@@ -23,6 +23,7 @@ const PAGES: { path: string; file: string }[] = [
   { path: "/contacts", file: "src/app/contacts/page.tsx" },
   { path: "/loyalty", file: "src/app/loyalty/page.tsx" },
   { path: "/shop", file: "src/app/shop/page.tsx" },
+  { path: "/shop/catalog", file: "src/components/shop/ShopCatalog.tsx" },
   { path: "/news", file: "src/lib/news.ts" },
   { path: "/cooperation", file: "src/app/cooperation/page.tsx" },
   { path: "/team", file: "src/app/team/page.tsx" },
