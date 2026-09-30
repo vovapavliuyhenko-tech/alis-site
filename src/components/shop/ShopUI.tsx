@@ -104,7 +104,7 @@ export default function ShopUI() {
                 }}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 flex w-full items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:bg-transparent hover:text-[#46131E] hover:backdrop-blur-md"
+                className="alis-pulse-wine mt-5 flex w-full items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:bg-transparent hover:text-[#46131E] hover:backdrop-blur-md"
               >
                 {t("Оформить заказ в мессенджере", "Order via messenger")}
               </a>

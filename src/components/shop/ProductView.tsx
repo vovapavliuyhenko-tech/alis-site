@@ -80,7 +80,7 @@ export default function ProductView({ product }: { product: Product }) {
               </div>
               <button
                 onClick={() => { s.add(product.id, qty); s.openCart(); }}
-                className="flex flex-1 items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] px-8 py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:bg-transparent hover:text-[#46131E] hover:backdrop-blur-md"
+                className="alis-pulse-wine flex flex-1 items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] px-8 py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:bg-transparent hover:text-[#46131E] hover:backdrop-blur-md"
               >
                 {t("В корзину", "Add to cart")}
               </button>

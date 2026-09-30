@@ -287,6 +287,15 @@ html.cookie-open .booking-fab { bottom: 132px; }
 }
 @media (prefers-reduced-motion: reduce) { .alis-pulse, .alis-pulse-wine { animation: none; } }
 
+/* Линия на обложке главной: свет сверху вниз, по мотивам paloma.website */
+.alis-scroll-line { transform: translateY(-100%); animation: alisScrollLine 2.4s ease-in-out 1.2s infinite; }
+@keyframes alisScrollLine {
+  0% { transform: translateY(-100%); }
+  55% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+@media (prefers-reduced-motion: reduce) { .alis-scroll-line { animation: none; transform: none; } }
+
 /* Экран «Спасибо» после заявки: карточка мягко всплывает, галочка прорисовывается */
 .alis-thanks { animation: alisThanksIn .6s cubic-bezier(.16,1,.3,1) both; }
 .alis-check { stroke-dasharray: 24; stroke-dashoffset: 24; animation: alisDraw .6s .35s ease-out forwards; }

@@ -108,7 +108,7 @@ export function NewsArticle({ n }: { n: NewsItem }) {
           <a
             href={cta.href}
             {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="mt-10 inline-flex items-center justify-center rounded-xl border border-[#46131E] bg-[#46131E] px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#46131E] hover:backdrop-blur-md"
+            className="alis-pulse-wine mt-10 inline-flex items-center justify-center rounded-xl border border-[#46131E] bg-[#46131E] px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#46131E] hover:backdrop-blur-md"
           >
             {cta.label[lang]}
           </a>

@@ -120,7 +120,7 @@ export default function RequestForm({
             <p className="mt-3 max-w-[420px] text-[15px] leading-[1.65] text-[#17191a]/80">{success[lang]}</p>
             <Link
               href="/"
-              className="mt-8 inline-flex items-center justify-center rounded-xl border border-[#46131E] bg-[#46131E] px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#46131E]"
+              className="alis-pulse-wine mt-8 inline-flex items-center justify-center rounded-xl border border-[#46131E] bg-[#46131E] px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#46131E]"
             >
               {en ? "To the home page" : "На главную"}
             </Link>
@@ -173,7 +173,7 @@ export default function RequestForm({
 
             <button
               type="submit"
-              className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#46131E] hover:backdrop-blur-md"
+              className="alis-pulse-wine mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#46131E] hover:backdrop-blur-md"
             >
               {submit[lang]}
             </button>

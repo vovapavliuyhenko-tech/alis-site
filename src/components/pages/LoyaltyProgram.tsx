@@ -44,7 +44,7 @@ export default function LoyaltyProgram() {
               href={YCLIENTS}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-10 flex w-full items-center justify-center rounded-[12px] py-4 font-display text-[13px] uppercase tracking-[0.16em] border border-white/70 bg-white/15 text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a]"
+              className="alis-pulse mt-10 flex w-full items-center justify-center rounded-[12px] py-4 font-display text-[13px] uppercase tracking-[0.16em] border border-white/70 bg-white/15 text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a]"
             >
               {t("Оформить визит", "Arrange a visit")}
             </a>
