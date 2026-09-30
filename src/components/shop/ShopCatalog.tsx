@@ -26,12 +26,12 @@ const CAT_TO_ID: Record<string, string> = { одежда: "odezhda", аксес�
 function Item({ p }: { p: Product }) {
   const { lang } = useLang();
   return (
-    <Link href={`/product/${p.id}`} className="group relative block aspect-[296/355] overflow-hidden rounded-[12px] bg-[#f6f4f1]">
+    <Link href={`/product/${p.id}`} className="r-reveal group relative block aspect-[296/355] overflow-hidden rounded-[12px] bg-[#f6f4f1]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={p.img} alt={p.name[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ease-in-out group-hover:opacity-0" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={ALT_PHOTO[p.id] || p.img} alt="" aria-hidden loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
-      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/45 to-transparent px-3 pb-3 pt-10 text-white lg:px-3.5 lg:pb-3.5">
+      <div className="absolute inset-x-0 bottom-0 flex translate-y-2 items-end justify-between gap-2 bg-gradient-to-t from-black/45 to-transparent px-3 pb-3 pt-10 text-white opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 [@media(hover:none)]:translate-y-0 [@media(hover:none)]:opacity-100 lg:px-3.5 lg:pb-3.5">
         <span className="text-[11px] uppercase leading-[1.3] tracking-[0.04em] lg:text-[12px]">{p.name[lang]}</span>
         <span className="shrink-0 text-[11px] uppercase lg:text-[12px]">{fmtPrice(p.price, lang === "en")}</span>
       </div>
@@ -86,13 +86,16 @@ export default function ShopCatalog() {
               <div key={s.id} id={`cat-${s.id}`} className="scroll-mt-24">
                 <div className="grid grid-cols-1 gap-[6px] lg:grid-cols-2">
                   {/* Большое фото раздела */}
-                  <div className={`relative min-h-[460px] overflow-hidden rounded-[12px] lg:min-h-0 lg:aspect-[598/715] ${photoLeft ? "" : "lg:order-2"}`}>
+                  <div className={`group relative min-h-[460px] overflow-clip rounded-[12px] lg:min-h-0 lg:aspect-[598/715] ${photoLeft ? "" : "lg:order-2"}`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={s.photo} alt={s.title[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/10 to-transparent" />
-                    <div className="absolute left-6 top-8 max-w-[420px] text-white lg:left-8 lg:top-12">
+                    <img src={s.photo} alt={s.title[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/50" />
+                    {/* Заголовок и тег прижаты к низу экрана и едут за прокруткой, пока видно фото (как на странице магазина) */}
+                    <div className="absolute inset-0 flex flex-col justify-end px-6 py-8 lg:px-8 lg:py-12">
+                    <div className="sticky bottom-8 max-w-[440px] text-white lg:bottom-12">
                       <p className="text-[22px] uppercase leading-[1.15] tracking-[0.02em] lg:text-[28px]">{s.title[lang]}</p>
                       <p className="mt-5 text-[13px] uppercase tracking-[0.04em] lg:mt-7 lg:text-[14px]">{s.hash[lang]}</p>
+                    </div>
                     </div>
                   </div>
                   {/* Сетка 2×2 товаров */}
