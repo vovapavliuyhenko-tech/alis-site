@@ -84,12 +84,12 @@ export function ShopStory() {
         {/* Текст — мелко и минималистично, растёт при прокрутке вместе с фото */}
         <div ref={txt} className="mt-10 flex origin-top flex-col items-center will-change-transform">
           <h2 className="!text-[16px] !font-normal uppercase tracking-[0.04em] text-[#17191a] lg:!text-[20px]">
-            {lang === "en" ? "Things that carry the salon’s mood." : "Вещи, в которых живёт атмосфера салона."}
+            {lang === "en" ? "Take ÁLIS BEAUTY home with you" : "Заберите ÁLIS BEAUTY с собой"}
           </h2>
           <p className="mt-3 max-w-[380px] !text-[12.5px] !font-normal leading-[1.6] text-[#17191a]/80 lg:!text-[13px]">
             {lang === "en"
-              ? "Hoodies, tees, accessories and care — take a little ÁLIS BEAUTY home or give it to someone close. Take a look!"
-              : "Худи, футболки, аксессуары и уход — заберите немного ÁLIS BEAUTY с собой или подарите близким. Смотрите сами!"}
+              ? "Hoodies, tees, accessories and care in the salon’s signature style — a gift that’s remembered, for yourself or someone close. Order in a couple of clicks."
+              : "Худи, футболки, аксессуары и уход в фирменном стиле салона — подарок, который запомнится, себе или близким. Оформите заказ в пару кликов."}
           </p>
           <span aria-hidden className="mt-8 text-[16px] font-light text-[#17191a]/40">+</span>
         </div>
