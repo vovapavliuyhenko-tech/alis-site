@@ -267,15 +267,20 @@ export default function SalonPage() {
         />
 
 
-        {/* 2 — Услуги и прайс */}
+        {/* Галерея работ — сразу под блоком «О салоне» (фото временные) */}
+
+
+        <PhotoMarquee sectionId="gallery" title={null} />
+
+
+
+        {/* 3 — Услуги и прайс */}
         <SalonServices
           categories={SALON_CATEGORIES}
           cta={{ label: { ru: "Оформить визит · 500 бонусных рублей на первый визит", en: "Book a visit · 500 bonus roubles on your first visit" }, href: YCLIENTS }}
         />
 
         {/* 3 — Отзывы гостей */}
-        {/* Галерея работ — как на странице консьерж-сервиса (фото временные) */}
-        <PhotoMarquee sectionId="gallery" title={null} />
         <Reviews />
 
         {/* 4 — Бонусы и подарочные сертификаты */}
