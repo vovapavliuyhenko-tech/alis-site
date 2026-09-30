@@ -3,6 +3,7 @@
 // на весь экран, одна половина — крупное фото, другая — мелкий текст по центру,
 // стороны чередуются. Панели ЗАЛИПАЮТ (sticky top-0) и наезжают друг на друга при
 // скролле, как накладывающиеся шторки. На мобиле — обычная вертикальная стопка.
+import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { type Stage } from "@/components/HorizontalStory";
 
@@ -22,6 +23,36 @@ export default function ConciergeStages({
   stepLabel?: Loc; // подпись над номером («Этап» / «Шаг»)
 }) {
   const { lang } = useLang();
+  const texts = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Текст этапа «вырастает» при прокрутке, как во втором блоке главной:
+  // пока панель въезжает снизу — 50 % и ниже на 50px, к моменту, когда панель встала, — 100 %
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
+    const apply = () => {
+      raf = 0;
+      const vh = window.innerHeight;
+      texts.current.forEach((el) => {
+        const panel = el?.parentElement?.parentElement;
+        if (!el || !panel) return;
+        const top = panel.getBoundingClientRect().top;
+        const p = Math.min(1, Math.max(0, (vh - top) / (vh * 0.75)));
+        el.style.setProperty("transform", `translate3d(0, ${(1 - p) * 50}px, 0) scale(${0.5 + p * 0.5})`);
+      });
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(apply);
+    };
+    apply();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, [stages.length]);
 
   return (
     <section id={sectionId} className="relative scroll-mt-24 bg-white section-y">
@@ -43,6 +74,12 @@ export default function ConciergeStages({
             <div className="grid h-full grid-cols-1 lg:grid-cols-2">
               {/* Текст — по центру, мелкий */}
               <div data-fab-avoid className={`flex flex-col items-center justify-center bg-white px-8 py-14 text-center lg:px-[6vw] ${photoRight ? "lg:order-1" : "lg:order-2"}`}>
+                <div
+                  ref={(el) => {
+                    texts.current[i] = el;
+                  }}
+                  className="flex flex-col items-center will-change-transform"
+                >
                 <span className="text-[11px] uppercase tracking-[0.3em] text-[#17191a]">
                   {stepLabel[lang]} 0{i + 1}
                 </span>
@@ -52,6 +89,7 @@ export default function ConciergeStages({
                 <p className="mt-5 max-w-md text-[13px] leading-relaxed text-[#17191a]/65 lg:text-[13.5px]">
                   {s.desc[lang]}
                 </p>
+                </div>
               </div>
 
               {/* Фото — половина экрана в ширину */}
