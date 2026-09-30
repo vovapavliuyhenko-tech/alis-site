@@ -51,9 +51,6 @@ export default function Home() {
         <div id="hero-end" aria-hidden className="h-0" />
         {/* Порядок: работы мастеров → услуги → как записаться в салон → выезд (консьерж) → контакты (подвал) */}
         <PhotoMarquee title={null} />
-        <ServiceBento />
-        {/* Как записаться в салон — 3 шага (как этапы на странице консьерж-сервиса) */}
-        <ConciergeStages stages={VISIT_STEPS} sectionId="how" title={null} stepLabel={{ ru: "Шаг", en: "Step" }} />
         {/* Консьерж-сервис (выезд) — отдельным блоком после шагов салона, чтобы не путать выезд и визит в салон */}
         <PhotoBanner
           photo="/assets/alis/img_6009.jpg"
@@ -61,6 +58,10 @@ export default function Home() {
           title={{ ru: "Салон красоты там, где вам удобно", en: "A beauty salon wherever suits you" }}
           button={{ label: { ru: "Всё о консьерж-сервисе", en: "About the concierge service" }, href: "/concierge" }}
         />
+        {/* Как записаться в салон — 3 шага (как этапы на странице консьерж-сервиса) */}
+        <ConciergeStages stages={VISIT_STEPS} sectionId="how" title={null} stepLabel={{ ru: "Шаг", en: "Step" }} />
+        {/* Услуги салона — карточки с фото */}
+        <ServiceBento />
       </div>
       <Footer />
     </main>
