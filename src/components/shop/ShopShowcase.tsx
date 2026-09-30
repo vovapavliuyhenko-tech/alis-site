@@ -44,11 +44,15 @@ export function ShopStory() {
     const apply = () => {
       raf = 0;
       const top = el.parentElement!.getBoundingClientRect().top;
-      const p = Math.min(1, Math.max(0, (window.innerHeight - top) / 400));
-      const tf = `translate3d(0, ${(1 - p) * 50}px, 0) scale(${0.5 + p * 0.5})`;
-      el.style.setProperty("transform", tf);
-      // Текст растёт вместе с фото — тот же эффект
-      tx.style.setProperty("transform", tf);
+      const clamp = (v: number) => Math.min(1, Math.max(0, v));
+      const tfOf = (p: number) => `translate3d(0, ${(1 - p) * 50}px, 0) scale(${0.5 + p * 0.5})`;
+      // Фото: полный размер за первые 400px прокрутки
+      const p = clamp((window.innerHeight - top) / 400);
+      el.style.setProperty("transform", tfOf(p));
+      // Текст — тот же эффект, но с запаздыванием: фото уже встало, а текст ещё растёт
+      // и встаёт на место примерно через 250px после фото (как на dogguo-shop.tilda.ws)
+      const pt = clamp((window.innerHeight - top - 250) / 400);
+      tx.style.setProperty("transform", tfOf(pt));
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(apply);
@@ -79,10 +83,10 @@ export function ShopStory() {
         </div>
         {/* Текст — мелко и минималистично, растёт при прокрутке вместе с фото */}
         <div ref={txt} className="mt-10 flex origin-top flex-col items-center will-change-transform">
-          <h2 className="!text-[13px] !font-normal uppercase tracking-[0.1em] text-[#17191a] lg:!text-[15px]">
+          <h2 className="!text-[16px] !font-light uppercase tracking-[0.04em] text-[#17191a]/80 lg:!text-[20px]">
             {lang === "en" ? "Things that carry the salon’s mood." : "Вещи, в которых живёт атмосфера салона."}
           </h2>
-          <p className="mt-3 max-w-[360px] !text-[12.5px] leading-[1.6] text-[#17191a]/65 lg:!text-[13px]">
+          <p className="mt-3 max-w-[420px] !text-[13px] !font-light leading-[1.55] text-[#17191a]/70 lg:!text-[14px]">
             {lang === "en"
               ? "Hoodies, tees, accessories and care — take a little ÁLIS BEAUTY home or give it to someone close. Take a look!"
               : "Худи, футболки, аксессуары и уход — заберите немного ÁLIS BEAUTY с собой или подарите близким. Смотрите сами!"}
