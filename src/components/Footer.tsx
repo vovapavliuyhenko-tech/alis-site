@@ -81,7 +81,7 @@ export default function Footer() {
             <div className="space-y-2">
               {SOCIALS.map((s) => (
                 <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer" className={link}>
-                  {s.label[lang]}
+                  {s.label[lang]}*
                 </a>
               ))}
             </div>
@@ -127,7 +127,7 @@ export default function Footer() {
         {/* Нижний ряд: копирайт слева, документы в одну строку справа */}
         <div className="mt-12 flex flex-col gap-4 border-t border-[#f4efe6]/10 pt-6 text-[12px] text-[#f4efe6]/65 md:flex-row md:items-center md:justify-between lg:mt-14">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
-            <span>© {new Date().getFullYear()} ÁLIS BEAUTY</span>
+            <span>© {new Date().getFullYear()} ÁLIS BEAUTY. {t("Все права защищены", "All rights reserved")}</span>
             <a href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#f4efe6]">
               {t("Разработка сайта", "Website by")}
             </a>
@@ -138,6 +138,13 @@ export default function Footer() {
             ))}
           </div>
         </div>
+        {/* Обязательная сноска к ссылкам на соцсеть (отмечены *) */}
+        <p className="mt-5 max-w-[760px] text-[11px] leading-relaxed text-[#f4efe6]/45">
+          {t(
+            "* Instagram является продуктом компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена на территории Российской Федерации.",
+            "* Instagram is a product of Meta Platforms Inc., whose activities are recognised as extremist and banned in the Russian Federation.",
+          )}
+        </p>
       </div>
     </footer>
   );
