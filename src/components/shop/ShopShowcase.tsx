@@ -177,12 +177,14 @@ export function ShopTrend() {
         </div>
 
         <div className="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2">
-          {/* Большое фото с заголовком и кнопкой */}
-          <div className="r-reveal relative min-h-[520px] overflow-hidden rounded-[8px] lg:min-h-[720px]">
+          {/* Большое фото: заголовок с кнопкой «едут» вслед за прокруткой от верха карточки до низа (sticky).
+              overflow-clip, а не hidden — иначе sticky внутри не работает */}
+          <div className="r-reveal relative min-h-[520px] overflow-clip rounded-[8px] lg:min-h-[720px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/assets/alis/img_6011.jpg" alt={lang === "en" ? "New ÁLIS BEAUTY collection" : "Новая коллекция ÁLIS BEAUTY"} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-            <div className="absolute inset-x-6 bottom-8 text-white lg:inset-x-10 lg:bottom-12">
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/35" />
+            <div className="absolute inset-0 px-6 py-8 lg:px-10 lg:py-12">
+              <div className="sticky top-24 text-white lg:top-28">
               <p className="max-w-[420px] font-serif-display text-[28px] uppercase leading-[1.15] tracking-[0.02em] lg:text-[40px]">
                 {lang === "en" ? "New: the ÁLIS BEAUTY collection" : "Новинка: коллекция ÁLIS BEAUTY"}
               </p>
@@ -193,6 +195,7 @@ export function ShopTrend() {
                 {lang === "en" ? "See new arrivals" : "Смотреть новинки"}
                 <span className="inline-block transition-transform duration-300 group-hover:-rotate-45">→</span>
               </Link>
+              </div>
             </div>
           </div>
 
