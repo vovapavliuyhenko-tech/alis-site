@@ -58,7 +58,7 @@ export default function PhotoBanner({
           <a
             href={button.href}
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="mt-7 inline-flex items-center justify-center rounded-[12px] border border-white/70 bg-white/15 px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#17191a]"
+            className="alis-pulse mt-7 inline-flex items-center justify-center rounded-[12px] border border-white/70 bg-white/15 px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#17191a]"
           >
             {button.label[lang]}
           </a>
