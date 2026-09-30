@@ -113,7 +113,8 @@ export default function Header() {
 
   // Над первым экраном главной (тёмное фото) — шапка светлая; после прокрутки
   // и на внутренних страницах — тёмная на белой подложке.
-  const overHero = !solid;
+  // Открыто мобильное меню — шапка белая и тёмная, как на внутренних страницах
+  const overHero = !solid && !open;
   const ink = overHero ? "text-white" : "text-[#17191a]";
   const inkSoft = overHero ? "text-white/90" : "text-[#17191a]/90";
   const hoverInk = overHero ? "hover:text-white" : "hover:text-[#17191a]";
@@ -178,7 +179,7 @@ export default function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        solid
+        solid || open
           ? "border-b border-[#17191a]/10 bg-white/85 shadow-[0_4px_24px_rgba(0,0,0,0.05)] backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
