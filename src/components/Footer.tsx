@@ -139,7 +139,7 @@ export default function Footer() {
           </div>
         </div>
         {/* Обязательная сноска к ссылкам на соцсеть (отмечены *) */}
-        <p className="mt-5 max-w-[760px] text-[11px] leading-relaxed text-[#f4efe6]/45">
+        <p className="mt-5 text-[11px] leading-relaxed text-[#f4efe6]/45">
           {t(
             "* Instagram является продуктом компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена на территории Российской Федерации.",
             "* Instagram is a product of Meta Platforms Inc., whose activities are recognised as extremist and banned in the Russian Federation.",
