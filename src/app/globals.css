@@ -363,12 +363,13 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
 }
 .alis-preloader-word > span {
   display: block;
-  padding-left: 24px;
-  white-space: nowrap;
-  font-size: 17px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: #17191a;
+  margin-left: 24px;
+  height: 20px;
+  aspect-ratio: 1515 / 234;
+  /* Надпись из логотипа в шапке, залитая чёрным через маску */
+  background-color: #17191a;
+  -webkit-mask: url(/assets/logo-word-wine.png) center / contain no-repeat;
+  mask: url(/assets/logo-word-wine.png) center / contain no-repeat;
   opacity: 0;
   transform: translateX(-10px);
   animation: alis-pre-text 0.7s ease-out 0.95s forwards;
@@ -379,7 +380,7 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
 @keyframes alis-pre-out { to { opacity: 0; visibility: hidden } }
 @media (max-width: 640px) {
   .alis-preloader-emblem { height: 56px; }
-  .alis-preloader-word > span { font-size: 14px; padding-left: 18px; }
+  .alis-preloader-word > span { height: 16px; margin-left: 18px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .alis-preloader { display: none; }
