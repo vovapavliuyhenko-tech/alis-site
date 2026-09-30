@@ -95,13 +95,15 @@ export default function CooperationFormats() {
             const on = kind === a.id;
             const dim = kind !== null && !on;
             return (
+              // r-reveal — на обёртке с постоянным className: иначе React при смене выбора
+              // перезаписывает классы кнопки, стирает is-in, и карточка исчезает
+              <div key={a.id} className="r-reveal">
               <button
-                key={a.id}
                 id={a.id}
                 type="button"
                 onClick={() => choose(a.id)}
                 aria-pressed={on}
-                className={`r-reveal group block scroll-mt-28 text-left transition-opacity duration-500 ${dim ? "opacity-50 hover:opacity-100" : ""}`}
+                className="group block w-full scroll-mt-28 text-left"
               >
                 <div className={`relative overflow-hidden rounded-[12px] bg-[#f2f1ee] ring-offset-4 transition-shadow duration-300 ${on ? "ring-1 ring-[#46131E]" : ""}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -109,8 +111,19 @@ export default function CooperationFormats() {
                     src={a.img}
                     alt={a.title[lang]}
                     loading="lazy"
-                    className="aspect-[3/2] w-full object-cover transition-[transform,filter] duration-700 ease-out group-hover:scale-[1.03] group-hover:blur-[6px]"
+                    className={`aspect-[3/2] w-full object-cover transition-[transform,filter] duration-700 ease-out ${dim ? "scale-[1.04] blur-[10px]" : "group-hover:scale-[1.03] group-hover:blur-[6px]"}`}
                   />
+                  {/* Невыбранная категория — размыта и «под замком»; по клику можно переключиться */}
+                  {dim && (
+                    <span className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white/10 transition-opacity duration-500 group-hover:opacity-0">
+                      <span aria-hidden className="flex h-12 w-12 items-center justify-center rounded-full bg-[#46131E] text-white shadow-[0_12px_30px_-10px_rgba(70,19,30,0.55)] animate-[alis-lock_2.6s_ease-in-out_infinite]">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M8 11V8a4 4 0 0 1 8 0v3" className="animate-[alis-shackle_2.6s_ease-in-out_infinite]" />
+                          <rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor" stroke="none" />
+                        </svg>
+                      </span>
+                    </span>
+                  )}
                   {/* При наведении по центру фото — «Выбрать →» (на размытом фоне) */}
                   <span className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                     <span className="flex items-center gap-3 rounded-full border border-white/60 bg-white/15 px-7 py-3 text-[14px] text-white backdrop-blur-md lg:text-[15px]">
@@ -127,6 +140,7 @@ export default function CooperationFormats() {
                   </span>
                 </div>
               </button>
+              </div>
             );
           })}
         </div>
