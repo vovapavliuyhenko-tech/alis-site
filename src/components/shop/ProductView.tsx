@@ -116,13 +116,7 @@ export default function ProductView({ product }: { product: Product }) {
       </div>
 
       {/* С этим часто покупают */}
-      <MerchMarquee
-        sectionId="related"
-        eyebrow={{ ru: "смотреть ещё", en: "see more" }}
-        title={{ ru: "С этим часто покупают", en: "Often bought together" }}
-        exclude={product.id}
-        catalogHref="/shop"
-      />
+      <MerchMarquee sectionId="related" exclude={product.id} />
     </div>
   );
 }

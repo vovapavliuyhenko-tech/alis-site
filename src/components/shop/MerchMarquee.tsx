@@ -1,30 +1,15 @@
 "use client";
-// БЛОК МЕРЧА — бегущая лента карточек товаров по мотивам магазина PALOMA:
-// авто-скролл + ручное листание (drag) + круглые стрелки ←/→. Карточка: фото,
-// серифное название, цена и широкая кнопка «Подробнее» (открывает модалку). Двуязычно.
+// ЛЕНТА ТОВАРОВ «С этим часто покупают» на странице товара — в стиле ленты фото на главной:
+// портретные карточки со скруглением 12, авто-бег + перетаскивание, полоса прогресса снизу.
+// Название и цена появляются при наведении (на телефоне видны сразу). Без заголовка.
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { PRODUCTS, fmtPrice } from "@/lib/products";
 
-type Loc = { ru: string; en: string };
-
-export default function MerchMarquee({
-  sectionId = "merch",
-  eyebrow = { ru: "мерч", en: "merch" },
-  title = { ru: "Немного ÁLIS BEAUTY — с собой", en: "A little ÁLIS BEAUTY to take home" },
-  exclude,
-  catalogHref,
-}: {
-  sectionId?: string;
-  eyebrow?: Loc;
-  title?: Loc;
-  exclude?: string;
-  catalogHref?: string;
-} = {}) {
+export default function MerchMarquee({ sectionId = "merch", exclude }: { sectionId?: string; exclude?: string } = {}) {
   const { lang } = useLang();
   const en = lang === "en";
-  const t = (ru: string, e: string) => (en ? e : ru);
   const items = exclude ? PRODUCTS.filter((p) => p.id !== exclude) : PRODUCTS;
 
   const scroller = useRef<HTMLDivElement>(null);
@@ -54,12 +39,6 @@ export default function MerchMarquee({
     return () => { stop(); io.disconnect(); };
   }, []);
 
-  const nudge = (dir: number) => {
-    const el = scroller.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * Math.min(360, el.clientWidth * 0.8), behavior: "smooth" });
-  };
-
   const onDown = (e: React.PointerEvent) => {
     const el = scroller.current;
     if (!el) return;
@@ -87,18 +66,14 @@ export default function MerchMarquee({
   const Track = ({ hidden = false }: { hidden?: boolean }) => (
     <ul aria-hidden={hidden} className="flex shrink-0">
       {items.map((p, i) => (
-        <li key={i} className="mr-4 w-[260px] shrink-0 lg:mr-5 lg:w-[340px]">
-          <Link href={`/product/${p.id}`} className="group block w-full overflow-hidden rounded-[12px]" aria-label={p.name[lang]} draggable={false}>
+        <li key={i} className="mr-2 aspect-[3/4] h-[320px] shrink-0 lg:mr-3 lg:h-[440px]">
+          <Link href={`/product/${p.id}`} tabIndex={hidden ? -1 : undefined} className="group relative block h-full w-full overflow-hidden rounded-[12px] bg-[#f2f1ee]" draggable={false}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={p.img} alt={p.name[lang]} draggable={false} loading="lazy" decoding="async" className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
-          </Link>
-          <h3 className="mt-4 font-serif-display text-[22px] leading-tight text-[#2a2320] lg:text-[26px]">{p.name[lang]}</h3>
-          <p className="mt-1 font-serif-display text-[15px] text-[#2a2320]/55 lg:text-[16px]">{fmtPrice(p.price, en)}</p>
-          <Link
-            href={`/product/${p.id}`}
-            className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#17191a]/35 py-3 text-[11px] uppercase tracking-[0.18em] text-[#17191a] transition-colors duration-300 hover:border-transparent hover:bg-[#17191a] hover:text-[#f4efe6]"
-          >
-            {t("Подробнее", "View")}
+            <img src={p.img} alt={hidden ? "" : p.name[lang]} draggable={false} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
+            <span className="absolute inset-x-0 bottom-0 flex translate-y-2 items-end justify-between gap-2 bg-gradient-to-t from-black/50 to-transparent px-4 pb-4 pt-12 text-white opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 [@media(hover:none)]:translate-y-0 [@media(hover:none)]:opacity-100">
+              <span className="text-[12px] uppercase leading-[1.3] tracking-[0.06em] lg:text-[13px]">{p.name[lang]}</span>
+              <span className="shrink-0 text-[12px] lg:text-[13px]">{fmtPrice(p.price, en)}</span>
+            </span>
           </Link>
         </li>
       ))}
@@ -106,48 +81,22 @@ export default function MerchMarquee({
   );
 
   return (
-    <section id={sectionId} className="scroll-mt-24 overflow-hidden bg-white section-y">
-      <div className="r-reveal mx-auto mb-12 w-[96%] max-w-[1760px] text-center lg:mb-16">
-        <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
-          {title[lang]}
-        </h2>
-        {catalogHref && (
-          <Link href={catalogHref} className="mt-4 inline-block text-[11px] uppercase tracking-[0.16em] text-[#17191a] underline-offset-4 transition-colors hover:underline">
-            {t("в каталог", "view all")} →
-          </Link>
-        )}
-      </div>
-
-      {/* Лента + круглые стрелки навигации */}
-      <div className="relative">
-        <div
+    // Отступ сверху поменьше, снизу — отступ до подвала
+    <section id={sectionId} className="scroll-mt-24 overflow-hidden bg-white pb-[clamp(72px,10vw,140px)] pt-10 lg:pt-14">
+      {/* Лента */}
+      <div
           ref={scroller}
           onPointerDown={onDown}
           onPointerMove={onMove}
           onPointerUp={onUp}
           onPointerCancel={onUp}
           onClickCapture={onClickCapture}
-          className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden px-[3%] [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+          className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
         >
           <Track />
           <Track hidden />
         </div>
 
-        <button
-          onClick={() => nudge(-1)}
-          aria-label={t("Назад", "Previous")}
-          className="absolute left-4 top-[30%] z-10 hidden h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[18px] text-[#17191a] shadow-[0_8px_24px_rgba(0,0,0,0.14)] backdrop-blur transition-colors hover:bg-white lg:flex"
-        >
-          ←
-        </button>
-        <button
-          onClick={() => nudge(1)}
-          aria-label={t("Вперёд", "Next")}
-          className="absolute right-4 top-[30%] z-10 hidden h-12 w-12 items-center justify-center rounded-full bg-white/90 text-[18px] text-[#17191a] shadow-[0_8px_24px_rgba(0,0,0,0.14)] backdrop-blur transition-colors hover:bg-white lg:flex"
-        >
-          →
-        </button>
-      </div>
 
       <div className="mx-auto mt-10 h-[3px] w-[96%] max-w-[1760px] overflow-hidden rounded-full bg-[#C2C0B6]/40">
         <div ref={barRef} className="h-full rounded-full bg-[#17191a]" style={{ width: "0%" }} />
