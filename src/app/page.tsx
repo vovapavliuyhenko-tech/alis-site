@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
-import PhotoBanner from "@/components/pages/PhotoBanner";
 import ConciergeStages from "@/components/pages/ConciergeStages";
 import { type Stage } from "@/components/HorizontalStory";
 import ServiceBento from "@/components/pages/ServiceBento";
@@ -51,13 +50,14 @@ export default function Home() {
         <div id="hero-end" aria-hidden className="h-0" />
         {/* Порядок: работы мастеров → выезд (консьерж) → как записаться в салон → услуги → контакты (подвал) */}
         <PhotoMarquee title={null} />
-        {/* Консьерж-сервис (выезд) — фото-баннер */}
+        {/* Баннер консьерж-сервиса скрыт по просьбе клиента (вернуть — раскомментировать):
         <PhotoBanner
           photo="/assets/alis/img_6009.jpg"
-          label={{ ru: "ÁLIS BEAUTY CONCIERGE", en: "ÁLIS BEAUTY CONCIERGE" }}
-          title={{ ru: "Салон красоты там, где вам удобно", en: "A beauty salon wherever suits you" }}
-          button={{ label: { ru: "Всё о консьерж-сервисе", en: "About the concierge service" }, href: "/concierge" }}
+          label={ { ru: "ÁLIS BEAUTY CONCIERGE", en: "ÁLIS BEAUTY CONCIERGE" } }
+          title={ { ru: "Салон красоты там, где вам удобно", en: "A beauty salon wherever suits you" } }
+          button={ { label: { ru: "Всё о консьерж-сервисе", en: "About the concierge service" }, href: "/concierge" } }
         />
+        */}
         {/* Как записаться в салон — 3 шага (как этапы на странице консьерж-сервиса) */}
         <ConciergeStages stages={VISIT_STEPS} sectionId="how" title={null} stepLabel={{ ru: "Шаг", en: "Step" }} />
         {/* Услуги салона — карточки с фото */}
