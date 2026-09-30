@@ -189,7 +189,7 @@ export function ShopTrend() {
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/45" />
             <div className="absolute inset-0 flex flex-col justify-end px-6 py-8 lg:px-10 lg:py-12">
               <div className="sticky bottom-8 text-white lg:bottom-12">
-              <p className="max-w-[420px] font-serif-display text-[28px] uppercase leading-[1.15] tracking-[0.02em] lg:text-[40px]">
+              <p className="max-w-[420px] font-serif-display text-[24px] uppercase leading-[1.15] tracking-[0.02em] lg:text-[32px]">
                 {lang === "en" ? "New: the ÁLIS BEAUTY collection" : "Новинка: коллекция ÁLIS BEAUTY"}
               </p>
               <Link
