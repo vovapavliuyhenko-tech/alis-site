@@ -2,7 +2,7 @@
 // ОТЗЫВЫ — вращающееся 3D-кольцо: карточки стоят на изгибе (грани цилиндра).
 // Крутится само; можно ЗАХВАТИТЬ указателем и тянуть в любую сторону, а
 // удержанием — останавливать. Двуязычно (RU/EN).
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -123,20 +123,9 @@ export default function Reviews() {
   const { lang } = useLang();
   const n = REVIEWS.length;
   const step = 360 / n; // угол между гранями
-  // Радиус кольца подстраивается под ширину блока: крайние карточки доходят до краёв
-  // контейнера (как нижний блок), на узких экранах — прежние 580
-  const [radius, setRadius] = useState(580);
+  const radius = 580; // радиус кольца как изначально (заполняется 12 отзывами)
 
   const stageRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const stage = stageRef.current;
-    if (!stage) return;
-    const fit = () => setRadius(Math.max(580, Math.round(stage.clientWidth / 2 - 24)));
-    fit();
-    const ro = new ResizeObserver(fit);
-    ro.observe(stage);
-    return () => ro.disconnect();
-  }, []);
   const ringRef = useRef<HTMLDivElement>(null);
 
   // Авто-вращение + перетаскивание указателем (мышь / палец / стилус).
@@ -223,8 +212,8 @@ export default function Reviews() {
           className="relative mx-auto h-[360px] cursor-grab touch-pan-y select-none [perspective:11000px] lg:h-[340px]"
         >
           {/* Боковые градиент-маски — премиальное обрамление кольца */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-white to-transparent sm:w-28 lg:hidden" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-white to-transparent sm:w-28 lg:hidden" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-white to-transparent sm:w-28 lg:w-44" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-white to-transparent sm:w-28 lg:w-44" />
           <div ref={ringRef} className="absolute inset-0 [transform-style:preserve-3d]">
             {REVIEWS.map((r, i) => (
               <article
