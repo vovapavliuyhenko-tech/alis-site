@@ -23,7 +23,19 @@ const STORY = [
   "/assets/alis/img_5910.webp",
 ];
 
-export function ShopStory() {
+// Тексты и фото по умолчанию — для магазина; на главной передаются свои
+const STORY_TITLE: Loc = { ru: "Заберите ÁLIS BEAUTY с собой", en: "Take ÁLIS BEAUTY home with you" };
+const STORY_TEXT: Loc = {
+  ru: "Худи, футболки, аксессуары и уход в фирменном стиле салона — подарок, который запомнится, себе или близким. Оформите заказ в пару кликов.",
+  en: "Hoodies, tees, accessories and care in the salon’s signature style — a gift that’s remembered, for yourself or someone close. Order in a couple of clicks.",
+};
+
+export function ShopStory({
+  photos = STORY,
+  title = STORY_TITLE,
+  text = STORY_TEXT,
+  alt = { ru: "Мерч ÁLIS BEAUTY", en: "ÁLIS BEAUTY merch" },
+}: { photos?: string[]; title?: Loc; text?: Loc; alt?: Loc } = {}) {
   const { lang } = useLang();
   const [i, setI] = useState(0);
   const box = useRef<HTMLDivElement>(null);
@@ -31,9 +43,9 @@ export function ShopStory() {
 
   // Кадры сменяются сами каждые 2 секунды, мягкой сменой прозрачности
   useEffect(() => {
-    const id = setInterval(() => setI((v) => (v + 1) % STORY.length), 2000);
+    const id = setInterval(() => setI((v) => (v + 1) % photos.length), 2000);
     return () => clearInterval(id);
-  }, []);
+  }, [photos.length]);
 
   // Рост при прокрутке: блок входит снизу — фото 50 % и ниже на 50px; за 400px прокрутки — 100 %
   useEffect(() => {
@@ -69,12 +81,12 @@ export function ShopStory() {
     <section className="bg-white section-y">
       <div className="mx-auto flex w-[92%] max-w-[560px] flex-col items-center text-center">
         <div ref={box} className="relative aspect-[3/4] w-[180px] origin-bottom overflow-hidden rounded-[8px] bg-[#f2f1ee] will-change-transform lg:w-[220px]">
-          {STORY.map((src, k) => (
+          {photos.map((src, k) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={src}
               src={src}
-              alt={k === i ? (lang === "en" ? "ÁLIS BEAUTY merch" : "Мерч ÁLIS BEAUTY") : ""}
+              alt={k === i ? alt[lang] : ""}
               aria-hidden={k !== i}
               loading="lazy"
               className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-in-out ${k === i ? "opacity-100" : "opacity-0"}`}
@@ -84,12 +96,10 @@ export function ShopStory() {
         {/* Текст — мелко и минималистично, растёт при прокрутке вместе с фото */}
         <div ref={txt} className="mt-10 flex origin-top flex-col items-center will-change-transform">
           <h2 className="!text-[16px] !font-normal uppercase tracking-[0.04em] text-[#17191a] lg:!text-[20px]">
-            {lang === "en" ? "Take ÁLIS BEAUTY home with you" : "Заберите ÁLIS BEAUTY с собой"}
+            {title[lang]}
           </h2>
           <p className="mt-3 max-w-[380px] !text-[12.5px] !font-normal leading-[1.6] text-[#17191a]/80 lg:!text-[13px]">
-            {lang === "en"
-              ? "Hoodies, tees, accessories and care in the salon’s signature style — a gift that’s remembered, for yourself or someone close. Order in a couple of clicks."
-              : "Худи, футболки, аксессуары и уход в фирменном стиле салона — подарок, который запомнится, себе или близким. Оформите заказ в пару кликов."}
+            {text[lang]}
           </p>
           <span aria-hidden className="mt-8 text-[16px] font-light text-[#17191a]/40">+</span>
         </div>
