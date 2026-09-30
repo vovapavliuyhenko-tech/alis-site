@@ -93,12 +93,13 @@ export default function ContactsBlock() {
       {/* Заголовок страницы — только для поисковиков и экранных чтецов (визуально убран по просьбе клиента) */}
       <h1 className="sr-only">{t("Контакты салона красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon contacts, Novorossiysk")}</h1>
 
-      {/* Две колонки: салон и консьерж-сервис, между ними тонкая линия */}
-      <div className="mx-auto grid w-[96%] max-w-[1760px] grid-cols-1 rounded-[12px] border border-[#46131E]/40 bg-white px-6 shadow-[0_18px_50px_-24px_rgba(23,25,26,0.22)] lg:grid-cols-2 lg:px-0 lg:py-12">
-        {COLS.map((c, i) => (
+      {/* Две отдельные карточки: салон и консьерж-сервис */}
+      <div className="mx-auto grid w-[96%] max-w-[1760px] grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-5">
+        {COLS.map((c) => (
           <div
             key={c.title.ru}
-            className={`r-reveal flex flex-col py-10 lg:px-16 lg:py-2 ${i === 0 ? "border-b border-[#17191a]/10 lg:border-b-0 lg:border-r" : ""}`}
+            // Отдельная карточка: белая, тонкая рамка, бордовая полоса слева (как раскрытая категория услуг)
+            className="r-reveal flex flex-col rounded-[12px] border border-[#17191a]/15 bg-white px-7 py-9 shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:px-14 lg:py-12"
           >
             <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-[#46131E]">{c.title[lang]}</p>
             <a
