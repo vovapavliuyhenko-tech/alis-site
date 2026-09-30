@@ -1,6 +1,7 @@
 "use client";
-// СТРАНИЦА КОНТАКТОВ: слева две группы контактов (салон красоты / консьерж-сервис)
-// и три мягкие кнопки со стрелкой (→, при наведении поворачивается вверх ↗); справа — интерактивная карта Яндекс.
+// СТРАНИЦА КОНТАКТОВ — воздушно и минималистично, без встроенной карты (она долго грузилась):
+// заголовок по центру → две колонки (салон красоты / консьерж-сервис) с крупными телефонами →
+// фото салона со «стеклянными» кнопками маршрута (Яндекс Карты, 2ГИС).
 // Названия соцсетей и мессенджеров на сайте не пишем (требование заказчицы).
 import { useLang } from "@/lib/i18n";
 
@@ -12,133 +13,166 @@ const EMAIL = "alisbeautyclub@gmail.com";
 const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
 // Маршрут до салона в Яндекс Картах (координаты организации «Áлис Бьюти»)
 const ROUTE_URL = "https://yandex.ru/maps/?rtext=~44.704933%2C37.782638&rtt=auto";
-
-// Пин для кнопки «Открыть в Яндекс Картах».
-const IconPin = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="h-4 w-4">
-    <path d="M12 21c4-4 6-7 6-10a6 6 0 1 0-12 0c0 3 2 6 6 10Z" strokeLinejoin="round" />
-    <circle cx="12" cy="11" r="2.2" />
-  </svg>
-);
+const GIS_URL = "https://2gis.ru/novorossiysk/firm/70000001086737494";
+// Фото под кнопками маршрута — временное, заменить на фото входа/интерьера салона
+const PHOTO = "/assets/alis/img_0521.jpg";
 
 type Loc = { ru: string; en: string };
+type Row = { label: Loc; value: string; href?: string; external?: boolean };
+
+function Arrow() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:-rotate-45">
+      <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 export default function ContactsBlock() {
   const { lang } = useLang();
   const en = lang === "en";
   const t = (ru: string, e: string) => (en ? e : ru);
 
-  // Две группы контактов: салон красоты и консьерж-сервис
-  const GROUPS: { title: Loc; rows: { label: Loc; value: string; href?: string }[] }[] = [
+  const COLS: { title: Loc; phone: string; phoneRaw: string; rows: Row[]; links: { label: Loc; href: string }[] }[] = [
     {
       title: { ru: "Салон красоты", en: "Beauty salon" },
+      phone: PHONE,
+      phoneRaw: PHONE_RAW,
       rows: [
-        { label: { ru: "Телефон", en: "Phone" }, value: PHONE, href: `tel:+${PHONE_RAW}` },
-        { label: { ru: "Адрес", en: "Address" }, value: t("г. Новороссийск, ул. Пархоменко, 53", "Novorossiysk, Parkhomenko St., 53"), href: MAP_URL },
-        { label: { ru: "Время работы", en: "Hours" }, value: t("Без перерывов и выходных, 9:00–21:00", "No breaks, open daily, 9:00–21:00") },
+        { label: { ru: "Адрес", en: "Address" }, value: t("Новороссийск, ул. Пархоменко, 53", "Novorossiysk, Parkhomenko St., 53"), href: MAP_URL, external: true },
+        { label: { ru: "Часы", en: "Hours" }, value: t("Без перерывов и выходных, 9:00–21:00", "No breaks, open daily, 9:00–21:00") },
+      ],
+      links: [
+        { label: { ru: "Написать нам", en: "Message us" }, href: `https://wa.me/${PHONE_RAW}` },
+        { label: { ru: "Салон красоты: @alisbeauty.ru", en: "Beauty salon: @alisbeauty.ru" }, href: "https://www.instagram.com/alisbeauty.ru" },
       ],
     },
     {
       title: { ru: "Консьерж-сервис", en: "Concierge service" },
+      phone: PHONE_SERVICE,
+      phoneRaw: PHONE_SERVICE_RAW,
       rows: [
-        { label: { ru: "Телефон", en: "Phone" }, value: PHONE_SERVICE, href: `tel:+${PHONE_SERVICE_RAW}` },
         { label: { ru: "Почта", en: "E-mail" }, value: EMAIL, href: `mailto:${EMAIL}` },
+        { label: { ru: "Выезд", en: "On location" }, value: t("Мастера приедут туда, где вам удобно", "Our artists come wherever suits you") },
+      ],
+      links: [
+        { label: { ru: "Консьерж-сервис: @alisbeauty.global", en: "Concierge service: @alisbeauty.global" }, href: "https://www.instagram.com/alisbeauty.global" },
+        { label: { ru: "Всё о консьерж-сервисе", en: "About the concierge service" }, href: "/concierge" },
       ],
     },
   ];
 
-  // Названия соцсетей и мессенджеров на сайте не указываем — подписи нейтральные
-  const BTNS: { label: Loc; handle?: string; href: string }[] = [
-    { label: { ru: "Написать нам", en: "Message us" }, href: `https://wa.me/${PHONE_RAW}` },
-    { label: { ru: "Салон красоты", en: "Beauty salon" }, handle: "@alisbeauty.ru", href: "https://www.instagram.com/alisbeauty.ru" },
-    { label: { ru: "Консьерж-сервис", en: "Concierge service" }, handle: "@alisbeauty.global", href: "https://www.instagram.com/alisbeauty.global" },
-  ];
+  const glass =
+    "group inline-flex items-center gap-2 rounded-xl border border-white/40 px-6 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#17191a]";
+
   return (
-    <section className="bg-white px-3 pt-28 pb-12 sm:px-4 lg:pt-36 lg:pb-[60px]">
-      {/* Слева реквизиты и кнопки, справа карта — одна скруглённая панель */}
-      <div className="overflow-hidden rounded-[12px] border border-[#17191a]/15 bg-white lg:grid lg:grid-cols-2">
-        {/* Левая колонка */}
-        <div className="flex flex-col p-8 lg:p-12">
-          <div className="flex flex-col gap-10">
-            {GROUPS.map((g) => (
-              <div key={g.title.ru}>
-                <h2 className="font-display text-[18px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-[#17191a] lg:text-[20px]">
-                  {g.title[lang]}
-                </h2>
-                <dl className="mt-5 flex flex-col gap-4">
-                  {g.rows.map((r) => (
-                    <div key={r.label.ru} className="grid grid-cols-[110px_1fr] items-baseline gap-5 lg:grid-cols-[150px_1fr]">
-                      <dt className="text-[13px] text-[#2a2320]/45">{r.label[lang]}</dt>
-                      <dd className="text-[15px] font-medium leading-snug text-[#17191a] lg:text-[16px]">
-                        {r.href ? (
-                          <a href={r.href} target={r.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="transition-opacity hover:opacity-60">
-                            {r.value}
-                          </a>
-                        ) : (
-                          r.value
-                        )}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            ))}
-          </div>
+    <section className="bg-white pb-[clamp(72px,10vw,140px)] pt-32 lg:pt-44">
+      {/* Заголовок */}
+      <div className="r-reveal mx-auto w-[92%] max-w-[760px] text-center">
+        <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-[#46131E]">
+          {t("Без выходных, 9:00–21:00", "Open daily, 9:00–21:00")}
+        </p>
+        <h1 className="mt-4 font-serif-display text-[30px] font-normal uppercase leading-[1.15] tracking-[0.04em] text-[#17191a] lg:text-[44px]">
+          {t("Контакты", "Contacts")}
+        </h1>
+        <p className="mx-auto mt-5 max-w-[520px] text-[15px] leading-[1.7] text-[#17191a]/75 lg:text-[16px]">
+          {t(
+            "Салон ÁLIS BEAUTY в Новороссийске, ул. Пархоменко, 53. Звоните, пишите или приходите — мы рядом каждый день.",
+            "ÁLIS BEAUTY salon in Novorossiysk, Parkhomenko St., 53. Call, message or drop in — we’re here every day.",
+          )}
+        </p>
+      </div>
 
-          {/* Три кнопки: написать нам и соцсети салона/консьерж-сервиса (без названий площадок) */}
-          <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            {BTNS.map((b, i) => (
-              <a
-                key={i}
-                href={b.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex min-h-[124px] flex-col rounded-[12px] border border-[#17191a]/15 bg-white p-5 transition-colors duration-300 hover:border-[#17191a]/40 lg:min-h-[140px] lg:p-6"
-              >
-                <span className="max-w-[80%] text-[14px] leading-[1.3] text-[#242424] lg:text-[15px]">
-                  {b.label[lang]}
-                </span>
-                {b.handle && <span className="mt-1 text-[12px] text-[#17191a]/60">{b.handle}</span>}
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  className="absolute bottom-5 right-5 h-6 w-6 text-[#17191a] transition-transform duration-300 group-hover:-rotate-45"
-                >
-                  <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
-            ))}
-          </div>
-        </div>
+      {/* Две колонки: салон и консьерж-сервис, между ними тонкая линия */}
+      <div className="mx-auto mt-14 grid w-[92%] max-w-[1320px] grid-cols-1 lg:mt-24 lg:grid-cols-2">
+        {COLS.map((c, i) => (
+          <div
+            key={c.title.ru}
+            className={`r-reveal flex flex-col py-10 lg:px-16 lg:py-2 ${i === 0 ? "border-b border-[#17191a]/10 lg:border-b-0 lg:border-r" : ""}`}
+          >
+            <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-[#46131E]">{c.title[lang]}</p>
+            <a
+              href={`tel:+${c.phoneRaw}`}
+              className="mt-5 w-fit whitespace-nowrap font-display text-[32px] leading-none tracking-[0.01em] text-[#17191a] transition-colors hover:text-[#46131E] lg:text-[44px]"
+            >
+              {c.phone}
+            </a>
 
-        {/* Правая колонка — интерактивная карта с кнопками */}
-        <div className="relative min-h-[360px] lg:min-h-[560px]">
-          <iframe
-            title={t("Карта — ÁLIS BEAUTY", "Map — ÁLIS BEAUTY")}
-            src="https://yandex.ru/map-widget/v1/?text=Новороссийск%2C%20улица%20Пархоменко%2C%2053&z=16"
-            className="absolute inset-0 h-full w-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-          <a
-            href={MAP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2.5 text-[12px] font-medium text-[#17191a] shadow-[0_8px_24px_rgba(0,0,0,0.14)] backdrop-blur-sm transition-colors hover:bg-white"
-          >
-            <span className="text-[#17191a]">{IconPin}</span>
-            {t("Открыть в Яндекс Картах", "Open in Yandex Maps")}
-          </a>
-          <a
-            href={ROUTE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute bottom-4 right-4 inline-flex items-center justify-center rounded-full bg-[#46131E] px-6 py-3.5 font-display text-[12px] uppercase tracking-[0.14em] text-[#f4efe6] shadow-[0_10px_30px_rgba(0,0,0,0.3)] border border-[#46131E] transition-all duration-300 hover:border-white/70 hover:bg-white/20 hover:backdrop-blur-md lg:px-8 lg:py-4 lg:text-[13px]"
-          >
-            {t("Построить маршрут", "Get directions")}
-          </a>
+            <dl className="mt-8 space-y-5">
+              {c.rows.map((r) => (
+                <div key={r.label.ru}>
+                  <dt className="text-[11px] uppercase tracking-[0.16em] text-[#17191a]/55">{r.label[lang]}</dt>
+                  <dd className="mt-1.5 text-[16px] leading-[1.5] text-[#17191a]">
+                    {r.href ? (
+                      <a
+                        href={r.href}
+                        {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        className="underline decoration-[#17191a]/20 underline-offset-[6px] transition-colors hover:decoration-[#46131E]"
+                      >
+                        {r.value}
+                      </a>
+                    ) : (
+                      r.value
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="mt-8 flex flex-col">
+              {c.links.map((l) => {
+                const ext = l.href.startsWith("http");
+                return (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className="group flex items-center justify-between gap-4 border-t border-[#17191a]/10 py-4 text-[15px] text-[#17191a] transition-colors last:border-b hover:text-[#46131E]"
+                  >
+                    {l.label[lang]}
+                    <Arrow />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Фото + маршрут — вместо тяжёлой встроенной карты */}
+      <div className="r-reveal relative mx-auto mt-14 flex h-[62svh] min-h-[440px] w-[96%] max-w-[1760px] items-end overflow-hidden rounded-[12px] lg:mt-24">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={PHOTO}
+          alt={t("Салон красоты ÁLIS BEAUTY на ул. Пархоменко, 53 в Новороссийске", "ÁLIS BEAUTY beauty salon at Parkhomenko St., 53, Novorossiysk")}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
+        <div className="relative z-10 flex w-full flex-col items-start gap-6 p-6 text-white lg:flex-row lg:items-end lg:justify-between lg:p-12">
+          <div>
+            <p className="text-[12px] uppercase tracking-[0.18em] text-white/85">{t("Как добраться", "How to get here")}</p>
+            <p className="mt-3 font-serif-display text-[24px] uppercase leading-[1.2] tracking-[0.03em] lg:text-[32px]">
+              {t("Новороссийск, ул. Пархоменко, 53", "Novorossiysk, Parkhomenko St., 53")}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={ROUTE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="alis-pulse inline-flex items-center justify-center rounded-xl border border-white/70 bg-white/15 px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#17191a]"
+            >
+              {t("Построить маршрут", "Get directions")}
+            </a>
+            <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className={glass}>
+              {t("Яндекс Карты", "Yandex Maps")} <Arrow />
+            </a>
+            <a href={GIS_URL} target="_blank" rel="noopener noreferrer" className={glass}>
+              {t("2ГИС", "2GIS")} <Arrow />
+            </a>
+          </div>
         </div>
       </div>
     </section>
