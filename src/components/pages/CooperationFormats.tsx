@@ -111,7 +111,7 @@ export default function CooperationFormats() {
                     src={a.img}
                     alt={a.title[lang]}
                     loading="lazy"
-                    className={`aspect-[3/2] w-full object-cover transition-[transform,filter] duration-700 ease-out ${dim ? "scale-[1.04] blur-[10px]" : "group-hover:scale-[1.03] group-hover:blur-[6px]"}`}
+                    className={`aspect-[3/2] w-full object-cover transition-[transform,filter] duration-700 ease-out ${dim ? "scale-[1.04] blur-[10px]" : on ? "scale-[1.03] blur-[6px]" : "group-hover:scale-[1.03] group-hover:blur-[6px]"}`}
                   />
                   {/* Невыбранная категория — размыта и «под замком»; по клику можно переключиться */}
                   {dim && (
@@ -124,8 +124,8 @@ export default function CooperationFormats() {
                       </span>
                     </span>
                   )}
-                  {/* При наведении по центру фото — «Выбрать →» (на размытом фоне) */}
-                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                  {/* По центру фото — «Выбрать →» при наведении; у выбранной — «Выбрано ✓» всегда, фото размыто */}
+                  <span className={`pointer-events-none absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${on ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}>
                     <span className="flex items-center gap-3 rounded-full border border-white/60 bg-white/15 px-7 py-3 text-[14px] text-white backdrop-blur-md lg:text-[15px]">
                       {on ? (en ? "Selected ✓" : "Выбрано ✓") : (en ? "Choose" : "Выбрать")}
                       {!on && <span aria-hidden className="inline-block animate-[alis-nudge_1.2s_ease-in-out_infinite]">→</span>}
