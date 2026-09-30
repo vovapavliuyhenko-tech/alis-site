@@ -12,7 +12,7 @@ const VACANCIES: Vacancy[] = [
   {
     role: { ru: "Администратор", en: "Administrator" },
     desc: { ru: "Встреча гостей, запись, атмосфера", en: "Greeting guests, booking, atmosphere" },
-    schedule: { ru: "график 2/2", en: "2/2 schedule" },
+    schedule: { ru: "график 2/2", en: "2-on/2-off schedule" },
     img: "/assets/tild6230-643__.jpg",
   },
   {
@@ -28,9 +28,9 @@ const VACANCIES: Vacancy[] = [
     img: "/assets/tild3236-393__.jpg",
   },
   {
-    role: { ru: "Мастер ногтевого сервиса", en: "Nail service master" },
+    role: { ru: "Мастер ногтевого сервиса", en: "Nail technician" },
     desc: { ru: "Маникюр, педикюр, покрытие, дизайн", en: "Manicure, pedicure, coating, design" },
-    schedule: { ru: "график 2/2", en: "2/2 schedule" },
+    schedule: { ru: "график 2/2", en: "2-on/2-off schedule" },
     img: "/assets/tild3638-373_-2___1__3.jpg",
   },
 ];

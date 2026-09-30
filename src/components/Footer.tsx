@@ -69,7 +69,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="alis-pulse inline-flex w-full items-center justify-center rounded-xl px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] border border-white/70 bg-white/15 text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a] sm:w-auto"
           >
-            {t("Оформить визит", "Arrange a visit")}
+            {t("Оформить визит", "Book a visit")}
           </a>
         </div>
 
@@ -77,7 +77,7 @@ export default function Footer() {
         <div className="grid gap-10 pt-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.6fr_auto] lg:gap-10 lg:pt-12">
           {/* Соцсети */}
           <div>
-            <p className={title}>{t("Социальные сети", "Social")}</p>
+            <p className={title}>{t("Социальные сети", "Social media")}</p>
             <div className="space-y-2">
               {SOCIALS.map((s) => (
                 <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer" className={link}>

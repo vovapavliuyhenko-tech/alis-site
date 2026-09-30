@@ -60,7 +60,7 @@ export default function Hero() {
           rel="noopener noreferrer"
           className="alis-pulse flex w-full items-center justify-center rounded-xl border border-white/70 bg-white/[0.18] py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a] lg:py-4 lg:text-[14px]"
         >
-          {t("Оформить визит", "Arrange a visit")}
+          {t("Оформить визит", "Book a visit")}
         </a>
       </div>
     </section>

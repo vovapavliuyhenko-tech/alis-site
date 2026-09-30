@@ -124,7 +124,7 @@ export default function Services() {
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-[#17191a]/60 lg:text-[16px]">
             {en ? (
-              <>Up-to-date prices are in the online booking. <span className="font-medium text-[#17191a]">500 bonus rubles on your first visit.</span></>
+              <>Up-to-date prices are in the online booking. <span className="font-medium text-[#17191a]">500 bonus roubles on your first visit.</span></>
             ) : (
               <>Актуальные цены — в онлайн-записи. <span className="font-medium text-[#17191a]">500 бонусных рублей на первый визит.</span></>
             )}

@@ -23,7 +23,8 @@ const M20 = { ru: "20 мин", en: "20 min" };
 const M30 = { ru: "30 мин", en: "30 min" };
 const M40 = { ru: "40 мин", en: "40 min" };
 const M50 = { ru: "50 мин", en: "50 min" };
-const p = (v: string) => ({ ru: v, en: v }); // цена одинакова для RU/EN
+// Цена: цифры одинаковые, «от» и «по запросу» — переводим
+const p = (v: string) => ({ ru: v, en: v.replace(/^от /, "from ").replace(/^по запросу$/, "on request") });
 
 const SALON_CATEGORIES = [
   {
@@ -34,14 +35,14 @@ const SALON_CATEGORIES = [
     groups: [
       {
         rows: [
-          { name: { ru: "Маникюр без покрытия", en: "Manicure, no coating" }, price: p("1 450 ₽"), time: H1 },
-          { name: { ru: "Маникюр без покрытия (топ-мастер)", en: "Manicure, no coating (top master)" }, price: p("1 650 ₽"), time: H1 },
+          { name: { ru: "Маникюр без покрытия", en: "Manicure, no polish" }, price: p("1 450 ₽"), time: H1 },
+          { name: { ru: "Маникюр без покрытия (топ-мастер)", en: "Manicure, no polish (top specialist)" }, price: p("1 650 ₽"), time: H1 },
           { name: { ru: "Маникюр + покрытие лаком", en: "Manicure + polish" }, price: p("1 900 ₽"), time: H130 },
-          { name: { ru: "Маникюр + покрытие лаком (топ-мастер)", en: "Manicure + polish (top master)" }, price: p("2 200 ₽"), time: H130 },
+          { name: { ru: "Маникюр + покрытие лаком (топ-мастер)", en: "Manicure + polish (top specialist)" }, price: p("2 200 ₽"), time: H130 },
           { name: { ru: "Маникюр + гель-лак", en: "Manicure + gel polish" }, price: p("2 400 ₽"), time: H2 },
-          { name: { ru: "Маникюр + гель-лак (топ-мастер)", en: "Manicure + gel polish (top master)" }, price: p("2 700 ₽"), time: H140 },
+          { name: { ru: "Маникюр + гель-лак (топ-мастер)", en: "Manicure + gel polish (top specialist)" }, price: p("2 700 ₽"), time: H140 },
           { name: { ru: "Маникюр + гель-лак + укрепление гелем", en: "Manicure + gel polish + strengthening" }, price: p("2 750 ₽"), time: H2 },
-          { name: { ru: "Маникюр + гель-лак + укрепление (топ-мастер)", en: "Manicure + gel polish + strengthening (top master)" }, price: p("3 050 ₽"), time: H140 },
+          { name: { ru: "Маникюр + гель-лак + укрепление (топ-мастер)", en: "Manicure + gel polish + strengthening (top specialist)" }, price: p("3 050 ₽"), time: H140 },
           { name: { ru: "Покрытие гель-лаком", en: "Gel polish application" }, price: p("1 400 ₽"), time: M30 },
           { name: { ru: "Японский маникюр", en: "Japanese manicure" }, price: p("2 500 – 3 000 ₽"), time: H130 },
           { name: { ru: "Детский маникюр", en: "Kids' manicure" }, price: p("1 000 ₽"), time: M30 },
@@ -50,7 +51,7 @@ const SALON_CATEGORIES = [
       {
         title: { ru: "Пилочный маникюр", en: "File manicure" },
         rows: [
-          { name: { ru: "Без покрытия", en: "No coating" }, price: p("2 000 – 2 400 ₽"), time: H1 },
+          { name: { ru: "Без покрытия", en: "No polish" }, price: p("2 000 – 2 400 ₽"), time: H1 },
           { name: { ru: "С покрытием лак", en: "With polish" }, price: p("2 300 – 2 800 ₽"), time: H130 },
           { name: { ru: "С покрытием гель-лак", en: "With gel polish" }, price: p("2 600 – 3 000 ₽"), time: H130 },
         ],
@@ -71,7 +72,7 @@ const SALON_CATEGORIES = [
         rows: [
           { name: { ru: "Мужской сервис (маникюр + педикюр)", en: "Men's service (mani + pedi)" }, price: p("4 400 ₽"), time: H130 },
           { name: { ru: "Мужской маникюр", en: "Men's manicure" }, price: p("1 400 ₽"), time: H1 },
-          { name: { ru: "Мужской маникюр (топ-мастер)", en: "Men's manicure (top master)" }, price: p("1 600 ₽"), time: H1 },
+          { name: { ru: "Мужской маникюр (топ-мастер)", en: "Men's manicure (top specialist)" }, price: p("1 600 ₽"), time: H1 },
         ],
       },
     ],
@@ -85,30 +86,30 @@ const SALON_CATEGORIES = [
       {
         title: { ru: "Классический", en: "Classic" },
         rows: [
-          { name: { ru: "Без покрытия", en: "No coating" }, price: p("2 500 ₽"), time: H1 },
-          { name: { ru: "Без покрытия (топ-мастер)", en: "No coating (top master)" }, price: p("2 900 ₽"), time: H130 },
+          { name: { ru: "Без покрытия", en: "No polish" }, price: p("2 500 ₽"), time: H1 },
+          { name: { ru: "Без покрытия (топ-мастер)", en: "No polish (top specialist)" }, price: p("2 900 ₽"), time: H130 },
           { name: { ru: "+ покрытие лаком", en: "+ polish" }, price: p("2 600 ₽"), time: H1 },
-          { name: { ru: "+ покрытие лаком (топ-мастер)", en: "+ polish (top master)" }, price: p("3 000 ₽"), time: H130 },
+          { name: { ru: "+ покрытие лаком (топ-мастер)", en: "+ polish (top specialist)" }, price: p("3 000 ₽"), time: H130 },
           { name: { ru: "+ гель-лак", en: "+ gel polish" }, price: p("3 000 ₽"), time: H130 },
-          { name: { ru: "+ гель-лак (топ-мастер)", en: "+ gel polish (top master)" }, price: p("3 300 ₽"), time: H2 },
+          { name: { ru: "+ гель-лак (топ-мастер)", en: "+ gel polish (top specialist)" }, price: p("3 300 ₽"), time: H2 },
         ],
       },
       {
         title: { ru: "Smart-диски", en: "Smart discs" },
         rows: [
-          { name: { ru: "Без покрытия", en: "No coating" }, price: p("2 500 ₽"), time: M50 },
-          { name: { ru: "Без покрытия (топ-мастер)", en: "No coating (top master)" }, price: p("2 900 ₽"), time: H130 },
+          { name: { ru: "Без покрытия", en: "No polish" }, price: p("2 500 ₽"), time: M50 },
+          { name: { ru: "Без покрытия (топ-мастер)", en: "No polish (top specialist)" }, price: p("2 900 ₽"), time: H130 },
           { name: { ru: "С покрытием лак", en: "With polish" }, price: p("2 600 ₽"), time: H1 },
-          { name: { ru: "С покрытием лак (топ-мастер)", en: "With polish (top master)" }, price: p("3 000 ₽"), time: H130 },
+          { name: { ru: "С покрытием лак (топ-мастер)", en: "With polish (top specialist)" }, price: p("3 000 ₽"), time: H130 },
           { name: { ru: "С покрытием гель-лак", en: "With gel polish" }, price: p("3 000 ₽"), time: H1 },
-          { name: { ru: "С покрытием гель-лак (топ-мастер)", en: "With gel polish (top master)" }, price: p("3 300 ₽"), time: H130 },
+          { name: { ru: "С покрытием гель-лак (топ-мастер)", en: "With gel polish (top specialist)" }, price: p("3 300 ₽"), time: H130 },
         ],
       },
       {
-        title: { ru: "Препаратный (фруктовый)", en: "Acid (fruit)" },
+        title: { ru: "Препаратный (фруктовый)", en: "Acid peel (fruit acids)" },
         rows: [
-          { name: { ru: "Без покрытия", en: "No coating" }, price: p("2 800 ₽"), time: H130 },
-          { name: { ru: "С покрытием на выбор (топ-мастер)", en: "With coating of choice (top master)" }, price: p("3 200 – 3 700 ₽"), time: H2 },
+          { name: { ru: "Без покрытия", en: "No polish" }, price: p("2 800 ₽"), time: H130 },
+          { name: { ru: "С покрытием на выбор (топ-мастер)", en: "With a coating of your choice (top specialist)" }, price: p("3 200 – 3 700 ₽"), time: H2 },
           { name: { ru: "С покрытием лак", en: "With polish" }, price: p("3 300 ₽"), time: H140 },
           { name: { ru: "С покрытием гель-лак", en: "With gel polish" }, price: p("3 500 ₽"), time: H140 },
         ],
@@ -127,7 +128,7 @@ const SALON_CATEGORIES = [
         rows: [
           { name: { ru: "Мужской классический педикюр", en: "Men's classic pedicure" }, price: p("2 700 ₽"), time: H135 },
           { name: { ru: "Мужской педикюр smart-дисками", en: "Men's smart-disc pedicure" }, price: p("2 700 ₽"), time: H130 },
-          { name: { ru: "Мужской педикюр smart-дисками (топ-мастер)", en: "Men's smart-disc pedicure (top master)" }, price: p("3 000 ₽"), time: H130 },
+          { name: { ru: "Мужской педикюр smart-дисками (топ-мастер)", en: "Men's smart-disc pedicure (top specialist)" }, price: p("3 000 ₽"), time: H130 },
         ],
       },
     ],
@@ -154,12 +155,12 @@ const SALON_CATEGORIES = [
           { name: { ru: "Укладка (короткие волосы)", en: "Styling (short hair)" }, price: p("3 000 ₽"), time: H1 },
           { name: { ru: "Укладка (средняя длина)", en: "Styling (medium hair)" }, price: p("3 500 ₽"), time: H1 },
           { name: { ru: "Укладка (длинные волосы)", en: "Styling (long hair)" }, price: p("4 000 ₽"), time: H130 },
-          { name: { ru: "Express-укладка x Dyson airwrap", en: "Express styling x Dyson airwrap" }, price: p("2 500 ₽"), time: H1 },
+          { name: { ru: "Express-укладка x Dyson airwrap", en: "Express styling with Dyson Airwrap" }, price: p("2 500 ₽"), time: H1 },
           { name: { ru: "Афро-кудри", en: "Afro curls" }, price: p("2 500 – 4 000 ₽"), time: H1 },
         ],
       },
       {
-        title: { ru: "Брашинг", en: "Brushing" },
+        title: { ru: "Брашинг", en: "Blow-dry" },
         rows: [
           { name: { ru: "Короткие волосы", en: "Short hair" }, price: p("2 500 ₽"), time: H1 },
           { name: { ru: "Средние волосы", en: "Medium hair" }, price: p("3 000 ₽"), time: H1 },
@@ -222,7 +223,7 @@ const SALON_CATEGORIES = [
   {
     slug: "four-hands",
     label: { ru: "Особенный сервис (услуги в 4 руки)", en: "Signature service (4 hands)" },
-    sub: { ru: "Два мастера одновременно — быстрее и комфортнее", en: "Two masters at once — faster and more comfortable" },
+    sub: { ru: "Два мастера одновременно — быстрее и комфортнее", en: "Two specialists at once — faster and more comfortable" },
     from: { ru: "от 5 700 ₽", en: "from 5 700 ₽" },
     groups: [
       {
@@ -239,7 +240,7 @@ const SALON_CATEGORIES = [
 const SALON_POINTS: BenefitPoint[] = [
   {
     title: { ru: "Команда с открытым сердцем", en: "A team with open hearts" },
-    desc: { ru: "Люди, горящие своим делом и творчеством, с чистой душой и открытым сердцем.", en: "People who burn with their craft and creativity, with pure souls and open hearts." },
+    desc: { ru: "Люди, горящие своим делом и творчеством, с чистой душой и открытым сердцем.", en: "People passionate about their craft, with pure souls and open hearts." },
     img: "/assets/alis/img_0569.jpg",
   },
   {
@@ -254,7 +255,7 @@ const SALON_POINTS: BenefitPoint[] = [
   },
   {
     title: { ru: "Спокойная атмосфера", en: "A calm atmosphere" },
-    desc: { ru: "Атмосфера, в которой можно настроиться на любовь.", en: "An atmosphere where you can tune in to love." },
+    desc: { ru: "Атмосфера, в которой можно настроиться на любовь.", en: "An atmosphere made for falling in love — with yourself, too." },
     img: "/assets/alis/img_0521.jpg",
   },
   {
@@ -263,7 +264,7 @@ const SALON_POINTS: BenefitPoint[] = [
     img: "/assets/alis/img_2672.jpg",
   },
   {
-    title: { ru: "500 бонусных рублей на первый визит", en: "500 bonus rubles on your first visit" },
+    title: { ru: "500 бонусных рублей на первый визит", en: "500 bonus roubles on your first visit" },
     desc: { ru: "Приветственный бонус для новых гостей салона.", en: "A welcome bonus for new salon guests." },
     img: "/assets/alis/img_1834.jpg",
   },
@@ -295,7 +296,7 @@ export default function SalonPage() {
         {/* 2 — Услуги и прайс */}
         <SalonServices
           categories={SALON_CATEGORIES}
-          cta={{ label: { ru: "Оформить визит · 500 бонусных рублей на первый визит", en: "Arrange a visit · 500 bonus rubles on your first visit" }, href: YCLIENTS }}
+          cta={{ label: { ru: "Оформить визит · 500 бонусных рублей на первый визит", en: "Book a visit · 500 bonus roubles on your first visit" }, href: YCLIENTS }}
         />
 
         {/* 3 — Отзывы гостей */}

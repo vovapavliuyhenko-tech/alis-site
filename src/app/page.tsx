@@ -31,7 +31,7 @@ const VISIT_STEPS: Stage[] = [
   {
     name: { ru: "Визит", en: "Visit" },
     heading: { ru: "Приходите в салон", en: "Come to the salon" },
-    desc: { ru: "Новороссийск, ул. Пархоменко, 53. На первый визит — 500 бонусных рублей.", en: "Novorossiysk, Parkhomenko St., 53. 500 bonus rubles on your first visit." },
+    desc: { ru: "Новороссийск, ул. Пархоменко, 53. На первый визит — 500 бонусных рублей.", en: "Novorossiysk, Parkhomenko St., 53. 500 bonus roubles on your first visit." },
     quote: { ru: "", en: "" },
     photo: "/assets/alis/img_0569.jpg",
   },

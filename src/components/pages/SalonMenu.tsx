@@ -191,7 +191,7 @@ export default function SalonMenu() {
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-[14px] leading-relaxed text-[#17191a]/55 lg:text-[15px]">
             {en
-              ? "Choose a category, open a service for details. Exact prices and booking are online, 500 bonus rubles on your first visit."
+              ? "Choose a category, open a service for details. Exact prices and booking are online, 500 bonus roubles on your first visit."
               : "Выберите категорию, раскройте услугу — там описание и запись. Точные цены — онлайн, 500 бонусных рублей на первый визит."}
           </p>
         </div>

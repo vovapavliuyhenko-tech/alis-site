@@ -11,7 +11,7 @@ type Loc = { ru: string; en: string };
 
 const PERKS: { title: Loc; note: Loc }[] = [
   {
-    title: { ru: "500 бонусных рублей на первый визит", en: "500 bonus rubles on your first visit" },
+    title: { ru: "500 бонусных рублей на первый визит", en: "500 bonus roubles on your first visit" },
     note: { ru: "Приветственный бонус для новых гостей салона.", en: "A welcome bonus for new salon guests." },
   },
   {
@@ -19,7 +19,7 @@ const PERKS: { title: Loc; note: Loc }[] = [
     note: { ru: "Копятся с каждым визитом.", en: "They add up with every visit." },
   },
   {
-    title: { ru: "Особые условия для своих", en: "Special terms for our own" },
+    title: { ru: "Особые условия для своих", en: "Special terms for regulars" },
     note: { ru: "Для постоянных гостей — раньше всех и на лучших условиях.", en: "For regular guests — first in line, on the best terms." },
   },
 ];
@@ -46,7 +46,7 @@ export default function LoyaltyProgram() {
               rel="noopener noreferrer"
               className="alis-pulse mt-10 flex w-full items-center justify-center rounded-[12px] py-4 font-display text-[13px] uppercase tracking-[0.16em] border border-white/70 bg-white/15 text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a]"
             >
-              {t("Оформить визит", "Arrange a visit")}
+              {t("Оформить визит", "Book a visit")}
             </a>
           </div>
 

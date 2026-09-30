@@ -74,7 +74,7 @@ export function NewsGrid() {
 export function NewsArticle({ n }: { n: NewsItem }) {
   const { lang } = useLang();
   const related = NEWS.filter((x) => x.slug !== n.slug).slice(0, 3);
-  const cta = n.cta ?? { label: { ru: "Оформить визит", en: "Arrange a visit" }, href: YCLIENTS };
+  const cta = n.cta ?? { label: { ru: "Оформить визит", en: "Book a visit" }, href: YCLIENTS };
   const ext = cta.href.startsWith("http");
 
   return (

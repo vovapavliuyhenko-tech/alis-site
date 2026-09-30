@@ -34,7 +34,7 @@ export const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/m
 export const NEWS: NewsItem[] = [
   {
     slug: "bonus-500",
-    title: { ru: "500 бонусных рублей на первый визит", en: "500 bonus roubles for your first visit" },
+    title: { ru: "500 бонусных рублей на первый визит", en: "500 bonus roubles on your first visit" },
     cat: "salon",
     date: "2026-09-25",
     read: 2,
@@ -50,7 +50,7 @@ export const NEWS: NewsItem[] = [
       { type: "p", text: { ru: "Оформите визит онлайн или по телефону +7 988 888 77 58 — бонусы начислятся автоматически и будут учтены при оплате.", en: "Book online or call +7 988 888 77 58 — the bonus is credited automatically and applied at checkout." } },
       { type: "quote", text: { ru: "Без перерывов и выходных, 9:00–21:00.", en: "Open daily without breaks, 9:00–21:00." } },
     ],
-    cta: { label: { ru: "Оформить визит", en: "Arrange a visit" }, href: YCLIENTS },
+    cta: { label: { ru: "Оформить визит", en: "Book a visit" }, href: YCLIENTS },
   },
   {
     slug: "concierge-service",

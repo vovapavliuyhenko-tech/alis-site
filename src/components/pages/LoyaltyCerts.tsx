@@ -23,7 +23,7 @@ export default function LoyaltyCerts() {
 
   const TILES: { title: Loc; note: Loc }[] = [
     { title: { ru: "Бонусы постоянным", en: "Regulars' bonuses" }, note: { ru: "Копятся с каждым визитом.", en: "They add up with every visit." } },
-    { title: { ru: "Особые условия", en: "Special terms" }, note: { ru: "Для своих — раньше всех и на лучших условиях.", en: "For our own — first in line, on the best terms." } },
+    { title: { ru: "Особые условия", en: "Special terms" }, note: { ru: "Для своих — раньше всех и на лучших условиях.", en: "For our regulars — first in line, on the best terms." } },
   ];
 
   return (
@@ -53,7 +53,7 @@ export default function LoyaltyCerts() {
               rel="noopener noreferrer"
               className="alis-pulse mt-8 flex w-full items-center justify-center rounded-[12px] py-4 font-display text-[13px] uppercase tracking-[0.16em] border border-white/70 bg-white/15 text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a]"
             >
-              {t("Оформить визит", "Arrange a visit")}
+              {t("Оформить визит", "Book a visit")}
             </a>
           </div>
 

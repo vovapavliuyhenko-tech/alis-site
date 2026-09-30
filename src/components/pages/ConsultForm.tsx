@@ -62,7 +62,7 @@ export default function ConsultForm() {
                 {[
                   t("Ответим в течение часа в рабочее время", "We reply within an hour during work hours"),
                   t("Без спама и навязчивых продаж", "No spam or pushy sales"),
-                  t("500 бонусных рублей на первый визит", "500 bonus rubles on your first visit"),
+                  t("500 бонусных рублей на первый визит", "500 bonus roubles on your first visit"),
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-3">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#17191a]" />

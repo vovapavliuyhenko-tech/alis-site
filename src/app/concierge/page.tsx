@@ -25,7 +25,7 @@ const CONCIERGE_CATEGORIES = [
           { name: { ru: "Образ невесты (макияж + причёска)", en: "Bridal look (makeup + hair)" }, price: req },
           { name: { ru: "Репетиция образа заранее", en: "Trial look in advance" }, price: req },
           { name: { ru: "Подружки невесты и мама", en: "Bridesmaids & mother" }, price: req },
-          { name: { ru: "Сопровождение мастера весь день", en: "A master with you all day" }, price: req },
+          { name: { ru: "Сопровождение мастера весь день", en: "An artist with you all day" }, price: req },
         ],
       },
     ],
@@ -51,7 +51,7 @@ const CONCIERGE_CATEGORIES = [
     groups: [
       {
         rows: [
-          { name: { ru: "Команда мастеров на выезд", en: "A team of masters on location" }, price: req },
+          { name: { ru: "Команда мастеров на выезд", en: "A team of specialists on location" }, price: req },
           { name: { ru: "Экспресс-образ для гостей", en: "Express looks for guests" }, price: req },
           { name: { ru: "Бьюти-зона на площадке", en: "A beauty corner at the venue" }, price: req },
         ],

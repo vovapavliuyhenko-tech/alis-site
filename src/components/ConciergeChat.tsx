@@ -85,7 +85,7 @@ export default function ConciergeChat() {
     guests: { ru: "Сколько человек нужно подготовить?", en: "How many people should we get ready?" },
     name: { ru: "Как к вам обращаться?", en: "What's your name?" },
     phone: { ru: "Оставьте телефон — перезвоним и назовём стоимость.", en: "Leave your phone — we'll call back with the price." },
-    review: { ru: "Проверьте, всё верно?", en: "Please check — is everything right?" },
+    review: { ru: "Проверьте, всё верно?", en: "Please check that everything is correct." },
     done: { ru: "", en: "" },
   };
 
