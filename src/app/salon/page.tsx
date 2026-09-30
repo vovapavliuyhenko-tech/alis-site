@@ -246,7 +246,7 @@ export default function SalonPage() {
       <Header />
 
       {/* 1 — Обложка: только фото, без логотипа, кнопки и эффектов (по фидбеку) */}
-      <TeamIntro title={{ ru: "Салон красоты", en: "Beauty salon" }} kicker={{ ru: "Без выходных, 9:00–21:00 · Пархоменко, 53", en: "Open daily, 9:00–21:00 · Parkhomenko, 53" }} />
+      <TeamIntro title={{ ru: "Салон красоты", en: "Beauty salon" }} kicker={{ ru: "Без выходных, 9:00–21:00 · Пархоменко, 53", en: "Open daily, 9:00–21:00 · Parkhomenko, 53" }} button={{ label: { ru: "Записаться онлайн", en: "Book online" }, href: YCLIENTS }} />
 
       {/* Порядок для клиента: услуги с ценами → отзывы → бонусы и сертификаты.
           space-y — дополнительный воздух между блоками. */}

@@ -1,5 +1,5 @@
 "use client";
-// ОБЛОЖКА внутренних страниц — точно как первый блок главной (Hero), но без кнопки:
+// ОБЛОЖКА внутренних страниц — точно как первый блок главной (Hero); кнопка — по желанию:
 // фото на весь экран, затемнение снизу, заголовок капсом по центру в нижней части кадра.
 // Используется на всех страницах, кроме главной и контактов.
 import { useRef } from "react";
@@ -15,10 +15,13 @@ export default function TeamIntro({
   title,
   kicker,
   photo = DEFAULT_PHOTO,
+  button,
 }: {
   title: Loc;
   kicker?: Loc; // короткая продающая строка мелко над заголовком (как оффер на главной)
   photo?: string;
+  // Кнопка во всю ширину внизу — как «Оформить визит» на главной
+  button?: { label: Loc; href: string };
 }) {
   const { lang } = useLang();
   // Эффект «статичного фона»: фото уезжает медленнее страницы
@@ -41,7 +44,7 @@ export default function TeamIntro({
         }}
       />
 
-      <div className="flex w-full max-w-[1320px] flex-col items-center px-6 pb-[clamp(56px,11vh,120px)] text-center">
+      <div className={`flex w-full max-w-[1320px] flex-col items-center px-6 ${button ? "pb-[clamp(32px,6vh,72px)]" : "pb-[clamp(56px,11vh,120px)]"} text-center`}>
         {kicker && (
           <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.18em] text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:mb-4 lg:text-[13px]">
             {kicker[lang]}
@@ -55,6 +58,18 @@ export default function TeamIntro({
           <span className="alis-scroll-line block h-full w-px bg-white/70" />
         </span>
       </div>
+
+      {button && (
+        <div className="w-full px-4 pb-4 lg:px-6 lg:pb-6">
+          <a
+            href={button.href}
+            {...(button.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            className="alis-pulse flex w-full items-center justify-center rounded-xl border border-white/70 bg-white/[0.18] py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a] lg:py-4 lg:text-[14px]"
+          >
+            {button.label[lang]}
+          </a>
+        </div>
+      )}
     </section>
     </div>
   );
