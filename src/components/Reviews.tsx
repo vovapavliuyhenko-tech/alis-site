@@ -131,7 +131,7 @@ export default function Reviews() {
   useEffect(() => {
     const stage = stageRef.current;
     if (!stage) return;
-    const fit = () => setRadius(Math.max(580, Math.round((stage.clientWidth - 300) / 2)));
+    const fit = () => setRadius(Math.max(580, Math.round(stage.clientWidth / 2 - 24)));
     fit();
     const ro = new ResizeObserver(fit);
     ro.observe(stage);
@@ -223,8 +223,8 @@ export default function Reviews() {
           className="relative mx-auto h-[360px] cursor-grab touch-pan-y select-none [perspective:11000px] lg:h-[340px]"
         >
           {/* Боковые градиент-маски — премиальное обрамление кольца */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-white to-transparent sm:w-28 lg:w-24" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-white to-transparent sm:w-28 lg:w-24" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-white to-transparent sm:w-28 lg:hidden" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-white to-transparent sm:w-28 lg:hidden" />
           <div ref={ringRef} className="absolute inset-0 [transform-style:preserve-3d]">
             {REVIEWS.map((r, i) => (
               <article
