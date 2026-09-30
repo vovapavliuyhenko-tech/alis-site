@@ -8,7 +8,6 @@ import SalonServices from "@/components/pages/SalonServices";
 import { type Stage } from "@/components/HorizontalStory";
 import ConciergeStages from "@/components/pages/ConciergeStages";
 import ConciergeOffer from "@/components/pages/ConciergeOffer";
-import PhotoMarquee from "@/components/pages/PhotoMarquee";
 import ConciergeChat from "@/components/ConciergeChat";
 
 const req = { ru: "по запросу", en: "on request" };
@@ -105,15 +104,6 @@ const CONCIERGE_STAGES: Stage[] = [
 ];
 
 // Фотогалерея выездов — TODO: заменить на фото, которые пришлёт заказчица.
-const GALLERY = [
-  "/assets/alis/img_2751.jpg",
-  "/assets/alis/img_2749.jpg",
-  "/assets/alis/img_6011.jpg",
-  "/assets/alis/img_3283.jpg",
-  "/assets/alis/img_8578.jpg",
-  "/assets/alis/img_6048.jpg",
-];
-
 export const metadata: Metadata = {
   alternates: { canonical: "/concierge" },
 };
@@ -143,8 +133,6 @@ export default function ConciergePage() {
           cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }}
         />
 
-        {/* 4 — Фотогалерея (#gallery) */}
-        <PhotoMarquee sectionId="gallery" title={null} items={GALLERY} />
 
         {/* 5 — Этапы работы (тексты будут уточнены заказчицей) */}
         <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={null} />
