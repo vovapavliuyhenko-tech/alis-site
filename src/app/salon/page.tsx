@@ -6,6 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
+import PhotoMarquee from "@/components/pages/PhotoMarquee";
 import { ShopStory } from "@/components/shop/ShopShowcase";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
@@ -264,6 +265,10 @@ export default function SalonPage() {
           }}
           alt={{ ru: "Салон красоты ÁLIS BEAUTY", en: "ÁLIS BEAUTY beauty salon" }}
         />
+
+
+        {/* Галерея работ — сразу под блоком «О салоне» (фото временные) */}
+        <PhotoMarquee sectionId="gallery" title={null} />
 
         {/* 3 — Услуги и прайс */}
         <SalonServices
