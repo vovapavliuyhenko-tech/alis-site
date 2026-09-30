@@ -27,6 +27,7 @@ export function ShopStory() {
   const { lang } = useLang();
   const [i, setI] = useState(0);
   const box = useRef<HTMLDivElement>(null);
+  const txt = useRef<HTMLDivElement>(null);
 
   // Кадры сменяются сами каждые 2 секунды, мягкой сменой прозрачности
   useEffect(() => {
@@ -37,13 +38,17 @@ export function ShopStory() {
   // Рост при прокрутке: блок входит снизу — фото 50 % и ниже на 50px; за 400px прокрутки — 100 %
   useEffect(() => {
     const el = box.current;
-    if (!el || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const tx = txt.current;
+    if (!el || !tx || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let raf = 0;
     const apply = () => {
       raf = 0;
       const top = el.parentElement!.getBoundingClientRect().top;
       const p = Math.min(1, Math.max(0, (window.innerHeight - top) / 400));
-      el.style.setProperty("transform", `translate3d(0, ${(1 - p) * 50}px, 0) scale(${0.5 + p * 0.5})`);
+      const tf = `translate3d(0, ${(1 - p) * 50}px, 0) scale(${0.5 + p * 0.5})`;
+      el.style.setProperty("transform", tf);
+      // Текст растёт вместе с фото — тот же эффект
+      tx.style.setProperty("transform", tf);
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(apply);
@@ -72,15 +77,18 @@ export function ShopStory() {
             />
           ))}
         </div>
-        <h2 className="mt-12 !text-[18px] uppercase tracking-[0.04em] text-[#17191a] lg:!text-[22px]">
-          {lang === "en" ? "Things that carry the salon’s mood." : "Вещи, в которых живёт атмосфера салона."}
-        </h2>
-        <p className="mt-4 max-w-[440px] !text-[15px] leading-[1.65] text-[#17191a]/75">
-          {lang === "en"
-            ? "Hoodies, tees, accessories and care — take a little ÁLIS BEAUTY home or give it to someone close. Take a look!"
-            : "Худи, футболки, аксессуары и уход — заберите немного ÁLIS BEAUTY с собой или подарите близким. Смотрите сами!"}
-        </p>
-        <span aria-hidden className="mt-10 text-[20px] font-light text-[#17191a]/40">+</span>
+        {/* Текст — мелко и минималистично, растёт при прокрутке вместе с фото */}
+        <div ref={txt} className="mt-10 flex origin-top flex-col items-center will-change-transform">
+          <h2 className="!text-[13px] !font-normal uppercase tracking-[0.1em] text-[#17191a] lg:!text-[15px]">
+            {lang === "en" ? "Things that carry the salon’s mood." : "Вещи, в которых живёт атмосфера салона."}
+          </h2>
+          <p className="mt-3 max-w-[360px] !text-[12.5px] leading-[1.6] text-[#17191a]/65 lg:!text-[13px]">
+            {lang === "en"
+              ? "Hoodies, tees, accessories and care — take a little ÁLIS BEAUTY home or give it to someone close. Take a look!"
+              : "Худи, футболки, аксессуары и уход — заберите немного ÁLIS BEAUTY с собой или подарите близким. Смотрите сами!"}
+          </p>
+          <span aria-hidden className="mt-8 text-[16px] font-light text-[#17191a]/40">+</span>
+        </div>
       </div>
     </section>
   );
