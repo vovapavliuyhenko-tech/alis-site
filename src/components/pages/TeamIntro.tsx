@@ -45,6 +45,10 @@ export default function TeamIntro({
         <h1 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
           {title[lang]}
         </h1>
+        {/* Тонкая линия под заголовком, по ней «стекает» свет — как на обложке главной */}
+        <span aria-hidden className="mt-6 block h-11 w-px overflow-hidden lg:mt-8 lg:h-14">
+          <span className="alis-scroll-line block h-full w-px bg-white/70" />
+        </span>
       </div>
     </section>
     </div>
