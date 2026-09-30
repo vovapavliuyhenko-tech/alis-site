@@ -26,8 +26,8 @@ export function NewsCard({ n, large = false }: { n: NewsItem; large?: boolean })
   const { lang } = useLang();
   const href = `/news/${n.slug}`;
   return (
-    <article className={`group flex flex-col rounded-[16px] border border-[#46131E]/40 p-3 transition-colors duration-300 hover:border-[#46131E] lg:p-4 ${large ? "lg:col-span-2" : ""}`}>
-      <Link href={href} className="relative block overflow-hidden rounded-[12px] bg-[#f2f1ee]">
+    <article className={`group flex flex-col overflow-hidden rounded-[16px] border border-[#46131E]/40 transition-colors duration-300 hover:border-[#46131E] ${large ? "lg:col-span-2" : ""}`}>
+      <Link href={href} className="relative block overflow-hidden bg-[#f2f1ee]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={n.image}
@@ -39,7 +39,7 @@ export function NewsCard({ n, large = false }: { n: NewsItem; large?: boolean })
           {catLabel(n.cat, lang)}
         </span>
       </Link>
-      <div className="flex flex-1 flex-col px-2 pb-2 pt-5 lg:px-3 lg:pb-3">
+      <div className="flex flex-1 flex-col px-5 pb-5 pt-5 lg:px-6 lg:pb-6">
         <Meta n={n} lang={lang} />
         <h3 className={`mt-3 !text-[18px] text-[#17191a] ${large ? "lg:!text-[24px]" : "lg:!text-[20px]"}`}>
           <Link href={href} className="transition-colors hover:text-[#46131E]">{n.title[lang]}</Link>
