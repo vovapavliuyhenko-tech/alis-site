@@ -1,7 +1,6 @@
 "use client";
 // СТРАНИЦА КОНТАКТОВ — воздушно и минималистично, без встроенной карты (она долго грузилась):
-// заголовок по центру → две колонки (салон красоты / консьерж-сервис) с крупными телефонами →
-// фото салона со «стеклянными» кнопками маршрута (Яндекс Карты, 2ГИС).
+// заголовок по центру → две колонки (салон красоты / консьерж-сервис) с крупными телефонами.
 // Названия соцсетей и мессенджеров на сайте не пишем (требование заказчицы).
 import { useLang } from "@/lib/i18n";
 
@@ -11,11 +10,6 @@ const PHONE_SERVICE = "+7 988 888 77 28";
 const PHONE_SERVICE_RAW = "79888887728";
 const EMAIL = "alisbeautyclub@gmail.com";
 const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
-// Маршрут до салона в Яндекс Картах (координаты организации «Áлис Бьюти»)
-const ROUTE_URL = "https://yandex.ru/maps/?rtext=~44.704933%2C37.782638&rtt=auto";
-const GIS_URL = "https://2gis.ru/novorossiysk/firm/70000001086737494";
-// Фото под кнопками маршрута — временное, заменить на фото входа/интерьера салона
-const PHOTO = "/assets/alis/img_0521.jpg";
 
 type Loc = { ru: string; en: string };
 type Row = { label: Loc; value: string; href?: string; external?: boolean };
@@ -85,8 +79,6 @@ export default function ContactsBlock() {
     },
   ];
 
-  const glass =
-    "group inline-flex items-center gap-2 rounded-xl border border-white/40 px-6 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#17191a]";
 
   return (
     <section className="bg-white pb-[clamp(72px,10vw,140px)] pt-24 lg:pt-40">
@@ -159,42 +151,6 @@ export default function ContactsBlock() {
         ))}
       </div>
 
-      {/* Фото + маршрут — вместо тяжёлой встроенной карты */}
-      <div className="r-reveal relative mx-auto mt-14 flex h-[62svh] min-h-[440px] w-[96%] max-w-[1760px] items-end overflow-hidden rounded-[12px] lg:mt-24">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={PHOTO}
-          alt={t("Салон красоты ÁLIS BEAUTY на ул. Пархоменко, 53 в Новороссийске", "ÁLIS BEAUTY beauty salon at Parkhomenko St., 53, Novorossiysk")}
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
-        <div className="relative z-10 flex w-full flex-col items-start gap-6 p-6 text-white lg:flex-row lg:items-end lg:justify-between lg:p-12">
-          <div>
-            <p className="text-[12px] uppercase tracking-[0.18em] text-white/85">{t("Как добраться", "How to get here")}</p>
-            <p className="mt-3 font-serif-display text-[24px] uppercase leading-[1.2] tracking-[0.03em] lg:text-[32px]">
-              {t("Новороссийск, ул. Пархоменко, 53", "Novorossiysk, Parkhomenko St., 53")}
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href={ROUTE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="alis-pulse inline-flex items-center justify-center rounded-xl border border-white/70 bg-white/15 px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#17191a]"
-            >
-              {t("Построить маршрут", "Get directions")}
-            </a>
-            <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className={glass}>
-              {t("Яндекс Карты", "Yandex Maps")} <Arrow />
-            </a>
-            <a href={GIS_URL} target="_blank" rel="noopener noreferrer" className={glass}>
-              {t("2ГИС", "2GIS")} <Arrow />
-            </a>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
