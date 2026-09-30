@@ -41,6 +41,7 @@ export default function Footer() {
     { label: t("Салон красоты", "Beauty salon"), href: "/salon" },
     { label: t("Консьерж-сервис", "Concierge service"), href: "/concierge" },
     { label: t("Магазин", "Shop"), href: "/shop" },
+    { label: t("Каталог", "Catalogue"), href: "/shop/catalog" },
     { label: t("Новости", "News"), href: "/news" },
     { label: t("Подарочный сертификат", "Gift certificate"), href: "https://o8981.yclients.ru/certificates" },
     { label: t("Программа лояльности", "Loyalty programme"), href: "/loyalty" },
