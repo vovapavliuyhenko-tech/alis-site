@@ -33,7 +33,6 @@ const LEFT: NavItem[] = [
     sub: [
       { label: { ru: "О сервисе", en: "About the service" }, href: "/concierge#about" },
       { label: { ru: "Услуги и прайс", en: "Services & prices" }, href: "/concierge#uslugi" },
-      { label: { ru: "Фотогалерея", en: "Gallery" }, href: "/concierge#gallery" },
       { label: { ru: "Как забронировать", en: "How to book" }, href: "/concierge#booking" },
     ],
   },

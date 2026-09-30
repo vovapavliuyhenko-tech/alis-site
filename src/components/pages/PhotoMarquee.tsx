@@ -66,7 +66,7 @@ function Track({ items, hidden = false, moved }: { items: MarqueeItem[]; hidden?
 
 
 
-// Переиспользуется: главная (работы мастеров) и «Консьерж-сервис» (#gallery).
+// Переиспользуется: главная (работы мастеров) и страница салона (#gallery).
 export default function PhotoMarquee({
   items = ITEMS,
   title = { ru: "То, что создают специалисты ÁLIS BEAUTY", en: "Created by ÁLIS BEAUTY specialists" },
