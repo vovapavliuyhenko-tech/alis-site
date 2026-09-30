@@ -100,9 +100,9 @@ export function ShopStory() {
 
 /* ---------- 2. Выберите нужную категорию ---------- */
 const PICK: { label: Loc; img: string; href: string }[] = [
+  { label: { ru: "Все категории", en: "All categories" }, img: "/assets/tild3561-646_-2___1__5.jpg", href: "/shop/catalog" },
   { label: { ru: "Одежда", en: "Apparel" }, img: "/assets/alis/img_1834.jpg", href: "/shop/catalog?cat=%D0%BE%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0" },
   { label: { ru: "Аксессуары", en: "Accessories" }, img: "/assets/alis/img_6048.jpg", href: "/shop/catalog?cat=%D0%B0%D0%BA%D1%81%D0%B5%D1%81%D1%81%D1%83%D0%B0%D1%80%D1%8B" },
-  { label: { ru: "Для дома", en: "Home" }, img: "/assets/tild3561-646_-2___1__5.jpg", href: "/shop/catalog?cat=%D0%B4%D0%BE%D0%BC" },
   { label: { ru: "Уход", en: "Care" }, img: "/assets/alis/img_5910.webp", href: "/shop/catalog?cat=%D1%83%D1%85%D0%BE%D0%B4" },
   { label: { ru: "Новинки", en: "New in" }, img: "/assets/alis/img_8578.jpg", href: "/shop/catalog?cat=new" },
   { label: { ru: "Сертификаты", en: "Certificates" }, img: "/assets/alis/img_1855.jpg", href: CERTS },
