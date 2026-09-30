@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
-import { ShopCollection } from "@/components/shop/ShopHome";
 import { ShopStory, ShopPick, ShopTrend } from "@/components/shop/ShopShowcase";
 
 // Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и анимации — по главной
@@ -27,7 +26,6 @@ export default function ShopPage() {
         <ShopStory />
         <ShopPick />
         <ShopTrend />
-        <ShopCollection />
       </div>
       <Footer />
     </main>
