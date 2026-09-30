@@ -71,7 +71,7 @@ export default function ContactsBlock() {
       <h1 className="sr-only">{t("Контакты салона красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon contacts, Novorossiysk")}</h1>
 
       {/* Две колонки: салон и консьерж-сервис, между ними тонкая линия */}
-      <div className="mx-auto grid w-[92%] max-w-[1320px] grid-cols-1 lg:grid-cols-2">
+      <div className="mx-auto grid w-[96%] max-w-[1760px] grid-cols-1 rounded-[12px] border border-[#46131E]/40 bg-white px-6 shadow-[0_18px_50px_-24px_rgba(23,25,26,0.22)] lg:grid-cols-2 lg:px-0 lg:py-12">
         {COLS.map((c, i) => (
           <div
             key={c.title.ru}
