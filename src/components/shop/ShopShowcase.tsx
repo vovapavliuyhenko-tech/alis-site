@@ -220,7 +220,7 @@ export function ShopTrend() {
                     New
                   </span>
                 )}
-                <div className="relative mt-auto flex items-end justify-between gap-2 bg-gradient-to-t from-black/45 to-transparent px-3 pb-3 pt-10 text-white lg:px-4 lg:pb-4">
+                <div className="relative mt-auto flex translate-y-2 items-end justify-between gap-2 bg-gradient-to-t from-black/45 to-transparent px-3 pb-3 pt-10 text-white opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 [@media(hover:none)]:translate-y-0 [@media(hover:none)]:opacity-100 lg:px-4 lg:pb-4">
                   <span className="text-[11px] uppercase leading-[1.3] tracking-[0.06em] lg:text-[12px]">{p.name[lang]}</span>
                   <span className="shrink-0 text-[11px] lg:text-[12px]">{fmtPrice(p.price)}</span>
                 </div>
