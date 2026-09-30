@@ -28,16 +28,37 @@ function Arrow() {
   );
 }
 
+
+// Иконки мессенджера и соцсети — без названий сервисов (требование заказчицы: слова не пишем)
+function IconWa() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-[18px] w-[18px]" aria-hidden>
+      <path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.08.9.92-3-.2-.31a8.2 8.2 0 1 1 6.86 3.74Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.12.16 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.29Z" />
+    </svg>
+  );
+}
+function IconIg() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="h-[18px] w-[18px]" aria-hidden>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 export default function ContactsBlock() {
   const { lang } = useLang();
   const en = lang === "en";
   const t = (ru: string, e: string) => (en ? e : ru);
 
-  const COLS: { title: Loc; phone: string; phoneRaw: string; rows: Row[]; links: { label: Loc; href: string }[] }[] = [
+  const COLS: { title: Loc; phone: string; phoneRaw: string; rows: Row[]; wa: string; ig: string; links: { label: Loc; href: string }[] }[] = [
     {
       title: { ru: "Салон красоты", en: "Beauty salon" },
       phone: PHONE,
       phoneRaw: PHONE_RAW,
+      wa: `https://wa.me/${PHONE_RAW}`,
+      ig: "https://www.instagram.com/alisbeauty.ru",
       rows: [
         { label: { ru: "Адрес", en: "Address" }, value: t("Новороссийск, ул. Пархоменко, 53", "Novorossiysk, Parkhomenko St., 53"), href: MAP_URL, external: true },
         { label: { ru: "Часы", en: "Hours" }, value: t("Без перерывов и выходных, 9:00–21:00", "No breaks, open daily, 9:00–21:00") },
@@ -51,6 +72,8 @@ export default function ContactsBlock() {
       title: { ru: "Консьерж-сервис", en: "Concierge service" },
       phone: PHONE_SERVICE,
       phoneRaw: PHONE_SERVICE_RAW,
+      wa: `https://wa.me/${PHONE_SERVICE_RAW}`,
+      ig: "https://www.instagram.com/alisbeauty.global",
       rows: [
         { label: { ru: "Почта", en: "E-mail" }, value: EMAIL, href: `mailto:${EMAIL}` },
         { label: { ru: "Выезд", en: "On location" }, value: t("Мастера приедут туда, где вам удобно", "Our artists come wherever suits you") },
@@ -84,6 +107,15 @@ export default function ContactsBlock() {
             >
               {c.phone}
             </a>
+            {/* Написать в мессенджер и соцсеть — круглые кнопки с иконками */}
+            <div className="mt-5 flex gap-2.5">
+              <a href={c.wa} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us")} className="flex h-11 w-11 items-center justify-center rounded-full border border-[#46131E]/35 text-[#46131E] transition-colors duration-300 hover:border-[#46131E] hover:bg-[#46131E] hover:text-white">
+                <IconWa />
+              </a>
+              <a href={c.ig} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page")} className="flex h-11 w-11 items-center justify-center rounded-full border border-[#46131E]/35 text-[#46131E] transition-colors duration-300 hover:border-[#46131E] hover:bg-[#46131E] hover:text-white">
+                <IconIg />
+              </a>
+            </div>
 
             <dl className="mt-8 space-y-5">
               {c.rows.map((r) => (
