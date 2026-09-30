@@ -50,7 +50,7 @@ export default function ServiceBento() {
                 <h3 className="font-serif-display text-[22px] uppercase tracking-[0.03em] text-white lg:text-[24px]">
                   {c.title[lang]}
                 </h3>
-                <p className="mt-2 max-w-[300px] !text-[14px] leading-[1.5] text-white opacity-0 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] lg:!text-[15px] transition-opacity duration-300 group-hover:opacity-100">
+                <p className="mt-2 max-w-[280px] !text-[12.5px] leading-[1.5] text-white opacity-0 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] lg:!text-[13px] transition-opacity duration-300 group-hover:opacity-100">
                   {c.note[lang]}
                 </p>
               </div>
