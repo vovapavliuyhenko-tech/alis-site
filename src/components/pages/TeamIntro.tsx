@@ -2,7 +2,9 @@
 // ОБЛОЖКА внутренних страниц — точно как первый блок главной (Hero), но без кнопки:
 // фото на весь экран, затемнение снизу, заголовок капсом по центру в нижней части кадра.
 // Используется на всех страницах, кроме главной и контактов.
+import { useRef } from "react";
 import { useLang } from "@/lib/i18n";
+import { useHeroParallax } from "@/lib/useHeroParallax";
 
 type Loc = { ru: string; en: string };
 
@@ -19,13 +21,16 @@ export default function TeamIntro({
   photo?: string;
 }) {
   const { lang } = useLang();
+  // Эффект «статичного фона»: фото уезжает медленнее страницы
+  const bg = useRef<HTMLImageElement>(null);
+  useHeroParallax(bg);
 
   return (
     // Белая подложка — чтобы под скруглёнными нижними углами был белый фон, как у страницы
     <div className="bg-white">
     <section className="relative isolate flex min-h-[92svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#b9b3a9] text-white">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={photo} alt={`${title[lang]} — ÁLIS BEAUTY`} className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
+      <img ref={bg} src={photo} alt={`${title[lang]} — ÁLIS BEAUTY`} className="absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-center will-change-transform" />
       {/* Затемнение как на главной: сверху — под шапку, снизу — под заголовок */}
       <div
         aria-hidden

@@ -2,7 +2,9 @@
 // HERO главной — полноэкранное фоновое фото, по мотивам референса bemont.ru:
 // текст по центру в нижней части кадра — заголовок капсом и кнопка «Оформить визит». Верхнюю навигацию несёт глобальная
 // шапка ÁLIS BEAUTY (светлая над этим блоком). Двуязычно.
+import { useRef } from "react";
 import { useLang } from "@/lib/i18n";
+import { useHeroParallax } from "@/lib/useHeroParallax";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -11,6 +13,9 @@ const BG_PHOTO = "/assets/alis/img_2745.jpg";
 
 export default function Hero() {
   const { lang } = useLang();
+  // Эффект «статичного фона»: фото уезжает медленнее страницы
+  const bg = useRef<HTMLImageElement>(null);
+  useHeroParallax(bg);
   const en = lang === "en";
   const t = (ru: string, e: string) => (en ? e : ru);
 
@@ -20,7 +25,7 @@ export default function Hero() {
     <section className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#b9b3a9] text-white">
       {/* Фоновое фото */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY — отражаем внутреннюю красоту во внешней", "ÁLIS BEAUTY salon — reflecting inner beauty on the outside")} className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
+      <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY — отражаем внутреннюю красоту во внешней", "ÁLIS BEAUTY salon — reflecting inner beauty on the outside")} className="absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-center will-change-transform" />
       {/* Лёгкое затемнение: сверху — под шапку, снизу — под текст */}
       <div
         aria-hidden
