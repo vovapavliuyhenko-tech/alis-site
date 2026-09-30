@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -6,6 +7,10 @@ import CooperationFormats from "@/components/pages/CooperationFormats";
 
 // Страница «Сотрудничество»: обложка → «Частным лицам» / «Агентствам и бизнесу»
 // (пункты меню) → после выбора: заявка под категорию → лента партнёров.
+export const metadata: Metadata = {
+  alternates: { canonical: "/cooperation" },
+};
+
 export default function CooperationPage() {
   return (
     <main>

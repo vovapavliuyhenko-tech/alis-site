@@ -6,6 +6,7 @@ import Requisites from "@/components/legal/Requisites";
 import { COMPANY, LEGAL_UPDATED } from "@/lib/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/docs" },
   title: "Документы — ÁLIS BEAUTY",
   description: "Юридические документы и реквизиты ÁLIS BEAUTY: политика конфиденциальности, публичная оферта, политика cookie.",
 };

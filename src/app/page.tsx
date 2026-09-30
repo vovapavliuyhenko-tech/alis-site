@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
@@ -35,6 +36,10 @@ const VISIT_STEPS: Stage[] = [
     photo: "/assets/alis/img_0569.jpg",
   },
 ];
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
 export default function Home() {
   return (
     <main>

@@ -5,6 +5,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { NewsGrid } from "@/components/news/NewsView";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/news" },
   title: "Новости — ÁLIS BEAUTY",
   description: "Новости салона красоты и консьерж-сервиса ÁLIS BEAUTY в Новороссийске.",
 };

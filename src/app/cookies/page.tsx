@@ -4,6 +4,7 @@ import LegalLayout from "@/components/legal/LegalLayout";
 import { COMPANY, LEGAL_UPDATED } from "@/lib/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/cookies" },
   title: "Политика использования файлов cookie — ÁLIS BEAUTY",
   description: "Как сайт ÁLIS BEAUTY использует файлы cookie и как ими управлять.",
 };

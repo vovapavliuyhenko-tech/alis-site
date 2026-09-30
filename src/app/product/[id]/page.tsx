@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,6 +8,11 @@ import { PRODUCTS } from "@/lib/products";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ id: p.id }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  return { alternates: { canonical: `/product/${id}` } };
 }
 
 export default async function ProductPage({ params }: PageProps<"/product/[id]">) {

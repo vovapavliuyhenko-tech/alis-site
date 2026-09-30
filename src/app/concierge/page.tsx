@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -112,6 +113,10 @@ const GALLERY = [
   "/assets/alis/img_8578.jpg",
   "/assets/alis/img_6048.jpg",
 ];
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/concierge" },
+};
 
 export default function ConciergePage() {
   return (

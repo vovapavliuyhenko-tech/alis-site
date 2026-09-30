@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const n = NEWS.find((x) => x.slug === slug);
   if (!n) return {};
-  return { title: `${n.title.ru} — ÁLIS BEAUTY`, description: n.excerpt.ru, openGraph: { images: [n.image] } };
+  return { title: `${n.title.ru} — ÁLIS BEAUTY`, description: n.excerpt.ru, alternates: { canonical: `/news/${n.slug}` }, openGraph: { images: [n.image] } };
 }
 
 export default async function NewsItemPage({ params }: { params: Promise<{ slug: string }> }) {

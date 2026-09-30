@@ -5,6 +5,7 @@ import Requisites from "@/components/legal/Requisites";
 import { COMPANY, LEGAL_UPDATED } from "@/lib/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/offer" },
   title: "Публичная оферта — ÁLIS BEAUTY",
   description: "Публичная оферта на оказание услуг ИП Тарзян Д.И. (ÁLIS BEAUTY).",
 };

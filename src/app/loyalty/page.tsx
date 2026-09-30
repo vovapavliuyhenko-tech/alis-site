@@ -6,6 +6,7 @@ import TeamIntro from "@/components/pages/TeamIntro";
 import LoyaltyProgram from "@/components/pages/LoyaltyProgram";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/loyalty" },
   title: "Программа лояльности — ÁLIS BEAUTY",
   description: "Программа лояльности салона красоты ÁLIS BEAUTY: 500 бонусных рублей на первый визит и бонусы постоянным гостям.",
 };

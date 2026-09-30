@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import ContactsBlock from "@/components/pages/ContactsBlock";
 
 // Страница контактов — один блок в стиле главной.
+export const metadata: Metadata = {
+  alternates: { canonical: "/contacts" },
+};
+
 export default function ContactsPage() {
   return (
     <main>

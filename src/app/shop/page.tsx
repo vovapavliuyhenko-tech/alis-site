@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -6,6 +7,10 @@ import { ShopNew, ShopCategories, ShopAll, ShopCollection } from "@/components/s
 
 // Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и анимации — по главной
 // aurorebrand.com, оформление — в стиле нашего сайта. Фото — временные.
+export const metadata: Metadata = {
+  alternates: { canonical: "/shop" },
+};
+
 export default function ShopPage() {
   return (
     <main>

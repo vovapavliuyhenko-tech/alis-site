@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -5,6 +6,10 @@ import TeamIntro from "@/components/pages/TeamIntro";
 import SalonCompare from "@/components/pages/SalonCompare";
 import Vacancies from "@/components/pages/Vacancies";
 import JoinForm from "@/components/pages/JoinForm";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/team" },
+};
 
 export default function TeamPage() {
   return (

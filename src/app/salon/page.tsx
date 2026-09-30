@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Reviews from "@/components/Reviews";
 import Footer from "@/components/Footer";
@@ -267,6 +268,10 @@ const SALON_POINTS: BenefitPoint[] = [
     img: "/assets/alis/img_1834.jpg",
   },
 ];
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/salon" },
+};
 
 export default function SalonPage() {
   return (
