@@ -268,11 +268,7 @@ export default function SalonPage() {
 
 
         {/* Галерея работ — сразу под блоком «О салоне» (фото временные) */}
-
-
         <PhotoMarquee sectionId="gallery" title={null} />
-
-
 
         {/* 3 — Услуги и прайс */}
         <SalonServices
