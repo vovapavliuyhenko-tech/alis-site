@@ -86,7 +86,7 @@ export function ShopStory() {
           <h2 className="!text-[16px] !font-normal uppercase tracking-[0.04em] text-[#17191a] lg:!text-[20px]">
             {lang === "en" ? "Things that carry the salon’s mood." : "Вещи, в которых живёт атмосфера салона."}
           </h2>
-          <p className="mt-3 max-w-[420px] !text-[14px] !font-normal leading-[1.6] text-[#17191a]/85 lg:!text-[15px]">
+          <p className="mt-3 max-w-[380px] !text-[12.5px] !font-normal leading-[1.6] text-[#17191a]/80 lg:!text-[13px]">
             {lang === "en"
               ? "Hoodies, tees, accessories and care — take a little ÁLIS BEAUTY home or give it to someone close. Take a look!"
               : "Худи, футболки, аксессуары и уход — заберите немного ÁLIS BEAUTY с собой или подарите близким. Смотрите сами!"}
