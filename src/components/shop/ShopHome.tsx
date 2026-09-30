@@ -18,7 +18,7 @@ type Loc = { ru: string; en: string };
 /* ---------- Шапка блока: заголовок слева, ссылка справа ---------- */
 
 /* ---------- Карточка товара: фото, избранное, название и цена ---------- */
-function Card({ p, ratio = "aspect-[3/4]" }: { p: Product; ratio?: string }) {
+export function Card({ p, ratio = "aspect-[3/4]" }: { p: Product; ratio?: string }) {
   const { lang } = useLang();
   const s = useShop();
   const fav = s.isFav(p.id);
