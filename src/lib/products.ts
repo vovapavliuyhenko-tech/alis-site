@@ -48,7 +48,7 @@ export const PRODUCTS: Product[] = [
     name: { ru: "Аромасвеча ÁLIS BEAUTY", en: "ÁLIS BEAUTY candle" },
     price: 1900,
     img: "/assets/tild3561-646_-2___1__5.jpg",
-    tag: { ru: "дом", en: "home" },
+    tag: { ru: "аксессуары", en: "accessories" },
     desc: {
       ru: "Соевая свеча с фирменным ароматом салона. Мягкое тепло и знакомый запах ухода за собой у вас дома.",
       en: "A soy candle with the salon's signature scent. Soft warmth and the familiar aroma of self-care at home.",

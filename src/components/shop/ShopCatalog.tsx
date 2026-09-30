@@ -17,11 +17,10 @@ type Section = { id: string; tag: string; hash: Loc; title: Loc; photo: string }
 const SECTIONS: Section[] = [
   { id: "odezhda", tag: "одежда", hash: { ru: "#одежда", en: "#apparel" }, title: { ru: "Мерч, который хочется носить каждый день", en: "Merch you’ll want to wear every day" }, photo: "/assets/alis/img_1834.jpg" },
   { id: "aksessuary", tag: "аксессуары", hash: { ru: "#аксессуары", en: "#accessories" }, title: { ru: "Детали, которые напоминают о салоне", en: "Details that remind you of the salon" }, photo: "/assets/alis/img_6048.jpg" },
-  { id: "dom", tag: "дом", hash: { ru: "#для дома", en: "#home" }, title: { ru: "Атмосфера ÁLIS BEAUTY у вас дома", en: "The ÁLIS BEAUTY mood at home" }, photo: "/assets/alis/img_0521.jpg" },
   { id: "uhod", tag: "уход", hash: { ru: "#уход", en: "#care" }, title: { ru: "Уход после салона — дома", en: "Salon care, continued at home" }, photo: "/assets/alis/img_5910.webp" },
 ];
 // Старые ссылки вида ?cat=одежда (плитки на странице магазина) → нужный раздел
-const CAT_TO_ID: Record<string, string> = { одежда: "odezhda", аксессуары: "aksessuary", дом: "dom", уход: "uhod", new: "odezhda" };
+const CAT_TO_ID: Record<string, string> = { одежда: "odezhda", аксессуары: "aksessuary", уход: "uhod", new: "odezhda" };
 
 function Item({ p }: { p: Product }) {
   const { lang } = useLang();

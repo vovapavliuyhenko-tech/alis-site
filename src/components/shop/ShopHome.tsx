@@ -149,7 +149,6 @@ export function ShopNew() {
 const CATS: { tag: string; label: Loc; img: string }[] = [
   { tag: "одежда", label: { ru: "Одежда", en: "Apparel" }, img: "/assets/tild6530-383_-2___1_.jpg" },
   { tag: "аксессуары", label: { ru: "Аксессуары", en: "Accessories" }, img: "/assets/tild6230-643__.jpg" },
-  { tag: "дом", label: { ru: "Для дома", en: "Home" }, img: "/assets/tild3561-646_-2___1__5.jpg" },
   { tag: "уход", label: { ru: "Уход", en: "Care" }, img: "/assets/tild6536-613_-2___1__4.jpg" },
   { tag: "подарок", label: { ru: "Подарочный сертификат", en: "Gift certificate" }, img: "/assets/alis/img_1855.jpg" },
 ];
