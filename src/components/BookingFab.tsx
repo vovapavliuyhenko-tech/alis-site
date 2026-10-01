@@ -72,7 +72,7 @@ export default function BookingFab() {
           rel="noopener noreferrer"
           aria-label={lang === "en" ? "Book online" : "Онлайн запись"}
           className={`fab-pulse relative flex h-full w-full items-center justify-center rounded-full text-center shadow-[0_12px_34px_rgba(0,0,0,0.28)] ring-1 transition-all duration-300 hover:scale-105 hover:bg-white/20 hover:text-[#2b2620] hover:ring-white/50 hover:backdrop-blur-md ${
-            onFooter ? "bg-[#f4efe6] text-[#17191a] ring-[#f4efe6]" : "bg-[#46131E] text-[#f4efe6] ring-[#46131E]"
+            onFooter ? "bg-[#f4efe6] text-[#17191a] ring-[#f4efe6]" : "bg-[#17191a] text-[#f4efe6] ring-[#17191a]"
           }`}
         >
           <span className="px-2 text-[9.5px] font-medium uppercase leading-[1.25] tracking-[0.1em] sm:text-[11px] sm:tracking-[0.12em]">

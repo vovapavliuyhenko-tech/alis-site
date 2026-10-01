@@ -186,7 +186,7 @@ export default function ConciergeChat() {
           {/* Прогресс заявки */}
           {screen === "flow" && (
             <div className="mx-5 h-[3px] overflow-hidden rounded-full bg-[#17191a]/8">
-              <div className="h-full rounded-full bg-[#46131E] transition-[width] duration-500" style={{ width: `${Math.max(8, progress * 100)}%` }} />
+              <div className="h-full rounded-full bg-[#17191a] transition-[width] duration-500" style={{ width: `${Math.max(8, progress * 100)}%` }} />
             </div>
           )}
 
@@ -221,7 +221,7 @@ export default function ConciergeChat() {
               <div className="space-y-2.5">
                 {msgs.map((m, i) => (
                   <div key={i} className={`flex animate-[alis-msg_.3s_ease-out] ${m.from === "user" ? "justify-end" : "justify-start"}`}>
-                    <div className={`max-w-[85%] rounded-[14px] px-3.5 py-2.5 text-[13.5px] leading-[1.45] ${m.from === "user" ? "rounded-br-[4px] bg-[#46131E] text-white" : "rounded-bl-[4px] bg-[#f4f3f1] text-[#17191a]"}`}>
+                    <div className={`max-w-[85%] rounded-[14px] px-3.5 py-2.5 text-[13.5px] leading-[1.45] ${m.from === "user" ? "rounded-br-[4px] bg-[#17191a] text-white" : "rounded-bl-[4px] bg-[#f4f3f1] text-[#17191a]"}`}>
                       {m.text}
                     </div>
                   </div>
@@ -256,7 +256,7 @@ export default function ConciergeChat() {
 
                 {!typing && step === "done" && (
                   <div className="flex flex-col items-center gap-3 pt-4 text-center">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#46131E] text-[18px] text-white">✓</span>
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#17191a] text-[18px] text-white">✓</span>
                     <a href={YCLIENTS} target="_blank" rel="noopener noreferrer" className="border-b border-[#17191a]/30 pb-0.5 text-[13px] text-[#17191a] hover:border-[#46131E] hover:text-[#46131E]">
                       {t("А пока — записаться в салон онлайн", "Meanwhile — book at the salon online")}
                     </a>
@@ -272,7 +272,7 @@ export default function ConciergeChat() {
               {step === "occasion" && (
                 <div className="flex flex-wrap gap-2">
                   {OCCASIONS.map((o) => (
-                    <button key={o.ru} onClick={() => answer("occasion", o[lang])} className="rounded-full border border-[#17191a]/15 px-3.5 py-2 text-[13px] text-[#17191a] transition-colors hover:border-[#46131E] hover:bg-[#46131E] hover:text-white">{o[lang]}</button>
+                    <button key={o.ru} onClick={() => answer("occasion", o[lang])} className="rounded-full border border-[#17191a]/15 px-3.5 py-2 text-[13px] text-[#17191a] transition-colors hover:border-[#17191a] hover:bg-[#17191a] hover:text-white">{o[lang]}</button>
                   ))}
                 </div>
               )}
@@ -290,7 +290,7 @@ export default function ConciergeChat() {
               {step === "guests" && (
                 <div className="flex flex-wrap gap-2">
                   {GUESTS.map((g) => (
-                    <button key={g.ru} onClick={() => answer("guests", g[lang])} className="rounded-full border border-[#17191a]/15 px-3.5 py-2 text-[13px] text-[#17191a] transition-colors hover:border-[#46131E] hover:bg-[#46131E] hover:text-white">{g[lang]}</button>
+                    <button key={g.ru} onClick={() => answer("guests", g[lang])} className="rounded-full border border-[#17191a]/15 px-3.5 py-2 text-[13px] text-[#17191a] transition-colors hover:border-[#17191a] hover:bg-[#17191a] hover:text-white">{g[lang]}</button>
                   ))}
                 </div>
               )}
@@ -306,12 +306,12 @@ export default function ConciergeChat() {
                     onChange={(e) => { setInput(step === "phone" ? formatPhone(e.target.value) : e.target.value); setErr(false); }}
                     className={`flex-1 rounded-full border bg-[#f4f3f1] px-4 py-2.5 text-[14px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 ${err ? "border-[#c0392b]" : "border-transparent"}`}
                   />
-                  <button type="submit" aria-label={t("Далее", "Next")} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#46131E] text-white">→</button>
+                  <button type="submit" aria-label={t("Далее", "Next")} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#17191a] text-white">→</button>
                 </form>
               )}
               {step === "review" && (
                 <div className="space-y-2">
-                  <button onClick={confirm} className="alis-pulse-wine flex w-full items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] py-3 text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#46131E]">
+                  <button onClick={confirm} className="alis-pulse-wine flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#17191a]">
                     {t("Отправить заявку", "Send request")}
                   </button>
                   <button onClick={startFlow} className="w-full text-center text-[12px] text-[#17191a]/50 hover:text-[#46131E]">{t("Заполнить заново", "Start over")}</button>
@@ -325,7 +325,7 @@ export default function ConciergeChat() {
 
       {/* Лаунчер */}
       {open ? (
-        <button onClick={() => setOpen(false)} aria-label={t("Закрыть чат", "Close chat")} className="pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#46131E] text-white shadow-[0_12px_30px_rgba(70,19,30,0.4)] transition-transform hover:scale-105">
+        <button onClick={() => setOpen(false)} aria-label={t("Закрыть чат", "Close chat")} className="pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-white shadow-[0_12px_30px_rgba(23,25,26,0.4)] transition-transform hover:scale-105">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /></svg>
         </button>
       ) : passedHero ? (

@@ -99,7 +99,7 @@ export default function RequestForm({
             <ul className="space-y-2.5">
               {bullets.map((b) => (
                 <li key={b.ru} className="flex items-start gap-3 text-[14px] leading-[1.5] text-[#242424] lg:text-[15px]">
-                  <span aria-hidden className="mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#46131E] text-[10px] text-white">✓</span>
+                  <span aria-hidden className="mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[10px] text-white">✓</span>
                   {b[lang]}
                 </li>
               ))}
@@ -111,7 +111,7 @@ export default function RequestForm({
         {sent ? (
           // Экран «Спасибо»: светлая карточка, бордовая полоса сверху, галочка прорисовывается
           <div role="status" className="alis-thanks flex flex-col items-center justify-center rounded-[12px] bg-white px-6 py-12 text-center shadow-[inset_0_3px_0_#46131E] lg:px-10 lg:py-14">
-            <span aria-hidden className="flex h-16 w-16 items-center justify-center rounded-full bg-[#46131E] text-white">
+            <span aria-hidden className="flex h-16 w-16 items-center justify-center rounded-full bg-[#17191a] text-white">
               <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path className="alis-check" d="M5 12.5l4.5 4.5L19 7.5" />
               </svg>
@@ -120,7 +120,7 @@ export default function RequestForm({
             <p className="mt-3 max-w-[420px] text-[15px] leading-[1.65] text-[#17191a]/80">{success[lang]}</p>
             <Link
               href="/"
-              className="alis-pulse-wine mt-8 inline-flex items-center justify-center rounded-xl border border-[#46131E] bg-[#46131E] px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#46131E]"
+              className="alis-pulse-wine mt-8 inline-flex items-center justify-center rounded-xl border border-[#17191a] bg-[#17191a] px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a]"
             >
               {en ? "To the home page" : "На главную"}
             </Link>
@@ -173,7 +173,7 @@ export default function RequestForm({
 
             <button
               type="submit"
-              className="alis-pulse-wine mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#46131E] hover:backdrop-blur-md"
+              className="alis-pulse-wine mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#17191a] hover:backdrop-blur-md"
             >
               {submit[lang]}
             </button>

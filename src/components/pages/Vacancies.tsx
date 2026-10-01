@@ -67,7 +67,7 @@ export default function Vacancies() {
                 <span className="hidden whitespace-nowrap rounded-full bg-[#17191a]/10 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 group-hover:bg-[#46131E]/[0.07] group-hover:text-[#46131E] sm:inline">
                   {v.schedule[lang]}
                 </span>
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#17191a]/30 text-[#17191a] transition-all duration-300 group-hover:border-[#46131E] group-hover:bg-[#46131E] group-hover:text-white lg:h-12 lg:w-12">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#17191a]/30 text-[#17191a] transition-all duration-300 group-hover:border-[#17191a] group-hover:bg-[#17191a] group-hover:text-white lg:h-12 lg:w-12">
                   <span className="text-[16px] leading-none transition-transform duration-300 group-hover:-rotate-45 lg:text-[18px]">→</span>
                 </span>
               </span>

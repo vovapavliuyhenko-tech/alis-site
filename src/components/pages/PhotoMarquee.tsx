@@ -34,11 +34,6 @@ function Track({ items, hidden = false, moved }: { items: MarqueeItem[]; hidden?
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={src} alt={alt} draggable={false} loading="lazy" decoding="async" className="h-full w-full rounded-[12px] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
-            {cap && (
-              <span className="pointer-events-none absolute bottom-3 left-3 rounded-full border border-white/60 bg-white/15 px-3 py-1.5 text-[11px] uppercase tracking-[0.1em] text-white backdrop-blur-md lg:bottom-4 lg:left-4">
-                {cap[lang]}
-              </span>
-            )}
           </>
         );
         return (

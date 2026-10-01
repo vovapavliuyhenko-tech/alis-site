@@ -28,7 +28,7 @@ export default function NotFoundContent() {
           href={YCLIENTS}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-xl border border-[#46131E] bg-[#46131E] px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors hover:bg-transparent hover:text-[#46131E]"
+          className="rounded-xl border border-[#17191a] bg-[#17191a] px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors hover:bg-transparent hover:text-[#17191a]"
         >
           {en ? "Book online" : "Записаться онлайн"}
         </a>

@@ -116,7 +116,7 @@ export default function CooperationFormats() {
                   {/* Невыбранная категория — размыта и «под замком»; по клику можно переключиться */}
                   {dim && (
                     <span className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white/10 transition-opacity duration-500 group-hover:opacity-0">
-                      <span aria-hidden className="flex h-12 w-12 items-center justify-center rounded-full bg-[#46131E] text-white shadow-[0_12px_30px_-10px_rgba(70,19,30,0.55)] animate-[alis-lock_2.6s_ease-in-out_infinite]">
+                      <span aria-hidden className="flex h-12 w-12 items-center justify-center rounded-full bg-[#17191a] text-white shadow-[0_12px_30px_-10px_rgba(23,25,26,0.55)] animate-[alis-lock_2.6s_ease-in-out_infinite]">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M8 11V8a4 4 0 0 1 8 0v3" className="animate-[alis-shackle_2.6s_ease-in-out_infinite]" />
                           <rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor" stroke="none" />
@@ -163,7 +163,7 @@ export default function CooperationFormats() {
               </div>
             </div>
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white/35 px-4 text-center">
-              <span aria-hidden className="flex h-12 w-12 items-center justify-center rounded-full bg-[#46131E] text-white shadow-[0_12px_30px_-10px_rgba(70,19,30,0.55)] animate-[alis-lock_2.6s_ease-in-out_infinite]">
+              <span aria-hidden className="flex h-12 w-12 items-center justify-center rounded-full bg-[#17191a] text-white shadow-[0_12px_30px_-10px_rgba(23,25,26,0.55)] animate-[alis-lock_2.6s_ease-in-out_infinite]">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M8 11V8a4 4 0 0 1 8 0v3" className="animate-[alis-shackle_2.6s_ease-in-out_infinite]" />
                   <rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor" stroke="none" />

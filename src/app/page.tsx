@@ -7,7 +7,6 @@ import ConciergeStages from "@/components/pages/ConciergeStages";
 import { type Stage } from "@/components/HorizontalStory";
 import ServiceBento from "@/components/pages/ServiceBento";
 import ScrollReveal from "@/components/ScrollReveal";
-import { ShopStory } from "@/components/shop/ShopShowcase";
 
 // Клон massage-romanova.ru — стиль эталона + прежние блоки ÁLIS.
 
@@ -50,16 +49,6 @@ export default function Home() {
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
         {/* Порядок: работы мастеров → выезд (консьерж) → как записаться в салон → услуги → контакты (подвал) */}
-        {/* Второй блок — фото-история, как на странице магазина (фото растёт при прокрутке, текст догоняет) */}
-        <ShopStory
-          photos={["/assets/alis/img_3283.jpg", "/assets/alis/img_8578.jpg", "/assets/alis/img_2672.jpg", "/assets/alis/img_2746.jpg", "/assets/alis/img_5910.webp"]}
-          title={{ ru: "Салон красоты в Новороссийске", en: "Beauty salon in Novorossiysk" }}
-          text={{
-            ru: "Маникюр, педикюр, волосы, брови и макияж — всё в одном месте, без перерывов и выходных с 9:00 до 21:00. На первый визит — 500 бонусных рублей.",
-            en: "Manicure, pedicure, hair, brows and makeup — all in one place, open daily without breaks, 9:00–21:00. 500 bonus roubles on your first visit.",
-          }}
-          alt={{ ru: "Работы мастеров ÁLIS BEAUTY", en: "Work by ÁLIS BEAUTY artists" }}
-        />
         <PhotoMarquee title={null} />
         {/* Баннер консьерж-сервиса скрыт по просьбе клиента (вернуть — раскомментировать):
         <PhotoBanner

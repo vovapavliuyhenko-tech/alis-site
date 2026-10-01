@@ -100,7 +100,7 @@ export default function LoyaltyCerts() {
                 i === 0 ? "lg:col-start-2 lg:row-start-2" : "lg:col-start-3 lg:row-start-2"
               }`}
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#46131E] font-display text-[14px] text-white">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#17191a] font-display text-[14px] text-white">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>

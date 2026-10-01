@@ -99,7 +99,7 @@ export default function SalonServices({
                     <span className={`hidden whitespace-nowrap rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 sm:inline ${isOpen ? "bg-[#46131E]/[0.07] text-[#46131E]" : "bg-[#17191a]/[0.06] text-[#17191a]"}`}>
                       {c.from[lang]}
                     </span>
-                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-all duration-300 lg:h-12 lg:w-12 ${isOpen ? "border-[#46131E] bg-[#46131E] text-white" : "border-[#17191a]/25 text-[#17191a] group-hover:border-[#46131E] group-hover:text-[#46131E]"}`}>
+                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-all duration-300 lg:h-12 lg:w-12 ${isOpen ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/25 text-[#17191a] group-hover:border-[#17191a] group-hover:text-[#17191a]"}`}>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`h-4 w-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
                         <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -142,7 +142,7 @@ export default function SalonServices({
           href={cta.href}
           target={cta.href.startsWith("http") ? "_blank" : undefined}
           rel={cta.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          className="alis-pulse-wine mt-3 flex w-full items-center justify-center rounded-[12px] border border-[#46131E] bg-[#46131E] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:bg-transparent hover:text-[#46131E] hover:backdrop-blur-md sm:text-[14px]"
+          className="alis-pulse-wine mt-3 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:bg-transparent hover:text-[#17191a] hover:backdrop-blur-md sm:text-[14px]"
         >
           {cta.label[lang]}
         </a>

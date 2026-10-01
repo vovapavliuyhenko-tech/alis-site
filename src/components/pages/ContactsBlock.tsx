@@ -102,10 +102,10 @@ export default function ContactsBlock() {
             </a>
             {/* Написать в мессенджер и соцсеть — круглые кнопки с иконками */}
             <div className="mt-4 flex gap-2">
-              <a href={c.wa} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#46131E]/35 text-[#46131E] transition-colors duration-300 hover:border-[#46131E] hover:bg-[#46131E] hover:text-white">
+              <a href={c.wa} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#17191a]/35 text-[#17191a] transition-colors duration-300 hover:border-[#17191a] hover:bg-[#17191a] hover:text-white">
                 <IconWa />
               </a>
-              <a href={c.ig} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#46131E]/35 text-[#46131E] transition-colors duration-300 hover:border-[#46131E] hover:bg-[#46131E] hover:text-white">
+              <a href={c.ig} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#17191a]/35 text-[#17191a] transition-colors duration-300 hover:border-[#17191a] hover:bg-[#17191a] hover:text-white">
                 <IconIg />
               </a>
             </div>

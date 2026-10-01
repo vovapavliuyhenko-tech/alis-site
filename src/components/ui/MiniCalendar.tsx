@@ -84,7 +84,7 @@ export default function MiniCalendar({
               aria-label={d.toLocaleDateString(lang === "en" ? "en-GB" : "ru-RU", { day: "numeric", month: "long" })}
               className={`mx-auto my-0.5 flex h-9 w-9 items-center justify-center rounded-full text-[13px] transition-colors ${
                 selected
-                  ? "bg-[#46131E] text-white"
+                  ? "bg-[#17191a] text-white"
                   : past
                     ? "cursor-default text-[#17191a]/20"
                     : `text-[#17191a] hover:bg-[#46131E]/[0.08] hover:text-[#46131E] ${isToday ? "ring-1 ring-[#46131E]" : ""}`

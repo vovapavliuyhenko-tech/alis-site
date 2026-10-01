@@ -13,50 +13,52 @@ import { useShop } from "@/lib/shop";
 import { LogoWord } from "@/components/Logo";
 
 type Loc = { ru: string; en: string };
-// primary — главное действие раздела: бордовым, со стрелкой
-type NavItem = { label: Loc; href: string; sub?: { label: Loc; href: string; primary?: boolean }[] };
-
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const WA = "https://wa.me/79888887758";
 const IG = "https://www.instagram.com/alisbeauty.ru";
 
-// Колонки карточки меню
-const COLS: NavItem[] = [
+// Меню — три главных направления, у каждого: название страницы, 3 коротких пункта и
+// одна чёрная кнопка главного действия. Ниже — строка остальных страниц и контакты.
+type Sub = { label: Loc; href: string };
+type Section = { label: Loc; href: string; sub: Sub[]; action: Sub };
+const SECTIONS: Section[] = [
   {
     label: { ru: "Салон красоты", en: "Beauty salon" },
     href: "/salon",
-    // Порядок — как думает гость: записаться → что и сколько стоит → как это выглядит → кто доволен → подарок
     sub: [
-      { label: { ru: "Записаться онлайн", en: "Book online" }, href: YCLIENTS, primary: true },
       { label: { ru: "Услуги и цены", en: "Services & prices" }, href: "/salon#uslugi" },
       { label: { ru: "Наши работы", en: "Our work" }, href: "/salon#gallery" },
       { label: { ru: "Отзывы гостей", en: "Guest reviews" }, href: "/salon#reviews" },
-      { label: { ru: "Бонусы и сертификаты", en: "Bonuses & gift cards" }, href: "/salon#loyalty" },
     ],
+    action: { label: { ru: "Записаться онлайн", en: "Book online" }, href: YCLIENTS },
   },
   {
     label: { ru: "Консьерж-сервис", en: "Concierge service" },
     href: "/concierge",
-    // Заявка → что входит и цены → как проходит выезд → почему мы
     sub: [
-      { label: { ru: "Вызвать мастера", en: "Book an at-home visit" }, href: "/concierge#booking", primary: true },
       { label: { ru: "Услуги и цены", en: "Services & prices" }, href: "/concierge#uslugi" },
       { label: { ru: "Как проходит выезд", en: "How a visit works" }, href: "/concierge#process" },
-      { label: { ru: "Почему мы", en: "Why us" }, href: "/concierge#about" },
+      { label: { ru: "О сервисе", en: "About the service" }, href: "/concierge#about" },
     ],
+    action: { label: { ru: "Вызвать мастера", en: "Book an at-home visit" }, href: "/concierge#booking" },
   },
   {
-    label: { ru: "ÁLIS BEAUTY", en: "ÁLIS BEAUTY" },
-    href: "/",
+    label: { ru: "Магазин", en: "Shop" },
+    href: "/shop",
     sub: [
-      { label: { ru: "Магазин", en: "Shop" }, href: "/shop" },
-      { label: { ru: "Каталог", en: "Catalogue" }, href: "/shop/catalog" },
-      { label: { ru: "Новости", en: "News" }, href: "/news" },
-      { label: { ru: "Сотрудничество", en: "Cooperation" }, href: "/cooperation" },
-      { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team" },
-      { label: { ru: "Контакты", en: "Contacts" }, href: "/contacts" },
+      { label: { ru: "Одежда", en: "Apparel" }, href: "/shop/catalog?cat=одежда" },
+      { label: { ru: "Аксессуары", en: "Accessories" }, href: "/shop/catalog?cat=аксессуары" },
+      { label: { ru: "Подарочный сертификат", en: "Gift certificate" }, href: "https://o8981.yclients.ru/certificates" },
     ],
+    action: { label: { ru: "Смотреть каталог", en: "View the catalogue" }, href: "/shop/catalog" },
   },
+];
+const MORE: Sub[] = [
+  { label: { ru: "Программа лояльности", en: "Loyalty programme" }, href: "/loyalty" },
+  { label: { ru: "Новости", en: "News" }, href: "/news" },
+  { label: { ru: "Сотрудничество", en: "Cooperation" }, href: "/cooperation" },
+  { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team" },
+  { label: { ru: "Контакты", en: "Contacts" }, href: "/contacts" },
 ];
 
 const ext = (href: string) => (href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {});
@@ -95,7 +97,7 @@ function IconIg() {
 
 function Badge({ n }: { n: number }) {
   return (
-    <span className="absolute -right-1 -top-1 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#46131E] px-1 text-[10px] font-medium leading-none text-white">
+    <span className="absolute -right-1 -top-1 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#17191a] px-1 text-[10px] font-medium leading-none text-white">
       {n}
     </span>
   );
@@ -149,7 +151,7 @@ export default function Header() {
   const cta = `flex h-10 items-center justify-center rounded-xl border px-3 text-[10.5px] font-medium uppercase tracking-[0.12em] transition-colors duration-300 sm:px-4 sm:text-[11.5px] sm:tracking-[0.14em] lg:h-11 lg:px-6 ${
     glass
       ? "border-white bg-white text-[#17191a] hover:bg-transparent hover:text-white"
-      : "border-[#46131E] bg-[#46131E] text-white hover:bg-transparent hover:text-[#46131E]"
+      : "border-[#17191a] bg-[#17191a] text-white hover:bg-transparent hover:text-[#17191a]"
   }`;
 
   const isShop = pathname.startsWith("/shop") || pathname.startsWith("/product");
@@ -226,74 +228,71 @@ export default function Header() {
           <div className="fixed inset-x-0 top-[68px] z-50 mx-auto w-full max-w-[1760px] px-4 sm:px-6 min-[1280px]:top-[80px] min-[1680px]:top-[96px]">
             <nav
               aria-label={en ? "Site menu" : "Меню сайта"}
-              className="alis-menu max-h-[calc(100svh-84px)] overflow-y-auto rounded-[20px] bg-white p-6 shadow-[0_30px_80px_-30px_rgba(23,25,26,0.45)] sm:p-8 lg:grid lg:grid-cols-[1fr_1fr_1fr_minmax(260px,0.9fr)] lg:gap-10 lg:p-12 min-[1280px]:max-h-[calc(100svh-96px)]"
+              className="alis-menu max-h-[calc(100svh-84px)] overflow-y-auto rounded-[20px] bg-white p-6 shadow-[0_30px_80px_-30px_rgba(23,25,26,0.45)] sm:p-8 lg:p-12 min-[1280px]:max-h-[calc(100svh-96px)]"
             >
-              {COLS.map((c, i) => (
-                <div key={c.label.ru} style={{ animationDelay: `${60 + i * 60}ms` }} className="alis-menu-item border-b border-[#17191a]/10 pb-5 pt-1 [&:not(:first-child)]:pt-5 lg:border-0 lg:p-0 lg:[&:not(:first-child)]:pt-0">
-                  <a href={c.href} onClick={() => setOpen(false)} className="text-[11px] uppercase tracking-[0.18em] text-[#17191a]/50 transition-colors hover:text-[#46131E]">
-                    {c.label[lang]}
-                  </a>
-                  <ul className="mt-3 flex flex-col gap-1 lg:mt-5 lg:gap-1.5">
-                    {c.sub?.map((s) => (
-                      <li key={s.href}>
-                        <a
-                          href={s.href}
-                          {...ext(s.href)}
-                          onClick={() => setOpen(false)}
-                          className={`group inline-flex items-center gap-2 py-1 text-[17px] leading-[1.3] transition-colors hover:text-[#46131E] lg:text-[18px] ${s.primary ? "font-medium text-[#46131E]" : "text-[#17191a]"}`}
-                        >
-                          {s.label[lang]}
-                          <span aria-hidden className={`text-[14px] transition-all duration-300 ${s.primary ? "group-hover:translate-x-1" : "-translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"}`}>→</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-
-              {/* Правая колонка: телефоны, часы, запись, связь */}
-              <div style={{ animationDelay: "260ms" }} className="alis-menu-item flex flex-col gap-5 pt-6 lg:border-l lg:border-[#17191a]/10 lg:pl-10 lg:pt-0">
-                {/* Язык — на телефоне здесь (в шапке на узком экране не помещается) */}
-                <div className="flex gap-2 sm:hidden">
-                  {(["ru", "en"] as const).map((l) => (
-                    <button
-                      key={l}
-                      onClick={() => setLang(l)}
-                      aria-pressed={lang === l}
-                      className={`rounded-full border px-4 py-1.5 text-[12px] uppercase tracking-wide transition-colors ${lang === l ? "border-[#46131E] bg-[#46131E] text-white" : "border-[#46131E]/25 text-[#46131E]/70"}`}
+              {/* Три направления */}
+              <div className="grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-12">
+                {SECTIONS.map((c, i) => (
+                  <div key={c.href} style={{ animationDelay: `${60 + i * 60}ms` }} className="alis-menu-item flex flex-col border-b border-[#17191a]/10 pb-8 last:border-0 last:pb-0 md:border-0 md:pb-0">
+                    <a href={c.href} onClick={() => setOpen(false)} className="group w-fit font-display text-[22px] leading-tight text-[#17191a] md:text-[20px] lg:text-[26px]">
+                      {c.label[lang]}
+                      <span aria-hidden className="ml-2 inline-block text-[16px] transition-transform duration-300 group-hover:-rotate-45">→</span>
+                    </a>
+                    <ul className="mt-4 flex flex-col gap-2 md:mb-6 lg:mt-5">
+                      {c.sub.map((s) => (
+                        <li key={s.href}>
+                          <a href={s.href} {...ext(s.href)} onClick={() => setOpen(false)} className="text-[15px] text-[#17191a]/65 transition-colors hover:text-[#17191a]">
+                            {s.label[lang]}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href={c.action.href}
+                      {...ext(c.action.href)}
+                      onClick={() => setOpen(false)}
+                      className="mt-6 flex w-full items-center justify-center rounded-xl border border-[#17191a] bg-[#17191a] py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors hover:bg-transparent hover:text-[#17191a] md:mt-auto lg:py-4"
                     >
-                      {l}
-                    </button>
+                      {c.action.label[lang]}
+                    </a>
+                  </div>
+                ))}
+              </div>
+
+              {/* Остальные страницы и контакты — одной строкой снизу */}
+              <div style={{ animationDelay: "260ms" }} className="alis-menu-item mt-8 flex flex-col gap-5 border-t border-[#17191a]/10 pt-6 lg:mt-12 lg:flex-row lg:items-center lg:justify-between lg:pt-8">
+                <ul className="flex flex-wrap gap-x-6 gap-y-2">
+                  {MORE.map((m) => (
+                    <li key={m.href}>
+                      <a href={m.href} onClick={() => setOpen(false)} className="text-[14px] text-[#17191a] transition-colors hover:text-[#17191a]/60">
+                        {m.label[lang]}
+                      </a>
+                    </li>
                   ))}
-                </div>
-                <div className="flex flex-col gap-3">
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.18em] text-[#17191a]/50">{en ? "Salon" : "Салон"}</p>
-                    <a href="tel:+79888887758" className="mt-1 block text-[18px] text-[#17191a] transition-colors hover:text-[#46131E]">+7 988 888 77 58</a>
-                  </div>
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.18em] text-[#17191a]/50">{en ? "Concierge" : "Консьерж-сервис"}</p>
-                    <a href="tel:+79888887728" className="mt-1 block text-[18px] text-[#17191a] transition-colors hover:text-[#46131E]">+7 988 888 77 28</a>
-                  </div>
-                  <p className="text-[13px] leading-[1.5] text-[#17191a]/70">
-                    {en ? "Daily 9:00–21:00 · Parkhomenko St., 53" : "Ежедневно 9:00–21:00 · ул. Пархоменко, 53"}
-                  </p>
-                </div>
-                <div className="mt-auto flex flex-col gap-3">
-                  <a
-                    href={YCLIENTS}
-                    {...ext(YCLIENTS)}
-                    className="alis-pulse-wine flex w-full items-center justify-center rounded-xl border border-[#46131E] bg-[#46131E] py-4 text-[12.5px] font-medium uppercase tracking-[0.16em] text-white transition-colors hover:bg-transparent hover:text-[#46131E]"
-                  >
-                    {en ? "Book a visit" : "Оформить визит"}
-                  </a>
+                </ul>
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[14px] text-[#17191a]">
+                  <a href="tel:+79888887758" className="transition-colors hover:text-[#17191a]/60">+7 988 888 77 58</a>
+                  <span className="text-[#17191a]/55">{en ? "Daily 9:00–21:00" : "Ежедневно 9:00–21:00"}</span>
                   <div className="flex gap-2">
-                    <a href={WA} {...ext(WA)} aria-label={en ? "Message us" : "Написать нам"} className="flex h-10 w-10 items-center justify-center rounded-full border border-[#46131E]/35 text-[#46131E] transition-colors hover:bg-[#46131E] hover:text-white">
+                    <a href={WA} {...ext(WA)} aria-label={en ? "Message us" : "Написать нам"} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#17191a]/30 text-[#17191a] transition-colors hover:bg-[#17191a] hover:text-white">
                       <IconWa />
                     </a>
-                    <a href={IG} {...ext(IG)} aria-label={en ? "Our social media page" : "Наша страница в соцсети"} className="flex h-10 w-10 items-center justify-center rounded-full border border-[#46131E]/35 text-[#46131E] transition-colors hover:bg-[#46131E] hover:text-white">
+                    <a href={IG} {...ext(IG)} aria-label={en ? "Our social media page" : "Наша страница в соцсети"} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#17191a]/30 text-[#17191a] transition-colors hover:bg-[#17191a] hover:text-white">
                       <IconIg />
                     </a>
+                  </div>
+                  {/* Язык — на телефоне здесь (в шапке на узком экране не помещается) */}
+                  <div className="flex gap-2 sm:hidden">
+                    {(["ru", "en"] as const).map((l) => (
+                      <button
+                        key={l}
+                        onClick={() => setLang(l)}
+                        aria-pressed={lang === l}
+                        className={`rounded-full border px-4 py-1.5 text-[12px] uppercase tracking-wide transition-colors ${lang === l ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/25 text-[#17191a]/70"}`}
+                      >
+                        {l}
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>
