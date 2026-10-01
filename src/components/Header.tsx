@@ -234,7 +234,7 @@ export default function Header() {
                           href={s.href}
                           {...ext(s.href)}
                           onClick={() => setOpen(false)}
-                          className="group inline-flex items-center gap-2 py-1 text-[19px] leading-[1.3] text-[#17191a] transition-colors hover:text-[#46131E] lg:text-[22px]"
+                          className="group inline-flex items-center gap-2 py-1 text-[17px] leading-[1.3] text-[#17191a] transition-colors hover:text-[#46131E] lg:text-[18px]"
                         >
                           {s.label[lang]}
                           <span aria-hidden className="-translate-x-1 text-[14px] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">→</span>
