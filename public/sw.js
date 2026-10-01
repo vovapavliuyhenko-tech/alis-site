@@ -1,7 +1,8 @@
 // Service worker ÁLIS BEAUTY — ускорение повторных загрузок и работа без интернета.
 // Стратегии: страницы — network-first с откатом в кэш; статика/картинки/шрифты —
 // cache-first + фоновое обновление (stale-while-revalidate).
-const VERSION = "alis-v1";
+// Смена версии удаляет весь старый кэш у посетителей (см. activate)
+const VERSION = "alis-v2";
 const STATIC_CACHE = `static-${VERSION}`;
 const PAGE_CACHE = `pages-${VERSION}`;
 
@@ -35,7 +36,6 @@ self.addEventListener("activate", (event) => {
 const isStatic = (url) =>
   url.pathname.startsWith("/_next/static") ||
   url.pathname.startsWith("/assets") ||
-  url.pathname.startsWith("/shop") ||
   /\.(png|jpe?g|webp|avif|svg|ico|woff2?|css|js)$/.test(url.pathname);
 
 self.addEventListener("fetch", (event) => {
@@ -43,6 +43,9 @@ self.addEventListener("fetch", (event) => {
   if (req.method !== "GET") return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return; // только свой домен
+  // Данные страниц Next.js (переходы по ссылкам внутри сайта) — всегда из сети,
+  // иначе после обновления сайта показывалась бы старая версия
+  if (url.searchParams.has("_rsc") || req.headers.get("RSC")) return;
 
   // Страницы (навигация): сеть → кэш → главная как офлайн-фолбэк
   if (req.mode === "navigate") {

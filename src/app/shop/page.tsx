@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
-import { ShopStory, ShopPick, ShopTrend } from "@/components/shop/ShopShowcase";
+import { ShopPick, ShopTrend } from "@/components/shop/ShopShowcase";
 
 // Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и анимации — по главной
 // aurorebrand.com, оформление — в стиле нашего сайта. Фото — временные.
@@ -23,7 +23,6 @@ export default function ShopPage() {
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white page-end">
         {/* Блоки по образцу dogguo-shop.tilda.ws: фото-история, категории, новинки */}
-        <ShopStory />
         <ShopPick />
         <ShopTrend />
       </div>
