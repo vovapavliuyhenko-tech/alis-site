@@ -3,7 +3,7 @@
 // сверху «Главная / Каталог» и ссылки на категории; дальше по разделу на каждую категорию —
 // большое фото на половину ширины (заголовок + #тег, стороны чередуются) и рядом сетка 2×2 товаров,
 // остальные товары — рядами по 4. Карточка: светлый фон, название и цена внизу внутри карточки,
-// при наведении — второй кадр. Попасть сюда можно только со страницы магазина.
+// название и цена видны сразу; при наведении — второй кадр. Попасть сюда можно только со страницы магазина.
 // Заголовки разделов — черновики на согласование, фото временные.
 import { useEffect } from "react";
 import Link from "next/link";
@@ -30,7 +30,7 @@ function Item({ p }: { p: Product }) {
       <img src={p.img} alt={p.name[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ease-in-out group-hover:opacity-0" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={ALT_PHOTO[p.id] || p.img} alt="" aria-hidden loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
-      <div className="absolute inset-x-0 bottom-0 flex translate-y-2 items-end justify-between gap-2 bg-gradient-to-t from-black/45 to-transparent px-3 pb-3 pt-10 text-white opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 [@media(hover:none)]:translate-y-0 [@media(hover:none)]:opacity-100 lg:px-3.5 lg:pb-3.5">
+      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/45 to-transparent px-3 pb-3 pt-10 text-white lg:px-3.5 lg:pb-3.5">
         <span className="text-[11px] uppercase leading-[1.3] tracking-[0.04em] lg:text-[12px]">{p.name[lang]}</span>
         <span className="shrink-0 text-[11px] uppercase lg:text-[12px]">{fmtPrice(p.price, lang === "en")}</span>
       </div>
