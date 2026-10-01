@@ -78,7 +78,10 @@ export default function ShopCatalog() {
           {SECTIONS.map((s, i) => {
             const items = PRODUCTS.filter((p) => p.tag.ru === s.tag);
             if (!items.length) return null;
-            const first = items.slice(0, 4);
+            // Сетка всегда 2×2: если в категории меньше 4 товаров, добираем из других категорий
+            // (своих товаров пока мало — заменятся, когда заказчица пришлёт ассортимент)
+            const fill = PRODUCTS.filter((p) => p.tag.ru !== s.tag);
+            const first = [...items, ...fill].slice(0, 4);
             const rest = items.slice(4);
             const photoLeft = i % 2 === 0; // стороны фото чередуются, как у Dogguo
             return (
