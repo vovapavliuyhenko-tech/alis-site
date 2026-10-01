@@ -9,7 +9,6 @@ import SmoothAnchor from "@/components/SmoothAnchor";
 import CookieConsent from "@/components/CookieConsent";
 import BookingFab from "@/components/BookingFab";
 import Typograph from "@/components/Typograph";
-import Preloader from "@/components/Preloader";
 
 // Montserrat на всём сайте (с полной кириллицей). Заголовки временно тоже
 // Montserrat — до подключения файла AGOptCyrillic (тогда --font-heading заменим
@@ -61,7 +60,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </noscript>
       </head>
       <body>
-        <Preloader />
         <LanguageProvider>
           <ShopProvider>
             {children}

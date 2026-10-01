@@ -13,7 +13,8 @@ import { useShop } from "@/lib/shop";
 import { LogoWord } from "@/components/Logo";
 
 type Loc = { ru: string; en: string };
-type NavItem = { label: Loc; href: string; sub?: { label: Loc; href: string }[] };
+// primary — главное действие раздела: бордовым, со стрелкой
+type NavItem = { label: Loc; href: string; sub?: { label: Loc; href: string; primary?: boolean }[] };
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const WA = "https://wa.me/79888887758";
@@ -24,20 +25,24 @@ const COLS: NavItem[] = [
   {
     label: { ru: "Салон красоты", en: "Beauty salon" },
     href: "/salon",
+    // Порядок — как думает гость: записаться → что и сколько стоит → как это выглядит → кто доволен → подарок
     sub: [
-      { label: { ru: "Услуги и прайс", en: "Services & prices" }, href: "/salon#uslugi" },
-      { label: { ru: "Отзывы", en: "Reviews" }, href: "/salon#reviews" },
-      { label: { ru: "Программа лояльности", en: "Loyalty programme" }, href: "/loyalty" },
-      { label: { ru: "Подарочный сертификат", en: "Gift certificate" }, href: "https://o8981.yclients.ru/certificates" },
+      { label: { ru: "Записаться онлайн", en: "Book online" }, href: YCLIENTS, primary: true },
+      { label: { ru: "Услуги и цены", en: "Services & prices" }, href: "/salon#uslugi" },
+      { label: { ru: "Наши работы", en: "Our work" }, href: "/salon#gallery" },
+      { label: { ru: "Отзывы гостей", en: "Guest reviews" }, href: "/salon#reviews" },
+      { label: { ru: "Бонусы и сертификаты", en: "Bonuses & gift cards" }, href: "/salon#loyalty" },
     ],
   },
   {
     label: { ru: "Консьерж-сервис", en: "Concierge service" },
     href: "/concierge",
+    // Заявка → что входит и цены → как проходит выезд → почему мы
     sub: [
-      { label: { ru: "О сервисе", en: "About the service" }, href: "/concierge#about" },
-      { label: { ru: "Услуги и прайс", en: "Services & prices" }, href: "/concierge#uslugi" },
-      { label: { ru: "Как забронировать", en: "How to book" }, href: "/concierge#booking" },
+      { label: { ru: "Вызвать мастера", en: "Book an at-home visit" }, href: "/concierge#booking", primary: true },
+      { label: { ru: "Услуги и цены", en: "Services & prices" }, href: "/concierge#uslugi" },
+      { label: { ru: "Как проходит выезд", en: "How a visit works" }, href: "/concierge#process" },
+      { label: { ru: "Почему мы", en: "Why us" }, href: "/concierge#about" },
     ],
   },
   {
@@ -235,10 +240,10 @@ export default function Header() {
                           href={s.href}
                           {...ext(s.href)}
                           onClick={() => setOpen(false)}
-                          className="group inline-flex items-center gap-2 py-1 text-[17px] leading-[1.3] text-[#17191a] transition-colors hover:text-[#46131E] lg:text-[18px]"
+                          className={`group inline-flex items-center gap-2 py-1 text-[17px] leading-[1.3] transition-colors hover:text-[#46131E] lg:text-[18px] ${s.primary ? "font-medium text-[#46131E]" : "text-[#17191a]"}`}
                         >
                           {s.label[lang]}
-                          <span aria-hidden className="-translate-x-1 text-[14px] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">→</span>
+                          <span aria-hidden className={`text-[14px] transition-all duration-300 ${s.primary ? "group-hover:translate-x-1" : "-translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"}`}>→</span>
                         </a>
                       </li>
                     ))}
