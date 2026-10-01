@@ -199,15 +199,15 @@ export default function ConciergeChat() {
                   {ACTIONS.map((a) => {
                     const inner = (
                       <>
-                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#46131E]/[0.07] text-[15px] text-[#46131E]">{a.icon}</span>
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#17191a]/[0.07] text-[15px] text-[#17191a]">{a.icon}</span>
                         <span className="min-w-0 flex-1 text-left">
                           <span className="block text-[14px] text-[#17191a]">{a.title}</span>
                           <span className="block text-[12px] text-[#17191a]/45">{a.sub}</span>
                         </span>
-                        <span aria-hidden className="text-[#17191a]/30 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#46131E]">→</span>
+                        <span aria-hidden className="text-[#17191a]/30 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#17191a]">→</span>
                       </>
                     );
-                    const cls = "group flex w-full items-center gap-3 rounded-[12px] border border-[#17191a]/10 px-4 py-3 transition-colors hover:border-[#46131E]/40 hover:bg-[#46131E]/[0.03]";
+                    const cls = "group flex w-full items-center gap-3 rounded-[12px] border border-[#17191a]/10 px-4 py-3 transition-colors hover:border-[#17191a]/40 hover:bg-[#17191a]/[0.03]";
                     return a.onClick ? (
                       <button key={a.title} type="button" onClick={a.onClick} className={cls}>{inner}</button>
                     ) : (
@@ -257,7 +257,7 @@ export default function ConciergeChat() {
                 {!typing && step === "done" && (
                   <div className="flex flex-col items-center gap-3 pt-4 text-center">
                     <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#17191a] text-[18px] text-white">✓</span>
-                    <a href={YCLIENTS} target="_blank" rel="noopener noreferrer" className="border-b border-[#17191a]/30 pb-0.5 text-[13px] text-[#17191a] hover:border-[#46131E] hover:text-[#46131E]">
+                    <a href={YCLIENTS} target="_blank" rel="noopener noreferrer" className="border-b border-[#17191a]/30 pb-0.5 text-[13px] text-[#17191a] hover:border-[#17191a] hover:text-[#17191a]">
                       {t("А пока — записаться в салон онлайн", "Meanwhile — book at the salon online")}
                     </a>
                   </div>
@@ -285,7 +285,7 @@ export default function ConciergeChat() {
                 />
               )}
               {step === "date" && (
-                <button onClick={() => answer("date", t("Пока не знаю", "Not sure yet"))} className="mt-2 text-[12px] text-[#17191a]/50 hover:text-[#46131E]">{t("Дата пока не известна", "Date not known yet")}</button>
+                <button onClick={() => answer("date", t("Пока не знаю", "Not sure yet"))} className="mt-2 text-[12px] text-[#17191a]/50 hover:text-[#17191a]">{t("Дата пока не известна", "Date not known yet")}</button>
               )}
               {step === "guests" && (
                 <div className="flex flex-wrap gap-2">
@@ -314,7 +314,7 @@ export default function ConciergeChat() {
                   <button onClick={confirm} className="alis-pulse-wine flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#17191a]">
                     {t("Отправить заявку", "Send request")}
                   </button>
-                  <button onClick={startFlow} className="w-full text-center text-[12px] text-[#17191a]/50 hover:text-[#46131E]">{t("Заполнить заново", "Start over")}</button>
+                  <button onClick={startFlow} className="w-full text-center text-[12px] text-[#17191a]/50 hover:text-[#17191a]">{t("Заполнить заново", "Start over")}</button>
                   <p className="text-center text-[10.5px] text-[#17191a]/40">{t("Отправляя, вы соглашаетесь с обработкой персональных данных", "By sending, you agree to the processing of personal data")}</p>
                 </div>
               )}
