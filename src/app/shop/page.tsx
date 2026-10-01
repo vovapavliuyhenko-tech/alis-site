@@ -17,7 +17,7 @@ export default function ShopPage() {
       <ScrollReveal />
       <Header />
       {/* 1 — Обложка с заголовком страницы, как на остальных страницах (фото временное) */}
-      <TeamIntro title={{ ru: "Магазин", en: "Shop" }} kicker={{ ru: "Немного ÁLIS BEAUTY — с собой", en: "A little ÁLIS BEAUTY to take away" }} photo="/assets/tild6530-383_-2___1_.jpg" button={{ label: { ru: "Смотреть каталог", en: "View the catalogue" }, href: "/shop/catalog" }} />
+      <TeamIntro title={{ ru: "Магазин", en: "Shop" }} photo="/assets/tild6530-383_-2___1_.jpg" button={{ label: { ru: "Смотреть каталог", en: "View the catalogue" }, href: "/shop/catalog" }} />
 
       {/* Маркер конца обложки — после него у шапки появляется подложка */}
       <div id="hero-end" aria-hidden className="h-0" />

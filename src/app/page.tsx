@@ -49,7 +49,7 @@ export default function Home() {
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
         {/* Порядок: работы мастеров → выезд (консьерж) → как записаться в салон → услуги → контакты (подвал) */}
-        <PhotoMarquee title={null} />
+        <PhotoMarquee />
         {/* Баннер консьерж-сервиса скрыт по просьбе клиента (вернуть — раскомментировать):
         <PhotoBanner
           photo="/assets/alis/img_6009.jpg"
