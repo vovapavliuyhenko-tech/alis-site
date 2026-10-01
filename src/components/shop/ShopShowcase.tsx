@@ -123,7 +123,8 @@ export function ShopPick() {
   return (
     <section className="bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <h2 className="mb-8 !text-[16px] uppercase tracking-[0.06em] text-[#17191a] lg:mb-10 lg:!text-[18px]">
+        {/* Заголовок убран по просьбе заказчицы — оставлен только для поисковиков */}
+        <h2 className="sr-only">
           {lang === "en" ? "Choose a category" : "Выберите нужную категорию"}
         </h2>
         {/* На телефоне — лента с прокруткой пальцем, на компьютере — ряд из 6 */}
