@@ -42,10 +42,6 @@ export default function Hero() {
           <br />
           {t("во внешней", "on the outside")}
         </h1>
-        {/* Тонкая линия от заголовка к кнопке — по ней «стекает» свет (как на paloma.website) */}
-        <span aria-hidden className="mt-6 block h-11 w-px overflow-hidden lg:mt-8 lg:h-14">
-          <span className="alis-scroll-line block h-full w-px bg-white/70" />
-        </span>
       </div>
 
       {/* Кнопка — во всю ширину экрана внизу блока: размытое стекло, при наведении — светлая */}
