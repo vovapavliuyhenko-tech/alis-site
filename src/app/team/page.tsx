@@ -18,7 +18,7 @@ export default function TeamPage() {
       <Header />
 
       {/* 1 — Обложка: фото + кнопка к вакансиям (без логотипа и эффектов) */}
-      <TeamIntro title={{ ru: "Вакансии", en: "Vacancies" }} kicker={{ ru: "Станьте частью команды ÁLIS BEAUTY", en: "Join the ÁLIS BEAUTY team" }} />
+      <TeamIntro title={{ ru: "Вакансии", en: "Vacancies" }} kicker={{ ru: "Станьте частью команды ÁLIS BEAUTY", en: "Join the ÁLIS BEAUTY team" }} button={{ label: { ru: "Смотреть вакансии", en: "View vacancies" }, href: "#vacancies" }} />
 
       {/* Порядок для кандидата: почему у нас → вакансии → анкета.
           space-y — дополнительный воздух между блоками поверх общего section-y. */}
