@@ -45,6 +45,7 @@ const COLS: NavItem[] = [
     href: "/",
     sub: [
       { label: { ru: "Магазин", en: "Shop" }, href: "/shop" },
+      { label: { ru: "Каталог", en: "Catalogue" }, href: "/shop/catalog" },
       { label: { ru: "Новости", en: "News" }, href: "/news" },
       { label: { ru: "Сотрудничество", en: "Cooperation" }, href: "/cooperation" },
       { label: { ru: "Вакансии", en: "Vacancies" }, href: "/team" },
