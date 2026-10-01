@@ -40,7 +40,7 @@ const SECTIONS: Section[] = [
       { label: { ru: "Как проходит выезд", en: "How a visit works" }, href: "/concierge#process" },
       { label: { ru: "О сервисе", en: "About the service" }, href: "/concierge#about" },
     ],
-    action: { label: { ru: "Вызвать мастера", en: "Book an at-home visit" }, href: "/concierge#booking" },
+    action: { label: { ru: "Оставить заявку", en: "Leave a request" }, href: "/concierge#booking" },
   },
   {
     label: { ru: "Магазин", en: "Shop" },

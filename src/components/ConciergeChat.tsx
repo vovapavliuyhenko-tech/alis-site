@@ -329,15 +329,22 @@ export default function ConciergeChat() {
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /></svg>
         </button>
       ) : passedHero ? (
-        <button onClick={() => { setOpen(true); setScreen("home"); }} aria-label={t("Открыть чат", "Open chat")} className="pointer-events-auto group flex items-center gap-3 rounded-full bg-white py-2 pl-2 pr-5 text-[13px] text-[#17191a] shadow-[0_14px_40px_-10px_rgba(23,25,26,0.35)] ring-1 ring-[#17191a]/8 transition-transform hover:-translate-y-0.5">
-          <span className="relative">
+        // Лаунчер: тёмная стеклянная плашка — фото консьержа в тонком кольце, подпись капсом и «Задать вопрос →»
+        <button onClick={() => { setOpen(true); setScreen("home"); }} aria-label={t("Открыть чат", "Open chat")} className="pointer-events-auto group flex items-center gap-3 rounded-full bg-[#17191a]/90 py-1.5 pl-1.5 pr-5 text-white shadow-[0_18px_40px_-14px_rgba(23,25,26,0.6)] ring-1 ring-white/10 backdrop-blur-md transition-transform duration-300 hover:-translate-y-0.5">
+          <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full ring-1 ring-white/40">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={ADMIN_PHOTO} alt={lang === "en" ? "ÁLIS BEAUTY concierge" : "Консьерж ÁLIS BEAUTY"} className="h-10 w-10 rounded-full object-cover" />
-            <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#4ade80]" />
+            <img src={ADMIN_PHOTO} alt={lang === "en" ? "ÁLIS BEAUTY concierge" : "Консьерж ÁLIS BEAUTY"} className="h-[38px] w-[38px] rounded-full object-cover" />
+            {/* «На связи» — мягко дышащая белая точка вместо зелёной */}
+            <span className="absolute -right-0.5 bottom-0.5 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-[#17191a]">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
+            </span>
           </span>
           <span className="text-left leading-tight">
-            <span className="block">{t("Консьерж онлайн", "Concierge online")}</span>
-            <span className="block text-[11px] text-[#17191a]/45">{t("Ответим на вопросы", "We'll answer your questions")}</span>
+            <span className="block text-[10px] uppercase tracking-[0.2em] text-white/55">{t("Консьерж", "Concierge")}</span>
+            <span className="mt-0.5 flex items-center gap-1.5 text-[13.5px]">
+              {t("Задать вопрос", "Ask a question")}
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </span>
           </span>
         </button>
       ) : null}
