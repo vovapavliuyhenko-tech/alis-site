@@ -176,7 +176,7 @@ export default function Header() {
 
           {/* Логотип по центру */}
           <Link href="/" onClick={() => setOpen(false)} className="flex items-center justify-self-center">
-            <LogoWord variant={glass ? "cream" : "wine"} className="h-[16px] w-auto max-w-none shrink-0 sm:h-[19px] min-[1280px]:h-[22px] min-[1680px]:h-[28px]" />
+            <LogoWord variant={glass ? "cream" : "wine"} className="h-[18px] w-auto max-w-none shrink-0 sm:h-[22px] min-[1280px]:h-[26px] min-[1680px]:h-[32px]" />
           </Link>
 
           {/* Справа: магазин (только в магазине), язык, запись */}
