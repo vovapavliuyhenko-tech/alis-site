@@ -89,7 +89,7 @@ export default function CooperationFormats() {
 
   return (
     <>
-      <section id="formats" className="scroll-mt-20 bg-white section-y">
+      <section className="bg-white section-y">
         <div className="mx-auto grid w-[96%] max-w-[1760px] grid-cols-1 gap-x-3 gap-y-10 sm:grid-cols-2 lg:gap-x-4">
           {AUDIENCES.map((a) => {
             const on = kind === a.id;

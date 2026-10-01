@@ -22,7 +22,6 @@ export default function CooperationPage() {
         title={{ ru: "Сотрудничество", en: "Cooperation" }}
         kicker={{ ru: "Для частных лиц, агентств и бизнеса", en: "For individuals, agencies and business" }}
         photo="/assets/alis/img_6011.jpg"
-        button={{ label: { ru: "Выбрать формат", en: "Choose a format" }, href: "#formats" }}
       />
 
       {/* space-y — дополнительный воздух между блоками поверх общего section-y */}
