@@ -53,7 +53,7 @@ export default function BookingFab() {
   // На консьерж-сервисе свой помощник, в рабочих панелях кнопка записи не нужна
   if (pathname === "/concierge" || pathname.startsWith("/crm") || pathname.startsWith("/admin")) return null;
 
-  const ringColor = onFooter ? "#f4efe6" : "#46131E";
+  const ringColor = onFooter ? "#f4efe6" : "#17191a";
 
   return (
     <div
