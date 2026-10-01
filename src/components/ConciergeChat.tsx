@@ -329,7 +329,7 @@ export default function ConciergeChat() {
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /></svg>
         </button>
       ) : passedHero ? (
-        <button onClick={() => { setOpen(true); setScreen("home"); }} aria-label={t("Открыть чат", "Open chat")} className="pointer-events-auto group flex items-center gap-3 rounded-full bg-white py-2 pl-2 pr-5 text-[13px] text-[#17191a] shadow-[0_14px_40px_-10px_rgba(23,25,26,0.35)] ring-1 ring-[#17191a]/8 transition-transform hover:-translate-y-0.5">
+        <button onClick={() => { setOpen(true); setScreen("home"); }} aria-label={t("Открыть чат", "Open chat")} className="alis-pulse-wine pointer-events-auto group flex items-center gap-3 rounded-full bg-white py-2 pl-2 pr-5 text-[13px] text-[#17191a] shadow-[0_14px_40px_-10px_rgba(23,25,26,0.35)] ring-1 ring-[#17191a]/8 transition-transform hover:-translate-y-0.5">
           <span className="relative">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={ADMIN_PHOTO} alt={lang === "en" ? "ÁLIS BEAUTY concierge" : "Консьерж ÁLIS BEAUTY"} className="h-10 w-10 rounded-full object-cover" />
