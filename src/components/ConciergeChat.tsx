@@ -334,9 +334,9 @@ export default function ConciergeChat() {
           <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full ring-1 ring-white/40">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={ADMIN_PHOTO} alt={lang === "en" ? "ÁLIS BEAUTY concierge" : "Консьерж ÁLIS BEAUTY"} className="h-[38px] w-[38px] rounded-full object-cover" />
-            {/* «На связи» — мягко дышащая белая точка вместо зелёной */}
+            {/* «На связи» — мягко дышащая зелёная точка */}
             <span className="absolute -right-0.5 bottom-0.5 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-[#17191a]">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#4ade80]" />
             </span>
           </span>
           <span className="text-left leading-tight">
