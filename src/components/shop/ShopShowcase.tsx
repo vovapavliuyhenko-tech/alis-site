@@ -177,12 +177,12 @@ export function ShopTrend() {
     <section id="all" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
         {/* Шапка блока: заголовок слева, «+» над товарами, «смотреть все» справа */}
-        <div className="mb-8 grid grid-cols-2 items-baseline lg:mb-10 lg:grid-cols-[1fr_1fr]">
-          <h2 className="!text-[16px] uppercase tracking-[0.06em] text-[#17191a] lg:!text-[18px]">
+        <div className="mb-8 flex items-baseline justify-end lg:mb-10">
+          {/* Заголовок убран по просьбе заказчицы — оставлен только для поисковиков */}
+          <h2 className="sr-only">
             {lang === "en" ? "Discover what’s new" : "Узнайте о последних новинках"}
           </h2>
-          <div className="flex items-baseline justify-end lg:justify-between">
-            <span aria-hidden className="hidden text-[20px] font-light text-[#17191a]/40 lg:inline">+</span>
+          <div className="flex items-baseline justify-end">
             <Link href="/shop/catalog" className="group inline-flex items-center gap-1.5 text-[12px] uppercase tracking-[0.1em] text-[#17191a] transition-colors hover:text-[#46131E]">
               {lang === "en" ? "View all" : "Смотреть все"}
               <span className="inline-block transition-transform duration-300 group-hover:-rotate-45">→</span>
