@@ -7,7 +7,6 @@ import TeamIntro from "@/components/pages/TeamIntro";
 import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
-import { ShopStory } from "@/components/shop/ShopShowcase";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -254,18 +253,6 @@ export default function SalonPage() {
           обёртки: иначе отступ первого блока «проваливается» и видна полоса фона. */}
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white page-end">
-        {/* 2 — О салоне: слайд-шоу фото + текст, как второй блок главной.
-            Текст — черновик на согласование с заказчицей (по словам основательницы и фактам). Фото — временные. */}
-        <ShopStory
-          photos={["/assets/alis/img_2745.jpg", "/assets/alis/img_0569.jpg", "/assets/tild3638-373_-2___1__3.jpg", "/assets/alis/img_0521.jpg", "/assets/alis/img_2672.jpg", "/assets/alis/img_1834.jpg"]}
-          title={{ ru: "Красота, которая начинается с вас", en: "Beauty that begins with you" }}
-          text={{
-            ru: "Мастера, влюблённые в своё дело, внимание к каждой детали и атмосфера, в которой хочется задержаться. Ждём вас каждый день с 9:00 до 21:00, а на первый визит дарим 500 бонусных рублей.",
-            en: "Artists in love with their craft, attention to every detail and an atmosphere you won’t want to leave. We welcome you every day from 9:00 to 21:00 — with 500 bonus roubles on your first visit.",
-          }}
-          alt={{ ru: "Салон красоты ÁLIS BEAUTY", en: "ÁLIS BEAUTY beauty salon" }}
-        />
-
 
         {/* Галерея работ — сразу под блоком «О салоне» (фото временные) */}
         <PhotoMarquee sectionId="gallery" />
