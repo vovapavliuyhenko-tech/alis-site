@@ -11,46 +11,48 @@ type Loc = { ru: string; en: string };
 
 export type BenefitPoint = { title: Loc; desc: Loc; img: string };
 
+// Тексты переписаны от боли клиента (черновик на согласование): только факты со старого сайта,
+// порядок — от главной боли к заявке: образ целиком → выезд с оборудованием → гости → опыт → пакеты.
 const POINTS: BenefitPoint[] = [
   {
-    title: { ru: "Мастерство и опыт", en: "Skill & experience" },
+    title: { ru: "Весь образ — одна команда", en: "One team, the whole look" },
     desc: {
-      ru: "Благодаря экспертности в индустрии красоты мы с лёгкостью закрываем потребности наших клиентов.",
-      en: "Thanks to our expertise in the beauty industry, we easily meet our clients' needs.",
-    },
-    img: "/assets/alis/img_0521.jpg",
-  },
-  {
-    title: { ru: "Большая команда", en: "A large team" },
-    desc: {
-      ru: "Можем подготовить большое количество гостей на вашем мероприятии и выехать командой стилистов в любую локацию.",
-      en: "We can get a large number of guests ready at your event and send a team of stylists to any location.",
-    },
-    img: "/assets/alis/img_0569.jpg",
-  },
-  {
-    title: { ru: "Полный образ «под ключ»", en: "Turnkey full look" },
-    desc: {
-      ru: "Разнообразный штат специалистов берёт на себя все заботы по подбору макияжа, укладки, одежды и прочего в день вашего мероприятия.",
-      en: "A diverse team of specialists takes care of makeup, hair, outfit and everything else on the day of your event.",
+      ru: "Не нужно искать визажиста, парикмахера и стилиста по отдельности: макияж, укладку и образ берём на себя в день события.",
+      en: "No need to find a makeup artist, hairstylist and stylist separately: we handle makeup, hair and the look on the day of your event.",
     },
     img: "/assets/alis/img_1834.jpg",
   },
   {
-    title: { ru: "Коммерческие предложения", en: "Commercial packages" },
+    title: { ru: "Приезжаем со всем необходимым", en: "We bring everything" },
     desc: {
-      ru: "Комфортные пакеты услуг для мероприятий разной величины, бизнес- и творческих интеграций.",
-      en: "Convenient service packages for events of any size, business and creative collaborations.",
-    },
-    img: "/assets/alis/img_2455.jpg",
-  },
-  {
-    title: { ru: "Качественное оборудование", en: "Quality equipment" },
-    desc: {
-      ru: "Команда выезжает на место с полным набором необходимого оборудования: от профессионального света до отпаривателя одежды.",
-      en: "The team arrives fully equipped: from professional lighting to a garment steamer.",
+      ru: "Никакого плохого света и мятого платья: привозим профессиональный свет и отпариватель туда, где вам удобно.",
+      en: "No bad lighting or creased dress: we bring professional lighting and a steamer wherever suits you.",
     },
     img: "/assets/alis/img_2672.jpg",
+  },
+  {
+    title: { ru: "Готовим и вас, и гостей", en: "You and your guests" },
+    desc: {
+      ru: "Выезжаем командой стилистов и готовим к мероприятию большое количество гостей.",
+      en: "We arrive as a team of stylists and get a large number of guests ready for the event.",
+    },
+    img: "/assets/alis/img_0569.jpg",
+  },
+  {
+    title: { ru: "Образ, который вы задумали", en: "The look you envisioned" },
+    desc: {
+      ru: "Опыт и экспертность в индустрии красоты: понимаем задачу с полуслова и воплощаем её.",
+      en: "Experience and expertise in the beauty industry: we understand the brief and bring it to life.",
+    },
+    img: "/assets/alis/img_0521.jpg",
+  },
+  {
+    title: { ru: "Понятные пакеты", en: "Clear packages" },
+    desc: {
+      ru: "Готовые пакеты услуг для событий разного масштаба, бизнес- и творческих проектов.",
+      en: "Ready-made service packages for events of any scale, business and creative projects.",
+    },
+    img: "/assets/alis/img_2455.jpg",
   },
 ];
 
