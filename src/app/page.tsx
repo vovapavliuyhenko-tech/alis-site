@@ -8,6 +8,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import Reviews from "@/components/Reviews";
 import PhotoBanner from "@/components/pages/PhotoBanner";
 import BonusOffer from "@/components/pages/BonusOffer";
+import FinalChoice from "@/components/pages/FinalChoice";
 import ConciergeBenefits, { type BenefitPoint } from "@/components/pages/ConciergeBenefits";
 
 // Клон massage-romanova.ru — стиль эталона + прежние блоки ÁLIS.
@@ -61,6 +62,8 @@ export default function Home() {
         <BonusOffer />
         {/* Услуги салона — карточки с фото */}
         <ServiceBento />
+        {/* Финальный экран — выбор: салон / выезд / связаться */}
+        <FinalChoice />
       </div>
       <Footer />
     </main>
