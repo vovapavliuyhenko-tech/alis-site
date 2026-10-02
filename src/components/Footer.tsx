@@ -22,9 +22,7 @@ const SOCIALS = [
   { label: { ru: "Консьерж-сервис: @alisbeauty.global", en: "Concierge service: @alisbeauty.global" }, href: "https://www.instagram.com/alisbeauty.global" },
 ];
 
-// light — эксперимент заказчицы для главной: белый фон, чёрный текст, тонкая обводка, без кнопки
-// «Оформить визит». По умолчанию — прежний чёрный подвал (вернуть: убрать проп light на главной).
-export default function Footer({ light = false }: { light?: boolean } = {}) {
+export default function Footer() {
   const { lang } = useLang();
   const pathname = usePathname();
   const en = lang === "en";
@@ -33,17 +31,12 @@ export default function Footer({ light = false }: { light?: boolean } = {}) {
   const PHONE_MAIN = concierge ? PHONE_SERVICE : PHONE_SALON;
   const PHONE_SECOND = concierge ? PHONE_SALON : PHONE_SERVICE;
   const t = (ru: string, e: string) => (en ? e : ru);
-  // Классы светлого варианта (для сборщика Tailwind, т.к. собираются на лету):
-  // text-[#17191a]/75 text-[#17191a]/85 hover:text-[#17191a] bg-white text-[#17191a] border-[#17191a]/10 text-[#17191a]/70 decoration-[#17191a]/25 text-[#17191a]/65 text-[#17191a]/45
-  // Перекраска для светлого варианта: фон чёрный → белый, кремовый текст → чёрный
-  const k = (c: string) => (light ? c.split("bg-[#17191a]").join("bg-white").split("#f4efe6").join("#17191a") : c);
   const secondNote = concierge ? t("салон красоты", "beauty salon") : t("консьерж-сервис", "concierge service");
 
   // Подписи колонок — мелкие капсом, ссылки — с тонким подчёркиванием на наведении
-  const title = k("mb-5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/75");
-  const link = k(
-    "relative block w-fit text-[14px] text-[#f4efe6]/85 lg:text-[12.5px] transition-colors hover:text-[#f4efe6] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-[#46131E] after:transition-all after:duration-300 hover:after:w-full",
-  );
+  const title = "mb-5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/75";
+  const link =
+    "relative block w-fit text-[14px] text-[#f4efe6]/85 lg:text-[12.5px] transition-colors hover:text-[#f4efe6] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-[#46131E] after:transition-all after:duration-300 hover:after:w-full";
   const MENU = [
     { label: t("Салон красоты", "Beauty salon"), href: "/salon" },
     { label: t("Консьерж-сервис", "Concierge service"), href: "/concierge" },
@@ -64,23 +57,21 @@ export default function Footer({ light = false }: { light?: boolean } = {}) {
   ];
 
   return (
-    <footer id="footer" className={k("relative z-20 -mt-10 overflow-hidden rounded-t-[40px] bg-[#17191a] text-[#f4efe6]") + (light ? " border border-b-0 border-[#17191a]/80" : "")}>
+    <footer id="footer" className="relative z-20 -mt-10 overflow-hidden rounded-t-[40px] bg-[#17191a] text-[#f4efe6]">
       <div className="relative z-10 mx-auto w-[96%] max-w-[1760px] pb-8 pt-16 lg:pb-10 lg:pt-20">
         {/* Верхний ряд: логотип слева, кнопка записи справа */}
-        <div className={k("flex flex-col gap-6 border-b border-[#f4efe6]/10 pb-10 sm:flex-row sm:items-center sm:justify-between lg:pb-12")}>
+        <div className="flex flex-col gap-6 border-b border-[#f4efe6]/10 pb-10 sm:flex-row sm:items-center sm:justify-between lg:pb-12">
           <a href="/" aria-label="ÁLIS BEAUTY" className="transition-opacity hover:opacity-70">
-            <LogoWord variant={light ? "wine" : "cream"} className="h-[22px] w-auto lg:h-[26px]" />
+            <LogoWord variant="cream" className="h-[22px] w-auto lg:h-[26px]" />
           </a>
-          {!light && (
-            <a
-              href={YCLIENTS}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={k("alis-pulse inline-flex w-full items-center justify-center rounded-xl px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] border border-white/70 bg-white/15 text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a] sm:w-auto")}
-            >
-              {t("Оформить визит", "Book a visit")}
-            </a>
-            )}
+          <a
+            href={YCLIENTS}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="alis-pulse inline-flex w-full items-center justify-center rounded-xl px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] border border-white/70 bg-white/15 text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a] sm:w-auto"
+          >
+            {t("Оформить визит", "Book a visit")}
+          </a>
         </div>
 
         {/* Колонки + крупный контакт справа */}
@@ -103,7 +94,7 @@ export default function Footer({ light = false }: { light?: boolean } = {}) {
             <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className={`${link} max-w-[16rem] leading-relaxed`}>
               {ADDRESS[lang]}
             </a>
-            <p className={k("mt-3 text-[13px] leading-relaxed text-[#f4efe6]/70 lg:text-[12px]")}>{HOURS[lang]}</p>
+            <p className="mt-3 text-[13px] leading-relaxed text-[#f4efe6]/70 lg:text-[12px]">{HOURS[lang]}</p>
             <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className={`${link} mt-4`}>
               {t("Построить маршрут →", "Get directions →")}
             </a>
@@ -114,7 +105,7 @@ export default function Footer({ light = false }: { light?: boolean } = {}) {
             <p className={title}>{t("Меню", "Menu")}</p>
             <div className="grid grid-cols-2 gap-x-8 gap-y-3 lg:gap-y-2">
               {MENU.map((m) => (
-                <a key={m.href} href={m.href} {...(m.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${link} sm:whitespace-nowrap`}>{m.label}</a>
+                <a key={m.href} href={m.href} {...(m.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${link} whitespace-nowrap`}>{m.label}</a>
               ))}
             </div>
           </div>
@@ -122,34 +113,34 @@ export default function Footer({ light = false }: { light?: boolean } = {}) {
           {/* Телефоны + email справа, крупно */}
           <div className="sm:col-span-2 lg:col-span-1 lg:text-right">
             <p className={title}>{concierge ? t("Консьерж-сервис", "Concierge service") : t("Салон красоты", "Beauty salon")}</p>
-            <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className={k("block whitespace-nowrap font-display text-[30px] leading-none tracking-[0.02em] text-[#f4efe6] transition-opacity hover:opacity-70 lg:text-[40px]")}>
+            <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[30px] leading-none tracking-[0.02em] text-[#f4efe6] transition-opacity hover:opacity-70 lg:text-[40px]">
               {PHONE_MAIN}
             </a>
-            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className={k("mt-3 block text-[14px] text-[#f4efe6]/75 lg:text-[12.5px] transition-colors hover:text-[#f4efe6]")}>
+            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[14px] text-[#f4efe6]/75 lg:text-[12.5px] transition-colors hover:text-[#f4efe6]">
               {PHONE_SECOND} — {secondNote}
             </a>
-            <a href={`mailto:${EMAIL}`} className={k("mt-5 inline-block text-[14px] text-[#f4efe6]/85 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#46131E] lg:text-[15px]")}>
+            <a href={`mailto:${EMAIL}`} className="mt-5 inline-block text-[14px] text-[#f4efe6]/85 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#46131E] lg:text-[15px]">
               {EMAIL}
             </a>
           </div>
         </div>
 
         {/* Нижний ряд: копирайт слева, документы в одну строку справа */}
-        <div className={k("mt-12 flex flex-col gap-4 border-t border-[#f4efe6]/10 pt-6 text-[12px] text-[#f4efe6]/65 md:flex-row md:items-center md:justify-between lg:mt-14")}>
+        <div className="mt-12 flex flex-col gap-4 border-t border-[#f4efe6]/10 pt-6 text-[12px] text-[#f4efe6]/65 md:flex-row md:items-center md:justify-between lg:mt-14">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <span>© {new Date().getFullYear()} ÁLIS BEAUTY. {t("Все права защищены", "All rights reserved")}</span>
-            <a href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer" className={k("transition-colors hover:text-[#f4efe6]")}>
+            <a href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#f4efe6]">
               {t("Разработка сайта", "Website by")}
             </a>
           </div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             {LEGAL.map((l) => (
-              <a key={l.href} href={l.href} className={k("transition-colors hover:text-[#f4efe6]")}>{l.label}</a>
+              <a key={l.href} href={l.href} className="transition-colors hover:text-[#f4efe6]">{l.label}</a>
             ))}
           </div>
         </div>
         {/* Обязательная сноска к ссылкам на соцсеть (отмечены *) */}
-        <p className={k("mt-5 text-[11px] leading-relaxed text-[#f4efe6]/45")}>
+        <p className="mt-5 text-[11px] leading-relaxed text-[#f4efe6]/45">
           {t(
             "* Instagram является продуктом компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена на территории Российской Федерации.",
             "* Instagram is a product of Meta Platforms Inc., whose activities are recognised as extremist and banned in the Russian Federation.",

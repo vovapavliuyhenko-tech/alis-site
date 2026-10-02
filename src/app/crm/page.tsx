@@ -39,7 +39,6 @@ const KIND: Record<string, string> = {
   vacancy: "Вакансии · отклик",
   chat: "Онлайн-консьерж · чат",
   shop: "Магазин · заказ",
-  bonus: "Главная · 500 бонусов на первый визит",
   other: "Заявка с сайта",
 };
 const KIND_TABS: [string, string][] = [
@@ -50,7 +49,6 @@ const KIND_TABS: [string, string][] = [
   ["coop_business", "Сотрудн. · бизнес"],
   ["vacancy", "Вакансии"],
   ["shop", "Магазин"],
-  ["bonus", "Бонусы"],
 ];
 
 const phoneFmt = (d: string) =>
