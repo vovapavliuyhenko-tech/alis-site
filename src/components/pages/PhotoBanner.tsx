@@ -3,7 +3,7 @@
 // медленнее страницы), затемнение снизу, по центру внизу — подпись, заголовок и
 // «стеклянная» кнопка. Используется в магазине (сертификат) и на главной (консьерж-сервис).
 // stacked — вариант для главной («Выездной сервис»): надзаголовок и заголовок НАД плашкой,
-// текст и кнопка ПОД ней; в плашку можно поставить фото или видео (video — путь к .mp4,
+// текст и кнопка — внутри плашки внизу; в плашку можно поставить фото или видео (video — путь к .mp4,
 // photo тогда служит обложкой видео).
 import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
@@ -62,24 +62,25 @@ export default function PhotoBanner({
           <p className="!text-[30px] font-light uppercase leading-[1.1] tracking-[0.04em] text-[#17191a] sm:!text-[40px] lg:!text-[56px]">{label[lang]}</p>
           <h2 className="mt-5 !text-[18px] !font-light !leading-[1.45] text-[#17191a] lg:mt-6 lg:!text-[24px]">{title[lang]}</h2>
         </div>
-        {/* Широкая плашка: видео (если задано) или фото, с тем же параллаксом */}
-        <div className="relative mx-auto mt-10 h-[56svh] min-h-[360px] w-[96%] max-w-[1760px] overflow-hidden rounded-[12px] lg:mt-14 lg:h-[70svh]">
+        {/* Широкая плашка: видео (если задано) или фото, с тем же параллаксом; текст и кнопка — внутри, внизу */}
+        <div className="relative mx-auto mt-10 flex h-[60svh] min-h-[420px] w-[96%] max-w-[1760px] items-end justify-center overflow-hidden rounded-[12px] text-center text-white lg:mt-14 lg:h-[70svh]">
           {video ? (
             <video src={video} poster={photo} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" />
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
             <img ref={img} src={photo} alt={title[lang]} loading="lazy" className="absolute left-0 top-[-25%] h-[150%] w-full object-cover will-change-transform" />
           )}
-        </div>
-        <div className="r-reveal mx-auto mt-8 flex w-[92%] max-w-[680px] flex-col items-center text-center lg:mt-10">
-          {text && <p className="!text-[15px] leading-[1.6] text-[#17191a]/80 lg:!text-[16px]">{text[lang]}</p>}
-          <a
-            href={button.href}
-            {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="mt-7 inline-flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] px-10 py-4 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:w-auto"
-          >
-            {button.label[lang]}
-          </a>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+          <div data-fab-avoid className="r-reveal relative z-10 max-w-[520px] px-6 pb-10 lg:pb-14">
+            {text && <p className="!text-[13px] leading-[1.6] text-white/90 [text-shadow:0_1px_12px_rgba(0,0,0,.35)] lg:!text-[14px]">{text[lang]}</p>}
+            <a
+              href={button.href}
+              {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              className="mt-6 inline-flex items-center justify-center rounded-[12px] border border-white/70 bg-white/15 px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#17191a]"
+            >
+              {button.label[lang]}
+            </a>
+          </div>
         </div>
       </section>
     );
