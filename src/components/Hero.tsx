@@ -22,8 +22,8 @@ export default function Hero() {
   const t = (ru: string, e: string) => (en ? e : ru);
 
   const BUTTONS = [
-    { label: t("Оформить визит", "Book a visit"), note: t("Салон красоты", "Beauty salon"), href: YCLIENTS },
-    { label: t("Рассчитать выезд", "Get a travel quote"), note: t("Международная beauty-команда", "International beauty team"), href: OUTCALL },
+    { label: t("Оформить визит", "Book a visit"), note: t("Салон красоты", "Beauty salon"), href: YCLIENTS, light: true },
+    { label: t("Рассчитать выезд", "Get a travel quote"), note: t("Международная beauty-команда", "International beauty team"), href: OUTCALL, light: false },
   ];
 
   return (
@@ -63,7 +63,7 @@ export default function Hero() {
             <a
               href={b.href}
               {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="flex w-full items-center justify-center rounded-xl border border-white/70 bg-white/[0.18] py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a] lg:py-4 lg:text-[14px]"
+              className={`flex w-full items-center justify-center rounded-xl border py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] backdrop-blur-md transition-colors duration-300 lg:py-4 lg:text-[14px] ${b.light ? "border-white bg-white text-[#17191a] hover:bg-white/[0.18] hover:text-white" : "border-white/70 bg-white/[0.18] text-white hover:border-white hover:bg-white hover:text-[#17191a]"}`}
             >
               {b.label}
             </a>
