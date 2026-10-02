@@ -34,10 +34,8 @@ export default function Hero() {
           по центру — кадр целиком (без сильного приближения). На телефоне — обычный cover. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={BG_PHOTO} alt="" aria-hidden className="absolute inset-0 -z-30 hidden h-full w-full scale-110 object-cover blur-2xl brightness-90 md:block" />
-      <div className="absolute inset-0 -z-20 flex justify-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} className="h-full w-full object-cover object-[50%_55%] will-change-transform md:w-auto md:max-w-none md:[mask-image:linear-gradient(to_right,transparent,black_18%,black_82%,transparent)]" />
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} className="absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-[50%_55%] will-change-transform md:object-contain md:object-center" />
       {/* Затемнение: сверху — под шапку, снизу — под текст (фото светлое, текст белый) */}
       <div
         aria-hidden
