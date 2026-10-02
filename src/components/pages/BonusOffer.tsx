@@ -60,12 +60,16 @@ export default function BonusOffer() {
 
   return (
     <section ref={box} id="bonus" className="scroll-mt-24 bg-white section-y">
-      <div className="r-reveal flex w-full flex-col items-center rounded-[28px] bg-[#f6f4f1] px-6 py-16 text-center lg:py-24">
-        <p className="text-[12px] uppercase tracking-[0.18em] text-[#17191a]/60">{en ? "A gift from ALIS BEAUTY" : "Комплимент от ALIS BEAUTY"}</p>
-        <p aria-hidden className="mt-6 font-display !text-[56px] font-extralight leading-none tracking-[0.01em] text-[#17191a] tabular-nums sm:!text-[72px] lg:!text-[96px]">
-          {n}<span className="ml-1.5 align-top !text-[24px] sm:!text-[30px] lg:!text-[36px]">₽</span>
-        </p>
-        <h2 className="mt-4 text-[#17191a]">{en ? "500 bonus roubles on your first visit" : "500 бонусных рублей на первый визит"}</h2>
+      {/* Слева — крупная «500 ₽», справа — заголовок, текст и форма (на телефоне — друг под другом) */}
+      <div className="r-reveal grid w-full items-center gap-8 rounded-[28px] bg-[#f6f4f1] px-6 py-16 text-center md:grid-cols-2 md:gap-12 md:px-12 md:text-left lg:px-24 lg:py-24">
+        <div className="flex flex-col items-center md:items-start">
+          <p className="text-[12px] uppercase tracking-[0.18em] text-[#17191a]/60">{en ? "A gift from ALIS BEAUTY" : "Комплимент от ALIS BEAUTY"}</p>
+          <p aria-hidden className="mt-4 font-display !text-[72px] font-extralight leading-none tracking-[0.01em] text-[#17191a] tabular-nums sm:!text-[96px] lg:!text-[150px]">
+            {n}<span className="ml-1.5 align-top !text-[28px] sm:!text-[36px] lg:!text-[52px]">₽</span>
+          </p>
+        </div>
+        <div className="flex flex-col items-center md:items-start">
+        <h2 className="text-[#17191a]">{en ? "500 bonus roubles on your first visit" : "500 бонусных рублей на первый визит"}</h2>
         {state === "done" ? (
           <p className="mt-4 !text-[15px] leading-[1.6] text-[#17191a]">
             {en ? "Thank you! The bonuses will be in your account when you come." : "Спасибо! Бонусы будут на счёте, когда вы придёте."}
@@ -117,6 +121,7 @@ export default function BonusOffer() {
             </p>
           </>
         )}
+        </div>
       </div>
     </section>
   );
