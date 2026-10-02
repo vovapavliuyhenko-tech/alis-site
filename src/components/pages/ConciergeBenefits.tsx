@@ -128,7 +128,7 @@ export default function ConciergeBenefits({ points = POINTS }: { points?: Benefi
                     {pt.title[lang]}
                   </h3>
                   <p
-                    className={`max-w-[460px] !text-[15px] leading-[1.55] text-white transition-all duration-500 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] lg:!text-[16px] ${
+                    className={`max-w-[460px] !text-[13px] leading-[1.55] text-white transition-all duration-500 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] lg:!text-[14px] ${
                       on ? "mt-3 max-h-40 translate-y-0 opacity-100 delay-300" : "max-h-0 translate-y-4 opacity-0"
                     }`}
                   >
