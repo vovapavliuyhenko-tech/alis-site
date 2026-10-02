@@ -8,7 +8,7 @@ import { Pool } from "pg";
 export const STATUSES = ["new", "work", "booked", "done", "cancelled"] as const;
 export type Status = (typeof STATUSES)[number];
 
-export const KINDS = ["concierge", "coop_private", "coop_business", "vacancy", "chat", "shop", "other"] as const;
+export const KINDS = ["concierge", "coop_private", "coop_business", "vacancy", "chat", "shop", "bonus", "other"] as const;
 export type Kind = (typeof KINDS)[number];
 
 export type Lead = {
@@ -84,6 +84,7 @@ export const KIND_LABEL: Record<Kind, string> = {
   vacancy: "Вакансии · отклик",
   chat: "Онлайн-консьерж · чат",
   shop: "Магазин · заказ",
+  bonus: "Главная · 500 бонусов на первый визит",
   other: "Заявка с сайта",
 };
 

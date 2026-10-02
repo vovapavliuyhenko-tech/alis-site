@@ -7,6 +7,7 @@ import ServiceBento from "@/components/pages/ServiceBento";
 import ScrollReveal from "@/components/ScrollReveal";
 import Reviews from "@/components/Reviews";
 import PhotoBanner from "@/components/pages/PhotoBanner";
+import BonusOffer from "@/components/pages/BonusOffer";
 import ConciergeBenefits, { type BenefitPoint } from "@/components/pages/ConciergeBenefits";
 
 // Клон massage-romanova.ru — стиль эталона + прежние блоки ÁLIS.
@@ -56,6 +57,8 @@ export default function Home() {
           }}
           button={{ label: { ru: "Рассчитать выезд за 1 минуту", en: "Get a travel quote in 1 minute" }, href: "/concierge#booking" }}
         />
+        {/* Комплимент от ALIS BEAUTY — 500 бонусов, номер уходит в CRM */}
+        <BonusOffer />
         {/* Услуги салона — карточки с фото */}
         <ServiceBento />
       </div>
