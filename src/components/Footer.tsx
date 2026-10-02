@@ -4,7 +4,6 @@
 // Названия соцсетей не пишем — подписи «Салон красоты» / «Консьерж-сервис». Двуязычно.
 import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
-import { LogoWord } from "@/components/Logo";
 
 const PHONE_SALON = "+7 988 888 77 58";
 const PHONE_SERVICE = "+7 988 888 77 28";
@@ -58,15 +57,8 @@ export default function Footer() {
   return (
     <footer id="footer" className="relative z-20 -mt-10 overflow-hidden rounded-t-[40px] bg-[#17191a] text-[#f4efe6]">
       <div className="relative z-10 mx-auto w-[96%] max-w-[1760px] pb-8 pt-16 lg:pb-10 lg:pt-20">
-        {/* Верхний ряд: логотип по центру, крупнее (кнопка «Оформить визит» убрана по просьбе заказчицы) */}
-        <div className="flex justify-center border-b border-[#f4efe6]/10 pb-10 lg:pb-12">
-          <a href="/" aria-label="ÁLIS BEAUTY" className="transition-opacity hover:opacity-70">
-            <LogoWord variant="cream" className="h-[28px] w-auto sm:h-[34px] lg:h-[44px]" />
-          </a>
-        </div>
-
         {/* Колонки + крупный контакт справа */}
-        <div className="grid gap-10 pt-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.6fr_auto] lg:gap-10 lg:pt-12">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.6fr_auto] lg:gap-10">
           {/* Соцсети */}
           <div>
             <p className={title}>{t("Социальные сети", "Social media")}</p>
