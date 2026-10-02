@@ -59,7 +59,8 @@ const POINTS: BenefitPoint[] = [
 const AUTO_MS = 4500;
 
 // points — свои пункты (например, для страницы салона); по умолчанию — преимущества консьержа
-export default function ConciergeBenefits({ points = POINTS }: { points?: BenefitPoint[] }) {
+// title — необязательный заголовок над панелями (например, «Почему выбирают» на главной)
+export default function ConciergeBenefits({ points = POINTS, title, sectionId = "about" }: { points?: BenefitPoint[]; title?: Loc; sectionId?: string }) {
   const { lang } = useLang();
 
   // Панели преимуществ: авто-листание, пауза при наведении
@@ -72,8 +73,9 @@ export default function ConciergeBenefits({ points = POINTS }: { points?: Benefi
   }, [active, paused, points.length]);
 
   return (
-    <section id="about" className="scroll-mt-24 overflow-hidden bg-white section-y">
+    <section id={sectionId} className="scroll-mt-24 overflow-hidden bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
+        {title && <h2 className="r-reveal mb-8 text-center text-[#17191a] lg:mb-10">{title[lang]}</h2>}
         {/* Пять преимуществ — раскрывающиеся фото-панели */}
         <div
           className="flex flex-col gap-2 lg:h-[min(520px,62vh)] lg:flex-row lg:gap-3"
@@ -129,13 +131,13 @@ export default function ConciergeBenefits({ points = POINTS }: { points?: Benefi
                   >
                     {pt.title[lang]}
                   </h3>
-                  <p
+                  {pt.desc[lang] && <p
                     className={`max-w-[460px] !text-[13px] leading-[1.55] text-white transition-all duration-500 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] lg:!text-[14px] ${
                       on ? "mt-3 max-h-40 translate-y-0 opacity-100 delay-300" : "max-h-0 translate-y-4 opacity-0"
                     }`}
                   >
                     {pt.desc[lang]}
-                  </p>
+                  </p>}
                 </div>
 
                 {/* Полоса таймера авто-листания */}

@@ -9,6 +9,7 @@ import ServiceBento from "@/components/pages/ServiceBento";
 import ScrollReveal from "@/components/ScrollReveal";
 import Reviews from "@/components/Reviews";
 import PhotoBanner from "@/components/pages/PhotoBanner";
+import ConciergeBenefits, { type BenefitPoint } from "@/components/pages/ConciergeBenefits";
 
 // Клон massage-romanova.ru — стиль эталона + прежние блоки ÁLIS.
 
@@ -37,6 +38,15 @@ const VISIT_STEPS: Stage[] = [
     photo: "/assets/alis/img_0569.jpg",
   },
 ];
+// «Почему выбирают ALIS BEAUTY» — пункты заказчицы, в формате фото-панелей как на странице
+// консьерж-сервиса. Описаний нет (только заголовки). Фото — временные.
+const WHY: BenefitPoint[] = [
+  { title: { ru: "Предсказуемый качественный результат", en: "Predictable, high-quality results" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_2672.jpg" },
+  { title: { ru: "Опытная команда специалистов", en: "An experienced team of specialists" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_3283.jpg" },
+  { title: { ru: "Профессиональный сервис по высоким стандартам бренда", en: "Professional service to the brand’s high standards" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_8578.jpg" },
+  { title: { ru: "Работа в 4–6 рук", en: "Working with 4–6 hands at once" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_2746.jpg" },
+];
+
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
@@ -50,6 +60,8 @@ export default function Home() {
       <div className="relative z-10 bg-white page-end">
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
+        {/* Почему выбирают ALIS BEAUTY */}
+        <ConciergeBenefits points={WHY} sectionId="why" title={{ ru: "Почему выбирают ALIS BEAUTY", en: "Why choose ALIS BEAUTY" }} />
         {/* Порядок: работы мастеров → выезд (консьерж) → как записаться в салон → услуги → контакты (подвал) */}
         <PhotoMarquee />
         {/* Отзывы гостей — перед баннером консьерж-сервиса */}
