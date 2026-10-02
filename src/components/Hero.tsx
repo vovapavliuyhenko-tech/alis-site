@@ -11,7 +11,7 @@ const OUTCALL = "/concierge#booking"; // «Рассчитать выезд» —
 
 // Проба светлого кадра (заказчица хочет посмотреть, как будет на светлом). Прежнее фото:
 // "/assets/alis/img_2745.jpg"
-const BG_PHOTO = "/assets/alis/img_6048.jpg"; // платок ÁLIS BEAUTY (пробовали: img_2751, img_6011, img_2749)
+const BG_PHOTO = "/assets/alis/img_5910.webp"; // волосы с гребнем ÁLIS BEAUTY (пробовали: img_2751, img_6011, img_2749, img_6048)
 
 export default function Hero() {
   const { lang } = useLang();
@@ -31,7 +31,7 @@ export default function Hero() {
     <div className="bg-white">
     <section className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#d9d7d3] text-white">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} className="absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-[50%_72%] will-change-transform" />
+      <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} className="absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-[50%_55%] will-change-transform" />
       {/* Затемнение: сверху — под шапку, снизу — под текст (фото светлое, текст белый) */}
       <div
         aria-hidden
