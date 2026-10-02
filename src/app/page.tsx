@@ -54,13 +54,23 @@ export default function Home() {
         <PhotoMarquee />
         {/* Отзывы гостей — перед баннером консьерж-сервиса */}
         <Reviews />
-        {/* Баннер консьерж-сервиса (возвращён) */}
+        {/* «Выездной сервис» — баннер консьерж-сервиса (тексты заказчицы). Чтобы поставить видео:
+            video="/assets/....mp4" (photo станет обложкой видео) */}
         <PhotoBanner
+          stacked
           photo="/assets/alis/img_6009.jpg"
-          label={{ ru: "ÁLIS BEAUTY CONCIERGE", en: "ÁLIS BEAUTY CONCIERGE" }}
-          title={{ ru: "Салон красоты там, где вам удобно", en: "A beauty salon wherever suits you" }}
-          button={{ label: { ru: "Всё о консьерж-сервисе", en: "About the concierge service" }, href: "/concierge" }}
+          label={{ ru: "Выездной сервис", en: "Outcall service" }}
+          title={{
+            ru: "Свадьба в Ереване, съёмка в Москве, ужин в Каннах — международная команда ALIS BEAUTY уже в пути.",
+            en: "A wedding in Yerevan, a shoot in Moscow, a dinner in Cannes — the international ALIS BEAUTY team is already on its way.",
+          }}
+          text={{
+            ru: "Вы выбираете место, мы приводим специалистов, тайминг и спокойствие — вам остаётся только наслаждаться днём.",
+            en: "You choose the place; we bring the specialists, the timing and the peace of mind — all that’s left is to enjoy your day.",
+          }}
+          button={{ label: { ru: "Рассчитать выезд за 1 минуту", en: "Get a travel quote in 1 minute" }, href: "/concierge#booking" }}
         />
+
         {/* Как записаться в салон — 3 шага (как этапы на странице консьерж-сервиса) */}
         <ConciergeStages stages={VISIT_STEPS} sectionId="how" title={null} stepLabel={{ ru: "Шаг", en: "Step" }} />
         {/* Услуги салона — карточки с фото */}
