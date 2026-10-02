@@ -12,7 +12,7 @@ type Loc = { ru: string; en: string };
 export type RequestField = { key: string; label: Loc; required: boolean; textarea?: boolean; type?: string };
 
 // Маска телефона: +7 (XXX) XXX-XX-XX по мере ввода цифр.
-function formatPhone(v: string): string {
+export function formatPhone(v: string): string {
   let d = v.replace(/\D/g, "");
   if (d.startsWith("8")) d = "7" + d.slice(1);
   if (!d.startsWith("7")) d = "7" + d;

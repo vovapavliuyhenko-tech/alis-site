@@ -5,6 +5,7 @@
 // Номер уходит в CRM (тип «bonus») и в Telegram.
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
+import { formatPhone } from "@/components/pages/RequestForm";
 
 export default function BonusOffer() {
   const { lang } = useLang();
@@ -37,7 +38,7 @@ export default function BonusOffer() {
 
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (phone.replace(/\D/g, "").length < 10) {
+    if (phone.replace(/\D/g, "").length < 11) {
       setErr(en ? "Enter your phone number" : "Введите номер телефона");
       return;
     }
@@ -85,7 +86,18 @@ export default function BonusOffer() {
                 autoComplete="tel"
                 placeholder="+7 (___) ___-__-__"
                 value={phone}
-                onChange={(e) => { setPhone(e.target.value); if (err) setErr(""); }}
+                // Маска +7 (XXX) XXX-XX-XX: цифры раскладываются сами, «8» в начале → «+7»
+                onFocus={() => { if (!phone) setPhone("+7 ("); }}
+                onBlur={() => { if (phone.replace(/\D/g, "").length <= 1) setPhone(""); }}
+                onChange={(e) => {
+                  let v = e.target.value;
+                  const d = v.replace(/\D/g, "");
+                  // Вставили полный номер (8… или +7…) в поле с готовым «+7 (» — убираем лишнюю 7
+                  if (d.length > 11 && (d.startsWith("78") || d.startsWith("77"))) v = d.slice(1);
+                  setPhone(d.length === 0 ? "" : formatPhone(v));
+                  if (err) setErr("");
+                }}
+                maxLength={18}
                 className="h-[52px] w-full shrink-0 rounded-[12px] border border-[#17191a]/20 bg-white px-5 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#17191a] sm:w-auto sm:flex-1"
               />
               <button
