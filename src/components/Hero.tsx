@@ -11,7 +11,7 @@ const OUTCALL = "/concierge#booking"; // «Рассчитать выезд» —
 
 // Проба светлого кадра (заказчица хочет посмотреть, как будет на светлом). Прежнее фото:
 // "/assets/alis/img_2745.jpg"
-const BG_PHOTO = "/assets/alis/img_6011.jpg"; // проба №2 (до этого — img_2751.jpg)
+const BG_PHOTO = "/assets/alis/img_2749.jpg"; // проба №3 (до этого — img_2751.jpg, img_6011.jpg)
 
 export default function Hero() {
   const { lang } = useLang();
