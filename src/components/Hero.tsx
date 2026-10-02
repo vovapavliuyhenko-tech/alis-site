@@ -67,6 +67,8 @@ export default function Hero() {
             >
               {b.label}
             </a>
+            {/* Подпись под кнопкой — тихо, без капса и контраста */}
+            <span className="mt-1.5 text-[11px] tracking-[0.02em] text-white/60">{b.note}</span>
           </div>
         ))}
       </div>
