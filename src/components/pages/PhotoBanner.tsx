@@ -58,9 +58,9 @@ export default function PhotoBanner({
   if (stacked) {
     return (
       <section className="bg-white section-y">
-        <div className="r-reveal mx-auto w-[92%] max-w-[980px] text-center">
-          <p className="!text-[30px] font-light uppercase leading-[1.1] tracking-[0.04em] text-[#17191a] sm:!text-[40px] lg:!text-[56px]">{label[lang]}</p>
-          <h2 className="mt-5 !text-[18px] !font-light !leading-[1.45] text-[#17191a] lg:mt-6 lg:!text-[24px]">{title[lang]}</h2>
+        <div className="r-reveal mx-auto w-[92%] max-w-[720px] text-center">
+          <p className="text-[12px] uppercase tracking-[0.18em] text-[#17191a]/60">{label[lang]}</p>
+          <h2 className="mt-3 text-[#17191a]">{title[lang]}</h2>
         </div>
         {/* Широкая плашка: видео (если задано) или фото, с тем же параллаксом; текст и кнопка — внутри, внизу */}
         <div className="relative mx-auto mt-10 flex h-[60svh] min-h-[420px] w-[96%] max-w-[1760px] items-end justify-center overflow-hidden rounded-[12px] text-center text-white lg:mt-14 lg:h-[70svh]">
