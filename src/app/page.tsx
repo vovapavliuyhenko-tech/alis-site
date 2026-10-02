@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
-import ServiceBento from "@/components/pages/ServiceBento";
 import ScrollReveal from "@/components/ScrollReveal";
 import Reviews from "@/components/Reviews";
 import PhotoBanner from "@/components/pages/PhotoBanner";
@@ -60,8 +59,8 @@ export default function Home() {
         />
         {/* Комплимент от ALIS BEAUTY — 500 бонусов, номер уходит в CRM */}
         <BonusOffer />
-        {/* Услуги салона — карточки с фото */}
-        <ServiceBento />
+        {/* Услуги салона — карточки с фото. Скрыто по просьбе (вернуть — раскомментировать):
+        <ServiceBento /> */}
         {/* Финальный экран — выбор: салон / выезд / связаться */}
         <FinalChoice />
       </div>
