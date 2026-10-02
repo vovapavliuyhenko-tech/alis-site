@@ -30,12 +30,8 @@ export default function Hero() {
     // Белая подложка — чтобы под скруглёнными нижними углами был белый фон, как у страницы
     <div className="bg-white">
     <section className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#d9d7d3] text-white">
-      {/* Вертикальное фото на широком экране: по бокам — то же фото, размытое на весь блок,
-          по центру — кадр целиком (без сильного приближения). На телефоне — обычный cover. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={BG_PHOTO} alt="" aria-hidden className="absolute inset-0 -z-30 hidden h-full w-full scale-110 object-cover blur-2xl brightness-90 md:block" />
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} className="absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-[50%_55%] will-change-transform md:object-contain md:object-center" />
+      <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} className="absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-[50%_55%] will-change-transform" />
       {/* Затемнение: сверху — под шапку, снизу — под текст (фото светлое, текст белый) */}
       <div
         aria-hidden
