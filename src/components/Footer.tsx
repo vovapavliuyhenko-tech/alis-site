@@ -9,7 +9,6 @@ import { LogoWord } from "@/components/Logo";
 const PHONE_SALON = "+7 988 888 77 58";
 const PHONE_SERVICE = "+7 988 888 77 28";
 const EMAIL = "alisbeautyclub@gmail.com";
-const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
 // Маршрут до салона в Яндекс Картах (координаты организации «Áлис Бьюти»)
 const ROUTE_URL = "https://yandex.ru/maps/?rtext=~44.704933%2C37.782638&rtt=auto";
@@ -59,18 +58,10 @@ export default function Footer() {
   return (
     <footer id="footer" className="relative z-20 -mt-10 overflow-hidden rounded-t-[40px] bg-[#17191a] text-[#f4efe6]">
       <div className="relative z-10 mx-auto w-[96%] max-w-[1760px] pb-8 pt-16 lg:pb-10 lg:pt-20">
-        {/* Верхний ряд: логотип слева, кнопка записи справа */}
-        <div className="flex flex-col gap-6 border-b border-[#f4efe6]/10 pb-10 sm:flex-row sm:items-center sm:justify-between lg:pb-12">
+        {/* Верхний ряд: логотип по центру, крупнее (кнопка «Оформить визит» убрана по просьбе заказчицы) */}
+        <div className="flex justify-center border-b border-[#f4efe6]/10 pb-10 lg:pb-12">
           <a href="/" aria-label="ÁLIS BEAUTY" className="transition-opacity hover:opacity-70">
-            <LogoWord variant="cream" className="h-[22px] w-auto lg:h-[26px]" />
-          </a>
-          <a
-            href={YCLIENTS}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="alis-pulse inline-flex w-full items-center justify-center rounded-xl px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] border border-white/70 bg-white/15 text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a] sm:w-auto"
-          >
-            {t("Оформить визит", "Book a visit")}
+            <LogoWord variant="cream" className="h-[28px] w-auto sm:h-[34px] lg:h-[44px]" />
           </a>
         </div>
 
