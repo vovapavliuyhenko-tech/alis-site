@@ -331,3 +331,8 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
   caret-color: #17191a;
   transition: background-color 9999s ease-in-out 0s;
 }
+
+/* Подарочная карта в блоке «Комплимент» (BonusOffer): медленное покачивание в 3D */
+.alis-gift-float { animation: alisGiftFloat 6s ease-in-out infinite; transform-style: preserve-3d; }
+@keyframes alisGiftFloat { 0%,100% { transform: rotateY(-10deg) rotateX(4deg) translateY(0); } 50% { transform: rotateY(10deg) rotateX(-3deg) translateY(-8px); } }
+@media (prefers-reduced-motion: reduce) { .alis-gift-float { animation: none; } }
