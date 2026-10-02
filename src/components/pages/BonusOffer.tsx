@@ -1,10 +1,10 @@
 "use client";
-// «КОМПЛИМЕНТ ОТ ALIS BEAUTY» (главная) — тексты заказчицы. Вариант B: слева подарочная карта
-// ÁLIS BEAUTY «500 ₽» — медленно покачивается в 3D и наклоняется за курсором; справа белая панель с тонкой рамкой, мелкая подпись капсом, заголовок
-// раздела, поле телефона и чёрная кнопка. Номер уходит в CRM (тип «bonus») и в Telegram.
-import { useRef, useState } from "react";
+// «КОМПЛИМЕНТ ОТ ALIS BEAUTY» (главная) — тексты заказчицы. Одна светлая полоса во всю ширину
+// со скруглением 28px (как «Выездной сервис»), всё по центру: подпись, крупная тонкая «500 ₽»
+// (набегает от 0, когда блок появляется на экране), текст и форма телефона в одну строку.
+// Номер уходит в CRM (тип «bonus») и в Telegram.
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
-import { LogoWord } from "@/components/Logo";
 
 export default function BonusOffer() {
   const { lang } = useLang();
@@ -12,16 +12,28 @@ export default function BonusOffer() {
   const [phone, setPhone] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [err, setErr] = useState("");
-  // Наклон карты за курсором (на телефоне — только плавное покачивание)
-  const card = useRef<HTMLDivElement>(null);
-  const tilt = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType !== "mouse" || !card.current) return;
-    const r = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    card.current.style.setProperty("transform", `rotateY(${x * 22}deg) rotateX(${-y * 16}deg)`);
-  };
-  const reset = () => card.current?.style.removeProperty("transform");
+  // Счётчик 0 → 500, когда блок попадает в кадр
+  const box = useRef<HTMLElement>(null);
+  const [n, setN] = useState(500);
+  useEffect(() => {
+    const el = box.current;
+    if (!el || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      const t0 = performance.now();
+      const step = (t: number) => {
+        const p = Math.min(1, (t - t0) / 1400);
+        setN(Math.round(500 * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) raf = requestAnimationFrame(step);
+      };
+      setN(0);
+      raf = requestAnimationFrame(step);
+    }, { threshold: 0.4 });
+    io.observe(el);
+    return () => { io.disconnect(); cancelAnimationFrame(raf); };
+  }, []);
 
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,65 +58,53 @@ export default function BonusOffer() {
   };
 
   return (
-    <section id="bonus" className="scroll-mt-24 bg-white section-y">
-      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] overflow-hidden rounded-[12px] border border-[#17191a]/12 md:grid-cols-2">
-        {/* Подарочная карта */}
-        <div onPointerMove={tilt} onPointerLeave={reset} className="flex min-h-[300px] items-center justify-center bg-[#f6f4f1] px-6 py-12 [perspective:1000px] md:min-h-[460px]">
-          <div className="alis-gift-float">
-            <div
-              ref={card}
-              className="flex aspect-[1.6] w-[min(78vw,380px)] flex-col justify-between rounded-[18px] bg-[#17191a] p-6 text-[#f4efe6] shadow-[0_30px_60px_-24px_rgba(23,25,26,0.6)] transition-transform duration-300 ease-out [transform-style:preserve-3d] lg:p-8"
-            >
-              <LogoWord variant="cream" className="h-[16px] w-auto self-start lg:h-[18px]" />
-              <p className="font-display !text-[56px] font-extralight leading-none tracking-[0.02em] text-[#f4efe6] lg:!text-[72px]">500 ₽</p>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-[#f4efe6]/70 lg:text-[11px]">{en ? "On your first visit" : "На первый визит"}</p>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col justify-center bg-white px-6 py-10 sm:px-10 lg:px-16 lg:py-14">
-          <p className="text-[12px] uppercase tracking-[0.18em] text-[#17191a]/60">{en ? "A gift from ALIS BEAUTY" : "Комплимент от ALIS BEAUTY"}</p>
-          <h2 className="mt-3 text-[#17191a]">{en ? "500 bonus roubles on your first visit" : "500 бонусных рублей на первый визит"}</h2>
-          {state === "done" ? (
-            <p className="mt-4 !text-[15px] leading-[1.6] text-[#17191a]">
-              {en ? "Thank you! The bonuses will be in your account when you come." : "Спасибо! Бонусы будут на счёте, когда вы придёте."}
+    <section ref={box} id="bonus" className="scroll-mt-24 bg-white section-y">
+      <div className="r-reveal flex w-full flex-col items-center rounded-[28px] bg-[#f6f4f1] px-6 py-16 text-center lg:py-24">
+        <p className="text-[12px] uppercase tracking-[0.18em] text-[#17191a]/60">{en ? "A gift from ALIS BEAUTY" : "Комплимент от ALIS BEAUTY"}</p>
+        <p aria-hidden className="mt-6 font-display !text-[56px] font-extralight leading-none tracking-[0.01em] text-[#17191a] tabular-nums sm:!text-[72px] lg:!text-[96px]">
+          {n}<span className="ml-1.5 align-top !text-[24px] sm:!text-[30px] lg:!text-[36px]">₽</span>
+        </p>
+        <h2 className="mt-4 text-[#17191a]">{en ? "500 bonus roubles on your first visit" : "500 бонусных рублей на первый визит"}</h2>
+        {state === "done" ? (
+          <p className="mt-4 !text-[15px] leading-[1.6] text-[#17191a]">
+            {en ? "Thank you! The bonuses will be in your account when you come." : "Спасибо! Бонусы будут на счёте, когда вы придёте."}
+          </p>
+        ) : (
+          <>
+            <p className="mt-3 max-w-[520px] !text-[14px] leading-[1.6] text-[#17191a]/75 lg:!text-[15px]">
+              {en ? "Leave your number — the bonuses will be in your account when you come" : "Оставьте номер — бонусы уже будут на счёте, когда вы придёте"}
             </p>
-          ) : (
-            <>
-              <p className="mt-3 !text-[14px] leading-[1.6] text-[#17191a]/75 lg:!text-[15px]">
-                {en ? "Leave your number — the bonuses will be in your account when you come" : "Оставьте номер — бонусы уже будут на счёте, когда вы придёте"}
-              </p>
-              <form onSubmit={submit} noValidate className="mt-7 flex flex-col gap-3 sm:flex-row">
-                {/* Поле-ловушка для ботов */}
-                <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
-                <label htmlFor="bonus-phone" className="sr-only">{en ? "Phone" : "Телефон"}</label>
-                <input
-                  id="bonus-phone"
-                  type="tel"
-                  inputMode="tel"
-                  autoComplete="tel"
-                  placeholder="+7 (___) ___-__-__"
-                  value={phone}
-                  onChange={(e) => { setPhone(e.target.value); if (err) setErr(""); }}
-                  className="h-[52px] w-full shrink-0 rounded-[12px] border border-[#17191a]/20 bg-white px-5 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#17191a] sm:w-auto sm:flex-1"
-                />
-                <button
-                  type="submit"
-                  disabled={state === "sending"}
-                  className="h-[52px] shrink-0 rounded-[12px] border border-[#17191a] bg-[#17191a] px-8 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:opacity-60"
-                >
-                  {state === "sending" ? (en ? "Sending…" : "Отправляем…") : en ? "Get my bonuses" : "Забрать бонусы"}
-                </button>
-              </form>
-              {(err || state === "error") && (
-                <p className="mt-3 text-[13px] text-[#b42318]">{err || (en ? "Something went wrong. Please call us." : "Не получилось отправить. Позвоните нам, пожалуйста.")}</p>
-              )}
-              <p className="mt-4 text-[11px] leading-relaxed text-[#17191a]/50">
-                {en ? "By sending, you agree to the " : "Нажимая кнопку, вы соглашаетесь с "}
-                <a href="/policy" className="underline underline-offset-2">{en ? "processing of personal data" : "обработкой персональных данных"}</a>
-              </p>
-            </>
-          )}
-        </div>
+            <form onSubmit={submit} noValidate className="mt-8 flex w-full max-w-[560px] flex-col gap-3 sm:flex-row">
+              {/* Поле-ловушка для ботов */}
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+              <label htmlFor="bonus-phone" className="sr-only">{en ? "Phone" : "Телефон"}</label>
+              <input
+                id="bonus-phone"
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel"
+                placeholder="+7 (___) ___-__-__"
+                value={phone}
+                onChange={(e) => { setPhone(e.target.value); if (err) setErr(""); }}
+                className="h-[52px] w-full shrink-0 rounded-[12px] border border-[#17191a]/20 bg-white px-5 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#17191a] sm:w-auto sm:flex-1"
+              />
+              <button
+                type="submit"
+                disabled={state === "sending"}
+                className="h-[52px] shrink-0 rounded-[12px] border border-[#17191a] bg-[#17191a] px-8 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:opacity-60"
+              >
+                {state === "sending" ? (en ? "Sending…" : "Отправляем…") : en ? "Get my bonuses" : "Забрать бонусы"}
+              </button>
+            </form>
+            {(err || state === "error") && (
+              <p className="mt-3 text-[13px] text-[#b42318]">{err || (en ? "Something went wrong. Please call us." : "Не получилось отправить. Позвоните нам, пожалуйста.")}</p>
+            )}
+            <p className="mt-4 text-[11px] leading-relaxed text-[#17191a]/50">
+              {en ? "By sending, you agree to the " : "Нажимая кнопку, вы соглашаетесь с "}
+              <a href="/policy" className="underline underline-offset-2">{en ? "processing of personal data" : "обработкой персональных данных"}</a>
+            </p>
+          </>
+        )}
       </div>
     </section>
   );
