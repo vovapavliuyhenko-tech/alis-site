@@ -42,32 +42,34 @@ export default function Hero() {
         }}
       />
 
-      <div className="flex w-full max-w-[1100px] flex-col items-center px-5 pb-[clamp(32px,7vh,80px)] text-center">
-        <h1 className="font-serif-display text-[30px] font-normal uppercase leading-[1.1] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.3)] sm:text-[40px] lg:text-[clamp(44px,4vw,68px)]">
+      <div className="flex w-full max-w-[1320px] flex-col items-center px-6 pb-[clamp(24px,4vh,48px)] text-center">
+        {/* Заголовок — как на всех обложках сайта */}
+        <h1 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
           {t("Красота там, где вы", "Beauty wherever you are")}
         </h1>
-        <p className="mt-4 max-w-[640px] !text-[13px] leading-[1.6] text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:mt-5 lg:!text-[14px]">
+        <p className="mt-4 max-w-[620px] !text-[12.5px] leading-[1.6] text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[13px]">
           {t(
             "Салон красоты ALIS BEAUTY в Новороссийске и международная команда мастеров для свадеб, съёмок и событий. ALIS BEAUTY Concierge — по России, странам СНГ и Европе.",
             "ALIS BEAUTY beauty salon in Novorossiysk and an international team of artists for weddings, shoots and events. ALIS BEAUTY Concierge — across Russia, the CIS and Europe.",
           )}
         </p>
+      </div>
 
-        {/* Две плашки-кнопки, под каждой — подпись. Без анимации свечения. */}
-        <div className="mt-8 grid w-full max-w-[640px] grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:mt-10">
-          {BUTTONS.map((b) => (
-            <div key={b.href} className="flex flex-col items-center">
-              <a
-                href={b.href}
-                {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="flex w-full items-center justify-center rounded-xl border border-white/70 bg-white/[0.16] py-3.5 text-[12.5px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a] lg:py-4 lg:text-[13px]"
-              >
-                {b.label}
-              </a>
-              <span className="mt-2 text-[11px] uppercase tracking-[0.14em] text-white/80">{b.note}</span>
-            </div>
-          ))}
-        </div>
+      {/* Две стеклянные плашки во всю ширину внизу блока (как прежняя «Оформить визит»), под каждой — подпись.
+          Без мигания и свечения. */}
+      <div className="grid w-full grid-cols-1 gap-3 px-4 pb-4 sm:grid-cols-2 lg:gap-4 lg:px-6 lg:pb-6">
+        {BUTTONS.map((b) => (
+          <div key={b.href} className="flex flex-col items-center">
+            <a
+              href={b.href}
+              {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              className="flex w-full items-center justify-center rounded-xl border border-white/70 bg-white/[0.18] py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a] lg:py-4 lg:text-[14px]"
+            >
+              {b.label}
+            </a>
+            <span className="mt-2 text-[11px] uppercase tracking-[0.14em] text-white/80">{b.note}</span>
+          </div>
+        ))}
       </div>
     </section>
     </div>
