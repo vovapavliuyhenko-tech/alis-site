@@ -70,7 +70,7 @@ export default function MerchMarquee({ sectionId = "merch", exclude }: { section
           <Link href={`/product/${p.id}`} tabIndex={hidden ? -1 : undefined} className="group relative block h-full w-full overflow-hidden rounded-[12px] bg-[#f2f1ee]" draggable={false}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={p.img} alt={hidden ? "" : p.name[lang]} draggable={false} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
-            <span className="absolute inset-x-0 bottom-0 flex translate-y-2 items-end justify-between gap-2 bg-gradient-to-t from-black/50 to-transparent px-4 pb-4 pt-12 text-white opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 [@media(hover:none)]:translate-y-0 [@media(hover:none)]:opacity-100">
+            <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/50 to-transparent px-4 pb-4 pt-12 text-white">
               <span className="text-[12px] uppercase leading-[1.3] tracking-[0.06em] lg:text-[13px]">{p.name[lang]}</span>
               <span className="shrink-0 text-[12px] lg:text-[13px]">{fmtPrice(p.price, en)}</span>
             </span>
