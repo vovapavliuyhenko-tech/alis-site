@@ -332,3 +332,8 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
   transition: background-color 9999s ease-in-out 0s;
 }
 
+
+/* Эффект «дыхания» у кнопок отключён везде по просьбе заказчицы (классы оставлены —
+   вернуть: удалить этот блок) */
+.alis-pulse, .alis-pulse-wine, .fab-pulse { animation: none !important; }
+.fab-ring { display: none !important; }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
-import Reviews from "@/components/Reviews";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
@@ -262,9 +261,6 @@ export default function SalonPage() {
           categories={SALON_CATEGORIES}
           cta={{ label: { ru: "Оформить визит · 500 бонусных рублей на первый визит", en: "Book a visit · 500 bonus roubles on your first visit" }, href: YCLIENTS }}
         />
-
-        {/* 3 — Отзывы гостей */}
-        <Reviews />
 
         {/* 4 — Бонусы и подарочные сертификаты */}
         <LoyaltyCerts />
