@@ -4,6 +4,7 @@
 // справа — привилегии. Тексты — только уже согласованные на сайте.
 // TODO: подробные условия программы пришлёт заказчица. Ч/б. Двуязычно.
 import { useLang } from "@/lib/i18n";
+import CountUp from "@/components/ui/CountUp";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -35,7 +36,7 @@ export default function LoyaltyProgram() {
           {/* Приветственный бонус */}
           <div className="flex min-h-[340px] flex-col justify-between rounded-[12px] bg-[#17191a] p-8 text-[#f4efe6] lg:min-h-[480px] lg:p-12">
             <div>
-              <p className="font-display text-[64px] leading-none tracking-[0.01em] lg:text-[88px]">500 ₽</p>
+              <p className="font-display text-[64px] leading-none tracking-[0.01em] lg:text-[88px]"><CountUp to={500} /> ₽</p>
               <p className="mt-3 text-[15px] text-[#f4efe6]/80 lg:text-[17px]">
                 {t("бонусных рублей на первый визит", "bonus roubles on your first visit")}
               </p>

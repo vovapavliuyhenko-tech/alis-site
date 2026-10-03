@@ -4,6 +4,7 @@
 // сверху широкая карточка подарочного сертификата с фото (зум + раскрытие на
 // наведении), снизу два бежевых тайла бонусов. Тексты по AIDA. Двуязычно.
 import { useLang } from "@/lib/i18n";
+import CountUp from "@/components/ui/CountUp";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const CERT_PHOTO = "/assets/alis/img_1855.jpg";
@@ -36,7 +37,7 @@ export default function LoyaltyCerts() {
               <p className="text-[11px] uppercase tracking-[0.2em] text-[#f4efe6]/60">
                 {t("программа лояльности", "loyalty programme")}
               </p>
-              <p className="mt-6 font-display text-[64px] leading-none tracking-[0.01em] lg:text-[72px]">500 ₽</p>
+              <p className="mt-6 font-display text-[64px] leading-none tracking-[0.01em] lg:text-[72px]"><CountUp to={500} /> ₽</p>
               <p className="mt-2 text-[15px] text-[#f4efe6]/80">{t("бонусных рублей на первый визит", "bonus roubles on your first visit")}</p>
               <ul className="mt-8 flex flex-col gap-3 text-[14px] text-[#f4efe6]/85">
                 {PERKS.map((p) => (
