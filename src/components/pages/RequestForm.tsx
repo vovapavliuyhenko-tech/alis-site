@@ -161,7 +161,7 @@ export default function RequestForm({
                   setConsent(e.target.checked);
                   if (errors.consent) setErrors((x) => ({ ...x, consent: false }));
                 }}
-                className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#46131E]"
+                className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]"
               />
               <span className={`text-[11px] leading-relaxed ${errors.consent ? "text-[#c0392b]" : "text-[#17191a]/50"}`}>
                 {en ? "I agree to the processing of my personal data." : "Даю согласие на обработку персональных данных."}{" "}
@@ -171,9 +171,11 @@ export default function RequestForm({
               </span>
             </label>
 
+            {/* Кнопка неактивна, пока не отмечено согласие на обработку данных */}
             <button
               type="submit"
-              className="alis-pulse-wine mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#17191a] hover:backdrop-blur-md"
+              disabled={!consent}
+              className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#17191a] hover:backdrop-blur-md disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white"
             >
               {submit[lang]}
             </button>

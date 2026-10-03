@@ -16,12 +16,15 @@ export default function TeamIntro({
   kicker,
   photo = DEFAULT_PHOTO,
   button,
+  button2,
 }: {
   title: Loc;
   kicker?: Loc; // короткая продающая строка мелко над заголовком (как оффер на главной)
   photo?: string;
   // Кнопка во всю ширину внизу — как «Оформить визит» на главной
   button?: { label: Loc; href: string };
+  // Вторая кнопка — две плашки в ряд, как на главной: первая белая, вторая стеклянная
+  button2?: { label: Loc; href: string };
 }) {
   const { lang } = useLang();
   // Эффект «статичного фона»: фото уезжает медленнее страницы
@@ -56,14 +59,21 @@ export default function TeamIntro({
       </div>
 
       {button && (
-        <div className="w-full px-4 pb-4 lg:px-6 lg:pb-6">
-          <a
-            href={button.href}
-            {...(button.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="alis-pulse flex w-full items-center justify-center rounded-xl border border-white/70 bg-white/[0.18] py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a] lg:py-4 lg:text-[14px]"
-          >
-            {button.label[lang]}
-          </a>
+        <div className={`grid w-full gap-3 px-4 pb-4 lg:gap-4 lg:px-6 lg:pb-6 ${button2 ? "sm:grid-cols-2" : ""}`}>
+          {[button, button2].filter((b): b is { label: Loc; href: string } => !!b).map((b, i) => (
+            <a
+              key={b.href}
+              href={b.href}
+              {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              className={`flex w-full items-center justify-center rounded-xl border py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] backdrop-blur-md transition-colors duration-300 lg:py-4 lg:text-[14px] ${
+                button2 && i === 0
+                  ? "border-white bg-white text-[#17191a] hover:bg-white/[0.18] hover:text-white"
+                  : "border-white/70 bg-white/[0.18] text-white hover:border-white hover:bg-white hover:text-[#17191a]"
+              }`}
+            >
+              {b.label[lang]}
+            </a>
+          ))}
         </div>
       )}
     </section>

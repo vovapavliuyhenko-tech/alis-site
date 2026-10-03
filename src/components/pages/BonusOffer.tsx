@@ -13,6 +13,7 @@ export default function BonusOffer() {
   const [phone, setPhone] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [err, setErr] = useState("");
+  const [consent, setConsent] = useState(false); // кнопка активна только после галочки согласия
   // Счётчик 0 → 500, когда блок попадает в кадр
   const box = useRef<HTMLElement>(null);
   const [n, setN] = useState(500);
@@ -106,8 +107,8 @@ export default function BonusOffer() {
               />
               <button
                 type="submit"
-                disabled={state === "sending"}
-                className="h-[52px] shrink-0 rounded-[12px] border border-[#17191a] bg-[#17191a] px-8 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:opacity-60"
+                disabled={state === "sending" || !consent}
+                className="h-[52px] shrink-0 rounded-[12px] border border-[#17191a] bg-[#17191a] px-8 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white"
               >
                 {state === "sending" ? (en ? "Sending…" : "Отправляем…") : en ? "Get my bonuses" : "Забрать бонусы"}
               </button>
@@ -115,10 +116,19 @@ export default function BonusOffer() {
             {(err || state === "error") && (
               <p className="mt-3 text-[13px] text-[#b42318]">{err || (en ? "Something went wrong. Please call us." : "Не получилось отправить. Позвоните нам, пожалуйста.")}</p>
             )}
-            <p className="mt-4 text-[11px] leading-relaxed text-[#17191a]/50">
-              {en ? "By sending, you agree to the " : "Нажимая кнопку, вы соглашаетесь с "}
-              <a href="/policy" className="underline underline-offset-2">{en ? "processing of personal data" : "обработкой персональных данных"}</a>
-            </p>
+            {/* Галочка согласия — без неё кнопка «Забрать бонусы» неактивна */}
+            <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-left">
+              <input
+                type="checkbox"
+                checked={consent}
+                onChange={(e) => setConsent(e.target.checked)}
+                className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]"
+              />
+              <span className="text-[11px] leading-relaxed text-[#17191a]/50">
+                {en ? "I agree to the processing of my personal data. " : "Даю согласие на обработку персональных данных. "}
+                <a href="/policy" className="underline underline-offset-2">{en ? "Privacy policy" : "Политика конфиденциальности"}</a>
+              </span>
+            </label>
           </>
         )}
         </div>
