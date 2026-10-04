@@ -42,8 +42,8 @@ export default function Hero() {
         }}
       />
 
-      {/* Телефон (вариант A): всё внизу слева, заголовок в 2 строки, текст мельче; компьютер — по центру */}
-      <div className="flex w-full max-w-[1320px] flex-col items-start px-5 pb-4 text-left sm:items-center sm:px-6 sm:pb-[clamp(24px,4vh,48px)] sm:text-center">
+      {/* Телефон (вариант A): всё внизу по центру, заголовок в 2 строки, текст мельче; компьютер — по центру */}
+      <div className="flex w-full max-w-[1320px] flex-col items-center px-5 pb-4 text-center sm:items-center sm:px-6 sm:pb-[clamp(24px,4vh,48px)] sm:text-center">
         {/* Заголовок — как на всех обложках сайта */}
         <h1 className="font-serif-display text-[26px] font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
           {en ? <>Beauty<br className="sm:hidden" /> wherever you are</> : <>Красота<br className="sm:hidden" /> там, где вы</>}
