@@ -13,14 +13,14 @@ export type MarqueeItem = string | { src: string; cap?: Loc; href?: string };
 // Подписи — по тому, что видно на фото; клик ведёт в категорию услуг салона.
 // TODO: заказчица сама отберёт фото работ мастеров (и подпишет мастера) — заменить список.
 const ITEMS: MarqueeItem[] = [
-  { src: "/assets/alis/img_2672.jpg", cap: { ru: "Брови и макияж", en: "Brows & makeup" }, href: "/salon#uslugi-brows" },
-  { src: "/assets/alis/img_2749.jpg", cap: { ru: "Макияж", en: "Makeup" }, href: "/salon#uslugi-makeup" },
-  { src: "/assets/alis/img_2751.jpg", cap: { ru: "Причёска и макияж", en: "Hair & makeup" }, href: "/salon#uslugi-hair" },
-  { src: "/assets/alis/img_3283.jpg", cap: { ru: "Укладка", en: "Styling" }, href: "/salon#uslugi-hair" },
-  { src: "/assets/alis/img_6011.jpg", cap: { ru: "Образ: укладка и макияж", en: "Look: styling & makeup" }, href: "/salon#uslugi-makeup" },
-  { src: "/assets/alis/img_8578.jpg", cap: { ru: "Маникюр", en: "Manicure" }, href: "/salon#uslugi-manicure" },
-  { src: "/assets/alis/img_6048.jpg", cap: { ru: "Магазин ÁLIS BEAUTY", en: "ÁLIS BEAUTY shop" }, href: "/shop" },
-  { src: "/assets/alis/img_5910.webp", cap: { ru: "Уход за волосами", en: "Hair care" }, href: "/salon#uslugi-hair" },
+  { src: "/assets/alis/img_2672.jpg", cap: { ru: "Брови и макияж", en: "Brows & makeup" } },
+  { src: "/assets/alis/img_2749.jpg", cap: { ru: "Макияж", en: "Makeup" } },
+  { src: "/assets/alis/img_2751.jpg", cap: { ru: "Причёска и макияж", en: "Hair & makeup" } },
+  { src: "/assets/alis/img_3283.jpg", cap: { ru: "Укладка", en: "Styling" } },
+  { src: "/assets/alis/img_6011.jpg", cap: { ru: "Образ: укладка и макияж", en: "Look: styling & makeup" } },
+  { src: "/assets/alis/img_8578.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+  { src: "/assets/alis/img_6048.jpg", cap: { ru: "Магазин ÁLIS BEAUTY", en: "ÁLIS BEAUTY shop" } },
+  { src: "/assets/alis/img_5910.webp", cap: { ru: "Уход за волосами", en: "Hair care" } },
 ];
 
 function Track({ items, hidden = false, moved }: { items: MarqueeItem[]; hidden?: boolean; moved: React.RefObject<boolean> }) {
