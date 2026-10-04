@@ -134,16 +134,22 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
     return () => mq.removeEventListener("change", upd);
   }, []);
   const stripRef = useRef<HTMLDivElement>(null);
-  const touched = useRef(0);
   useEffect(() => {
     if (!compact) return;
     const el = stripRef.current;
     if (!el) return;
-    // Плавная бесконечная лента — та же скорость, что у ленты работ; пауза на касании
-    let raf = 0, pos = el.scrollLeft;
+    // Плавная бесконечная лента (скорость как у ленты работ). Пока палец на ленте или она
+    // докручивается по инерции — не мешаем; как только остановилась — сразу едем дальше.
+    let raf = 0, pos = el.scrollLeft, touching = false, userAt = 0;
+    const onStart = () => { touching = true; };
+    const onEnd = () => { touching = false; userAt = Date.now(); };
+    const onScroll = () => { if (Math.abs(el.scrollLeft - pos) > 1) { userAt = Date.now(); pos = el.scrollLeft; } };
+    el.addEventListener("touchstart", onStart, { passive: true });
+    el.addEventListener("touchend", onEnd, { passive: true });
+    el.addEventListener("scroll", onScroll, { passive: true });
     const step = () => {
       const half = el.scrollWidth / 2 || 1;
-      if (Date.now() - touched.current > 2500) {
+      if (!touching && Date.now() - userAt > 120) {
         pos += 0.9;
         if (pos >= half) pos -= half;
         el.scrollLeft = pos;
@@ -151,10 +157,16 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
       raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+      el.removeEventListener("touchstart", onStart);
+      el.removeEventListener("touchend", onEnd);
+      el.removeEventListener("scroll", onScroll);
+    };
   }, [compact]);
-  const cardW = compact ? 190 : 300;
-  const cardH = compact ? 230 : 300;
+  const tablet = typeof window !== "undefined" && compact && innerWidth >= 640;
+  const cardW = compact ? (tablet ? 240 : 190) : 300;
+  const cardH = compact ? (tablet ? 300 : 240) : 300;
   const radius = compact ? 380 : 580; // радиус кольца (заполняется 12 отзывами)
 
   const stageRef = useRef<HTMLDivElement>(null);
@@ -228,7 +240,7 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
     <article
                 key={r.name.ru}
                 style={style}
-                className={`${cls} flex flex-col overflow-hidden rounded-[12px] border border-[#17191a]/12 bg-white p-4 sm:p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]`}
+                className={`${cls} flex flex-col overflow-hidden rounded-[12px] border border-[#17191a]/12 bg-white p-4 sm:p-6 text-[#17191a] ${compact ? "" : "shadow-[0_16px_44px_rgba(59,13,26,0.10)]"} [backface-visibility:hidden]`}
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] tracking-[0.25em] text-[#C9A227] sm:text-[12px] sm:tracking-[0.32em]">★★★★★</span>
@@ -267,7 +279,7 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
 
         {compact ? (
           // Телефон: простая лента карточек — листается пальцем и сама каждые 3 с
-          <div ref={stripRef} onTouchStart={() => (touched.current = Date.now())} onTouchMove={() => (touched.current = Date.now())} className="-mx-[2%] flex gap-2 overflow-x-auto px-[2%] pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div ref={stripRef} className="-mx-[2%] flex gap-2 overflow-x-auto px-[2%] pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {[...REVIEWS, ...REVIEWS].map((r, i) => <div key={i} className="shrink-0">{card(r, "relative", { width: cardW, height: cardH })}</div>)}
           </div>
         ) : (
