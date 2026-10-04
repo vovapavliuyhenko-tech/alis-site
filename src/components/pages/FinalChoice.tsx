@@ -15,9 +15,9 @@ export default function FinalChoice() {
   const { lang } = useLang();
   const en = lang === "en";
   const dark =
-    "flex items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] px-3 py-3 text-center text-[10.5px] font-medium uppercase tracking-[0.08em] sm:px-6 sm:py-4 sm:text-[12px] sm:tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a]";
+    "flex items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] whitespace-nowrap px-2 py-3 text-center text-[9.5px] font-medium uppercase tracking-[0.05em] sm:px-6 sm:py-4 sm:text-[12px] sm:tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a]";
   const line =
-    "flex items-center justify-center rounded-[12px] border border-[#17191a] bg-white px-3 py-3 text-center text-[10.5px] font-medium uppercase tracking-[0.08em] sm:px-6 sm:py-4 sm:text-[12px] sm:tracking-[0.16em] text-[#17191a] transition-colors duration-300 hover:bg-[#17191a] hover:text-white";
+    "flex items-center justify-center rounded-[12px] border border-[#17191a] bg-white whitespace-nowrap px-2 py-3 text-center text-[9.5px] font-medium uppercase tracking-[0.05em] sm:px-6 sm:py-4 sm:text-[12px] sm:tracking-[0.16em] text-[#17191a] transition-colors duration-300 hover:bg-[#17191a] hover:text-white";
   const BTNS = [
     { label: en ? "Book a salon visit" : "Оформить визит в салон", href: YCLIENTS, cls: dark },
     { label: en ? "Order an outcall" : "Заказать выезд", href: OUTCALL, cls: line },
@@ -40,7 +40,7 @@ export default function FinalChoice() {
             </a>
           ))}
         </div>
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[13px] text-[#17191a]">
+        <div className="mt-6 flex flex-nowrap items-center justify-center gap-x-3 whitespace-nowrap text-[10.5px] text-[#17191a] sm:mt-7 sm:flex-wrap sm:gap-x-6 sm:gap-y-2 sm:text-[13px]">
           {PHONES.map((p) => (
             <a key={p.phone} href={`tel:${p.phone.replace(/[^\d+]/g, "")}`} className="transition-opacity hover:opacity-60">
               <span className="text-[#17191a]/55">{p.label}: </span>
