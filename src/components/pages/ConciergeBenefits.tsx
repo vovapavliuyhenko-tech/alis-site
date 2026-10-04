@@ -177,7 +177,7 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
                     {pt.title[lang]}
                   </h3>
                   {pt.desc[lang] && <p
-                    className={`max-w-[460px] !text-[13px] leading-[1.55] text-white transition-all duration-500 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] lg:!text-[14px] ${
+                    className={`max-w-[460px] !text-[11px] leading-[1.5] sm:!text-[13px] sm:leading-[1.55] text-white transition-all duration-500 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] lg:!text-[14px] ${
                       on ? "mt-3 max-h-40 translate-y-0 opacity-100 delay-300" : "max-h-0 translate-y-4 opacity-0"
                     }`}
                   >

@@ -83,10 +83,10 @@ export default function ConciergeStages({
                 <span className="text-[11px] uppercase tracking-[0.3em] text-[#17191a]">
                   {stepLabel[lang]} 0{i + 1}
                 </span>
-                <h3 className="mt-6 max-w-[18ch] font-serif-display text-[20px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[24px]">
+                <h3 className="mt-4 max-w-[26ch] font-serif-display text-[20px] sm:mt-6 sm:max-w-[18ch] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[24px]">
                   {s.heading[lang]}
                 </h3>
-                <p className="mt-5 max-w-md text-[13px] leading-relaxed text-[#17191a]/65 lg:text-[13.5px]">
+                <p className="mt-3 max-w-[335px] !text-[11px] leading-[1.55] text-[#17191a]/65 sm:mt-5 sm:max-w-md sm:!text-[13px] lg:!text-[13.5px]">
                   {s.desc[lang]}
                 </p>
                 </div>

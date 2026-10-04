@@ -161,9 +161,9 @@ export default function ConciergeChat() {
   return (
     <div className="pointer-events-none fixed bottom-4 right-4 z-[120] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
       {open && (
-        <div className="pointer-events-auto flex h-[min(620px,80vh)] w-[calc(100vw-2rem)] max-w-[390px] animate-[alis-chat-in_.35s_cubic-bezier(.2,.7,.2,1)] flex-col overflow-hidden rounded-[16px] border border-[#17191a]/10 bg-white shadow-[0_30px_80px_-20px_rgba(23,25,26,0.35)]">
+        <div className="pointer-events-auto flex max-h-[min(540px,72svh)] w-[min(330px,calc(100vw-2rem))] sm:h-[min(620px,80vh)] sm:w-[calc(100vw-2rem)] sm:max-w-[390px] animate-[alis-chat-in_.35s_cubic-bezier(.2,.7,.2,1)] flex-col overflow-hidden rounded-[16px] border border-[#17191a]/10 bg-white shadow-[0_30px_80px_-20px_rgba(23,25,26,0.35)]">
           {/* Шапка */}
-          <div className="flex items-center gap-3 px-5 pb-4 pt-5">
+          <div className="flex items-center gap-3 px-4 pb-3 pt-4 sm:px-5 sm:pb-4 sm:pt-5">
             {screen === "flow" && (
               <button onClick={() => setScreen("home")} aria-label={t("Назад", "Back")} className="-ml-1 flex h-8 w-8 items-center justify-center rounded-full text-[#17191a]/60 transition-colors hover:bg-[#17191a]/5 hover:text-[#17191a]">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -171,12 +171,12 @@ export default function ConciergeChat() {
             )}
             <span className="relative shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={ADMIN_PHOTO} alt={lang === "en" ? "ÁLIS BEAUTY concierge" : "Консьерж ÁLIS BEAUTY"} className="h-10 w-10 rounded-full object-cover" />
+              <img src={ADMIN_PHOTO} alt={lang === "en" ? "ÁLIS BEAUTY concierge" : "Консьерж ÁLIS BEAUTY"} className="h-9 w-9 rounded-full object-cover sm:h-10 sm:w-10" />
               <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#4ade80]" />
             </span>
             <div className="min-w-0 flex-1">
-              <p className="text-[14px] leading-tight text-[#17191a]">{t("Дайана", "Diana")}</p>
-              <p className="text-[11px] text-[#17191a]/45">{t("Консьерж ÁLIS BEAUTY · онлайн", "ÁLIS BEAUTY concierge · online")}</p>
+              <p className="text-[13px] leading-tight text-[#17191a] sm:text-[14px]">{t("Дайана", "Diana")}</p>
+              <p className="text-[10px] text-[#17191a]/45 sm:text-[11px]">{t("Консьерж ÁLIS BEAUTY · онлайн", "ÁLIS BEAUTY concierge · online")}</p>
             </div>
             <button onClick={() => setOpen(false)} aria-label={t("Свернуть", "Minimise")} className="flex h-8 w-8 items-center justify-center rounded-full text-[#17191a]/50 transition-colors hover:bg-[#17191a]/5 hover:text-[#17191a]">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /></svg>
@@ -191,23 +191,23 @@ export default function ConciergeChat() {
           )}
 
           {/* Тело */}
-          <div ref={bodyRef} className="flex-1 overflow-y-auto px-5 py-4">
+          <div ref={bodyRef} className="min-h-0 flex-1 overflow-y-auto px-4 py-3 sm:px-5 sm:py-4">
             {screen === "home" ? (
               <div>
-                <p className="text-[22px] font-light leading-[1.25] text-[#17191a]">{t("Здравствуйте!", "Hello!")}<br />{t("Чем вам помочь?", "How can we help?")}</p>
-                <div className="mt-6 space-y-2">
+                <p className="text-[17px] font-light leading-[1.25] text-[#17191a] sm:text-[22px]">{t("Здравствуйте!", "Hello!")}<br />{t("Чем вам помочь?", "How can we help?")}</p>
+                <div className="mt-4 space-y-1.5 sm:mt-6 sm:space-y-2">
                   {ACTIONS.map((a) => {
                     const inner = (
                       <>
-                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#17191a]/[0.07] text-[15px] text-[#17191a]">{a.icon}</span>
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#17191a]/[0.07] text-[13px] text-[#17191a] sm:h-10 sm:w-10 sm:text-[15px]">{a.icon}</span>
                         <span className="min-w-0 flex-1 text-left">
-                          <span className="block text-[14px] text-[#17191a]">{a.title}</span>
-                          <span className="block text-[12px] text-[#17191a]/45">{a.sub}</span>
+                          <span className="block text-[12.5px] text-[#17191a] sm:text-[14px]">{a.title}</span>
+                          <span className="block text-[10.5px] text-[#17191a]/45 sm:text-[12px]">{a.sub}</span>
                         </span>
                         <span aria-hidden className="text-[#17191a]/30 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#17191a]">→</span>
                       </>
                     );
-                    const cls = "group flex w-full items-center gap-3 rounded-[12px] border border-[#17191a]/10 px-4 py-3 transition-colors hover:border-[#17191a]/40 hover:bg-[#17191a]/[0.03]";
+                    const cls = "group flex w-full items-center gap-2.5 rounded-[12px] border border-[#17191a]/10 px-3 py-2.5 transition-colors sm:gap-3 sm:px-4 sm:py-3 hover:border-[#17191a]/40 hover:bg-[#17191a]/[0.03]";
                     return a.onClick ? (
                       <button key={a.title} type="button" onClick={a.onClick} className={cls}>{inner}</button>
                     ) : (
@@ -215,13 +215,13 @@ export default function ConciergeChat() {
                     );
                   })}
                 </div>
-                <p className="mt-5 text-[12px] leading-[1.5] text-[#17191a]/45">{t("Без перерывов и выходных, 9:00–21:00", "No breaks, open daily, 9:00–21:00")}</p>
+                <p className="mt-4 text-[10.5px] leading-[1.5] text-[#17191a]/45 sm:mt-5 sm:text-[12px]">{t("Без перерывов и выходных, 9:00–21:00", "No breaks, open daily, 9:00–21:00")}</p>
               </div>
             ) : (
               <div className="space-y-2.5">
                 {msgs.map((m, i) => (
                   <div key={i} className={`flex animate-[alis-msg_.3s_ease-out] ${m.from === "user" ? "justify-end" : "justify-start"}`}>
-                    <div className={`max-w-[85%] rounded-[14px] px-3.5 py-2.5 text-[13.5px] leading-[1.45] ${m.from === "user" ? "rounded-br-[4px] bg-[#17191a] text-white" : "rounded-bl-[4px] bg-[#f4f3f1] text-[#17191a]"}`}>
+                    <div className={`max-w-[85%] rounded-[14px] px-3 py-2 text-[12.5px] leading-[1.45] sm:px-3.5 sm:py-2.5 sm:text-[13.5px] ${m.from === "user" ? "rounded-br-[4px] bg-[#17191a] text-white" : "rounded-bl-[4px] bg-[#f4f3f1] text-[#17191a]"}`}>
                       {m.text}
                     </div>
                   </div>
@@ -332,7 +332,7 @@ export default function ConciergeChat() {
         <button onClick={() => { setOpen(true); setScreen("home"); }} aria-label={t("Открыть чат", "Open chat")} className="alis-pulse-wine pointer-events-auto group flex items-center gap-3 rounded-full bg-white py-2 pl-2 pr-5 text-[13px] text-[#17191a] shadow-[0_14px_40px_-10px_rgba(23,25,26,0.35)] ring-1 ring-[#17191a]/8 transition-transform hover:-translate-y-0.5">
           <span className="relative">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={ADMIN_PHOTO} alt={lang === "en" ? "ÁLIS BEAUTY concierge" : "Консьерж ÁLIS BEAUTY"} className="h-10 w-10 rounded-full object-cover" />
+            <img src={ADMIN_PHOTO} alt={lang === "en" ? "ÁLIS BEAUTY concierge" : "Консьерж ÁLIS BEAUTY"} className="h-9 w-9 rounded-full object-cover sm:h-10 sm:w-10" />
             <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#4ade80]" />
           </span>
           <span className="text-left leading-tight">

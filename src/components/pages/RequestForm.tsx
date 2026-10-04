@@ -79,7 +79,7 @@ export default function RequestForm({
   };
 
   const line = (err?: boolean) =>
-    `w-full border-b bg-transparent py-3 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#46131E] ${
+    `w-full border-b bg-transparent py-2.5 text-[13px] sm:py-3 sm:text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#46131E] ${
       err ? "border-[#c0392b]" : "border-[#17191a]/15"
     }`;
 
@@ -87,18 +87,18 @@ export default function RequestForm({
     <section id={id} className="scroll-mt-24 bg-white section-y">
       <div
         id={innerId}
-        className="mx-auto grid w-[96%] max-w-[1760px] scroll-mt-24 grid-cols-1 gap-8 rounded-[12px] bg-[#f6f4f1] px-6 py-8 text-[#17191a] shadow-[inset_3px_0_0_#46131E] sm:px-10 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:px-16 lg:py-10"
+        className="mx-auto grid w-[96%] max-w-[1760px] scroll-mt-24 grid-cols-1 gap-5 rounded-[12px] bg-[#f6f4f1] px-4 py-6 text-[#17191a] shadow-[inset_3px_0_0_#46131E] sm:gap-8 sm:px-10 sm:py-8 lg:grid-cols-2 lg:items-stretch lg:gap-16 lg:px-16 lg:py-10"
       >
         {/* Слева — заголовок и строка сверху, пункты с галочками снизу (по высоте формы) */}
-        <div className="flex flex-col justify-between gap-6 lg:py-12">
+        <div className="flex flex-col items-center justify-between gap-4 text-center sm:items-start sm:gap-6 sm:text-left lg:py-12">
           <div>
             <h2 className="text-[#17191a]">{title[lang]}</h2>
-          {text && <p className="mt-4 max-w-[460px] text-[14px] leading-[1.6] text-[#17191a]/60 lg:text-[15px]">{text[lang]}</p>}
+          {text && <p className="mt-2 max-w-[460px] text-[12px] leading-[1.55] text-[#17191a]/60 sm:mt-4 sm:text-[14px] lg:text-[15px]">{text[lang]}</p>}
           </div>
           {bullets && bullets.length > 0 && (
-            <ul className="space-y-2.5">
+            <ul className="space-y-2 text-left sm:space-y-2.5">
               {bullets.map((b) => (
-                <li key={b.ru} className="flex items-start gap-3 text-[14px] leading-[1.5] text-[#242424] lg:text-[15px]">
+                <li key={b.ru} className="flex items-start gap-2.5 text-[12px] leading-[1.5] text-[#242424] sm:gap-3 sm:text-[14px] lg:text-[15px]">
                   <span aria-hidden className="mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[10px] text-white">✓</span>
                   {b[lang]}
                 </li>
@@ -126,7 +126,7 @@ export default function RequestForm({
             </Link>
           </div>
         ) : (
-          <form onSubmit={onSubmit} noValidate className="flex flex-col gap-2 rounded-[12px] bg-white px-6 py-7 lg:px-9 lg:py-9">
+          <form onSubmit={onSubmit} noValidate className="flex flex-col gap-1 rounded-[12px] bg-white px-4 py-4 sm:gap-2 sm:px-6 sm:py-7 lg:px-9 lg:py-9">
             {fields.map((f) =>
               f.textarea ? (
                 <textarea
@@ -153,7 +153,7 @@ export default function RequestForm({
               ),
             )}
 
-            <label className="mt-3 flex cursor-pointer items-start gap-3">
+            <label className="mt-3 flex cursor-pointer items-center gap-2.5 sm:items-start sm:gap-3">
               <input
                 type="checkbox"
                 checked={consent}
@@ -163,11 +163,18 @@ export default function RequestForm({
                 }}
                 className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]"
               />
-              <span className={`text-[11px] leading-relaxed ${errors.consent ? "text-[#c0392b]" : "text-[#17191a]/50"}`}>
-                {en ? "I agree to the processing of my personal data." : "Даю согласие на обработку персональных данных."}{" "}
-                <a href="/policy" className="underline underline-offset-2 hover:text-[#46131E]">
-                  {en ? "Privacy policy" : "Политика конфиденциальности"}
-                </a>
+              <span className={`whitespace-nowrap text-[clamp(9.5px,2.7vw,11px)] leading-relaxed sm:whitespace-normal sm:text-[11px] ${errors.consent ? "text-[#c0392b]" : "text-[#17191a]/50"}`}>
+                {/* Телефон — одной строкой, ссылка на словах «персональных данных»; компьютер — полностью */}
+                <span className="sm:hidden">
+                  {en ? "I agree to the processing of my " : "Даю согласие на обработку "}
+                  <a href="/policy" className="underline underline-offset-2">{en ? "personal data" : "персональных данных"}</a>
+                </span>
+                <span className="hidden sm:inline">
+                  {en ? "I agree to the processing of my personal data." : "Даю согласие на обработку персональных данных."}{" "}
+                  <a href="/policy" className="underline underline-offset-2 hover:text-[#46131E]">
+                    {en ? "Privacy policy" : "Политика конфиденциальности"}
+                  </a>
+                </span>
               </span>
             </label>
 
@@ -175,7 +182,7 @@ export default function RequestForm({
             <button
               type="submit"
               disabled={!consent}
-              className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#17191a] hover:backdrop-blur-md disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white"
+              className="mt-3 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] sm:mt-4 sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#17191a] hover:backdrop-blur-md disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white"
             >
               {submit[lang]}
             </button>
