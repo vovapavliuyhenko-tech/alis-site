@@ -70,7 +70,7 @@ export default function BonusOffer() {
           </p>
         </div>
         <div className="flex flex-col items-center md:items-start">
-        <h2 className="text-[#17191a]">{en ? "500 bonus roubles on your first visit" : "500 бонусных рублей на первый визит"}</h2>
+        <h2 className="text-[#17191a]"><span className="whitespace-nowrap text-[clamp(12.5px,3.9vw,16px)] sm:text-[length:inherit]">{en ? "500 bonus roubles on your first visit" : "500 бонусных рублей на первый визит"}</span></h2>
         {state === "done" ? (
           <p className="mt-4 !text-[15px] leading-[1.6] text-[#17191a]">
             {en ? "Thank you! The bonuses will be in your account when you come." : "Спасибо! Бонусы будут на счёте, когда вы придёте."}
