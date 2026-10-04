@@ -62,11 +62,12 @@ export default function BonusOffer() {
   return (
     <section ref={box} id="bonus" className="scroll-mt-24 bg-white section-y">
       {/* Слева — крупная «500 ₽», справа — заголовок, текст и форма (на телефоне — друг под другом) */}
-      <div className="r-reveal grid w-full items-center gap-8 rounded-[28px] bg-white px-6 py-16 text-center md:grid-cols-2 md:gap-12 md:px-12 md:text-left lg:px-24 lg:py-24">
+      <div className="r-reveal grid w-full items-center gap-8 rounded-[28px] bg-white px-[4%] py-16 sm:px-6 text-center md:grid-cols-2 md:gap-12 md:px-12 md:text-left lg:px-24 lg:py-24">
         <div className="flex flex-col items-center md:items-start">
           <p className="text-[12px] uppercase tracking-[0.18em] text-[#17191a]/60">{en ? "A gift from ALIS BEAUTY" : "Комплимент от ALIS BEAUTY"}</p>
           <p aria-hidden className="mt-4 font-display !text-[52px] font-extralight leading-none tracking-[0.01em] text-[#17191a] tabular-nums sm:!text-[96px] lg:!text-[150px]">
-            {n}<span className="ml-1 align-top !text-[22px] sm:!text-[36px] lg:!text-[52px]">₽</span>
+            {/* «₽» вынесен из потока, чтобы по центру стояла сама цифра */}
+            <span className="relative inline-block">{n}<span className="absolute left-full top-0 ml-1 !text-[22px] sm:!text-[36px] lg:!text-[52px]">₽</span></span>
           </p>
         </div>
         <div className="flex flex-col items-center md:items-start">
@@ -104,12 +105,12 @@ export default function BonusOffer() {
                   if (err) setErr("");
                 }}
                 maxLength={18}
-                className="h-[52px] w-full shrink-0 rounded-[12px] border border-[#17191a]/20 bg-white px-5 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#17191a] sm:w-auto sm:flex-1"
+                className="h-[46px] w-full shrink-0 rounded-[12px] border border-[#17191a]/20 bg-white px-5 text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#17191a] sm:w-auto sm:flex-1"
               />
               <button
                 type="submit"
                 disabled={state === "sending" || !consent}
-                className="h-[52px] shrink-0 rounded-[12px] border border-[#17191a] bg-[#17191a] px-8 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white"
+                className="h-[46px] w-full shrink-0 whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-8 text-[11px] font-medium uppercase tracking-[0.12em] sm:h-[52px] sm:w-auto sm:text-[12px] sm:tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white"
               >
                 {state === "sending" ? (en ? "Sending…" : "Отправляем…") : en ? "Get my bonuses" : "Забрать бонусы"}
               </button>
@@ -118,7 +119,7 @@ export default function BonusOffer() {
               <p className="mt-3 text-[13px] text-[#b42318]">{err || (en ? "Something went wrong. Please call us." : "Не получилось отправить. Позвоните нам, пожалуйста.")}</p>
             )}
             {/* Галочка согласия — без неё кнопка «Забрать бонусы» неактивна */}
-            <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-left">
+            <label className="mt-4 flex cursor-pointer items-center justify-center gap-2.5 text-left md:justify-start">
               <input
                 type="checkbox"
                 checked={consent}
