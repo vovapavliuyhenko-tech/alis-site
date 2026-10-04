@@ -163,13 +163,13 @@ export default function RequestForm({
                 }}
                 className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]"
               />
-              <span className={`whitespace-nowrap text-[clamp(9.5px,2.7vw,11px)] leading-relaxed sm:whitespace-normal sm:text-[11px] ${errors.consent ? "text-[#c0392b]" : "text-[#17191a]/50"}`}>
+              <span className={`min-w-0 text-[clamp(9.5px,2.7vw,11px)] leading-relaxed sm:text-[11px] ${errors.consent ? "text-[#c0392b]" : "text-[#17191a]/50"}`}>
                 {/* Телефон — одной строкой, ссылка на словах «персональных данных»; компьютер — полностью */}
-                <span className="sm:hidden">
+                <span className="lg:hidden">
                   {en ? "I agree to the processing of my " : "Даю согласие на обработку "}
                   <a href="/policy" className="underline underline-offset-2">{en ? "personal data" : "персональных данных"}</a>
                 </span>
-                <span className="hidden sm:inline">
+                <span className="hidden lg:inline">
                   {en ? "I agree to the processing of my personal data." : "Даю согласие на обработку персональных данных."}{" "}
                   <a href="/policy" className="underline underline-offset-2 hover:text-[#46131E]">
                     {en ? "Privacy policy" : "Политика конфиденциальности"}
