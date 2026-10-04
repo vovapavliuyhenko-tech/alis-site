@@ -93,8 +93,8 @@ export default function ConciergeStages({
               </div>
 
               {/* Фото — половина экрана в ширину */}
-              {/* Телефон: скругление только снизу у фото (нижней карточки) */}
-              <div className={`relative min-h-[42vh] overflow-hidden max-lg:rounded-b-[28px] ${photoRight ? "lg:order-2" : "lg:order-1"}`}>
+              {/* Телефон: фото без скруглений, у последнего этапа — скругление снизу */}
+              <div className={`relative min-h-[42vh] overflow-hidden ${i === stages.length - 1 ? "max-lg:rounded-b-[28px]" : ""} ${photoRight ? "lg:order-2" : "lg:order-1"}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={s.photo}
