@@ -82,14 +82,14 @@ export default function SalonServices({
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
-                  className="group grid w-full grid-cols-[1fr_auto] items-center gap-5 px-6 py-6 text-left lg:gap-8 lg:px-8 lg:py-8"
+                  className="group grid w-full grid-cols-[1fr_auto] items-center gap-3 px-4 py-4 text-left sm:gap-5 sm:px-6 sm:py-6 lg:gap-8 lg:px-8 lg:py-8"
                 >
                   {/* Название + подпись */}
                   <span className="min-w-0">
-                    <span className={`block text-[16px] font-normal leading-[1.3] transition-colors duration-300 lg:text-[18px] text-[#17191a]`}>
+                    <span className={`block text-[14px] font-normal leading-[1.3] transition-colors duration-300 sm:text-[16px] lg:text-[18px] text-[#17191a]`}>
                       {c.label[lang]}
                     </span>
-                    <span className={`mt-1.5 block text-[12px] transition-colors duration-300 lg:text-[13px] text-[#2a2320]/55`}>
+                    <span className={`mt-1 block text-[11px] leading-[1.4] transition-colors duration-300 sm:mt-1.5 sm:text-[12px] lg:text-[13px] text-[#2a2320]/55`}>
                       {c.sub[lang]}
                     </span>
                   </span>
@@ -99,7 +99,7 @@ export default function SalonServices({
                     <span className={`hidden whitespace-nowrap rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 sm:inline ${isOpen ? "bg-[#46131E]/[0.07] text-[#46131E]" : "bg-[#17191a]/[0.06] text-[#17191a]"}`}>
                       {c.from[lang]}
                     </span>
-                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-all duration-300 lg:h-12 lg:w-12 ${isOpen ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/25 text-[#17191a] group-hover:border-[#17191a] group-hover:text-[#17191a]"}`}>
+                    <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 sm:h-11 sm:w-11 lg:h-12 lg:w-12 ${isOpen ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/25 text-[#17191a] group-hover:border-[#17191a] group-hover:text-[#17191a]"}`}>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`h-4 w-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
                         <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -114,16 +114,16 @@ export default function SalonServices({
                       {c.groups.map((g, gi) => (
                         <div key={gi} className={gi > 0 ? "mt-5" : ""}>
                           {g.title && (
-                            <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-[#17191a]/45">{g.title[lang]}</p>
+                            <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-[#17191a]/45 sm:text-[11px] sm:tracking-[0.18em]">{g.title[lang]}</p>
                           )}
                           <ul className="divide-y divide-[#17191a]/[0.08] border-t border-[#17191a]/10">
                             {g.rows.map((r) => (
-                              <li key={r.name.ru} className="grid grid-cols-[1fr_auto] items-baseline gap-4 py-3 lg:py-3.5">
+                              <li key={r.name.ru} className="grid grid-cols-[1fr_auto] items-baseline gap-3 py-2.5 sm:gap-4 sm:py-3 lg:py-3.5">
                                 <span className="min-w-0">
-                                  <span className="block text-[14px] text-[#242424] lg:text-[15px]">{r.name[lang]}</span>
-                                  {r.time && <span className="mt-0.5 block text-[12px] text-[#17191a]/45">{r.time[lang]}</span>}
+                                  <span className="block text-[12.5px] text-[#242424] sm:text-[14px] lg:text-[15px]">{r.name[lang]}</span>
+                                  {r.time && <span className="mt-0.5 block text-[10.5px] text-[#17191a]/45 sm:text-[12px]">{r.time[lang]}</span>}
                                 </span>
-                                <span className="whitespace-nowrap text-[14px] text-[#17191a] lg:text-[15px]">{r.price[lang]}</span>
+                                <span className="whitespace-nowrap text-[12.5px] text-[#17191a] sm:text-[14px] lg:text-[15px]">{r.price[lang]}</span>
                               </li>
                             ))}
                           </ul>
@@ -142,9 +142,10 @@ export default function SalonServices({
           href={cta.href}
           target={cta.href.startsWith("http") ? "_blank" : undefined}
           rel={cta.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          className="alis-pulse-wine mt-3 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] px-6 py-5 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:bg-transparent hover:text-[#17191a] hover:backdrop-blur-md sm:text-[14px]"
+          className="mt-3 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] px-6 py-3.5 text-center font-display text-[11px] sm:py-5 sm:text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:bg-transparent hover:text-[#17191a] hover:backdrop-blur-md sm:text-[14px]"
         >
-          {cta.label[lang]}
+          <span className="sm:hidden">{cta.label[lang].split(" · ")[0]}</span>
+          <span className="hidden sm:inline">{cta.label[lang]}</span>
         </a>
       </div>
     </section>
