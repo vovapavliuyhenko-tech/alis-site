@@ -63,40 +63,40 @@ const CONCIERGE_CATEGORIES = [
 const CONCIERGE_STAGES: Stage[] = [
   {
     name: { ru: "Заявка", en: "Request" },
-    heading: { ru: "Оставляете заявку — отвечаем в тот же день", en: "You leave a request — we reply the same day" },
+    heading: { ru: "Заявка — ответ в тот же день", en: "Request — reply the same day" },
     desc: {
-      ru: "Расскажите повод, дату и место. Подберём формат выезда и назовём стоимость — без долгих согласований и «перезвоним когда-нибудь».",
-      en: "Tell us the occasion, date and place. We'll shape the format and confirm the price — no endless back-and-forth.",
+      ru: "Повод, дата и место — и мы сразу назовём формат и стоимость.",
+      en: "Occasion, date and place — and we name the format and price right away.",
     },
     quote: { ru: "«Ответим в тот же день»", en: "“We reply the same day”" },
     photo: "/assets/tild6230-643__.jpg",
   },
   {
     name: { ru: "Бриф", en: "Brief" },
-    heading: { ru: "Согласуем образ, референсы и тайминг", en: "We agree the look, references and timing" },
+    heading: { ru: "Образ и тайминг заранее", en: "Look and timing in advance" },
     desc: {
-      ru: "Фиксируем образ и план по минутам, чтобы в день события ничего не решалось на бегу. Вы точно знаете, что и когда происходит.",
-      en: "We lock the look and a minute-by-minute plan, so nothing is decided on the fly on the day. You know exactly what happens and when.",
+      ru: "Согласуем образ и план по минутам — в день события ничего не решается на бегу.",
+      en: "We agree the look and a minute-by-minute plan — nothing is decided on the fly.",
     },
     quote: { ru: "«Всё расписано заранее»", en: "“Everything planned in advance”" },
     photo: "/assets/tild3236-393__.jpg",
   },
   {
     name: { ru: "Выезд", en: "On location" },
-    heading: { ru: "Приезжаем к вам со своим оборудованием", en: "We come to you with our own kit" },
+    heading: { ru: "Приезжаем со всем необходимым", en: "We arrive fully equipped" },
     desc: {
-      ru: "Команда мастеров работает на месте в 4–6 рук. Ничего везти и готовить не нужно — всё привезём и организуем сами.",
-      en: "A team works on site in 4–6 hands. Nothing to bring or prepare — we bring and set up everything ourselves.",
+      ru: "Команда работает в 4–6 рук. Вам ничего не нужно готовить — всё привезём сами.",
+      en: "The team works with 4–6 hands. Nothing to prepare — we bring everything.",
     },
     quote: { ru: "«Приедем и всё соберём»", en: "“We arrive and handle it all”" },
     photo: "/assets/tild6530-383_-2___1_.jpg",
   },
   {
     name: { ru: "Событие", en: "The day" },
-    heading: { ru: "Вы собраны точно к началу — и в кадре", en: "You're ready right on time — and in the frame" },
+    heading: { ru: "Вы готовы точно к началу", en: "You're ready right on time" },
     desc: {
-      ru: "Причёска, макияж и ногти готовы вовремя, без спешки. При необходимости мастер остаётся рядом до последнего кадра.",
-      en: "Hair, makeup and nails are ready on time, unhurried. If needed, a master stays with you to the last frame.",
+      ru: "Причёска, макияж и ногти — вовремя и без спешки. Если нужно, мастер останется до последнего кадра.",
+      en: "Hair, makeup and nails — on time, unhurried. If needed, an artist stays to the last frame.",
     },
     quote: { ru: "«Готовы вовремя, без спешки»", en: "“Ready on time, no rush”" },
     photo: "/assets/tild6536-613_-2___1__4.jpg",
