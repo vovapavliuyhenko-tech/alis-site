@@ -39,12 +39,14 @@ export default function PhotoBanner({
   // На компьютере цикл крутится только пока баннер в кадре.
   useEffect(() => {
     const el = img.current;
-    if (!el || !matchMedia("(pointer: fine)").matches || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Эффект «статичного фона» — и на компьютере, и на телефоне (на сенсорных чуть слабее)
+    if (!el || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const k = matchMedia("(pointer: fine)").matches ? 0.2 : 0.16;
     let raf = 0;
     const tick = () => {
       const r = el.parentElement!.getBoundingClientRect();
       const p = r.top + r.height / 2 - innerHeight / 2;
-      el.style.transform = `translate3d(0, ${-p * 0.2}px, 0)`;
+      el.style.setProperty("transform", `translate3d(0, ${-p * k}px, 0)`);
       raf = requestAnimationFrame(tick);
     };
     const io = new IntersectionObserver(([e]) => {
