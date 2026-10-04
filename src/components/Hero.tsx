@@ -38,16 +38,17 @@ export default function Hero() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(20,18,16,.32) 0%, rgba(20,18,16,0) 22%), linear-gradient(to top, rgba(20,18,16,.62) 0%, rgba(20,18,16,.22) 42%, rgba(20,18,16,0) 68%)",
+            "linear-gradient(to bottom, rgba(20,18,16,.32) 0%, rgba(20,18,16,0) 22%), linear-gradient(to top, rgba(20,18,16,.72) 0%, rgba(20,18,16,.25) 40%, rgba(20,18,16,0) 65%)",
         }}
       />
 
-      <div className="flex w-full max-w-[1320px] flex-col items-center px-6 pb-[clamp(24px,4vh,48px)] text-center">
+      {/* Телефон (вариант A): всё внизу слева, заголовок в 2 строки, текст мельче; компьютер — по центру */}
+      <div className="flex w-full max-w-[1320px] flex-col items-start px-5 pb-4 text-left sm:items-center sm:px-6 sm:pb-[clamp(24px,4vh,48px)] sm:text-center">
         {/* Заголовок — как на всех обложках сайта */}
-        <h1 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
-          {t("Красота там, где вы", "Beauty wherever you are")}
+        <h1 className="font-serif-display text-[26px] font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
+          {en ? <>Beauty<br className="sm:hidden" /> wherever you are</> : <>Красота<br className="sm:hidden" /> там, где вы</>}
         </h1>
-        <p className="mt-4 max-w-[620px] !text-[12.5px] leading-[1.6] text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[13px]">
+        <p className="mt-3 max-w-[620px] !text-[11.5px] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[12.5px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[13px]">
           {t(
             "Салон красоты ALIS BEAUTY в Новороссийске и международная команда мастеров для свадеб, съёмок и событий. ALIS BEAUTY Concierge — по России, странам СНГ и Европе.",
             "ALIS BEAUTY beauty salon in Novorossiysk and an international team of artists for weddings, shoots and events. ALIS BEAUTY Concierge — across Russia, the CIS and Europe.",
@@ -57,7 +58,7 @@ export default function Hero() {
 
       {/* Две стеклянные плашки во всю ширину внизу блока (как прежняя «Оформить визит»), под каждой — подпись.
           Без мигания и свечения. */}
-      <div className="grid w-full grid-cols-2 gap-2 px-3 pb-4 sm:gap-3 sm:px-4 lg:gap-4 lg:px-6 lg:pb-6">
+      <div className="grid w-full grid-cols-2 gap-2 px-5 pb-5 sm:gap-3 sm:px-4 lg:gap-4 lg:px-6 lg:pb-6">
         {BUTTONS.map((b) => (
           <div key={b.href} className="flex flex-col items-center">
             <a
@@ -68,7 +69,7 @@ export default function Hero() {
               {b.label}
             </a>
             {/* Подпись под кнопкой — тихо, без капса и контраста */}
-            <span className="mt-1.5 text-[10px] tracking-[0.02em] text-white/60 sm:text-[11px]">{b.note}</span>
+            <span className="mt-1.5 hidden text-[11px] tracking-[0.02em] text-white/60 sm:block">{b.note}</span>
           </div>
         ))}
       </div>
