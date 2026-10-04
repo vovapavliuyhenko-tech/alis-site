@@ -49,10 +49,19 @@ export default function Hero() {
           {en ? <>Beauty<br className="sm:hidden" /> wherever you are</> : <>Красота<br className="sm:hidden" /> там, где вы</>}
         </h1>
         <p className="mt-3 max-w-[620px] !text-[11.5px] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[12.5px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[13px]">
-          {t(
-            "Салон красоты ALIS BEAUTY в Новороссийске и международная команда мастеров для свадеб, съёмок и событий. ALIS BEAUTY Concierge — по России, странам СНГ и Европе.",
-            "ALIS BEAUTY beauty salon in Novorossiysk and an international team of artists for weddings, shoots and events. ALIS BEAUTY Concierge — across Russia, the CIS and Europe.",
-          )}
+          {/* Телефон — короче (тот же смысл, 2–3 строки), компьютер — полный текст заказчицы */}
+          <span className="sm:hidden">
+            {t(
+              "Салон красоты в Новороссийске и международная команда мастеров для свадеб, съёмок и событий — по России, СНГ и Европе.",
+              "A beauty salon in Novorossiysk and an international team of artists for weddings, shoots and events — across Russia, the CIS and Europe.",
+            )}
+          </span>
+          <span className="hidden sm:inline">
+            {t(
+              "Салон красоты ALIS BEAUTY в Новороссийске и международная команда мастеров для свадеб, съёмок и событий. ALIS BEAUTY Concierge — по России, странам СНГ и Европе.",
+              "ALIS BEAUTY beauty salon in Novorossiysk and an international team of artists for weddings, shoots and events. ALIS BEAUTY Concierge — across Russia, the CIS and Europe.",
+            )}
+          </span>
         </p>
       </div>
 
@@ -64,7 +73,7 @@ export default function Hero() {
             <a
               href={b.href}
               {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className={`flex w-full items-center justify-center rounded-xl border px-2 py-3 text-[10.5px] font-medium uppercase tracking-[0.08em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[13px] sm:tracking-[0.18em] lg:py-4 lg:text-[14px] ${b.light ? "border-white bg-white text-[#17191a] hover:bg-white/[0.18] hover:text-white" : "border-white/70 bg-white/[0.18] text-white hover:border-white hover:bg-white hover:text-[#17191a]"}`}
+              className={`flex w-full items-center justify-center whitespace-nowrap rounded-xl border px-1.5 py-3 text-[10px] font-medium uppercase tracking-[0.05em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[13px] sm:tracking-[0.18em] lg:py-4 lg:text-[14px] ${b.light ? "border-white bg-white text-[#17191a] hover:bg-white/[0.18] hover:text-white" : "border-white/70 bg-white/[0.18] text-white hover:border-white hover:bg-white hover:text-[#17191a]"}`}
             >
               {b.label}
             </a>
