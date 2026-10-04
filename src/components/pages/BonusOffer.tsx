@@ -65,8 +65,8 @@ export default function BonusOffer() {
       <div className="r-reveal grid w-full items-center gap-8 rounded-[28px] bg-white px-6 py-16 text-center md:grid-cols-2 md:gap-12 md:px-12 md:text-left lg:px-24 lg:py-24">
         <div className="flex flex-col items-center md:items-start">
           <p className="text-[12px] uppercase tracking-[0.18em] text-[#17191a]/60">{en ? "A gift from ALIS BEAUTY" : "Комплимент от ALIS BEAUTY"}</p>
-          <p aria-hidden className="mt-4 font-display !text-[72px] font-extralight leading-none tracking-[0.01em] text-[#17191a] tabular-nums sm:!text-[96px] lg:!text-[150px]">
-            {n}<span className="ml-1.5 align-top !text-[28px] sm:!text-[36px] lg:!text-[52px]">₽</span>
+          <p aria-hidden className="mt-4 font-display !text-[52px] font-extralight leading-none tracking-[0.01em] text-[#17191a] tabular-nums sm:!text-[96px] lg:!text-[150px]">
+            {n}<span className="ml-1 align-top !text-[22px] sm:!text-[36px] lg:!text-[52px]">₽</span>
           </p>
         </div>
         <div className="flex flex-col items-center md:items-start">
