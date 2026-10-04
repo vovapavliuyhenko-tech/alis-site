@@ -343,5 +343,6 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
 @media (max-width: 639px) {
   main h2 { font-size: 16px !important; line-height: 1.3 !important; }
   main h3 { font-size: 14px !important; }
-  main p:not(.uppercase):not([aria-hidden]) { font-size: 12.5px !important; }
+  /* только крупный текст: абзацы, у которых уже задан мелкий размер (9–12px), не увеличиваем */
+  main p:not(.uppercase):not([aria-hidden]):not([class*="text-[9"]):not([class*="text-[10"]):not([class*="text-[11"]):not([class*="text-[12px]"]) { font-size: 12.5px !important; }
 }

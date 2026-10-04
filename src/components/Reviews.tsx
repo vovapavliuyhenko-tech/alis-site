@@ -207,11 +207,11 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
     <section id="reviews" className="overflow-hidden bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
         {/* Заголовок */}
-        <div className="r-reveal mb-14 flex flex-col items-center text-center lg:mb-20">
+        <div className="r-reveal mb-8 flex flex-col items-center text-center sm:mb-14 lg:mb-20">
           <h2 className="font-display text-[22px] font-normal uppercase tracking-[0.02em] leading-[1.2] text-[#17191a] lg:text-[28px]">
             {title ? title[lang] : lang === "en" ? "Read reviews or leave your own" : "Читайте отзывы или оставляйте свой"}
           </h2>
-          <p className="mt-4 inline-flex items-center gap-2 text-[14px] text-[#17191a]/60">
+          <p className="mt-3 inline-flex items-center gap-1.5 text-[11px] text-[#17191a]/60 sm:mt-4 sm:gap-2 sm:text-[14px]">
             <span className="text-[#C9A227]">★★★★★</span>
             <span className="font-medium text-[#17191a]">4.9</span>
             {lang === "en" ? "· 75+ reviews on Yandex and 2GIS" : "· 75+ отзывов на Яндекс и 2ГИС"}
@@ -234,17 +234,17 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
                 className="absolute left-1/2 top-1/2 flex flex-col overflow-hidden rounded-[12px] border border-[#17191a]/12 bg-white p-4 sm:p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[12px] tracking-[0.32em] text-[#C9A227]">★★★★★</span>
+                  <span className="text-[10px] tracking-[0.25em] text-[#C9A227] sm:text-[12px] sm:tracking-[0.32em]">★★★★★</span>
                   <span className="font-serif text-[34px] leading-none text-[#17191a]/20">&rdquo;</span>
                 </div>
 
-                <p className="mt-3 min-h-0 flex-1 overflow-hidden font-serif text-[11px] leading-[1.5] text-[#17191a]/85 [-webkit-box-orient:vertical] [-webkit-line-clamp:7] sm:text-[12.5px] sm:leading-[1.55] sm:[-webkit-line-clamp:8] [display:-webkit-box]">
+                <p className="mt-3 min-h-0 flex-1 overflow-hidden font-serif text-[10px] leading-[1.5] text-[#17191a]/85 [-webkit-box-orient:vertical] [-webkit-line-clamp:8] sm:text-[12.5px] sm:leading-[1.55] sm:[-webkit-line-clamp:8] [display:-webkit-box]">
                   {r.text[lang]}
                 </p>
 
                 <div className="mt-4 flex items-center gap-2.5 border-t border-[#17191a]/10 pt-4">
                   <div>
-                    <p className="text-[12.5px] font-medium text-[#17191a]">{r.name[lang]}</p>
+                    <p className="text-[11px] font-medium text-[#17191a] sm:text-[12.5px]">{r.name[lang]}</p>
                     <p className="text-[10px] uppercase tracking-[0.12em] text-[#17191a]">
                       {r.role[lang]}
                     </p>
@@ -255,7 +255,7 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-[12px] lowercase tracking-wide text-[#17191a]/40">
+        <p className="mt-6 whitespace-nowrap text-center text-[clamp(8.5px,2.5vw,12px)] lowercase tracking-wide text-[#17191a]/40 sm:mt-8 sm:text-[12px]">
           {lang === "en"
             ? "drag to rotate · hold to pause"
             : "потяните, чтобы листать · зажмите, чтобы остановить"}
@@ -273,7 +273,7 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
               target="_blank"
               rel="noopener noreferrer"
               // При наведении — фирменный цвет площадки (Яндекс — красный, 2ГИС — зелёный)
-              className={`group inline-flex items-center gap-1.5 rounded-full border border-[#17191a]/25 px-4 py-2 text-[13px] text-[#17191a] transition-colors ${p.hover}`}
+              className={`group inline-flex items-center gap-1.5 rounded-full border border-[#17191a]/25 px-3 py-1 text-[10px] sm:px-4 sm:py-2 sm:text-[13px] text-[#17191a] transition-colors ${p.hover}`}
             >
               {lang === "en" ? p.en : p.label}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover:-rotate-45"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>

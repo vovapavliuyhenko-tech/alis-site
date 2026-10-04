@@ -78,7 +78,8 @@ export default function BonusOffer() {
         ) : (
           <>
             <p className="mt-3 max-w-[520px] !text-[14px] leading-[1.6] text-[#17191a]/75 lg:!text-[15px]">
-              {en ? "Leave your number — the bonuses will be in your account when you come" : "Оставьте номер — бонусы уже будут на счёте, когда вы придёте"}
+              {/* В одну строку на любом экране: размер от ширины */}
+              <span className="block whitespace-nowrap text-[clamp(9.5px,2.6vw,15px)]">{en ? "Leave your number — the bonuses will be in your account when you come" : "Оставьте номер — бонусы уже будут на счёте, когда вы придёте"}</span>
             </p>
             <form onSubmit={submit} noValidate className="mt-8 flex w-full max-w-[560px] flex-col gap-3 sm:flex-row">
               {/* Поле-ловушка для ботов */}
@@ -124,9 +125,10 @@ export default function BonusOffer() {
                 onChange={(e) => setConsent(e.target.checked)}
                 className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]"
               />
-              <span className="text-[11px] leading-relaxed text-[#17191a]/50">
-                {en ? "I agree to the processing of my personal data. " : "Даю согласие на обработку персональных данных. "}
-                <a href="/policy" className="underline underline-offset-2">{en ? "Privacy policy" : "Политика конфиденциальности"}</a>
+              {/* В одну строку: ссылка на политику — на словах «персональных данных» */}
+              <span className="whitespace-nowrap text-[clamp(10px,2.9vw,11px)] leading-relaxed text-[#17191a]/50">
+                {en ? "I agree to the processing of my " : "Даю согласие на обработку "}
+                <a href="/policy" className="underline underline-offset-2">{en ? "personal data" : "персональных данных"}</a>
               </span>
             </label>
           </>
