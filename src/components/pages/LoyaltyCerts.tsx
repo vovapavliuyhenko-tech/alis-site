@@ -98,7 +98,7 @@ export default function LoyaltyCerts() {
               <h3 className="mt-2 font-display text-[22px] uppercase leading-[1.15] tracking-[0.02em] text-white lg:text-[26px]">
                 {t("Подарочный сертификат ÁLIS BEAUTY", "ÁLIS BEAUTY gift certificate")}
               </h3>
-              <p className="mt-1.5 max-w-md text-[11.5px] leading-relaxed text-white/80 opacity-0 sm:mt-2 sm:text-[13px] transition-opacity duration-300 group-hover:opacity-100 group-data-[on]:opacity-100">
+              <p className="mt-1.5 max-w-md !text-[10.5px] leading-relaxed text-white/80 opacity-0 sm:mt-2 lg:!text-[13px] transition-opacity duration-300 group-hover:opacity-100 group-data-[on]:opacity-100">
                 {t(
                   "Любая услуга или сумма. Лучший способ подарить заботу — и точно не промахнуться.",
                   "Any service or amount. The best way to gift care — and never miss.",
@@ -122,7 +122,7 @@ export default function LoyaltyCerts() {
                 <h3 className="font-display text-[17px] uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[19px]">
                   {tile.title[lang]}
                 </h3>
-                <p className="mt-1.5 text-[11px] leading-relaxed text-[#17191a]/70 sm:mt-2 sm:text-[13px]">
+                <p className="mt-1.5 !text-[10.5px] leading-relaxed text-[#17191a]/70 sm:mt-2 lg:!text-[13px]">
                   {tile.note[lang]}
                 </p>
               </div>
