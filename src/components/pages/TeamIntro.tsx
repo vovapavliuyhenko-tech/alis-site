@@ -34,7 +34,7 @@ export default function TeamIntro({
   return (
     // Белая подложка — чтобы под скруглёнными нижними углами был белый фон, как у страницы
     <div className="bg-white">
-    <section className="relative isolate flex min-h-[92svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#b9b3a9] text-white">
+    <section className="relative isolate flex min-h-[100svh] flex-col sm:min-h-[92svh] items-center justify-end overflow-hidden rounded-b-[28px] bg-[#b9b3a9] text-white">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img ref={bg} src={photo} alt={`${title[lang]} — ÁLIS BEAUTY`} className="absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-center will-change-transform" />
       {/* Затемнение как на главной: сверху — под шапку, снизу — под заголовок */}
@@ -47,26 +47,26 @@ export default function TeamIntro({
         }}
       />
 
-      <div className={`flex w-full max-w-[1320px] flex-col items-center px-6 ${button ? "pb-[clamp(32px,6vh,72px)]" : "pb-[clamp(56px,11vh,120px)]"} text-center`}>
+      <div className={`flex w-full max-w-[1320px] flex-col items-center px-6 ${button ? "pb-4 sm:pb-[clamp(32px,6vh,72px)]" : "pb-[clamp(56px,11vh,120px)]"} text-center`}>
         {kicker && (
           <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.18em] text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:mb-4 lg:text-[13px]">
             {kicker[lang]}
           </p>
         )}
-        <h1 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
+        <h1 className="whitespace-nowrap font-serif-display text-[clamp(18px,6vw,24px)] font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
           {title[lang]}
         </h1>
       </div>
 
       {button && (
-        <div className={`grid w-full gap-3 px-4 pb-4 lg:gap-4 lg:px-6 lg:pb-6 ${button2 ? "sm:grid-cols-2" : ""}`}>
+        <div className={`grid w-full gap-2 px-5 pb-5 sm:gap-3 sm:px-4 sm:pb-4 lg:gap-4 lg:px-6 lg:pb-6 ${button2 ? "grid-cols-2" : ""}`}>
           {[button, button2].filter((b): b is { label: Loc; href: string } => !!b).map((b, i) => (
             <a
               key={b.href}
               href={b.href}
               {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className={`flex w-full items-center justify-center rounded-xl border py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] backdrop-blur-md transition-colors duration-300 lg:py-4 lg:text-[14px] ${
-                button2 && i === 0
+              className={`flex w-full items-center justify-center whitespace-nowrap rounded-xl border px-1.5 py-3 text-[10px] font-medium uppercase tracking-[0.05em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[13px] sm:tracking-[0.18em] lg:py-4 lg:text-[14px] ${
+                i === 0
                   ? "border-white bg-white text-[#17191a] hover:bg-white/[0.18] hover:text-white"
                   : "border-white/70 bg-white/[0.18] text-white hover:border-white hover:bg-white hover:text-[#17191a]"
               }`}

@@ -57,8 +57,70 @@ export default function Footer() {
   return (
     <footer id="footer" className="relative z-20 -mt-10 overflow-hidden rounded-t-[40px] bg-[#17191a] text-[#f4efe6]">
       <div className="relative z-10 mx-auto w-[90%] max-w-[1760px] pb-6 pt-10 sm:w-[96%] lg:pb-10 lg:pt-20">
-        {/* Колонки + крупный контакт справа */}
-        <div className="grid grid-cols-2 gap-x-5 gap-y-6 lg:grid-cols-[1fr_1fr_1.6fr_auto] lg:gap-10">
+        {/* ТЕЛЕФОН (вариант B): телефон + иконки, ниже три раскрывающихся раздела */}
+        <div className="sm:hidden">
+          <div className="flex items-center justify-between gap-3">
+            <a href={`tel:${PHONE_MAIN.replace(/[^d+]/g, "")}`} className="whitespace-nowrap font-display text-[20px] leading-none text-[#f4efe6]">{PHONE_MAIN}</a>
+            <div className="flex gap-2">
+              <a href={`https://wa.me/${PHONE_MAIN.replace(/D/g, "")}`} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f4efe6]/35 text-[#f4efe6]">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.08.9.92-3-.2-.31a8.2 8.2 0 1 1 6.86 3.74Z" /></svg>
+              </a>
+              <a href={SOCIALS[concierge ? 1 : 0].href} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f4efe6]/35 text-[#f4efe6]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="h-4 w-4" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>
+              </a>
+            </div>
+          </div>
+          <div className="mt-6 border-t border-[#f4efe6]/12">
+            {[
+              {
+                key: "menu",
+                label: t("Меню", "Menu"),
+                body: (
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-2 pb-4">
+                    {MENU.map((m) => (
+                      <a key={m.href} href={m.href} {...(m.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="text-[12px] text-[#f4efe6]/80">{m.label}</a>
+                    ))}
+                  </div>
+                ),
+              },
+              {
+                key: "addr",
+                label: t("Адрес и часы", "Address & hours"),
+                body: (
+                  <div className="space-y-1.5 pb-4 text-[12px] text-[#f4efe6]/80">
+                    <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="block">{ADDRESS[lang]}</a>
+                    <p className="text-[11px] text-[#f4efe6]/60">{HOURS[lang]}</p>
+                    <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="block">{t("Построить маршрут →", "Get directions →")}</a>
+                  </div>
+                ),
+              },
+              {
+                key: "soc",
+                label: t("Соцсети и почта", "Social & e-mail"),
+                body: (
+                  <div className="space-y-1.5 pb-4 text-[12px] text-[#f4efe6]/80">
+                    {SOCIALS.map((so) => (
+                      <a key={so.href} href={so.href} target="_blank" rel="noopener noreferrer" className="block">{so.label[lang]}*</a>
+                    ))}
+                    <a href={`tel:${PHONE_SECOND.replace(/[^d+]/g, "")}`} className="block">{PHONE_SECOND} — {secondNote}</a>
+                    <a href={`mailto:${EMAIL}`} className="block">{EMAIL}</a>
+                  </div>
+                ),
+              },
+            ].map((sec) => (
+              <details key={sec.key} className="group border-b border-[#f4efe6]/12">
+                <summary className="flex cursor-pointer list-none items-center justify-between py-3.5 text-[12px] uppercase tracking-[0.14em] text-[#f4efe6] [&::-webkit-details-marker]:hidden">
+                  {sec.label}
+                  <span aria-hidden className="text-[16px] font-light transition-transform duration-300 group-open:rotate-45">+</span>
+                </summary>
+                {sec.body}
+              </details>
+            ))}
+          </div>
+        </div>
+
+        {/* Компьютер и планшет: колонки + крупный контакт справа */}
+        <div className="hidden grid-cols-2 gap-x-5 gap-y-6 sm:grid lg:grid-cols-[1fr_1fr_1.6fr_auto] lg:gap-10">
           {/* Соцсети */}
           <div>
             <p className={title}>{t("Социальные сети", "Social media")}</p>
@@ -109,7 +171,7 @@ export default function Footer() {
         </div>
 
         {/* Нижний ряд: копирайт слева, документы в одну строку справа */}
-        <div className="mt-8 flex flex-col gap-3 border-t border-[#f4efe6]/10 pt-5 text-[10.5px] text-[#f4efe6]/65 sm:pt-6 sm:text-[12px] md:flex-row md:items-center md:justify-between lg:mt-14">
+        <div className="mt-6 flex flex-col gap-3 border-t sm:mt-8 border-[#f4efe6]/10 pt-5 text-[10.5px] text-[#f4efe6]/65 sm:pt-6 sm:text-[12px] md:flex-row md:items-center md:justify-between lg:mt-14">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <span>© {new Date().getFullYear()} ÁLIS BEAUTY. {t("Все права защищены", "All rights reserved")}</span>
             <a href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#f4efe6]">
