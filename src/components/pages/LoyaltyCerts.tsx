@@ -3,7 +3,6 @@
 // услуг: слева высокая оливковая карточка лояльности (500 бонусных рублей и привилегии), справа
 // сверху широкая карточка подарочного сертификата с фото (зум + раскрытие на
 // наведении), снизу два бежевых тайла бонусов. Тексты по AIDA. Двуязычно.
-import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 import CountUp from "@/components/ui/CountUp";
 
@@ -14,16 +13,6 @@ type Loc = { ru: string; en: string };
 
 export default function LoyaltyCerts() {
   const { lang } = useLang();
-  // Телефон/планшет (нет наведения): карточка сертификата в центре экрана включает эффект hover
-  const cert = useRef<HTMLAnchorElement>(null);
-  const [certOn, setCertOn] = useState(false);
-  useEffect(() => {
-    const el = cert.current;
-    if (!el || matchMedia("(hover: hover)").matches) return;
-    const io = new IntersectionObserver(([e]) => setCertOn(e.isIntersecting), { rootMargin: "-35% 0px -35% 0px" });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
   const en = lang === "en";
   const t = (ru: string, e: string) => (en ? e : ru);
 
@@ -76,8 +65,6 @@ export default function LoyaltyCerts() {
             target="_blank"
             rel="noopener noreferrer"
             id="certificates"
-            ref={cert}
-            data-on={certOn ? "" : undefined}
             className="group relative col-span-2 min-h-[200px] scroll-mt-28 overflow-hidden rounded-[12px] sm:min-h-[240px] lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:min-h-0"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -87,18 +74,18 @@ export default function LoyaltyCerts() {
               draggable={false}
               loading="lazy"
               decoding="async"
-              className="absolute inset-0 h-full w-full object-cover transition-all duration-[700ms] ease-out group-hover:scale-105 group-data-[on]:scale-105 group-hover:blur-md group-data-[on]:blur-md"
+              className="absolute inset-0 h-full w-full object-cover transition-all duration-[700ms] ease-out group-hover:scale-105 group-hover:blur-md"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10 transition-colors duration-500 group-hover:from-black/80 group-data-[on]:from-black/80" />
-            <span className="absolute right-4 top-4 flex h-9 w-9 sm:right-6 sm:top-6 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-white/50 text-[16px] text-white transition-all duration-300 group-hover:border-transparent group-data-[on]:border-transparent group-hover:bg-[#f4efe6] group-data-[on]:bg-[#f4efe6] group-hover:text-[#17191a] group-data-[on]:text-[#17191a]">
-              <span className="transition-transform duration-300 group-hover:-rotate-45 group-data-[on]:-rotate-45">→</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10 transition-colors duration-500 group-hover:from-black/80" />
+            <span className="absolute right-4 top-4 flex h-9 w-9 sm:right-6 sm:top-6 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-white/50 text-[16px] text-white transition-all duration-300 group-hover:border-transparent group-hover:bg-[#f4efe6] group-hover:text-[#17191a]">
+              <span className="transition-transform duration-300 group-hover:-rotate-45">→</span>
             </span>
             <div className="absolute inset-x-5 bottom-5 sm:inset-x-6 sm:bottom-6">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-white/70 opacity-0 sm:text-[11px] transition-opacity duration-300 group-hover:opacity-100 group-data-[on]:opacity-100">{t("подарок", "a gift")}</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/70 opacity-0 sm:text-[11px] transition-opacity duration-300 group-hover:opacity-100">{t("подарок", "a gift")}</p>
               <h3 className="mt-2 font-display text-[22px] uppercase leading-[1.15] tracking-[0.02em] text-white lg:text-[26px]">
                 {t("Подарочный сертификат ÁLIS BEAUTY", "ÁLIS BEAUTY gift certificate")}
               </h3>
-              <p className="mt-1.5 max-w-md !text-[10.5px] leading-relaxed text-white/80 opacity-0 sm:mt-2 lg:!text-[13px] transition-opacity duration-300 group-hover:opacity-100 group-data-[on]:opacity-100">
+              <p className="mt-1.5 max-w-md !text-[10.5px] leading-relaxed text-white/80 opacity-0 sm:mt-2 lg:!text-[13px] transition-opacity duration-300 group-hover:opacity-100">
                 {t(
                   "Любая услуга или сумма. Лучший способ подарить заботу — и точно не промахнуться.",
                   "Any service or amount. The best way to gift care — and never miss.",
