@@ -78,29 +78,36 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
   }, []);
   useEffect(() => {
     if (!mobile) return;
+    const box0 = wrap.current;
     let raf = 0;
+    // Высота каждой панели плавно следует за прокруткой: прогресс t по блоку → «колокол» вокруг
+    // текущей панели (соседняя растёт ровно настолько, насколько сжимается текущая — без рывков).
+    const OPEN = innerWidth >= 640 ? 360 : 300, SHUT = 64, STEP = 150;
     const pick = () => {
       raf = 0;
-      const items = wrap.current ? Array.from(wrap.current.children) as HTMLElement[] : [];
-      const mid = innerHeight * 0.45;
-      let best = 0, dist = Infinity;
+      const box = wrap.current;
+      if (!box) return;
+      const items = Array.from(box.children) as HTMLElement[];
+      const n = items.length;
+      let t = (innerHeight * 0.55 - box.getBoundingClientRect().top) / STEP;
+      t = Math.min(n - 0.5, Math.max(0.5, t));
       items.forEach((el, i) => {
-        const r = el.getBoundingClientRect();
-        const d = Math.abs(r.top + Math.min(r.height, 120) / 2 - mid);
-        if (d < dist) { dist = d; best = i; }
+        const o = Math.max(0, 1 - Math.abs(t - (i + 0.5)));
+        const e = o * o * (3 - 2 * o); // мягкое ускорение/замедление
+        el.style.setProperty("height", `${SHUT + (OPEN - SHUT) * e}px`);
+        el.style.setProperty("transition", "none");
       });
-      setActive((cur) => {
-        const c = items[cur];
-        if (!c || cur === best) return best;
-        const r = c.getBoundingClientRect();
-        const dc = Math.abs(r.top + Math.min(r.height, 120) / 2 - mid);
-        return dist < dc - 40 ? best : cur; // переключаемся, только если новая панель заметно ближе
-      });
+      setActive(Math.min(n - 1, Math.max(0, Math.round(t - 0.5))));
     };
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(pick); };
     pick();
     addEventListener("scroll", onScroll, { passive: true });
-    return () => { removeEventListener("scroll", onScroll); cancelAnimationFrame(raf); };
+    return () => {
+      removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+      // вернуть управление высотой классам (для компьютера)
+      (box0 ? (Array.from(box0.children) as HTMLElement[]) : []).forEach((el) => { el.style.removeProperty("height"); el.style.removeProperty("transition"); });
+    };
   }, [mobile]);
   // Компьютер: авто-листание, пауза при наведении
   useEffect(() => {

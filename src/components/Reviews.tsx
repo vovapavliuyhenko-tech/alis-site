@@ -127,7 +127,7 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
   // Телефон: карточки компактнее карточек ленты работ (190×230), кольцо меньше; компьютер — как было
   const [compact, setCompact] = useState(false);
   useEffect(() => {
-    const mq = matchMedia("(max-width: 639px)");
+    const mq = matchMedia("(max-width: 1023px)");
     const upd = () => setCompact(mq.matches);
     upd();
     mq.addEventListener("change", upd);
@@ -137,14 +137,21 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
   const touched = useRef(0);
   useEffect(() => {
     if (!compact) return;
-    const id = setInterval(() => {
-      const el = stripRef.current;
-      if (!el || Date.now() - touched.current < 6000) return; // после касания — пауза
-      const step = 190 + 8; // ширина карточки на телефоне + зазор
-      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) el.scrollTo({ left: 0, behavior: "smooth" });
-      else el.scrollBy({ left: step, behavior: "smooth" });
-    }, 3000);
-    return () => clearInterval(id);
+    const el = stripRef.current;
+    if (!el) return;
+    // Плавная бесконечная лента — та же скорость, что у ленты работ; пауза на касании
+    let raf = 0, pos = el.scrollLeft;
+    const step = () => {
+      const half = el.scrollWidth / 2 || 1;
+      if (Date.now() - touched.current > 2500) {
+        pos += 0.9;
+        if (pos >= half) pos -= half;
+        el.scrollLeft = pos;
+      } else pos = el.scrollLeft;
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
   }, [compact]);
   const cardW = compact ? 190 : 300;
   const cardH = compact ? 230 : 300;
@@ -260,8 +267,8 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
 
         {compact ? (
           // Телефон: простая лента карточек — листается пальцем и сама каждые 3 с
-          <div ref={stripRef} onTouchStart={() => (touched.current = Date.now())} className="-mx-[2%] flex snap-x snap-mandatory gap-2 overflow-x-auto px-[2%] pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {REVIEWS.map((r) => card(r, "relative shrink-0 snap-start", { width: cardW, height: cardH }))}
+          <div ref={stripRef} onTouchStart={() => (touched.current = Date.now())} onTouchMove={() => (touched.current = Date.now())} className="-mx-[2%] flex gap-2 overflow-x-auto px-[2%] pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {[...REVIEWS, ...REVIEWS].map((r, i) => <div key={i} className="shrink-0">{card(r, "relative", { width: cardW, height: cardH })}</div>)}
           </div>
         ) : (
           <>
@@ -282,11 +289,13 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
           </>
         )}
 
-        <p className="mt-6 whitespace-nowrap text-center text-[clamp(8.5px,2.5vw,12px)] lowercase tracking-wide text-[#17191a]/40 sm:mt-8 sm:text-[12px]">
-          {lang === "en"
-            ? (compact ? "swipe to browse reviews" : "drag to rotate · hold to pause")
-            : compact ? "листайте отзывы пальцем" : "потяните, чтобы листать · зажмите, чтобы остановить"}
-        </p>
+        {!compact && (
+          <p className="mt-6 whitespace-nowrap text-center text-[clamp(8.5px,2.5vw,12px)] lowercase tracking-wide text-[#17191a]/40 sm:mt-8 sm:text-[12px]">
+            {lang === "en"
+              ? (compact ? "swipe to browse reviews" : "drag to rotate · hold to pause")
+              : compact ? "листайте отзывы пальцем" : "потяните, чтобы листать · зажмите, чтобы остановить"}
+          </p>
+        )}
 
         {/* Ссылки на реальные площадки с отзывами */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

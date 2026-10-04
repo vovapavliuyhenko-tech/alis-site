@@ -247,52 +247,56 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Мобильное меню */}
+      {/* Мобильное меню — аккуратная панель сбоку (~80% ширины), справа затемнённый край страницы.
+          Только страницы, без подпунктов-блоков; внизу запись, телефон и язык. */}
       {open && (
-        // Мобильное меню на весь экран (как на paloma.website): пункты появляются по очереди,
-        // внизу — запись, телефон и язык
-        <div className="alis-menu fixed inset-x-0 bottom-0 top-[68px] flex flex-col overflow-y-auto border-t border-[#17191a]/10 bg-white px-5 pb-[max(20px,env(safe-area-inset-bottom))] pt-3 xl:hidden">
-          <nav className="flex flex-col">
-            {ALL_NAV.map((item, i) => (
-              <div key={item.label.ru} style={{ animationDelay: `${60 + i * 45}ms` }} className="alis-menu-item border-b border-[#17191a]/8 py-2 last:border-0">
-                <a href={item.href} onClick={() => setOpen(false)} className="block py-2.5 text-[16px] uppercase tracking-[0.1em] text-[#17191a]">
-                  {item.label[lang]}
-                </a>
-                {item.sub && (
-                  <div className="mb-1 flex flex-col gap-0.5 pl-3">
-                    {item.sub.map((s) => (
-                      <a key={s.label.ru} href={s.href} {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} onClick={() => setOpen(false)} className="py-2 text-[15px] text-[#17191a]/80">
-                        {s.label[lang]}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </nav>
-          <div className="alis-menu-item mt-auto flex flex-col gap-3 pt-8" style={{ animationDelay: "420ms" }}>
-            <a
-              href="https://n1054895.yclients.com/company/976464/personal/menu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="alis-pulse-wine flex w-full items-center justify-center rounded-xl border border-[#17191a] bg-[#17191a] py-4 text-[13px] font-medium uppercase tracking-[0.16em] text-white"
-            >
-              {lang === "en" ? "Book a visit" : "Оформить визит"}
-            </a>
-            <a href="tel:+79888887758" className="py-2 text-center text-[18px] tracking-[0.02em] text-[#17191a]">+7 988 888 77 58</a>
-            <div className="flex items-center justify-center gap-3 text-[13px]">
-              {(["ru", "en"] as Lang[]).map((l) => (
-                <button
-                  key={l}
-                  onClick={() => setLang(l)}
-                  aria-pressed={lang === l}
-                  className={`rounded-full border px-4 py-2 uppercase tracking-wide transition-colors ${
-                    lang === l ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/20 text-[#17191a]/60"
-                  }`}
+        <div className="fixed inset-0 z-[60] xl:hidden">
+          <div aria-hidden onClick={() => setOpen(false)} className="alis-drawer-fade absolute inset-0 bg-[#17191a]/40 backdrop-blur-[2px]" />
+          <div className="alis-drawer absolute inset-y-0 left-0 flex w-[80%] max-w-[340px] flex-col overflow-y-auto bg-white px-6 pb-[max(20px,env(safe-area-inset-bottom))] pt-5 shadow-[20px_0_60px_-20px_rgba(23,25,26,0.35)]">
+            <div className="flex items-center justify-between">
+              <LogoWord variant="wine" className="h-[15px] w-auto" />
+              <button type="button" onClick={() => setOpen(false)} aria-label={lang === "en" ? "Close menu" : "Закрыть меню"} className="flex h-9 w-9 items-center justify-center text-[#17191a]">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /></svg>
+              </button>
+            </div>
+            <nav className="mt-8 flex flex-col">
+              {ALL_NAV.map((item, i) => (
+                <a
+                  key={item.label.ru}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  style={{ animationDelay: `${80 + i * 40}ms` }}
+                  className={`alis-menu-item flex items-center justify-between border-b border-[#17191a]/8 py-3.5 text-[13px] uppercase tracking-[0.12em] transition-colors ${pathname === item.href ? "text-[#17191a]" : "text-[#17191a]/75"}`}
                 >
-                  {l}
-                </button>
+                  {item.label[lang]}
+                  <span aria-hidden className="text-[12px] text-[#17191a]/30">→</span>
+                </a>
               ))}
+            </nav>
+            <div className="alis-menu-item mt-auto flex flex-col gap-3 pt-8" style={{ animationDelay: "380ms" }}>
+              <a
+                href="https://n1054895.yclients.com/company/976464/personal/menu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full items-center justify-center rounded-xl border border-[#17191a] bg-[#17191a] py-3.5 text-[11.5px] font-medium uppercase tracking-[0.14em] text-white"
+              >
+                {lang === "en" ? "Book a visit" : "Оформить визит"}
+              </a>
+              <a href="tel:+79888887758" className="py-1 text-center text-[15px] tracking-[0.02em] text-[#17191a]">+7 988 888 77 58</a>
+              <div className="flex items-center justify-center gap-2 text-[12px]">
+                {(["ru", "en"] as Lang[]).map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => setLang(l)}
+                    aria-pressed={lang === l}
+                    className={`rounded-full border px-3.5 py-1.5 uppercase tracking-wide transition-colors ${
+                      lang === l ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/20 text-[#17191a]/60"
+                    }`}
+                  >
+                    {l}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>

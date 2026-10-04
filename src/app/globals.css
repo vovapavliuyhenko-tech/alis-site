@@ -346,3 +346,10 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
   /* только крупный текст: абзацы, у которых уже задан мелкий размер (9–12px), не увеличиваем */
   main p:not(.uppercase):not([aria-hidden]):not([class*="text-[9"]):not([class*="text-[10"]):not([class*="text-[11"]):not([class*="text-[12px]"]) { font-size: 12.5px !important; }
 }
+
+/* Мобильное меню-панель: выезжает слева, фон плавно затемняется */
+.alis-drawer { animation: alisDrawerIn .45s cubic-bezier(.22,1,.36,1) both; }
+.alis-drawer-fade { animation: alisFadeIn .35s ease-out both; }
+@keyframes alisDrawerIn { from { transform: translateX(-100%); } to { transform: none; } }
+@keyframes alisFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .alis-drawer, .alis-drawer-fade { animation: none; } }
