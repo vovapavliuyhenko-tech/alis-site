@@ -4,7 +4,7 @@
 // пять преимуществ — раскрывающиеся фото-панели: видно только заголовки,
 //     описание — у активной панели (сама листается, на наведении — выбранная).
 // Ч/б. Двуязычно. TODO: фото панелей заменить на съёмку, которую пришлёт заказчица.
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -66,11 +66,42 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
   // Панели преимуществ: авто-листание, пауза при наведении
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  // Телефон/планшет: панель раскрывается при прокрутке — активна та, что ближе к центру экрана
+  const [mobile, setMobile] = useState(false);
+  const wrap = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (paused) return;
+    const mq = matchMedia("(max-width: 1023px)");
+    const upd = () => setMobile(mq.matches);
+    upd();
+    mq.addEventListener("change", upd);
+    return () => mq.removeEventListener("change", upd);
+  }, []);
+  useEffect(() => {
+    if (!mobile) return;
+    let raf = 0;
+    const pick = () => {
+      raf = 0;
+      const items = wrap.current ? Array.from(wrap.current.children) as HTMLElement[] : [];
+      const mid = innerHeight * 0.45;
+      let best = 0, dist = Infinity;
+      items.forEach((el, i) => {
+        const r = el.getBoundingClientRect();
+        const d = Math.abs(r.top + Math.min(r.height, 120) / 2 - mid);
+        if (d < dist) { dist = d; best = i; }
+      });
+      setActive(best);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(pick); };
+    pick();
+    addEventListener("scroll", onScroll, { passive: true });
+    return () => { removeEventListener("scroll", onScroll); cancelAnimationFrame(raf); };
+  }, [mobile]);
+  // Компьютер: авто-листание, пауза при наведении
+  useEffect(() => {
+    if (paused || mobile) return;
     const id = setTimeout(() => setActive((i) => (i + 1) % points.length), AUTO_MS);
     return () => clearTimeout(id);
-  }, [active, paused, points.length]);
+  }, [active, paused, mobile, points.length]);
 
   return (
     <section id={sectionId} className="scroll-mt-24 overflow-hidden bg-white section-y">
@@ -78,6 +109,7 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
         {title && <h2 className="r-reveal mb-8 text-center text-[#17191a] lg:mb-10">{title[lang]}</h2>}
         {/* Пять преимуществ — раскрывающиеся фото-панели */}
         <div
+          ref={wrap}
           className="flex flex-col gap-2 lg:h-[min(520px,62vh)] lg:flex-row lg:gap-3"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
@@ -93,7 +125,7 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
                 onClick={() => setActive(i)}
                 aria-expanded={on}
                 className={`group relative isolate overflow-hidden rounded-[12px] text-left text-white transition-[flex-grow,height] duration-700 ease-[cubic-bezier(.2,.7,.2,1)] lg:h-auto lg:min-w-0 ${
-                  on ? "h-[380px] lg:flex-[3.6_1_0%]" : "h-[84px] lg:flex-[1_1_0%]"
+                  on ? "h-[300px] sm:h-[360px] lg:flex-[3.6_1_0%]" : "h-[64px] lg:flex-[1_1_0%]"
                 }`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -109,7 +141,7 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
                 />
 
                 {/* Номер */}
-                <span className="absolute left-5 top-5 font-serif-display text-[13px] tracking-[0.12em] text-white/90 lg:left-6 lg:top-6">
+                <span className={`absolute left-5 top-5 font-serif-display text-[13px] tracking-[0.12em] text-white/90 lg:left-6 lg:top-6 ${on ? "" : "max-lg:hidden"}`}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
@@ -125,7 +157,7 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
                 {/* Заголовок (мобильная версия — всегда; десктоп — у активной) и описание */}
                 <div className="absolute inset-x-5 bottom-5 lg:inset-x-8 lg:bottom-8">
                   <h3
-                    className={`font-serif-display text-[17px] uppercase leading-[1.2] tracking-[0.03em] transition-all duration-500 lg:text-[22px] ${
+                    className={`font-serif-display text-[14px] uppercase leading-[1.2] tracking-[0.03em] sm:text-[17px] transition-all duration-500 lg:text-[22px] ${
                       on ? "lg:translate-y-0 lg:opacity-100 lg:delay-300" : "lg:translate-y-4 lg:opacity-0"
                     }`}
                   >

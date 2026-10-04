@@ -337,3 +337,9 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
    вернуть: удалить этот блок) */
 .alis-pulse, .alis-pulse-wine, .fab-pulse { animation: none !important; }
 .fab-ring { display: none !important; }
+
+/* Телефон: заголовки разделов и текст чуть мельче, чтобы всё помещалось аккуратно */
+@media (max-width: 639px) {
+  main h2 { font-size: 18px; }
+  main h3 { font-size: 15px; }
+}

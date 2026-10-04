@@ -37,7 +37,7 @@ function Track({ items, hidden = false, moved }: { items: MarqueeItem[]; hidden?
           </>
         );
         return (
-          <li key={i} className="group relative mr-2 aspect-[3/4] h-[320px] shrink-0 overflow-hidden rounded-[12px] lg:mr-3 lg:h-[440px]">
+          <li key={i} className="group relative mr-2 aspect-[3/4] h-[260px] shrink-0 sm:h-[320px] overflow-hidden rounded-[12px] lg:mr-3 lg:h-[440px]">
             {href ? (
               <a
                 href={href}
