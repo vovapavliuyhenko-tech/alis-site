@@ -51,6 +51,10 @@ export default function Home() {
             ru: "Свадьба в Ереване, съёмка в Москве, ужин в Каннах — международная команда ALIS BEAUTY уже в пути.",
             en: "A wedding in Yerevan, a shoot in Moscow, a dinner in Cannes — the international ALIS BEAUTY team is already on its way.",
           }}
+          titleLines={{
+            ru: ["Свадьба в Ереване, съёмка в Москве,", "ужин в Каннах — международная команда", "ALIS BEAUTY уже в пути."],
+            en: ["A wedding in Yerevan, a shoot in Moscow,", "a dinner in Cannes — the international", "ALIS BEAUTY team is already on its way."],
+          }}
           text={{
             ru: "Вы выбираете место, мы приводим специалистов, тайминг и спокойствие — вам остаётся только наслаждаться днём.",
             en: "You choose the place; we bring the specialists, the timing and the peace of mind — all that’s left is to enjoy your day.",

@@ -18,11 +18,14 @@ export default function PhotoBanner({
   text,
   video,
   stacked = false,
+  titleLines,
 }: {
   photo: string;
   text?: Loc;
   video?: string;
   stacked?: boolean;
+  // Телефон: заголовок ровно по этим строкам (размер подстраивается под ширину экрана)
+  titleLines?: { ru: string[]; en: string[] };
   label: Loc;
   title: Loc;
   button: { label: Loc; href: string };
@@ -60,7 +63,20 @@ export default function PhotoBanner({
       <section className="bg-white section-y">
         <div className="r-reveal mx-auto w-[92%] max-w-[720px] text-center">
           <p className="text-[12px] uppercase tracking-[0.18em] text-[#17191a]/60">{label[lang]}</p>
-          <h2 className="mt-3 text-[#17191a]">{title[lang]}</h2>
+          <h2 className="mt-3 text-[#17191a]">
+            {titleLines ? (
+              <>
+                <span className="block text-[clamp(12.5px,4vw,16px)] leading-[1.35] sm:hidden">
+                  {titleLines[lang].map((l, i) => (
+                    <span key={i} className="block whitespace-nowrap">{l}</span>
+                  ))}
+                </span>
+                <span className="hidden sm:inline">{title[lang]}</span>
+              </>
+            ) : (
+              title[lang]
+            )}
+          </h2>
         </div>
         {/* Плашка во всю ширину экрана, скругление как у первого блока (28px): видео (если задано) или фото, с тем же параллаксом; текст и кнопка — внутри, внизу */}
         <div className="relative mt-10 flex h-[60svh] min-h-[420px] w-full items-end justify-center overflow-hidden rounded-[28px] text-center text-white lg:mt-14 lg:h-[70svh]">
