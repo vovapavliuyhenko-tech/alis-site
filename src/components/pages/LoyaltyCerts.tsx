@@ -120,7 +120,8 @@ export default function LoyaltyCerts() {
               </span>
               <div>
                 <h3 className="font-display text-[17px] uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[19px]">
-                  {tile.title[lang]}
+                  {/* в одну строку и чуть мельче на телефоне/планшете */}
+                  <span className="whitespace-nowrap text-[clamp(11px,3.2vw,13px)] lg:text-[length:inherit]">{tile.title[lang]}</span>
                 </h3>
                 <p className="mt-1.5 !text-[10.5px] leading-relaxed text-[#17191a]/70 sm:mt-2 lg:!text-[13px]">
                   {tile.note[lang]}
