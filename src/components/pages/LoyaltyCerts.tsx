@@ -41,16 +41,17 @@ export default function LoyaltyCerts() {
   return (
     <section id="loyalty" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
+        <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
           {/* Лояльность — высокая оливковая карточка слева */}
-          <div className="r-reveal flex min-h-[320px] flex-col justify-between rounded-[12px] bg-[#17191a] p-8 text-[#f4efe6] sm:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-h-0 lg:p-10">
+          <div className="r-reveal col-span-2 flex flex-col justify-between rounded-[12px] bg-[#17191a] p-6 text-[#f4efe6] sm:min-h-[320px] sm:p-8 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-h-0 lg:p-10">
             <div>
               <p className="text-[11px] uppercase tracking-[0.2em] text-[#f4efe6]/60">
                 {t("программа лояльности", "loyalty programme")}
               </p>
-              <p className="mt-6 font-display text-[64px] leading-none tracking-[0.01em] lg:text-[72px]"><CountUp to={500} /> ₽</p>
-              <p className="mt-2 text-[15px] text-[#f4efe6]/80">{t("бонусных рублей на первый визит", "bonus roubles on your first visit")}</p>
-              <ul className="mt-8 flex flex-col gap-3 text-[14px] text-[#f4efe6]/85">
+              {/* div, а не p — чтобы общее «мобильное» уменьшение текста не трогало крупную цифру */}
+              <div className="mt-4 font-display text-[64px] leading-none tracking-[0.01em] sm:mt-6 lg:text-[72px]"><CountUp to={500} /> ₽</div>
+              <p className="mt-2 text-[12px] text-[#f4efe6]/80 sm:text-[15px]">{t("бонусных рублей на первый визит", "bonus roubles on your first visit")}</p>
+              <ul className="mt-5 flex flex-col gap-2 text-[12px] text-[#f4efe6]/85 sm:mt-8 sm:gap-3 sm:text-[14px]">
                 {PERKS.map((p) => (
                   <li key={p.ru} className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f4efe6]/70" />
@@ -63,7 +64,7 @@ export default function LoyaltyCerts() {
               href={YCLIENTS}
               target="_blank"
               rel="noopener noreferrer"
-              className="alis-pulse mt-8 flex w-full items-center justify-center rounded-[12px] py-4 font-display text-[13px] uppercase tracking-[0.16em] border border-white/70 bg-white/15 text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a]"
+              className="mt-6 flex w-full items-center justify-center rounded-[12px] py-3.5 font-display text-[11px] uppercase tracking-[0.14em] sm:mt-8 sm:py-4 sm:text-[13px] sm:tracking-[0.16em] border border-white/70 bg-white/15 text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a]"
             >
               {t("Оформить визит", "Book a visit")}
             </a>
@@ -77,7 +78,7 @@ export default function LoyaltyCerts() {
             id="certificates"
             ref={cert}
             data-on={certOn ? "" : undefined}
-            className="group relative min-h-[240px] scroll-mt-28 overflow-hidden rounded-[12px] sm:col-span-2 lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:min-h-0"
+            className="group relative col-span-2 min-h-[200px] scroll-mt-28 overflow-hidden rounded-[12px] sm:min-h-[240px] lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:min-h-0"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -89,15 +90,15 @@ export default function LoyaltyCerts() {
               className="absolute inset-0 h-full w-full object-cover transition-all duration-[700ms] ease-out group-hover:scale-105 group-data-[on]:scale-105 group-hover:blur-md group-data-[on]:blur-md"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10 transition-colors duration-500 group-hover:from-black/80 group-data-[on]:from-black/80" />
-            <span className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-white/50 text-[16px] text-white transition-all duration-300 group-hover:border-transparent group-data-[on]:border-transparent group-hover:bg-[#f4efe6] group-data-[on]:bg-[#f4efe6] group-hover:text-[#17191a] group-data-[on]:text-[#17191a]">
+            <span className="absolute right-4 top-4 flex h-9 w-9 sm:right-6 sm:top-6 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-white/50 text-[16px] text-white transition-all duration-300 group-hover:border-transparent group-data-[on]:border-transparent group-hover:bg-[#f4efe6] group-data-[on]:bg-[#f4efe6] group-hover:text-[#17191a] group-data-[on]:text-[#17191a]">
               <span className="transition-transform duration-300 group-hover:-rotate-45 group-data-[on]:-rotate-45">→</span>
             </span>
-            <div className="absolute inset-x-6 bottom-6">
-              <p className="text-[11px] uppercase tracking-[0.2em] text-white/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-data-[on]:opacity-100">{t("подарок", "a gift")}</p>
+            <div className="absolute inset-x-5 bottom-5 sm:inset-x-6 sm:bottom-6">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/70 opacity-0 sm:text-[11px] transition-opacity duration-300 group-hover:opacity-100 group-data-[on]:opacity-100">{t("подарок", "a gift")}</p>
               <h3 className="mt-2 font-display text-[22px] uppercase leading-[1.15] tracking-[0.02em] text-white lg:text-[26px]">
                 {t("Подарочный сертификат ÁLIS BEAUTY", "ÁLIS BEAUTY gift certificate")}
               </h3>
-              <p className="mt-2 max-w-md text-[13px] leading-relaxed text-white/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-data-[on]:opacity-100">
+              <p className="mt-1.5 max-w-md text-[11.5px] leading-relaxed text-white/80 opacity-0 sm:mt-2 sm:text-[13px] transition-opacity duration-300 group-hover:opacity-100 group-data-[on]:opacity-100">
                 {t(
                   "Любая услуга или сумма. Лучший способ подарить заботу — и точно не промахнуться.",
                   "Any service or amount. The best way to gift care — and never miss.",
@@ -110,18 +111,18 @@ export default function LoyaltyCerts() {
           {TILES.map((tile, i) => (
             <div
               key={tile.title.ru}
-              className={`group flex min-h-[160px] flex-col justify-between rounded-[12px] border border-[#17191a]/15 bg-white p-7 shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:min-h-0 ${
+              className={`group flex min-h-[130px] flex-col justify-between gap-4 rounded-[12px] border border-[#17191a]/15 bg-white p-4 sm:min-h-[160px] sm:p-7 shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:min-h-0 ${
                 i === 0 ? "lg:col-start-2 lg:row-start-2" : "lg:col-start-3 lg:row-start-2"
               }`}
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#17191a] font-display text-[14px] text-white">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#17191a] font-display text-[12px] text-white sm:h-10 sm:w-10 sm:text-[14px]">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
                 <h3 className="font-display text-[17px] uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[19px]">
                   {tile.title[lang]}
                 </h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-[#17191a]/70">
+                <p className="mt-1.5 text-[11px] leading-relaxed text-[#17191a]/70 sm:mt-2 sm:text-[13px]">
                   {tile.note[lang]}
                 </p>
               </div>
