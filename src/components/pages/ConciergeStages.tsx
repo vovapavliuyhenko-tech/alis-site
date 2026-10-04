@@ -69,7 +69,7 @@ export default function ConciergeStages({
         return (
           <div
             key={s.name.ru}
-            className="relative h-svh min-h-[560px] w-full overflow-hidden rounded-[28px] shadow-[0_-4px_10px_-8px_rgba(23,25,26,0.12),0_8px_18px_-10px_rgba(23,25,26,0.18)] sticky top-0"
+            className="relative h-svh min-h-[560px] w-full overflow-hidden lg:rounded-[28px] shadow-[0_-4px_10px_-8px_rgba(23,25,26,0.12),0_8px_18px_-10px_rgba(23,25,26,0.18)] sticky top-0"
           >
             <div className="grid h-full grid-cols-1 lg:grid-cols-2">
               {/* Текст — по центру, мелкий */}
@@ -93,7 +93,8 @@ export default function ConciergeStages({
               </div>
 
               {/* Фото — половина экрана в ширину */}
-              <div className={`relative min-h-[42vh] ${photoRight ? "lg:order-2" : "lg:order-1"}`}>
+              {/* Телефон: скругление только у фото (нижней карточки) */}
+              <div className={`relative min-h-[42vh] overflow-hidden max-lg:rounded-[28px] ${photoRight ? "lg:order-2" : "lg:order-1"}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={s.photo}
