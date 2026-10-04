@@ -45,15 +45,17 @@ export default function Hero() {
       {/* Телефон (вариант A): всё внизу по центру, заголовок в 2 строки, текст мельче; компьютер — по центру */}
       <div className="flex w-full max-w-[1320px] flex-col items-center px-5 pb-4 text-center sm:items-center sm:px-6 sm:pb-[clamp(24px,4vh,48px)] sm:text-center">
         {/* Заголовок — как на всех обложках сайта */}
-        <h1 className="font-serif-display text-[26px] font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
-          {en ? <>Beauty<br className="sm:hidden" /> wherever you are</> : <>Красота<br className="sm:hidden" /> там, где вы</>}
+        <h1 className="whitespace-nowrap font-serif-display text-[clamp(18px,6vw,24px)] font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
+          {t("Красота там, где вы", "Beauty wherever you are")}
         </h1>
         <p className="mt-3 max-w-[620px] !text-[11.5px] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[12.5px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[13px]">
           {/* Телефон — короче (тот же смысл, 2–3 строки), компьютер — полный текст заказчицы */}
-          <span className="sm:hidden">
-            {t(
-              "Салон красоты в Новороссийске и международная команда мастеров для свадеб, съёмок и событий — по России, СНГ и Европе.",
-              "A beauty salon in Novorossiysk and an international team of artists for weddings, shoots and events — across Russia, the CIS and Europe.",
+          {/* Ровно 3 строки на любом телефоне: явные переносы + размер от ширины экрана */}
+          <span className="block text-[clamp(10px,3.05vw,11.5px)] sm:hidden">
+            {en ? (
+              <>A beauty salon in Novorossiysk and an international<br />team of artists for weddings, shoots and events —<br />across Russia, the CIS and Europe.</>
+            ) : (
+              <>Салон красоты в Новороссийске и международная<br />команда мастеров для свадеб, съёмок и событий —<br />по России, СНГ и Европе.</>
             )}
           </span>
           <span className="hidden sm:inline">
