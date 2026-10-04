@@ -2,7 +2,7 @@
 // ОТЗЫВЫ — вращающееся 3D-кольцо: карточки стоят на изгибе (грани цилиндра).
 // Крутится само; можно ЗАХВАТИТЬ указателем и тянуть в любую сторону, а
 // удержанием — останавливать. Двуязычно (RU/EN).
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -124,7 +124,18 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
   const { lang } = useLang();
   const n = REVIEWS.length;
   const step = 360 / n; // угол между гранями
-  const radius = 580; // радиус кольца как изначально (заполняется 12 отзывами)
+  // Телефон: карточки компактнее карточек ленты работ (190×230), кольцо меньше; компьютер — как было
+  const [compact, setCompact] = useState(false);
+  useEffect(() => {
+    const mq = matchMedia("(max-width: 639px)");
+    const upd = () => setCompact(mq.matches);
+    upd();
+    mq.addEventListener("change", upd);
+    return () => mq.removeEventListener("change", upd);
+  }, []);
+  const cardW = compact ? 190 : 300;
+  const cardH = compact ? 230 : 300;
+  const radius = compact ? 380 : 580; // радиус кольца (заполняется 12 отзывами)
 
   const stageRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
@@ -210,7 +221,7 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
         {/* Вращающееся 3D-кольцо */}
         <div
           ref={stageRef}
-          className="relative mx-auto h-[360px] cursor-grab touch-pan-y select-none [perspective:11000px] lg:h-[340px]"
+          className="relative mx-auto h-[270px] cursor-grab sm:h-[360px] touch-pan-y select-none [perspective:11000px] lg:h-[340px]"
         >
           {/* Боковые градиент-маски — премиальное обрамление кольца */}
           <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-white to-transparent sm:w-28 lg:w-44" />
@@ -219,15 +230,15 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
             {REVIEWS.map((r, i) => (
               <article
                 key={r.name.ru}
-                style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)` }}
-                className="absolute left-1/2 top-1/2 -ml-[150px] -mt-[150px] flex h-[300px] w-[300px] flex-col overflow-hidden rounded-[12px] border border-[#17191a]/12 bg-white p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
+                style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)`, width: cardW, height: cardH, marginLeft: -cardW / 2, marginTop: -cardH / 2 }}
+                className="absolute left-1/2 top-1/2 flex flex-col overflow-hidden rounded-[12px] border border-[#17191a]/12 bg-white p-4 sm:p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[12px] tracking-[0.32em] text-[#C9A227]">★★★★★</span>
                   <span className="font-serif text-[34px] leading-none text-[#17191a]/20">&rdquo;</span>
                 </div>
 
-                <p className="mt-3 min-h-0 flex-1 overflow-hidden font-serif text-[12.5px] leading-[1.55] text-[#17191a]/85 [-webkit-box-orient:vertical] [-webkit-line-clamp:8] [display:-webkit-box]">
+                <p className="mt-3 min-h-0 flex-1 overflow-hidden font-serif text-[11px] leading-[1.5] text-[#17191a]/85 [-webkit-box-orient:vertical] [-webkit-line-clamp:7] sm:text-[12.5px] sm:leading-[1.55] sm:[-webkit-line-clamp:8] [display:-webkit-box]">
                   {r.text[lang]}
                 </p>
 

@@ -177,7 +177,9 @@ export default function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        solid || open
+        open
+          ? "border-b border-[#17191a]/10 bg-white"
+          : solid
           ? "border-b border-[#17191a]/10 bg-white/85 shadow-[0_4px_24px_rgba(0,0,0,0.05)] backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}

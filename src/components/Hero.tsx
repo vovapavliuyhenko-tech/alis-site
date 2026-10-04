@@ -57,18 +57,18 @@ export default function Hero() {
 
       {/* Две стеклянные плашки во всю ширину внизу блока (как прежняя «Оформить визит»), под каждой — подпись.
           Без мигания и свечения. */}
-      <div className="grid w-full grid-cols-1 gap-3 px-4 pb-4 sm:grid-cols-2 lg:gap-4 lg:px-6 lg:pb-6">
+      <div className="grid w-full grid-cols-2 gap-2 px-3 pb-4 sm:gap-3 sm:px-4 lg:gap-4 lg:px-6 lg:pb-6">
         {BUTTONS.map((b) => (
           <div key={b.href} className="flex flex-col items-center">
             <a
               href={b.href}
               {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className={`flex w-full items-center justify-center rounded-xl border py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] backdrop-blur-md transition-colors duration-300 lg:py-4 lg:text-[14px] ${b.light ? "border-white bg-white text-[#17191a] hover:bg-white/[0.18] hover:text-white" : "border-white/70 bg-white/[0.18] text-white hover:border-white hover:bg-white hover:text-[#17191a]"}`}
+              className={`flex w-full items-center justify-center rounded-xl border px-2 py-3 text-[10.5px] font-medium uppercase tracking-[0.08em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[13px] sm:tracking-[0.18em] lg:py-4 lg:text-[14px] ${b.light ? "border-white bg-white text-[#17191a] hover:bg-white/[0.18] hover:text-white" : "border-white/70 bg-white/[0.18] text-white hover:border-white hover:bg-white hover:text-[#17191a]"}`}
             >
               {b.label}
             </a>
             {/* Подпись под кнопкой — тихо, без капса и контраста */}
-            <span className="mt-1.5 text-[11px] tracking-[0.02em] text-white/60">{b.note}</span>
+            <span className="mt-1.5 text-[10px] tracking-[0.02em] text-white/60 sm:text-[11px]">{b.note}</span>
           </div>
         ))}
       </div>
