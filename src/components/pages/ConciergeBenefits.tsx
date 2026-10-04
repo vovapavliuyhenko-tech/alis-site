@@ -89,7 +89,13 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
         const d = Math.abs(r.top + Math.min(r.height, 120) / 2 - mid);
         if (d < dist) { dist = d; best = i; }
       });
-      setActive(best);
+      setActive((cur) => {
+        const c = items[cur];
+        if (!c || cur === best) return best;
+        const r = c.getBoundingClientRect();
+        const dc = Math.abs(r.top + Math.min(r.height, 120) / 2 - mid);
+        return dist < dc - 40 ? best : cur; // переключаемся, только если новая панель заметно ближе
+      });
     };
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(pick); };
     pick();
@@ -124,7 +130,7 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
                 onFocus={() => setActive(i)}
                 onClick={() => setActive(i)}
                 aria-expanded={on}
-                className={`group relative isolate overflow-hidden rounded-[12px] text-left text-white transition-[flex-grow,height] duration-700 ease-[cubic-bezier(.2,.7,.2,1)] lg:h-auto lg:min-w-0 ${
+                className={`group relative isolate overflow-hidden rounded-[12px] text-left text-white transition-[flex-grow,height] duration-[900ms] ease-[cubic-bezier(.22,1,.36,1)] lg:h-auto lg:min-w-0 ${
                   on ? "h-[300px] sm:h-[360px] lg:flex-[3.6_1_0%]" : "h-[64px] lg:flex-[1_1_0%]"
                 }`}
               >

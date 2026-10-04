@@ -90,7 +90,7 @@ export default function PhotoMarquee({
       // Дробная позиция копится отдельно: scrollLeft на телефонах округляется до целых — отсюда были рывки
       // Если ленту прокрутили трекпадом/колесом — подхватываем её положение
       if (drag.current.active || Math.abs(el.scrollLeft - last) > 1.5) pos.current = el.scrollLeft;
-      if (!drag.current.active) pos.current += 0.6;
+      if (!drag.current.active) pos.current += 0.9;
       // бесшовная петля
       if (pos.current >= half) pos.current -= half;
       else if (pos.current < 0) pos.current += half;

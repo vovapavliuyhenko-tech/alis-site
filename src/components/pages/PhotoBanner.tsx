@@ -88,7 +88,7 @@ export default function PhotoBanner({
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
           <div data-fab-avoid className="r-reveal relative z-10 max-w-[520px] px-6 pb-10 lg:pb-14">
-            {text && <p className="!text-[13px] leading-[1.6] text-white/90 [text-shadow:0_1px_12px_rgba(0,0,0,.35)] lg:!text-[14px]">{text[lang]}</p>}
+            {text && <p className="!text-[11px] leading-[1.55] text-white/90 sm:!text-[13px] sm:leading-[1.6] [text-shadow:0_1px_12px_rgba(0,0,0,.35)] lg:!text-[14px]">{text[lang]}</p>}
             <a
               href={button.href}
               {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}

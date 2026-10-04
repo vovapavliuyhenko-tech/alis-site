@@ -133,6 +133,19 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
     mq.addEventListener("change", upd);
     return () => mq.removeEventListener("change", upd);
   }, []);
+  const stripRef = useRef<HTMLDivElement>(null);
+  const touched = useRef(0);
+  useEffect(() => {
+    if (!compact) return;
+    const id = setInterval(() => {
+      const el = stripRef.current;
+      if (!el || Date.now() - touched.current < 6000) return; // после касания — пауза
+      const step = 190 + 8; // ширина карточки на телефоне + зазор
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) el.scrollTo({ left: 0, behavior: "smooth" });
+      else el.scrollBy({ left: step, behavior: "smooth" });
+    }, 3000);
+    return () => clearInterval(id);
+  }, [compact]);
   const cardW = compact ? 190 : 300;
   const cardH = compact ? 230 : 300;
   const radius = compact ? 380 : 580; // радиус кольца (заполняется 12 отзывами)
@@ -203,35 +216,12 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
     };
   }, []);
 
-  return (
-    <section id="reviews" className="overflow-hidden bg-white section-y">
-      <div className="mx-auto w-[96%] max-w-[1760px]">
-        {/* Заголовок */}
-        <div className="r-reveal mb-8 flex flex-col items-center text-center sm:mb-14 lg:mb-20">
-          <h2 className="font-display text-[22px] font-normal uppercase tracking-[0.02em] leading-[1.2] text-[#17191a] lg:text-[28px]">
-            {title ? title[lang] : lang === "en" ? "Read reviews or leave your own" : "Читайте отзывы или оставляйте свой"}
-          </h2>
-          <p className="mt-3 inline-flex items-center gap-1.5 text-[11px] text-[#17191a]/60 sm:mt-4 sm:gap-2 sm:text-[14px]">
-            <span className="text-[#C9A227]">★★★★★</span>
-            <span className="font-medium text-[#17191a]">4.9</span>
-            {lang === "en" ? "· 75+ reviews on Yandex and 2GIS" : "· 75+ отзывов на Яндекс и 2ГИС"}
-          </p>
-        </div>
-
-        {/* Вращающееся 3D-кольцо */}
-        <div
-          ref={stageRef}
-          className="relative mx-auto h-[270px] cursor-grab sm:h-[360px] touch-pan-y select-none [perspective:11000px] lg:h-[340px]"
-        >
-          {/* Боковые градиент-маски — премиальное обрамление кольца */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-white to-transparent sm:w-28 lg:w-44" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-white to-transparent sm:w-28 lg:w-44" />
-          <div ref={ringRef} className="absolute inset-0 [transform-style:preserve-3d]">
-            {REVIEWS.map((r, i) => (
-              <article
+  // Карточка отзыва — общая для 3D-кольца (компьютер) и ленты (телефон)
+  const card = (r: Review, cls: string, style?: React.CSSProperties) => (
+    <article
                 key={r.name.ru}
-                style={{ transform: `rotateY(${i * step}deg) translateZ(${radius}px)`, width: cardW, height: cardH, marginLeft: -cardW / 2, marginTop: -cardH / 2 }}
-                className="absolute left-1/2 top-1/2 flex flex-col overflow-hidden rounded-[12px] border border-[#17191a]/12 bg-white p-4 sm:p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]"
+                style={style}
+                className={`${cls} flex flex-col overflow-hidden rounded-[12px] border border-[#17191a]/12 bg-white p-4 sm:p-6 text-[#17191a] shadow-[0_16px_44px_rgba(59,13,26,0.10)] [backface-visibility:hidden]`}
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] tracking-[0.25em] text-[#C9A227] sm:text-[12px] sm:tracking-[0.32em]">★★★★★</span>
@@ -251,14 +241,51 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
                   </div>
                 </div>
               </article>
+  );
+
+  return (
+    <section id="reviews" className="overflow-hidden bg-white section-y">
+      <div className="mx-auto w-[96%] max-w-[1760px]">
+        {/* Заголовок */}
+        <div className="r-reveal mb-8 flex flex-col items-center text-center sm:mb-14 lg:mb-20">
+          <h2 className="font-display text-[22px] font-normal uppercase tracking-[0.02em] leading-[1.2] text-[#17191a] lg:text-[28px]">
+            {title ? title[lang] : lang === "en" ? "Read reviews or leave your own" : "Читайте отзывы или оставляйте свой"}
+          </h2>
+          <p className="mt-3 inline-flex items-center gap-1.5 text-[11px] text-[#17191a]/60 sm:mt-4 sm:gap-2 sm:text-[14px]">
+            <span className="text-[#C9A227]">★★★★★</span>
+            <span className="font-medium text-[#17191a]">4.9</span>
+            {lang === "en" ? "· 75+ reviews on Yandex and 2GIS" : "· 75+ отзывов на Яндекс и 2ГИС"}
+          </p>
+        </div>
+
+        {compact ? (
+          // Телефон: простая лента карточек — листается пальцем и сама каждые 3 с
+          <div ref={stripRef} onTouchStart={() => (touched.current = Date.now())} className="-mx-[2%] flex snap-x snap-mandatory gap-2 overflow-x-auto px-[2%] pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {REVIEWS.map((r) => card(r, "relative shrink-0 snap-start", { width: cardW, height: cardH }))}
+          </div>
+        ) : (
+          <>
+        {/* Вращающееся 3D-кольцо */}
+        <div
+          ref={stageRef}
+          className="relative mx-auto h-[270px] cursor-grab sm:h-[360px] touch-pan-y select-none [perspective:11000px] lg:h-[340px]"
+        >
+          {/* Боковые градиент-маски — премиальное обрамление кольца */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-white to-transparent sm:w-28 lg:w-44" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-white to-transparent sm:w-28 lg:w-44" />
+          <div ref={ringRef} className="absolute inset-0 [transform-style:preserve-3d]">
+            {REVIEWS.map((r, i) => (
+              card(r, "absolute left-1/2 top-1/2", { transform: `rotateY(${i * step}deg) translateZ(${radius}px)`, width: cardW, height: cardH, marginLeft: -cardW / 2, marginTop: -cardH / 2 })
             ))}
           </div>
         </div>
+          </>
+        )}
 
         <p className="mt-6 whitespace-nowrap text-center text-[clamp(8.5px,2.5vw,12px)] lowercase tracking-wide text-[#17191a]/40 sm:mt-8 sm:text-[12px]">
           {lang === "en"
-            ? "drag to rotate · hold to pause"
-            : "потяните, чтобы листать · зажмите, чтобы остановить"}
+            ? (compact ? "swipe to browse reviews" : "drag to rotate · hold to pause")
+            : compact ? "листайте отзывы пальцем" : "потяните, чтобы листать · зажмите, чтобы остановить"}
         </p>
 
         {/* Ссылки на реальные площадки с отзывами */}

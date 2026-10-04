@@ -32,9 +32,9 @@ export default function Footer() {
   const secondNote = concierge ? t("салон красоты", "beauty salon") : t("консьерж-сервис", "concierge service");
 
   // Подписи колонок — мелкие капсом, ссылки — с тонким подчёркиванием на наведении
-  const title = "mb-3 lg:mb-5 text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/75";
+  const title = "mb-2.5 lg:mb-5 text-[9.5px] sm:text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/75";
   const link =
-    "relative block w-fit text-[13px] text-[#f4efe6]/85 lg:text-[12.5px] transition-colors hover:text-[#f4efe6] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-[#46131E] after:transition-all after:duration-300 hover:after:w-full";
+    "relative block w-fit text-[11.5px] text-[#f4efe6]/85 sm:text-[13px] lg:text-[12.5px] transition-colors hover:text-[#f4efe6] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-[#46131E] after:transition-all after:duration-300 hover:after:w-full";
   const MENU = [
     { label: t("Салон красоты", "Beauty salon"), href: "/salon" },
     { label: t("Консьерж-сервис", "Concierge service"), href: "/concierge" },
@@ -58,7 +58,7 @@ export default function Footer() {
     <footer id="footer" className="relative z-20 -mt-10 overflow-hidden rounded-t-[40px] bg-[#17191a] text-[#f4efe6]">
       <div className="relative z-10 mx-auto w-[90%] max-w-[1760px] pb-6 pt-10 sm:w-[96%] lg:pb-10 lg:pt-20">
         {/* Колонки + крупный контакт справа */}
-        <div className="grid grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-[1fr_1fr_1.6fr_auto] lg:gap-10">
+        <div className="grid grid-cols-2 gap-x-5 gap-y-6 lg:grid-cols-[1fr_1fr_1.6fr_auto] lg:gap-10">
           {/* Соцсети */}
           <div>
             <p className={title}>{t("Социальные сети", "Social media")}</p>
@@ -77,7 +77,7 @@ export default function Footer() {
             <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className={`${link} max-w-[16rem] leading-relaxed`}>
               {ADDRESS[lang]}
             </a>
-            <p className="mt-3 text-[13px] leading-relaxed text-[#f4efe6]/70 lg:text-[12px]">{HOURS[lang]}</p>
+            <p className="mt-2 text-[11px] leading-relaxed text-[#f4efe6]/70 sm:mt-3 sm:text-[13px] lg:text-[12px]">{HOURS[lang]}</p>
             <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className={`${link} mt-4`}>
               {t("Построить маршрут →", "Get directions →")}
             </a>
@@ -86,7 +86,7 @@ export default function Footer() {
           {/* Меню — в две колонки, чтобы подвал был компактнее */}
           <div className="col-span-2 lg:col-span-1">
             <p className={title}>{t("Меню", "Menu")}</p>
-            <div className="grid grid-cols-2 gap-x-5 gap-y-2.5 lg:gap-x-8 lg:gap-y-2">
+            <div className="grid grid-cols-2 gap-x-5 gap-y-2 lg:gap-x-8 lg:gap-y-2">
               {MENU.map((m) => (
                 <a key={m.href} href={m.href} {...(m.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${link} sm:whitespace-nowrap`}>{m.label}</a>
               ))}
@@ -96,20 +96,20 @@ export default function Footer() {
           {/* Телефоны + email справа, крупно */}
           <div className="col-span-2 lg:col-span-1 lg:text-right">
             <p className={title}>{concierge ? t("Консьерж-сервис", "Concierge service") : t("Салон красоты", "Beauty salon")}</p>
-            <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[24px] leading-none tracking-[0.02em] text-[#f4efe6] transition-opacity hover:opacity-70 lg:text-[40px]">
+            <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[20px] leading-none sm:text-[24px] tracking-[0.02em] text-[#f4efe6] transition-opacity hover:opacity-70 lg:text-[40px]">
               {PHONE_MAIN}
             </a>
-            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-3 block text-[14px] text-[#f4efe6]/75 lg:text-[12.5px] transition-colors hover:text-[#f4efe6]">
+            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-2 block text-[11.5px] text-[#f4efe6]/75 sm:mt-3 sm:text-[14px] lg:text-[12.5px] transition-colors hover:text-[#f4efe6]">
               {PHONE_SECOND} — {secondNote}
             </a>
-            <a href={`mailto:${EMAIL}`} className="mt-5 inline-block text-[14px] text-[#f4efe6]/85 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#46131E] lg:text-[15px]">
+            <a href={`mailto:${EMAIL}`} className="mt-3 inline-block text-[12px] text-[#f4efe6]/85 sm:mt-5 sm:text-[14px] underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#46131E] lg:text-[15px]">
               {EMAIL}
             </a>
           </div>
         </div>
 
         {/* Нижний ряд: копирайт слева, документы в одну строку справа */}
-        <div className="mt-8 flex flex-col gap-3 border-t border-[#f4efe6]/10 pt-6 text-[12px] text-[#f4efe6]/65 md:flex-row md:items-center md:justify-between lg:mt-14">
+        <div className="mt-8 flex flex-col gap-3 border-t border-[#f4efe6]/10 pt-5 text-[10.5px] text-[#f4efe6]/65 sm:pt-6 sm:text-[12px] md:flex-row md:items-center md:justify-between lg:mt-14">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <span>© {new Date().getFullYear()} ÁLIS BEAUTY. {t("Все права защищены", "All rights reserved")}</span>
             <a href="https://t.me/vladimir_nvrs" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#f4efe6]">
@@ -123,7 +123,7 @@ export default function Footer() {
           </div>
         </div>
         {/* Обязательная сноска к ссылкам на соцсеть (отмечены *) */}
-        <p className="mt-5 text-[11px] leading-relaxed text-[#f4efe6]/45">
+        <p className="mt-4 text-[9.5px] leading-relaxed text-[#f4efe6]/45 sm:mt-5 sm:text-[11px]">
           {t(
             "* Instagram является продуктом компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена на территории Российской Федерации.",
             "* Instagram is a product of Meta Platforms Inc., whose activities are recognised as extremist and banned in the Russian Federation.",
