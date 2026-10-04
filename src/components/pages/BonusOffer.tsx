@@ -79,7 +79,7 @@ export default function BonusOffer() {
           <>
             <p className="mt-3 max-w-[520px] !text-[14px] leading-[1.6] text-[#17191a]/75 lg:!text-[15px]">
               {/* Телефон — ровно 2 строки, компьютер — одна */}
-              <span className="block text-[12.5px] sm:text-[15px]">{en ? <>Leave your number — the bonuses will be<br className="sm:hidden" /> in your account when you come</> : <>Оставьте номер — бонусы уже будут<br className="sm:hidden" /> на счёте, когда вы придёте</>}</span>
+              <span className="block text-[13.5px] sm:text-[15px]">{en ? <>Leave your number — the bonuses will be<br className="sm:hidden" /> in your account when you come</> : <>Оставьте номер — бонусы уже будут<br className="sm:hidden" /> на счёте, когда вы придёте</>}</span>
             </p>
             <form onSubmit={submit} noValidate className="mt-8 flex w-full max-w-[560px] flex-col gap-3 sm:flex-row">
               {/* Поле-ловушка для ботов */}
