@@ -1,7 +1,7 @@
 "use client";
 // ПАКЕТЫ УСЛУГ (страница «Консьерж-сервис», #uslugi) — «лестница» из 4 тарифов:
 // SOLO · BRIDAL · TEAM · DESTINATION. Каждый следующий темнее и выше (белый → бежевый →
-// графит → чёрный), римский номер и «+» — золотом.
+// графит → чёрный), номер 01–04 и «+» — золотом.
 // Телефон/планшет — полосы друг под другом, каждая следующая шире. При прокрутке пакеты
 // появляются по очереди. Цены «от …» пришлёт заказчица.
 // Внизу сноска и две кнопки: B2B-предложение и расчёт частного события (анкета #calc).
@@ -59,7 +59,6 @@ const PACKS: Pack[] = [
 ];
 
 const GOLD = "#a9874f";
-const ROMAN = ["I", "II", "III", "IV"];
 // Тон ступени: фон, текст, приглушённый текст, линия
 const TONES = [
   { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10" },
@@ -122,7 +121,7 @@ export default function ConciergePackages() {
                 >
                   <div className="flex items-start justify-between gap-4 lg:block">
                     <div>
-                      <span className="font-display text-[20px] leading-none lg:text-[28px]" style={{ color: GOLD }}>{ROMAN[i]}</span>
+                      <span className="font-display text-[20px] leading-none lg:text-[28px]" style={{ color: GOLD }}>{String(i + 1).padStart(2, "0")}</span>
                       <h3 className="mt-2 font-display text-[18px] uppercase tracking-[0.06em] lg:mt-3 lg:text-[26px]">{p.name}</h3>
                       <p className={`mt-1 !text-[11px] leading-[1.45] sm:!text-[13px] ${t.mute}`}>{p.who[lang]}</p>
                     </div>
