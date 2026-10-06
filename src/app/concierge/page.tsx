@@ -5,7 +5,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import ConciergeBenefits from "@/components/pages/ConciergeBenefits";
 import ConciergePackages from "@/components/pages/ConciergePackages";
-import ConciergeFounder, { ConciergeDateCheck } from "@/components/pages/ConciergeFounder";
+import ConciergeFounder from "@/components/pages/ConciergeFounder";
 import BudgetCalc from "@/components/pages/BudgetCalc";
 import { type Stage } from "@/components/HorizontalStory";
 import ConciergeStages from "@/components/pages/ConciergeStages";
@@ -101,8 +101,8 @@ export default function ConciergePage() {
         {/* 4 — Как проходит работа (#process) */}
         <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={null} />
 
-        {/* 5 — Проверка даты → анкета */}
-        <ConciergeDateCheck />
+        {/* 5 — Проверка даты: анкета «Рассчитать бюджет» прямо в тёмной плашке (#calc) */}
+        <BudgetCalc />
 
         {/* 6 — Основатель и форматы сотрудничества (#partners) */}
         <ConciergeFounder />
@@ -112,7 +112,6 @@ export default function ConciergePage() {
       </div>
       <Footer />
       <ConciergeChat />
-      <BudgetCalc />
     </main>
   );
 }

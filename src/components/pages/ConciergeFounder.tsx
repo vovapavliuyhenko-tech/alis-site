@@ -1,31 +1,10 @@
 "use client";
-// ПРОВЕРКА ДАТЫ + ОСНОВАТЕЛЬ И ФОРМАТЫ (страница «Консьерж-сервис»).
-// 1) Короткая тёмная плашка: «Ваша дата может быть уже занята» → анкета (#calc).
-// 2) #partners: слева фото основателя, справа текст, три формата сотрудничества и кнопка
+// ОСНОВАТЕЛЬ И ФОРМАТЫ (страница «Консьерж-сервис», #partners): слева фото основателя, справа текст, три формата сотрудничества и кнопка
 //    к менеджеру (форма заявки #booking). Тексты — заказчицы.
 import { useLang } from "@/lib/i18n";
 
 // TODO: портрет основателя пришлёт заказчица — пока фото работы команды
 const FOUNDER_PHOTO = "/assets/alis/img_2751.jpg";
-
-export function ConciergeDateCheck() {
-  const { lang } = useLang();
-  const en = lang === "en";
-  return (
-    <section id="date" className="scroll-mt-24 bg-white section-y">
-      <div className="r-reveal mx-auto flex w-[96%] max-w-[1760px] flex-col items-center rounded-[28px] bg-[#17191a] px-5 py-10 text-center sm:py-14 lg:py-20">
-        <h2 className="text-white">{en ? "Your date may already be taken" : "Ваша дата может быть уже занята"}</h2>
-        <p className="mt-2 !text-[12.5px] text-white/65 sm:mt-3 sm:!text-[15px]">{en ? "We'll check within 15 minutes?" : "Проверим за 15 минут?"}</p>
-        <a
-          href="#calc"
-          className="mt-6 inline-flex w-full max-w-[340px] items-center justify-center whitespace-nowrap rounded-[12px] border border-white bg-white py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white sm:mt-8 sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]"
-        >
-          {en ? "Fill in the form" : "Заполнить анкету"}
-        </a>
-      </div>
-    </section>
-  );
-}
 
 export default function ConciergeFounder() {
   const { lang } = useLang();
