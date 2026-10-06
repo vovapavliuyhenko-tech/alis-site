@@ -47,12 +47,8 @@ export default function Vacancies() {
             <a
               key={v.role.ru}
               href="#join"
-              className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[12px] border border-[#17191a]/12 px-6 py-6 bg-white transition-[border-color,box-shadow] duration-500 hover:border-[#17191a]/20 hover:shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:gap-8 lg:px-8 lg:py-8"
+              className="group relative grid grid-cols-[1fr_auto] items-center gap-5 rounded-[12px] border border-[#17191a]/12 px-6 py-6 bg-white transition-[border-color,box-shadow] duration-500 hover:border-[#17191a]/20 hover:shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:gap-8 lg:px-8 lg:py-8"
             >
-              {/* Номер */}
-              <span className="font-display text-[13px] tabular-nums text-[#17191a] transition-colors duration-300 lg:text-[15px]">
-                {String(i + 1).padStart(2, "0")}
-              </span>
 
               {/* Название + описание */}
               <div className="min-w-0">
