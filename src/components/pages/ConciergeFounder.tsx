@@ -13,7 +13,7 @@ export function ConciergeDateCheck() {
   const en = lang === "en";
   return (
     <section id="date" className="scroll-mt-24 bg-white section-y">
-      <div className="r-reveal mx-auto flex w-[96%] max-w-[1760px] flex-col items-center rounded-[28px] bg-[#f6f4f1] px-5 py-10 text-center sm:py-14 lg:py-20">
+      <div className="r-reveal mx-auto flex w-[96%] max-w-[1760px] flex-col items-center rounded-[28px] bg-white px-5 py-10 text-center shadow-[0_14px_24px_-18px_rgba(23,25,26,0.35)] sm:py-14 lg:py-20">
         <h2 className="text-[#17191a]">{en ? "Your date may already be taken" : "Ваша дата может быть уже занята"}</h2>
         <p className="mt-2 !text-[12.5px] text-[#17191a]/65 sm:mt-3 sm:!text-[15px]">{en ? "We'll check within 15 minutes?" : "Проверим за 15 минут?"}</p>
         <a
