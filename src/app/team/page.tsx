@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
-import SalonCompare from "@/components/pages/SalonCompare";
+// import SalonCompare from "@/components/pages/SalonCompare"; // сравнение скрыто по просьбе заказчицы
 import { TeamPeople } from "@/components/pages/TeamJoin";
 import Vacancies from "@/components/pages/Vacancies";
 import VacanciesScroll from "@/components/pages/VacanciesScroll";
@@ -36,7 +36,7 @@ export default function TeamPage() {
             Якоря #international / #salon — для пунктов меню «Вакансии». */}
         <div id="international" aria-hidden className="scroll-mt-24" />
         <div id="salon" aria-hidden className="scroll-mt-24" />
-        <SalonCompare />
+        {/* <SalonCompare /> — скрыт */}
 
         {/* 4 — Кого ищем (#vacancies) → как присоединиться */}
         <Vacancies />
