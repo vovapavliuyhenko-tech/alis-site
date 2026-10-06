@@ -93,7 +93,7 @@ export default function ConciergePage() {
       <div className="relative z-10 bg-white page-end">
 
         {/* 2 — Для кого (#about) */}
-        <ConciergeBenefits title={{ ru: "Для кого", en: "Who it's for" }} />
+        <ConciergeBenefits />
 
         {/* 3 — Пакеты услуг (#uslugi). TODO: цены «от …» и PDF КП пришлёт заказчица */}
         <ConciergePackages />

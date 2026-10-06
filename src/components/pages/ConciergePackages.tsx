@@ -100,7 +100,7 @@ export default function ConciergePackages() {
   return (
     <section id="uslugi" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <h2 className="r-reveal mb-8 text-center text-[#17191a] lg:mb-10">{en ? "Service packages" : "Пакеты услуг"}</h2>
+        <h2 className="sr-only">{en ? "Service packages" : "Пакеты услуг"}</h2>
 
         <div ref={box} className="relative">
           {/* Телефон/планшет — полосы друг под другом; компьютер — 4 ступени в ряд, выровнены по верху */}
