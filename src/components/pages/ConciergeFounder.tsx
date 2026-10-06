@@ -1,6 +1,6 @@
 "use client";
-// ОСНОВАТЕЛЬ И ФОРМАТЫ (страница «Консьерж-сервис», #partners): слева фото основателя, справа текст, три формата сотрудничества и кнопка
-//    к менеджеру (форма заявки #booking). Тексты — заказчицы.
+// ОСНОВАТЕЛЬ И ФОРМАТЫ (страница «Консьерж-сервис», #partners): слева фото основателя, справа на белом фоне текст и три формата
+//    сотрудничества строками (без плашек и кнопок). Тексты — заказчицы.
 import { useLang } from "@/lib/i18n";
 
 // TODO: портрет основателя пришлёт заказчица — пока фото работы команды
@@ -27,8 +27,8 @@ export default function ConciergeFounder() {
           </div>
         </div>
 
-        {/* Текст, форматы, кнопка */}
-        <div className="r-reveal flex flex-col justify-between gap-8 rounded-[28px] bg-[#f6f4f1] p-6 text-center sm:p-10 md:text-left lg:p-14">
+        {/* Текст и форматы — прямо на белом фоне, без плашек и кнопок; форматы — строками с тонкими линиями */}
+        <div className="r-reveal flex flex-col justify-between gap-8 py-2 text-center md:py-6 md:pl-6 md:text-left lg:pl-14">
           <div>
             <h2 className="text-[#17191a]">{en ? "A team chosen for your event" : "Команда под ваше событие"}</h2>
             <p className="mx-auto mt-3 max-w-[60ch] !text-[12.5px] leading-[1.6] text-[#17191a]/70 sm:!text-[15px] md:mx-0">
@@ -40,23 +40,14 @@ export default function ConciergeFounder() {
 
           <div>
             <p className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/45 sm:text-[11px]">{en ? "Formats" : "Формат"}</p>
-            <ul className="mt-3 grid gap-2 sm:grid-cols-3">
+            <ul className="mt-3 border-t border-[#17191a]/10">
               {FORMATS.map((f, i) => (
-                <li key={f} className="flex items-center justify-center gap-2.5 rounded-[12px] border border-[#17191a]/12 bg-white px-4 py-3 text-[12px] text-[#17191a] sm:justify-start sm:text-[14px]">
-                  <span className="text-[10px] text-[#17191a]/40">{String(i + 1).padStart(2, "0")}</span>
-                  {f}
+                <li key={f} className="flex items-baseline justify-between gap-4 border-b border-[#17191a]/10 py-3.5 text-left sm:py-4">
+                  <span className="font-display text-[14px] tracking-[0.02em] text-[#17191a] sm:text-[18px]">{f}</span>
+                  <span className="text-[11px] text-[#17191a]/35 sm:text-[12px]">{String(i + 1).padStart(2, "0")}</span>
                 </li>
               ))}
             </ul>
-            <a
-              href="#booking"
-              className="mt-5 flex w-full items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-2 py-3 text-[clamp(9.5px,2.7vw,11px)] font-medium uppercase tracking-[0.1em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]"
-            >
-              {en ? "Discuss your option with a manager" : "Обсудить ваш вариант с менеджером"}
-            </a>
-            <p className="mt-3 !text-[10.5px] text-[#17191a]/50 sm:!text-[12.5px]">
-              {en ? "We'll send the presentation and terms within 24 hours." : "Пришлём презентацию и условия в течение 24 часов."}
-            </p>
           </div>
         </div>
       </div>
