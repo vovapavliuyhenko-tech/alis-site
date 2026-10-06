@@ -81,7 +81,7 @@ export default function PhoneField({
   };
 
   return (
-    <div ref={box} className={`relative flex h-[48px] items-center rounded-[14px] bg-white sm:h-[54px] sm:rounded-[16px] ${error ? "ring-1 ring-[#c0392b]" : ""} ${className}`}>
+    <div ref={box} className={`relative flex h-[46px] items-center rounded-[14px] bg-white sm:h-[48px] sm:rounded-[16px] ${error ? "ring-1 ring-[#c0392b]" : ""} ${className}`}>
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}

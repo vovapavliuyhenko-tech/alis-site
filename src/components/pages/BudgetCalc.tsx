@@ -88,20 +88,20 @@ export default function BudgetCalc() {
   const q = QS[step];
   const pack = pickPack(ans);
   const btn = "flex w-full items-center justify-center rounded-[12px] border border-white bg-white py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-white disabled:hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]";
-  const field = "h-[48px] w-full rounded-[14px] bg-white px-4 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 sm:h-[54px] sm:rounded-[16px] sm:px-5 sm:text-[15px] autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:[-webkit-text-fill-color:#17191a]";
+  const field = "h-[46px] w-full rounded-[14px] bg-white px-4 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 sm:h-[48px] sm:rounded-[16px] sm:px-5 sm:text-[15px] autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:[-webkit-text-fill-color:#17191a]";
   const link = "text-[11px] uppercase tracking-[0.14em] text-white/55 transition-colors hover:text-white disabled:opacity-35";
 
   return (
     <section id="calc" className="scroll-mt-24 bg-white section-y">
       {/* Компьютер: слева заголовок и ваши ответы (заполняются по ходу), справа — шаги анкеты */}
-      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-8 rounded-[28px] bg-[#17191a] px-5 py-10 text-white sm:px-10 sm:py-14 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-20">
+      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-8 rounded-[28px] bg-[#17191a] px-5 py-10 text-white sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
         <div className="flex flex-col text-center lg:text-left">
           <h2 className="text-white">{en ? "Your date may already be taken" : "Ваша дата может быть уже занята"}</h2>
           <p className="mt-2 !text-[12.5px] text-white/65 sm:mt-3 sm:!text-[15px]">{en ? "We'll check within 15 minutes?" : "Проверим за 15 минут?"}</p>
           {/* Ваши ответы — только на компьютере: плитки заполняются по ходу анкеты,
               пустые — пунктиром; внизу — пакет, который подходит по ответам */}
-          <div className="mt-10 hidden flex-1 flex-col justify-end lg:flex">
-            <div className="grid grid-cols-2 gap-2.5">
+          <div className="mt-7 hidden flex-1 flex-col justify-end lg:flex">
+            <div className="grid grid-cols-2 gap-2">
               {SUMMARY.map((row) => {
                 const v = row.key === "date"
                   ? (date ? date.split("-").reverse().join(".") : "")
@@ -110,7 +110,7 @@ export default function BudgetCalc() {
                 return (
                   <div
                     key={row.key}
-                    className={`rounded-[16px] border px-5 py-4 transition-colors duration-500 ${row.key === "services" ? "col-span-2" : ""} ${
+                    className={`rounded-[14px] border px-4 py-2.5 transition-colors duration-500 ${row.key === "services" ? "col-span-2" : ""} ${
                       filled ? "border-white/10 bg-white/[0.06]" : "border-dashed border-white/15"
                     }`}
                   >
@@ -119,13 +119,13 @@ export default function BudgetCalc() {
                       <span key={filled ? "on" : "off"} className={`h-1.5 w-1.5 rounded-full transition-colors duration-500 ${filled ? "bg-[#a9874f] animate-[alis-dot_.9s_ease-out]" : "bg-white/15"}`} />
                     </div>
                     {Array.isArray(v) && row.key === "services" ? (
-                      <div className="mt-3 flex min-h-[30px] flex-wrap gap-1.5">
+                      <div className="mt-2 flex min-h-[26px] flex-wrap gap-1.5">
                         {v.length ? v.map((x) => (
-                          <span key={x} className="animate-[alis-chip_.45s_cubic-bezier(.2,.9,.3,1.3)] rounded-full border border-white/20 px-3 py-1 text-[12.5px] text-white">{x}</span>
-                        )) : <span className="text-[18px] text-white/20">—</span>}
+                          <span key={x} className="animate-[alis-chip_.45s_cubic-bezier(.2,.9,.3,1.3)] rounded-full border border-white/20 px-2.5 py-0.5 text-[12px] text-white">{x}</span>
+                        )) : <span className="text-[16px] text-white/20">—</span>}
                       </div>
                     ) : (
-                      <p className="mt-2 overflow-hidden font-display text-[18px] tracking-[0.02em]">
+                      <p className="mt-1 overflow-hidden font-display text-[16px] tracking-[0.02em]">
                         <span key={(Array.isArray(v) ? v.join(",") : v) || "—"} className={`block ${filled ? "animate-[alis-val_.55s_cubic-bezier(.2,.8,.2,1)] text-white" : "text-white/20"}`}>{(Array.isArray(v) ? v.join(", ") : v) || "—"}</span>
                       </p>
                     )}
@@ -134,9 +134,9 @@ export default function BudgetCalc() {
               })}
             </div>
             {/* Подходящий пакет — появляется после первого ответа */}
-            <div className={`mt-6 flex items-baseline justify-between border-t border-white/12 pt-5 transition-opacity duration-500 ${ans.format?.length ? "opacity-100" : "opacity-0"}`}>
+            <div className={`mt-4 flex items-baseline justify-between border-t border-white/12 pt-4 transition-opacity duration-500 ${ans.format?.length ? "opacity-100" : "opacity-0"}`}>
               <span className="text-[10px] uppercase tracking-[0.18em] text-white/45">{en ? "Your package" : "Вам подходит"}</span>
-              <span key={pack} className="relative font-display text-[28px] uppercase tracking-[0.08em] text-[#a9874f]">
+              <span key={pack} className="relative font-display text-[24px] uppercase tracking-[0.08em] text-[#a9874f]">
                 {pack.split("").map((ch, k) => (
                   <span key={k} className="inline-block animate-[alis-letter_.5s_cubic-bezier(.2,.8,.2,1)_both]" style={{ animationDelay: `${k * 0.04}s` }}>{ch}</span>
                 ))}
@@ -159,7 +159,7 @@ export default function BudgetCalc() {
 
           {step < 4 && q && (
             <div key={step} className="animate-[alis-calc-in_.4s_ease]">
-              <p className="mt-6 font-display text-[15px] uppercase tracking-[0.04em] sm:text-[18px]">{q.q[lang]}</p>
+              <p className="mt-5 font-display text-[15px] uppercase tracking-[0.04em] sm:text-[17px]">{q.q[lang]}</p>
               {q.multi && <p className="mt-1 !text-[11px] text-white/50 sm:!text-[12.5px]">{en ? "You can pick several" : "Можно выбрать несколько"}</p>}
               <div className="mt-4 grid grid-cols-2 gap-2">
                 {q.opts.map((o) => {
@@ -170,7 +170,7 @@ export default function BudgetCalc() {
                       style={{ animationDelay: `${q.opts.indexOf(o) * 0.06}s` }}
                       type="button"
                       onClick={() => choose(q, o.ru)}
-                      className={`animate-[alis-calc-in_.45s_ease_both] rounded-[14px] border px-3 py-3.5 text-[12px] transition-all active:scale-[0.97] sm:rounded-[16px] sm:text-[14px] ${on ? "border-white bg-white text-[#17191a]" : "border-white/20 text-white hover:border-white/60"}`}
+                      className={`animate-[alis-calc-in_.45s_ease_both] rounded-[14px] border px-3 py-3 text-[12px] transition-all active:scale-[0.97] sm:rounded-[16px] sm:text-[14px] ${on ? "border-white bg-white text-[#17191a]" : "border-white/20 text-white hover:border-white/60"}`}
                     >
                       {o[lang]}
                     </button>
@@ -190,8 +190,8 @@ export default function BudgetCalc() {
 
           {step === 4 && (
             <div className="animate-[alis-calc-in_.4s_ease]">
-              <p className="mt-6 font-display text-[15px] uppercase tracking-[0.04em] sm:text-[18px]">{en ? "Where to send the estimate?" : "Куда прислать расчёт?"}</p>
-              <div className="mt-4 flex flex-col gap-2 sm:gap-2.5">
+              <p className="mt-5 font-display text-[15px] uppercase tracking-[0.04em] sm:text-[17px]">{en ? "Where to send the estimate?" : "Куда прислать расчёт?"}</p>
+              <div className="mt-4 flex flex-col gap-2">
                 <input type="date" aria-label={en ? "Event date" : "Дата события"} value={date} onChange={(e) => setDate(e.target.value)} className={field} />
                 <input type="text" placeholder={en ? "Name" : "Имя"} value={name} onChange={(e) => setName(e.target.value)} className={field} />
                 <PhoneField lang={lang} value={phone} onChange={setPhone} />
