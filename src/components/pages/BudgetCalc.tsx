@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 import { sendLead } from "@/lib/sendLead";
 import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
+import DateField from "@/components/ui/DateField";
 
 type Loc = { ru: string; en: string };
 type Q = { key: string; q: Loc; opts: Loc[]; multi?: boolean };
@@ -191,7 +192,7 @@ export default function BudgetCalc() {
             <div className="animate-[alis-calc-in_.4s_ease]">
               <p className="mt-5 font-display text-[15px] uppercase tracking-[0.04em] sm:text-[17px]">{en ? "Where to send the estimate?" : "Куда прислать расчёт?"}</p>
               <div className="mt-4 flex flex-col gap-2">
-                <input type="date" aria-label={en ? "Event date" : "Дата события"} value={date} onChange={(e) => setDate(e.target.value)} className={field} />
+                <DateField lang={lang} value={date} onChange={setDate} />
                 <input type="text" placeholder={en ? "Name" : "Имя"} value={name} onChange={(e) => setName(e.target.value)} className={field} />
                 <PhoneField lang={lang} value={phone} onChange={setPhone} />
               </div>
