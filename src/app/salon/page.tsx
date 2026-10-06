@@ -276,7 +276,7 @@ export default function SalonPage() {
           categories={SALON_CATEGORIES}
           search
           master={{ label: { ru: "Выбрать своего мастера", en: "Choose your specialist" }, href: YCLIENTS }}
-          cta={{ label: { ru: "Оформить визит · 500 бонусных рублей на первый визит", en: "Book a visit · 500 bonus roubles on your first visit" }, href: YCLIENTS }}
+          cta={{ label: { ru: "Оформить визит", en: "Book a visit" }, href: YCLIENTS }}
         />
 
         {/* 6 — Атмосфера (вместо «Галереи»). TODO: 6 фото салона, работ и подарков пришлёт заказчица */}
