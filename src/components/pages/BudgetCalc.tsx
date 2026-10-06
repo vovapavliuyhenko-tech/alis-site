@@ -211,7 +211,7 @@ export default function BudgetCalc() {
           {step === 5 && (
             <div className="animate-[alis-calc-in_.4s_ease] py-4 text-center">
               <p className="mt-4 text-[10px] uppercase tracking-[0.2em] text-white/45">{en ? "Your package" : "Вам подходит пакет"}</p>
-              <p className="mt-2 font-display text-[34px] uppercase tracking-[0.06em] sm:text-[44px]">{pack}</p>
+              <p className="mx-auto mt-3 inline-block rounded-full border border-white/25 px-5 py-2 font-display text-[15px] uppercase tracking-[0.18em] sm:text-[17px]">{pack}</p>
               <p className="mx-auto mt-3 max-w-[34ch] !text-[12.5px] leading-[1.55] text-white/70 sm:!text-[14px]">
                 {en ? "Thank you! We will reply within 15 minutes and send the exact estimate." : "Спасибо! Ответим за 15 минут и пришлём точную смету."}
               </p>
