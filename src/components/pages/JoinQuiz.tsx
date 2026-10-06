@@ -1,6 +1,6 @@
 "use client";
 // АНКЕТА КАНДИДАТА (страница «Вакансии», #join) — в формате анкеты «Рассчитать бюджет»
-// консьерж-сервиса, но светлая. Компьютер: слева заголовок и плитки ответов (заполняются
+// консьерж-сервиса, тёмная. Компьютер: слева заголовок и плитки ответов (заполняются
 // по ходу, пустые — пунктиром), справа шаги: направление → специализация → опыт → контакты.
 // Телефон: только шаги. Анкета уходит в CRM (тип «vacancy»).
 import { useState } from "react";
@@ -48,16 +48,16 @@ export default function JoinQuiz() {
 
   const label = (q: Q) => q.opts.find((o) => o.ru === ans[q.key])?.[lang] || "";
   const field = "h-[46px] w-full rounded-[14px] bg-white px-4 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 sm:h-[48px] sm:rounded-[16px] sm:px-5 sm:text-[15px] autofill:shadow-[inset_0_0_0_1000px_#fff]";
-  const link = "text-[11px] uppercase tracking-[0.14em] text-[#17191a]/55 transition-colors hover:text-[#17191a] disabled:opacity-35";
+  const link = "text-[11px] uppercase tracking-[0.14em] text-white/55 transition-colors hover:text-white disabled:opacity-35";
   const q = QS[step];
 
   return (
     <section id="join" className="scroll-mt-24 bg-white section-y">
-      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-8 rounded-[28px] bg-[#f6f4f1] px-5 py-10 text-[#17191a] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
+      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-8 rounded-[28px] bg-[#17191a] px-5 py-10 text-white sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
         {/* Слева: заголовок и плитки ответов */}
         <div className="flex flex-col text-center lg:text-left">
-          <h2 className="text-[#17191a]">{en ? "Become part of the ÁLIS BEAUTY team" : "Стать частью команды ÁLIS BEAUTY"}</h2>
-          <p className="mt-2 !text-[12.5px] text-[#17191a]/60 sm:mt-3 sm:!text-[15px]">{en ? "Four short steps — we'll get back to you." : "Четыре коротких шага — и мы с вами свяжемся."}</p>
+          <h2 className="text-white">{en ? "Become part of the ÁLIS BEAUTY team" : "Стать частью команды ÁLIS BEAUTY"}</h2>
+          <p className="mt-2 !text-[12.5px] text-white/60 sm:mt-3 sm:!text-[15px]">{en ? "Four short steps — we'll get back to you." : "Четыре коротких шага — и мы с вами свяжемся."}</p>
           <div className="mt-7 hidden flex-1 flex-col justify-end lg:flex">
             <div className="grid grid-cols-2 gap-2">
               {QS.map((x, i) => {
@@ -65,14 +65,14 @@ export default function JoinQuiz() {
                 return (
                   <div
                     key={x.key}
-                    className={`rounded-[14px] border px-4 py-2.5 transition-colors duration-500 ${i === 0 ? "col-span-2" : ""} ${v ? "border-transparent bg-white shadow-[0_8px_24px_-16px_rgba(23,25,26,0.25)]" : "border-dashed border-[#17191a]/15"}`}
+                    className={`rounded-[14px] border px-4 py-2.5 transition-colors duration-500 ${i === 0 ? "col-span-2" : ""} ${v ? "border-white/10 bg-white/[0.06]" : "border-dashed border-white/15"}`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] uppercase tracking-[0.18em] text-[#17191a]/45">{x.label[lang]}</span>
-                      <span key={v ? "on" : "off"} className={`h-1.5 w-1.5 rounded-full transition-colors duration-500 ${v ? "bg-[#17191a] animate-[join-dot_.9s_ease-out]" : "bg-[#17191a]/15"}`} />
+                      <span className="text-[10px] uppercase tracking-[0.18em] text-white/45">{x.label[lang]}</span>
+                      <span key={v ? "on" : "off"} className={`h-1.5 w-1.5 rounded-full transition-colors duration-500 ${v ? "bg-white animate-[join-dot_.9s_ease-out]" : "bg-white/15"}`} />
                     </div>
                     <p className="mt-1 overflow-hidden font-display text-[16px] tracking-[0.02em]">
-                      <span key={v || "—"} className={`block ${v ? "animate-[join-val_.55s_cubic-bezier(.2,.8,.2,1)] text-[#17191a]" : "text-[#17191a]/25"}`}>{v || "—"}</span>
+                      <span key={v || "—"} className={`block ${v ? "animate-[join-val_.55s_cubic-bezier(.2,.8,.2,1)] text-white" : "text-white/20"}`}>{v || "—"}</span>
                     </p>
                   </div>
                 );
@@ -83,11 +83,11 @@ export default function JoinQuiz() {
 
         {/* Справа: шаги */}
         <div className="w-full text-left">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/45">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-white/45">
             {step < 4 ? `${en ? "Step" : "Шаг"} ${step + 1} / 4` : en ? "Done" : "Готово"}
           </span>
-          <div className="mt-3 h-[2px] w-full overflow-hidden rounded-full bg-[#17191a]/10">
-            <div className="h-full bg-[#17191a] transition-all duration-500" style={{ width: `${(Math.min(step, 4) / 4) * 100}%` }} />
+          <div className="mt-3 h-[2px] w-full overflow-hidden rounded-full bg-white/15">
+            <div className="h-full bg-white transition-all duration-500" style={{ width: `${(Math.min(step, 4) / 4) * 100}%` }} />
           </div>
 
           {step < 3 && q && (
@@ -102,7 +102,7 @@ export default function JoinQuiz() {
                       type="button"
                       onClick={() => { setAns({ ...ans, [q.key]: o.ru }); setStep(step + 1); }}
                       style={{ animationDelay: `${k * 0.06}s` }}
-                      className={`animate-[join-in_.45s_ease_both] rounded-[14px] border px-3 py-3 text-[12px] transition-all active:scale-[0.97] sm:rounded-[16px] sm:text-[14px] ${on ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/12 bg-white text-[#17191a] hover:border-[#17191a]/50"}`}
+                      className={`animate-[join-in_.45s_ease_both] rounded-[14px] border px-3 py-3 text-[12px] transition-all active:scale-[0.97] sm:rounded-[16px] sm:text-[14px] ${on ? "border-white bg-white text-[#17191a]" : "border-white/20 text-white hover:border-white/60"}`}
                     >
                       {o[lang]}
                     </button>
@@ -122,8 +122,8 @@ export default function JoinQuiz() {
                 <input type="text" placeholder={en ? "Link to 10 works (portfolio, social, cloud)" : "Ссылка на 10 работ (портфолио, соцсеть, облако)"} value={works} onChange={(e) => setWorks(e.target.value)} className={field} />
               </div>
               <label className="mt-4 flex cursor-pointer items-center gap-2.5">
-                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]" />
-                <span className="whitespace-nowrap text-[clamp(10px,2.8vw,11px)] text-[#17191a]/55">
+                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="h-4 w-4 shrink-0 cursor-pointer accent-white" />
+                <span className="whitespace-nowrap text-[clamp(10px,2.8vw,11px)] text-white/55">
                   {en ? "I agree to the processing of my " : "Даю согласие на обработку "}
                   <a href="/policy" className="underline underline-offset-2">{en ? "personal data" : "персональных данных"}</a>
                 </span>
@@ -132,7 +132,7 @@ export default function JoinQuiz() {
                 type="button"
                 onClick={send}
                 disabled={!ok}
-                className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]"
+                className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-white bg-white py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-white disabled:hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]"
               >
                 {en ? "Send" : "Отправить"}
               </button>
@@ -142,9 +142,9 @@ export default function JoinQuiz() {
 
           {step === 4 && (
             <div className="animate-[join-in_.4s_ease] py-6 text-center">
-              <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓</span>
+              <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white text-[20px] text-[#17191a]">✓</span>
               <p className="mt-5 font-display text-[18px] sm:text-[22px]">{en ? "Thank you!" : "Спасибо!"}</p>
-              <p className="mx-auto mt-2 max-w-[34ch] !text-[12.5px] leading-[1.55] text-[#17191a]/65 sm:!text-[14px]">
+              <p className="mx-auto mt-2 max-w-[34ch] !text-[12.5px] leading-[1.55] text-white/65 sm:!text-[14px]">
                 {en ? "We've received your application and will get back to you soon." : "Мы получили вашу анкету и скоро свяжемся с вами."}
               </p>
             </div>
@@ -154,7 +154,7 @@ export default function JoinQuiz() {
       <style>{`
         @keyframes join-in { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }
         @keyframes join-val { from { opacity: 0; transform: translateY(100%) } to { opacity: 1; transform: none } }
-        @keyframes join-dot { 0% { box-shadow: 0 0 0 0 rgba(23,25,26,.35) } 100% { box-shadow: 0 0 0 10px rgba(23,25,26,0) } }
+        @keyframes join-dot { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,.5) } 100% { box-shadow: 0 0 0 10px rgba(255,255,255,0) } }
         @media (prefers-reduced-motion: reduce) { #join * { animation: none !important } }
       `}</style>
     </section>
