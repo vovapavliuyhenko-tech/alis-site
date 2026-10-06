@@ -27,6 +27,15 @@ const QS: Q[] = [
   ] },
 ];
 
+// Плитки «ваши ответы» слева (компьютер)
+const SUMMARY: { key: string; label: Loc }[] = [
+  { key: "format", label: { ru: "Повод", en: "Occasion" } },
+  { key: "people", label: { ru: "Гостей", en: "People" } },
+  { key: "place", label: { ru: "Место", en: "Place" } },
+  { key: "date", label: { ru: "Дата", en: "Date" } },
+  { key: "services", label: { ru: "Услуги", en: "Services" } },
+];
+
 // Подходящий пакет по ответам
 function pickPack(a: Record<string, string[]>): string {
   const place = a.place?.[0];
@@ -89,16 +98,45 @@ export default function BudgetCalc() {
         <div className="flex flex-col text-center lg:text-left">
           <h2 className="text-white">{en ? "Your date may already be taken" : "Ваша дата может быть уже занята"}</h2>
           <p className="mt-2 !text-[12.5px] text-white/65 sm:mt-3 sm:!text-[15px]">{en ? "We'll check within 15 minutes?" : "Проверим за 15 минут?"}</p>
-          {/* Ваши ответы — только на компьютере */}
-          <dl className="mt-auto hidden border-t border-white/12 pt-2 lg:block">
-            {[...QS.map((x) => ({ k: x.q, v: (ans[x.key] || []).map((r) => x.opts.find((o) => o.ru === r)?.[lang] || r).join(", ") })),
-              { k: { ru: "Дата", en: "Date" }, v: date ? date.split("-").reverse().join(".") : "" }].map((row, i) => (
-              <div key={i} className="flex items-baseline justify-between gap-6 border-b border-white/12 py-3.5">
-                <dt className="text-[13px] text-white/45">{row.k[lang]}</dt>
-                <dd className={`text-right text-[14px] transition-colors ${row.v ? "text-white" : "text-white/25"}`}>{row.v || "—"}</dd>
-              </div>
-            ))}
-          </dl>
+          {/* Ваши ответы — только на компьютере: плитки заполняются по ходу анкеты,
+              пустые — пунктиром; внизу — пакет, который подходит по ответам */}
+          <div className="mt-10 hidden flex-1 flex-col justify-end lg:flex">
+            <div className="grid grid-cols-2 gap-2.5">
+              {SUMMARY.map((row) => {
+                const v = row.key === "date"
+                  ? (date ? date.split("-").reverse().join(".") : "")
+                  : (ans[row.key] || []).map((r) => QS.find((x) => x.key === row.key)?.opts.find((o) => o.ru === r)?.[lang] || r);
+                const filled = Array.isArray(v) ? v.length > 0 : !!v;
+                return (
+                  <div
+                    key={row.key}
+                    className={`rounded-[16px] border px-5 py-4 transition-colors duration-500 ${row.key === "services" ? "col-span-2" : ""} ${
+                      filled ? "border-white/10 bg-white/[0.06]" : "border-dashed border-white/15"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] uppercase tracking-[0.18em] text-white/45">{row.label[lang]}</span>
+                      <span className={`h-1.5 w-1.5 rounded-full transition-colors duration-500 ${filled ? "bg-[#a9874f]" : "bg-white/15"}`} />
+                    </div>
+                    {Array.isArray(v) && row.key === "services" ? (
+                      <div className="mt-3 flex min-h-[30px] flex-wrap gap-1.5">
+                        {v.length ? v.map((x) => (
+                          <span key={x} className="rounded-full border border-white/20 px-3 py-1 text-[12.5px] text-white">{x}</span>
+                        )) : <span className="text-[18px] text-white/20">—</span>}
+                      </div>
+                    ) : (
+                      <p className={`mt-2 font-display text-[18px] tracking-[0.02em] ${filled ? "text-white" : "text-white/20"}`}>{(Array.isArray(v) ? v.join(", ") : v) || "—"}</p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            {/* Подходящий пакет — появляется после первого ответа */}
+            <div className={`mt-6 flex items-baseline justify-between border-t border-white/12 pt-5 transition-opacity duration-500 ${ans.format?.length ? "opacity-100" : "opacity-0"}`}>
+              <span className="text-[10px] uppercase tracking-[0.18em] text-white/45">{en ? "Your package" : "Вам подходит"}</span>
+              <span className="font-display text-[28px] uppercase tracking-[0.08em] text-[#a9874f]">{pack}</span>
+            </div>
+          </div>
         </div>
 
         <div className="w-full text-left">
