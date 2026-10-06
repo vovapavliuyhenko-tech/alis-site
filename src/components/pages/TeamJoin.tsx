@@ -13,16 +13,16 @@ type Loc = { ru: string; en: string };
 
 const MANAGER_WA = "https://wa.me/79888887728"; // «Получить подробные условия» — менеджер консьерж-сервиса
 
-const PEOPLE: { role: Loc; name?: Loc; photo?: string }[] = [
-  { role: { ru: "Основатель ÁLIS BEAUTY", en: "Founder of ÁLIS BEAUTY" }, name: { ru: "Дайана Тарзян", en: "Daiana Tarzyan" } },
-  { role: { ru: "Директор консьерж-направления", en: "Head of the concierge service" } },
-  { role: { ru: "Управляющая салона", en: "Salon manager" } },
+// TODO: портреты пришлёт заказчица — пока временные фото с сайта
+const PEOPLE: { role: Loc; name?: Loc; photo: string }[] = [
+  { role: { ru: "Основатель ÁLIS BEAUTY", en: "Founder of ÁLIS BEAUTY" }, name: { ru: "Дайана Тарзян", en: "Daiana Tarzyan" }, photo: "/assets/alis/img_2751.jpg" },
+  { role: { ru: "Директор консьерж-направления", en: "Head of the concierge service" }, photo: "/assets/tild6536-613_-2___1__4.jpg" },
+  { role: { ru: "Управляющая салона", en: "Salon manager" }, photo: "/assets/alis/img_2749.jpg" },
 ];
 
-// Карточки команды — в стиле сайта: белые, тонкая рамка, скругление 20px. Сверху круглый портрет
-// (пока нет фото — светлый круг с инициалами или силуэтом), имя и роль.
-// Движение: карточки появляются по очереди; наведение — карточка приподнимается, рамка темнеет,
-// портрет чуть увеличивается, вокруг него прорисовывается тонкое кольцо, под ролью — линия.
+// Карточки команды — в стиле сайта: фото во всю карточку, скругление 20px, затемнение снизу,
+// имя, линия и роль внизу. Движение: карточки появляются по очереди; наведение — медленный зум
+// фото, затемнение усиливается, текст поднимается, линия растягивается на всю ширину.
 // На телефоне так подсвечивается карточка в центре экрана.
 export function TeamPeople() {
   const { lang } = useLang();
@@ -51,37 +51,35 @@ export function TeamPeople() {
           {en ? "The ÁLIS BEAUTY team — people trusted with beauty" : "Команда ÁLIS BEAUTY — люди, которым доверяют свою красоту"}
         </h2>
         <div ref={box} className="grid gap-2 sm:grid-cols-3 sm:gap-3 lg:gap-4">
-          {PEOPLE.map((p, i) => {
-            const initials = p.name ? p.name[lang].split(" ").map((w) => w[0]).join("") : "";
-            return (
-              <article
-                key={p.role.ru}
-                data-on={active === i ? "" : undefined}
-                className="r-reveal group flex flex-col items-center rounded-[20px] border border-[#17191a]/12 bg-white px-6 py-8 text-center transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1.5 hover:border-[#17191a]/30 hover:shadow-[0_24px_60px_-28px_rgba(23,25,26,0.25)] data-[on]:-translate-y-1.5 data-[on]:border-[#17191a]/30 sm:py-10"
-                style={{ transitionDelay: `${i * 0.1}s` }}
-              >
-                {/* Портрет + кольцо, которое прорисовывается при наведении */}
-                <div className="relative h-[112px] w-[112px] sm:h-[128px] sm:w-[128px]">
-                  <svg viewBox="0 0 100 100" aria-hidden className="absolute -inset-2 h-[calc(100%+16px)] w-[calc(100%+16px)] -rotate-90">
-                    <circle cx="50" cy="50" r="48" fill="none" stroke="#17191a" strokeWidth="0.6" pathLength={1} className="[stroke-dasharray:1] [stroke-dashoffset:1] transition-[stroke-dashoffset] duration-[900ms] ease-out group-hover:[stroke-dashoffset:0] group-data-[on]:[stroke-dashoffset:0]" />
-                  </svg>
-                  <div className="h-full w-full overflow-hidden rounded-full bg-[#f6f4f1] transition-transform duration-700 ease-out group-hover:scale-[1.04] group-data-[on]:scale-[1.04]">
-                    {p.photo ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={p.photo} alt={p.name?.[lang] || p.role[lang]} loading="lazy" className="h-full w-full object-cover" />
-                    ) : initials ? (
-                      <span className="flex h-full w-full items-center justify-center font-display text-[30px] tracking-[0.06em] text-[#17191a]/35">{initials}</span>
-                    ) : (
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden className="mx-auto mt-[22%] h-1/2 w-1/2 text-[#17191a]/20"><circle cx="12" cy="8" r="4" /><path d="M4 21c1-4.5 4.4-7 8-7s7 2.5 8 7" strokeLinecap="round" /></svg>
-                    )}
-                  </div>
-                </div>
-                {p.name ? <p className="mt-6 font-display text-[16px] tracking-[0.02em] text-[#17191a] sm:text-[18px]">{p.name[lang]}</p> : <span className="mt-6" />}
-                <span aria-hidden className="mt-3 block h-px w-8 bg-[#17191a]/20 transition-all duration-500 group-hover:w-16 group-hover:bg-[#17191a] group-data-[on]:w-16 group-data-[on]:bg-[#17191a]" />
-                <p className="mt-3 text-[10.5px] uppercase tracking-[0.16em] text-[#17191a]/55 sm:text-[11px]">{p.role[lang]}</p>
-              </article>
-            );
-          })}
+          {PEOPLE.map((p, i) => (
+            <article
+              key={p.role.ru}
+              data-on={active === i ? "" : undefined}
+              className="r-reveal group relative h-[380px] overflow-hidden rounded-[20px] bg-[#f6f4f1] sm:h-[420px] lg:h-[480px]"
+              style={{ transitionDelay: `${i * 0.12}s` }}
+            >
+              {/* Фото во всю карточку: медленный зум при наведении */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={p.photo}
+                alt={p.name?.[lang] || p.role[lang]}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06] group-data-[on]:scale-[1.06]"
+              />
+              {/* Затемнение снизу — сильнее при наведении */}
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-500" />
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-data-[on]:opacity-100" />
+
+              {/* Имя, линия, роль — поднимаются при наведении */}
+              <div className="absolute inset-x-6 bottom-6 text-white transition-transform duration-500 ease-out group-hover:-translate-y-2 group-data-[on]:-translate-y-2 sm:inset-x-7 sm:bottom-7">
+                {p.name && <p className="font-display text-[18px] uppercase tracking-[0.04em] sm:text-[21px]">{p.name[lang]}</p>}
+                <span aria-hidden className="mt-3 block h-px w-10 bg-white/50 transition-all duration-700 ease-out group-hover:w-full group-hover:bg-white/80 group-data-[on]:w-full group-data-[on]:bg-white/80" />
+                <p className="mt-3 text-[10.5px] uppercase tracking-[0.16em] text-white/75 sm:text-[11px]">{p.role[lang]}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
