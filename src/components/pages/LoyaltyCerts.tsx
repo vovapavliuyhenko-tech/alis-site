@@ -1,6 +1,7 @@
 "use client";
 // БЛОК «КРАСОТА, КОТОРАЯ ВОЗВРАЩАЕТСЯ БОНУСАМИ» (страница «Салон») — bento:
-//  слева высокая чёрная карточка: «500 ₽» (счётчик от 0) на первый визит и кнопка записи;
+//  слева высокая чёрная карточка: «500 ₽» (счётчик от 0) и форма бонусов — «Для себя» (свой номер)
+//  или «Для подруги» (свой номер + номер подруги) → CRM, тип «bonus»;
 //  справа сверху три карточки бонусов (подарок в день рождения, бонус за подругу, бонусы
 //  постоянным) — иконка, название, пояснение; снизу — подарочный сертификат с фото.
 // Движение: карточки появляются по очереди; наведение — карточку снизу заливает чёрным,
@@ -9,8 +10,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 import CountUp from "@/components/ui/CountUp";
+import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
+import { sendLead } from "@/lib/sendLead";
 
-const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const CERT_PHOTO = "/assets/alis/img_1855.jpg";
 
 type Loc = { ru: string; en: string };
@@ -71,6 +73,25 @@ export default function LoyaltyCerts() {
   const en = lang === "en";
   const t = (ru: string, e: string) => (en ? e : ru);
 
+  // Бонусы: для себя или для подруги → номер(а) в CRM (тип «bonus»)
+  const [who, setWho] = useState<"me" | "friend">("me");
+  const [me, setMe] = useState("");
+  const [friend, setFriend] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [sent, setSent] = useState(false);
+  const canSend = consent && phoneComplete(me) && (who === "me" || phoneComplete(friend));
+  const sendBonus = () => {
+    if (!canSend) return;
+    void sendLead({
+      kind: "bonus",
+      phone: me,
+      details: who === "me"
+        ? { Форма: "Салон: 500 бонусов на первый визит (для себя)" }
+        : { Форма: "Салон: бонус за подругу", "Телефон подруги": friend },
+    });
+    setSent(true);
+  };
+
   // Телефон/планшет (нет наведения): эффект наведения у карточки в центре экрана
   const cards = useRef<(HTMLElement | null)[]>([]);
   const [active, setActive] = useState<number>(-1);
@@ -105,14 +126,52 @@ export default function LoyaltyCerts() {
                 {t("бонусных рублей на первый визит — уже на счёте, когда вы придёте", "bonus roubles on your first visit — already in your account when you come")}
               </p>
             </div>
-            <a
-              href={YCLIENTS}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative mt-8 flex w-full items-center justify-center rounded-[12px] border border-white bg-white py-3.5 font-display text-[11px] uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white sm:py-4 sm:text-[13px] sm:tracking-[0.16em]"
-            >
-              {t("Оформить визит", "Book a visit")}
-            </a>
+            {/* Форма бонусов: для себя — свой номер; для подруги — свой номер и номер подруги */}
+            <div className="relative mt-8">
+              {sent ? (
+                <p className="animate-[alis-bonus-in_.5s_ease] rounded-[14px] bg-white/10 px-5 py-4 text-center text-[13px] text-white sm:text-[15px]">
+                  {who === "me"
+                    ? t("Спасибо! Бонусы будут на счёте, когда вы придёте.", "Thank you! The bonuses will be in your account when you come.")
+                    : t("Спасибо! Начислим бонусы вам и подруге.", "Thank you! We'll add bonuses for you and your friend.")}
+                </p>
+              ) : (
+                <>
+                  {/* Переключатель «Для себя / Для подруги» с бегущей подложкой */}
+                  <div className="relative grid grid-cols-2 rounded-full bg-white/10 p-1 text-[11px] uppercase tracking-[0.12em] sm:text-[12px]">
+                    <span aria-hidden className="absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-white transition-transform duration-500 ease-[cubic-bezier(.7,0,.2,1)]" style={{ transform: who === "me" ? "none" : "translateX(100%)" }} />
+                    {(["me", "friend"] as const).map((w) => (
+                      <button key={w} type="button" onClick={() => setWho(w)} aria-pressed={who === w} className={`relative z-10 rounded-full py-2.5 transition-colors duration-500 ${who === w ? "text-[#17191a]" : "text-white/70 hover:text-white"}`}>
+                        {w === "me" ? t("Для себя", "For me") : t("Для подруги", "For a friend")}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="mt-3 flex flex-col gap-2">
+                    <PhoneField lang={lang} value={me} onChange={setMe} />
+                    <div className={`grid transition-all duration-500 ease-out ${who === "friend" ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                      <div className="overflow-hidden">
+                        <p className="mb-1.5 pl-1 text-[10px] uppercase tracking-[0.16em] text-white/45">{t("Номер подруги", "Your friend's number")}</p>
+                        <PhoneField lang={lang} value={friend} onChange={setFriend} />
+                      </div>
+                    </div>
+                  </div>
+                  <label className="mt-3 flex cursor-pointer items-center gap-2.5">
+                    <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="h-4 w-4 shrink-0 cursor-pointer accent-white" />
+                    <span className="whitespace-nowrap text-[clamp(10px,2.8vw,11px)] text-white/55">
+                      {t("Даю согласие на обработку ", "I agree to the processing of my ")}
+                      <a href="/policy" className="underline underline-offset-2">{t("персональных данных", "personal data")}</a>
+                    </span>
+                  </label>
+                  <button
+                    type="button"
+                    onClick={sendBonus}
+                    disabled={!canSend}
+                    className="mt-3 flex w-full items-center justify-center rounded-[12px] border border-white bg-white py-3.5 font-display text-[11px] uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-white disabled:hover:text-[#17191a] sm:py-4 sm:text-[13px] sm:tracking-[0.16em]"
+                  >
+                    {t("Забрать бонусы", "Get my bonuses")}
+                  </button>
+                </>
+              )}
+            </div>
           </div>
 
           {/* Справа: три бонуса сверху, сертификат снизу */}
@@ -181,7 +240,7 @@ export default function LoyaltyCerts() {
           </div>
         </div>
       </div>
-      <style>{`@keyframes alis-glow { 0%,100% { transform: scale(1); opacity: .7 } 50% { transform: scale(1.25); opacity: 1 } }`}</style>
+      <style>{`@keyframes alis-glow { 0%,100% { transform: scale(1); opacity: .7 } 50% { transform: scale(1.25); opacity: 1 } } @keyframes alis-bonus-in { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }`}</style>
     </section>
   );
 }
