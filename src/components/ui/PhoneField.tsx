@@ -102,7 +102,7 @@ export default function PhoneField({
         placeholder={c.code === "7" ? "(000) 000-00-00" : "000 000 000"}
         value={local}
         onChange={(e) => setLocal(e.target.value)}
-        className="h-full min-w-0 flex-1 rounded-r-[16px] bg-transparent pr-4 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/30 sm:text-[15px]"
+        className="h-full min-w-0 flex-1 rounded-r-[16px] bg-transparent pr-4 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/30 sm:text-[15px] autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:[-webkit-text-fill-color:#17191a]"
       />
 
       {open && (

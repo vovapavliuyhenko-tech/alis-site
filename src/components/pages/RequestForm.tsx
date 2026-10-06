@@ -82,7 +82,7 @@ export default function RequestForm({
 
   // Поля — белые скруглённые плашки на светлом фоне формы, без рамок
   const line = (err?: boolean) =>
-    `w-full rounded-[14px] bg-white px-4 py-3.5 text-[13px] sm:rounded-[16px] sm:px-5 sm:py-4 sm:text-[15px] text-[#17191a] outline-none transition-shadow placeholder:text-[#17191a]/35 focus:ring-1 focus:ring-[#17191a]/25 ${
+    `w-full rounded-[14px] bg-white px-4 py-3.5 text-[13px] sm:rounded-[16px] sm:px-5 sm:py-4 sm:text-[15px] text-[#17191a] outline-none transition-shadow placeholder:text-[#17191a]/35 focus:ring-1 focus:ring-[#17191a]/25 autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:[-webkit-text-fill-color:#17191a] ${
       err ? "ring-1 ring-[#c0392b]" : ""
     }`;
 

@@ -79,16 +79,29 @@ export default function BudgetCalc() {
   const q = QS[step];
   const pack = pickPack(ans);
   const btn = "flex w-full items-center justify-center rounded-[12px] border border-white bg-white py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-white disabled:hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]";
-  const field = "h-[48px] w-full rounded-[14px] bg-white px-4 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 sm:h-[54px] sm:rounded-[16px] sm:px-5 sm:text-[15px]";
+  const field = "h-[48px] w-full rounded-[14px] bg-white px-4 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 sm:h-[54px] sm:rounded-[16px] sm:px-5 sm:text-[15px] autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:[-webkit-text-fill-color:#17191a]";
   const link = "text-[11px] uppercase tracking-[0.14em] text-white/55 transition-colors hover:text-white disabled:opacity-35";
 
   return (
     <section id="calc" className="scroll-mt-24 bg-white section-y">
-      <div className="r-reveal mx-auto flex w-[96%] max-w-[1760px] flex-col items-center rounded-[28px] bg-[#17191a] px-5 py-10 text-center text-white sm:py-14 lg:py-20">
-        <h2 className="text-white">{en ? "Your date may already be taken" : "Ваша дата может быть уже занята"}</h2>
-        <p className="mt-2 !text-[12.5px] text-white/65 sm:mt-3 sm:!text-[15px]">{en ? "We'll check within 15 minutes?" : "Проверим за 15 минут?"}</p>
+      {/* Компьютер: слева заголовок и ваши ответы (заполняются по ходу), справа — шаги анкеты */}
+      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-8 rounded-[28px] bg-[#17191a] px-5 py-10 text-white sm:px-10 sm:py-14 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-20">
+        <div className="flex flex-col text-center lg:text-left">
+          <h2 className="text-white">{en ? "Your date may already be taken" : "Ваша дата может быть уже занята"}</h2>
+          <p className="mt-2 !text-[12.5px] text-white/65 sm:mt-3 sm:!text-[15px]">{en ? "We'll check within 15 minutes?" : "Проверим за 15 минут?"}</p>
+          {/* Ваши ответы — только на компьютере */}
+          <dl className="mt-auto hidden border-t border-white/12 pt-2 lg:block">
+            {[...QS.map((x) => ({ k: x.q, v: (ans[x.key] || []).map((r) => x.opts.find((o) => o.ru === r)?.[lang] || r).join(", ") })),
+              { k: { ru: "Дата", en: "Date" }, v: date ? date.split("-").reverse().join(".") : "" }].map((row, i) => (
+              <div key={i} className="flex items-baseline justify-between gap-6 border-b border-white/12 py-3.5">
+                <dt className="text-[13px] text-white/45">{row.k[lang]}</dt>
+                <dd className={`text-right text-[14px] transition-colors ${row.v ? "text-white" : "text-white/25"}`}>{row.v || "—"}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
 
-        <div className="mt-8 w-full max-w-[560px] text-left sm:mt-10">
+        <div className="w-full text-left">
           {/* Прогресс */}
           <div className="flex items-center justify-between gap-4">
             <span className="text-[10px] uppercase tracking-[0.2em] text-white/45">
