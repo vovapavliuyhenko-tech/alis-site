@@ -120,7 +120,7 @@ export default function ConciergePackages() {
                 >
                   <div className="flex items-start justify-between gap-4 lg:block">
                     <div>
-                      <span className={`font-display text-[20px] leading-none lg:text-[28px] ${t.mute}`}>{String(i + 1).padStart(2, "0")}</span>
+                      <span className="font-display text-[20px] leading-none text-[#a9874f] lg:text-[28px]">{String(i + 1).padStart(2, "0")}</span>
                       <h3 className="mt-2 font-display text-[18px] uppercase tracking-[0.06em] lg:mt-3 lg:text-[26px]">{p.name}</h3>
                       <p className={`mt-1 !text-[11px] leading-[1.45] sm:!text-[13px] ${t.mute}`}>{p.who[lang]}</p>
                     </div>
