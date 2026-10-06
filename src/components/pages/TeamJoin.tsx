@@ -14,9 +14,10 @@ type Loc = { ru: string; en: string };
 const MANAGER_WA = "https://wa.me/79888887728"; // «Получить подробные условия» — менеджер консьерж-сервиса
 
 // TODO: портреты пришлёт заказчица — пока временные фото с сайта
+// Основатель — по центру (в «веере» центральная карточка лежит сверху)
 const PEOPLE: { role: Loc; name?: Loc; photo: string }[] = [
-  { role: { ru: "Основатель ÁLIS BEAUTY", en: "Founder of ÁLIS BEAUTY" }, name: { ru: "Дайана Тарзян", en: "Daiana Tarzyan" }, photo: "/assets/alis/img_2751.jpg" },
   { role: { ru: "Директор консьерж-направления", en: "Head of the concierge service" }, photo: "/assets/tild6536-613_-2___1__4.jpg" },
+  { role: { ru: "Основатель ÁLIS BEAUTY", en: "Founder of ÁLIS BEAUTY" }, name: { ru: "Дайана Тарзян", en: "Daiana Tarzyan" }, photo: "/assets/alis/img_2751.jpg" },
   { role: { ru: "Управляющая салона", en: "Salon manager" }, photo: "/assets/alis/img_2749.jpg" },
 ];
 
