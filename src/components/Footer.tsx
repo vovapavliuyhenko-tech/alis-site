@@ -26,12 +26,9 @@ export default function Footer() {
   const { lang } = useLang();
   const pathname = usePathname();
   const en = lang === "en";
-  // На странице консьерж-сервиса крупно — телефон сервиса, на остальных — салона
+  // На странице консьерж-сервиса первым идёт телефон сервиса, на остальных — салона
   const concierge = pathname === "/concierge";
-  const PHONE_MAIN = concierge ? PHONE_SERVICE : PHONE_SALON;
-  const PHONE_SECOND = concierge ? PHONE_SALON : PHONE_SERVICE;
   const t = (ru: string, e: string) => (en ? e : ru);
-  const secondNote = concierge ? t("салон красоты", "beauty salon") : t("консьерж-сервис", "concierge service");
 
   const MENU = [
     { label: t("Салон красоты", "Beauty salon"), href: "/salon" },
@@ -55,6 +52,9 @@ export default function Footer() {
   // Разделы-аккордеоны (как в мобильной версии): плавно раскрываются, пункты выезжают по очереди
   const [open, setOpen] = useState<string[]>([]);
   const toggle = (k: string) => setOpen((o) => (o.includes(k) ? o.filter((x) => x !== k) : [...o, k]));
+  const PHONES = (concierge
+    ? [{ label: t("Консьерж-сервис", "Concierge service"), num: PHONE_SERVICE }, { label: t("Салон красоты", "Beauty salon"), num: PHONE_SALON }]
+    : [{ label: t("Салон красоты", "Beauty salon"), num: PHONE_SALON }, { label: t("Консьерж-сервис", "Concierge service"), num: PHONE_SERVICE }]);
   const SECTIONS: { key: string; label: string; items: { label: string; href?: string }[] }[] = [
     { key: "menu", label: t("Меню", "Menu"), items: MENU },
     {
@@ -71,7 +71,6 @@ export default function Footer() {
       label: t("Соцсети и почта", "Social & e-mail"),
       items: [
         ...SOCIALS.map((so) => ({ label: so.label[lang] + "*", href: so.href })),
-        { label: `${PHONE_SECOND} — ${secondNote}`, href: `tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}` },
         { label: EMAIL, href: `mailto:${EMAIL}` },
       ],
     },
@@ -80,28 +79,30 @@ export default function Footer() {
   return (
     <footer id="footer" className="relative z-20 -mt-10 overflow-hidden rounded-t-[40px] bg-[#17191a] text-[#f4efe6]">
       <div className="relative z-10 mx-auto w-[90%] max-w-[1760px] pb-6 pt-10 sm:w-[96%] lg:pb-10 lg:pt-20">
-        {/* Верх: крупный телефон, иконки мессенджера и соцсети; справа на компьютере — второй телефон и почта */}
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <p className="mb-2 text-[9.5px] uppercase tracking-[0.18em] text-[#f4efe6]/55 sm:text-[11px]">{concierge ? t("Консьерж-сервис", "Concierge service") : t("Салон красоты", "Beauty salon")}</p>
-            <div className="flex items-center justify-between gap-4 lg:justify-start lg:gap-8">
-              <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="group relative whitespace-nowrap font-display text-[22px] leading-none tracking-[0.02em] text-[#f4efe6] sm:text-[32px] lg:text-[56px]">
-                {PHONE_MAIN}
-                <span aria-hidden className="absolute -bottom-2 left-0 h-px w-full origin-left scale-x-0 bg-[#f4efe6]/60 transition-transform duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-x-100" />
-              </a>
-              <div className="flex gap-2 lg:gap-3">
-                <a href={`https://wa.me/${PHONE_MAIN.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f4efe6]/35 text-[#f4efe6] transition-all duration-500 hover:-translate-y-0.5 hover:border-[#f4efe6] hover:bg-[#f4efe6] hover:text-[#17191a] lg:h-12 lg:w-12">
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 lg:h-5 lg:w-5" aria-hidden><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.08.9.92-3-.2-.31a8.2 8.2 0 1 1 6.86 3.74Z" /></svg>
-                </a>
-                <a href={SOCIALS[concierge ? 1 : 0].href} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f4efe6]/35 text-[#f4efe6] transition-all duration-500 hover:-translate-y-0.5 hover:border-[#f4efe6] hover:bg-[#f4efe6] hover:text-[#17191a] lg:h-12 lg:w-12">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="h-4 w-4 lg:h-5 lg:w-5" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>
-                </a>
+        {/* Верх: два телефона (салон и консьерж-сервис) — компактно, у каждого свой мессенджер;
+            справа — соцсеть и почта. Первым идёт номер текущего направления. */}
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-10 lg:flex lg:gap-14">
+            {PHONES.map((ph) => (
+              <div key={ph.num}>
+                <p className="mb-1.5 text-[9.5px] uppercase tracking-[0.18em] text-[#f4efe6]/55 sm:text-[10.5px]">{ph.label}</p>
+                <div className="flex items-center gap-3">
+                  <a href={`tel:${ph.num.replace(/[^\d+]/g, "")}`} className="group relative whitespace-nowrap font-display text-[20px] leading-none tracking-[0.02em] text-[#f4efe6] sm:text-[24px] lg:text-[28px]">
+                    {ph.num}
+                    <span aria-hidden className="absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-[#f4efe6]/60 transition-transform duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-x-100" />
+                  </a>
+                  <a href={`https://wa.me/${ph.num.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us") + " — " + ph.label} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#f4efe6]/35 text-[#f4efe6] transition-all duration-500 hover:-translate-y-0.5 hover:border-[#f4efe6] hover:bg-[#f4efe6] hover:text-[#17191a]">
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5" aria-hidden><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.08.9.92-3-.2-.31a8.2 8.2 0 1 1 6.86 3.74Z" /></svg>
+                  </a>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-          <div className="hidden text-right lg:block">
-            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="block text-[13px] text-[#f4efe6]/70 transition-colors hover:text-[#f4efe6]">{PHONE_SECOND} — {secondNote}</a>
-            <a href={`mailto:${EMAIL}`} className="mt-2 inline-block text-[14px] text-[#f4efe6]/85 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#f4efe6]">{EMAIL}</a>
+          <div className="flex items-center gap-4 lg:gap-5">
+            <a href={SOCIALS[concierge ? 1 : 0].href} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page")} className="flex h-8 w-8 items-center justify-center rounded-full border border-[#f4efe6]/35 text-[#f4efe6] transition-all duration-500 hover:-translate-y-0.5 hover:border-[#f4efe6] hover:bg-[#f4efe6] hover:text-[#17191a]">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="h-3.5 w-3.5" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>
+            </a>
+            <a href={`mailto:${EMAIL}`} className="text-[12.5px] text-[#f4efe6]/85 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#f4efe6] sm:text-[14px]">{EMAIL}</a>
           </div>
         </div>
 
