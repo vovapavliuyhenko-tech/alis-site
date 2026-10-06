@@ -79,7 +79,7 @@ export function TeamPeople() {
   return (
     <section id="people" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <h2 className="r-reveal mx-auto mb-8 max-w-[30ch] text-center text-[#17191a] lg:mb-10">
+        <h2 className="sr-only">
           {en ? "The ÁLIS BEAUTY team — people trusted with beauty" : "Команда ÁLIS BEAUTY — люди, которым доверяют свою красоту"}
         </h2>
         <div ref={box} className="grid gap-2 sm:grid-cols-3 sm:gap-3 lg:gap-4">
