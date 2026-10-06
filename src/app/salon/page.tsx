@@ -7,7 +7,8 @@ import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
 import ServiceBento from "@/components/pages/ServiceBento";
-import { SalonBonusStrip, PopularServices, SalonReviews, SALON_ADMIN_WA } from "@/components/pages/SalonBlocks";
+import { SalonBonusStrip, PopularServices, SALON_ADMIN_WA } from "@/components/pages/SalonBlocks";
+import Reviews from "@/components/Reviews";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -291,8 +292,8 @@ export default function SalonPage() {
           }}
         />
 
-        {/* 7 — Отзывы */}
-        <SalonReviews />
+        {/* 7 — Отзывы — тот же блок, что на главной */}
+        <Reviews title={{ ru: "Так говорят гости", en: "What our guests say" }} />
 
         {/* 8 — Лояльность и подарочные сертификаты */}
         <LoyaltyCerts />
