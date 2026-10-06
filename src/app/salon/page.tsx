@@ -7,7 +7,7 @@ import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
 import ServiceBento from "@/components/pages/ServiceBento";
-import { SalonBonusStrip, PopularServices, SALON_ADMIN_WA } from "@/components/pages/SalonBlocks";
+import { SalonBonusStrip, SALON_ADMIN_WA } from "@/components/pages/SalonBlocks";
 import Reviews from "@/components/Reviews";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
@@ -267,8 +267,7 @@ export default function SalonPage() {
         {/* 2 — Плашка «500 бонусных рублей на первый визит» + пригласить подругу */}
         <SalonBonusStrip />
 
-        {/* 3 — Популярные процедуры с ценами */}
-        <PopularServices />
+        {/* 3 — Популярные процедуры — скрыты по просьбе заказчицы (компонент PopularServices в SalonBlocks) */}
 
         {/* 4 — Категории услуг (переход к прайсу по категориям) */}
         <ServiceBento />
