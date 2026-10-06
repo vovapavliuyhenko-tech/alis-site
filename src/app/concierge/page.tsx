@@ -4,101 +4,64 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import ConciergeBenefits from "@/components/pages/ConciergeBenefits";
-import SalonServices from "@/components/pages/SalonServices";
+import ConciergePackages from "@/components/pages/ConciergePackages";
+import ConciergeFounder, { ConciergeDateCheck } from "@/components/pages/ConciergeFounder";
+import BudgetCalc from "@/components/pages/BudgetCalc";
 import { type Stage } from "@/components/HorizontalStory";
 import ConciergeStages from "@/components/pages/ConciergeStages";
 import ConciergeOffer from "@/components/pages/ConciergeOffer";
 import ConciergeChat from "@/components/ConciergeChat";
 
-const req = { ru: "по запросу", en: "on request" };
-
-// Услуги и прайс выездного сервиса — в формате «Салона» (раскрывающиеся плашки).
-const CONCIERGE_CATEGORIES = [
-  {
-    label: { ru: "Свадьба", en: "Wedding" },
-    sub: { ru: "Образ невесты, репетиция, подружки", en: "Bridal look, trial, bridesmaids" },
-    from: req,
-    groups: [
-      {
-        rows: [
-          { name: { ru: "Образ невесты (макияж + причёска)", en: "Bridal look (makeup + hair)" }, price: req },
-          { name: { ru: "Репетиция образа заранее", en: "Trial look in advance" }, price: req },
-          { name: { ru: "Подружки невесты и мама", en: "Bridesmaids & mother" }, price: req },
-          { name: { ru: "Сопровождение мастера весь день", en: "An artist with you all day" }, price: req },
-        ],
-      },
-    ],
-  },
-  {
-    label: { ru: "Съёмка", en: "Shoot" },
-    sub: { ru: "Макияж и причёска под кадр, смена образов", en: "Camera-ready makeup & hair, look changes" },
-    from: req,
-    groups: [
-      {
-        rows: [
-          { name: { ru: "Макияж и причёска под кадр", en: "Camera-ready makeup & hair" }, price: req },
-          { name: { ru: "Смена образов на площадке", en: "Look changes on set" }, price: req },
-          { name: { ru: "Работа с командой моделей", en: "Work with a model team" }, price: req },
-        ],
-      },
-    ],
-  },
-  {
-    label: { ru: "Мероприятие", en: "Event" },
-    sub: { ru: "Команда на выезд, экспресс-образы, бьюти-зона", en: "Team on location, express looks, beauty corner" },
-    from: req,
-    groups: [
-      {
-        rows: [
-          { name: { ru: "Команда мастеров на выезд", en: "A team of specialists on location" }, price: req },
-          { name: { ru: "Экспресс-образ для гостей", en: "Express looks for guests" }, price: req },
-          { name: { ru: "Бьюти-зона на площадке", en: "A beauty corner at the venue" }, price: req },
-        ],
-      },
-    ],
-  },
-];
-
-// Этапы работы — горизонтальный блок, тексты по AIDA.
+// Этапы работы — тексты заказчицы (сокращены под мобильную версию).
 const CONCIERGE_STAGES: Stage[] = [
   {
     name: { ru: "Заявка", en: "Request" },
-    heading: { ru: "Заявка — ответ в тот же день", en: "Request — reply the same day" },
+    heading: { ru: "Заявка — ответ за 15 минут", en: "Request — a reply in 15 minutes" },
     desc: {
-      ru: "Повод, дата и место — и мы сразу назовём формат и стоимость.",
-      en: "Occasion, date and place — and we name the format and price right away.",
+      ru: "Заполните анкету или напишите личному консьержу — ответим за 15 минут.",
+      en: "Fill in the form or message your personal concierge — we reply within 15 minutes.",
     },
-    quote: { ru: "«Ответим в тот же день»", en: "“We reply the same day”" },
+    quote: { ru: "«Ответим за 15 минут»", en: "“We reply in 15 minutes”" },
     photo: "/assets/tild6230-643__.jpg",
   },
   {
-    name: { ru: "Бриф", en: "Brief" },
-    heading: { ru: "Образ и тайминг заранее", en: "Look and timing in advance" },
+    name: { ru: "Смета", en: "Estimate" },
+    heading: { ru: "Смета и бронь даты", en: "Estimate and date booking" },
     desc: {
-      ru: "Согласуем образ и план по минутам — в день события ничего не решается на бегу.",
-      en: "We agree the look and a minute-by-minute plan — nothing is decided on the fly.",
+      ru: "Присылаем смету, подбираем команду и тайминг. Дату закрепляют предоплата и договор.",
+      en: "We send the estimate, pick the team and set the timing. A deposit and a contract secure the date.",
     },
-    quote: { ru: "«Всё расписано заранее»", en: "“Everything planned in advance”" },
+    quote: { ru: "«Дата закреплена»", en: "“Your date is secured”" },
     photo: "/assets/tild3236-393__.jpg",
   },
   {
-    name: { ru: "Выезд", en: "On location" },
-    heading: { ru: "Приезжаем со всем необходимым", en: "We arrive fully equipped" },
+    name: { ru: "Пробный образ", en: "Trial" },
+    heading: { ru: "Пробные образы", en: "Trial looks" },
     desc: {
-      ru: "Команда работает в 4–6 рук. Вам ничего не нужно готовить — всё привезём сами.",
-      en: "The team works with 4–6 hands. Nothing to prepare — we bring everything.",
+      ru: "В салоне, с выездом или онлайн-концепт со стилистами — по вашему запросу.",
+      en: "At the salon, on location, or an online concept with our stylists — as you prefer.",
     },
-    quote: { ru: "«Приедем и всё соберём»", en: "“We arrive and handle it all”" },
-    photo: "/assets/tild6530-383_-2___1_.jpg",
+    quote: { ru: "«Образ готов заранее»", en: "“The look is ready in advance”" },
+    photo: "/assets/alis/img_2749.jpg",
   },
   {
     name: { ru: "Событие", en: "The day" },
-    heading: { ru: "Вы готовы точно к началу", en: "You're ready right on time" },
+    heading: { ru: "День события", en: "The day of the event" },
     desc: {
-      ru: "Причёска, макияж и ногти — вовремя и без спешки. Если нужно, мастер останется до последнего кадра.",
-      en: "Hair, makeup and nails — on time, unhurried. If needed, an artist stays to the last frame.",
+      ru: "Команда приезжает заранее со всеми материалами и оборудованием и работает по таймингу.",
+      en: "The team arrives early with all materials and equipment and works to the timing.",
     },
-    quote: { ru: "«Готовы вовремя, без спешки»", en: "“Ready on time, no rush”" },
+    quote: { ru: "«Всё по таймингу»", en: "“Everything on schedule”" },
+    photo: "/assets/tild6530-383_-2___1_.jpg",
+  },
+  {
+    name: { ru: "Финал", en: "Finishing touches" },
+    heading: { ru: "Финальные штрихи", en: "Finishing touches" },
+    desc: {
+      ru: "Если выбрана опция сопровождения, специалист остаётся с вами до конца события.",
+      en: "If you choose stay-on support, an artist stays with you until the end of the event.",
+    },
+    quote: { ru: "«С вами до конца»", en: "“With you to the end”" },
     photo: "/assets/tild6536-613_-2___1__4.jpg",
   },
 ];
@@ -115,7 +78,12 @@ export default function ConciergePage() {
       <Header />
 
       {/* 1 — Обложка: фото + кнопка к заявке (без логотипа и эффектов) */}
-      <TeamIntro title={{ ru: "Консьерж-сервис", en: "Concierge service" }} button={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }} />
+      <TeamIntro
+        title={{ ru: "Международная beauty-команда для вашего события по России, Европе и странам СНГ", en: "An international beauty team for your event across Russia, Europe and the CIS" }}
+        subtitle={{ ru: "Макияж, укладки и услуги парикмахера под ключ для свадеб, съёмок и модных мероприятий.", en: "Turnkey makeup, styling and hairdressing for weddings, shoots and fashion events." }}
+        button={{ label: { ru: "Рассчитать бюджет", en: "Calculate the budget" }, href: "#calc" }}
+        button2={{ label: { ru: "Написать личному beauty-консьержу", en: "Message your personal beauty concierge" }, href: "#chat" }}
+      />
 
       {/* Порядок = пункты меню: о сервисе → услуги и прайс → фотогалерея → этапы →
           как забронировать. space-y — дополнительный воздух между блоками. */}
@@ -124,24 +92,27 @@ export default function ConciergePage() {
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white page-end">
 
-        {/* 2 — О сервисе (#about) */}
-        <ConciergeBenefits />
+        {/* 2 — Для кого (#about) */}
+        <ConciergeBenefits title={{ ru: "Для кого", en: "Who it's for" }} />
 
-        {/* 3 — Услуги и прайс (#uslugi). TODO: новый прайс пришлёт заказчица */}
-        <SalonServices
-          categories={CONCIERGE_CATEGORIES}
-          cta={{ label: { ru: "Оставить заявку", en: "Leave a request" }, href: "#booking" }}
-        />
+        {/* 3 — Пакеты услуг (#uslugi). TODO: цены «от …» и PDF КП пришлёт заказчица */}
+        <ConciergePackages />
 
+        {/* 4 — Как проходит работа (#process) */}
+        <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={{ ru: "Как проходит работа с командой ÁLIS BEAUTY", en: "How we work with the ÁLIS BEAUTY team" }} />
 
-        {/* 5 — Этапы работы (тексты будут уточнены заказчицей) */}
-        <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={null} />
+        {/* 5 — Проверка даты → анкета */}
+        <ConciergeDateCheck />
 
-        {/* 6 — Как забронировать: заявка (#offer, #booking) */}
+        {/* 6 — Основатель и форматы сотрудничества (#partners) */}
+        <ConciergeFounder />
+
+        {/* 7 — Заявка (#offer, #booking) */}
         <ConciergeOffer />
       </div>
       <Footer />
       <ConciergeChat />
+      <BudgetCalc />
     </main>
   );
 }

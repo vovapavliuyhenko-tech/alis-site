@@ -15,44 +15,36 @@ export type BenefitPoint = { title: Loc; desc: Loc; img: string };
 // порядок — от главной боли к заявке: образ целиком → выезд с оборудованием → гости → опыт → пакеты.
 const POINTS: BenefitPoint[] = [
   {
-    title: { ru: "Весь образ — одна команда", en: "One team, the whole look" },
+    title: { ru: "Невесте и подругам", en: "Brides & bridesmaids" },
     desc: {
-      ru: "Не нужно искать визажиста, парикмахера и стилиста по отдельности: макияж, укладку и образ берём на себя в день события.",
-      en: "No need to find a makeup artist, hairstylist and stylist separately: we handle makeup, hair and the look on the day of your event.",
+      ru: "Образ, который выдержит слёзы, объятия, фотосессию и танцы до утра.",
+      en: "A look that survives tears, hugs, the photo shoot and dancing till dawn.",
     },
-    img: "/assets/alis/img_1834.jpg",
+    img: "/assets/alis/img_2746.jpg",
   },
   {
-    title: { ru: "Приезжаем со всем необходимым", en: "We bring everything" },
+    title: { ru: "На съёмку", en: "Shoots" },
     desc: {
-      ru: "Никакого плохого света и мятого платья: привозим профессиональный свет и отпариватель туда, где вам удобно.",
-      en: "No bad lighting or creased dress: we bring professional lighting and a steamer wherever suits you.",
+      ru: "Фотографам, брендам и продакшену — специалист на площадке весь день.",
+      en: "For photographers, brands and production — an artist on set all day.",
     },
     img: "/assets/alis/img_2672.jpg",
   },
   {
-    title: { ru: "Готовим и вас, и гостей", en: "You and your guests" },
+    title: { ru: "Торжественный выход", en: "A grand entrance" },
     desc: {
-      ru: "Выезжаем командой стилистов и готовим к мероприятию большое количество гостей.",
-      en: "We arrive as a team of stylists and get a large number of guests ready for the event.",
+      ru: "Частный ужин или красная дорожка — все гости готовы по чёткому таймингу.",
+      en: "A private dinner or a red carpet — every guest ready on a precise schedule.",
     },
     img: "/assets/alis/img_0569.jpg",
   },
   {
-    title: { ru: "Образ, который вы задумали", en: "The look you envisioned" },
+    title: { ru: "Агентствам и отелям", en: "Agencies & hotels" },
     desc: {
-      ru: "Опыт и экспертность в индустрии красоты: понимаем задачу с полуслова и воплощаем её.",
-      en: "Experience and expertise in the beauty industry: we understand the brief and bring it to life.",
+      ru: "Надёжный партнёр, которому можно доверить VIP-гостей.",
+      en: "A reliable partner you can trust with VIP guests.",
     },
     img: "/assets/alis/img_0521.jpg",
-  },
-  {
-    title: { ru: "Понятные пакеты", en: "Clear packages" },
-    desc: {
-      ru: "Готовые пакеты услуг для событий разного масштаба, бизнес- и творческих проектов.",
-      en: "Ready-made service packages for events of any scale, business and creative projects.",
-    },
-    img: "/assets/alis/img_2455.jpg",
   },
 ];
 

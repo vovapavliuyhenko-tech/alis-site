@@ -70,6 +70,19 @@ export default function ConciergeChat() {
     return () => { window.removeEventListener("scroll", check); window.removeEventListener("resize", check); };
   }, []);
 
+  // Любая ссылка на странице с href="#chat" открывает этот чат (кнопка «Написать личному beauty-консьержу»)
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const el = (e.target as HTMLElement | null)?.closest?.('a[href="#chat"]');
+      if (!el) return;
+      e.preventDefault();
+      setOpen(true);
+      setScreen("home");
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
   // Пошаговая заявка
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [step, setStep] = useState<Step>("occasion");

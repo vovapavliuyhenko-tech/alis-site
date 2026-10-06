@@ -17,6 +17,7 @@ export default function TeamIntro({
   photo = DEFAULT_PHOTO,
   button,
   button2,
+  subtitle,
 }: {
   title: Loc;
   kicker?: Loc; // короткая продающая строка мелко над заголовком (как оффер на главной)
@@ -25,6 +26,8 @@ export default function TeamIntro({
   button?: { label: Loc; href: string };
   // Вторая кнопка — две плашки в ряд, как на главной: первая белая, вторая стеклянная
   button2?: { label: Loc; href: string };
+  // Длинный заголовок-оффер (в несколько строк) + мелкая строка под ним
+  subtitle?: Loc;
 }) {
   const { lang } = useLang();
   // Эффект «статичного фона»: фото уезжает медленнее страницы
@@ -53,13 +56,18 @@ export default function TeamIntro({
             {kicker[lang]}
           </p>
         )}
-        <h1 className="whitespace-nowrap font-serif-display text-[clamp(18px,6vw,24px)] font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
+        <h1 className={`${subtitle ? "max-w-[30ch] text-[clamp(15px,4.6vw,20px)] sm:max-w-[34ch]" : "whitespace-nowrap text-[clamp(18px,6vw,24px)]"} font-serif-display font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]`}>
           {title[lang]}
         </h1>
+        {subtitle && (
+          <p className="mt-3 max-w-[34ch] !text-[11.5px] leading-[1.5] text-white/85 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] sm:max-w-[60ch] sm:!text-[14px] lg:mt-4 lg:!text-[15px]">
+            {subtitle[lang]}
+          </p>
+        )}
       </div>
 
       {button && (
-        <div className={`grid w-full gap-2 px-5 pb-5 sm:gap-3 sm:px-4 sm:pb-4 lg:gap-4 lg:px-6 lg:pb-6 ${button2 ? "grid-cols-2" : ""}`}>
+        <div className={`grid w-full gap-2 px-5 pb-5 sm:gap-3 sm:px-4 sm:pb-4 lg:gap-4 lg:px-6 lg:pb-6 ${button2 ? (button2.label.ru.length > 22 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-2") : ""}`}>
           {[button, button2].filter((b): b is { label: Loc; href: string } => !!b).map((b, i) => (
             <a
               key={b.href}
