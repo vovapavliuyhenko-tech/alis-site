@@ -3,8 +3,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
-// import SalonCompare from "@/components/pages/SalonCompare"; // мини-сравнение убрано по брифу
-import { TeamPeople, JoinInternational, JoinSalon, JoinSteps } from "@/components/pages/TeamJoin";
+import SalonCompare from "@/components/pages/SalonCompare";
+import { TeamPeople, JoinButtons, JoinSteps } from "@/components/pages/TeamJoin";
 import Vacancies from "@/components/pages/Vacancies";
 import JoinForm from "@/components/pages/JoinForm";
 
@@ -19,7 +19,7 @@ export default function TeamPage() {
       <Header />
 
       {/* 1 — Обложка: фото + кнопка к вакансиям (без логотипа и эффектов) */}
-      <TeamIntro title={{ ru: "Вакансии", en: "Vacancies" }} button={{ label: { ru: "Смотреть вакансии", en: "View vacancies" }, href: "#international" }} button2={{ label: { ru: "Оставить заявку", en: "Apply" }, href: "#join" }} />
+      <TeamIntro title={{ ru: "Вакансии", en: "Vacancies" }} button={{ label: { ru: "Смотреть вакансии", en: "View vacancies" }, href: "#vacancies" }} button2={{ label: { ru: "Оставить заявку", en: "Apply" }, href: "#join" }} />
 
       {/* Порядок по брифу: команда → международная команда → салон (кого ищем, как присоединиться) → анкета.
           space-y — дополнительный воздух между блоками поверх общего section-y. */}
@@ -31,11 +31,14 @@ export default function TeamPage() {
         {/* 2 — Команда: основатель, директор консьерж-направления, управляющая салона */}
         <TeamPeople />
 
-        {/* 3 — Международная beauty-команда (#international) */}
-        <JoinInternational />
+        {/* 3 — Почему мы, а не другой салон (мини-сравнение) + две кнопки.
+            Якоря #international / #salon — для пунктов меню «Вакансии». */}
+        <div id="international" aria-hidden className="scroll-mt-24" />
+        <div id="salon" aria-hidden className="scroll-mt-24" />
+        <SalonCompare />
+        <JoinButtons />
 
-        {/* 4 — Команда салона в Новороссийске (#salon) → «Кого ищем» (#vacancies) → как присоединиться */}
-        <JoinSalon />
+        {/* 4 — Кого ищем (#vacancies) → как присоединиться */}
         <Vacancies />
         <JoinSteps />
 

@@ -149,3 +149,19 @@ export function JoinSteps() {
     </section>
   );
 }
+
+// Две кнопки под блоком «почему мы»: анкета и подробные условия у менеджера
+export function JoinButtons() {
+  const { lang } = useLang();
+  const en = lang === "en";
+  return (
+    <div className="mx-auto mt-6 grid w-[96%] max-w-[760px] gap-2 sm:grid-cols-2 sm:gap-3">
+      <a href="#join" className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-4 py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5 sm:text-[12px]">
+        {en ? "Fill in the form" : "Заполнить анкету"}
+      </a>
+      <a href={MANAGER_WA} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a]/25 px-4 py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 hover:border-[#17191a] sm:py-3.5 sm:text-[12px]">
+        {en ? "Get full terms" : "Получить подробные условия"}
+      </a>
+    </div>
+  );
+}
