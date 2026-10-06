@@ -7,7 +7,7 @@ import TeamIntro from "@/components/pages/TeamIntro";
 import { TeamPeople } from "@/components/pages/TeamJoin";
 import Vacancies from "@/components/pages/Vacancies";
 import VacanciesScroll from "@/components/pages/VacanciesScroll";
-import JoinForm from "@/components/pages/JoinForm";
+import JoinQuiz from "@/components/pages/JoinQuiz";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/team" },
@@ -44,7 +44,7 @@ export default function TeamPage() {
         <VacanciesScroll />
 
         {/* 5 — Анкета (#join) */}
-        <JoinForm />
+        <JoinQuiz />
       </div>
 
       <Footer />
