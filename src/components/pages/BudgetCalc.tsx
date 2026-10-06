@@ -116,16 +116,18 @@ export default function BudgetCalc() {
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] uppercase tracking-[0.18em] text-white/45">{row.label[lang]}</span>
-                      <span className={`h-1.5 w-1.5 rounded-full transition-colors duration-500 ${filled ? "bg-[#a9874f]" : "bg-white/15"}`} />
+                      <span key={filled ? "on" : "off"} className={`h-1.5 w-1.5 rounded-full transition-colors duration-500 ${filled ? "bg-[#a9874f] animate-[alis-dot_.9s_ease-out]" : "bg-white/15"}`} />
                     </div>
                     {Array.isArray(v) && row.key === "services" ? (
                       <div className="mt-3 flex min-h-[30px] flex-wrap gap-1.5">
                         {v.length ? v.map((x) => (
-                          <span key={x} className="rounded-full border border-white/20 px-3 py-1 text-[12.5px] text-white">{x}</span>
+                          <span key={x} className="animate-[alis-chip_.45s_cubic-bezier(.2,.9,.3,1.3)] rounded-full border border-white/20 px-3 py-1 text-[12.5px] text-white">{x}</span>
                         )) : <span className="text-[18px] text-white/20">—</span>}
                       </div>
                     ) : (
-                      <p className={`mt-2 font-display text-[18px] tracking-[0.02em] ${filled ? "text-white" : "text-white/20"}`}>{(Array.isArray(v) ? v.join(", ") : v) || "—"}</p>
+                      <p className="mt-2 overflow-hidden font-display text-[18px] tracking-[0.02em]">
+                        <span key={(Array.isArray(v) ? v.join(",") : v) || "—"} className={`block ${filled ? "animate-[alis-val_.55s_cubic-bezier(.2,.8,.2,1)] text-white" : "text-white/20"}`}>{(Array.isArray(v) ? v.join(", ") : v) || "—"}</span>
+                      </p>
                     )}
                   </div>
                 );
@@ -134,7 +136,12 @@ export default function BudgetCalc() {
             {/* Подходящий пакет — появляется после первого ответа */}
             <div className={`mt-6 flex items-baseline justify-between border-t border-white/12 pt-5 transition-opacity duration-500 ${ans.format?.length ? "opacity-100" : "opacity-0"}`}>
               <span className="text-[10px] uppercase tracking-[0.18em] text-white/45">{en ? "Your package" : "Вам подходит"}</span>
-              <span className="font-display text-[28px] uppercase tracking-[0.08em] text-[#a9874f]">{pack}</span>
+              <span key={pack} className="relative font-display text-[28px] uppercase tracking-[0.08em] text-[#a9874f]">
+                {pack.split("").map((ch, k) => (
+                  <span key={k} className="inline-block animate-[alis-letter_.5s_cubic-bezier(.2,.8,.2,1)_both]" style={{ animationDelay: `${k * 0.04}s` }}>{ch}</span>
+                ))}
+                <span aria-hidden className="absolute -bottom-1 left-0 h-px w-full origin-left animate-[alis-line_.8s_cubic-bezier(.4,0,.2,1)_.2s_both] bg-[#a9874f]/60" />
+              </span>
             </div>
           </div>
         </div>
@@ -160,9 +167,10 @@ export default function BudgetCalc() {
                   return (
                     <button
                       key={o.ru}
+                      style={{ animationDelay: `${q.opts.indexOf(o) * 0.06}s` }}
                       type="button"
                       onClick={() => choose(q, o.ru)}
-                      className={`rounded-[14px] border px-3 py-3.5 text-[12px] transition-colors sm:rounded-[16px] sm:text-[14px] ${on ? "border-white bg-white text-[#17191a]" : "border-white/20 text-white hover:border-white/60"}`}
+                      className={`animate-[alis-calc-in_.45s_ease_both] rounded-[14px] border px-3 py-3.5 text-[12px] transition-all active:scale-[0.97] sm:rounded-[16px] sm:text-[14px] ${on ? "border-white bg-white text-[#17191a]" : "border-white/20 text-white hover:border-white/60"}`}
                     >
                       {o[lang]}
                     </button>
@@ -211,7 +219,15 @@ export default function BudgetCalc() {
           )}
         </div>
       </div>
-      <style>{`@keyframes alis-calc-in { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }`}</style>
+      <style>{`
+        @keyframes alis-calc-in { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }
+        @keyframes alis-val { from { opacity: 0; transform: translateY(100%) } to { opacity: 1; transform: none } }
+        @keyframes alis-chip { from { opacity: 0; transform: scale(.6) } to { opacity: 1; transform: none } }
+        @keyframes alis-dot { 0% { box-shadow: 0 0 0 0 rgba(169,135,79,.7) } 100% { box-shadow: 0 0 0 10px rgba(169,135,79,0) } }
+        @keyframes alis-letter { from { opacity: 0; transform: translateY(60%) } to { opacity: 1; transform: none } }
+        @keyframes alis-line { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+        @media (prefers-reduced-motion: reduce) { #calc * { animation: none !important } }
+      `}</style>
     </section>
   );
 }
