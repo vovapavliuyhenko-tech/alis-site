@@ -19,81 +19,28 @@ const PEOPLE: { role: Loc; name?: Loc; photo?: string }[] = [
   { role: { ru: "Управляющая салона", en: "Salon manager" } },
 ];
 
-// Карточка человека: тёмная плашка с монограммой (пока нет фото), «прожектор» следует за курсором,
-// лёгкий 3D-наклон, при наведении имя и роль поднимаются, линия прорисовывается.
-// Появление — раскрытие снизу вверх по очереди. Телефон: подсвечивается карточка в центре экрана.
-function PersonCard({ p, i, on }: { p: (typeof PEOPLE)[number]; i: number; on: boolean }) {
-  const { lang } = useLang();
-  const el = useRef<HTMLElement>(null);
-  const move = (e: React.MouseEvent) => {
-    const c = el.current;
-    if (!c) return;
-    const r = c.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-    c.style.setProperty("--mx", `${x * 100}%`);
-    c.style.setProperty("--my", `${y * 100}%`);
-    c.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 6}deg) rotateY(${(x - 0.5) * 8}deg)`;
-  };
-  const leave = () => { if (el.current) el.current.style.transform = ""; };
-  return (
-    <article
-      ref={el}
-      onMouseMove={move}
-      onMouseLeave={leave}
-      data-on={on ? "" : undefined}
-      className="team-card group relative h-[300px] overflow-hidden rounded-[24px] bg-[#17191a] text-white transition-transform duration-300 ease-out sm:h-[340px] lg:h-[380px]"
-      style={{ animationDelay: `${i * 0.15}s` }}
-    >
-      {p.photo ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={p.photo} alt={p.name?.[lang] || p.role[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-80 transition-all duration-[900ms] group-hover:scale-105 group-hover:opacity-100" />
-      ) : (
-        // Монограмма-контур, медленно «дышит»; при наведении становится ярче
-        <span aria-hidden className="absolute inset-0 flex items-center justify-center font-serif-display text-[120px] tracking-[0.08em] text-transparent transition-all duration-700 [-webkit-text-stroke:1px_rgba(255,255,255,0.12)] group-hover:scale-110 group-hover:[-webkit-text-stroke:1px_rgba(255,255,255,0.3)] group-data-[on]:scale-110 lg:text-[160px]">
-          ÁB
-        </span>
-      )}
-      {/* Прожектор за курсором */}
-      <span aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.14), transparent 60%)" }} />
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-
-      <span className="absolute left-6 top-6 font-display text-[12px] tabular-nums text-white/40">{String(i + 1).padStart(2, "0")}</span>
-      <div className="absolute inset-x-6 bottom-6 transition-transform duration-500 ease-out group-hover:-translate-y-1.5 group-data-[on]:-translate-y-1.5">
-        {p.name && <p className="font-display text-[17px] uppercase tracking-[0.04em] sm:text-[20px]">{p.name[lang]}</p>}
-        <span aria-hidden className="mt-3 block h-px w-full origin-left scale-x-[0.15] bg-white/40 transition-transform duration-700 ease-out group-hover:scale-x-100 group-data-[on]:scale-x-100" />
-        <p className="mt-3 text-[10.5px] uppercase tracking-[0.16em] text-white/60 sm:text-[11px]">{p.role[lang]}</p>
-      </div>
-    </article>
-  );
-}
-
+// Карточки команды — в стиле сайта: белые, тонкая рамка, скругление 20px. Сверху круглый портрет
+// (пока нет фото — светлый круг с инициалами или силуэтом), имя и роль.
+// Движение: карточки появляются по очереди; наведение — карточка приподнимается, рамка темнеет,
+// портрет чуть увеличивается, вокруг него прорисовывается тонкое кольцо, под ролью — линия.
+// На телефоне так подсвечивается карточка в центре экрана.
 export function TeamPeople() {
   const { lang } = useLang();
   const en = lang === "en";
-  // Телефон/планшет: эффект наведения у карточки в центре экрана
   const box = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(-1);
   useEffect(() => {
     const root = box.current;
     if (!root || matchMedia("(hover: hover)").matches) return;
-    const cards = [...root.querySelectorAll(".team-card")];
+    const cards = [...root.querySelectorAll("article")];
     const io = new IntersectionObserver((es) => {
       for (const e of es) {
-        const i = cards.indexOf(e.target);
+        const i = cards.indexOf(e.target as HTMLElement);
         if (e.isIntersecting) setActive(i);
-        else setActive((a) => (a === i ? -1 : a));
+        else setActive((x) => (x === i ? -1 : x));
       }
     }, { rootMargin: "-40% 0px -40% 0px" });
     cards.forEach((c) => io.observe(c));
-    return () => io.disconnect();
-  }, []);
-  // Раскрытие снизу вверх, когда блок попал в кадр
-  const [shown, setShown] = useState(false);
-  useEffect(() => {
-    const root = box.current;
-    if (!root) return;
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setShown(true); io.disconnect(); } }, { threshold: 0.2 });
-    io.observe(root);
     return () => io.disconnect();
   }, []);
 
@@ -103,17 +50,40 @@ export function TeamPeople() {
         <h2 className="r-reveal mx-auto mb-8 max-w-[30ch] text-center text-[#17191a] lg:mb-10">
           {en ? "The ÁLIS BEAUTY team — people trusted with beauty" : "Команда ÁLIS BEAUTY — люди, которым доверяют свою красоту"}
         </h2>
-        <div ref={box} className={`grid gap-2 sm:grid-cols-3 sm:gap-3 lg:gap-4 ${shown ? "team-shown" : ""}`}>
-          {PEOPLE.map((p, i) => <PersonCard key={p.role.ru} p={p} i={i} on={active === i} />)}
+        <div ref={box} className="grid gap-2 sm:grid-cols-3 sm:gap-3 lg:gap-4">
+          {PEOPLE.map((p, i) => {
+            const initials = p.name ? p.name[lang].split(" ").map((w) => w[0]).join("") : "";
+            return (
+              <article
+                key={p.role.ru}
+                data-on={active === i ? "" : undefined}
+                className="r-reveal group flex flex-col items-center rounded-[20px] border border-[#17191a]/12 bg-white px-6 py-8 text-center transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1.5 hover:border-[#17191a]/30 hover:shadow-[0_24px_60px_-28px_rgba(23,25,26,0.25)] data-[on]:-translate-y-1.5 data-[on]:border-[#17191a]/30 sm:py-10"
+                style={{ transitionDelay: `${i * 0.1}s` }}
+              >
+                {/* Портрет + кольцо, которое прорисовывается при наведении */}
+                <div className="relative h-[112px] w-[112px] sm:h-[128px] sm:w-[128px]">
+                  <svg viewBox="0 0 100 100" aria-hidden className="absolute -inset-2 h-[calc(100%+16px)] w-[calc(100%+16px)] -rotate-90">
+                    <circle cx="50" cy="50" r="48" fill="none" stroke="#17191a" strokeWidth="0.6" pathLength={1} className="[stroke-dasharray:1] [stroke-dashoffset:1] transition-[stroke-dashoffset] duration-[900ms] ease-out group-hover:[stroke-dashoffset:0] group-data-[on]:[stroke-dashoffset:0]" />
+                  </svg>
+                  <div className="h-full w-full overflow-hidden rounded-full bg-[#f6f4f1] transition-transform duration-700 ease-out group-hover:scale-[1.04] group-data-[on]:scale-[1.04]">
+                    {p.photo ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={p.photo} alt={p.name?.[lang] || p.role[lang]} loading="lazy" className="h-full w-full object-cover" />
+                    ) : initials ? (
+                      <span className="flex h-full w-full items-center justify-center font-display text-[30px] tracking-[0.06em] text-[#17191a]/35">{initials}</span>
+                    ) : (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden className="mx-auto mt-[22%] h-1/2 w-1/2 text-[#17191a]/20"><circle cx="12" cy="8" r="4" /><path d="M4 21c1-4.5 4.4-7 8-7s7 2.5 8 7" strokeLinecap="round" /></svg>
+                    )}
+                  </div>
+                </div>
+                {p.name ? <p className="mt-6 font-display text-[16px] tracking-[0.02em] text-[#17191a] sm:text-[18px]">{p.name[lang]}</p> : <span className="mt-6" />}
+                <span aria-hidden className="mt-3 block h-px w-8 bg-[#17191a]/20 transition-all duration-500 group-hover:w-16 group-hover:bg-[#17191a] group-data-[on]:w-16 group-data-[on]:bg-[#17191a]" />
+                <p className="mt-3 text-[10.5px] uppercase tracking-[0.16em] text-[#17191a]/55 sm:text-[11px]">{p.role[lang]}</p>
+              </article>
+            );
+          })}
         </div>
       </div>
-      <style>{`
-        .team-card { clip-path: inset(100% 0 0 0 round 24px); }
-        .team-shown .team-card { animation: team-in 1s cubic-bezier(.7,0,.2,1) both; }
-        @keyframes team-in { from { clip-path: inset(100% 0 0 0 round 24px) } to { clip-path: inset(0 0 0 0 round 24px) } }
-        .team-shown .team-card { clip-path: inset(0 0 0 0 round 24px); }
-        @media (prefers-reduced-motion: reduce) { .team-card { clip-path: none !important; animation: none !important } }
-      `}</style>
     </section>
   );
 }
