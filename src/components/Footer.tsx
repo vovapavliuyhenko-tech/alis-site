@@ -1,7 +1,9 @@
 "use client";
-// FOOTER ÁLIS BEAUTY — светлый «инфо-подвал» по мотивам jodocosmetics: колонки
-// (соцсети / адрес / меню), крупные телефон и e-mail справа, правовой ряд.
+// FOOTER ÁLIS BEAUTY — как мобильная версия: сверху крупный телефон с иконками (на компьютере
+// справа — второй телефон и почта), ниже три раскрывающихся раздела — «Меню», «Адрес и часы»,
+// «Соцсети и почта» (на компьютере в ряд). Плавное раскрытие, пункты выезжают по очереди.
 // Названия соцсетей не пишем — подписи «Салон красоты» / «Консьерж-сервис». Двуязычно.
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
 
@@ -31,10 +33,6 @@ export default function Footer() {
   const t = (ru: string, e: string) => (en ? e : ru);
   const secondNote = concierge ? t("салон красоты", "beauty salon") : t("консьерж-сервис", "concierge service");
 
-  // Подписи колонок — мелкие капсом, ссылки — с тонким подчёркиванием на наведении
-  const title = "mb-2.5 lg:mb-5 text-[9.5px] sm:text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/75";
-  const link =
-    "relative block w-fit text-[11.5px] text-[#f4efe6]/85 sm:text-[13px] lg:text-[12.5px] transition-colors hover:text-[#f4efe6] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-[#46131E] after:transition-all after:duration-300 hover:after:w-full";
   const MENU = [
     { label: t("Салон красоты", "Beauty salon"), href: "/salon" },
     { label: t("Консьерж-сервис", "Concierge service"), href: "/concierge" },
@@ -54,120 +52,95 @@ export default function Footer() {
     { label: "Cookie", href: "/cookies" },
   ];
 
+  // Разделы-аккордеоны (как в мобильной версии): плавно раскрываются, пункты выезжают по очереди
+  const [open, setOpen] = useState<string[]>([]);
+  const toggle = (k: string) => setOpen((o) => (o.includes(k) ? o.filter((x) => x !== k) : [...o, k]));
+  const SECTIONS: { key: string; label: string; items: { label: string; href?: string }[] }[] = [
+    { key: "menu", label: t("Меню", "Menu"), items: MENU },
+    {
+      key: "addr",
+      label: t("Адрес и часы", "Address & hours"),
+      items: [
+        { label: ADDRESS[lang], href: MAP_URL },
+        { label: HOURS[lang] },
+        { label: t("Построить маршрут →", "Get directions →"), href: ROUTE_URL },
+      ],
+    },
+    {
+      key: "soc",
+      label: t("Соцсети и почта", "Social & e-mail"),
+      items: [
+        ...SOCIALS.map((so) => ({ label: so.label[lang] + "*", href: so.href })),
+        { label: `${PHONE_SECOND} — ${secondNote}`, href: `tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}` },
+        { label: EMAIL, href: `mailto:${EMAIL}` },
+      ],
+    },
+  ];
+
   return (
     <footer id="footer" className="relative z-20 -mt-10 overflow-hidden rounded-t-[40px] bg-[#17191a] text-[#f4efe6]">
       <div className="relative z-10 mx-auto w-[90%] max-w-[1760px] pb-6 pt-10 sm:w-[96%] lg:pb-10 lg:pt-20">
-        {/* ТЕЛЕФОН (вариант B): телефон + иконки, ниже три раскрывающихся раздела */}
-        <div className="sm:hidden">
-          <div className="flex items-center justify-between gap-3">
-            <a href={`tel:${PHONE_MAIN.replace(/[^d+]/g, "")}`} className="whitespace-nowrap font-display text-[20px] leading-none text-[#f4efe6]">{PHONE_MAIN}</a>
-            <div className="flex gap-2">
-              <a href={`https://wa.me/${PHONE_MAIN.replace(/D/g, "")}`} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f4efe6]/35 text-[#f4efe6]">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.08.9.92-3-.2-.31a8.2 8.2 0 1 1 6.86 3.74Z" /></svg>
+        {/* Верх: крупный телефон, иконки мессенджера и соцсети; справа на компьютере — второй телефон и почта */}
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="mb-2 text-[9.5px] uppercase tracking-[0.18em] text-[#f4efe6]/55 sm:text-[11px]">{concierge ? t("Консьерж-сервис", "Concierge service") : t("Салон красоты", "Beauty salon")}</p>
+            <div className="flex items-center justify-between gap-4 lg:justify-start lg:gap-8">
+              <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="group relative whitespace-nowrap font-display text-[22px] leading-none tracking-[0.02em] text-[#f4efe6] sm:text-[32px] lg:text-[56px]">
+                {PHONE_MAIN}
+                <span aria-hidden className="absolute -bottom-2 left-0 h-px w-full origin-left scale-x-0 bg-[#f4efe6]/60 transition-transform duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-x-100" />
               </a>
-              <a href={SOCIALS[concierge ? 1 : 0].href} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f4efe6]/35 text-[#f4efe6]">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="h-4 w-4" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>
-              </a>
+              <div className="flex gap-2 lg:gap-3">
+                <a href={`https://wa.me/${PHONE_MAIN.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f4efe6]/35 text-[#f4efe6] transition-all duration-500 hover:-translate-y-0.5 hover:border-[#f4efe6] hover:bg-[#f4efe6] hover:text-[#17191a] lg:h-12 lg:w-12">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 lg:h-5 lg:w-5" aria-hidden><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.08.9.92-3-.2-.31a8.2 8.2 0 1 1 6.86 3.74Z" /></svg>
+                </a>
+                <a href={SOCIALS[concierge ? 1 : 0].href} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#f4efe6]/35 text-[#f4efe6] transition-all duration-500 hover:-translate-y-0.5 hover:border-[#f4efe6] hover:bg-[#f4efe6] hover:text-[#17191a] lg:h-12 lg:w-12">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="h-4 w-4 lg:h-5 lg:w-5" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>
+                </a>
+              </div>
             </div>
           </div>
-          <div className="mt-6 border-t border-[#f4efe6]/12">
-            {[
-              {
-                key: "menu",
-                label: t("Меню", "Menu"),
-                body: (
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-2 pb-4">
-                    {MENU.map((m) => (
-                      <a key={m.href} href={m.href} {...(m.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="text-[12px] text-[#f4efe6]/80">{m.label}</a>
-                    ))}
-                  </div>
-                ),
-              },
-              {
-                key: "addr",
-                label: t("Адрес и часы", "Address & hours"),
-                body: (
-                  <div className="space-y-1.5 pb-4 text-[12px] text-[#f4efe6]/80">
-                    <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className="block">{ADDRESS[lang]}</a>
-                    <p className="text-[11px] text-[#f4efe6]/60">{HOURS[lang]}</p>
-                    <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="block">{t("Построить маршрут →", "Get directions →")}</a>
-                  </div>
-                ),
-              },
-              {
-                key: "soc",
-                label: t("Соцсети и почта", "Social & e-mail"),
-                body: (
-                  <div className="space-y-1.5 pb-4 text-[12px] text-[#f4efe6]/80">
-                    {SOCIALS.map((so) => (
-                      <a key={so.href} href={so.href} target="_blank" rel="noopener noreferrer" className="block">{so.label[lang]}*</a>
-                    ))}
-                    <a href={`tel:${PHONE_SECOND.replace(/[^d+]/g, "")}`} className="block">{PHONE_SECOND} — {secondNote}</a>
-                    <a href={`mailto:${EMAIL}`} className="block">{EMAIL}</a>
-                  </div>
-                ),
-              },
-            ].map((sec) => (
-              <details key={sec.key} className="group border-b border-[#f4efe6]/12">
-                <summary className="flex cursor-pointer list-none items-center justify-between py-3.5 text-[12px] uppercase tracking-[0.14em] text-[#f4efe6] [&::-webkit-details-marker]:hidden">
-                  {sec.label}
-                  <span aria-hidden className="text-[16px] font-light transition-transform duration-300 group-open:rotate-45">+</span>
-                </summary>
-                {sec.body}
-              </details>
-            ))}
+          <div className="hidden text-right lg:block">
+            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="block text-[13px] text-[#f4efe6]/70 transition-colors hover:text-[#f4efe6]">{PHONE_SECOND} — {secondNote}</a>
+            <a href={`mailto:${EMAIL}`} className="mt-2 inline-block text-[14px] text-[#f4efe6]/85 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#f4efe6]">{EMAIL}</a>
           </div>
         </div>
 
-        {/* Компьютер и планшет: колонки + крупный контакт справа */}
-        <div className="hidden grid-cols-2 gap-x-5 gap-y-6 sm:grid lg:grid-cols-[1fr_1fr_1.6fr_auto] lg:gap-10">
-          {/* Соцсети */}
-          <div>
-            <p className={title}>{t("Социальные сети", "Social media")}</p>
-            <div className="space-y-2">
-              {SOCIALS.map((s) => (
-                <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer" className={link}>
-                  {s.label[lang]}*
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Адрес и часы */}
-          <div>
-            <p className={title}>{t("Адрес", "Address")}</p>
-            <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className={`${link} max-w-[16rem] leading-relaxed`}>
-              {ADDRESS[lang]}
-            </a>
-            <p className="mt-2 text-[11px] leading-relaxed text-[#f4efe6]/70 sm:mt-3 sm:text-[13px] lg:text-[12px]">{HOURS[lang]}</p>
-            <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className={`${link} mt-4`}>
-              {t("Построить маршрут →", "Get directions →")}
-            </a>
-          </div>
-
-          {/* Меню — в две колонки, чтобы подвал был компактнее */}
-          <div className="col-span-2 lg:col-span-1">
-            <p className={title}>{t("Меню", "Menu")}</p>
-            <div className="grid grid-cols-2 gap-x-5 gap-y-2 lg:gap-x-8 lg:gap-y-2">
-              {MENU.map((m) => (
-                <a key={m.href} href={m.href} {...(m.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${link} sm:whitespace-nowrap`}>{m.label}</a>
-              ))}
-            </div>
-          </div>
-
-          {/* Телефоны + email справа, крупно */}
-          <div className="col-span-2 lg:col-span-1 lg:text-right">
-            <p className={title}>{concierge ? t("Консьерж-сервис", "Concierge service") : t("Салон красоты", "Beauty salon")}</p>
-            <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[20px] leading-none sm:text-[24px] tracking-[0.02em] text-[#f4efe6] transition-opacity hover:opacity-70 lg:text-[40px]">
-              {PHONE_MAIN}
-            </a>
-            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-2 block text-[11.5px] text-[#f4efe6]/75 sm:mt-3 sm:text-[14px] lg:text-[12.5px] transition-colors hover:text-[#f4efe6]">
-              {PHONE_SECOND} — {secondNote}
-            </a>
-            <a href={`mailto:${EMAIL}`} className="mt-3 inline-block text-[12px] text-[#f4efe6]/85 sm:mt-5 sm:text-[14px] underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#46131E] lg:text-[15px]">
-              {EMAIL}
-            </a>
-          </div>
+        {/* Раскрывающиеся разделы: на телефоне — друг под другом, на компьютере — три в ряд */}
+        <div className="mt-6 grid border-t border-[#f4efe6]/12 lg:mt-12 lg:grid-cols-3 lg:gap-10 lg:border-t-0">
+          {SECTIONS.map((sec) => {
+            const isOpen = open.includes(sec.key);
+            return (
+              <div key={sec.key} className="border-b border-[#f4efe6]/12 lg:border-b-0 lg:border-t">
+                <button
+                  type="button"
+                  onClick={() => toggle(sec.key)}
+                  aria-expanded={isOpen}
+                  className="group flex w-full items-center justify-between py-3.5 text-left text-[12px] uppercase tracking-[0.14em] text-[#f4efe6] lg:py-5 lg:text-[13px]"
+                >
+                  <span className="relative">
+                    {sec.label}
+                    <span aria-hidden className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-[#f4efe6]/50 transition-transform duration-500 group-hover:scale-x-100" />
+                  </span>
+                  <span aria-hidden className={`flex h-7 w-7 items-center justify-center rounded-full border text-[15px] font-light leading-none transition-all duration-500 ease-[cubic-bezier(.22,.61,.36,1)] lg:h-8 lg:w-8 ${isOpen ? "rotate-45 border-[#f4efe6] bg-[#f4efe6] text-[#17191a]" : "border-[#f4efe6]/30 group-hover:border-[#f4efe6]"}`}>+</span>
+                </button>
+                <div className={`grid transition-[grid-template-rows] duration-[600ms] ease-[cubic-bezier(.22,.61,.36,1)] ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+                  <div className="overflow-hidden">
+                    <div className={`pb-5 ${sec.key === "menu" ? "grid grid-cols-2 gap-x-4 gap-y-2" : "flex flex-col gap-2"}`}>
+                      {sec.items.map((it, k) => {
+                        const cls = "w-fit text-[12px] transition-[opacity,translate,color] duration-500 sm:text-[13px]";
+                        const st = { opacity: isOpen ? 1 : 0, translate: isOpen ? "0 0" : "0 8px", transitionDelay: isOpen ? `${0.12 + k * 0.04}s` : "0s" };
+                        return it.href ? (
+                          <a key={k} href={it.href} {...(it.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${cls} text-[#f4efe6]/80 hover:text-[#f4efe6]`} style={st}>{it.label}</a>
+                        ) : (
+                          <p key={k} className={`${cls} text-[#f4efe6]/55`} style={st}>{it.label}</p>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* Нижний ряд: копирайт слева, документы в одну строку справа */}
