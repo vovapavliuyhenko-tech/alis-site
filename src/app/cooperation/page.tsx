@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import CooperationFormats from "@/components/pages/CooperationFormats";
+import Brands from "@/components/Brands";
 import ConciergeBenefits, { type BenefitPoint } from "@/components/pages/ConciergeBenefits";
 // import CoopGallery from "@/components/pages/CoopGallery"; // галерея скрыта до фото/видео от заказчицы
 
@@ -78,6 +79,9 @@ export default function CooperationPage() {
 
         {/* 2 — Кому полезно */}
         <ConciergeBenefits points={WHO} sectionId="who" />
+
+        {/* Бегущая строка брендов, которые с нами сотрудничают */}
+        <Brands />
 
         {/* 3 — 5 рамок: фото или видео (TODO: медиа пришлёт заказчица) */}
         {/* <CoopGallery /> — скрыта, пока нет фото/видео */}

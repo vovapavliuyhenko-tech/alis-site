@@ -9,7 +9,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 import RequestForm, { type RequestField } from "@/components/pages/RequestForm";
-import Brands from "@/components/Brands";
 
 type Loc = { ru: string; en: string };
 type Kind = "private" | "business";
@@ -177,11 +176,9 @@ export default function CooperationFormats() {
         )}
       </section>
 
-      {/* Форма под выбранную категорию + лента партнёров — только после выбора */}
+      {/* Форма под выбранную категорию — только после выбора (лента партнёров теперь выше, на странице) */}
       {kind && (
         <div className="animate-[alis-open_.7s_cubic-bezier(.2,.7,.2,1)]">
-          {/* Сначала лента партнёров, под ней — форма заявки */}
-          <Brands />
           <div ref={formRef} className="scroll-mt-24">
           <RequestForm
             key={kind}
