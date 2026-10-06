@@ -7,7 +7,7 @@ import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
 import ServiceBento from "@/components/pages/ServiceBento";
-import { SalonBonusStrip, SALON_ADMIN_WA } from "@/components/pages/SalonBlocks";
+import { SALON_ADMIN_WA } from "@/components/pages/SalonBlocks";
 import Reviews from "@/components/Reviews";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
@@ -264,8 +264,7 @@ export default function SalonPage() {
           обёртки: иначе отступ первого блока «проваливается» и видна полоса фона. */}
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white page-end">
-        {/* 2 — Плашка «500 бонусных рублей на первый визит» + пригласить подругу */}
-        <SalonBonusStrip />
+        {/* 2 — Плашка «500 бонусов + пригласить подругу» — скрыта по просьбе заказчицы (SalonBonusStrip в SalonBlocks) */}
 
         {/* 3 — Популярные процедуры — скрыты по просьбе заказчицы (компонент PopularServices в SalonBlocks) */}
 
