@@ -6,6 +6,7 @@
 //  JoinSalon        — #salon: команда салона в Новороссийске, «Кого ищем» (список ниже — Vacancies);
 //  JoinSteps        — «Как присоединиться?» 4 шага и кнопка к анкете #join.
 // TODO: фото и тексты карточек команды, имена директора и управляющей — пришлёт заказчица.
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -18,35 +19,101 @@ const PEOPLE: { role: Loc; name?: Loc; photo?: string }[] = [
   { role: { ru: "Управляющая салона", en: "Salon manager" } },
 ];
 
+// Карточка человека: тёмная плашка с монограммой (пока нет фото), «прожектор» следует за курсором,
+// лёгкий 3D-наклон, при наведении имя и роль поднимаются, линия прорисовывается.
+// Появление — раскрытие снизу вверх по очереди. Телефон: подсвечивается карточка в центре экрана.
+function PersonCard({ p, i, on }: { p: (typeof PEOPLE)[number]; i: number; on: boolean }) {
+  const { lang } = useLang();
+  const el = useRef<HTMLElement>(null);
+  const move = (e: React.MouseEvent) => {
+    const c = el.current;
+    if (!c) return;
+    const r = c.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    c.style.setProperty("--mx", `${x * 100}%`);
+    c.style.setProperty("--my", `${y * 100}%`);
+    c.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 6}deg) rotateY(${(x - 0.5) * 8}deg)`;
+  };
+  const leave = () => { if (el.current) el.current.style.transform = ""; };
+  return (
+    <article
+      ref={el}
+      onMouseMove={move}
+      onMouseLeave={leave}
+      data-on={on ? "" : undefined}
+      className="team-card group relative h-[300px] overflow-hidden rounded-[24px] bg-[#17191a] text-white transition-transform duration-300 ease-out sm:h-[340px] lg:h-[380px]"
+      style={{ animationDelay: `${i * 0.15}s` }}
+    >
+      {p.photo ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={p.photo} alt={p.name?.[lang] || p.role[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-80 transition-all duration-[900ms] group-hover:scale-105 group-hover:opacity-100" />
+      ) : (
+        // Монограмма-контур, медленно «дышит»; при наведении становится ярче
+        <span aria-hidden className="absolute inset-0 flex items-center justify-center font-serif-display text-[120px] tracking-[0.08em] text-transparent transition-all duration-700 [-webkit-text-stroke:1px_rgba(255,255,255,0.12)] group-hover:scale-110 group-hover:[-webkit-text-stroke:1px_rgba(255,255,255,0.3)] group-data-[on]:scale-110 lg:text-[160px]">
+          ÁB
+        </span>
+      )}
+      {/* Прожектор за курсором */}
+      <span aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.14), transparent 60%)" }} />
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+
+      <span className="absolute left-6 top-6 font-display text-[12px] tabular-nums text-white/40">{String(i + 1).padStart(2, "0")}</span>
+      <div className="absolute inset-x-6 bottom-6 transition-transform duration-500 ease-out group-hover:-translate-y-1.5 group-data-[on]:-translate-y-1.5">
+        {p.name && <p className="font-display text-[17px] uppercase tracking-[0.04em] sm:text-[20px]">{p.name[lang]}</p>}
+        <span aria-hidden className="mt-3 block h-px w-full origin-left scale-x-[0.15] bg-white/40 transition-transform duration-700 ease-out group-hover:scale-x-100 group-data-[on]:scale-x-100" />
+        <p className="mt-3 text-[10.5px] uppercase tracking-[0.16em] text-white/60 sm:text-[11px]">{p.role[lang]}</p>
+      </div>
+    </article>
+  );
+}
+
 export function TeamPeople() {
   const { lang } = useLang();
   const en = lang === "en";
+  // Телефон/планшет: эффект наведения у карточки в центре экрана
+  const box = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(-1);
+  useEffect(() => {
+    const root = box.current;
+    if (!root || matchMedia("(hover: hover)").matches) return;
+    const cards = [...root.querySelectorAll(".team-card")];
+    const io = new IntersectionObserver((es) => {
+      for (const e of es) {
+        const i = cards.indexOf(e.target);
+        if (e.isIntersecting) setActive(i);
+        else setActive((a) => (a === i ? -1 : a));
+      }
+    }, { rootMargin: "-40% 0px -40% 0px" });
+    cards.forEach((c) => io.observe(c));
+    return () => io.disconnect();
+  }, []);
+  // Раскрытие снизу вверх, когда блок попал в кадр
+  const [shown, setShown] = useState(false);
+  useEffect(() => {
+    const root = box.current;
+    if (!root) return;
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setShown(true); io.disconnect(); } }, { threshold: 0.2 });
+    io.observe(root);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section id="people" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
         <h2 className="r-reveal mx-auto mb-8 max-w-[30ch] text-center text-[#17191a] lg:mb-10">
           {en ? "The ÁLIS BEAUTY team — people trusted with beauty" : "Команда ÁLIS BEAUTY — люди, которым доверяют свою красоту"}
         </h2>
-        <div className="grid gap-3 sm:grid-cols-3 lg:gap-4">
-          {PEOPLE.map((p, i) => (
-            <article key={p.role.ru} className="r-reveal group" style={{ transitionDelay: `${i * 0.1}s` }}>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] bg-[#f6f4f1]">
-                {p.photo ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={p.photo} alt={p.name?.[lang] || p.role[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] group-hover:scale-105" />
-                ) : (
-                  // Пока нет фото — аккуратная заглушка с монограммой бренда
-                  <div className="absolute inset-0 flex items-center justify-center font-serif-display text-[40px] tracking-[0.1em] text-[#17191a]/10">ÁB</div>
-                )}
-              </div>
-              <div className="mt-4 text-center sm:text-left">
-                {p.name && <p className="font-display text-[16px] uppercase tracking-[0.04em] text-[#17191a] sm:text-[18px]">{p.name[lang]}</p>}
-                <p className="mt-1 text-[10.5px] uppercase tracking-[0.16em] text-[#17191a]/50 sm:text-[11px]">{p.role[lang]}</p>
-              </div>
-            </article>
-          ))}
+        <div ref={box} className={`grid gap-2 sm:grid-cols-3 sm:gap-3 lg:gap-4 ${shown ? "team-shown" : ""}`}>
+          {PEOPLE.map((p, i) => <PersonCard key={p.role.ru} p={p} i={i} on={active === i} />)}
         </div>
       </div>
+      <style>{`
+        .team-card { clip-path: inset(100% 0 0 0 round 24px); }
+        .team-shown .team-card { animation: team-in 1s cubic-bezier(.7,0,.2,1) both; }
+        @keyframes team-in { from { clip-path: inset(100% 0 0 0 round 24px) } to { clip-path: inset(0 0 0 0 round 24px) } }
+        .team-shown .team-card { clip-path: inset(0 0 0 0 round 24px); }
+        @media (prefers-reduced-motion: reduce) { .team-card { clip-path: none !important; animation: none !important } }
+      `}</style>
     </section>
   );
 }

@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import SalonCompare from "@/components/pages/SalonCompare";
-import { TeamPeople, JoinButtons } from "@/components/pages/TeamJoin";
+import { TeamPeople } from "@/components/pages/TeamJoin";
 import Vacancies from "@/components/pages/Vacancies";
 import VacanciesScroll from "@/components/pages/VacanciesScroll";
 import JoinForm from "@/components/pages/JoinForm";
@@ -32,12 +32,11 @@ export default function TeamPage() {
         {/* 2 — Команда: основатель, директор консьерж-направления, управляющая салона */}
         <TeamPeople />
 
-        {/* 3 — Почему мы, а не другой салон (мини-сравнение) + две кнопки.
+        {/* 3 — Почему мы, а не другой салон (мини-сравнение).
             Якоря #international / #salon — для пунктов меню «Вакансии». */}
         <div id="international" aria-hidden className="scroll-mt-24" />
         <div id="salon" aria-hidden className="scroll-mt-24" />
         <SalonCompare />
-        <JoinButtons />
 
         {/* 4 — Кого ищем (#vacancies) → как присоединиться */}
         <Vacancies />
