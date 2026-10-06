@@ -66,10 +66,12 @@ export default function PhotoMarquee({
   items = ITEMS,
   title = { ru: "То, что создают специалисты ÁLIS BEAUTY", en: "Created by ÁLIS BEAUTY specialists" },
   sectionId,
+  text,
 }: {
   items?: MarqueeItem[];
   title?: Loc | null; // null — без заголовка
   sectionId?: string;
+  text?: Loc; // короткая строка под заголовком
 } = {}) {
   const { lang } = useLang();
 
@@ -139,6 +141,7 @@ export default function PhotoMarquee({
           <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {title[lang]}
           </h2>
+          {text && <p className="mx-auto mt-3 max-w-[56ch] !text-[12.5px] leading-[1.6] text-[#17191a]/65 sm:!text-[15px]">{text[lang]}</p>}
         </div>
       )}
 

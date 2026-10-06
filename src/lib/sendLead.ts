@@ -1,6 +1,6 @@
 // Отправка заявки с сайта в CRM. Best-effort: если CRM недоступна, клиент всё равно
 // видит «Спасибо», а заявка дублируется в консоль — сайт не ломается.
-export type LeadKind = "concierge" | "coop_private" | "coop_business" | "vacancy" | "chat" | "shop" | "other";
+export type LeadKind = "concierge" | "coop_private" | "coop_business" | "vacancy" | "chat" | "shop" | "bonus" | "other";
 
 export async function sendLead(lead: {
   kind: LeadKind;

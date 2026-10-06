@@ -8,7 +8,7 @@ import { useLang } from "@/lib/i18n";
 type Loc = { ru: string; en: string };
 type Review = { name: Loc; role: Loc; text: Loc; photo: string };
 
-const REVIEWS: Review[] = [
+export const REVIEWS: Review[] = [
   {
     name: { ru: "Екатерина К.", en: "Ekaterina K." },
     role: { ru: "маникюр", en: "manicure" },

@@ -15,14 +15,29 @@ export default function SalonServices({
   title,
   categories,
   cta,
+  search = false,
+  master,
 }: {
   eyebrow?: Loc; // больше не выводится (надстрочники убраны по фидбеку)
   title?: Loc; // без заголовка, если не передан
   categories: Category[];
   cta: { label: Loc; href: string };
+  search?: boolean; // строка поиска по услугам над списком
+  master?: { label: Loc; href: string }; // плашка «Выбрать своего мастера»
 }) {
   const { lang } = useLang();
   const [open, setOpen] = useState<number | null>(null);
+  // Поиск: оставляем только услуги, где есть запрос, и раскрываем их категории
+  const [q, setQ] = useState("");
+  const query = q.trim().toLowerCase();
+  const shown = query
+    ? categories
+        .map((c, i) => ({
+          c: { ...c, groups: c.groups.map((g) => ({ ...g, rows: g.rows.filter((r) => r.name[lang].toLowerCase().includes(query) || c.label[lang].toLowerCase().includes(query)) })).filter((g) => g.rows.length) },
+          i,
+        }))
+        .filter((x) => x.c.groups.length)
+    : categories.map((c, i) => ({ c, i }));
 
   // Переход с главной вида /salon#uslugi-manicure — раскрываем нужную категорию и
   // прокручиваем к ней (карточки «Всё для вашего образа» ведут сюда)
@@ -63,17 +78,53 @@ export default function SalonServices({
           </div>
         )}
 
+        {/* Поиск по услугам + «Выбрать своего мастера» */}
+        {(search || master) && (
+          <div className="mb-3 grid gap-2 sm:gap-3 md:grid-cols-[1fr_auto]">
+            {search && (
+              <label className="flex h-[48px] items-center gap-3 rounded-[14px] border border-[#17191a]/12 bg-white px-4 transition-colors focus-within:border-[#17191a]/40 sm:h-[54px] sm:rounded-[16px] sm:px-5">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden className="shrink-0 text-[#17191a]/45"><circle cx="11" cy="11" r="6.5" /><path d="M20 20l-4.2-4.2" strokeLinecap="round" /></svg>
+                <input
+                  type="search"
+                  value={q}
+                  onChange={(e) => setQ(e.target.value)}
+                  placeholder={lang === "en" ? "Find a service — e.g. gel polish" : "Найти услугу — например, гель-лак"}
+                  aria-label={lang === "en" ? "Search services" : "Поиск по услугам"}
+                  className="h-full min-w-0 flex-1 bg-transparent text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 sm:text-[15px]"
+                />
+                {q && <button type="button" onClick={() => setQ("")} aria-label={lang === "en" ? "Clear" : "Очистить"} className="text-[18px] leading-none text-[#17191a]/40 hover:text-[#17191a]">×</button>}
+              </label>
+            )}
+            {master && (
+              <a
+                href={master.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-[48px] items-center justify-between gap-4 rounded-[14px] bg-[#17191a] px-5 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-[#2a2c2d] sm:h-[54px] sm:rounded-[16px] sm:px-6 sm:text-[12px]"
+              >
+                {master.label[lang]}
+                <span className="transition-transform duration-300 group-hover:-rotate-45">→</span>
+              </a>
+            )}
+          </div>
+        )}
+        {query && shown.length === 0 && (
+          <p className="mb-3 rounded-[14px] bg-[#f6f4f1] px-5 py-4 text-center text-[13px] text-[#17191a]/65 sm:text-[15px]">
+            {lang === "en" ? "Nothing found — try another word or ask the administrator." : "Ничего не нашли — попробуйте другое слово или спросите администратора."}
+          </p>
+        )}
+
         {/* Оглавление-журнал: строки-категории, по клику раскрывается прайс-плашка */}
         <div className="flex flex-col gap-3">
-          {categories.map((c, i) => {
-            const isOpen = open === i;
+          {shown.map(({ c, i }) => {
+            const isOpen = query ? true : open === i;
             return (
               <div
                 key={c.label.ru}
                 id={c.slug ? "cat-" + c.slug : undefined}
                 className={`scroll-mt-28 overflow-hidden rounded-[12px] border transition-[border-color,box-shadow] duration-500 ${
                   isOpen
-                    ? "border-[#17191a]/20 bg-white shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)]"
+                    ? "border-[#17191a]/20 bg-white shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)]"
                     : "border-[#17191a]/12 bg-white hover:border-[#17191a]/25"
                 }`}
               >
@@ -96,7 +147,7 @@ export default function SalonServices({
 
                   {/* Цена «от» + стрелка-переключатель */}
                   <span className="flex items-center gap-4 lg:gap-6">
-                    <span className={`hidden whitespace-nowrap rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 sm:inline ${isOpen ? "bg-[#46131E]/[0.07] text-[#46131E]" : "bg-[#17191a]/[0.06] text-[#17191a]"}`}>
+                    <span className={`hidden whitespace-nowrap rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 sm:inline ${isOpen ? "bg-[#17191a] text-white" : "bg-[#17191a]/[0.06] text-[#17191a]"}`}>
                       {c.from[lang]}
                     </span>
                     <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 sm:h-11 sm:w-11 lg:h-12 lg:w-12 ${isOpen ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/25 text-[#17191a] group-hover:border-[#17191a] group-hover:text-[#17191a]"}`}>

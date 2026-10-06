@@ -27,11 +27,13 @@ export default function LoyaltyCerts() {
   const en = lang === "en";
   const t = (ru: string, e: string) => (en ? e : ru);
 
-  const PERKS: Loc[] = [
-    { ru: "бонусы постоянным гостям", en: "perks for regular guests" },
-    { ru: "особые условия для своих", en: "special terms for regulars" },
-    { ru: "приятные сюрпризы к визитам", en: "little surprises with each visit" },
+  // Пункты лояльности по брифу — кликабельные, с пояснением (тексты пояснений — на согласование)
+  const PERKS: { t: Loc; d: Loc }[] = [
+    { t: { ru: "500 ₽ на первый визит", en: "500 ₽ on your first visit" }, d: { ru: "Оставьте номер — бонусы уже будут на счёте, когда вы придёте.", en: "Leave your number — the bonuses will be in your account when you come." } },
+    { t: { ru: "Подарок в день рождения", en: "A birthday gift" }, d: { ru: "Поздравим вас с днём рождения подарком от салона — подробности расскажет администратор.", en: "We'll celebrate your birthday with a gift from the salon — the administrator will tell you more." } },
+    { t: { ru: "Бонус за подругу", en: "A bonus for a friend" }, d: { ru: "Посоветуйте ÁLIS BEAUTY подруге — бонусы получите вы обе.", en: "Recommend ÁLIS BEAUTY to a friend — you both get bonuses." } },
   ];
+  const [perk, setPerk] = useState<number | null>(null);
 
   const TILES: { title: Loc; note: Loc }[] = [
     { title: { ru: "Бонусы постоянным", en: "Regulars' bonuses" }, note: { ru: "Копятся с каждым визитом.", en: "They add up with every visit." } },
@@ -41,7 +43,8 @@ export default function LoyaltyCerts() {
   return (
     <section id="loyalty" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
+        <h2 className="r-reveal mb-8 text-center text-[#17191a] lg:mb-10">{t("Красота, которая возвращается бонусами", "Beauty that comes back as bonuses")}</h2>
+        <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:min-h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
           {/* Лояльность — высокая оливковая карточка слева */}
           <div className="r-reveal col-span-2 flex flex-col justify-between rounded-[12px] bg-[#17191a] p-6 text-[#f4efe6] sm:min-h-[320px] sm:p-8 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:min-h-0 lg:p-10">
             <div>
@@ -51,13 +54,23 @@ export default function LoyaltyCerts() {
               {/* div, а не p — чтобы общее «мобильное» уменьшение текста не трогало крупную цифру */}
               <div className="mt-4 font-display text-[64px] leading-none tracking-[0.01em] sm:mt-6 lg:text-[72px]"><CountUp to={500} /> ₽</div>
               <p className="mt-2 text-[12px] text-[#f4efe6]/80 sm:text-[15px]">{t("бонусных рублей на первый визит", "bonus roubles on your first visit")}</p>
-              <ul className="mt-5 flex flex-col gap-2 text-[12px] text-[#f4efe6]/85 sm:mt-8 sm:gap-3 sm:text-[14px]">
-                {PERKS.map((p) => (
-                  <li key={p.ru} className="flex items-start gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#f4efe6]/70" />
-                    {p[lang]}
-                  </li>
-                ))}
+              <ul className="mt-5 border-t border-white/12 sm:mt-8">
+                {PERKS.map((p, k) => {
+                  const on = perk === k;
+                  return (
+                    <li key={p.t.ru} className="border-b border-white/12">
+                      <button type="button" onClick={() => setPerk(on ? null : k)} aria-expanded={on} className="flex w-full items-center justify-between gap-3 py-3 text-left text-[12.5px] text-[#f4efe6] sm:py-3.5 sm:text-[14.5px]">
+                        {p.t[lang]}
+                        <span aria-hidden className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/30 text-[14px] leading-none transition-transform duration-300 ${on ? "rotate-45 bg-white text-[#17191a]" : ""}`}>+</span>
+                      </button>
+                      <div className={`grid transition-all duration-400 ease-out ${on ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                        <p className="overflow-hidden pb-0 !text-[11.5px] leading-[1.55] text-[#f4efe6]/65 sm:!text-[13px]">
+                          <span className="block pb-3.5">{p.d[lang]}</span>
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <a
@@ -111,7 +124,7 @@ export default function LoyaltyCerts() {
           {TILES.map((tile, i) => (
             <div
               key={tile.title.ru}
-              className={`group flex min-h-[130px] flex-col justify-between gap-4 rounded-[12px] border border-[#17191a]/15 bg-white p-4 sm:min-h-[160px] sm:p-7 shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:min-h-0 ${
+              className={`group flex min-h-[130px] flex-col justify-between gap-4 rounded-[12px] border border-[#17191a]/15 bg-white p-4 sm:min-h-[160px] sm:p-7 shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:min-h-0 ${
                 i === 0 ? "lg:col-start-2 lg:row-start-2" : "lg:col-start-3 lg:row-start-2"
               }`}
             >

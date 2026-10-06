@@ -7,6 +7,7 @@ import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
 import ServiceBento from "@/components/pages/ServiceBento";
+import { SalonBonusStrip, PopularServices, SalonReviews, SALON_ADMIN_WA } from "@/components/pages/SalonBlocks";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -245,7 +246,16 @@ export default function SalonPage() {
       <Header />
 
       {/* 1 — Обложка: только фото, без логотипа, кнопки и эффектов (по фидбеку) */}
-      <TeamIntro title={{ ru: "Салон красоты", en: "Beauty salon" }} button={{ label: { ru: "Записаться онлайн", en: "Book online" }, href: YCLIENTS }} />
+      {/* TODO: видео на фон обложки пришлёт заказчица */}
+      <TeamIntro
+        title={{ ru: "Салон красоты ÁLIS BEAUTY в Новороссийске", en: "ÁLIS BEAUTY beauty salon in Novorossiysk" }}
+        subtitle={{
+          ru: "Ногтевой сервис, парикмахерские услуги, коррекция бровей, макияж. Пархоменко, 53, с 09:00 до 21:00.",
+          en: "Nails, hair, brow shaping, makeup. 53 Parkhomenko St., 9:00–21:00.",
+        }}
+        button={{ label: { ru: "Записаться онлайн", en: "Book online" }, href: YCLIENTS }}
+        button2={{ label: { ru: "Написать админу", en: "Message the admin" }, href: SALON_ADMIN_WA }}
+      />
 
       {/* Порядок для клиента: услуги с ценами → отзывы → бонусы и сертификаты.
           space-y — дополнительный воздух между блоками. */}
@@ -253,19 +263,38 @@ export default function SalonPage() {
           обёртки: иначе отступ первого блока «проваливается» и видна полоса фона. */}
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white page-end">
-        {/* 2 — Услуги салона: карточки с фото (блок с главной) */}
+        {/* 2 — Плашка «500 бонусных рублей на первый визит» + пригласить подругу */}
+        <SalonBonusStrip />
+
+        {/* 3 — Популярные процедуры с ценами */}
+        <PopularServices />
+
+        {/* 4 — Категории услуг (переход к прайсу по категориям) */}
         <ServiceBento />
 
-        {/* Галерея работ — сразу под блоком «О салоне» (фото временные) */}
-        <PhotoMarquee sectionId="gallery" />
-
-        {/* 3 — Услуги и прайс */}
+        {/* 5 — Услуги и прайс: поиск + «Выбрать своего мастера» */}
         <SalonServices
           categories={SALON_CATEGORIES}
+          search
+          master={{ label: { ru: "Выбрать своего мастера", en: "Choose your specialist" }, href: YCLIENTS }}
           cta={{ label: { ru: "Оформить визит · 500 бонусных рублей на первый визит", en: "Book a visit · 500 bonus roubles on your first visit" }, href: YCLIENTS }}
         />
 
-        {/* 4 — Бонусы и подарочные сертификаты */}
+        {/* 6 — Атмосфера (вместо «Галереи»). TODO: 6 фото салона, работ и подарков пришлёт заказчица */}
+        <PhotoMarquee
+          sectionId="gallery"
+          items={["/assets/alis/img_6048.jpg", "/assets/alis/img_8578.jpg", "/assets/alis/img_3283.jpg", "/assets/alis/img_2672.jpg", "/assets/alis/img_5910.webp", "/assets/alis/img_1855.jpg"]}
+          title={{ ru: "Атмосфера, в которую хочется вернуться", en: "An atmosphere you want to come back to" }}
+          text={{
+            ru: "Гости говорят, что чувствуют себя окрылёнными после процедур, — а мы делаем всё, чтобы так было каждый раз.",
+            en: "Guests say they feel uplifted after their treatments — and we do everything to make it so every time.",
+          }}
+        />
+
+        {/* 7 — Отзывы */}
+        <SalonReviews />
+
+        {/* 8 — Лояльность и подарочные сертификаты */}
         <LoyaltyCerts />
       </div>
       <Footer />
