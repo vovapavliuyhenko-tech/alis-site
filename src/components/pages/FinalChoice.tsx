@@ -5,7 +5,7 @@
 import { useLang } from "@/lib/i18n";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
-const OUTCALL = "/concierge#booking";
+const OUTCALL = "/concierge#calc";
 const PHONE_SALON = "+7 988 888 77 58";
 const PHONE_CONCIERGE = "+7 988 888 77 28";
 // Место под номер для международных клиентов — пока не задан (null = не показываем)

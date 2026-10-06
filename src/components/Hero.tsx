@@ -7,7 +7,7 @@ import { useLang } from "@/lib/i18n";
 import { useHeroParallax } from "@/lib/useHeroParallax";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
-const OUTCALL = "/concierge#booking"; // «Рассчитать выезд» — форма заявки консьерж-сервиса
+const OUTCALL = "/concierge#calc"; // «Рассчитать выезд» — анкета расчёта на странице консьерж-сервиса
 
 // Проба светлого кадра (заказчица хочет посмотреть, как будет на светлом). Прежнее фото:
 // "/assets/alis/img_2745.jpg"

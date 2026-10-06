@@ -9,7 +9,7 @@ import ConciergeFounder from "@/components/pages/ConciergeFounder";
 import BudgetCalc from "@/components/pages/BudgetCalc";
 import { type Stage } from "@/components/HorizontalStory";
 import ConciergeStages from "@/components/pages/ConciergeStages";
-import ConciergeOffer from "@/components/pages/ConciergeOffer";
+// import ConciergeOffer from "@/components/pages/ConciergeOffer"; // форма заявки скрыта — заявки идут через анкету #calc
 import ConciergeChat from "@/components/ConciergeChat";
 
 // Этапы работы — тексты заказчицы (сокращены под мобильную версию).
@@ -107,8 +107,8 @@ export default function ConciergePage() {
         {/* 6 — Основатель и форматы сотрудничества (#partners) */}
         <ConciergeFounder />
 
-        {/* 7 — Заявка (#offer, #booking) */}
-        <ConciergeOffer />
+        {/* 7 — Заявка (#offer, #booking) — скрыта по просьбе заказчицы */}
+        {/* <ConciergeOffer /> */}
       </div>
       <Footer />
       <ConciergeChat />

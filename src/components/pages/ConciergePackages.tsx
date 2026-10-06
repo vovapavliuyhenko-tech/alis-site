@@ -159,9 +159,9 @@ export default function ConciergePackages() {
           >
             {en ? "Private event estimate" : "Расчёт частного мероприятия"}
           </a>
-          {/* TODO: PDF коммерческого предложения пришлёт заказчица — пока ведёт к форме заявки */}
+          {/* TODO: PDF коммерческого предложения пришлёт заказчица — пока ведёт к анкете расчёта */}
           <a
-            href="#booking"
+            href="#calc"
             className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a]/25 px-3 py-3 text-[10.5px] font-medium uppercase tracking-[0.1em] text-[#17191a] transition-colors duration-300 hover:border-[#17191a] sm:px-5 sm:py-3.5 sm:text-[12px] sm:tracking-[0.12em]"
           >
             {en ? "Download B2B proposal" : "Скачать коммерческое предложение B2B"}

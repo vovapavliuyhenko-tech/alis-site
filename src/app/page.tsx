@@ -59,7 +59,7 @@ export default function Home() {
             ru: "Вы выбираете место, мы приводим специалистов, тайминг и спокойствие — вам остаётся только наслаждаться днём.",
             en: "You choose the place; we bring the specialists, the timing and the peace of mind — all that’s left is to enjoy your day.",
           }}
-          button={{ label: { ru: "Рассчитать выезд за 1 минуту", en: "Get a travel quote in 1 minute" }, href: "/concierge#booking" }}
+          button={{ label: { ru: "Рассчитать выезд за 1 минуту", en: "Get a travel quote in 1 minute" }, href: "/concierge#calc" }}
         />
         {/* Комплимент от ALIS BEAUTY — 500 бонусов, номер уходит в CRM */}
         <BonusOffer />
