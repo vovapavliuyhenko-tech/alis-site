@@ -1,41 +1,18 @@
 "use client";
-// «КОГО ИЩЕМ» (страница «Вакансии», #vacancies) — по мотивам блока «[ Услуги ]» uni-s.group,
-// в стиле нашего сайта. Компьютер: блок «прилипает» к экрану, и пока страница прокручивается вниз,
-// карточки вакансий едут влево; слева — заголовок, счётчик и фото роли, которое плавно меняется
-// под активную карточку. Телефон/планшет: обычная лента, листается свайпом вбок.
-// Карточка: роль, описание, график-чип и кнопка к анкете. Тексты ролей — до присланного списка.
+// «КАК ПРИСОЕДИНИТЬСЯ?» (страница «Вакансии», #steps) — 4 шага широкими карточками, по мотивам
+// блока «[ Услуги ]» uni-s.group в стиле нашего сайта. Компьютер: блок «прилипает» к экрану, и пока
+// страница прокручивается вниз, карточки едут влево; активная — чёрная; под лентой — счётчик с
+// полосой прогресса и кнопка «Подать заявку». Телефон/планшет: обычная лента, листается свайпом вбок.
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
-type Vacancy = { role: Loc; desc: Loc; tags: Loc[]; img: string };
 
-// TODO: актуальный список вакансий пришлёт заказчица
-const VACANCIES: Vacancy[] = [
-  {
-    role: { ru: "Администратор", en: "Administrator" },
-    desc: { ru: "Встреча гостей, запись, атмосфера салона.", en: "Greeting guests, booking, the salon's atmosphere." },
-    tags: [{ ru: "график 2/2", en: "2-on/2-off" }, { ru: "салон", en: "salon" }],
-    img: "/assets/tild6230-643__.jpg",
-  },
-  {
-    role: { ru: "Визажист", en: "Makeup artist" },
-    desc: { ru: "Дневной, вечерний и свадебный макияж — в салоне и на выездах.", en: "Day, evening and bridal makeup — in the salon and on location." },
-    tags: [{ ru: "частичная / полная", en: "part / full time" }, { ru: "салон и выезды", en: "salon & on location" }],
-    img: "/assets/tild6536-613_-2___1__4.jpg",
-  },
-  {
-    role: { ru: "Бровист", en: "Brow artist" },
-    desc: { ru: "Брови и ресницы: коррекция, окрашивание, укладка.", en: "Brows and lashes: shaping, tinting, styling." },
-    tags: [{ ru: "гибкий график", en: "flexible" }, { ru: "салон", en: "salon" }],
-    img: "/assets/alis/img_2672.jpg",
-  },
-  {
-    role: { ru: "Мастер ногтевого сервиса", en: "Nail technician" },
-    desc: { ru: "Маникюр, педикюр, покрытие и дизайн.", en: "Manicure, pedicure, coating and design." },
-    tags: [{ ru: "график 2/2", en: "2-on/2-off" }, { ru: "салон", en: "salon" }],
-    img: "/assets/tild3638-373_-2___1__3.jpg",
-  },
+const STEPS: { title: Loc; note: Loc }[] = [
+  { title: { ru: "Заполните анкету", en: "Fill in the form" }, note: { ru: "и прикрепите 10 работ", en: "and attach 10 works" } },
+  { title: { ru: "Пройдите собеседование", en: "Have an interview" }, note: { ru: "знакомимся и обсуждаем формат работы", en: "we meet and discuss the format of work" } },
+  { title: { ru: "Сделайте пробную работу", en: "Do a trial work" }, note: { ru: "по стандартам ÁLIS BEAUTY", en: "to ÁLIS BEAUTY standards" } },
+  { title: { ru: "Получите работу", en: "Get the job" }, note: { ru: "и становитесь частью команды", en: "and become part of the team" } },
 ];
 
 export default function VacanciesScroll() {
@@ -61,7 +38,7 @@ export default function VacanciesScroll() {
       const max = tr.scrollWidth - tr.parentElement!.clientWidth;
       tr.style.transform = `translate3d(${-p * max}px,0,0)`;
       setProg(p);
-      setActive(Math.min(VACANCIES.length - 1, Math.round(p * (VACANCIES.length - 1))));
+      setActive(Math.min(STEPS.length - 1, Math.round(p * (STEPS.length - 1))));
     };
     const on = () => { if (!raf) raf = requestAnimationFrame(upd); };
     upd();
@@ -72,70 +49,47 @@ export default function VacanciesScroll() {
   }, []);
 
   return (
-    <section id="vacancies" className="scroll-mt-24 bg-white section-y">
+    <section id="steps" className="scroll-mt-24 bg-white section-y">
       {/* Высота обёртки = длина «прокрутки вбок» (только компьютер) */}
-      <div ref={wrap} className="lg:h-[300vh]">
+      <div ref={wrap} className="lg:h-[280vh]">
         <div className="lg:sticky lg:top-0 lg:flex lg:h-svh lg:items-center">
-          <div className="mx-auto grid w-[96%] max-w-[1760px] gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-10">
-            {/* Слева: заголовок, счётчик, фото активной роли */}
-            <div className="flex flex-col text-center lg:text-left">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/45 sm:text-[11px]">[ {en ? "Vacancies" : "Вакансии"} ]</p>
-              <h2 className="mt-3 text-[#17191a]">{en ? "Who we're looking for" : "Кого ищем"}</h2>
-              {/* Счётчик и полоса прогресса */}
-              <div className="mt-6 hidden items-center gap-4 lg:flex">
-                <span className="font-display text-[13px] tabular-nums text-[#17191a]">{String(active + 1).padStart(2, "0")}</span>
-                <span className="relative h-px flex-1 bg-[#17191a]/12">
-                  <span className="absolute inset-y-0 left-0 bg-[#17191a]" style={{ width: `${Math.max(4, prog * 100)}%` }} />
-                </span>
-                <span className="font-display text-[13px] tabular-nums text-[#17191a]/40">{String(VACANCIES.length).padStart(2, "0")}</span>
-              </div>
-              <div className="relative mt-6 hidden aspect-[4/3] overflow-hidden rounded-[28px] bg-[#f6f4f1] lg:block">
-                {VACANCIES.map((v, i) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={v.img}
-                    src={v.img}
-                    alt={i === active ? v.role[lang] : ""}
-                    decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out"
-                    style={{ opacity: i === active ? 1 : 0, transform: i === active ? "scale(1)" : "scale(1.08)" }}
-                  />
-                ))}
-              </div>
-            </div>
+          <div className="mx-auto w-[96%] max-w-[1760px]">
+            <h2 className="mb-8 text-center text-[#17191a] lg:mb-10">{en ? "How to join?" : "Как присоединиться?"}</h2>
 
-            {/* Справа: лента карточек */}
+            {/* Лента карточек во всю ширину */}
             <div className="-mx-[2%] overflow-x-auto px-[2%] [scrollbar-width:none] lg:mx-0 lg:overflow-hidden lg:px-0">
               <div ref={track} className="flex snap-x snap-mandatory gap-2 will-change-transform sm:gap-3 lg:gap-4">
-                {VACANCIES.map((v, i) => (
+                {STEPS.map((s, i) => (
                   <article
-                    key={v.role.ru}
-                    className={`flex w-[80%] shrink-0 snap-start flex-col justify-between rounded-[28px] p-6 transition-colors duration-500 sm:w-[48%] sm:p-8 lg:min-h-[min(560px,70vh)] lg:w-[min(440px,62%)] lg:p-10 ${
+                    key={s.title.ru}
+                    className={`flex min-h-[260px] w-[80%] shrink-0 snap-start flex-col justify-between rounded-[28px] p-6 transition-colors duration-500 sm:w-[48%] sm:p-8 lg:min-h-[min(520px,60vh)] lg:w-[min(620px,42%)] lg:p-12 ${
                       i === active ? "bg-[#17191a] text-white" : "bg-[#f6f4f1] text-[#17191a]"
                     }`}
                   >
+                    <span className={`font-display text-[40px] font-extralight leading-none tabular-nums transition-colors duration-500 lg:text-[72px] ${i === active ? "text-white/35" : "text-[#17191a]/20"}`}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <div>
-                      <span className={`font-display text-[13px] tabular-nums transition-colors duration-500 ${i === active ? "text-white/45" : "text-[#17191a]/35"}`}>{String(i + 1).padStart(2, "0")}</span>
-                      <h3 className="mt-4 font-display text-[22px] leading-[1.15] tracking-[0.01em] sm:text-[28px] lg:text-[34px]">{v.role[lang]}</h3>
-                      <p className={`mt-4 !text-[12.5px] leading-[1.6] transition-colors duration-500 sm:!text-[15px] ${i === active ? "text-white/70" : "text-[#17191a]/65"}`}>{v.desc[lang]}</p>
-                    </div>
-                    <div className="mt-8">
-                      <div className="flex flex-wrap gap-2">
-                        {v.tags.map((t) => (
-                          <span key={t.ru} className={`rounded-full border px-3.5 py-1.5 text-[11px] transition-colors duration-500 sm:text-[12.5px] ${i === active ? "border-white/20 text-white/85" : "border-[#17191a]/15 text-[#17191a]/75"}`}>{t[lang]}</span>
-                        ))}
-                      </div>
-                      <a
-                        href="#join"
-                        className={`group mt-5 flex items-center justify-between border-t pt-4 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500 sm:text-[12px] ${i === active ? "border-white/15 text-white" : "border-[#17191a]/12 text-[#17191a]"}`}
-                      >
-                        {en ? "Fill in the form" : "Заполнить анкету"}
-                        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                      </a>
+                      <h3 className="font-display text-[22px] leading-[1.15] tracking-[0.01em] sm:text-[28px] lg:text-[40px]">{s.title[lang]}</h3>
+                      <p className={`mt-3 !text-[12.5px] leading-[1.6] transition-colors duration-500 sm:!text-[15px] lg:!text-[17px] ${i === active ? "text-white/65" : "text-[#17191a]/60"}`}>{s.note[lang]}</p>
                     </div>
                   </article>
                 ))}
               </div>
+            </div>
+
+            {/* Счётчик + кнопка */}
+            <div className="mt-6 flex flex-col items-center gap-5 lg:flex-row lg:gap-8">
+              <div className="hidden flex-1 items-center gap-4 lg:flex">
+                <span className="font-display text-[13px] tabular-nums text-[#17191a]">{String(active + 1).padStart(2, "0")}</span>
+                <span className="relative h-px flex-1 bg-[#17191a]/12">
+                  <span className="absolute inset-y-0 left-0 bg-[#17191a]" style={{ width: `${Math.max(4, prog * 100)}%` }} />
+                </span>
+                <span className="font-display text-[13px] tabular-nums text-[#17191a]/40">{String(STEPS.length).padStart(2, "0")}</span>
+              </div>
+              <a href="#join" className="flex w-full max-w-[340px] items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
+                {en ? "Apply" : "Подать заявку"}
+              </a>
             </div>
           </div>
         </div>

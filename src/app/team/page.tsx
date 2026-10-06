@@ -4,7 +4,8 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import SalonCompare from "@/components/pages/SalonCompare";
-import { TeamPeople, JoinButtons, JoinSteps } from "@/components/pages/TeamJoin";
+import { TeamPeople, JoinButtons } from "@/components/pages/TeamJoin";
+import Vacancies from "@/components/pages/Vacancies";
 import VacanciesScroll from "@/components/pages/VacanciesScroll";
 import JoinForm from "@/components/pages/JoinForm";
 
@@ -39,8 +40,9 @@ export default function TeamPage() {
         <JoinButtons />
 
         {/* 4 — Кого ищем (#vacancies) → как присоединиться */}
+        <Vacancies />
+        {/* «Как присоединиться?» — 4 шага, карточки едут вбок при прокрутке */}
         <VacanciesScroll />
-        <JoinSteps />
 
         {/* 5 — Анкета (#join) */}
         <JoinForm />
