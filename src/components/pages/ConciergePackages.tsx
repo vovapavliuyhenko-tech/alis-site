@@ -1,7 +1,7 @@
 "use client";
 // ПАКЕТЫ УСЛУГ (страница «Консьерж-сервис», #uslugi) — «лестница» из 4 тарифов:
-// SOLO · BRIDAL · TEAM · DESTINATION. Каждый следующий темнее и выше (белый → бежевый →
-// графит → чёрный), номер 01–04 и «+» — золотом.
+// SOLO · BRIDAL · TEAM · DESTINATION. Каждый следующий выше; в стиле сайта — три белые
+// карточки в тонкой рамке и последняя чёрная (как кнопки).
 // Телефон/планшет — полосы друг под другом, каждая следующая шире. При прокрутке пакеты
 // появляются по очереди. Цены «от …» пришлёт заказчица.
 // Внизу сноска и две кнопки: B2B-предложение и расчёт частного события (анкета #calc).
@@ -58,12 +58,11 @@ const PACKS: Pack[] = [
   },
 ];
 
-const GOLD = "#a9874f";
 // Тон ступени: фон, текст, приглушённый текст, линия
 const TONES = [
   { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10" },
-  { box: "bg-[#f3eee6] text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10" },
-  { box: "bg-[#3a3c3d] text-white", mute: "text-white/60", line: "border-white/15" },
+  { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10" },
+  { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10" },
   { box: "bg-[#17191a] text-white", mute: "text-white/60", line: "border-white/15" },
 ];
 // Высота ступени на компьютере и ширина полосы на телефоне
@@ -121,7 +120,7 @@ export default function ConciergePackages() {
                 >
                   <div className="flex items-start justify-between gap-4 lg:block">
                     <div>
-                      <span className="font-display text-[20px] leading-none lg:text-[28px]" style={{ color: GOLD }}>{String(i + 1).padStart(2, "0")}</span>
+                      <span className={`font-display text-[20px] leading-none lg:text-[28px] ${t.mute}`}>{String(i + 1).padStart(2, "0")}</span>
                       <h3 className="mt-2 font-display text-[18px] uppercase tracking-[0.06em] lg:mt-3 lg:text-[26px]">{p.name}</h3>
                       <p className={`mt-1 !text-[11px] leading-[1.45] sm:!text-[13px] ${t.mute}`}>{p.who[lang]}</p>
                     </div>
@@ -134,7 +133,7 @@ export default function ConciergePackages() {
                   <ul className={`mt-4 flex flex-1 flex-col gap-1.5 border-t pt-4 sm:gap-2 lg:mt-6 lg:pt-6 ${t.line}`}>
                     {p.items.map((it) => (
                       <li key={it.ru} className="flex items-start gap-2 text-[11.5px] leading-[1.45] sm:text-[13.5px]">
-                        <span aria-hidden style={{ color: GOLD }}>+</span>
+                        <span aria-hidden className={t.mute}>+</span>
                         {it[lang]}
                       </li>
                     ))}
