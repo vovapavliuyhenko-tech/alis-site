@@ -58,7 +58,7 @@ export default function JoinQuiz() {
         <div className="flex flex-col text-center lg:text-left">
           <h2 className="text-white">{en ? "Become part of the ÁLIS BEAUTY team" : "Стать частью команды ÁLIS BEAUTY"}</h2>
           <p className="mt-2 !text-[12.5px] text-white/60 sm:mt-3 sm:!text-[15px]">{en ? "Four short steps — we'll get back to you." : "Четыре коротких шага — и мы с вами свяжемся."}</p>
-          <div className="mt-7 hidden flex-1 flex-col justify-end lg:flex">
+          <div className="mt-7 hidden flex-col lg:flex">
             <div className="grid grid-cols-2 gap-2">
               {QS.map((x, i) => {
                 const v = label(x);
