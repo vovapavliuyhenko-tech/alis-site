@@ -56,11 +56,11 @@ export default function TeamIntro({
             {kicker[lang]}
           </p>
         )}
-        <h1 className={`${subtitle ? "max-w-[30ch] text-[clamp(15px,4.6vw,20px)] sm:max-w-[34ch]" : "whitespace-nowrap text-[clamp(18px,6vw,24px)]"} font-serif-display font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]`}>
+        <h1 className={`${subtitle ? "max-w-[30ch] lg:max-w-[44ch]" : "whitespace-nowrap"} text-[clamp(18px,6vw,24px)] font-serif-display font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]`}>
           {title[lang]}
         </h1>
         {subtitle && (
-          <p className="mt-3 max-w-[34ch] !text-[11.5px] leading-[1.5] text-white/85 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] sm:max-w-[60ch] sm:!text-[14px] lg:mt-4 lg:!text-[15px]">
+          <p className="mt-3 max-w-[620px] !text-[11.5px] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[12.5px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[13px]">
             {subtitle[lang]}
           </p>
         )}
