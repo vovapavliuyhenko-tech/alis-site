@@ -5,7 +5,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import ConciergeBenefits from "@/components/pages/ConciergeBenefits";
 import ConciergePackages from "@/components/pages/ConciergePackages";
-import ConciergeFounder from "@/components/pages/ConciergeFounder";
+// import ConciergeFounder from "@/components/pages/ConciergeFounder"; // блок основателя скрыт по просьбе заказчицы
 import BudgetCalc from "@/components/pages/BudgetCalc";
 import { type Stage } from "@/components/HorizontalStory";
 import ConciergeStages from "@/components/pages/ConciergeStages";
@@ -105,7 +105,7 @@ export default function ConciergePage() {
         <BudgetCalc />
 
         {/* 6 — Основатель и форматы сотрудничества (#partners) */}
-        <ConciergeFounder />
+        {/* <ConciergeFounder /> — скрыт */}
 
         {/* 7 — Заявка (#offer, #booking) — скрыта по просьбе заказчицы */}
         {/* <ConciergeOffer /> */}

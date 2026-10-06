@@ -58,12 +58,12 @@ const PACKS: Pack[] = [
   },
 ];
 
-// Тон ступени: фон, текст, приглушённый текст, линия
+// Тон ступени: фон, текст, приглушённый текст, линия; при наведении — заливка противоположным цветом
 const TONES = [
-  { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10" },
-  { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10" },
-  { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10" },
-  { box: "bg-[#17191a] text-white", mute: "text-white/60", line: "border-white/15" },
+  { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10", fill: "bg-[#17191a]", hText: "group-hover:text-white", hMute: "group-hover:text-white/60", hLine: "group-hover:border-white/15" },
+  { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10", fill: "bg-[#17191a]", hText: "group-hover:text-white", hMute: "group-hover:text-white/60", hLine: "group-hover:border-white/15" },
+  { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10", fill: "bg-[#17191a]", hText: "group-hover:text-white", hMute: "group-hover:text-white/60", hLine: "group-hover:border-white/15" },
+  { box: "border border-[#17191a] bg-[#17191a] text-white", mute: "text-white/60", line: "border-white/15", fill: "bg-white", hText: "group-hover:text-[#17191a]", hMute: "group-hover:text-[#17191a]/55", hLine: "group-hover:border-[#17191a]/10" },
 ];
 // Высота ступени на компьютере и ширина полосы на телефоне
 const LG_H = ["lg:h-[400px]", "lg:h-[440px]", "lg:h-[480px]", "lg:h-[520px]"];
@@ -111,36 +111,46 @@ export default function ConciergePackages() {
                 <article
                   key={p.name}
                   ref={(el) => { cards.current[i] = el; }}
-                  className={`flex flex-col rounded-[12px] p-5 sm:p-7 lg:w-auto lg:p-8 ${t.box} ${SM_W[i]} ${LG_H[i]}`}
+                  className={`group relative flex flex-col overflow-hidden rounded-[12px] p-5 transition-[translate,box-shadow,color] duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_-30px_rgba(23,25,26,0.45)] sm:p-7 lg:w-auto lg:p-8 ${t.box} ${t.hText} ${SM_W[i]} ${LG_H[i]}`}
                   style={{
                     opacity: shown[i] ? 1 : 0,
                     transform: shown[i] ? "none" : wide ? "translateY(40px)" : "translateX(-24px)",
                     transition: `opacity .7s ease ${wide ? i * 0.18 : 0.05}s, transform .9s cubic-bezier(.2,.7,.2,1) ${wide ? i * 0.18 : 0.05}s`,
                   }}
                 >
-                  <div className="flex items-start justify-between gap-4 lg:block">
+                  {/* Заливка снизу вверх при наведении */}
+                  <span aria-hidden className={`absolute inset-0 origin-bottom scale-y-0 transition-transform duration-[600ms] ease-[cubic-bezier(.7,0,.2,1)] group-hover:scale-y-100 ${t.fill}`} />
+                  <div className="relative flex items-start justify-between gap-4 lg:block">
                     <div>
-                      <span className="font-display text-[20px] leading-none text-[#a9874f] lg:text-[28px]">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="inline-block origin-left font-display text-[20px] leading-none text-[#a9874f] transition-transform duration-500 group-hover:translate-x-1 group-hover:scale-110 lg:text-[28px]">{String(i + 1).padStart(2, "0")}</span>
                       <h3 className="mt-2 font-display text-[18px] uppercase tracking-[0.06em] lg:mt-3 lg:text-[26px]">{p.name}</h3>
-                      <p className={`mt-1 !text-[11px] leading-[1.45] sm:!text-[13px] ${t.mute}`}>{p.who[lang]}</p>
+                      <p className={`mt-1 !text-[11px] leading-[1.45] transition-colors duration-500 sm:!text-[13px] ${t.mute} ${t.hMute}`}>{p.who[lang]}</p>
                     </div>
                     {/* Цена — справа на телефоне, внизу на компьютере */}
                     <span className="shrink-0 whitespace-nowrap pt-1 font-display text-[11px] uppercase tracking-[0.06em] lg:hidden">
-                      <span className={t.mute}>{en ? "from " : "от "}</span>{p.price[lang]}
+                      <span className={`${t.mute} ${t.hMute}`}>{en ? "from " : "от "}</span>{p.price[lang]}
                     </span>
                   </div>
 
-                  <ul className={`mt-4 flex flex-1 flex-col gap-1.5 border-t pt-4 sm:gap-2 lg:mt-6 lg:pt-6 ${t.line}`}>
-                    {p.items.map((it) => (
-                      <li key={it.ru} className="flex items-start gap-2 text-[11.5px] leading-[1.45] sm:text-[13.5px]">
-                        <span aria-hidden className={t.mute}>+</span>
+                  <ul className={`relative mt-4 flex flex-1 flex-col gap-1.5 border-t pt-4 transition-colors duration-500 sm:gap-2 lg:mt-6 lg:pt-6 ${t.line} ${t.hLine}`}>
+                    {p.items.map((it, k) => (
+                      <li
+                        key={it.ru}
+                        className="flex items-start gap-2 text-[11.5px] leading-[1.45] transition-transform duration-500 group-hover:translate-x-1 sm:text-[13.5px]"
+                        style={{
+                          opacity: shown[i] ? 1 : 0,
+                          translate: shown[i] ? "0 0" : "0 10px",
+                          transition: `opacity .5s ease ${(wide ? i * 0.18 : 0) + 0.35 + k * 0.08}s, translate .6s cubic-bezier(.2,.7,.2,1) ${(wide ? i * 0.18 : 0) + 0.35 + k * 0.08}s, transform .5s ease ${k * 0.04}s`,
+                        }}
+                      >
+                        <span aria-hidden className={`inline-block transition-[rotate,color] duration-500 group-hover:rotate-90 ${t.mute} ${t.hMute}`}>+</span>
                         {it[lang]}
                       </li>
                     ))}
                   </ul>
 
-                  <div className={`mt-6 hidden items-baseline justify-between border-t pt-4 lg:flex ${t.line}`}>
-                    <span className={`text-[10px] uppercase tracking-[0.16em] ${t.mute}`}>{en ? "from" : "от"}</span>
+                  <div className={`relative mt-6 hidden items-baseline justify-between border-t pt-4 transition-colors duration-500 lg:flex ${t.line} ${t.hLine}`}>
+                    <span className={`text-[10px] uppercase tracking-[0.16em] transition-colors duration-500 ${t.mute} ${t.hMute}`}>{en ? "from" : "от"}</span>
                     <span className="font-display text-[16px] uppercase tracking-[0.06em]">{p.price[lang]}</span>
                   </div>
                 </article>
