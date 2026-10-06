@@ -7,6 +7,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { sendLead, type LeadKind } from "@/lib/sendLead";
+import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
 
 type Loc = { ru: string; en: string };
 export type RequestField = { key: string; label: Loc; required: boolean; textarea?: boolean; type?: string };
@@ -65,6 +66,7 @@ export default function RequestForm({
     const nextErr: Record<string, boolean> = {};
     fields.forEach((f) => {
       if (f.required && !(values[f.key] || "").trim()) nextErr[f.key] = true;
+      if (f.key === "phone" && values.phone && !phoneComplete(values.phone)) nextErr.phone = true;
     });
     if (!consent) nextErr.consent = true;
     setErrors(nextErr);
@@ -78,9 +80,10 @@ export default function RequestForm({
     }
   };
 
+  // Поля — белые скруглённые плашки на светлом фоне формы, без рамок
   const line = (err?: boolean) =>
-    `w-full border-b bg-transparent py-2.5 text-[13px] sm:py-3 sm:text-[15px] text-[#17191a] outline-none transition-colors placeholder:text-[#17191a]/35 focus:border-[#46131E] ${
-      err ? "border-[#c0392b]" : "border-[#17191a]/15"
+    `w-full rounded-[14px] bg-white px-4 py-3.5 text-[13px] sm:rounded-[16px] sm:px-5 sm:py-4 sm:text-[15px] text-[#17191a] outline-none transition-shadow placeholder:text-[#17191a]/35 focus:ring-1 focus:ring-[#17191a]/25 ${
+      err ? "ring-1 ring-[#c0392b]" : ""
     }`;
 
   return (
@@ -126,7 +129,7 @@ export default function RequestForm({
             </Link>
           </div>
         ) : (
-          <form onSubmit={onSubmit} noValidate className="flex flex-col gap-1 rounded-[12px] bg-white px-4 py-4 sm:gap-2 sm:px-6 sm:py-7 lg:px-9 lg:py-9">
+          <form onSubmit={onSubmit} noValidate className="flex flex-col gap-2 sm:gap-2.5 lg:py-6">
             {fields.map((f) =>
               f.textarea ? (
                 <textarea
@@ -138,6 +141,8 @@ export default function RequestForm({
                   onChange={(e) => set(f.key, e.target.value)}
                   className={`${line(errors[f.key])} resize-none`}
                 />
+              ) : f.key === "phone" ? (
+                <PhoneField key={f.key} lang={lang} value={values.phone || ""} onChange={(v) => set("phone", v)} error={errors.phone} />
               ) : (
                 <input
                   key={f.key}
