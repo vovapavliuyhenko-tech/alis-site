@@ -6,7 +6,6 @@ import TeamIntro from "@/components/pages/TeamIntro";
 import CooperationFormats from "@/components/pages/CooperationFormats";
 import ConciergeBenefits, { type BenefitPoint } from "@/components/pages/ConciergeBenefits";
 import CoopGallery from "@/components/pages/CoopGallery";
-import ConciergeChat from "@/components/ConciergeChat";
 
 // «Кому полезно» — тексты заказчицы, в формате фото-панелей (как «Для кого» у консьержа)
 const WHO: BenefitPoint[] = [
@@ -46,7 +45,7 @@ const WHO: BenefitPoint[] = [
 
 // Страница «Сотрудничество» (по брифу заказчицы): обложка с оффером и кнопками «Скачать КП» /
 // «Обсудить проект» → «Кому полезно» → 5 рамок фото/видео → «Частным лицам» / «Агентствам
-// и бизнесу» → после выбора: заявка под категорию → лента партнёров.
+// и бизнесу» → после выбора: заявка под категорию → лента партнёров. Чата консьержа здесь нет.
 export const metadata: Metadata = {
   alternates: { canonical: "/cooperation" },
 };
@@ -67,8 +66,8 @@ export default function CooperationPage() {
         photo="/assets/alis/img_6011.jpg"
         // «Скачать КП» — сначала данные: открывает форму для бизнеса. TODO: PDF КП пришлёт заказчица
         button={{ label: { ru: "Скачать КП", en: "Download proposal" }, href: "#business" }}
-        // «Обсудить проект» — связь с менеджером (чат консьержа)
-        button2={{ label: { ru: "Обсудить проект", en: "Discuss a project" }, href: "#chat" }}
+        // «Обсудить проект» — связь с менеджером: сразу в мессенджер консьерж-сервиса
+        button2={{ label: { ru: "Обсудить проект", en: "Discuss a project" }, href: "https://wa.me/79888887728" }}
       />
 
       {/* space-y — дополнительный воздух между блоками поверх общего section-y */}
@@ -88,7 +87,6 @@ export default function CooperationPage() {
       </div>
 
       <Footer />
-      <ConciergeChat />
     </main>
   );
 }
