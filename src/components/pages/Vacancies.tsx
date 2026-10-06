@@ -47,7 +47,7 @@ export default function Vacancies() {
             <a
               key={v.role.ru}
               href="#join"
-              className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[12px] border border-[#17191a]/12 px-6 py-6 bg-white transition-[border-color,box-shadow] duration-500 hover:border-[#17191a]/20 hover:shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:gap-8 lg:px-8 lg:py-8"
+              className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[12px] border border-[#17191a]/12 px-6 py-6 bg-white transition-[border-color,box-shadow] duration-500 hover:border-[#17191a]/20 hover:shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:gap-8 lg:px-8 lg:py-8"
             >
               {/* Номер */}
               <span className="font-display text-[13px] tabular-nums text-[#17191a] transition-colors duration-300 lg:text-[15px]">
@@ -64,7 +64,7 @@ export default function Vacancies() {
 
               {/* График + стрелка в кружке */}
               <span className="flex items-center gap-4 lg:gap-6">
-                <span className="hidden whitespace-nowrap rounded-full bg-[#17191a]/10 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 group-hover:bg-[#46131E]/[0.07] group-hover:text-[#46131E] sm:inline">
+                <span className="hidden whitespace-nowrap rounded-full bg-[#17191a]/10 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 group-hover:bg-[#17191a] group-hover:text-white sm:inline">
                   {v.schedule[lang]}
                 </span>
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#17191a]/30 text-[#17191a] transition-all duration-300 group-hover:border-[#17191a] group-hover:bg-[#17191a] group-hover:text-white lg:h-12 lg:w-12">
@@ -81,7 +81,7 @@ export default function Vacancies() {
                 loading="lazy"
                 decoding="async"
                 aria-hidden
-                className={`pointer-events-none absolute left-[60%] top-1/2 z-20 hidden aspect-[3/4] w-[205px] -translate-x-1/2 -translate-y-1/2 scale-95 rounded-[12px] object-cover opacity-0 shadow-[0_28px_60px_rgba(59,13,26,0.28)] transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:block lg:w-[232px] ${["rotate-[-7deg]", "rotate-[6deg]", "rotate-[-4deg]", "rotate-[7deg]"][i % 4]}`}
+                className={`pointer-events-none absolute left-[60%] top-1/2 z-20 hidden aspect-[3/4] w-[205px] -translate-x-1/2 -translate-y-1/2 scale-95 rounded-[12px] object-cover opacity-0 shadow-[0_28px_60px_rgba(23,25,26,0.28)] transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:block lg:w-[232px] ${["rotate-[-7deg]", "rotate-[6deg]", "rotate-[-4deg]", "rotate-[7deg]"][i % 4]}`}
               />
             </a>
           ))}
