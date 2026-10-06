@@ -79,7 +79,7 @@ export default function ConciergePage() {
 
       {/* 1 — Обложка: фото + кнопка к заявке (без логотипа и эффектов) */}
       <TeamIntro
-        title={{ ru: "Международная beauty-команда для вашего события по России, Европе и странам СНГ", en: "An international beauty team for your event across Russia, Europe and the CIS" }}
+        title={{ ru: "Beauty-команда для событий в России, Европе и СНГ", en: "A beauty team for events in Russia, Europe and the CIS" }}
         subtitle={{ ru: "Макияж, укладки и услуги парикмахера под ключ для свадеб, съёмок и модных мероприятий.", en: "Turnkey makeup, styling and hairdressing for weddings, shoots and fashion events." }}
         button={{ label: { ru: "Рассчитать бюджет", en: "Calculate the budget" }, href: "#calc" }}
         button2={{ label: { ru: "Написать личному beauty-консьержу", en: "Message your personal beauty concierge" }, href: "#chat" }}
