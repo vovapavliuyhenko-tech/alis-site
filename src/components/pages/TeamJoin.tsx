@@ -20,10 +20,10 @@ const PEOPLE: { role: Loc; name?: Loc; photo: string }[] = [
   { role: { ru: "Управляющая салона", en: "Salon manager" }, photo: "/assets/alis/img_2749.jpg" },
 ];
 
-// Карточки команды — в стиле сайта: фото во всю карточку, скругление 20px, затемнение снизу,
-// имя, линия и роль внизу. Движение: карточки появляются по очереди; наведение — медленный зум
-// фото, затемнение усиливается, текст поднимается, линия растягивается на всю ширину.
-// На телефоне так подсвечивается карточка в центре экрана.
+// Карточки команды — «веер»: фото во всю карточку, скругление 20px, имя, линия и роль внизу.
+// При прокрутке карточки из стопки веером по центру разъезжаются в ряд и выпрямляются;
+// наведение — карточка поднимается, фото медленно приближается, линия растягивается.
+// На телефоне (карточки друг под другом) — без веера, подсвечивается карточка в центре экрана.
 export function TeamPeople() {
   const { lang } = useLang();
   const en = lang === "en";
@@ -44,6 +44,37 @@ export function TeamPeople() {
     return () => io.disconnect();
   }, []);
 
+  // «Веер»: пока блок въезжает в экран, карточки из стопки по центру (наклонены веером)
+  // разъезжаются в ряд и выпрямляются. Только когда карточки стоят в ряд (≥640px).
+  const fans = useRef<(HTMLDivElement | null)[]>([]);
+  useEffect(() => {
+    const root = box.current;
+    if (!root) return;
+    const mq = matchMedia("(min-width: 640px)");
+    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let raf = 0;
+    const upd = () => {
+      raf = 0;
+      const r = root.getBoundingClientRect();
+      // 0 — верх блока у низа экрана, 1 — блок поднялся до ~35% высоты экрана
+      const raw = (innerHeight * 0.95 - r.top) / (innerHeight * 0.6);
+      const p = still || !mq.matches ? 1 : Math.min(1, Math.max(0, raw));
+      const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; // мягкий разгон и торможение
+      fans.current.forEach((el, i) => {
+        if (!el) return;
+        const k = 1 - i; // 1, 0, -1 — левая, центр, правая
+        const w = el.offsetWidth;
+        el.style.transform = e >= 1 ? "" : `translate3d(${k * (w + 16) * (1 - e) * 0.92}px, ${Math.abs(k) * 24 * (1 - e)}px, 0) rotate(${-k * 12 * (1 - e)}deg)`;
+        el.style.zIndex = i === 1 ? "2" : "1";
+      });
+    };
+    const on = () => { if (!raf) raf = requestAnimationFrame(upd); };
+    upd();
+    addEventListener("scroll", on, { passive: true });
+    addEventListener("resize", on);
+    return () => { removeEventListener("scroll", on); removeEventListener("resize", on); cancelAnimationFrame(raf); };
+  }, []);
+
   return (
     <section id="people" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
@@ -52,11 +83,10 @@ export function TeamPeople() {
         </h2>
         <div ref={box} className="grid gap-2 sm:grid-cols-3 sm:gap-3 lg:gap-4">
           {PEOPLE.map((p, i) => (
+            <div key={p.role.ru} ref={(el) => { fans.current[i] = el; }} className="relative will-change-transform">
             <article
-              key={p.role.ru}
               data-on={active === i ? "" : undefined}
-              className="r-reveal group relative h-[380px] overflow-hidden rounded-[20px] bg-[#f6f4f1] sm:h-[420px] lg:h-[480px]"
-              style={{ transitionDelay: `${i * 0.12}s` }}
+              className="group relative h-[380px] overflow-hidden rounded-[20px] bg-[#f6f4f1] shadow-[0_24px_60px_-30px_rgba(23,25,26,0.35)] transition-transform duration-500 ease-out hover:-translate-y-3 data-[on]:-translate-y-3 sm:h-[420px] lg:h-[480px]"
             >
               {/* Фото во всю карточку: медленный зум при наведении */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -79,6 +109,7 @@ export function TeamPeople() {
                 <p className="mt-3 text-[10.5px] uppercase tracking-[0.16em] text-white/75 sm:text-[11px]">{p.role[lang]}</p>
               </div>
             </article>
+            </div>
           ))}
         </div>
       </div>
