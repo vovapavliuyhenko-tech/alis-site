@@ -99,7 +99,7 @@ export default function ConciergePage() {
         <ConciergePackages />
 
         {/* 4 — Как проходит работа (#process) */}
-        <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={{ ru: "Как проходит работа с командой ÁLIS BEAUTY", en: "How we work with the ÁLIS BEAUTY team" }} />
+        <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={null} />
 
         {/* 5 — Проверка даты → анкета */}
         <ConciergeDateCheck />
