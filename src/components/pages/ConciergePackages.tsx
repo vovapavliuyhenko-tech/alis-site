@@ -153,7 +153,7 @@ export default function ConciergePackages() {
                   <div className={`relative mt-6 hidden h-[44px] overflow-hidden border-t pt-4 lg:block ${t.line}`}>
                     <div className="flex items-baseline justify-between transition-transform duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:-translate-y-[44px]">
                     <span className={`text-[10px] uppercase tracking-[0.16em] transition-colors duration-700 ${t.mute}`}>{en ? "from" : "от"}</span>
-                    <span className="font-display text-[16px] uppercase tracking-[0.06em]">{p.price[lang]}</span>
+                    <span className="text-[11px] font-medium uppercase tracking-[0.14em]">{p.price[lang]}</span>
                     </div>
                     <a href="#calc" className="absolute inset-x-0 top-4 flex translate-y-[44px] items-center justify-between text-[11px] font-medium uppercase tracking-[0.14em] transition-transform duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:translate-y-0">
                       {en ? "Calculate the budget" : "Рассчитать бюджет"}
