@@ -153,17 +153,17 @@ export default function ConciergePackages() {
           {en ? "*The exact price depends on the date, venue and number of guests." : "*Точная стоимость зависит от даты, места и числа гостей."}
         </p>
 
-        <div className="mx-auto mt-6 grid max-w-[760px] gap-2 sm:grid-cols-2 sm:gap-3">
+        <div className="mx-auto mt-6 grid max-w-[940px] gap-2 sm:grid-cols-2 sm:gap-3">
           <a
             href="#calc"
-            className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-3 py-3 text-[10.5px] font-medium uppercase tracking-[0.1em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.14em]"
+            className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-3 py-3 text-[10.5px] font-medium uppercase tracking-[0.1em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:px-5 sm:py-3.5 sm:text-[12px] sm:tracking-[0.12em]"
           >
             {en ? "Private event estimate" : "Расчёт частного мероприятия"}
           </a>
           {/* TODO: PDF коммерческого предложения пришлёт заказчица — пока ведёт к блоку партнёрства */}
           <a
             href="#partners"
-            className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a]/25 px-3 py-3 text-[10.5px] font-medium uppercase tracking-[0.1em] text-[#17191a] transition-colors duration-300 hover:border-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.14em]"
+            className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a]/25 px-3 py-3 text-[10.5px] font-medium uppercase tracking-[0.1em] text-[#17191a] transition-colors duration-300 hover:border-[#17191a] sm:px-5 sm:py-3.5 sm:text-[12px] sm:tracking-[0.12em]"
           >
             {en ? "Download B2B proposal" : "Скачать коммерческое предложение B2B"}
           </a>
