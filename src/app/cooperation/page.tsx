@@ -5,7 +5,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import CooperationFormats from "@/components/pages/CooperationFormats";
 import ConciergeBenefits, { type BenefitPoint } from "@/components/pages/ConciergeBenefits";
-import CoopGallery from "@/components/pages/CoopGallery";
+// import CoopGallery from "@/components/pages/CoopGallery"; // галерея скрыта до фото/видео от заказчицы
 
 // «Кому полезно» — тексты заказчицы, в формате фото-панелей (как «Для кого» у консьержа)
 const WHO: BenefitPoint[] = [
@@ -80,7 +80,7 @@ export default function CooperationPage() {
         <ConciergeBenefits points={WHO} sectionId="who" />
 
         {/* 3 — 5 рамок: фото или видео (TODO: медиа пришлёт заказчица) */}
-        <CoopGallery />
+        {/* <CoopGallery /> — скрыта, пока нет фото/видео */}
 
         {/* 4 — Выбор «Частным лицам» / «Агентствам и бизнесу» → форма под выбор → партнёры */}
         <CooperationFormats />
