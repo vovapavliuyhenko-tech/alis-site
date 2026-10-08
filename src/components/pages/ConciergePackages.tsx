@@ -1,14 +1,14 @@
 "use client";
-// ПАКЕТЫ УСЛУГ (страница «Консьерж-сервис», #uslugi) — 4 тарифа в стиле сайта: фото-карточки
-// со скруглением 20px и затемнением снизу (как категории и «Для кого»). Видно номер, название,
-// для кого и цену; при наведении (на телефоне — у карточки в центре экрана) фото приближается,
-// затемнение усиливается, снизу выезжает состав пакета и «Рассчитать бюджет →» (к анкете #calc).
-// Компьютер — 4 в ряд, телефон — лента вбок. Цены «от …» пришлёт заказчица. Фото — временные.
-import { useEffect, useRef, useState } from "react";
+// ПАКЕТЫ УСЛУГ (страница «Консьерж-сервис», #uslugi) — «лестница» из 4 тарифов:
+// SOLO · BRIDAL · TEAM · DESTINATION. Каждый следующий выше; в стиле сайта — три белые
+// карточки в тонкой рамке и последняя чёрная (как кнопки).
+// Телефон/планшет — полосы друг под другом, каждая следующая шире. При прокрутке пакеты
+// появляются по очереди. Цены «от …» пришлёт заказчица.
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
-type Pack = { name: string; img: string; who: Loc; items: Loc[]; price: Loc };
+type Pack = { name: string; who: Loc; items: Loc[]; price: Loc };
 
 // TODO: цены «от …» — пришлёт заказчица
 const req = { ru: "по запросу", en: "on request" };
@@ -16,7 +16,6 @@ const req = { ru: "по запросу", en: "on request" };
 const PACKS: Pack[] = [
   {
     name: "SOLO",
-    img: "/assets/alis/img_2672.jpg",
     who: { ru: "Один специалист — один образ", en: "One artist — one look" },
     items: [
       { ru: "Макияж или причёска", en: "Makeup or hair" },
@@ -27,7 +26,6 @@ const PACKS: Pack[] = [
   },
   {
     name: "BRIDAL",
-    img: "/assets/alis/img_2746.jpg",
     who: { ru: "Образ невесты под ключ", en: "A turnkey bridal look" },
     items: [
       { ru: "Макияж и причёска невесты", en: "Bridal makeup and hair" },
@@ -39,7 +37,6 @@ const PACKS: Pack[] = [
   },
   {
     name: "TEAM",
-    img: "/assets/alis/img_0569.jpg",
     who: { ru: "Команда на событие или съёмку", en: "A team for an event or shoot" },
     items: [
       { ru: "Команда специалистов в 4–6 рук", en: "A team working with 4–6 hands" },
@@ -50,7 +47,6 @@ const PACKS: Pack[] = [
   },
   {
     name: "DESTINATION",
-    img: "/assets/tild6530-383_-2___1_.jpg",
     who: { ru: "Выезд по России, Европе и СНГ", en: "Russia, Europe and the CIS" },
     items: [
       { ru: "Команда приезжает к месту события", en: "The team travels to your venue" },
@@ -61,24 +57,42 @@ const PACKS: Pack[] = [
   },
 ];
 
+// Тон ступени: фон, текст, приглушённый текст, линия
+const TONES = [
+  { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10" },
+  { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10" },
+  { box: "border border-[#17191a]/12 bg-white text-[#17191a]", mute: "text-[#17191a]/55", line: "border-[#17191a]/10" },
+  { box: "border border-[#17191a] bg-[#17191a] text-white", mute: "text-white/60", line: "border-white/15" },
+];
+// Высота ступени на компьютере и ширина полосы на телефоне
+const LG_H = ["lg:h-[400px]", "lg:h-[440px]", "lg:h-[480px]", "lg:h-[520px]"];
+const SM_W = ["w-[85%]", "w-[90%]", "w-[95%]", "w-full"];
+
 export default function ConciergePackages() {
   const { lang } = useLang();
   const en = lang === "en";
-  // Телефон/планшет (нет наведения): раскрыта карточка в центре экрана
+  // Появление по очереди. Компьютер: ступени попали в кадр → все по очереди (задержка по номеру).
+  // Телефон: каждая полоса выезжает сама, когда до неё долистали.
   const box = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(-1);
+  const cards = useRef<(HTMLElement | null)[]>([]);
+  const [shown, setShown] = useState([false, false, false, false]);
+  // Компьютер (≥1024px) — ступени появляются все по очереди
+  const wide = useSyncExternalStore(
+    (cb) => { const mq = matchMedia("(min-width: 1024px)"); mq.addEventListener("change", cb); return () => mq.removeEventListener("change", cb); },
+    () => matchMedia("(min-width: 1024px)").matches,
+    () => false,
+  );
   useEffect(() => {
-    const root = box.current;
-    if (!root || matchMedia("(hover: hover)").matches) return;
-    const cards = [...root.querySelectorAll("article")];
+    const lg = matchMedia("(min-width: 1024px)").matches;
     const io = new IntersectionObserver((es) => {
       for (const e of es) {
-        const i = cards.indexOf(e.target as HTMLElement);
-        if (e.isIntersecting) setActive(i);
-        else setActive((x) => (x === i ? -1 : x));
+        if (!e.isIntersecting) continue;
+        const i = cards.current.indexOf(e.target as HTMLElement);
+        setShown((s) => (lg ? [true, true, true, true] : s.map((v, k) => v || k === i)));
+        io.unobserve(e.target);
       }
-    }, { root: null, rootMargin: "0px -35% 0px -35%", threshold: 0.5 });
-    cards.forEach((c) => io.observe(c));
+    }, { threshold: 0.25 });
+    cards.current.forEach((c) => c && io.observe(c));
     return () => io.disconnect();
   }, []);
 
@@ -86,56 +100,69 @@ export default function ConciergePackages() {
     <section id="uslugi" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
         <h2 className="sr-only">{en ? "Service packages" : "Пакеты услуг"}</h2>
-        <div ref={box} className="-mx-[2%] flex snap-x snap-mandatory gap-2 overflow-x-auto px-[2%] pb-2 [scrollbar-width:none] sm:gap-3 lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-4 lg:overflow-visible lg:px-0 lg:pb-0">
-          {PACKS.map((p, i) => (
-            <article
-              key={p.name}
-              data-on={active === i ? "" : undefined}
-              className="r-reveal group relative h-[440px] w-[78%] shrink-0 snap-center overflow-hidden rounded-[20px] bg-[#17191a] text-white sm:w-[46%] sm:h-[480px] lg:h-[560px] lg:w-auto"
-              style={{ transitionDelay: `${i * 0.1}s` }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={p.img} alt={`${p.name} — ÁLIS BEAUTY`} loading="lazy" decoding="async" draggable={false} className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-[1.06] group-data-[on]:scale-[1.06]" />
-              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
-              <div aria-hidden className="absolute inset-0 bg-black/45 opacity-0 transition-opacity duration-700 group-hover:opacity-100 group-data-[on]:opacity-100" />
 
-              {/* Верх: номер и цена */}
-              <div className="absolute inset-x-5 top-5 flex items-center justify-between sm:inset-x-6 sm:top-6">
-                <span className="font-display text-[12px] tabular-nums text-white/60">{String(i + 1).padStart(2, "0")}</span>
-                <span className="rounded-full bg-white/90 px-3 py-1 text-[11px] text-[#17191a] backdrop-blur-sm sm:text-[12px]">
-                  {en ? "from " : "от "}{p.price[lang]}
-                </span>
-              </div>
+        <div ref={box} className="relative">
+          {/* Телефон/планшет — полосы друг под другом; компьютер — 4 ступени в ряд, выровнены по верху */}
+          <div className="group/packs flex flex-col gap-2 sm:gap-3 lg:grid lg:grid-cols-4 lg:items-start lg:gap-4">
+            {PACKS.map((p, i) => {
+              const t = TONES[i];
+              return (
+                <article
+                  key={p.name}
+                  ref={(el) => { cards.current[i] = el; }}
+                  className={`group relative flex flex-col overflow-hidden rounded-[12px] p-5 transition-[translate,box-shadow,opacity] duration-[800ms] ease-[cubic-bezier(.22,.61,.36,1)] hover:-translate-y-2 hover:shadow-[0_30px_60px_-30px_rgba(23,25,26,0.45)] sm:p-7 lg:w-auto lg:p-8 lg:group-hover/packs:opacity-55 lg:hover:!opacity-100 ${t.box} ${SM_W[i]} ${LG_H[i]}`}
+                  style={{
+                    opacity: shown[i] ? 1 : 0,
+                    transform: shown[i] ? "none" : wide ? "translateY(40px)" : "translateX(-24px)",
+                    transition: `opacity .7s ease ${wide ? i * 0.18 : 0.05}s, transform .9s cubic-bezier(.2,.7,.2,1) ${wide ? i * 0.18 : 0.05}s`,
+                  }}
+                >
+                  <div className="relative flex items-start justify-between gap-4 lg:block">
+                    <div>
+                      <span className="block w-fit origin-left font-display text-[20px] leading-none text-[#a9874f] transition-transform duration-700 group-hover:translate-x-1 group-hover:scale-110 lg:text-[28px]">{String(i + 1).padStart(2, "0")}</span>
+                      <h3 className="relative mt-2 inline-block font-display text-[18px] uppercase tracking-[0.06em] lg:mt-3 lg:text-[26px]">
+                        {p.name}
+                        <span aria-hidden className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-[#a9874f] transition-transform duration-700 ease-out group-hover:scale-x-100" />
+                      </h3>
+                      <p className={`mt-1 !text-[11px] leading-[1.45] transition-colors duration-700 sm:!text-[13px] ${t.mute}`}>{p.who[lang]}</p>
+                    </div>
+                    {/* Цена — справа на телефоне, внизу на компьютере */}
+                    <span className="shrink-0 whitespace-nowrap pt-1 font-display text-[11px] uppercase tracking-[0.06em] lg:hidden">
+                      <span className={`${t.mute}`}>{en ? "from " : "от "}</span>{p.price[lang]}
+                    </span>
+                  </div>
 
-              {/* Низ: название и «для кого»; при наведении поднимаются, снизу выезжает состав */}
-              <div className="absolute inset-x-5 bottom-5 sm:inset-x-6 sm:bottom-6">
-                <div className="transition-transform duration-700 ease-[cubic-bezier(.22,.61,.36,1)]">
-                  <h3 className="font-display text-[22px] uppercase tracking-[0.06em] lg:text-[26px]">{p.name}</h3>
-                  <p className="mt-1 !text-[11.5px] text-white/75 sm:!text-[13px]">{p.who[lang]}</p>
-                </div>
-                <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:grid-rows-[1fr] group-data-[on]:grid-rows-[1fr]">
-                  <div className="overflow-hidden">
-                    <ul className="mt-4 flex flex-col gap-1.5 border-t border-white/20 pt-4">
-                      {p.items.map((it, k) => (
-                        <li
-                          key={it.ru}
-                          className="flex items-start gap-2 text-[12px] leading-[1.45] text-white/90 opacity-0 transition-[opacity,translate] duration-500 [translate:0_8px] group-hover:opacity-100 group-hover:[translate:0_0] group-data-[on]:opacity-100 group-data-[on]:[translate:0_0] sm:text-[13px]"
-                          style={{ transitionDelay: `${0.15 + k * 0.06}s` }}
-                        >
-                          <span aria-hidden className="text-white/50">+</span>
-                          {it[lang]}
-                        </li>
-                      ))}
-                    </ul>
-                    <a href="#calc" className="mt-4 flex items-center justify-between rounded-[12px] border border-white/70 bg-white/15 px-4 py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white backdrop-blur-md transition-colors duration-300 hover:border-white hover:bg-white hover:text-[#17191a]">
+                  <ul className={`relative mt-4 flex flex-1 flex-col gap-1.5 border-t pt-4 transition-colors duration-700 sm:gap-2 lg:mt-6 lg:pt-6 ${t.line}`}>
+                    {p.items.map((it, k) => (
+                      <li
+                        key={it.ru}
+                        className="flex items-start gap-2 text-[11.5px] leading-[1.45] transition-transform duration-700 group-hover:translate-x-1 sm:text-[13.5px]"
+                        style={{
+                          opacity: shown[i] ? 1 : 0,
+                          translate: shown[i] ? "0 0" : "0 10px",
+                          transition: `opacity .5s ease ${(wide ? i * 0.18 : 0) + 0.35 + k * 0.08}s, translate .6s cubic-bezier(.2,.7,.2,1) ${(wide ? i * 0.18 : 0) + 0.35 + k * 0.08}s, transform .5s ease ${k * 0.04}s`,
+                        }}
+                      >
+                        <span aria-hidden className={`inline-block transition-[rotate,color] duration-700 group-hover:rotate-90 ${t.mute}`}>+</span>
+                        {it[lang]}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className={`relative mt-6 hidden h-[44px] overflow-hidden border-t pt-4 lg:block ${t.line}`}>
+                    <div className="flex items-baseline justify-between transition-transform duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:-translate-y-[44px]">
+                    <span className={`text-[10px] uppercase tracking-[0.16em] transition-colors duration-700 ${t.mute}`}>{en ? "from" : "от"}</span>
+                    <span className="text-[11px] font-medium uppercase tracking-[0.14em]">{p.price[lang]}</span>
+                    </div>
+                    <a href="#calc" className="absolute inset-x-0 top-4 flex translate-y-[44px] items-center justify-between text-[11px] font-medium uppercase tracking-[0.14em] transition-transform duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:translate-y-0">
                       {en ? "Calculate the budget" : "Рассчитать бюджет"}
-                      <span>→</span>
+                      <span className="text-[16px]">→</span>
                     </a>
                   </div>
-                </div>
-              </div>
-            </article>
-          ))}
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
