@@ -52,8 +52,8 @@ const RIGHT: NavItem[] = [
     label: { ru: "Вакансии", en: "Vacancies" },
     href: "/team",
     sub: [
-      { label: { ru: "Стать специалистом салона красоты", en: "Join the beauty salon" }, href: "/team#salon" },
-      { label: { ru: "Стать частью международной beauty-команды", en: "Join the international beauty team" }, href: "/team#international" },
+      { label: { ru: "В салон красоты", en: "Beauty salon" }, href: "/team#salon" },
+      { label: { ru: "В международную команду", en: "International team" }, href: "/team#international" },
     ],
   },
   { label: { ru: "Контакты", en: "Contacts" }, href: "/contacts" },
