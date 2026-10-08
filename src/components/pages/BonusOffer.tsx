@@ -1,5 +1,5 @@
 "use client";
-// «КОМПЛИМЕНТ ОТ ALIS BEAUTY» (главная) — тексты заказчицы. Одна светлая полоса во всю ширину
+// «КОМПЛИМЕНТ ОТ ÁLIS BEAUTY» (главная) — тексты заказчицы. Одна светлая полоса во всю ширину
 // со скруглением 28px (как «Выездной сервис»), всё по центру: подпись, крупная тонкая «500 ₽»
 // (набегает от 0, когда блок появляется на экране), текст и форма телефона в одну строку.
 // Номер уходит в CRM (тип «bonus») и в Telegram.
@@ -64,7 +64,7 @@ export default function BonusOffer() {
       {/* Слева — крупная «500 ₽», справа — заголовок, текст и форма (на телефоне — друг под другом) */}
       <div className="r-reveal grid w-full items-center gap-8 rounded-[28px] bg-white px-[4%] py-16 sm:px-6 text-center md:grid-cols-2 md:gap-12 md:px-12 md:text-left lg:px-24 lg:py-24">
         <div className="flex flex-col items-center md:items-start">
-          <p className="text-[12px] uppercase tracking-[0.18em] text-[#17191a]/60">{en ? "A gift from ALIS BEAUTY" : "Комплимент от ALIS BEAUTY"}</p>
+          <p className="text-[12px] uppercase tracking-[0.18em] text-[#17191a]/60">{en ? "A gift from ÁLIS BEAUTY" : "Комплимент от ÁLIS BEAUTY"}</p>
           <p aria-hidden className="mt-4 font-display !text-[52px] font-extralight leading-none tracking-[0.01em] text-[#17191a] tabular-nums sm:!text-[96px] lg:!text-[150px]">
             {/* «₽» вынесен из потока, чтобы по центру стояла сама цифра */}
             <span className="relative inline-block">{n}<span className="absolute left-full top-0 ml-1 !text-[22px] sm:!text-[36px] lg:!text-[52px]">₽</span></span>

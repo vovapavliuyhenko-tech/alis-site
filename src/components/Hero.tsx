@@ -60,8 +60,8 @@ export default function Hero() {
           </span>
           <span className="hidden sm:inline">
             {t(
-              "Салон красоты ALIS BEAUTY в Новороссийске и международная команда мастеров для свадеб, съёмок и событий. ALIS BEAUTY Concierge — по России, странам СНГ и Европе.",
-              "ALIS BEAUTY beauty salon in Novorossiysk and an international team of artists for weddings, shoots and events. ALIS BEAUTY Concierge — across Russia, the CIS and Europe.",
+              "Салон красоты ÁLIS BEAUTY в Новороссийске и международная команда мастеров для свадеб, съёмок и событий. ÁLIS BEAUTY Concierge — по России, странам СНГ и Европе.",
+              "ÁLIS BEAUTY beauty salon in Novorossiysk and an international team of artists for weddings, shoots and events. ÁLIS BEAUTY Concierge — across Russia, the CIS and Europe.",
             )}
           </span>
         </p>

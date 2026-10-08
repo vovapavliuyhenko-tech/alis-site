@@ -24,8 +24,8 @@ export default function FinalChoice() {
     { label: en ? "Message or call" : "Написать или позвонить", href: "/contacts", cls: line },
   ];
   const PHONES = [
-    { label: en ? "Salon" : "Салон", phone: PHONE_SALON },
-    { label: en ? "Concierge" : "Консьерж", phone: PHONE_CONCIERGE },
+    { label: en ? "Beauty salon" : "Салон красоты", phone: PHONE_SALON },
+    { label: en ? "Concierge service" : "Консьерж-сервис", phone: PHONE_CONCIERGE },
     ...(PHONE_INTL ? [{ label: en ? "International" : "Международные клиенты", phone: PHONE_INTL }] : []),
   ];
 
@@ -40,7 +40,7 @@ export default function FinalChoice() {
             </a>
           ))}
         </div>
-        <div className="mt-6 flex flex-nowrap items-center justify-center gap-x-3 whitespace-nowrap text-[10.5px] text-[#17191a] sm:mt-7 sm:flex-wrap sm:gap-x-6 sm:gap-y-2 sm:text-[13px]">
+        <div className="mt-6 flex flex-col items-center justify-center gap-1 whitespace-nowrap text-[11px] sm:flex-row text-[#17191a] sm:mt-7 sm:flex-wrap sm:gap-x-6 sm:gap-y-2 sm:text-[13px]">
           {PHONES.map((p) => (
             <a key={p.phone} href={`tel:${p.phone.replace(/[^\d+]/g, "")}`} className="transition-opacity hover:opacity-60">
               <span className="text-[#17191a]/55">{p.label}: </span>

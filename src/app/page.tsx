@@ -13,7 +13,7 @@ import ConciergeBenefits, { type BenefitPoint } from "@/components/pages/Concier
 // Клон massage-romanova.ru — стиль эталона + прежние блоки ÁLIS.
 
 
-// «Почему выбирают ALIS BEAUTY» — пункты заказчицы, в формате фото-панелей как на странице
+// «Почему выбирают ÁLIS BEAUTY» — пункты заказчицы, в формате фото-панелей как на странице
 // консьерж-сервиса. Описаний нет (только заголовки). Фото — временные.
 const WHY: BenefitPoint[] = [
   { title: { ru: "Предсказуемый качественный результат", en: "Predictable, high-quality results" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_2672.jpg" },
@@ -35,8 +35,8 @@ export default function Home() {
       <div className="relative z-10 bg-white page-end">
         {/* Метка конца первого блока — после неё у шапки появляется подложка */}
         <div id="hero-end" aria-hidden className="h-0" />
-        {/* Почему выбирают ALIS BEAUTY */}
-        <ConciergeBenefits points={WHY} sectionId="why" title={{ ru: "Почему выбирают ALIS BEAUTY", en: "Why choose ALIS BEAUTY" }} />
+        {/* Почему выбирают ÁLIS BEAUTY */}
+        <ConciergeBenefits points={WHY} sectionId="why" title={{ ru: "Почему выбирают ÁLIS BEAUTY", en: "Why choose ÁLIS BEAUTY" }} />
         {/* Порядок: работы мастеров → выезд (консьерж) → как записаться в салон → услуги → контакты (подвал) */}
         <PhotoMarquee />
         {/* Отзывы гостей — перед баннером консьерж-сервиса */}
@@ -48,12 +48,12 @@ export default function Home() {
           photo="/assets/alis/img_6009.jpg"
           label={{ ru: "Выездной сервис", en: "Outcall service" }}
           title={{
-            ru: "Свадьба в Ереване, съёмка в Москве, ужин в Каннах — международная команда ALIS BEAUTY уже в пути.",
-            en: "A wedding in Yerevan, a shoot in Moscow, a dinner in Cannes — the international ALIS BEAUTY team is already on its way.",
+            ru: "Свадьба в Ереване, съёмка в Москве, ужин в Каннах — международная команда ÁLIS BEAUTY уже в пути.",
+            en: "A wedding in Yerevan, a shoot in Moscow, a dinner in Cannes — the international ÁLIS BEAUTY team is already on its way.",
           }}
           titleLines={{
-            ru: ["Свадьба в Ереване, съёмка в Москве,", "ужин в Каннах — международная команда", "ALIS BEAUTY уже в пути."],
-            en: ["A wedding in Yerevan, a shoot in Moscow,", "a dinner in Cannes — the international", "ALIS BEAUTY team is already on its way."],
+            ru: ["Свадьба в Ереване, съёмка в Москве,", "ужин в Каннах — международная команда", "ÁLIS BEAUTY уже в пути."],
+            en: ["A wedding in Yerevan, a shoot in Moscow,", "a dinner in Cannes — the international", "ÁLIS BEAUTY team is already on its way."],
           }}
           text={{
             ru: "Вы выбираете место, мы приводим специалистов, тайминг и спокойствие — вам остаётся только наслаждаться днём.",
@@ -61,7 +61,7 @@ export default function Home() {
           }}
           button={{ label: { ru: "Рассчитать выезд за 1 минуту", en: "Get a travel quote in 1 minute" }, href: "/concierge#calc" }}
         />
-        {/* Комплимент от ALIS BEAUTY — 500 бонусов, номер уходит в CRM */}
+        {/* Комплимент от ÁLIS BEAUTY — 500 бонусов, номер уходит в CRM */}
         <BonusOffer />
         {/* Услуги салона — карточки с фото. Скрыто по просьбе (вернуть — раскомментировать):
         <ServiceBento /> */}
