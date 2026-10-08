@@ -119,10 +119,9 @@ export default function ConciergePackages() {
                 >
                   <div className="relative flex items-start justify-between gap-4 lg:block">
                     <div>
-                      <span className="block w-fit origin-left font-display text-[20px] leading-none text-[#a9874f] transition-transform duration-700 group-hover:translate-x-1 group-hover:scale-110 lg:text-[28px]">{String(i + 1).padStart(2, "0")}</span>
-                      <h3 className="relative mt-2 inline-block font-display text-[18px] uppercase tracking-[0.06em] lg:mt-3 lg:text-[26px]">
+                      <h3 className="relative inline-block font-display text-[26px] uppercase leading-none tracking-[0.06em] sm:text-[30px] lg:text-[clamp(22px,1.9vw,34px)]">
                         {p.name}
-                        <span aria-hidden className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-[#a9874f] transition-transform duration-700 ease-out group-hover:scale-x-100" />
+                        <span aria-hidden className="absolute -bottom-2 left-0 h-px w-full origin-left scale-x-0 bg-[#a9874f] transition-transform duration-700 ease-out group-hover:scale-x-100" />
                       </h3>
                       <p className={`mt-1 !text-[11px] leading-[1.45] transition-colors duration-700 sm:!text-[13px] ${t.mute}`}>{p.who[lang]}</p>
                     </div>
