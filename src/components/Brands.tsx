@@ -68,7 +68,7 @@ function Track({ hidden = false }: { hidden?: boolean }) {
   );
 }
 
-export default function Brands({ heading = false }: { heading?: boolean }) {
+export default function Brands({ heading = false, title }: { heading?: boolean; title?: { ru: string; en: string } }) {
   const { lang } = useLang();
   return (
     <section className="overflow-hidden bg-white section-y">
@@ -79,6 +79,7 @@ export default function Brands({ heading = false }: { heading?: boolean }) {
           </h2>
         </div>
       )}
+      {title && <h2 className="r-reveal mx-auto mb-8 w-[92%] text-center text-[#17191a] lg:mb-10">{title[lang]}</h2>}
       <div className="group relative flex overflow-hidden">
         <Track />
         <Track hidden />

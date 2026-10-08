@@ -97,7 +97,7 @@ export default function ConciergePage() {
         <ConciergeBenefits />
 
         {/* Бегущая строка брендов, которые нас выбирают — доверие перед ценами и пакетами */}
-        <Brands />
+        <Brands title={{ ru: "Нас выбирают", en: "They choose us" }} />
 
         {/* 3 — Пакеты услуг (#uslugi). TODO: цены «от …» и PDF КП пришлёт заказчица */}
         <ConciergePackages />
