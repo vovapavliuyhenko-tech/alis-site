@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import { ShopTrend } from "@/components/shop/ShopShowcase";
-import { ShopCategories } from "@/components/shop/ShopBlocks";
+import { ShopCategories, GiftBox } from "@/components/shop/ShopBlocks";
 
 // Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и анимации — по главной
 // aurorebrand.com, оформление — в стиле нашего сайта. Фото — временные.
@@ -25,9 +25,11 @@ export default function ShopPage() {
       <div className="relative z-10 bg-white page-end">
         {/* По брифу: категории → подбор ухода → мерч (строка + товары) → бокс → сертификаты */}
         <ShopCategories />
-        {/* Подбор ухода, строка про мерч, подарочный бокс и конструктор сертификата — скрыты
-            по просьбе заказчицы (HairQuiz, MerchLine, GiftBox, CertBuilder в ShopBlocks) */}
+        {/* Подбор ухода, строка про мерч и конструктор сертификата — скрыты
+            по просьбе заказчицы (HairQuiz, MerchLine, CertBuilder в ShopBlocks) */}
         <ShopTrend />
+        {/* Подарочный бокс — «веер» из трёх фото, как карточки команды на «Вакансиях» */}
+        <GiftBox />
       </div>
       <Footer />
     </main>

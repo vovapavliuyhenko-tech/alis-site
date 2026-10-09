@@ -7,7 +7,7 @@
 //  GiftBox        — подарочный бокс: 3 фото, текст и связь с менеджером;
 //  CertBuilder    — конструктор сертификата: открытка, сумма, пожелание, день и час → CRM.
 // Цены категорий считаются из каталога. TODO: фото бокса, открыток и суммы сертификатов — от заказчицы.
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { sendLead } from "@/lib/sendLead";
@@ -27,7 +27,7 @@ export function ShopCategories() {
   const CATS: { title: Loc; price: Loc; img: string; href: string }[] = [
     { title: { ru: "Уход для волос, инструменты", en: "Hair care & tools" }, price: { ru: `от ${fmt(minPrice(["уход"]))} ₽`, en: `from ${fmt(minPrice(["уход"]))} ₽` }, img: "/assets/alis/img_5910.webp", href: "/shop/catalog?cat=%D1%83%D1%85%D0%BE%D0%B4" },
     { title: { ru: "Мерч ÁLIS BEAUTY", en: "ÁLIS BEAUTY merch" }, price: { ru: `от ${fmt(minPrice(["одежда", "аксессуары"]))} ₽`, en: `from ${fmt(minPrice(["одежда", "аксессуары"]))} ₽` }, img: "/assets/alis/img_1834.jpg", href: "/shop/catalog" },
-    { title: { ru: "Подарочный beauty-бокс", en: "Beauty gift box" }, price: { ru: "по запросу", en: "on request" }, img: "/assets/alis/img_6048.jpg", href: MANAGER_WA },
+    { title: { ru: "Подарочный beauty-бокс", en: "Beauty gift box" }, price: { ru: "по запросу", en: "on request" }, img: "/assets/alis/img_6048.jpg", href: "#box" },
     { title: { ru: "Сертификаты", en: "Gift certificates" }, price: { ru: "любая сумма", en: "any amount" }, img: "/assets/alis/img_1855.jpg", href: "https://o8981.yclients.ru/certificates" },
   ];
   return (
@@ -49,8 +49,8 @@ export function ShopCategories() {
             </>
           );
           const cls = "r-reveal group relative block aspect-[3/4] overflow-hidden rounded-[20px]";
-          return c.href.startsWith("http") ? (
-            <a key={c.title.ru} href={c.href} target="_blank" rel="noopener noreferrer" className={cls} style={{ transitionDelay: `${i * 0.08}s` }}>{inner}</a>
+          return c.href.startsWith("http") || c.href.startsWith("#") ? (
+            <a key={c.title.ru} href={c.href} {...(c.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={cls} style={{ transitionDelay: `${i * 0.08}s` }}>{inner}</a>
           ) : (
             <Link key={c.title.ru} href={c.href} className={cls} style={{ transitionDelay: `${i * 0.08}s` }}>{inner}</Link>
           );
@@ -223,31 +223,71 @@ export function MerchLine() {
   );
 }
 
-// ——— Подарочный бокс ———
+// ——— Подарочный бокс — «веер», как карточки команды на странице «Вакансии» ———
+// Три фото лежат стопкой по центру (крайние наклонены); пока блок въезжает в экран, они
+// разъезжаются в ряд и выпрямляются. Затем снизу проявляются заголовок, текст и кнопка.
+// Наведение — фото поднимается и медленно приближается. Телефон — фото в ряд без веера.
 const BOX_PHOTOS = ["/assets/alis/img_6048.jpg", "/assets/alis/img_1855.jpg", "/assets/alis/img_5910.webp"];
 export function GiftBox() {
   const { lang } = useLang();
   const en = lang === "en";
+  const box = useRef<HTMLDivElement>(null);
+  const fans = useRef<(HTMLDivElement | null)[]>([]);
+  const [done, setDone] = useState(false);
+  useEffect(() => {
+    const root = box.current;
+    if (!root) return;
+    const mq = matchMedia("(min-width: 640px)");
+    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let raf = 0;
+    const upd = () => {
+      raf = 0;
+      const r = root.getBoundingClientRect();
+      const raw = (innerHeight * 0.95 - r.top) / (innerHeight * 0.6);
+      const p = still || !mq.matches ? 1 : Math.min(1, Math.max(0, raw));
+      const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      fans.current.forEach((el, i) => {
+        if (!el) return;
+        const k = 1 - i; // 1, 0, -1 — левое, центр, правое
+        const w = el.offsetWidth;
+        el.style.transform = e >= 1 ? "" : `translate3d(${k * (w + 12) * (1 - e) * 0.92}px, ${Math.abs(k) * 26 * (1 - e)}px, 0) rotate(${-k * 12 * (1 - e)}deg)`;
+        el.style.zIndex = i === 1 ? "2" : "1";
+      });
+      if (p >= 0.85) setDone(true);
+    };
+    const on = () => { if (!raf) raf = requestAnimationFrame(upd); };
+    upd();
+    addEventListener("scroll", on, { passive: true });
+    addEventListener("resize", on);
+    return () => { removeEventListener("scroll", on); removeEventListener("resize", on); cancelAnimationFrame(raf); };
+  }, []);
+
   return (
     <section id="box" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto grid w-[96%] max-w-[1760px] items-stretch gap-4 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-6">
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
+      <div className="mx-auto w-[96%] max-w-[1200px]">
+        <div ref={box} className="grid grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
           {BOX_PHOTOS.map((src, i) => (
-            <div key={src} className={`r-reveal group relative overflow-hidden rounded-[20px] ${i === 0 ? "col-span-2 aspect-[16/9] sm:row-span-2 sm:aspect-auto" : "aspect-square"}`} style={{ transitionDelay: `${i * 0.1}s` }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={src} alt={en ? "ÁLIS BEAUTY gift box" : "Подарочный бокс ÁLIS BEAUTY"} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105" />
+            <div key={src} ref={(el) => { fans.current[i] = el; }} className="relative will-change-transform">
+              <div className="group relative aspect-[3/4] overflow-hidden rounded-[20px] shadow-[0_24px_60px_-30px_rgba(23,25,26,0.4)] transition-[translate] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] hover:-translate-y-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={src} alt={en ? "ÁLIS BEAUTY gift box" : "Подарочный бокс ÁLIS BEAUTY"} loading="lazy" decoding="async" draggable={false} className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-[1.06]" />
+              </div>
             </div>
           ))}
         </div>
-        <div className="r-reveal flex flex-col justify-center rounded-[28px] bg-[#f6f4f1] p-6 text-center sm:p-10 lg:text-left">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/45 sm:text-[11px]">{en ? "Gift box" : "Подарочный бокс"}</p>
-          <h2 className="mt-3 text-[#17191a]">{en ? "A beauty box for someone special" : "Подарочный beauty-бокс"}</h2>
+
+        {/* Текст и кнопка — проявляются, когда фото встали в ряд */}
+        <div
+          className="mx-auto mt-8 flex max-w-[560px] flex-col items-center text-center transition-[opacity,translate] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] lg:mt-12"
+          style={{ opacity: done ? 1 : 0, translate: done ? "0 0" : "0 18px" }}
+        >
+          <h2 className="text-[#17191a]">{en ? "Beauty gift box" : "Подарочный beauty-бокс"}</h2>
           <p className="mt-3 !text-[12.5px] leading-[1.6] text-[#17191a]/65 sm:!text-[15px]">
             {en
               ? "Contact a manager within 15 minutes to choose the packaging, contents and card, and discuss any details."
               : "Свяжитесь с менеджером за 15 минут, чтобы выбрать упаковку, наполнение, открытку и обсудить необходимые детали."}
           </p>
-          <a href={MANAGER_WA} target="_blank" rel="noopener noreferrer" className="mt-6 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
+          <a href={MANAGER_WA} target="_blank" rel="noopener noreferrer" className="mt-6 flex w-full max-w-[340px] items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
             {en ? "Contact a manager" : "Связаться с менеджером"}
           </a>
         </div>
