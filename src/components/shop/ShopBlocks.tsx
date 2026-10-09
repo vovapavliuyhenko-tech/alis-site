@@ -30,33 +30,34 @@ export function ShopCategories() {
     { title: { ru: "Подарочный beauty-бокс", en: "Beauty gift box" }, price: { ru: "по запросу", en: "on request" }, img: "/assets/alis/img_6048.jpg", href: "#box" },
     { title: { ru: "Сертификаты", en: "Gift certificates" }, price: { ru: "любая сумма", en: "any amount" }, img: "/assets/alis/img_1855.jpg", href: "https://o8981.yclients.ru/certificates" },
   ];
+  // Вид — как прежний блок категорий: светлые плитки, круглое фото, подпись капсом и цена
   return (
     <section id="categories" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto grid w-[96%] max-w-[1760px] grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4 lg:gap-4">
-        {CATS.map((c, i) => {
-          const inner = (
-            <>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.img} alt={c.title[lang]} loading="lazy" decoding="async" draggable={false} className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105" />
-              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
-              <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[11px] text-[#17191a] backdrop-blur-sm sm:left-4 sm:top-4 sm:text-[12px]">{c.price[lang]}</span>
-              <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-3 text-white sm:inset-x-5 sm:bottom-5">
-                <h3 className="font-display text-[13px] leading-[1.25] tracking-[0.02em] sm:text-[17px]">{c.title[lang]}</h3>
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/50 transition-all duration-300 group-hover:border-transparent group-hover:bg-white group-hover:text-[#17191a] sm:h-10 sm:w-10">
-                  <span className="transition-transform duration-300 group-hover:-rotate-45">→</span>
-                </span>
-              </div>
-            </>
-          );
-          const cls = "r-reveal group relative block aspect-[3/4] overflow-hidden rounded-[20px]";
-          return c.href.startsWith("http") || c.href.startsWith("#") ? (
-            <a key={c.title.ru} href={c.href} {...(c.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={cls} style={{ transitionDelay: `${i * 0.08}s` }}>{inner}</a>
-          ) : (
-            <Link key={c.title.ru} href={c.href} className={cls} style={{ transitionDelay: `${i * 0.08}s` }}>{inner}</Link>
-          );
-        })}
+      <div className="mx-auto w-[96%] max-w-[1760px]">
+        <h2 className="sr-only">{en ? "Categories" : "Категории"}</h2>
+        {/* Телефон — лента вбок, компьютер — 4 в ряд */}
+        <div className="-mx-[2%] flex snap-x snap-mandatory gap-2 overflow-x-auto px-[2%] pb-2 [scrollbar-width:none] lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-3 lg:overflow-visible lg:px-0 [&::-webkit-scrollbar]:hidden">
+          {CATS.map((c) => {
+            const ext = c.href.startsWith("http");
+            const inner = (
+              <>
+                <div className="aspect-square w-[72%] overflow-hidden rounded-full">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={c.img} alt={c.title[lang]} loading="lazy" decoding="async" draggable={false} className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]" />
+                </div>
+                <span className="mt-6 text-center text-[12px] uppercase leading-[1.35] tracking-[0.08em] text-[#17191a] lg:text-[13px]">{c.title[lang]}</span>
+                <span className="mt-2 text-[11px] text-[#17191a]/50 lg:text-[12px]">{c.price[lang]}</span>
+              </>
+            );
+            const cls = "group flex w-[46%] shrink-0 snap-start flex-col items-center rounded-[8px] bg-[#f6f4f1] px-4 pb-6 pt-8 sm:w-[30%] lg:w-auto";
+            return ext || c.href.startsWith("#") ? (
+              <a key={c.title.ru} href={c.href} {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={cls}>{inner}</a>
+            ) : (
+              <Link key={c.title.ru} href={c.href} className={cls}>{inner}</Link>
+            );
+          })}
+        </div>
       </div>
-      <h2 className="sr-only">{en ? "Categories" : "Категории"}</h2>
     </section>
   );
 }
