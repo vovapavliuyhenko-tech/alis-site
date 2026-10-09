@@ -33,7 +33,7 @@ export function ShopCategories() {
   // Вид — как прежний блок категорий: светлые плитки, круглое фото, подпись капсом и цена
   return (
     <section id="categories" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto w-[96%] max-w-[1760px]">
+      <div className="mx-auto w-[96%] max-w-[1080px]">
         <h2 className="sr-only">{en ? "Categories" : "Категории"}</h2>
         {/* Телефон — лента вбок, компьютер — 4 в ряд */}
         <div className="-mx-[2%] flex snap-x snap-mandatory gap-2 overflow-x-auto px-[2%] pb-2 [scrollbar-width:none] lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-3 lg:overflow-visible lg:px-0 [&::-webkit-scrollbar]:hidden">
@@ -41,15 +41,15 @@ export function ShopCategories() {
             const ext = c.href.startsWith("http");
             const inner = (
               <>
-                <div className="aspect-square w-[72%] overflow-hidden rounded-full">
+                <div className="aspect-square w-[62%] overflow-hidden rounded-full">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={c.img} alt={c.title[lang]} loading="lazy" decoding="async" draggable={false} className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]" />
                 </div>
-                <span className="mt-6 text-center text-[12px] uppercase leading-[1.35] tracking-[0.08em] text-[#17191a] lg:text-[13px]">{c.title[lang]}</span>
-                <span className="mt-2 text-[11px] text-[#17191a]/50 lg:text-[12px]">{c.price[lang]}</span>
+                <span className="mt-4 text-center text-[11px] uppercase leading-[1.35] tracking-[0.08em] text-[#17191a] lg:text-[12px]">{c.title[lang]}</span>
+                <span className="mt-1 text-[10.5px] text-[#17191a]/50 lg:text-[11.5px]">{c.price[lang]}</span>
               </>
             );
-            const cls = "group flex w-[46%] shrink-0 snap-start flex-col items-center rounded-[8px] bg-[#f6f4f1] px-4 pb-6 pt-8 sm:w-[30%] lg:w-auto";
+            const cls = "group flex w-[40%] shrink-0 snap-start flex-col items-center rounded-[8px] bg-[#f6f4f1] px-3 pb-4 pt-5 sm:w-[26%] lg:w-auto";
             return ext || c.href.startsWith("#") ? (
               <a key={c.title.ru} href={c.href} {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={cls}>{inner}</a>
             ) : (
