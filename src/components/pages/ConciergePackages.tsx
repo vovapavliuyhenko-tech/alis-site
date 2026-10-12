@@ -5,7 +5,7 @@
 // снизу состав пакета и кнопка «Рассчитать бюджет» (к анкете #calc). Тариф меняется наведением
 // или кликом; фото и текст плавно сменяются. Телефон: список сверху, карточка тарифа под ним.
 // Цены «от …» пришлёт заказчица. Фото — временные.
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -65,7 +65,11 @@ const PACKS: Pack[] = [
 export default function ConciergePackages() {
   const { lang } = useLang();
   const en = lang === "en";
-  const [cur, setCur] = useState(0);
+  const [cur, setCurNow] = useState(0);
+  // Наведение: небольшая задержка, чтобы тариф не «мигал», когда мышь просто проходит по списку
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const setCur = (i: number) => { if (timer.current) clearTimeout(timer.current); setCurNow(i); };
+  const hoverCur = (i: number) => { if (timer.current) clearTimeout(timer.current); timer.current = setTimeout(() => setCurNow(i), 120); };
   const p = PACKS[cur];
 
   return (
@@ -74,33 +78,33 @@ export default function ConciergePackages() {
         <h2 className="sr-only">{en ? "Service packages" : "Пакеты услуг"}</h2>
 
         {/* Слева: список тарифов */}
-        <div className="r-reveal rounded-[28px] bg-[#f6f4f1] px-6 py-2 sm:px-10 lg:px-12 lg:py-4">
+        <div className="r-reveal rounded-[24px] bg-[#f6f4f1] px-5 py-1 sm:px-8 lg:px-10 lg:py-2">
           {PACKS.map((x, i) => {
             const on = i === cur;
             return (
               <button
                 key={x.name}
                 type="button"
-                onMouseEnter={() => setCur(i)}
+                onMouseEnter={() => hoverCur(i)}
                 onFocus={() => setCur(i)}
                 onClick={() => setCur(i)}
                 aria-pressed={on}
-                className={`group flex w-full items-center justify-between gap-6 py-5 text-left sm:py-7 lg:py-8 ${i > 0 ? "border-t border-[#17191a]/10" : ""}`}
+                className={`group flex w-full items-center justify-between gap-6 py-4 text-left sm:py-5 lg:py-6 ${i > 0 ? "border-t border-[#17191a]/10" : ""}`}
               >
                 <span className="min-w-0">
-                  <span className={`block font-display text-[28px] uppercase leading-none tracking-[0.04em] transition-colors duration-500 sm:text-[40px] lg:text-[clamp(36px,3.4vw,60px)] ${on ? "text-[#17191a]" : "text-[#17191a]/30 group-hover:text-[#17191a]/60"}`}>
+                  <span className={`block font-display text-[22px] uppercase leading-none tracking-[0.05em] transition-colors duration-700 ease-[cubic-bezier(.22,.61,.36,1)] sm:text-[28px] lg:text-[clamp(24px,2.1vw,36px)] ${on ? "text-[#17191a]" : "text-[#17191a]/30 group-hover:text-[#17191a]/60"}`}>
                     {x.name}
                   </span>
-                  <span className={`mt-2 block text-[12px] leading-[1.45] transition-colors duration-500 sm:text-[14px] ${on ? "text-[#17191a]/75" : "text-[#17191a]/40"}`}>{x.who[lang]}</span>
+                  <span className={`mt-1.5 block text-[11.5px] leading-[1.45] transition-colors duration-700 sm:text-[13px] ${on ? "text-[#17191a]/75" : "text-[#17191a]/40"}`}>{x.who[lang]}</span>
                 </span>
-                <span aria-hidden className={`shrink-0 text-[24px] transition-all duration-500 ${on ? "translate-x-0 opacity-100" : "-translate-x-3 opacity-0"}`}>→</span>
+                <span aria-hidden className={`shrink-0 text-[18px] transition-all duration-700 ease-[cubic-bezier(.22,.61,.36,1)] ${on ? "translate-x-0 opacity-100" : "-translate-x-3 opacity-0"}`}>→</span>
               </button>
             );
           })}
         </div>
 
         {/* Справа: фото и описание выбранного тарифа */}
-        <div className="r-reveal relative min-h-[460px] overflow-hidden rounded-[28px] bg-[#17191a] text-white sm:min-h-[540px] lg:min-h-0">
+        <div className="r-reveal relative min-h-[400px] overflow-hidden rounded-[24px] bg-[#17191a] text-white sm:min-h-[460px] lg:min-h-0">
           {PACKS.map((x, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -110,36 +114,36 @@ export default function ConciergePackages() {
               loading="lazy"
               decoding="async"
               draggable={false}
-              className="absolute inset-0 h-full w-full object-cover transition-[opacity,scale] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)]"
-              style={{ opacity: i === cur ? 1 : 0, scale: i === cur ? "1" : "1.06" }}
+              className="absolute inset-0 h-full w-full object-cover transition-[opacity,scale] duration-[1400ms] ease-[cubic-bezier(.22,.61,.36,1)]"
+              style={{ opacity: i === cur ? 1 : 0, scale: i === cur ? "1" : "1.04" }}
             />
           ))}
           <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/10 to-black/70" />
 
-          <div key={cur} className="relative flex h-full min-h-[inherit] flex-col justify-between p-6 sm:p-9 lg:p-10">
+          <div key={cur} className="relative flex h-full min-h-[inherit] flex-col justify-between p-5 sm:p-7 lg:p-8">
             {/* Верх: параметры */}
-            <dl className="grid gap-5 animate-[pk-in_.6s_ease_both]">
+            <dl className="grid gap-4 animate-[pk-in_.9s_cubic-bezier(.22,.61,.36,1)_both]">
               <div>
-                <dt className="text-[10.5px] uppercase tracking-[0.18em] text-white/60 sm:text-[11px]">{en ? "Who it's for" : "Для кого"}</dt>
-                <dd className="mt-1.5 font-display text-[14px] uppercase tracking-[0.04em] sm:text-[17px]">{p.who[lang]}</dd>
+                <dt className="text-[10px] uppercase tracking-[0.18em] text-white/60">{en ? "Who it's for" : "Для кого"}</dt>
+                <dd className="mt-1 font-display text-[12.5px] uppercase tracking-[0.04em] sm:text-[14px]">{p.who[lang]}</dd>
               </div>
               <div>
-                <dt className="text-[10.5px] uppercase tracking-[0.18em] text-white/60 sm:text-[11px]">{en ? "Price" : "Стоимость"}</dt>
-                <dd className="mt-1.5 font-display text-[14px] uppercase tracking-[0.04em] sm:text-[17px]">{en ? "from " : "от "}{p.price[lang]}</dd>
+                <dt className="text-[10px] uppercase tracking-[0.18em] text-white/60">{en ? "Price" : "Стоимость"}</dt>
+                <dd className="mt-1 font-display text-[12.5px] uppercase tracking-[0.04em] sm:text-[14px]">{en ? "from " : "от "}{p.price[lang]}</dd>
               </div>
             </dl>
 
             {/* Низ: состав и кнопка */}
-            <div className="mt-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-              <ul className="flex flex-col gap-2.5">
+            <div className="mt-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+              <ul className="flex flex-col gap-2">
                 {p.items.map((it, k) => (
-                  <li key={it.ru} className="flex items-start gap-3 font-display text-[13px] uppercase leading-[1.35] tracking-[0.03em] animate-[pk-in_.6s_ease_both] sm:text-[15px]" style={{ animationDelay: `${0.1 + k * 0.07}s` }}>
-                    <span aria-hidden className="mt-[5px] h-2 w-2 shrink-0 rounded-[2px] bg-white" />
+                  <li key={it.ru} className="flex items-start gap-3 font-display text-[11.5px] uppercase leading-[1.35] tracking-[0.03em] animate-[pk-in_.9s_cubic-bezier(.22,.61,.36,1)_both] sm:text-[13px]" style={{ animationDelay: `${0.15 + k * 0.09}s` }}>
+                    <span aria-hidden className="mt-[4px] h-1.5 w-1.5 shrink-0 rounded-[2px] bg-white" />
                     {it[lang]}
                   </li>
                 ))}
               </ul>
-              <a href="#calc" className="flex shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-[12px] border border-white bg-white px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white sm:text-[12px]">
+              <a href="#calc" className="flex shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-[12px] border border-white bg-white px-5 py-3 text-[10.5px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-500 hover:bg-transparent hover:text-white sm:text-[11px]">
                 {en ? "Calculate the budget" : "Рассчитать бюджет"}
                 <span aria-hidden>→</span>
               </a>
@@ -147,7 +151,7 @@ export default function ConciergePackages() {
           </div>
         </div>
       </div>
-      <style>{`@keyframes pk-in { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }`}</style>
+      <style>{`@keyframes pk-in { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }`}</style>
     </section>
   );
 }
