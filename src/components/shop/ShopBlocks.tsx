@@ -7,7 +7,7 @@
 //  GiftBox        — подарочный бокс: 3 фото, текст и связь с менеджером;
 //  CertBuilder    — конструктор сертификата: открытка, сумма, пожелание, день и час → CRM.
 // Цены категорий считаются из каталога. TODO: фото бокса, открыток и суммы сертификатов — от заказчицы.
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { sendLead } from "@/lib/sendLead";
@@ -224,66 +224,46 @@ export function MerchLine() {
   );
 }
 
-// ——— Подарочный бокс — «веер», как карточки команды на странице «Вакансии» ———
-// Три фото лежат стопкой по центру (крайние наклонены); пока блок въезжает в экран, они
-// разъезжаются в ряд и выпрямляются. Затем снизу проявляются заголовок, текст и кнопка.
-// Наведение — фото поднимается и медленно приближается. Телефон — фото в ряд без веера.
+// ——— Подарочный бокс — раскрывающиеся фото-панели (как «Для кого» у консьержа) ———
+// Слева три фото в ряд: выбранное (наведение / касание) плавно растягивается, остальные сужаются;
+// справа — заголовок, текст и кнопка связи с менеджером. Панели появляются по очереди.
 const BOX_PHOTOS = ["/assets/alis/img_6048.jpg", "/assets/alis/img_1855.jpg", "/assets/alis/img_5910.webp"];
 export function GiftBox() {
   const { lang } = useLang();
   const en = lang === "en";
-  const box = useRef<HTMLDivElement>(null);
-  const fans = useRef<(HTMLDivElement | null)[]>([]);
-  const [done, setDone] = useState(false);
-  useEffect(() => {
-    const root = box.current;
-    if (!root) return;
-    const mq = matchMedia("(min-width: 640px)");
-    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let raf = 0;
-    const upd = () => {
-      raf = 0;
-      const r = root.getBoundingClientRect();
-      const raw = (innerHeight * 0.95 - r.top) / (innerHeight * 0.6);
-      const p = still || !mq.matches ? 1 : Math.min(1, Math.max(0, raw));
-      const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
-      fans.current.forEach((el, i) => {
-        if (!el) return;
-        const k = 1 - i; // 1, 0, -1 — левое, центр, правое
-        const w = el.offsetWidth;
-        el.style.transform = e >= 1 ? "" : `translate3d(${k * (w + 12) * (1 - e) * 0.92}px, ${Math.abs(k) * 26 * (1 - e)}px, 0) rotate(${-k * 12 * (1 - e)}deg)`;
-        el.style.zIndex = i === 1 ? "2" : "1";
-      });
-      if (p >= 0.85) setDone(true);
-    };
-    const on = () => { if (!raf) raf = requestAnimationFrame(upd); };
-    upd();
-    addEventListener("scroll", on, { passive: true });
-    addEventListener("resize", on);
-    return () => { removeEventListener("scroll", on); removeEventListener("resize", on); cancelAnimationFrame(raf); };
-  }, []);
+  const [cur, setCur] = useState(0);
 
   return (
     <section id="box" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto w-[96%] max-w-[1200px]">
-        <div ref={box} className="grid grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
-          {BOX_PHOTOS.map((src, i) => (
-            <div key={src} ref={(el) => { fans.current[i] = el; }} className="relative will-change-transform">
-              <div className="group relative aspect-[3/4] overflow-hidden rounded-[20px] shadow-[0_24px_60px_-30px_rgba(23,25,26,0.4)] transition-[translate] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] hover:-translate-y-3">
+      <div className="mx-auto grid w-[96%] max-w-[1760px] items-center gap-6 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:gap-14">
+        {/* Фото-панели */}
+        <div className="flex h-[300px] gap-2 sm:h-[400px] lg:h-[min(520px,62vh)] lg:gap-3">
+          {BOX_PHOTOS.map((src, i) => {
+            const on = i === cur;
+            return (
+              <button
+                key={src}
+                type="button"
+                onMouseEnter={() => setCur(i)}
+                onFocus={() => setCur(i)}
+                onClick={() => setCur(i)}
+                aria-pressed={on}
+                aria-label={en ? `Gift box photo ${i + 1}` : `Фото подарочного бокса ${i + 1}`}
+                className="r-reveal group relative min-w-0 overflow-hidden rounded-[20px] transition-[flex-grow] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)]"
+                style={{ flexGrow: on ? 4 : 1, flexBasis: 0 }}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt={en ? "ÁLIS BEAUTY gift box" : "Подарочный бокс ÁLIS BEAUTY"} loading="lazy" decoding="async" draggable={false} className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-[1.06]" />
-              </div>
-            </div>
-          ))}
+                <img src={src} alt="" loading="lazy" decoding="async" draggable={false} className={`absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(.22,.61,.36,1)] ${on ? "scale-100" : "scale-110"}`} />
+                <div aria-hidden className={`absolute inset-0 bg-black transition-opacity duration-700 ${on ? "opacity-0" : "opacity-25 group-hover:opacity-10"}`} />
+              </button>
+            );
+          })}
         </div>
 
-        {/* Текст и кнопка — проявляются, когда фото встали в ряд */}
-        <div
-          className="mx-auto mt-8 flex max-w-[560px] flex-col items-center text-center transition-[opacity,translate] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] lg:mt-12"
-          style={{ opacity: done ? 1 : 0, translate: done ? "0 0" : "0 18px" }}
-        >
+        {/* Текст и кнопка */}
+        <div className="r-reveal flex flex-col items-center text-center lg:items-start lg:text-left">
           <h2 className="text-[#17191a]">{en ? "Beauty gift box" : "Подарочный beauty-бокс"}</h2>
-          <p className="mt-3 !text-[12.5px] leading-[1.6] text-[#17191a]/65 sm:!text-[15px]">
+          <p className="mt-3 max-w-[46ch] !text-[12.5px] leading-[1.6] text-[#17191a]/65 sm:!text-[15px]">
             {en
               ? "Contact a manager within 15 minutes to choose the packaging, contents and card, and discuss any details."
               : "Свяжитесь с менеджером за 15 минут, чтобы выбрать упаковку, наполнение, открытку и обсудить необходимые детали."}
