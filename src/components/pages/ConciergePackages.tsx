@@ -78,7 +78,7 @@ export default function ConciergePackages() {
         <h2 className="sr-only">{en ? "Service packages" : "Пакеты услуг"}</h2>
 
         {/* Слева: список тарифов */}
-        <div className="r-reveal rounded-[24px] bg-[#f6f4f1] px-5 py-1 sm:px-8 lg:px-10 lg:py-2">
+        <div className="r-reveal rounded-[24px] bg-[#f6f4f1] px-6 py-2 sm:px-10 lg:px-12 lg:py-4">
           {PACKS.map((x, i) => {
             const on = i === cur;
             return (
@@ -89,7 +89,7 @@ export default function ConciergePackages() {
                 onFocus={() => setCur(i)}
                 onClick={() => setCur(i)}
                 aria-pressed={on}
-                className={`group flex w-full items-center justify-between gap-6 py-4 text-left sm:py-5 lg:py-6 ${i > 0 ? "border-t border-[#17191a]/10" : ""}`}
+                className={`group flex w-full items-center justify-between gap-6 py-5 text-left sm:py-7 lg:py-8 ${i > 0 ? "border-t border-[#17191a]/10" : ""}`}
               >
                 <span className="min-w-0">
                   <span className={`block font-display text-[22px] uppercase leading-none tracking-[0.05em] transition-colors duration-700 ease-[cubic-bezier(.22,.61,.36,1)] sm:text-[28px] lg:text-[clamp(24px,2.1vw,36px)] ${on ? "text-[#17191a]" : "text-[#17191a]/30 group-hover:text-[#17191a]/60"}`}>
@@ -104,7 +104,7 @@ export default function ConciergePackages() {
         </div>
 
         {/* Справа: фото и описание выбранного тарифа */}
-        <div className="r-reveal relative min-h-[400px] overflow-hidden rounded-[24px] bg-[#17191a] text-white sm:min-h-[460px] lg:min-h-0">
+        <div className="r-reveal relative min-h-[460px] overflow-hidden rounded-[24px] bg-[#17191a] text-white sm:min-h-[540px] lg:min-h-0">
           {PACKS.map((x, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -120,7 +120,7 @@ export default function ConciergePackages() {
           ))}
           <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/10 to-black/70" />
 
-          <div key={cur} className="relative flex h-full min-h-[inherit] flex-col justify-between p-5 sm:p-7 lg:p-8">
+          <div key={cur} className="relative flex h-full min-h-[inherit] flex-col justify-between p-6 sm:p-9 lg:p-10">
             {/* Верх: параметры */}
             <dl className="grid gap-4 animate-[pk-in_.9s_cubic-bezier(.22,.61,.36,1)_both]">
               <div>
