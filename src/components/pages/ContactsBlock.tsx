@@ -1,20 +1,21 @@
 "use client";
-// СТРАНИЦА КОНТАКТОВ — карта (OpenStreetMap, ч/б) на весь блок (подгружается, только когда блок в кадре) и поверх
+// СТРАНИЦА КОНТАКТОВ — карта в стиле 2ГИС на весь блок и поверх
 // неё справа тёмная карточка: салон красоты и консьерж-сервис, адрес, часы, выезд, маршрут.
 // Названия соцсетей и мессенджеров на сайте не пишем (требование заказчицы).
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
+import TileMap from "@/components/ui/TileMap";
 
 const PHONE = "+7 988 888 77 58";
 const PHONE_RAW = "79888887758";
 const PHONE_SERVICE = "+7 988 888 77 28";
 const PHONE_SERVICE_RAW = "79888887728";
 const EMAIL = "alisbeautyclub@gmail.com";
-const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
+const MAP_URL = "https://2gis.ru/novorossiysk/geo/37.782638%2C44.704933";
 // Маршрут и встроенная карта (центр чуть правее салона — чтобы метка не пряталась под карточкой)
-const ROUTE_URL = "https://yandex.ru/maps/?rtext=~44.704933%2C37.782638&rtt=auto";
-// Карта — OpenStreetMap (без рекламы, стабильнее Яндекса), в ч/б под стиль сайта; метка — салон
-const MAP_EMBED = "https://www.openstreetmap.org/export/embed.html?bbox=37.7700%2C44.6990%2C37.8100%2C44.7110&layer=mapnik&marker=44.704933%2C37.782638";
+// Карта и маршрут — 2ГИС (подложка из тайлов, без виджета и рекламы)
+const MAP_2GIS = "https://2gis.ru/novorossiysk/geo/37.782638%2C44.704933";
+const ROUTE_URL = "https://2gis.ru/novorossiysk/directions/points/%7C37.782638%2C44.704933";
 
 type Loc = { ru: string; en: string };
 type Row = { label: Loc; value: string; href?: string; external?: boolean };
@@ -88,7 +89,6 @@ export default function ContactsBlock() {
   // карточка контактов выезжает справа
   const box = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
-  const [mapReady, setMapReady] = useState(false);
   useEffect(() => {
     const el = box.current;
     if (!el) return;
@@ -104,24 +104,8 @@ export default function ContactsBlock() {
 
       <div ref={box} className="relative mx-auto w-[96%] max-w-[1760px] overflow-hidden rounded-[28px] bg-[#e9e6e1] lg:h-[clamp(480px,62vh,620px)]">
         {/* Карта: на телефоне — сверху, на компьютере — на весь блок */}
-        <div className="relative h-[320px] sm:h-[420px] lg:absolute lg:inset-0 lg:h-auto">
-          {/* Заглушка до загрузки карты */}
-          <div aria-hidden className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 lg:justify-start lg:pl-[22%] ${mapReady ? "opacity-0" : "opacity-100"}`}>
-            <span className="relative flex h-4 w-4">
-              <span className="absolute inset-0 animate-ping rounded-full bg-[#17191a]/30" />
-              <span className="relative h-4 w-4 rounded-full bg-[#17191a]" />
-            </span>
-          </div>
-          {inView && (
-            <iframe
-              title={t("Карта: ÁLIS BEAUTY, Новороссийск, ул. Пархоменко, 53", "Map: ÁLIS BEAUTY, Novorossiysk, Parkhomenko St., 53")}
-              referrerPolicy="no-referrer-when-downgrade"
-              src={MAP_EMBED}
-              loading="lazy"
-              onLoad={() => setMapReady(true)}
-              className={`absolute inset-0 h-full w-full border-0 grayscale contrast-[1.05] brightness-[1.03] transition-opacity duration-700 ${mapReady ? "opacity-100" : "opacity-0"}`}
-            />
-          )}
+        <div className="relative h-[320px] [--cx:50%] sm:h-[420px] lg:absolute lg:inset-0 lg:h-auto lg:[--cx:30%]">
+          <TileMap lat={44.704933} lon={37.782638} href={MAP_2GIS} label={t("ÁLIS BEAUTY на карте 2ГИС", "ÁLIS BEAUTY on the 2GIS map")} />
         </div>
 
         {/* Тёмная карточка с контактами — выезжает справа */}
