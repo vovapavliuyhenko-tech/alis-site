@@ -1,7 +1,8 @@
 "use client";
-// СТРАНИЦА КОНТАКТОВ — воздушно и минималистично, без встроенной карты (она долго грузилась):
-// заголовок по центру → две колонки (салон красоты / консьерж-сервис) с крупными телефонами.
+// СТРАНИЦА КОНТАКТОВ — карта на весь блок (подгружается, только когда блок в кадре) и поверх
+// неё справа тёмная карточка: салон красоты и консьерж-сервис, адрес, часы, выезд, маршрут.
 // Названия соцсетей и мессенджеров на сайте не пишем (требование заказчицы).
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 const PHONE = "+7 988 888 77 58";
@@ -10,6 +11,9 @@ const PHONE_SERVICE = "+7 988 888 77 28";
 const PHONE_SERVICE_RAW = "79888887728";
 const EMAIL = "alisbeautyclub@gmail.com";
 const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
+// Маршрут и встроенная карта (центр чуть правее салона — чтобы метка не пряталась под карточкой)
+const ROUTE_URL = "https://yandex.ru/maps/?rtext=~44.704933%2C37.782638&rtt=auto";
+const MAP_EMBED = "https://yandex.ru/map-widget/v1/?ll=37.7905%2C44.7049&z=15&pt=37.782638%2C44.704933%2Cpm2dgl";
 
 type Loc = { ru: string; en: string };
 type Row = { label: Loc; value: string; href?: string; external?: boolean };
@@ -80,77 +84,87 @@ export default function ContactsBlock() {
   ];
 
 
+  // Карта подгружается только когда блок попал в кадр (раньше встроенная карта тормозила страницу);
+  // карточка контактов выезжает справа
+  const box = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  const [mapReady, setMapReady] = useState(false);
+  useEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setInView(true); io.disconnect(); } }, { rootMargin: "200px 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <section className="bg-white pb-[clamp(72px,10vw,140px)] pt-24 lg:pt-40">
+    <section className="bg-white pb-[clamp(72px,10vw,140px)] pt-24 lg:pt-36">
       {/* Заголовок страницы — только для поисковиков и экранных чтецов (визуально убран по просьбе клиента) */}
       <h1 className="sr-only">{t("Контакты салона красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon contacts, Novorossiysk")}</h1>
 
-      {/* Две отдельные карточки: салон и консьерж-сервис */}
-      <div className="mx-auto grid w-[96%] max-w-[1760px] grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-5">
-        {COLS.map((c) => (
-          <div
-            key={c.title.ru}
-            // Отдельная карточка: белая, тонкая рамка, бордовая полоса слева (как раскрытая категория услуг)
-            className="r-reveal flex flex-col rounded-[12px] border border-[#17191a]/15 bg-white px-6 py-7 shadow-[inset_3px_0_0_#46131E,0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:px-10 lg:py-9"
-          >
-            <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-[#46131E]">{c.title[lang]}</p>
-            <a
-              href={`tel:+${c.phoneRaw}`}
-              className="mt-3.5 w-fit whitespace-nowrap font-display text-[24px] leading-none tracking-[0.01em] text-[#17191a] transition-colors hover:text-[#46131E] lg:text-[30px]"
-            >
-              {c.phone}
-            </a>
-            {/* Написать в мессенджер и соцсеть — круглые кнопки с иконками */}
-            <div className="mt-4 flex gap-2">
-              <a href={c.wa} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#17191a]/35 text-[#17191a] transition-colors duration-300 hover:border-[#17191a] hover:bg-[#17191a] hover:text-white">
-                <IconWa />
-              </a>
-              <a href={c.ig} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page")} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#17191a]/35 text-[#17191a] transition-colors duration-300 hover:border-[#17191a] hover:bg-[#17191a] hover:text-white">
-                <IconIg />
-              </a>
-            </div>
-
-            <dl className="mt-6 space-y-3.5">
-              {c.rows.map((r) => (
-                <div key={r.label.ru}>
-                  <dt className="text-[11px] uppercase tracking-[0.16em] text-[#17191a]/55">{r.label[lang]}</dt>
-                  <dd className="mt-1 text-[14px] leading-[1.5] lg:text-[15px] text-[#17191a]">
-                    {r.href ? (
-                      <a
-                        href={r.href}
-                        {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                        className="underline decoration-[#17191a]/20 underline-offset-[6px] transition-colors hover:decoration-[#46131E]"
-                      >
-                        {r.value}
-                      </a>
-                    ) : (
-                      r.value
-                    )}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-
-            <div className="mt-6 flex flex-col">
-              {c.links.map((l) => {
-                const ext = l.href.startsWith("http");
-                return (
-                  <a
-                    key={l.href}
-                    href={l.href}
-                    {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="group flex items-center justify-between gap-4 border-t border-[#17191a]/10 py-3 text-[14px] text-[#17191a] transition-colors last:border-b hover:text-[#46131E]"
-                  >
-                    {l.label[lang]}
-                    <Arrow />
-                  </a>
-                );
-              })}
-            </div>
+      <div ref={box} className="relative mx-auto w-[96%] max-w-[1760px] overflow-hidden rounded-[28px] bg-[#e9e6e1] lg:h-[clamp(560px,72vh,720px)]">
+        {/* Карта: на телефоне — сверху, на компьютере — на весь блок */}
+        <div className="relative h-[320px] sm:h-[420px] lg:absolute lg:inset-0 lg:h-auto">
+          {/* Заглушка до загрузки карты */}
+          <div aria-hidden className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 lg:justify-start lg:pl-[22%] ${mapReady ? "opacity-0" : "opacity-100"}`}>
+            <span className="relative flex h-4 w-4">
+              <span className="absolute inset-0 animate-ping rounded-full bg-[#17191a]/30" />
+              <span className="relative h-4 w-4 rounded-full bg-[#17191a]" />
+            </span>
           </div>
-        ))}
-      </div>
+          {inView && (
+            <iframe
+              title={t("Карта: ÁLIS BEAUTY, Новороссийск, ул. Пархоменко, 53", "Map: ÁLIS BEAUTY, Novorossiysk, Parkhomenko St., 53")}
+              src={MAP_EMBED}
+              loading="lazy"
+              onLoad={() => setMapReady(true)}
+              className={`absolute inset-0 h-full w-full border-0 grayscale-[0.85] transition-opacity duration-700 ${mapReady ? "opacity-100" : "opacity-0"}`}
+            />
+          )}
+        </div>
 
+        {/* Тёмная карточка с контактами — выезжает справа */}
+        <div
+          className="relative bg-[#17191a] p-6 text-white transition-[opacity,translate] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] sm:p-8 lg:absolute lg:bottom-6 lg:right-6 lg:top-6 lg:w-[min(520px,42%)] lg:overflow-y-auto lg:rounded-[22px] lg:p-10"
+          style={{ opacity: inView ? 1 : 0, translate: inView ? "0 0" : "40px 0" }}
+        >
+          <p className="text-[12px] leading-[1.6] text-white/60 lg:text-[13px]">
+            {t("Салон красоты в Новороссийске и международная beauty-команда для событий.", "A beauty salon in Novorossiysk and an international beauty team for events.")}
+          </p>
+          {COLS.map((c, i) => (
+            <div key={c.title.ru} className={i > 0 ? "mt-6 border-t border-white/12 pt-6" : "mt-6"}>
+              <p className="text-[10.5px] uppercase tracking-[0.18em] text-white/50 sm:text-[11px]">{c.title[lang]}</p>
+              <div className="mt-2.5 flex items-center justify-between gap-4">
+                <a href={`tel:+${c.phoneRaw}`} className="whitespace-nowrap font-display text-[22px] leading-none tracking-[0.01em] text-white transition-opacity hover:opacity-70 lg:text-[26px]">{c.phone}</a>
+                <div className="flex gap-2">
+                  <a href={c.wa} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us") + " — " + c.title[lang]} className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-500 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a]">
+                    <IconWa />
+                  </a>
+                  <a href={c.ig} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page") + " — " + c.title[lang]} className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-500 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a]">
+                    <IconIg />
+                  </a>
+                </div>
+              </div>
+              <dl className="mt-4 space-y-2.5">
+                {c.rows.map((r) => (
+                  <div key={r.label.ru} className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-4">
+                    <dt className="w-16 shrink-0 text-[10.5px] uppercase tracking-[0.16em] text-white/45">{r.label[lang]}</dt>
+                    <dd className="text-[13px] leading-[1.5] text-white/85 lg:text-[14px]">
+                      {r.href ? (
+                        <a href={r.href} {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="underline decoration-white/25 underline-offset-[5px] transition-colors hover:decoration-white">{r.value}</a>
+                      ) : r.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
+          <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="group mt-8 flex items-center justify-between rounded-[12px] border border-white bg-white px-5 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white">
+            {t("Построить маршрут", "Get directions")}
+            <Arrow />
+          </a>
+        </div>
+      </div>
     </section>
   );
 }
