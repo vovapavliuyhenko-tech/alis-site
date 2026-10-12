@@ -7,7 +7,7 @@
 //  GiftBox        — подарочный бокс: 3 фото, текст и связь с менеджером;
 //  CertBuilder    — конструктор сертификата: открытка, сумма, пожелание, день и час → CRM.
 // Цены категорий считаются из каталога. TODO: фото бокса, открыток и суммы сертификатов — от заказчицы.
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { sendLead } from "@/lib/sendLead";
@@ -231,7 +231,11 @@ const BOX_PHOTOS = ["/assets/alis/img_6048.jpg", "/assets/alis/img_1855.jpg", "/
 export function GiftBox() {
   const { lang } = useLang();
   const en = lang === "en";
-  const [cur, setCur] = useState(0);
+  const [cur, setCurNow] = useState(0);
+  // Наведение с небольшой задержкой — панели не дёргаются, когда мышь просто проходит мимо
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const setCur = (i: number) => { if (timer.current) clearTimeout(timer.current); setCurNow(i); };
+  const hoverCur = (i: number) => { if (timer.current) clearTimeout(timer.current); timer.current = setTimeout(() => setCurNow(i), 140); };
 
   return (
     <section id="box" className="scroll-mt-24 bg-white section-y">
@@ -244,17 +248,17 @@ export function GiftBox() {
               <button
                 key={src}
                 type="button"
-                onMouseEnter={() => setCur(i)}
+                onMouseEnter={() => hoverCur(i)}
                 onFocus={() => setCur(i)}
                 onClick={() => setCur(i)}
                 aria-pressed={on}
                 aria-label={en ? `Gift box photo ${i + 1}` : `Фото подарочного бокса ${i + 1}`}
-                className="r-reveal group relative min-w-0 overflow-hidden rounded-[20px] transition-[flex-grow] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)]"
+                className="r-reveal group relative min-w-0 overflow-hidden rounded-[20px] transition-[flex-grow] duration-[1300ms] ease-[cubic-bezier(.65,0,.35,1)] will-change-[flex-grow]"
                 style={{ flexGrow: on ? 4 : 1, flexBasis: 0 }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="" loading="lazy" decoding="async" draggable={false} className={`absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(.22,.61,.36,1)] ${on ? "scale-100" : "scale-110"}`} />
-                <div aria-hidden className={`absolute inset-0 bg-black transition-opacity duration-700 ${on ? "opacity-0" : "opacity-25 group-hover:opacity-10"}`} />
+                <img src={src} alt="" loading="lazy" decoding="async" draggable={false} className={`absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-[cubic-bezier(.65,0,.35,1)] ${on ? "scale-100" : "scale-[1.06]"}`} />
+                <div aria-hidden className={`absolute inset-0 bg-black transition-opacity duration-[1300ms] ease-[cubic-bezier(.65,0,.35,1)] ${on ? "opacity-0" : "opacity-20"}`} />
               </button>
             );
           })}
