@@ -74,7 +74,6 @@ export default function ContactsBlock() {
       ig: "https://www.instagram.com/alisbeauty.global",
       rows: [
         { label: { ru: "Почта", en: "E-mail" }, value: EMAIL, href: `mailto:${EMAIL}` },
-        { label: { ru: "Выезд", en: "On location" }, value: t("Мастера приедут туда, где вам удобно", "Our artists come wherever suits you") },
       ],
       links: [
         { label: { ru: "Консьерж-сервис: @alisbeauty.global", en: "Concierge service: @alisbeauty.global" }, href: "https://www.instagram.com/alisbeauty.global" },
@@ -102,7 +101,7 @@ export default function ContactsBlock() {
       {/* Заголовок страницы — только для поисковиков и экранных чтецов (визуально убран по просьбе клиента) */}
       <h1 className="sr-only">{t("Контакты салона красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon contacts, Novorossiysk")}</h1>
 
-      <div ref={box} className="relative mx-auto w-[96%] max-w-[1760px] overflow-hidden rounded-[28px] bg-[#e9e6e1] lg:h-[clamp(560px,72vh,720px)]">
+      <div ref={box} className="relative mx-auto w-[96%] max-w-[1760px] overflow-hidden rounded-[28px] bg-[#e9e6e1] lg:h-[clamp(480px,62vh,620px)]">
         {/* Карта: на телефоне — сверху, на компьютере — на весь блок */}
         <div className="relative h-[320px] sm:h-[420px] lg:absolute lg:inset-0 lg:h-auto">
           {/* Заглушка до загрузки карты */}
@@ -125,31 +124,28 @@ export default function ContactsBlock() {
 
         {/* Тёмная карточка с контактами — выезжает справа */}
         <div
-          className="relative bg-[#17191a] p-6 text-white transition-[opacity,translate] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] sm:p-8 lg:absolute lg:bottom-6 lg:right-6 lg:top-6 lg:w-[min(520px,42%)] lg:overflow-y-auto lg:rounded-[22px] lg:p-10"
+          className="relative bg-[#17191a] p-6 text-white transition-[opacity,translate] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] sm:p-7 lg:absolute lg:right-6 lg:top-6 lg:w-[min(440px,36%)] lg:rounded-[22px] lg:p-8"
           style={{ opacity: inView ? 1 : 0, translate: inView ? "0 0" : "40px 0" }}
         >
-          <p className="text-[12px] leading-[1.6] text-white/60 lg:text-[13px]">
-            {t("Салон красоты в Новороссийске и международная beauty-команда для событий.", "A beauty salon in Novorossiysk and an international beauty team for events.")}
-          </p>
           {COLS.map((c, i) => (
-            <div key={c.title.ru} className={i > 0 ? "mt-6 border-t border-white/12 pt-6" : "mt-6"}>
+            <div key={c.title.ru} className={i > 0 ? "mt-5 border-t border-white/12 pt-5" : ""}>
               <p className="text-[10.5px] uppercase tracking-[0.18em] text-white/50 sm:text-[11px]">{c.title[lang]}</p>
-              <div className="mt-2.5 flex items-center justify-between gap-4">
-                <a href={`tel:+${c.phoneRaw}`} className="whitespace-nowrap font-display text-[22px] leading-none tracking-[0.01em] text-white transition-opacity hover:opacity-70 lg:text-[26px]">{c.phone}</a>
+              <div className="mt-2 flex items-center justify-between gap-4">
+                <a href={`tel:+${c.phoneRaw}`} className="whitespace-nowrap font-display text-[20px] leading-none tracking-[0.01em] text-white transition-opacity hover:opacity-70 lg:text-[22px]">{c.phone}</a>
                 <div className="flex gap-2">
-                  <a href={c.wa} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us") + " — " + c.title[lang]} className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-500 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a]">
+                  <a href={c.wa} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us") + " — " + c.title[lang]} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-500 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a]">
                     <IconWa />
                   </a>
-                  <a href={c.ig} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page") + " — " + c.title[lang]} className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-500 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a]">
+                  <a href={c.ig} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page") + " — " + c.title[lang]} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-500 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a]">
                     <IconIg />
                   </a>
                 </div>
               </div>
-              <dl className="mt-4 space-y-2.5">
+              <dl className="mt-3 space-y-1.5">
                 {c.rows.map((r) => (
                   <div key={r.label.ru} className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-4">
                     <dt className="w-16 shrink-0 text-[10.5px] uppercase tracking-[0.16em] text-white/45">{r.label[lang]}</dt>
-                    <dd className="text-[13px] leading-[1.5] text-white/85 lg:text-[14px]">
+                    <dd className="text-[12.5px] leading-[1.5] text-white/80 lg:text-[13px]">
                       {r.href ? (
                         <a href={r.href} {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="underline decoration-white/25 underline-offset-[5px] transition-colors hover:decoration-white">{r.value}</a>
                       ) : r.value}
@@ -159,7 +155,7 @@ export default function ContactsBlock() {
               </dl>
             </div>
           ))}
-          <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="group mt-8 flex items-center justify-between rounded-[12px] border border-white bg-white px-5 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white">
+          <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="group mt-6 flex items-center justify-between rounded-[12px] border border-white bg-white px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white">
             {t("Построить маршрут", "Get directions")}
             <Arrow />
           </a>
