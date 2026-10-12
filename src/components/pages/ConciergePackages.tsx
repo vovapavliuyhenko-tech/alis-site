@@ -127,10 +127,6 @@ export default function ConciergePackages() {
                 <dt className="text-[10px] uppercase tracking-[0.18em] text-white/60">{en ? "Who it's for" : "Для кого"}</dt>
                 <dd className="mt-1 font-display text-[12.5px] uppercase tracking-[0.04em] sm:text-[14px]">{p.who[lang]}</dd>
               </div>
-              <div>
-                <dt className="text-[10px] uppercase tracking-[0.18em] text-white/60">{en ? "Price" : "Стоимость"}</dt>
-                <dd className="mt-1 font-display text-[12.5px] uppercase tracking-[0.04em] sm:text-[14px]">{en ? "from " : "от "}{p.price[lang]}</dd>
-              </div>
             </dl>
 
             {/* Низ: состав и кнопка */}
