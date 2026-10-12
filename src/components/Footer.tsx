@@ -126,10 +126,10 @@ export default function Footer() {
                 </button>
                 <div className={`grid transition-[grid-template-rows] duration-[600ms] ease-[cubic-bezier(.22,.61,.36,1)] ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
                   <div className="overflow-hidden">
-                    <div className={`grid gap-2 pb-5 ${sec.key === "menu" ? "grid-cols-2" : "grid-cols-1"}`}>
+                    <div className="flex flex-wrap gap-1.5 pb-5">
                       {sec.items.map((it, k) => {
-                        // Пункты — белые скруглённые кнопки (как варианты ответа в анкете консьержа)
-                        const cls = "flex min-h-[44px] items-center justify-center rounded-[14px] px-3 py-2.5 text-center text-[12px] leading-[1.3] transition-[opacity,translate,background-color,color,border-color] duration-500 sm:min-h-[48px] sm:rounded-[16px] sm:text-[13px]";
+                        // Пункты — небольшие белые скруглённые кнопки по размеру текста
+                        const cls = "inline-flex items-center rounded-full px-3.5 py-1.5 text-[11.5px] leading-[1.3] transition-[opacity,translate,background-color,color,border-color] duration-500 sm:text-[12px]";
                         const st = { opacity: isOpen ? 1 : 0, translate: isOpen ? "0 0" : "0 8px", transitionDelay: isOpen ? `${0.12 + k * 0.04}s` : "0s" };
                         return it.href ? (
                           <a key={k} href={it.href} {...(it.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${cls} border border-white bg-white text-[#17191a] hover:bg-transparent hover:text-white`} style={st}>{it.label}</a>
