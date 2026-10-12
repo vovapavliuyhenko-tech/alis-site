@@ -1,5 +1,5 @@
 "use client";
-// СТРАНИЦА КОНТАКТОВ — карта на весь блок (подгружается, только когда блок в кадре) и поверх
+// СТРАНИЦА КОНТАКТОВ — карта (OpenStreetMap, ч/б) на весь блок (подгружается, только когда блок в кадре) и поверх
 // неё справа тёмная карточка: салон красоты и консьерж-сервис, адрес, часы, выезд, маршрут.
 // Названия соцсетей и мессенджеров на сайте не пишем (требование заказчицы).
 import { useEffect, useRef, useState } from "react";
@@ -13,7 +13,8 @@ const EMAIL = "alisbeautyclub@gmail.com";
 const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
 // Маршрут и встроенная карта (центр чуть правее салона — чтобы метка не пряталась под карточкой)
 const ROUTE_URL = "https://yandex.ru/maps/?rtext=~44.704933%2C37.782638&rtt=auto";
-const MAP_EMBED = "https://yandex.ru/map-widget/v1/?ll=37.7905%2C44.7049&z=15&pt=37.782638%2C44.704933%2Cpm2dgl";
+// Карта — OpenStreetMap (без рекламы, стабильнее Яндекса), в ч/б под стиль сайта; метка — салон
+const MAP_EMBED = "https://www.openstreetmap.org/export/embed.html?bbox=37.7700%2C44.6990%2C37.8100%2C44.7110&layer=mapnik&marker=44.704933%2C37.782638";
 
 type Loc = { ru: string; en: string };
 type Row = { label: Loc; value: string; href?: string; external?: boolean };
@@ -114,21 +115,22 @@ export default function ContactsBlock() {
           {inView && (
             <iframe
               title={t("Карта: ÁLIS BEAUTY, Новороссийск, ул. Пархоменко, 53", "Map: ÁLIS BEAUTY, Novorossiysk, Parkhomenko St., 53")}
+              referrerPolicy="no-referrer-when-downgrade"
               src={MAP_EMBED}
               loading="lazy"
               onLoad={() => setMapReady(true)}
-              className={`absolute inset-0 h-full w-full border-0 grayscale-[0.85] transition-opacity duration-700 ${mapReady ? "opacity-100" : "opacity-0"}`}
+              className={`absolute inset-0 h-full w-full border-0 grayscale contrast-[1.05] brightness-[1.03] transition-opacity duration-700 ${mapReady ? "opacity-100" : "opacity-0"}`}
             />
           )}
         </div>
 
         {/* Тёмная карточка с контактами — выезжает справа */}
         <div
-          className="relative bg-[#17191a] p-6 text-white transition-[opacity,translate] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] sm:p-7 lg:absolute lg:right-6 lg:top-6 lg:w-[min(440px,36%)] lg:rounded-[22px] lg:p-8"
+          className="relative bg-[#17191a] p-6 text-white transition-[opacity,translate] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] flex flex-col sm:p-7 lg:absolute lg:bottom-6 lg:right-6 lg:top-6 lg:w-[min(440px,36%)] lg:rounded-[22px] lg:p-9"
           style={{ opacity: inView ? 1 : 0, translate: inView ? "0 0" : "40px 0" }}
         >
           {COLS.map((c, i) => (
-            <div key={c.title.ru} className={i > 0 ? "mt-5 border-t border-white/12 pt-5" : ""}>
+            <div key={c.title.ru} className={i > 0 ? "mt-6 border-t border-white/12 pt-6 lg:mt-8 lg:pt-8" : ""}>
               <p className="text-[10.5px] uppercase tracking-[0.18em] text-white/50 sm:text-[11px]">{c.title[lang]}</p>
               <div className="mt-2 flex items-center justify-between gap-4">
                 <a href={`tel:+${c.phoneRaw}`} className="whitespace-nowrap font-display text-[20px] leading-none tracking-[0.01em] text-white transition-opacity hover:opacity-70 lg:text-[22px]">{c.phone}</a>
@@ -155,7 +157,7 @@ export default function ContactsBlock() {
               </dl>
             </div>
           ))}
-          <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="group mt-6 flex items-center justify-between rounded-[12px] border border-white bg-white px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white">
+          <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="group mt-6 flex items-center justify-between rounded-[12px] lg:mt-auto border border-white bg-white px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white">
             {t("Построить маршрут", "Get directions")}
             <Arrow />
           </a>
