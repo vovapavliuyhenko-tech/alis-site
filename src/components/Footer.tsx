@@ -126,14 +126,15 @@ export default function Footer() {
                 </button>
                 <div className={`grid transition-[grid-template-rows] duration-[600ms] ease-[cubic-bezier(.22,.61,.36,1)] ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
                   <div className="overflow-hidden">
-                    <div className={`pb-5 ${sec.key === "menu" ? "grid grid-cols-2 gap-x-4 gap-y-2" : "flex flex-col gap-2"}`}>
+                    <div className={`grid gap-2 pb-5 ${sec.key === "menu" ? "grid-cols-2" : "grid-cols-1"}`}>
                       {sec.items.map((it, k) => {
-                        const cls = "w-fit text-[12px] transition-[opacity,translate,color] duration-500 sm:text-[13px]";
+                        // Пункты — белые скруглённые кнопки (как варианты ответа в анкете консьержа)
+                        const cls = "flex min-h-[44px] items-center justify-center rounded-[14px] px-3 py-2.5 text-center text-[12px] leading-[1.3] transition-[opacity,translate,background-color,color,border-color] duration-500 sm:min-h-[48px] sm:rounded-[16px] sm:text-[13px]";
                         const st = { opacity: isOpen ? 1 : 0, translate: isOpen ? "0 0" : "0 8px", transitionDelay: isOpen ? `${0.12 + k * 0.04}s` : "0s" };
                         return it.href ? (
-                          <a key={k} href={it.href} {...(it.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${cls} text-[#f4efe6]/80 hover:text-[#f4efe6]`} style={st}>{it.label}</a>
+                          <a key={k} href={it.href} {...(it.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${cls} border border-white bg-white text-[#17191a] hover:bg-transparent hover:text-white`} style={st}>{it.label}</a>
                         ) : (
-                          <p key={k} className={`${cls} text-[#f4efe6]/55`} style={st}>{it.label}</p>
+                          <p key={k} className={`${cls} border border-white/20 text-white/70`} style={st}>{it.label}</p>
                         );
                       })}
                     </div>
