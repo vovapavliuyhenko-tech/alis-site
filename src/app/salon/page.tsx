@@ -284,10 +284,6 @@ export default function SalonPage() {
           sectionId="gallery"
           items={["/assets/alis/img_6048.jpg", "/assets/alis/img_8578.jpg", "/assets/alis/img_3283.jpg", "/assets/alis/img_2672.jpg", "/assets/alis/img_5910.webp", "/assets/alis/img_1855.jpg"]}
           title={{ ru: "Атмосфера, в которую хочется вернуться", en: "An atmosphere you want to come back to" }}
-          text={{
-            ru: "Гости говорят, что чувствуют себя окрылёнными после процедур, — а мы делаем всё, чтобы так было каждый раз.",
-            en: "Guests say they feel uplifted after their treatments — and we do everything to make it so every time.",
-          }}
         />
 
         {/* 7 — Отзывы — тот же блок, что на главной */}
