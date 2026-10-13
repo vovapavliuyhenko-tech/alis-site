@@ -3,7 +3,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
-import LoyaltyProgram from "@/components/pages/LoyaltyProgram";
+// Тот же блок, что на странице салона: «500 ₽», форма «для себя / для подруги», три бонуса, сертификат
+import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/loyalty" },
@@ -22,7 +23,7 @@ export default function LoyaltyPage() {
       {/* Маркер конца обложки — после него у шапки появляется подложка */}
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white page-end">
-        <LoyaltyProgram />
+        <LoyaltyCerts />
       </div>
       <Footer />
     </main>
