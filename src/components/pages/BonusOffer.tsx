@@ -62,9 +62,9 @@ export default function BonusOffer() {
   return (
     <section ref={box} id="bonus" className="scroll-mt-24 bg-white section-y">
       {/* Слева — крупная «500 ₽», справа — заголовок, текст и форма (на телефоне — друг под другом) */}
-      <div className="r-reveal grid w-full items-center gap-8 rounded-[28px] bg-white px-[4%] py-16 sm:px-6 text-center md:grid-cols-2 md:gap-12 md:px-12 md:text-left lg:px-24 lg:py-24">
+      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] items-center gap-8 rounded-[28px] bg-white px-[4%] py-16 sm:px-6 text-center md:grid-cols-2 md:gap-12 md:px-12 md:text-left lg:px-24 lg:py-24">
         <div className="flex flex-col items-center md:items-start">
-          <p className="text-[12px] uppercase tracking-[0.18em] text-[#17191a]/60">{en ? "A gift from ÁLIS BEAUTY" : "Комплимент от ÁLIS BEAUTY"}</p>
+          <p className="text-[10.5px] uppercase tracking-[0.2em] text-[#17191a]/45 lg:text-[11px]">[ {en ? "A gift from ÁLIS BEAUTY" : "Комплимент от ÁLIS BEAUTY"} ]</p>
           <p aria-hidden className="mt-4 font-display !text-[52px] font-extralight leading-none tracking-[0.01em] text-[#17191a] tabular-nums sm:!text-[96px] lg:!text-[150px]">
             {/* «₽» вынесен из потока, чтобы по центру стояла сама цифра */}
             <span className="relative inline-block">{n}<span className="absolute left-full top-0 ml-1 !text-[22px] sm:!text-[36px] lg:!text-[52px]">₽</span></span>

@@ -266,11 +266,11 @@ export function GiftBox() {
 
   return (
     <section id="box" className="scroll-mt-24 bg-white section-y">
-      <div className="mx-auto w-[96%] max-w-[1200px]">
+      <div className="mx-auto w-[96%] max-w-[1760px]">
         <div ref={box} className="grid grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
           {BOX_PHOTOS.map((src, i) => (
             <div key={src} ref={(el) => { fans.current[i] = el; }} className="relative will-change-transform">
-              <div className="group relative aspect-[3/4] overflow-hidden rounded-[20px] shadow-[0_24px_60px_-30px_rgba(23,25,26,0.4)] transition-[translate] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] hover:-translate-y-3">
+              <div className="group relative aspect-[4/5] overflow-hidden rounded-[20px] shadow-[0_24px_60px_-30px_rgba(23,25,26,0.4)] transition-[translate] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] hover:-translate-y-3">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={src} alt={en ? "ÁLIS BEAUTY gift box" : "Подарочный бокс ÁLIS BEAUTY"} loading="lazy" decoding="async" draggable={false} className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-[1.06]" />
               </div>

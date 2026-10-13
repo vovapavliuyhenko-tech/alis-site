@@ -64,7 +64,7 @@ export default function PhotoBanner({
     return (
       <section className="bg-white section-y">
         <div className="r-reveal mx-auto w-[92%] max-w-[720px] text-center">
-          <p className="text-[12px] uppercase tracking-[0.18em] text-[#17191a]/60">{label[lang]}</p>
+          <p className="text-[10.5px] uppercase tracking-[0.2em] text-[#17191a]/45 lg:text-[11px]">[ {label[lang]} ]</p>
           <h2 className="mt-3 text-[#17191a]">
             {titleLines ? (
               <>
@@ -81,7 +81,7 @@ export default function PhotoBanner({
           </h2>
         </div>
         {/* Плашка во всю ширину экрана, скругление как у первого блока (28px): видео (если задано) или фото, с тем же параллаксом; текст и кнопка — внутри, внизу */}
-        <div className="relative mt-10 flex h-[60svh] min-h-[420px] w-full items-end justify-center overflow-hidden rounded-[28px] text-center text-white lg:mt-14 lg:h-[70svh]">
+        <div className="relative mx-auto mt-10 flex h-[60svh] min-h-[420px] w-[96%] max-w-[1760px] items-end justify-center overflow-hidden rounded-[28px] text-center text-white lg:mt-14 lg:h-[70svh]">
           {video ? (
             <video src={video} poster={photo} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" />
           ) : (
