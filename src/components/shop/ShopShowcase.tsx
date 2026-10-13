@@ -80,7 +80,7 @@ export function ShopStory({
   return (
     <section className="bg-white section-y">
       <div className="mx-auto flex w-[92%] max-w-[560px] flex-col items-center text-center">
-        <div ref={box} className="relative aspect-[3/4] w-[180px] origin-bottom overflow-hidden rounded-[8px] bg-[#f2f1ee] will-change-transform lg:w-[220px]">
+        <div ref={box} className="relative aspect-[3/4] w-[180px] origin-bottom overflow-hidden rounded-[20px] bg-[#f2f1ee] will-change-transform lg:w-[220px]">
           {photos.map((src, k) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -136,7 +136,7 @@ export function ShopPick() {
                 key={c.label.ru}
                 href={c.href}
                 {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="group flex w-[42%] shrink-0 snap-start flex-col items-center rounded-[8px] bg-[#f6f4f1] px-4 pb-6 pt-8 sm:w-[30%] lg:w-auto"
+                className="group flex w-[42%] shrink-0 snap-start flex-col items-center rounded-[20px] bg-[#f6f4f1] px-4 pb-6 pt-8 sm:w-[30%] lg:w-auto"
               >
                 <div className="aspect-square w-[78%] overflow-hidden rounded-full">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -194,7 +194,7 @@ export function ShopTrend() {
         <div className="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2">
           {/* Большое фото: заголовок с кнопкой прижаты к низу экрана и «едут» за прокруткой, пока видна карточка (sticky bottom, как на dogguo).
               overflow-clip, а не hidden — иначе sticky внутри не работает */}
-          <div className="relative min-h-[520px] overflow-clip rounded-[8px] lg:min-h-[720px]">
+          <div className="relative min-h-[520px] overflow-clip rounded-[20px] lg:min-h-[720px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/assets/alis/img_6011.jpg" alt={lang === "en" ? "New ÁLIS BEAUTY collection" : "Новая коллекция ÁLIS BEAUTY"} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/45" />
@@ -220,7 +220,7 @@ export function ShopTrend() {
               <Link
                 key={p.id}
                 href={`/product/${p.id}`}
-                className="r-reveal group relative flex aspect-[296/355] flex-col overflow-hidden rounded-[8px] bg-[#f6f4f1]"
+                className="r-reveal group relative flex aspect-[296/355] flex-col overflow-hidden rounded-[20px] bg-[#f6f4f1]"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={p.img} alt={p.name[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ease-in-out group-hover:opacity-0" />

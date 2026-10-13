@@ -240,7 +240,7 @@ export default function Reviews({ title }: { title?: Loc } = {}) {
     <article
                 key={r.name.ru}
                 style={style}
-                className={`${cls} flex flex-col overflow-hidden rounded-[12px] border border-[#17191a]/12 bg-white p-4 sm:p-6 text-[#17191a] ${compact ? "" : "shadow-[0_16px_44px_rgba(59,13,26,0.10)]"} [backface-visibility:hidden]`}
+                className={`${cls} flex flex-col overflow-hidden rounded-[20px] border border-[#17191a]/12 bg-white p-4 sm:p-6 text-[#17191a] ${compact ? "" : "shadow-[0_16px_44px_rgba(59,13,26,0.10)]"} [backface-visibility:hidden]`}
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] tracking-[0.25em] text-[#C9A227] sm:text-[12px] sm:tracking-[0.32em]">★★★★★</span>

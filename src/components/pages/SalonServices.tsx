@@ -122,7 +122,7 @@ export default function SalonServices({
               <div
                 key={c.label.ru}
                 id={c.slug ? "cat-" + c.slug : undefined}
-                className={`scroll-mt-28 overflow-hidden rounded-[12px] border transition-[border-color,box-shadow] duration-500 ${
+                className={`scroll-mt-28 overflow-hidden rounded-[20px] border transition-[border-color,box-shadow] duration-500 ${
                   isOpen
                     ? "border-[#17191a]/20 bg-white shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)]"
                     : "border-[#17191a]/12 bg-white hover:border-[#17191a]/25"

@@ -47,7 +47,7 @@ export default function Vacancies() {
             <a
               key={v.role.ru}
               href="#join"
-              className="group relative grid grid-cols-[1fr_auto] items-center gap-5 rounded-[12px] border border-[#17191a]/12 px-6 py-6 bg-white transition-[border-color,box-shadow] duration-500 hover:border-[#17191a]/20 hover:shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:gap-8 lg:px-8 lg:py-8"
+              className="group relative grid grid-cols-[1fr_auto] items-center gap-5 rounded-[20px] border border-[#17191a]/12 px-6 py-6 bg-white transition-[border-color,box-shadow] duration-500 hover:border-[#17191a]/20 hover:shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:gap-8 lg:px-8 lg:py-8"
             >
 
               {/* Название + описание */}
@@ -77,7 +77,7 @@ export default function Vacancies() {
                 loading="lazy"
                 decoding="async"
                 aria-hidden
-                className={`pointer-events-none absolute left-1/2 top-1/2 z-20 hidden aspect-[3/4] w-[205px] -translate-x-1/2 -translate-y-1/2 scale-95 rounded-[12px] object-cover opacity-0 shadow-[0_28px_60px_rgba(23,25,26,0.28)] transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:block lg:w-[232px] ${["rotate-[-7deg]", "rotate-[6deg]", "rotate-[-4deg]", "rotate-[7deg]"][i % 4]}`}
+                className={`pointer-events-none absolute left-1/2 top-1/2 z-20 hidden aspect-[3/4] w-[205px] -translate-x-1/2 -translate-y-1/2 scale-95 rounded-[20px] object-cover opacity-0 shadow-[0_28px_60px_rgba(23,25,26,0.28)] transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:block lg:w-[232px] ${["rotate-[-7deg]", "rotate-[6deg]", "rotate-[-4deg]", "rotate-[7deg]"][i % 4]}`}
               />
             </a>
           ))}

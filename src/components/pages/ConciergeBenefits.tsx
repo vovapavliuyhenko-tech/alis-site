@@ -129,7 +129,7 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
                 onFocus={() => setActive(i)}
                 onClick={() => setActive(i)}
                 aria-expanded={on}
-                className={`group relative isolate overflow-hidden rounded-[12px] text-left text-white transition-[flex-grow,height] duration-[900ms] ease-[cubic-bezier(.22,1,.36,1)] lg:h-auto lg:min-w-0 ${
+                className={`group relative isolate overflow-hidden rounded-[20px] text-left text-white transition-[flex-grow,height] duration-[900ms] ease-[cubic-bezier(.22,1,.36,1)] lg:h-auto lg:min-w-0 ${
                   on ? "h-[300px] sm:h-[360px] lg:flex-[3.6_1_0%]" : "h-[64px] lg:flex-[1_1_0%]"
                 }`}
               >

@@ -50,7 +50,7 @@ export function ShopCategories() {
                 <span className="mt-1 text-[10.5px] text-[#17191a]/50 lg:text-[11.5px]">{c.price[lang]}</span>
               </>
             );
-            const cls = "group flex w-[40%] shrink-0 snap-start flex-col items-center rounded-[8px] bg-[#f6f4f1] px-3 pb-4 pt-5 sm:w-[26%] lg:w-auto";
+            const cls = "group flex w-[40%] shrink-0 snap-start flex-col items-center rounded-[20px] bg-[#f6f4f1] px-3 pb-4 pt-5 sm:w-[26%] lg:w-auto";
             return ext || c.href.startsWith("#") ? (
               <a key={c.title.ru} href={c.href} {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={cls}>{inner}</a>
             ) : (

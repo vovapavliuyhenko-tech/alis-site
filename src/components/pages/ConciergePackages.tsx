@@ -78,7 +78,7 @@ export default function ConciergePackages() {
         <h2 className="sr-only">{en ? "Service packages" : "Пакеты услуг"}</h2>
 
         {/* Слева: список тарифов */}
-        <div className="r-reveal rounded-[24px] bg-[#f6f4f1] px-6 py-2 sm:px-10 lg:px-12 lg:py-4">
+        <div className="r-reveal rounded-[28px] bg-[#f6f4f1] px-6 py-2 sm:px-10 lg:px-12 lg:py-4">
           {PACKS.map((x, i) => {
             const on = i === cur;
             return (
@@ -104,7 +104,7 @@ export default function ConciergePackages() {
         </div>
 
         {/* Справа: фото и описание выбранного тарифа */}
-        <div className="r-reveal relative min-h-[460px] overflow-hidden rounded-[24px] bg-[#17191a] text-white sm:min-h-[540px] lg:min-h-0">
+        <div className="r-reveal relative min-h-[460px] overflow-hidden rounded-[28px] bg-[#17191a] text-white sm:min-h-[540px] lg:min-h-0">
           {PACKS.map((x, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img

@@ -33,11 +33,11 @@ function Track({ items, hidden = false, moved }: { items: MarqueeItem[]; hidden?
         const inner = (
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={src} alt={alt} draggable={false} loading="lazy" decoding="async" className="h-full w-full rounded-[12px] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
+            <img src={src} alt={alt} draggable={false} loading="lazy" decoding="async" className="h-full w-full rounded-[20px] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
           </>
         );
         return (
-          <li key={i} className="group relative mr-2 aspect-[3/4] h-[260px] shrink-0 sm:h-[320px] overflow-hidden rounded-[12px] lg:mr-3 lg:h-[440px]">
+          <li key={i} className="group relative mr-2 aspect-[3/4] h-[260px] shrink-0 sm:h-[320px] overflow-hidden rounded-[20px] lg:mr-3 lg:h-[440px]">
             {href ? (
               <a
                 href={href}
