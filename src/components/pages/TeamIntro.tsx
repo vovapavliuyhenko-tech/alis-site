@@ -37,7 +37,7 @@ export default function TeamIntro({
   return (
     // Белая подложка — чтобы под скруглёнными нижними углами был белый фон, как у страницы
     <div className="bg-white">
-    <section className="relative isolate flex min-h-[100svh] flex-col sm:min-h-[92svh] items-center justify-end overflow-hidden rounded-b-[28px] bg-[#b9b3a9] text-white">
+    <section className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#b9b3a9] text-white">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img ref={bg} src={photo} alt={`${title[lang]} — ÁLIS BEAUTY`} className="absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-center will-change-transform" />
       {/* Затемнение как на главной: сверху — под шапку, снизу — под заголовок */}
