@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BlockLabel from "@/components/ui/BlockLabel";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import SalonServices from "@/components/pages/SalonServices";
@@ -268,9 +269,11 @@ export default function SalonPage() {
         {/* 3 — Популярные процедуры — скрыты по просьбе заказчицы (компонент PopularServices в SalonBlocks) */}
 
         {/* 4 — Категории услуг (переход к прайсу по категориям) */}
+        <BlockLabel ru="Услуги" en="Services" />
         <ServiceBento />
 
         {/* 5 — Услуги и прайс: поиск + «Выбрать своего мастера» */}
+        <BlockLabel ru="Прайс" en="Prices" />
         <SalonServices
           categories={SALON_CATEGORIES}
           search
@@ -286,6 +289,7 @@ export default function SalonPage() {
         />
 
         {/* 7 — Рейтинг: оценка и ссылки на отзывы в Яндекс и 2ГИС */}
+        <BlockLabel ru="Отзывы" en="Reviews" />
         <SalonRating />
 
 

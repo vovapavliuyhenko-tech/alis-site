@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BlockLabel from "@/components/ui/BlockLabel";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import { ShopTrend } from "@/components/shop/ShopShowcase";
@@ -24,9 +25,11 @@ export default function ShopPage() {
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white page-end">
         {/* По брифу: категории → подбор ухода → мерч (строка + товары) → бокс → сертификаты */}
+        <BlockLabel ru="Категории" en="Categories" />
         <ShopCategories />
         {/* Подбор ухода, строка про мерч и конструктор сертификата — скрыты
             по просьбе заказчицы (HairQuiz, MerchLine, CertBuilder в ShopBlocks) */}
+        <BlockLabel ru="Новинки" en="New in" />
         <ShopTrend />
         {/* Подарочный бокс — «веер» из трёх фото, как карточки команды на «Вакансиях» */}
         <GiftBox />

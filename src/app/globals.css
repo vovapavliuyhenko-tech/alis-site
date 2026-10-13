@@ -353,3 +353,7 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
 @keyframes alisDrawerIn { from { transform: translateX(-100%); } to { transform: none; } }
 @keyframes alisFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .alis-drawer, .alis-drawer-fade { animation: none; } }
+
+/* ===== Подпись блока «[ … ]» (BlockLabel): забирает верхний отступ следующего блока ===== */
+.block-label { padding-top: clamp(72px, 12.4vw, 178px); padding-bottom: clamp(20px, 2.4vw, 36px); }
+.block-label + .section-y { padding-top: 0; }

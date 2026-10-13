@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BlockLabel from "@/components/ui/BlockLabel";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import ConciergeBenefits from "@/components/pages/ConciergeBenefits";
@@ -94,15 +95,18 @@ export default function ConciergePage() {
       <div className="relative z-10 bg-white page-end">
 
         {/* 2 — Для кого (#about) */}
+        <BlockLabel ru="Для кого" en="Who it's for" />
         <ConciergeBenefits />
 
         {/* Бегущая строка брендов, которые нас выбирают — доверие перед ценами и пакетами */}
         <Brands label={{ ru: "Нам доверяют", en: "Trusted by" }} />
 
         {/* 3 — Пакеты услуг (#uslugi). TODO: цены «от …» и PDF КП пришлёт заказчица */}
+        <BlockLabel ru="Пакеты услуг" en="Packages" />
         <ConciergePackages />
 
         {/* 4 — Как проходит работа (#process) */}
+        <BlockLabel ru="Как проходит работа" en="How it works" />
         <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={null} />
 
         {/* 5 — Проверка даты: анкета «Рассчитать бюджет» прямо в тёмной плашке (#calc) */}

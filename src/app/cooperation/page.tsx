@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BlockLabel from "@/components/ui/BlockLabel";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import CoopQuiz from "@/components/pages/CoopQuiz";
@@ -78,6 +79,7 @@ export default function CooperationPage() {
       <div className="relative z-10 bg-white page-end">
 
         {/* 2 — Кому полезно */}
+        <BlockLabel ru="Кому полезно" en="Who it's for" />
         <ConciergeBenefits points={WHO} sectionId="who" />
 
         {/* Бегущая строка брендов, которые с нами сотрудничают */}

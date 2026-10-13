@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BlockLabel from "@/components/ui/BlockLabel";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 // import SalonCompare from "@/components/pages/SalonCompare"; // сравнение скрыто по просьбе заказчицы
@@ -30,6 +31,7 @@ export default function TeamPage() {
       <div className="relative z-10 bg-white page-end">
 
         {/* 2 — Команда: основатель, директор консьерж-направления, управляющая салона */}
+        <BlockLabel ru="Команда" en="Team" />
         <TeamPeople />
 
         {/* 3 — Почему мы, а не другой салон (мини-сравнение).
@@ -39,8 +41,10 @@ export default function TeamPage() {
         {/* <SalonCompare /> — скрыт */}
 
         {/* 4 — Кого ищем (#vacancies) → как присоединиться */}
+        <BlockLabel ru="Вакансии" en="Vacancies" />
         <Vacancies />
         {/* «Как присоединиться?» — 4 шага, карточки едут вбок при прокрутке */}
+        <BlockLabel ru="Как присоединиться" en="How to join" />
         <VacanciesScroll />
 
         {/* 5 — Анкета (#join) */}
