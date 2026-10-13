@@ -169,3 +169,33 @@ export function SalonReviews() {
     </section>
   );
 }
+
+// ——— Строка рейтинга (вместо карусели отзывов) ———
+// Одна строка: звёзды, оценка, число отзывов и две кнопки — отзывы в Яндекс и 2ГИС.
+export function SalonRating() {
+  const { lang } = useLang();
+  const en = lang === "en";
+  const LINKS = [
+    { label: en ? "Yandex" : "Яндекс", href: "https://yandex.ru/maps/org/lis_byuti/63024642190/reviews/" },
+    { label: en ? "2GIS" : "2ГИС", href: "https://2gis.ru/novorossiysk/firm/70000001086737494/tab/reviews" },
+  ];
+  return (
+    <section id="rating" className="scroll-mt-24 bg-white section-y">
+      <div className="r-reveal mx-auto flex w-[96%] max-w-[1760px] flex-col items-center justify-center gap-4 text-center sm:flex-row sm:gap-6">
+        <p className="flex items-center gap-2 text-[13px] text-[#17191a]/60 sm:text-[15px]">
+          <span aria-hidden className="tracking-[0.12em] text-[#b8955a]">★★★★★</span>
+          <span className="font-medium text-[#17191a]">4.9</span>
+          {en ? "· 75+ reviews on Yandex and 2GIS" : "· 75+ отзывов на Яндекс и 2ГИС"}
+        </p>
+        <div className="flex gap-2">
+          {LINKS.map((l) => (
+            <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 rounded-full border border-[#17191a]/20 px-4 py-2 text-[12px] text-[#17191a] transition-colors duration-300 hover:border-[#17191a] hover:bg-[#17191a] hover:text-white sm:text-[13px]">
+              {l.label}
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

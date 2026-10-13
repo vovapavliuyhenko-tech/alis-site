@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
-import CooperationFormats from "@/components/pages/CooperationFormats";
+import CoopQuiz from "@/components/pages/CoopQuiz";
 import Brands from "@/components/Brands";
 import ConciergeBenefits, { type BenefitPoint } from "@/components/pages/ConciergeBenefits";
 // import CoopGallery from "@/components/pages/CoopGallery"; // галерея скрыта до фото/видео от заказчицы
@@ -81,13 +81,13 @@ export default function CooperationPage() {
         <ConciergeBenefits points={WHO} sectionId="who" />
 
         {/* Бегущая строка брендов, которые с нами сотрудничают */}
-        <Brands />
+        <Brands label={{ ru: "Нам доверяют", en: "Trusted by" }} />
 
         {/* 3 — 5 рамок: фото или видео (TODO: медиа пришлёт заказчица) */}
         {/* <CoopGallery /> — скрыта, пока нет фото/видео */}
 
-        {/* 4 — Выбор «Частным лицам» / «Агентствам и бизнесу» → форма под выбор → партнёры */}
-        <CooperationFormats />
+        {/* 4 — Анкета сотрудничества: кто вы → что нужно → где → контакты */}
+        <CoopQuiz />
       </div>
 
       <Footer />

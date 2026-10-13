@@ -68,7 +68,7 @@ function Track({ hidden = false }: { hidden?: boolean }) {
   );
 }
 
-export default function Brands({ heading = false, title }: { heading?: boolean; title?: { ru: string; en: string } }) {
+export default function Brands({ heading = false, title, label }: { heading?: boolean; title?: { ru: string; en: string }; label?: { ru: string; en: string } }) {
   const { lang } = useLang();
   return (
     <section className="overflow-hidden bg-white section-y">
@@ -79,6 +79,8 @@ export default function Brands({ heading = false, title }: { heading?: boolean; 
           </h2>
         </div>
       )}
+      {/* Маленькая подпись капсом — чтобы было понятно, что за логотипы */}
+      {label && <p className="r-reveal mb-6 text-center text-[10.5px] uppercase tracking-[0.2em] text-[#17191a]/45 lg:mb-8 lg:text-[11px]">[ {label[lang]} ]</p>}
       {title && <h2 className="r-reveal mx-auto mb-8 w-[92%] text-center text-[#17191a] lg:mb-10">{title[lang]}</h2>}
       <div className="group relative flex overflow-hidden">
         <Track />

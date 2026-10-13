@@ -7,7 +7,7 @@ import SalonServices from "@/components/pages/SalonServices";
 import LoyaltyCerts from "@/components/pages/LoyaltyCerts";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
 import ServiceBento from "@/components/pages/ServiceBento";
-import { SALON_ADMIN_WA } from "@/components/pages/SalonBlocks";
+import { SALON_ADMIN_WA, SalonRating } from "@/components/pages/SalonBlocks";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 
@@ -284,6 +284,9 @@ export default function SalonPage() {
           items={["/assets/alis/img_6048.jpg", "/assets/alis/img_8578.jpg", "/assets/alis/img_3283.jpg", "/assets/alis/img_2672.jpg", "/assets/alis/img_5910.webp", "/assets/alis/img_1855.jpg"]}
           title={{ ru: "Атмосфера, в которую хочется вернуться", en: "An atmosphere you want to come back to" }}
         />
+
+        {/* 7 — Рейтинг: оценка и ссылки на отзывы в Яндекс и 2ГИС */}
+        <SalonRating />
 
 
         {/* 8 — Лояльность и подарочные сертификаты */}
