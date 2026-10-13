@@ -184,7 +184,7 @@ export default function LoyaltyCerts() {
                     key={p.title.ru}
                     ref={(el) => { cards.current[i] = el; }}
                     data-on={active === i ? "" : undefined}
-                    className="r-reveal group relative flex min-h-[150px] flex-col justify-between overflow-hidden rounded-[20px] border border-[#17191a]/12 bg-white p-5 sm:min-h-[220px] sm:p-6 lg:min-h-[240px]"
+                    className="r-reveal group relative flex min-h-[150px] flex-col justify-start overflow-hidden rounded-[20px] border border-[#17191a]/12 bg-white p-5 sm:min-h-[220px] sm:p-6 lg:min-h-[240px]"
                     style={{ transitionDelay: `${0.1 + i * 0.12}s` }}
                   >
                     {/* Заливка снизу вверх при наведении */}
@@ -195,7 +195,7 @@ export default function LoyaltyCerts() {
                       </span>
                       <span className="text-[11px] text-[#17191a]/30 transition-colors duration-500 group-hover:text-white/40 group-data-[on]:text-white/40">{String(i + 1).padStart(2, "0")}</span>
                     </div>
-                    <div className="relative mt-6">
+                    <div className="relative mt-6 sm:mt-10">
                       <h3 className="font-display text-[15px] tracking-[0.01em] text-[#17191a] transition-colors duration-500 group-hover:text-white group-data-[on]:text-white sm:text-[17px]">{p.title[lang]}</h3>
                       <p className="mt-1.5 !text-[11.5px] leading-[1.5] text-[#17191a]/60 transition-colors duration-500 group-hover:text-white/70 group-data-[on]:text-white/70 sm:!text-[13px]">{p.note[lang]}</p>
                     </div>
