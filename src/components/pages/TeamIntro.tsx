@@ -5,7 +5,6 @@
 import { useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { useHeroParallax } from "@/lib/useHeroParallax";
-import FocusLens from "@/components/ui/FocusLens";
 
 type Loc = { ru: string; en: string };
 
@@ -41,8 +40,6 @@ export default function TeamIntro({
     <section className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#b9b3a9] text-white">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img ref={bg} src={photo} alt={`${title[lang]} — ÁLIS BEAUTY`} className="absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-center will-change-transform" />
-      {/* Линза фокуса: фото размывается, за курсором едет чёткое окно с рамкой */}
-      <FocusLens src={photo} />
       {/* Затемнение как на главной: сверху — под шапку, снизу — под заголовок */}
       <div
         aria-hidden
