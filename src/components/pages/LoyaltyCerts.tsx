@@ -122,7 +122,7 @@ export default function LoyaltyCerts() {
               <p className="text-[10px] uppercase tracking-[0.2em] text-white/50 sm:text-[11px]">{t("Первый визит", "First visit")}</p>
               {/* div, а не p — чтобы общее «мобильное» уменьшение текста не трогало крупную цифру */}
               <div className="mt-4 font-display text-[64px] font-extralight leading-none tracking-[0.01em] sm:mt-6 lg:text-[88px]"><CountUp to={500} /> ₽</div>
-              <p className="mt-3 max-w-[26ch] text-[13px] leading-[1.5] text-white/70 sm:text-[15px]">
+              <p className="mt-3 text-[13px] leading-[1.5] text-white/70 sm:text-[15px]">
                 {t("бонусных рублей на первый визит — уже на счёте, когда вы придёте", "bonus roubles on your first visit — already in your account when you come")}
               </p>
             </div>
