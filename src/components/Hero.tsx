@@ -5,6 +5,7 @@
 import { useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { useHeroParallax } from "@/lib/useHeroParallax";
+import FocusLens from "@/components/ui/FocusLens";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const OUTCALL = "/concierge#calc"; // «Рассчитать выезд» — анкета расчёта на странице консьерж-сервиса
@@ -32,6 +33,8 @@ export default function Hero() {
     <section className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#d9d7d3] text-white">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} className="absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-[50%_55%] will-change-transform" />
+      {/* Линза фокуса: фото размывается, за курсором едет чёткое окно с рамкой */}
+      <FocusLens src={BG_PHOTO} imgClass="object-[50%_55%]" />
       {/* Затемнение: сверху — под шапку, снизу — под текст (фото светлое, текст белый) */}
       <div
         aria-hidden
