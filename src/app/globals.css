@@ -357,3 +357,18 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
 /* ===== Подпись блока «[ … ]» (BlockLabel): забирает верхний отступ следующего блока ===== */
 .block-label { padding-top: clamp(72px, 12.4vw, 178px); padding-bottom: clamp(20px, 2.4vw, 36px); }
 .block-label + .section-y { padding-top: 0; }
+
+/* ===== Обложки: кинематографичное появление и «живое фото» (HeroFX) ===== */
+@keyframes hero-zoom { from { scale: 1.14; } to { scale: 1.04; } }
+@keyframes hero-letter { from { opacity: 0; filter: blur(10px); transform: translateY(0.3em); } to { opacity: 1; filter: blur(0); transform: none; } }
+@keyframes hero-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes hero-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes hero-grain { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(-3%, 2%); } 50% { transform: translate(2%, -3%); } 75% { transform: translate(-2%, -1%); } }
+.hero-zoom { scale: 1.04; animation: hero-zoom 2.8s cubic-bezier(.22, .61, .36, 1) both; }
+.hero-letter { animation: hero-letter 0.9s cubic-bezier(.22, .61, .36, 1) both; }
+.hero-line { animation: hero-line 1.1s cubic-bezier(.65, 0, .35, 1) both; }
+.hero-up { animation: hero-up 1s cubic-bezier(.22, .61, .36, 1) both; }
+.hero-grain { animation: hero-grain 0.9s steps(4) infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-zoom, .hero-letter, .hero-line, .hero-up, .hero-grain { animation: none; }
+}

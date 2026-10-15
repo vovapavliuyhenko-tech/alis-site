@@ -5,6 +5,7 @@
 import { useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { useHeroParallax } from "@/lib/useHeroParallax";
+import { SplitTitle, TitleLine, Grain, useHeroLive } from "@/components/ui/HeroFX";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const OUTCALL = "/concierge#calc"; // «Рассчитать выезд» — анкета расчёта на странице консьерж-сервиса
@@ -20,6 +21,13 @@ export default function Hero() {
   useHeroParallax(bg);
   const en = lang === "en";
   const t = (ru: string, e: string) => (en ? e : ru);
+  // Кинематографичное появление + «живое фото» (смещение за мышкой, растворение при прокрутке)
+  const sec = useRef<HTMLElement>(null);
+  const content = useRef<HTMLDivElement>(null);
+  const shade = useRef<HTMLDivElement>(null);
+  useHeroLive(sec, bg, content, shade);
+  const TITLE = t("Красота там, где вы", "Beauty wherever you are");
+  const lineDelay = 0.35 + TITLE.length * 0.035 + 0.25;
 
   const BUTTONS = [
     { label: t("Оформить визит", "Book a visit"), note: t("Салон красоты", "Beauty salon"), href: YCLIENTS, light: true },
@@ -29,9 +37,9 @@ export default function Hero() {
   return (
     // Белая подложка — чтобы под скруглёнными нижними углами был белый фон, как у страницы
     <div className="bg-white">
-    <section className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#d9d7d3] text-white">
+    <section ref={sec} className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#d9d7d3] text-white">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} className="absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-[50%_55%] will-change-transform" />
+      <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} className="hero-zoom absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-[50%_55%] will-change-transform" />
       {/* Затемнение: сверху — под шапку, снизу — под текст (фото светлое, текст белый) */}
       <div
         aria-hidden
@@ -41,14 +49,18 @@ export default function Hero() {
             "linear-gradient(to bottom, rgba(20,18,16,.32) 0%, rgba(20,18,16,0) 22%), linear-gradient(to top, rgba(20,18,16,.72) 0%, rgba(20,18,16,.25) 40%, rgba(20,18,16,0) 65%)",
         }}
       />
+      {/* Эффекты обложки: зерно, виньетка и затемнение при прокрутке */}
+      <Grain />
+      <div ref={shade} aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[#17191a] opacity-0" />
 
       {/* Телефон (вариант A): всё внизу по центру, заголовок в 2 строки, текст мельче; компьютер — по центру */}
-      <div className="flex w-full max-w-[1320px] flex-col items-center px-5 pb-4 text-center sm:items-center sm:px-6 sm:pb-[clamp(24px,4vh,48px)] sm:text-center">
+      <div ref={content} className="flex w-full max-w-[1320px] flex-col items-center px-5 pb-4 text-center sm:items-center sm:px-6 sm:pb-[clamp(24px,4vh,48px)] sm:text-center">
         {/* Заголовок — как на всех обложках сайта */}
         <h1 className="whitespace-nowrap font-serif-display text-[clamp(18px,6vw,24px)] font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
-          {t("Красота там, где вы", "Beauty wherever you are")}
+          <SplitTitle text={TITLE} />
         </h1>
-        <p className="mt-3 max-w-[620px] !text-[11.5px] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[12.5px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[13px]">
+        <TitleLine delay={lineDelay} />
+        <p style={{ animationDelay: `${lineDelay + 0.2}s` }} className="hero-up mt-3 max-w-[620px] !text-[11.5px] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[12.5px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[13px]">
           {/* Телефон — короче (тот же смысл, 2–3 строки), компьютер — полный текст заказчицы */}
           {/* Ровно 3 строки на любом телефоне: явные переносы + размер от ширины экрана */}
           <span className="block text-[clamp(10px,3.05vw,11.5px)] sm:hidden">
@@ -69,7 +81,7 @@ export default function Hero() {
 
       {/* Две стеклянные плашки во всю ширину внизу блока (как прежняя «Оформить визит»), под каждой — подпись.
           Без мигания и свечения. */}
-      <div className="grid w-full grid-cols-2 gap-2 px-5 pb-5 sm:gap-3 sm:px-4 lg:gap-4 lg:px-6 lg:pb-6">
+      <div style={{ animationDelay: `${lineDelay + 0.4}s` }} className="hero-up grid w-full grid-cols-2 gap-2 px-5 pb-5 sm:gap-3 sm:px-4 lg:gap-4 lg:px-6 lg:pb-6">
         {BUTTONS.map((b) => (
           <div key={b.href} className="flex flex-col items-center">
             <a
