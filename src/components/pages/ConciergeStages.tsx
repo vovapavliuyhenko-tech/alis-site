@@ -3,7 +3,10 @@
 // на весь экран, одна половина — крупное фото, другая — мелкий текст по центру,
 // стороны чередуются. Панели ЗАЛИПАЮТ (sticky top-0) и наезжают друг на друга при
 // скролле, как накладывающиеся шторки. На мобиле — обычная вертикальная стопка.
-import { useEffect, useRef } from "react";
+// Компьютер: пока этап «стоит», фото при прокрутке плавно расширяется с половины на весь
+// экран и закрывает текст; затем наезжает следующий этап. Время на это даёт прозрачная
+// «прокладка» (spacer) между панелями: она проезжает под залипшей панелью.
+import { Fragment, useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { type Stage } from "@/components/HorizontalStory";
 
@@ -24,6 +27,8 @@ export default function ConciergeStages({
 }) {
   const { lang } = useLang();
   const texts = useRef<(HTMLDivElement | null)[]>([]);
+  const photos = useRef<(HTMLDivElement | null)[]>([]);
+  const spacers = useRef<(HTMLDivElement | null)[]>([]);
 
   // Текст этапа «вырастает» при прокрутке, как во втором блоке главной:
   // пока панель въезжает снизу — 50 % и ниже на 50px, к моменту, когда панель встала, — 100 %
@@ -39,6 +44,17 @@ export default function ConciergeStages({
         const top = panel.getBoundingClientRect().top;
         const p = Math.min(1, Math.max(0, (vh - top) / (vh * 0.75)));
         el.style.setProperty("transform", `translate3d(0, ${(1 - p) * 50}px, 0) scale(${0.5 + p * 0.5})`);
+      });
+      // Расширение фото на весь экран (только компьютер): прогресс — по проезду прокладки
+      const wide = matchMedia("(min-width: 1024px)").matches;
+      photos.current.forEach((ph, i) => {
+        if (!ph) return;
+        const sp = spacers.current[i];
+        if (!wide || !sp) { ph.style.removeProperty("width"); return; }
+        const top = sp.getBoundingClientRect().top;
+        const raw = Math.min(1, Math.max(0, (vh - top) / (sp.offsetHeight || vh)));
+        const e = raw < 0.5 ? 2 * raw * raw : 1 - Math.pow(-2 * raw + 2, 2) / 2; // мягкий разгон и торможение
+        ph.style.width = `${50 + e * 50}%`;
       });
     };
     const onScroll = () => {
@@ -67,13 +83,13 @@ export default function ConciergeStages({
       {stages.map((s, i) => {
         const photoRight = i % 2 === 0; // 1-й: текст слева, фото справа; далее чередуется
         return (
+          <Fragment key={s.name.ru}>
           <div
-            key={s.name.ru}
             className={`relative h-svh min-h-[560px] w-full overflow-hidden rounded-t-[28px] lg:rounded-[28px] ${i === stages.length - 1 ? "rounded-b-[28px]" : ""} shadow-[0_-4px_10px_-8px_rgba(23,25,26,0.12),0_8px_18px_-10px_rgba(23,25,26,0.18)] sticky top-0`}
           >
-            <div className="grid h-full grid-cols-1 lg:grid-cols-2">
+            <div className="relative grid h-full grid-cols-1 lg:grid-cols-2">
               {/* Текст — по центру, мелкий */}
-              <div data-fab-avoid className={`flex flex-col items-center justify-center bg-white px-8 py-14 text-center lg:px-[6vw] ${photoRight ? "lg:order-1" : "lg:order-2"}`}>
+              <div data-fab-avoid className={`flex flex-col items-center justify-center bg-white px-8 py-14 text-center lg:px-[6vw] ${photoRight ? "lg:col-start-1" : "lg:col-start-2"}`}>
                 <div
                   ref={(el) => {
                     texts.current[i] = el;
@@ -94,7 +110,11 @@ export default function ConciergeStages({
 
               {/* Фото — половина экрана в ширину */}
               {/* Телефон: фото без скруглений, у последнего этапа — скругление снизу */}
-              <div className={`relative min-h-[42vh] overflow-hidden ${i === stages.length - 1 ? "max-lg:rounded-b-[28px]" : ""} ${photoRight ? "lg:order-2" : "lg:order-1"}`}>
+              {/* Компьютер: фото прижато к своей стороне и расширяется на весь экран при прокрутке */}
+              <div
+                ref={(el) => { photos.current[i] = el; }}
+                className={`relative min-h-[42vh] overflow-hidden ${i === stages.length - 1 ? "max-lg:rounded-b-[28px]" : ""} ${photoRight ? "lg:order-2 lg:right-0" : "lg:order-1 lg:left-0"} lg:absolute lg:inset-y-0 lg:z-10 lg:w-1/2 lg:min-h-0`}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={s.photo}
@@ -108,6 +128,11 @@ export default function ConciergeStages({
               </div>
             </div>
           </div>
+          {/* Прокладка: даёт время на расширение фото, пока панель стоит (только компьютер) */}
+          {i < stages.length - 1 && (
+            <div ref={(el) => { spacers.current[i] = el; }} aria-hidden className="pointer-events-none hidden h-[90svh] lg:block" />
+          )}
+          </Fragment>
         );
       })}
     </section>
