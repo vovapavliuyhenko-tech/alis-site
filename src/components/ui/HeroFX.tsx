@@ -3,10 +3,9 @@
 //  SplitTitle   — буквы заголовка проявляются по одной из лёгкого размытия, под ним
 //                 прорисовывается тонкая линия («кинематографичное появление»);
 //  Grain        — лёгкое плёночное «зерно» + мягкая виньетка по краям фото;
-//  useHeroLive  — «живое фото»: фото чуть смещается за мышкой (глубина), заголовок — навстречу;
-//                 при прокрутке заголовок уменьшается и растворяется, фото темнеет.
+//  useHeroLive  — при прокрутке заголовок с текстом заметно уменьшается и исчезает, фото темнеет.
 // Анимации — в globals.css (hero-zoom, hero-letter, hero-line, hero-up). При «уменьшить
-// движение» всё выключено; смещение за мышкой — только для мыши.
+// движение» всё выключено.
 import { useEffect, type RefObject } from "react";
 
 export function SplitTitle({ text, delay = 0.35 }: { text: string; delay?: number }) {
@@ -59,38 +58,20 @@ export function useHeroLive(
   useEffect(() => {
     const sec = section.current, ph = img.current, ct = content.current, sh = shade.current;
     if (!sec || !ph || !ct || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const mouse = matchMedia("(pointer: fine)").matches;
-    let tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+    let raf = 0;
+    // При прокрутке заголовок с текстом заметно уменьшается и исчезает, фото темнеет
     const draw = () => {
       raf = 0;
-      x += (tx - x) * 0.08;
-      y += (ty - y) * 0.08;
-      ph.style.translate = `${x}px ${y}px`;
-      const vh = window.innerHeight;
-      const p = Math.min(1, Math.max(0, window.scrollY / (vh * 0.7)));
-      ct.style.translate = `${-x * 0.35}px ${-y * 0.35}px`;
-      ct.style.opacity = String(1 - p * 1.1);
-      ct.style.scale = String(1 - p * 0.08);
+      const p = Math.min(1, Math.max(0, window.scrollY / (window.innerHeight * 0.6)));
+      ct.style.opacity = String(Math.max(0, 1 - p * 1.4));
+      ct.style.scale = String(1 - p * 0.35);
+      ct.style.transformOrigin = "50% 100%";
       if (sh) sh.style.opacity = String(p * 0.45);
-      if (Math.abs(tx - x) > 0.05 || Math.abs(ty - y) > 0.05) raf = requestAnimationFrame(draw);
     };
     const kick = () => { if (!raf) raf = requestAnimationFrame(draw); };
-    const move = (e: PointerEvent) => {
-      const r = sec.getBoundingClientRect();
-      tx = -((e.clientX - r.left) / r.width - 0.5) * 22;
-      ty = -((e.clientY - r.top) / r.height - 0.5) * 16;
-      kick();
-    };
-    const leave = () => { tx = 0; ty = 0; kick(); };
-    if (mouse) {
-      sec.addEventListener("pointermove", move);
-      sec.addEventListener("pointerleave", leave);
-    }
     window.addEventListener("scroll", kick, { passive: true });
     kick();
     return () => {
-      sec.removeEventListener("pointermove", move);
-      sec.removeEventListener("pointerleave", leave);
       window.removeEventListener("scroll", kick);
       cancelAnimationFrame(raf);
     };
