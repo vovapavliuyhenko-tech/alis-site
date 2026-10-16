@@ -39,13 +39,18 @@ function Row({ items, reverse, lang }: { items: typeof REVIEWS; reverse?: boolea
     let raf = 0, hold = false, until = 0, last = performance.now();
     const half = () => el.scrollWidth / 2;
     if (reverse) el.scrollLeft = half();
+    // Точная позиция дробью: браузер округляет scrollLeft, мелкий шаг иначе теряется
+    let pos = el.scrollLeft;
     const loop = (t: number) => {
       const dt = Math.min(64, t - last);
       last = t;
-      if (!still && !hold && t > until) el.scrollLeft += (reverse ? -1 : 1) * dt * 0.035;
+      // человек пролистал сам — продолжаем с его места
+      if (Math.abs(el.scrollLeft - pos) > 2) pos = el.scrollLeft;
+      if (!still && !hold && t > until) pos += (reverse ? -1 : 1) * dt * 0.035;
       // бесконечность: перескок на ту же точку второй копии
-      if (el.scrollLeft >= half()) el.scrollLeft -= half();
-      else if (el.scrollLeft <= 0) el.scrollLeft += half();
+      if (pos >= half()) pos -= half();
+      else if (pos <= 0) pos += half();
+      el.scrollLeft = pos;
       raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
