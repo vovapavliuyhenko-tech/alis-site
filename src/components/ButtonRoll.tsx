@@ -37,8 +37,15 @@ function build(btn: HTMLElement) {
   const b = document.createElement("span");
   a.className = "roll-a";
   b.className = "roll-b";
+  // Не flex-кнопка (обычный <button> сам центрирует текст по высоте) — центруем копии через flex
+  const ta = getComputedStyle(btn).textAlign;
+  const jc = ta === "center" ? "center" : ta === "right" || ta === "end" ? "flex-end" : "flex-start";
   for (const el of [a, b]) {
-    el.style.display = flex ? "flex" : "block";
+    el.style.display = "flex";
+    if (!flex) {
+      el.style.alignItems = "center";
+      el.style.justifyContent = jc;
+    }
     el.appendChild(cloneContent(btn));
   }
   ov.replaceChildren(a, b);
