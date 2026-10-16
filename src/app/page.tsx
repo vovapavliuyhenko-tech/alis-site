@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import PhotoMarquee from "@/components/pages/PhotoMarquee";
 import ScrollReveal from "@/components/ScrollReveal";
-import ReviewsWall from "@/components/ReviewsWall";
+import Reviews from "@/components/Reviews";
 import PhotoBanner from "@/components/pages/PhotoBanner";
 import BonusOffer from "@/components/pages/BonusOffer";
 import FinalChoice from "@/components/pages/FinalChoice";
@@ -40,7 +40,7 @@ export default function Home() {
         {/* Порядок: работы мастеров → выезд (консьерж) → как записаться в салон → услуги → контакты (подвал) */}
         <PhotoMarquee />
         {/* Отзывы гостей — перед баннером консьерж-сервиса */}
-        <ReviewsWall title={{ ru: "Так говорят гости", en: "What our guests say" }} />
+        <Reviews title={{ ru: "Так говорят гости", en: "What our guests say" }} />
         {/* «Выездной сервис» — баннер консьерж-сервиса (тексты заказчицы). Чтобы поставить видео:
             video="/assets/....mp4" (photo станет обложкой видео) */}
         <PhotoBanner
