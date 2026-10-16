@@ -91,7 +91,7 @@ function Row({ items, reverse, lang }: { items: typeof REVIEWS; reverse?: boolea
     </div>
   );
   return (
-    <div ref={box} className="relative flex cursor-grab select-none overflow-x-auto py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <div ref={box} className="relative -my-6 flex cursor-grab select-none overflow-x-auto py-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {track(false)}
       {track(true)}
     </div>
