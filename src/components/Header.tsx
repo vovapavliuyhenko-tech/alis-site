@@ -83,6 +83,14 @@ export default function Header() {
   const pathname = usePathname();
   const [solid, setSolid] = useState(pathname !== "/");
   const [open, setOpen] = useState(false);
+  // Прокрутили страницу — шапка сжимается в «таблетку»
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const on = () => setScrolled(window.scrollY > 40);
+    on();
+    window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, [pathname]);
 
   // На первом блоке фон прозрачный, элементы светлые; после #hero-end — подложка и тёмные
   useEffect(() => {
@@ -120,6 +128,7 @@ export default function Header() {
   // и на внутренних страницах — тёмная на белой подложке.
   // Открыто мобильное меню — шапка белая и тёмная, как на внутренних страницах
   const overHero = !solid && !open;
+  const pill = solid && scrolled && !open;
   const ink = overHero ? "text-white" : "text-[#17191a]";
   const inkSoft = overHero ? "text-white/90" : "text-[#17191a]/90";
   const hoverInk = overHero ? "hover:text-white" : "hover:text-[#17191a]";
@@ -127,7 +136,7 @@ export default function Header() {
   // Пункт меню + (опц.) выпадашка
   const NavLink = ({ item }: { item: NavItem }) =>
     item.sub ? (
-      <div className="group relative flex h-[68px] items-center min-[1280px]:h-[80px] min-[1680px]:h-[96px]">
+      <div className="group relative flex items-center py-4">
         <a href={item.href} className={`flex items-center gap-1 py-2 ${inkSoft} transition-colors ${hoverInk}`}>
           <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 group-hover:after:w-full">
             {item.label[lang]}
@@ -186,12 +195,19 @@ export default function Header() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         open
           ? "border-b border-[#17191a]/10 bg-white"
-          : solid
+          : solid && !pill
           ? "border-b border-[#17191a]/10 bg-white/85 shadow-[0_4px_24px_rgba(0,0,0,0.05)] backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto grid h-[68px] w-full max-w-[1760px] min-[1280px]:h-[80px] min-[1680px]:h-[96px] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-5 sm:px-8">
+      {/* При прокрутке шапка сжимается в белую «таблетку» с тенью */}
+      <div
+        className={`mx-auto grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center border transition-all duration-500 ease-[cubic-bezier(.22,.61,.36,1)] ${
+          pill
+            ? "mt-2.5 h-[54px] w-[96%] max-w-[1320px] rounded-full border-[#17191a]/[0.06] bg-white/90 px-4 shadow-[0_14px_40px_-18px_rgba(23,25,26,0.3)] backdrop-blur-md sm:px-6 min-[1280px]:h-[60px] min-[1440px]:px-8"
+            : "mt-0 h-[64px] w-full max-w-[1760px] rounded-none border-transparent px-5 sm:px-8 min-[1280px]:h-[72px] min-[1680px]:h-[84px]"
+        }`}
+      >
         {/* Левая часть: гамбургер (моб.) + левое меню (прижато к логотипу) */}
         <div className="flex items-center">
           <button
@@ -203,7 +219,7 @@ export default function Header() {
               {open ? <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" /> : <path d="M4 8h16M4 16h16" strokeLinecap="round" />}
             </svg>
           </button>
-          <nav className="hidden w-full items-center justify-end gap-4 whitespace-nowrap text-[12.5px] uppercase tracking-[0.1em] xl:flex min-[1440px]:gap-7 min-[1440px]:text-[13px] min-[1680px]:gap-9 min-[1680px]:text-[14px]">
+          <nav className="hidden w-full items-center justify-end gap-4 whitespace-nowrap text-[11px] uppercase tracking-[0.1em] xl:flex min-[1440px]:gap-6 min-[1440px]:text-[11.5px] min-[1680px]:gap-8 min-[1680px]:text-[12.5px]">
             {LEFT.map((item) => (
               <NavLink key={item.label.ru} item={item} />
             ))}
@@ -212,12 +228,12 @@ export default function Header() {
 
         {/* Логотип по центру: только надпись (вензель убран по фидбеку) */}
         <a href="/" className="mx-6 flex items-center justify-self-center min-[1280px]:mx-8 min-[1440px]:mx-12 min-[1680px]:mx-16">
-          <LogoWord variant={overHero ? "cream" : "wine"} className="h-[19px] w-auto max-w-none shrink-0 min-[1280px]:h-[20px] min-[1440px]:h-[24px] min-[1680px]:h-[30px]" />
+          <LogoWord variant={overHero ? "cream" : "wine"} className={`w-auto max-w-none shrink-0 transition-[height] duration-500 ${pill ? "h-[16px] min-[1440px]:h-[19px]" : "h-[18px] min-[1280px]:h-[19px] min-[1440px]:h-[22px] min-[1680px]:h-[26px]"}`} />
         </a>
 
         {/* Правая часть: правое меню (прижато к логотипу) + действия у края */}
         <div className="flex items-center">
-          <nav className="hidden items-center gap-4 whitespace-nowrap text-[12.5px] uppercase tracking-[0.1em] xl:flex min-[1440px]:gap-7 min-[1440px]:text-[13px] min-[1680px]:gap-9 min-[1680px]:text-[14px]">
+          <nav className="hidden items-center gap-4 whitespace-nowrap text-[11px] uppercase tracking-[0.1em] xl:flex min-[1440px]:gap-6 min-[1440px]:text-[11.5px] min-[1680px]:gap-8 min-[1680px]:text-[12.5px]">
             {RIGHT.map((item) => (
               <NavLink key={item.label.ru} item={item} />
             ))}
@@ -226,7 +242,7 @@ export default function Header() {
           {/* Действия — язык, избранное, корзина (+ запись на моб.) */}
           <div className="ml-auto flex items-center gap-2 min-[1280px]:ml-4 min-[1440px]:ml-8 min-[1680px]:ml-10 min-[1680px]:gap-3">
           {/* Тумблер RU/EN (десктоп) */}
-          <div className={`relative hidden items-center rounded-full border p-0.5 text-[11px] font-medium xl:flex ${overHero ? "border-white/40" : "border-[#17191a]/30"}`}>
+          <div className={`relative hidden items-center rounded-full border p-0.5 text-[10px] font-medium xl:flex ${overHero ? "border-white/40" : "border-[#17191a]/30"}`}>
             <span
               aria-hidden
               className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full transition-transform duration-300 ease-out ${overHero ? "bg-white" : "bg-[#17191a]"}`}
@@ -237,7 +253,7 @@ export default function Header() {
                 key={l}
                 onClick={() => setLang(l)}
                 aria-pressed={lang === l}
-                className={`relative z-10 w-8 rounded-full py-1.5 uppercase tracking-wide transition-colors duration-300 ${
+                className={`relative z-10 w-7 rounded-full py-1 uppercase tracking-wide transition-colors duration-300 ${
                   lang === l
                     ? overHero ? "text-[#17191a]" : "text-white"
                     : overHero ? "text-white/70 hover:text-white" : "text-[#17191a]/60 hover:text-[#17191a]"
