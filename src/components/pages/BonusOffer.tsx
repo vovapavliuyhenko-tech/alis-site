@@ -110,7 +110,7 @@ export default function BonusOffer() {
               <button
                 type="submit"
                 disabled={state === "sending" || !consent}
-                className="h-[46px] w-full shrink-0 whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-8 text-[11px] font-medium uppercase tracking-[0.12em] sm:h-[52px] sm:w-auto sm:text-[12px] sm:tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white"
+                className="h-[46px] w-full shrink-0 whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-8 text-[11px] font-medium uppercase tracking-[0.12em] sm:h-[52px] sm:w-auto sm:text-[12px] sm:tracking-[0.16em] text-white transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white"
               >
                 {state === "sending" ? (en ? "Sending…" : "Отправляем…") : en ? "Get my bonuses" : "Забрать бонусы"}
               </button>

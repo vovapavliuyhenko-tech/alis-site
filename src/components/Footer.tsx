@@ -132,7 +132,7 @@ export default function Footer() {
                         const cls = "flex min-h-[34px] items-center justify-center rounded-[10px] px-3 py-1.5 text-center text-[11.5px] leading-[1.3] transition-[opacity,translate,background-color,color,border-color] duration-500 sm:min-h-[36px] sm:text-[12px]";
                         const st = { opacity: isOpen ? 1 : 0, translate: isOpen ? "0 0" : "0 8px", transitionDelay: isOpen ? `${0.12 + k * 0.04}s` : "0s" };
                         return it.href ? (
-                          <a key={k} href={it.href} {...(it.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${cls} border border-white bg-white text-[#17191a] hover:bg-transparent hover:text-white`} style={st}>{it.label}</a>
+                          <a key={k} href={it.href} {...(it.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${cls} border border-white bg-white text-[#17191a] btn-fill [--fill:#17191a] hover:text-white`} style={st}>{it.label}</a>
                         ) : (
                           <p key={k} className={`${cls} border border-white/20 text-white/70`} style={st}>{it.label}</p>
                         );

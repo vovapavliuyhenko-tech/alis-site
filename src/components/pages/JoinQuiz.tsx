@@ -132,7 +132,7 @@ export default function JoinQuiz() {
                 type="button"
                 onClick={send}
                 disabled={!ok}
-                className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-white bg-white py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-white disabled:hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]"
+                className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-white bg-white py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 btn-fill [--fill:#17191a] hover:text-white disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-white disabled:hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]"
               >
                 {en ? "Send" : "Отправить"}
               </button>

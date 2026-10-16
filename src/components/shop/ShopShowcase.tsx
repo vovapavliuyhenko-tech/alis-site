@@ -205,7 +205,7 @@ export function ShopTrend() {
               </p>
               <Link
                 href="/shop/catalog?cat=new"
-                className="alis-pulse group mt-6 inline-flex items-center gap-2 rounded-xl border border-white/70 bg-white/15 px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#17191a]"
+                className="alis-pulse group mt-6 inline-flex items-center gap-2 rounded-xl border border-white/70 bg-white/15 px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a]"
               >
                 {lang === "en" ? "See new arrivals" : "Смотреть новинки"}
                 <span className="inline-block transition-transform duration-300 group-hover:-rotate-45">→</span>

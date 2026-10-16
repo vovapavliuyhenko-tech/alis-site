@@ -193,7 +193,7 @@ export default function SalonServices({
           href={cta.href}
           target={cta.href.startsWith("http") ? "_blank" : undefined}
           rel={cta.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          className="mt-3 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] px-6 py-3.5 text-center font-display text-[11px] sm:py-5 sm:text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:bg-transparent hover:text-[#17191a] hover:backdrop-blur-md sm:text-[14px]"
+          className="mt-3 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] px-6 py-3.5 text-center font-display text-[11px] sm:py-5 sm:text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] hover:backdrop-blur-md sm:text-[14px]"
         >
           <span className="sm:hidden">{cta.label[lang].split(" · ")[0]}</span>
           <span className="hidden sm:inline">{cta.label[lang]}</span>

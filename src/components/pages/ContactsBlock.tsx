@@ -119,10 +119,10 @@ export default function ContactsBlock() {
               <div className="mt-2 flex items-center justify-between gap-4">
                 <a href={`tel:+${c.phoneRaw}`} className="whitespace-nowrap font-display text-[20px] leading-none tracking-[0.01em] text-white transition-opacity hover:opacity-70 lg:text-[22px]">{c.phone}</a>
                 <div className="flex gap-2">
-                  <a href={c.wa} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us") + " — " + c.title[lang]} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-500 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a]">
+                  <a href={c.wa} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us") + " — " + c.title[lang]} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-500 hover:-translate-y-0.5 hover:border-white btn-fill [--fill:#fff] hover:text-[#17191a]">
                     <IconWa />
                   </a>
-                  <a href={c.ig} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page") + " — " + c.title[lang]} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-500 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a]">
+                  <a href={c.ig} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page") + " — " + c.title[lang]} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-500 hover:-translate-y-0.5 hover:border-white btn-fill [--fill:#fff] hover:text-[#17191a]">
                     <IconIg />
                   </a>
                 </div>
@@ -141,7 +141,7 @@ export default function ContactsBlock() {
               </dl>
             </div>
           ))}
-          <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="group mt-6 flex items-center justify-between rounded-[12px] lg:mt-auto border border-white bg-white px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white">
+          <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="group mt-6 flex items-center justify-between rounded-[12px] lg:mt-auto border border-white bg-white px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 btn-fill [--fill:#17191a] hover:text-white">
             {t("Построить маршрут", "Get directions")}
             <Arrow />
           </a>

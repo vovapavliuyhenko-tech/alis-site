@@ -309,7 +309,7 @@ export default function BookingWidget() {
                   {date && time && (
                     <button
                       onClick={() => setStep(3)}
-                      className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#17191a] bg-[#17191a] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#17191a]"
+                      className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#17191a] bg-[#17191a] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a]"
                     >
                       Далее <span aria-hidden>→</span>
                     </button>
@@ -342,7 +342,7 @@ export default function BookingWidget() {
                   <button
                     onClick={confirm}
                     disabled={!canConfirm}
-                    className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#17191a] bg-[#17191a] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-[#17191a] disabled:hover:text-[#f4efe6]"
+                    className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#17191a] bg-[#17191a] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-[#17191a] disabled:hover:text-[#f4efe6]"
                   >
                     Записаться <span aria-hidden>→</span>
                   </button>

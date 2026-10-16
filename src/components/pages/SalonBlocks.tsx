@@ -46,7 +46,7 @@ export function SalonBonusStrip() {
             type="button"
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
-            className="flex w-full items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-5 py-3 text-[10.5px] font-medium uppercase tracking-[0.1em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] md:w-auto sm:text-[11.5px]"
+            className="flex w-full items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-5 py-3 text-[10.5px] font-medium uppercase tracking-[0.1em] text-white transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] md:w-auto sm:text-[11.5px]"
           >
             {en ? "Invite a friend and get a bonus" : "Пригласить подругу и получить бонус"}
           </button>
@@ -74,7 +74,7 @@ export function SalonBonusStrip() {
                     type="button"
                     onClick={send}
                     disabled={!ok}
-                    className="h-[46px] self-end whitespace-nowrap rounded-[14px] border border-[#17191a] bg-[#17191a] px-6 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white sm:h-[48px]"
+                    className="h-[46px] self-end whitespace-nowrap rounded-[14px] border border-[#17191a] bg-[#17191a] px-6 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white sm:h-[48px]"
                   >
                     {en ? "Get my bonuses" : "Забрать бонусы"}
                   </button>
@@ -161,7 +161,7 @@ export function SalonReviews() {
         </div>
         <div className="mt-6 flex justify-center">
           {/* TODO: ссылку на площадку отзывов (Яндекс/2ГИС) пришлёт заказчица — пока к администратору */}
-          <a href={SALON_ADMIN_WA} target="_blank" rel="noopener noreferrer" className="flex w-full max-w-[360px] items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5 sm:text-[12px]">
+          <a href={SALON_ADMIN_WA} target="_blank" rel="noopener noreferrer" className="flex w-full max-w-[360px] items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] sm:py-3.5 sm:text-[12px]">
             {en ? "Leave your review" : "Оставить свой отзыв о визите"}
           </a>
         </div>

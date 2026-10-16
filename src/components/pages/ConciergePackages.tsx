@@ -136,7 +136,7 @@ export default function ConciergePackages() {
                   </li>
                 ))}
               </ul>
-              <a href="#calc" className="flex shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-[12px] border border-white bg-white px-7 py-4 text-[11.5px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-500 hover:bg-transparent hover:text-white sm:px-9 sm:py-[18px] sm:text-[12.5px]">
+              <a href="#calc" className="flex shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-[12px] border border-white bg-white px-7 py-4 text-[11.5px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-500 btn-fill [--fill:#17191a] hover:text-white sm:px-9 sm:py-[18px] sm:text-[12.5px]">
                 {en ? "Calculate the budget" : "Рассчитать бюджет"}
                 <span aria-hidden>→</span>
               </a>

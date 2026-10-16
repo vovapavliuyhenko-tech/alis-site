@@ -71,7 +71,7 @@ export default function AdminPage() {
                 setAuthed(true);
               }
             }}
-            className="mt-6 w-full rounded-full border border-[#17191a] bg-[#17191a] py-3 text-[14px] font-medium text-[#f4efe6] transition-colors hover:bg-transparent hover:text-[#17191a]"
+            className="mt-6 w-full rounded-full border border-[#17191a] bg-[#17191a] py-3 text-[14px] font-medium text-[#f4efe6] transition-colors btn-fill [--fill:#fff] hover:text-[#17191a]"
           >
             Войти
           </button>
