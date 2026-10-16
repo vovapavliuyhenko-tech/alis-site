@@ -5,7 +5,7 @@
 import { useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { useHeroParallax } from "@/lib/useHeroParallax";
-import { SplitTitle, TitleLine, Grain, useHeroLive } from "@/components/ui/HeroFX";
+import { SplitTitle, Grain, useHeroLive } from "@/components/ui/HeroFX";
 
 type Loc = { ru: string; en: string };
 
@@ -69,7 +69,6 @@ export default function TeamIntro({
         <h1 className={`${subtitle ? "max-w-[30ch] lg:max-w-[44ch]" : "whitespace-nowrap"} text-[clamp(18px,6vw,24px)] font-serif-display font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]`}>
           <SplitTitle text={title[lang]} />
         </h1>
-        <TitleLine delay={lineDelay} />
         {subtitle && (
           <p style={{ animationDelay: `${lineDelay + 0.2}s` }} className="hero-up mt-3 max-w-[620px] !text-[11.5px] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[12.5px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[13px]">
             {subtitle[lang]}

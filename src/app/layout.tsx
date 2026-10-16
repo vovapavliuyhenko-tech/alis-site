@@ -8,6 +8,7 @@ import ServiceWorker from "@/components/ServiceWorker";
 import SmoothAnchor from "@/components/SmoothAnchor";
 import CookieConsent from "@/components/CookieConsent";
 import BookingFab from "@/components/BookingFab";
+import HeadingReveal from "@/components/HeadingReveal";
 import Typograph from "@/components/Typograph";
 
 // Montserrat на всём сайте (с полной кириллицей). Заголовки временно тоже
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <ShopProvider>
             {children}
             <Typograph />
+            <HeadingReveal />
             <ShopUI />
             <BookingFab />
             <CookieConsent />

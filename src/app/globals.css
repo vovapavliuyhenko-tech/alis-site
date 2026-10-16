@@ -372,3 +372,6 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) {
   .hero-zoom, .hero-letter, .hero-line, .hero-up, .hero-grain { animation: none; }
 }
+@keyframes hero-up-blur { from { opacity: 0; filter: blur(8px); transform: translateY(14px); } to { opacity: 1; filter: blur(0); transform: none; } }
+.hero-up-blur { animation: hero-up-blur 1s cubic-bezier(.22, .61, .36, 1) both; }
+@media (prefers-reduced-motion: reduce) { .hero-up-blur { animation: none; } }

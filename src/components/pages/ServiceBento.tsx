@@ -37,16 +37,16 @@ export default function ServiceBento() {
                 draggable={false}
                 loading="lazy"
                 decoding="async"
-                className="absolute inset-0 h-full w-full object-cover transition-all duration-[700ms] ease-out group-hover:scale-105 group-hover:blur-lg"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/20 transition-colors duration-500 group-hover:from-black/65 group-hover:via-black/35 group-hover:to-black/50" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent transition-colors duration-500 group-hover:from-black/80 group-hover:via-black/25" />
 
-              {/* Название слева сверху + подпись, проявляется на наведении */}
-              <div className="absolute inset-x-6 top-5">
+              {/* Название и подпись — внизу слева, видны сразу (справа место под стрелку) */}
+              <div className="absolute bottom-5 left-6 right-16 lg:bottom-6">
                 <h3 className="font-serif-display text-[22px] uppercase tracking-[0.03em] text-white lg:text-[24px]">
                   {c.title[lang]}
                 </h3>
-                <p className="mt-2 max-w-[280px] !text-[12.5px] leading-[1.5] text-white opacity-0 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] lg:!text-[13px] transition-opacity duration-300 group-hover:opacity-100">
+                <p className="mt-1.5 max-w-[320px] !text-[11.5px] leading-[1.5] text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] sm:!text-[12.5px] lg:!text-[13px]">
                   {c.note[lang]}
                 </p>
               </div>
