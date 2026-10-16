@@ -130,13 +130,13 @@ export default function ConciergePackages() {
             <div className="mt-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
               <ul className="flex flex-col gap-2">
                 {p.items.map((it, k) => (
-                  <li key={it.ru} className="flex items-start gap-3 font-display text-[11.5px] uppercase leading-[1.35] tracking-[0.03em] animate-[pk-in_.9s_cubic-bezier(.22,.61,.36,1)_both] sm:text-[13px]" style={{ animationDelay: `${0.15 + k * 0.09}s` }}>
+                  <li key={it.ru} className="flex items-start gap-3 font-display text-[10.5px] uppercase leading-[1.35] tracking-[0.03em] animate-[pk-in_.9s_cubic-bezier(.22,.61,.36,1)_both] sm:text-[11.5px]" style={{ animationDelay: `${0.15 + k * 0.09}s` }}>
                     <span aria-hidden className="mt-[4px] h-1.5 w-1.5 shrink-0 rounded-[2px] bg-white" />
                     {it[lang]}
                   </li>
                 ))}
               </ul>
-              <a href="#calc" className="flex shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-[12px] border border-white bg-white px-5 py-3 text-[10.5px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-500 hover:bg-transparent hover:text-white sm:text-[11px]">
+              <a href="#calc" className="flex shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-[12px] border border-white bg-white px-7 py-4 text-[11.5px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-500 hover:bg-transparent hover:text-white sm:px-9 sm:py-[18px] sm:text-[12.5px]">
                 {en ? "Calculate the budget" : "Рассчитать бюджет"}
                 <span aria-hidden>→</span>
               </a>
