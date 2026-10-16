@@ -12,7 +12,7 @@ const YANDEX = "https://yandex.ru/maps/org/lis_byuti/63024642190/reviews/";
 
 function Card({ r, lang }: { r: (typeof REVIEWS)[number]; lang: "ru" | "en" }) {
   return (
-    <figure className="mr-3 flex w-[290px] shrink-0 flex-col justify-between rounded-[20px] border border-[#17191a]/[0.06] bg-white p-5 shadow-[0_10px_30px_-18px_rgba(23,25,26,0.28)] transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] hover:-translate-y-2 hover:shadow-[0_22px_40px_-20px_rgba(23,25,26,0.35)] sm:w-[380px] lg:mr-4">
+    <figure className="mr-3 flex w-[290px] shrink-0 flex-col justify-between rounded-[20px] min-h-[230px] border border-[#17191a]/[0.06] bg-white p-6 shadow-[0_10px_30px_-18px_rgba(23,25,26,0.28)] transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] hover:-translate-y-2 hover:shadow-[0_22px_40px_-20px_rgba(23,25,26,0.35)] sm:w-[380px] lg:mr-4">
       <blockquote className="text-[11.5px] leading-[1.55] text-[#17191a]/85 sm:text-[12.5px]">{r.text[lang]}</blockquote>
       <figcaption className="mt-4 flex items-center gap-2.5">
         <span aria-hidden className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[10px] text-white">
