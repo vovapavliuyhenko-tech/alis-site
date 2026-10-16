@@ -136,8 +136,8 @@ export default function Header() {
   // Пункт меню + (опц.) выпадашка
   const NavLink = ({ item }: { item: NavItem }) =>
     item.sub ? (
-      <div className="group relative flex items-center py-4">
-        <a href={item.href} className={`flex items-center gap-1 py-2 ${inkSoft} transition-colors ${hoverInk}`}>
+      <div className="group relative flex items-center py-2">
+        <a href={item.href} className={`flex items-center gap-1 py-1 leading-none ${inkSoft} transition-colors ${hoverInk}`}>
           <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 group-hover:after:w-full">
             {item.label[lang]}
           </span>
@@ -146,7 +146,7 @@ export default function Header() {
           </svg>
         </a>
         {/* Компактная выпадашка — раскрывается прямо из-под пункта */}
-        <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2.5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+        <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
           <div className="relative min-w-[230px] origin-top scale-95 rounded-[12px] border border-[#17191a]/12 bg-white/95 p-2 shadow-[0_20px_50px_rgba(23,25,26,0.16)] backdrop-blur-md transition-transform duration-200 group-hover:scale-100">
             {/* «Клювик» к пункту меню */}
             <span aria-hidden className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 rounded-[3px] border-l border-t border-[#17191a]/12 bg-white/95" />
@@ -164,7 +164,7 @@ export default function Header() {
         </div>
       </div>
     ) : (
-      <a href={item.href} className={`group py-2 ${inkSoft} transition-colors ${hoverInk}`}>
+      <a href={item.href} className={`group py-1 leading-none ${inkSoft} transition-colors ${hoverInk}`}>
         <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 group-hover:after:w-full">
           {item.label[lang]}
         </span>
