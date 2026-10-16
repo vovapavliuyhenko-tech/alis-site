@@ -85,7 +85,7 @@ export default function TeamIntro({
               {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className={`flex w-full items-center justify-center whitespace-nowrap rounded-xl border px-1.5 py-3 text-[10px] font-medium uppercase tracking-[0.05em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[13px] sm:tracking-[0.18em] lg:py-4 lg:text-[14px] ${
                 i === 0
-                  ? "border-white bg-white text-[#17191a] btn-fill [--fill:#17191a] hover:text-white"
+                  ? "border-white bg-white text-[#17191a] hover:bg-transparent hover:text-white"
                   : "border-white/70 bg-white/[0.18] text-white hover:border-white btn-fill [--fill:#fff] hover:text-[#17191a]"
               }`}
             >
