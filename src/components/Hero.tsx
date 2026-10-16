@@ -88,7 +88,7 @@ export default function Hero() {
               {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className={`flex w-full items-center justify-center whitespace-nowrap rounded-xl border px-1.5 py-3 text-[10px] font-medium uppercase tracking-[0.05em] backdrop-blur-md btn-roll transition-[background-color,color,border-color] duration-500 sm:py-3.5 sm:text-[13px] sm:tracking-[0.18em] lg:py-4 lg:text-[14px] ${b.light ? "border-white bg-white text-[#17191a] hover:bg-transparent hover:text-white" : "border-white/70 bg-white/[0.18] text-white hover:border-white hover:bg-white hover:text-[#17191a]"}`}
             >
-              <span className="roll-wrap"><span className="roll">{b.label}</span></span>
+              {b.label}
             </a>
             {/* Подпись под кнопкой — тихо, без капса и контраста */}
             <span className="mt-1.5 hidden text-[11px] tracking-[0.02em] text-white/60 sm:block">{b.note}</span>

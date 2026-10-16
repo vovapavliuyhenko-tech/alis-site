@@ -89,7 +89,7 @@ export default function TeamIntro({
                   : "border-white/70 bg-white/[0.18] text-white hover:border-white hover:bg-white hover:text-[#17191a]"
               }`}
             >
-              <span className="roll-wrap"><span className="roll">{b.label[lang]}</span></span>
+              {b.label[lang]}
             </a>
           ))}
         </div>
