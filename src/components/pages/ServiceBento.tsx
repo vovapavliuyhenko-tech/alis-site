@@ -37,7 +37,7 @@ export default function ServiceBento() {
                 draggable={false}
                 loading="lazy"
                 decoding="async"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
+                className="absolute inset-0 h-full w-full object-cover transition-[scale,filter] duration-[900ms] ease-out group-hover:scale-105 group-hover:blur-md"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent transition-colors duration-500 group-hover:from-black/80 group-hover:via-black/25" />
 
