@@ -2,10 +2,10 @@
 // ПАКЕТЫ УСЛУГ (страница «Консьерж-сервис», #uslugi) — по мотивам блока направлений fcchance.ru:
 // слева светлая панель со списком из 4 тарифов (крупные названия; выбранный — чёрный со стрелкой,
 // остальные приглушены), справа большое фото выбранного тарифа: сверху «для кого» и «стоимость»,
-// снизу состав пакета и кнопка «Рассчитать бюджет» (к анкете #calc). Тариф меняется наведением
-// или кликом; фото и текст плавно сменяются. Телефон: список сверху, карточка тарифа под ним.
+// снизу состав пакета и кнопка «Рассчитать бюджет» (к анкете #calc). Тариф выбирается нажатием
+// (выбранный — тёмная плашка); фото и текст плавно сменяются. Телефон: список сверху, карточка тарифа под ним.
 // Цены «от …» пришлёт заказчица. Фото — временные.
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -65,11 +65,7 @@ const PACKS: Pack[] = [
 export default function ConciergePackages() {
   const { lang } = useLang();
   const en = lang === "en";
-  const [cur, setCurNow] = useState(0);
-  // Наведение: небольшая задержка, чтобы тариф не «мигал», когда мышь просто проходит по списку
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const setCur = (i: number) => { if (timer.current) clearTimeout(timer.current); setCurNow(i); };
-  const hoverCur = (i: number) => { if (timer.current) clearTimeout(timer.current); timer.current = setTimeout(() => setCurNow(i), 120); };
+  const [cur, setCur] = useState(0);
   const p = PACKS[cur];
 
   return (
@@ -77,27 +73,28 @@ export default function ConciergePackages() {
       <div className="mx-auto grid w-[96%] max-w-[1760px] gap-3 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-4">
         <h2 className="sr-only">{en ? "Service packages" : "Пакеты услуг"}</h2>
 
-        {/* Слева: список тарифов */}
-        <div className="r-reveal rounded-[28px] bg-[#f6f4f1] px-6 py-2 sm:px-10 lg:px-12 lg:py-4">
+        {/* Слева: список тарифов — белая карточка с тенью; тариф выбирается нажатием,
+            выбранный — тёмная плашка */}
+        <div className="r-reveal flex flex-col gap-1.5 rounded-[28px] border border-[#17191a]/[0.06] bg-white p-3 shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:p-4 lg:p-5">
           {PACKS.map((x, i) => {
             const on = i === cur;
             return (
               <button
                 key={x.name}
                 type="button"
-                onMouseEnter={() => hoverCur(i)}
-                onFocus={() => setCur(i)}
                 onClick={() => setCur(i)}
                 aria-pressed={on}
-                className={`group flex w-full items-center justify-between gap-6 py-5 text-left sm:py-7 lg:py-8 ${i > 0 ? "border-t border-[#17191a]/10" : ""}`}
+                className={`group flex w-full flex-1 items-center justify-between gap-6 rounded-[20px] px-5 py-5 text-left outline-none transition-colors duration-500 ease-[cubic-bezier(.22,.61,.36,1)] focus-visible:ring-2 focus-visible:ring-[#17191a]/30 sm:px-7 sm:py-6 lg:px-8 ${
+                  on ? "bg-[#17191a] text-white" : "bg-white text-[#17191a] hover:bg-[#f6f4f1]"
+                }`}
               >
                 <span className="min-w-0">
-                  <span className={`block font-display text-[22px] uppercase leading-none tracking-[0.05em] transition-colors duration-700 ease-[cubic-bezier(.22,.61,.36,1)] sm:text-[28px] lg:text-[clamp(24px,2.1vw,36px)] ${on ? "text-[#17191a]" : "text-[#17191a]/30 group-hover:text-[#17191a]/60"}`}>
+                  <span className={`block font-display text-[22px] uppercase leading-none tracking-[0.05em] transition-colors duration-500 sm:text-[28px] lg:text-[clamp(24px,2.1vw,36px)] ${on ? "text-white" : "text-[#17191a]/35 group-hover:text-[#17191a]/70"}`}>
                     {x.name}
                   </span>
-                  <span className={`mt-1.5 block text-[11.5px] leading-[1.45] transition-colors duration-700 sm:text-[13px] ${on ? "text-[#17191a]/75" : "text-[#17191a]/40"}`}>{x.who[lang]}</span>
+                  <span className={`mt-1.5 block text-[11.5px] leading-[1.45] transition-colors duration-500 sm:text-[13px] ${on ? "text-white/70" : "text-[#17191a]/45"}`}>{x.who[lang]}</span>
                 </span>
-                <span aria-hidden className={`shrink-0 text-[18px] transition-all duration-700 ease-[cubic-bezier(.22,.61,.36,1)] ${on ? "translate-x-0 opacity-100" : "-translate-x-3 opacity-0"}`}>→</span>
+                <span aria-hidden className={`shrink-0 text-[18px] transition-all duration-500 ease-[cubic-bezier(.22,.61,.36,1)] ${on ? "translate-x-0 opacity-100" : "-translate-x-3 opacity-0 group-hover:translate-x-0 group-hover:opacity-40"}`}>→</span>
               </button>
             );
           })}
