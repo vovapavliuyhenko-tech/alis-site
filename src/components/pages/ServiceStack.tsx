@@ -69,7 +69,7 @@ function Panel({ cat, img, lang, cta }: { cat: ServiceCategory; img: string; lan
       <a
         href={cta.href}
         {...(cta.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-        className="mt-8 block w-full rounded-[12px] border border-[#17191a] bg-[#17191a] px-6 py-4 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] lg:mt-auto lg:pt-4"
+        className="mt-8 block w-full rounded-[12px] border border-[#17191a] bg-[#17191a] px-6 py-4 text-center font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] lg:mt-auto lg:pt-4"
       >
         {cta.label[lang]}
       </a>

@@ -15,7 +15,7 @@ export default function FinalChoice() {
   const { lang } = useLang();
   const en = lang === "en";
   const dark =
-    "flex items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] whitespace-nowrap px-3 py-3.5 text-center text-[11px] font-medium uppercase tracking-[0.12em] sm:px-3 sm:py-4 sm:text-[10.5px] sm:tracking-[0.08em] lg:px-6 lg:text-[12px] lg:tracking-[0.16em] text-white transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a]";
+    "flex items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] whitespace-nowrap px-3 py-3.5 text-center text-[11px] font-medium uppercase tracking-[0.12em] sm:px-3 sm:py-4 sm:text-[10.5px] sm:tracking-[0.08em] lg:px-6 lg:text-[12px] lg:tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a]";
   const line =
     "flex items-center justify-center rounded-[12px] border border-[#17191a] bg-white whitespace-nowrap px-3 py-3.5 text-center text-[11px] font-medium uppercase tracking-[0.12em] sm:px-3 sm:py-4 sm:text-[10.5px] sm:tracking-[0.08em] lg:px-6 lg:text-[12px] lg:tracking-[0.16em] text-[#17191a] transition-colors duration-300 hover:bg-[#17191a] hover:text-white";
   const BTNS = [

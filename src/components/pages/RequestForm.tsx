@@ -123,7 +123,7 @@ export default function RequestForm({
             <p className="mt-3 max-w-[420px] text-[15px] leading-[1.65] text-[#17191a]/80">{success[lang]}</p>
             <Link
               href="/"
-              className="alis-pulse-wine mt-8 inline-flex items-center justify-center rounded-xl border border-[#17191a] bg-[#17191a] px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a]"
+              className="alis-pulse-wine mt-8 inline-flex items-center justify-center rounded-xl border border-[#17191a] bg-[#17191a] px-10 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a]"
             >
               {en ? "To the home page" : "На главную"}
             </Link>
@@ -187,7 +187,7 @@ export default function RequestForm({
             <button
               type="submit"
               disabled={!consent}
-              className="mt-3 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] sm:mt-4 sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em] text-white transition-all duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] hover:backdrop-blur-md disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white"
+              className="mt-3 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] sm:mt-4 sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#17191a] hover:backdrop-blur-md disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white"
             >
               {submit[lang]}
             </button>

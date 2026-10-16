@@ -157,7 +157,7 @@ export function JoinInternational() {
         ))}
       </ul>
       <div className="mt-6 grid w-full max-w-[460px] gap-2 self-center sm:grid-cols-2 md:self-start">
-        <a href="#join" className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-3 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-white transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] sm:py-3.5">
+        <a href="#join" className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-3 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5">
           {en ? "Fill in the form" : "Заполнить анкету"}
         </a>
         <a href={MANAGER_WA} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a]/25 px-3 py-3 text-[11px] font-medium uppercase tracking-[0.1em] text-[#17191a] transition-colors duration-300 hover:border-[#17191a] sm:py-3.5">
@@ -208,7 +208,7 @@ export function JoinSteps() {
           ))}
         </ol>
         <div className="mt-6 flex justify-center">
-          <a href="#join" className="flex w-full max-w-[340px] items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
+          <a href="#join" className="flex w-full max-w-[340px] items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
             {en ? "Apply" : "Подать заявку"}
           </a>
         </div>
@@ -223,7 +223,7 @@ export function JoinButtons() {
   const en = lang === "en";
   return (
     <div className="mx-auto mt-6 grid w-[96%] max-w-[760px] gap-2 sm:grid-cols-2 sm:gap-3">
-      <a href="#join" className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-4 py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] sm:py-3.5 sm:text-[12px]">
+      <a href="#join" className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a] bg-[#17191a] px-4 py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5 sm:text-[12px]">
         {en ? "Fill in the form" : "Заполнить анкету"}
       </a>
       <a href={MANAGER_WA} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center whitespace-nowrap rounded-[12px] border border-[#17191a]/25 px-4 py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 hover:border-[#17191a] sm:py-3.5 sm:text-[12px]">

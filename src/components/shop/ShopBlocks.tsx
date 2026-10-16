@@ -168,7 +168,7 @@ export function HairQuiz() {
                   <a href="/policy" className="underline underline-offset-2">{en ? "personal data" : "персональных данных"}</a>
                 </span>
               </label>
-              <button type="button" onClick={send} disabled={!ok} className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-white bg-white py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 btn-fill [--fill:#17191a] hover:text-white disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-white disabled:hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
+              <button type="button" onClick={send} disabled={!ok} className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-white bg-white py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-white disabled:hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
                 {en ? "Find my care" : "Подобрать уход"}
               </button>
               <button type="button" onClick={() => setStep(4)} className={`mt-4 ${link}`}>← {en ? "Back" : "Назад"}</button>
@@ -289,7 +289,7 @@ export function GiftBox() {
               ? "Contact a manager within 15 minutes to choose the packaging, contents and card, and discuss any details."
               : "Свяжитесь с менеджером за 15 минут, чтобы выбрать упаковку, наполнение, открытку и обсудить необходимые детали."}
           </p>
-          <a href={MANAGER_WA} target="_blank" rel="noopener noreferrer" className="mt-6 flex w-full max-w-[340px] items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
+          <a href={MANAGER_WA} target="_blank" rel="noopener noreferrer" className="mt-6 flex w-full max-w-[340px] items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
             {en ? "Contact a manager" : "Связаться с менеджером"}
           </a>
         </div>
@@ -397,7 +397,7 @@ export function CertBuilder() {
                 <a href="/policy" className="underline underline-offset-2">{en ? "personal data" : "персональных данных"}</a>
               </span>
             </label>
-            <button type="button" onClick={send} disabled={!ok} className="flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
+            <button type="button" onClick={send} disabled={!ok} className="flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
               {en ? "Choose a certificate" : "Выбрать сертификат"}
             </button>
           </div>

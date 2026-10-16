@@ -72,7 +72,7 @@ export default function TeamHero({
       ) : (
         <a
           href={cta.href}
-          className="flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-blur-md btn-fill [--fill:#fff] hover:text-[#17191a] sm:text-[14px]"
+          className="flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:-translate-y-0.5 hover:backdrop-blur-md hover:bg-transparent hover:text-[#17191a] sm:text-[14px]"
         >
           {en ? cta.label.en : cta.label.ru}
         </a>

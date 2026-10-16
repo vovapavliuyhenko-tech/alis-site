@@ -324,7 +324,7 @@ export default function ConciergeChat() {
               )}
               {step === "review" && (
                 <div className="space-y-2">
-                  <button onClick={confirm} className="alis-pulse-wine flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-all duration-300 btn-fill [--fill:#fff] hover:text-[#17191a]">
+                  <button onClick={confirm} className="alis-pulse-wine flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-all duration-300 hover:bg-transparent hover:text-[#17191a]">
                     {t("Отправить заявку", "Send request")}
                   </button>
                   <button onClick={startFlow} className="w-full text-center text-[12px] text-[#17191a]/50 hover:text-[#17191a]">{t("Заполнить заново", "Start over")}</button>

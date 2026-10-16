@@ -87,7 +87,7 @@ export default function VacanciesScroll() {
                 </span>
                 <span className="font-display text-[13px] tabular-nums text-[#17191a]/40">{String(STEPS.length).padStart(2, "0")}</span>
               </div>
-              <a href="#join" className="flex w-full max-w-[340px] items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 btn-fill [--fill:#fff] hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
+              <a href="#join" className="flex w-full max-w-[340px] items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
                 {en ? "Apply" : "Подать заявку"}
               </a>
             </div>
