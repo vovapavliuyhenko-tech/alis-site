@@ -41,14 +41,16 @@ export default function ServiceBento() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent transition-colors duration-500 group-hover:from-black/80 group-hover:via-black/25" />
 
-              {/* Название и подпись — внизу слева, видны сразу (справа место под стрелку) */}
+              {/* Название внизу слева; подпись на компьютере выезжает при наведении, на телефоне видна сразу */}
               <div className="absolute bottom-5 left-6 right-16 lg:bottom-6">
                 <h3 className="font-serif-display text-[22px] uppercase tracking-[0.03em] text-white lg:text-[24px]">
                   {c.title[lang]}
                 </h3>
-                <p className="mt-1.5 max-w-[320px] !text-[11.5px] leading-[1.5] text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] sm:!text-[12.5px] lg:!text-[13px]">
+                <div className="grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-hover:opacity-100">
+                <p className="min-h-0 overflow-hidden pt-1.5 max-w-[320px] !text-[11.5px] leading-[1.5] text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] sm:!text-[12.5px] lg:!text-[13px]">
                   {c.note[lang]}
                 </p>
+                </div>
               </div>
 
               {/* Стрелка — видно, что карточка кликабельна (в т.ч. на телефоне без hover) */}
