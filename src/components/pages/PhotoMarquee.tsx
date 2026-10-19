@@ -13,14 +13,16 @@ export type MarqueeItem = string | { src: string; cap?: Loc; href?: string };
 // Подписи — по тому, что видно на фото; клик ведёт в категорию услуг салона.
 // TODO: заказчица сама отберёт фото работ мастеров (и подпишет мастера) — заменить список.
 const ITEMS: MarqueeItem[] = [
-  { src: "/assets/alis/img_2672.jpg", cap: { ru: "Брови и макияж", en: "Brows & makeup" } },
-  { src: "/assets/alis/img_2749.jpg", cap: { ru: "Макияж", en: "Makeup" } },
-  { src: "/assets/alis/img_2751.jpg", cap: { ru: "Причёска и макияж", en: "Hair & makeup" } },
   { src: "/assets/alis/img_3283.jpg", cap: { ru: "Укладка", en: "Styling" } },
-  { src: "/assets/alis/img_6011.jpg", cap: { ru: "Образ: укладка и макияж", en: "Look: styling & makeup" } },
+  { src: "/assets/alis/work_nails_nude.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+  { src: "/assets/alis/work_makeup_evening.jpg", cap: { ru: "Макияж и причёска", en: "Makeup & hair" } },
+  { src: "/assets/alis/work_hair_waves.jpg", cap: { ru: "Укладка", en: "Styling" } },
   { src: "/assets/alis/img_8578.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+  { src: "/assets/alis/work_makeup_bun.jpg", cap: { ru: "Макияж и причёска", en: "Makeup & hair" } },
+  { src: "/assets/alis/work_hair_bun.jpg", cap: { ru: "Причёска", en: "Hairstyle" } },
+  { src: "/assets/alis/work_nails_bag.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+  { src: "/assets/alis/img_6011.jpg", cap: { ru: "Образ: укладка и макияж", en: "Look: styling & makeup" } },
   { src: "/assets/alis/img_6048.jpg", cap: { ru: "Магазин ÁLIS BEAUTY", en: "ÁLIS BEAUTY shop" } },
-  { src: "/assets/alis/img_5910.webp", cap: { ru: "Уход за волосами", en: "Hair care" } },
 ];
 
 function Track({ items, hidden = false, moved }: { items: MarqueeItem[]; hidden?: boolean; moved: React.RefObject<boolean> }) {
