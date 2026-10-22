@@ -22,7 +22,7 @@ const WHO: BenefitPoint[] = [
   {
     title: { ru: "Отелям", en: "Hotels" },
     desc: {
-      ru: "Бьюти-сервис в номерах для гостей — без своего салона.",
+      ru: "Бьюти-сервис в номерах для гостей без своего салона.",
       en: "In-room beauty service for guests — no salon of your own needed.",
     },
     img: "/assets/alis/img_1855.jpg",
@@ -83,7 +83,7 @@ export default function CooperationPage() {
         <ConciergeBenefits points={WHO} sectionId="who" />
 
         {/* Бегущая строка брендов, которые с нами сотрудничают */}
-        <Brands label={{ ru: "Нам доверяют", en: "Trusted by" }} />
+        <Brands label={{ ru: "Нас выбирают", en: "They choose us" }} />
 
         {/* 3 — 5 рамок: фото или видео (TODO: медиа пришлёт заказчица) */}
         {/* <CoopGallery /> — скрыта, пока нет фото/видео */}

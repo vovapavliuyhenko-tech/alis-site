@@ -18,9 +18,9 @@ import ConciergeChat from "@/components/ConciergeChat";
 const CONCIERGE_STAGES: Stage[] = [
   {
     name: { ru: "Заявка", en: "Request" },
-    heading: { ru: "Заявка — ответ за 15 минут", en: "Request — a reply in 15 minutes" },
+    heading: { ru: "Заявка", en: "Request" },
     desc: {
-      ru: "Заполните анкету или напишите личному консьержу — ответим за 15 минут.",
+      ru: "Заполните анкету или отправьте запрос личному консьержу. Ответим за 15 минут.",
       en: "Fill in the form or message your personal concierge — we reply within 15 minutes.",
     },
     quote: { ru: "«Ответим за 15 минут»", en: "“We reply in 15 minutes”" },
@@ -28,9 +28,9 @@ const CONCIERGE_STAGES: Stage[] = [
   },
   {
     name: { ru: "Смета", en: "Estimate" },
-    heading: { ru: "Смета и бронь даты", en: "Estimate and date booking" },
+    heading: { ru: "Расчёт сметы и бронь", en: "Estimate and booking" },
     desc: {
-      ru: "Присылаем смету, подбираем команду и тайминг. Дату закрепляют предоплата и договор.",
+      ru: "Присылаем смету, подбираем команду и составляем тайминг. Дату закрепляют предоплата и подписание договора.",
       en: "We send the estimate, pick the team and set the timing. A deposit and a contract secure the date.",
     },
     quote: { ru: "«Дата закреплена»", en: "“Your date is secured”" },
@@ -40,7 +40,7 @@ const CONCIERGE_STAGES: Stage[] = [
     name: { ru: "Пробный образ", en: "Trial" },
     heading: { ru: "Пробные образы", en: "Trial looks" },
     desc: {
-      ru: "В салоне, с выездом или онлайн-концепт со стилистами — по вашему запросу.",
+      ru: "В салоне, с выездом или составление концепта со стилистами онлайн по вашему запросу.",
       en: "At the salon, on location, or an online concept with our stylists — as you prefer.",
     },
     quote: { ru: "«Образ готов заранее»", en: "“The look is ready in advance”" },
@@ -50,7 +50,7 @@ const CONCIERGE_STAGES: Stage[] = [
     name: { ru: "Событие", en: "The day" },
     heading: { ru: "День события", en: "The day of the event" },
     desc: {
-      ru: "Команда приезжает заранее со всеми материалами и оборудованием и работает по таймингу.",
+      ru: "Команда приезжает заранее со всеми материалами и оборудованием, работаем по таймингу.",
       en: "The team arrives early with all materials and equipment and works to the timing.",
     },
     quote: { ru: "«Всё по таймингу»", en: "“Everything on schedule”" },
@@ -60,7 +60,7 @@ const CONCIERGE_STAGES: Stage[] = [
     name: { ru: "Финал", en: "Finishing touches" },
     heading: { ru: "Финальные штрихи", en: "Finishing touches" },
     desc: {
-      ru: "Если выбрана опция сопровождения, специалист остаётся с вами до конца события.",
+      ru: "Специалист остаётся на сопровождении, если выбрана данная опция.",
       en: "If you choose stay-on support, an artist stays with you until the end of the event.",
     },
     quote: { ru: "«С вами до конца»", en: "“With you to the end”" },
@@ -81,7 +81,7 @@ export default function ConciergePage() {
 
       {/* 1 — Обложка: фото + кнопка к заявке (без логотипа и эффектов) */}
       <TeamIntro
-        title={{ ru: "Beauty-команда для событий в России, Европе и СНГ", en: "A beauty team for events in Russia, Europe and the CIS" }}
+        title={{ ru: "Международная beauty-команда для вашего события по России, Европе и странам СНГ", en: "An international beauty team for your event in Russia, Europe and the CIS" }}
         subtitle={{ ru: "Макияж, укладки и услуги парикмахера под ключ для свадеб, съёмок и модных мероприятий.", en: "Turnkey makeup, styling and hairdressing for weddings, shoots and fashion events." }}
         button={{ label: { ru: "Рассчитать бюджет", en: "Calculate the budget" }, href: "#calc" }}
         button2={{ label: { ru: "Написать личному beauty-консьержу", en: "Message your personal beauty concierge" }, href: "#chat" }}
@@ -99,14 +99,14 @@ export default function ConciergePage() {
         <ConciergeBenefits />
 
         {/* Бегущая строка брендов, которые нас выбирают — доверие перед ценами и пакетами */}
-        <Brands label={{ ru: "Нам доверяют", en: "Trusted by" }} />
+        <Brands label={{ ru: "Нас выбирают", en: "They choose us" }} />
 
         {/* 3 — Пакеты услуг (#uslugi). TODO: цены «от …» и PDF КП пришлёт заказчица */}
         <BlockLabel ru="Пакеты услуг" en="Packages" />
         <ConciergePackages />
 
         {/* 4 — Как проходит работа (#process) */}
-        <BlockLabel ru="Как проходит работа" en="How it works" />
+        <BlockLabel ru="Как проходит работа с командой ÁLIS BEAUTY" en="How working with the ÁLIS BEAUTY team goes" />
         <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={null} />
 
         {/* 5 — Проверка даты: анкета «Рассчитать бюджет» прямо в тёмной плашке (#calc) */}

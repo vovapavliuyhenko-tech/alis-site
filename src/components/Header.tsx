@@ -52,8 +52,8 @@ const RIGHT: NavItem[] = [
     label: { ru: "Вакансии", en: "Vacancies" },
     href: "/team",
     sub: [
-      { label: { ru: "В салон красоты", en: "Beauty salon" }, href: "/team#salon" },
-      { label: { ru: "В международную команду", en: "International team" }, href: "/team#international" },
+      { label: { ru: "Стать специалистом салона красоты", en: "Become a salon specialist" }, href: "/team#salon" },
+      { label: { ru: "Стать частью международной beauty-команды", en: "Join the international beauty team" }, href: "/team#international" },
     ],
   },
   { label: { ru: "Контакты", en: "Contacts" }, href: "/contacts" },
@@ -155,7 +155,7 @@ export default function Header() {
                 key={s.label.ru}
                 href={s.href}
                 {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="block rounded-xl px-4 py-2.5 text-center text-[13px] uppercase tracking-[0.12em] text-[#17191a] transition-colors hover:bg-[#17191a]/[0.08]"
+                className="block whitespace-nowrap rounded-xl px-4 py-2.5 text-center text-[13px] uppercase tracking-[0.12em] text-[#17191a] transition-colors hover:bg-[#17191a]/[0.08]"
               >
                 {s.label[lang]}
               </a>

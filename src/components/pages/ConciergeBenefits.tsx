@@ -15,7 +15,7 @@ export type BenefitPoint = { title: Loc; desc: Loc; img: string };
 // порядок — от главной боли к заявке: образ целиком → выезд с оборудованием → гости → опыт → пакеты.
 const POINTS: BenefitPoint[] = [
   {
-    title: { ru: "Невесте и подругам", en: "Brides & bridesmaids" },
+    title: { ru: "Невесте и её подругам", en: "The bride and her friends" },
     desc: {
       ru: "Образ, который выдержит слёзы, объятия, фотосессию и танцы до утра.",
       en: "A look that survives tears, hugs, the photo shoot and dancing till dawn.",
@@ -25,21 +25,21 @@ const POINTS: BenefitPoint[] = [
   {
     title: { ru: "На съёмку", en: "Shoots" },
     desc: {
-      ru: "Фотографам, брендам и продакшену — специалист на площадке весь день.",
+      ru: "Для фотографов, брендов и продакшена: специалист на площадке весь день.",
       en: "For photographers, brands and production — an artist on set all day.",
     },
     img: "/assets/alis/img_2672.jpg",
   },
   {
-    title: { ru: "Торжественный выход", en: "A grand entrance" },
+    title: { ru: "На торжественный выход / событие", en: "A grand entrance / event" },
     desc: {
-      ru: "Частный ужин или красная дорожка — все гости готовы по чёткому таймингу.",
+      ru: "Частный ужин или красная дорожка: все гости готовы по чёткому таймингу и запросу.",
       en: "A private dinner or a red carpet — every guest ready on a precise schedule.",
     },
     img: "/assets/alis/img_0569.jpg",
   },
   {
-    title: { ru: "Агентствам и отелям", en: "Agencies & hotels" },
+    title: { ru: "Для агентств, отелей и др.", en: "Agencies, hotels and more" },
     desc: {
       ru: "Надёжный партнёр, которому можно доверить VIP-гостей.",
       en: "A reliable partner you can trust with VIP guests.",
