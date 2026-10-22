@@ -65,10 +65,10 @@ function NewsFeature({ n }: { n: NewsItem }) {
       <div className="absolute inset-x-5 bottom-5 flex flex-col gap-5 text-white sm:inset-x-8 sm:bottom-8 lg:inset-x-10 lg:bottom-10 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-[760px]">
           <p className="text-[12px] text-white/70">{fmtDate(n.date, lang)} · {lang === "en" ? `${n.read} min read` : `${n.read} мин чтения`}</p>
-          <h2 className="mt-3 font-display !text-[22px] uppercase leading-[1.15] tracking-[0.02em] text-white sm:!text-[30px] lg:!text-[40px]">{n.title[lang]}</h2>
-          <p className="mt-3 line-clamp-2 max-w-[60ch] !text-[13px] leading-relaxed text-white/80 sm:!text-[15px]">{n.excerpt[lang]}</p>
+          <h2 className="mt-2.5 font-display !text-[19px] uppercase leading-[1.2] tracking-[0.02em] text-white sm:!text-[23px] lg:!text-[28px]">{n.title[lang]}</h2>
+          <p className="mt-2.5 line-clamp-2 max-w-[60ch] !text-[12px] leading-relaxed text-white/80 sm:!text-[13px]">{n.excerpt[lang]}</p>
         </div>
-        <span className="flex w-fit shrink-0 items-center justify-center gap-3 rounded-[12px] border border-white bg-white px-8 py-3.5 text-[11.5px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 group-hover:bg-transparent group-hover:text-white sm:py-4">
+        <span className="flex w-full shrink-0 items-center justify-center gap-3 rounded-[12px] border border-white bg-white px-10 py-4 text-[12px] sm:w-fit sm:min-w-[260px] lg:min-w-[300px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 group-hover:bg-transparent group-hover:text-white sm:py-4">
           {lang === "en" ? "Read" : "Читать"} <span aria-hidden>→</span>
         </span>
       </div>
