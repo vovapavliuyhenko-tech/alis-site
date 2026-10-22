@@ -57,7 +57,7 @@ function NewsFeature({ n }: { n: NewsItem }) {
   return (
     <Link href={href} className="group relative block overflow-hidden rounded-[28px] bg-[#17191a]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={n.image} alt={n.title[lang]} className="aspect-[4/5] w-full object-cover transition-[scale,filter] duration-[900ms] ease-out group-hover:scale-105 group-hover:blur-md sm:aspect-[16/9] lg:aspect-[21/9]" />
+      <img src={n.image} alt={n.title[lang]} className="aspect-square w-full object-cover transition-[scale,filter] duration-[900ms] ease-out group-hover:scale-105 group-hover:blur-md sm:aspect-[2/1] lg:aspect-[3/1]" />
       <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
       <span className="absolute left-5 top-5 rounded-full border border-white/70 bg-white/15 px-3 py-1.5 text-[10px] uppercase tracking-[0.12em] text-white backdrop-blur-md lg:left-8 lg:top-8">
         {catLabel(n.cat, lang)}
