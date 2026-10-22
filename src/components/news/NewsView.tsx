@@ -57,7 +57,7 @@ function NewsFeature({ n }: { n: NewsItem }) {
   return (
     <Link href={href} className="group relative block overflow-hidden rounded-[28px] bg-[#17191a]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={n.image} alt={n.title[lang]} className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03] sm:aspect-[16/9] lg:aspect-[21/9]" />
+      <img src={n.image} alt={n.title[lang]} className="aspect-[4/5] w-full object-cover transition-[scale,filter] duration-[900ms] ease-out group-hover:scale-105 group-hover:blur-md sm:aspect-[16/9] lg:aspect-[21/9]" />
       <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
       <span className="absolute left-5 top-5 rounded-full border border-white/70 bg-white/15 px-3 py-1.5 text-[10px] uppercase tracking-[0.12em] text-white backdrop-blur-md lg:left-8 lg:top-8">
         {catLabel(n.cat, lang)}
@@ -66,7 +66,10 @@ function NewsFeature({ n }: { n: NewsItem }) {
         <div className="max-w-[760px]">
           <p className="text-[12px] text-white/70">{fmtDate(n.date, lang)} · {lang === "en" ? `${n.read} min read` : `${n.read} мин чтения`}</p>
           <h2 className="mt-2.5 font-display !text-[19px] uppercase leading-[1.2] tracking-[0.02em] text-white sm:!text-[23px] lg:!text-[28px]">{n.title[lang]}</h2>
-          <p className="mt-2.5 line-clamp-2 max-w-[60ch] !text-[12px] leading-relaxed text-white/80 sm:!text-[13px]">{n.excerpt[lang]}</p>
+          {/* Описание: на компьютере выезжает при наведении (фото в этот момент размывается), на телефоне видно сразу */}
+          <div className="grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-hover:opacity-100">
+            <p className="min-h-0 overflow-hidden pt-2.5 line-clamp-2 max-w-[60ch] !text-[12px] leading-relaxed text-white/80 sm:!text-[13px]">{n.excerpt[lang]}</p>
+          </div>
         </div>
         <span className="flex w-full shrink-0 items-center justify-center gap-3 rounded-[12px] border border-white bg-white px-10 py-4 text-[12px] sm:w-fit sm:min-w-[260px] lg:min-w-[300px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 group-hover:bg-transparent group-hover:text-white sm:py-4">
           {lang === "en" ? "Read" : "Читать"} <span aria-hidden>→</span>
