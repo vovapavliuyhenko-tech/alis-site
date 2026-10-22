@@ -36,7 +36,7 @@ function Row({ items, reverse, lang }: { items: typeof REVIEWS; reverse?: boolea
     const el = box.current;
     if (!el) return;
     const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let raf = 0, hold = false, until = 0, last = performance.now();
+    let raf = 0, hold = false, until = 0, last = performance.now(), seen = false;
     const half = () => el.scrollWidth / 2;
     if (reverse) el.scrollLeft = half();
     // Точная позиция дробью: браузер округляет scrollLeft, мелкий шаг иначе теряется
@@ -44,6 +44,8 @@ function Row({ items, reverse, lang }: { items: typeof REVIEWS; reverse?: boolea
     const loop = (t: number) => {
       const dt = Math.min(64, t - last);
       last = t;
+      // Лента за кадром — не крутим (экономим ресурсы, прокрутка страницы плавнее)
+      if (!seen) { raf = requestAnimationFrame(loop); return; }
       // человек пролистал сам — продолжаем с его места
       if (Math.abs(el.scrollLeft - pos) > 2) pos = el.scrollLeft;
       if (!still && !hold && t > until) pos += (reverse ? -1 : 1) * dt * 0.035;
@@ -54,6 +56,8 @@ function Row({ items, reverse, lang }: { items: typeof REVIEWS; reverse?: boolea
       raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
+    const io = new IntersectionObserver(([e]) => { seen = e.isIntersecting; if (seen) pos = el.scrollLeft; }, { rootMargin: "100px" });
+    io.observe(el);
     const pause = () => { until = performance.now() + 2500; };
     // Перетаскивание мышкой
     let down = false, sx = 0, sl = 0, moved = false;
@@ -74,6 +78,7 @@ function Row({ items, reverse, lang }: { items: typeof REVIEWS; reverse?: boolea
     el.addEventListener("touchmove", pause, { passive: true });
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
       el.removeEventListener("pointerdown", pd);
       window.removeEventListener("pointermove", pm);
       window.removeEventListener("pointerup", pu);

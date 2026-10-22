@@ -100,11 +100,14 @@ export default function Header() {
     }
     // Подложка включается чуть раньше конца обложки — пока кнопка героя
     // (внизу первого экрана) подъезжает к шапке, иначе она наезжает на логотип
-    const onScroll = () => setSolid(sentinel.getBoundingClientRect().top <= 200);
-    onScroll();
+    const check = () => setSolid(sentinel.getBoundingClientRect().top <= 200);
+    let raf = 0;
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; check(); }); };
+    check();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
+      cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };

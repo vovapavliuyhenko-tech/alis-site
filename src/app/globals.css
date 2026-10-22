@@ -154,7 +154,7 @@ html.has-custom-cursor * { cursor: none !important; }
   transform: translateY(56px);
   /* Длительность как на resayme: 1.8s */
   transition: opacity 1.8s cubic-bezier(.16, 1, .3, 1), transform 1.8s cubic-bezier(.16, 1, .3, 1);
-  will-change: opacity, transform;
+  /* will-change не держим на всех блоках сразу: десятки слоёв в памяти давали рывки прокрутки */
 }
 .r-reveal.is-in {
   opacity: 1;
@@ -368,7 +368,8 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
 .hero-letter { animation: hero-letter 0.9s cubic-bezier(.22, .61, .36, 1) both; }
 .hero-line { animation: hero-line 1.1s cubic-bezier(.65, 0, .35, 1) both; }
 .hero-up { animation: hero-up 1s cubic-bezier(.22, .61, .36, 1) both; }
-.hero-grain { animation: hero-grain 0.9s steps(4) infinite; }
+/* Зерно статичное: бесконечная анимация во весь экран с наложением нагружала прокрутку */
+.hero-grain { animation: none; }
 @media (prefers-reduced-motion: reduce) {
   .hero-zoom, .hero-letter, .hero-line, .hero-up, .hero-grain { animation: none; }
 }

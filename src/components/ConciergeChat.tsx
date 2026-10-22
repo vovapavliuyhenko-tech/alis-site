@@ -64,10 +64,12 @@ export default function ConciergeChat() {
       const s = document.getElementById("hero-end");
       setPassedHero(!s || s.getBoundingClientRect().top <= window.innerHeight * 0.5);
     };
+    let raf = 0;
+    const kick = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; check(); }); };
     check();
-    window.addEventListener("scroll", check, { passive: true });
-    window.addEventListener("resize", check);
-    return () => { window.removeEventListener("scroll", check); window.removeEventListener("resize", check); };
+    window.addEventListener("scroll", kick, { passive: true });
+    window.addEventListener("resize", kick);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("scroll", kick); window.removeEventListener("resize", kick); };
   }, []);
 
   // Любая ссылка на странице с href="#chat" открывает этот чат (кнопка «Написать личному beauty-консьержу»)

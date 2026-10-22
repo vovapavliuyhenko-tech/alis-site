@@ -41,12 +41,16 @@ export default function BookingFab() {
       });
       setShown(!overFirst && !atEnd && !covers);
     };
+    // Пересчёт раз в кадр (раньше — на каждое событие прокрутки, с замерами DOM: давало подёргивания)
+    let raf = 0;
+    const kick = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; update(); }); };
     update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    window.addEventListener("scroll", kick, { passive: true });
+    window.addEventListener("resize", kick);
     return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", kick);
+      window.removeEventListener("resize", kick);
     };
   }, []);
 
