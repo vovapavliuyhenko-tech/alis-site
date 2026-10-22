@@ -86,7 +86,7 @@ export function NewsGrid() {
     // Без обложки: отступ сверху под фиксированную шапку
     <section className="pb-4 pt-[112px] min-[1280px]:pt-[128px] min-[1680px]:pt-[150px]">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <h1 className="mb-8 text-center font-serif-display text-[24px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:mb-12 lg:text-[34px]">
+        <h1 className="sr-only">
           {lang === "en" ? "ÁLIS BEAUTY news" : "Новости ÁLIS BEAUTY"}
         </h1>
         {first && <NewsFeature n={first} />}
