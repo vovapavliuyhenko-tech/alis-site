@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import BlockLabel from "@/components/ui/BlockLabel";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
-import { ShopTrend } from "@/components/shop/ShopShowcase";
 import { ShopCategories, GiftBox } from "@/components/shop/ShopBlocks";
 
 // Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и анимации — по главной
@@ -29,8 +28,6 @@ export default function ShopPage() {
         <ShopCategories />
         {/* Подбор ухода, строка про мерч и конструктор сертификата — скрыты
             по просьбе заказчицы (HairQuiz, MerchLine, CertBuilder в ShopBlocks) */}
-        <BlockLabel ru="Новинки" en="New in" />
-        <ShopTrend />
         {/* Подарочный бокс — «веер» из трёх фото, как карточки команды на «Вакансиях» */}
         <GiftBox />
       </div>

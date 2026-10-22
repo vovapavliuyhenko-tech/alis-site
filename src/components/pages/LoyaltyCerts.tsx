@@ -75,6 +75,17 @@ export default function LoyaltyCerts() {
 
   // Бонусы: для себя или для подруги → номер(а) в CRM (тип «bonus»)
   const [who, setWho] = useState<"me" | "friend">("me");
+  // Кнопка «Пригласить подругу и получить бонус» на обложке салона ведёт сюда (#friend)
+  useEffect(() => {
+    const go = () => {
+      if (location.hash !== "#friend") return;
+      setWho("friend");
+      document.getElementById("loyalty")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    go();
+    window.addEventListener("hashchange", go);
+    return () => window.removeEventListener("hashchange", go);
+  }, []);
   const [me, setMe] = useState("");
   const [friend, setFriend] = useState("");
   const [consent, setConsent] = useState(false);
