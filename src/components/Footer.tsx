@@ -1,5 +1,6 @@
 "use client";
-// FOOTER ÁLIS BEAUTY — как мобильная версия: сверху крупный телефон с иконками (на компьютере
+// FOOTER ÁLIS BEAUTY. Компьютер — колонки (соцсети / адрес / меню) и крупный телефон справа.
+// Телефон и планшет — как мобильная версия: сверху крупный телефон с иконками (на компьютере
 // справа — второй телефон и почта), ниже три раскрывающихся раздела — «Меню», «Адрес и часы»,
 // «Соцсети и почта» (на компьютере в ряд). Плавное раскрытие, пункты выезжают по очереди.
 // Названия соцсетей не пишем — подписи «Салон красоты» / «Консьерж-сервис». Двуязычно.
@@ -29,6 +30,13 @@ export default function Footer() {
   // На странице консьерж-сервиса первым идёт телефон сервиса, на остальных — салона
   const concierge = pathname === "/concierge";
   const t = (ru: string, e: string) => (en ? e : ru);
+  // Компьютер: крупно — телефон текущего направления, ниже — второй
+  const PHONE_MAIN = concierge ? PHONE_SERVICE : PHONE_SALON;
+  const PHONE_SECOND = concierge ? PHONE_SALON : PHONE_SERVICE;
+  const secondNote = concierge ? t("салон красоты", "beauty salon") : t("консьерж-сервис", "concierge service");
+  const title = "mb-2.5 lg:mb-5 text-[9.5px] sm:text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/75";
+  const link =
+    "relative block w-fit text-[11.5px] text-[#f4efe6]/85 sm:text-[13px] lg:text-[12.5px] transition-colors hover:text-[#f4efe6] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-[#f4efe6] after:transition-all after:duration-300 hover:after:w-full";
 
   const MENU = [
     { label: t("Салон красоты", "Beauty salon"), href: "/salon" },
@@ -81,7 +89,7 @@ export default function Footer() {
       <div className="relative z-10 mx-auto w-[90%] max-w-[1760px] pb-6 pt-10 sm:w-[96%] lg:pb-10 lg:pt-20">
         {/* Верх: два телефона (салон и консьерж-сервис) — компактно, у каждого свой мессенджер;
             справа — соцсеть и почта. Первым идёт номер текущего направления. */}
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex flex-col gap-5 lg:hidden">
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-10 lg:flex lg:gap-14">
             {PHONES.map((ph) => (
               <div key={ph.num}>
@@ -107,7 +115,7 @@ export default function Footer() {
         </div>
 
         {/* Раскрывающиеся разделы: на телефоне — друг под другом, на компьютере — три в ряд */}
-        <div className="mt-6 grid border-t border-[#f4efe6]/12 lg:mt-12 lg:grid-cols-3 lg:gap-10 lg:border-t-0">
+        <div className="mt-6 grid border-t border-[#f4efe6]/12 lg:hidden">
           {SECTIONS.map((sec) => {
             const isOpen = open.includes(sec.key);
             return (
@@ -143,6 +151,57 @@ export default function Footer() {
               </div>
             );
           })}
+        </div>
+
+        {/* Компьютер: колонки (соцсети, адрес, меню) + крупный телефон справа — как было раньше */}
+        <div className="hidden lg:grid lg:grid-cols-[1fr_1fr_1.6fr_auto] lg:gap-10">
+          {/* Соцсети */}
+          <div>
+            <p className={title}>{t("Социальные сети", "Social media")}</p>
+            <div className="space-y-2">
+              {SOCIALS.map((s) => (
+                <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer" className={link}>
+                  {s.label[lang]}*
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Адрес и часы */}
+          <div>
+            <p className={title}>{t("Адрес", "Address")}</p>
+            <a href={MAP_URL} target="_blank" rel="noopener noreferrer" className={`${link} max-w-[16rem] leading-relaxed`}>
+              {ADDRESS[lang]}
+            </a>
+            <p className="mt-2 text-[11px] leading-relaxed text-[#f4efe6]/70 sm:mt-3 sm:text-[13px] lg:text-[12px]">{HOURS[lang]}</p>
+            <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className={`${link} mt-4`}>
+              {t("Построить маршрут →", "Get directions →")}
+            </a>
+          </div>
+
+          {/* Меню — в две колонки, чтобы подвал был компактнее */}
+          <div className="col-span-2 lg:col-span-1">
+            <p className={title}>{t("Меню", "Menu")}</p>
+            <div className="grid grid-cols-2 gap-x-5 gap-y-2 lg:gap-x-8 lg:gap-y-2">
+              {MENU.map((m) => (
+                <a key={m.href} href={m.href} {...(m.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`${link} sm:whitespace-nowrap`}>{m.label}</a>
+              ))}
+            </div>
+          </div>
+
+          {/* Телефоны + email справа, крупно */}
+          <div className="col-span-2 lg:col-span-1 lg:text-right">
+            <p className={title}>{concierge ? t("Консьерж-сервис", "Concierge service") : t("Салон красоты", "Beauty salon")}</p>
+            <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[20px] leading-none sm:text-[24px] tracking-[0.02em] text-[#f4efe6] transition-opacity hover:opacity-70 lg:text-[40px]">
+              {PHONE_MAIN}
+            </a>
+            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-2 block text-[11.5px] text-[#f4efe6]/75 sm:mt-3 sm:text-[14px] lg:text-[12.5px] transition-colors hover:text-[#f4efe6]">
+              {PHONE_SECOND} — {secondNote}
+            </a>
+            <a href={`mailto:${EMAIL}`} className="mt-3 inline-block text-[12px] text-[#f4efe6]/85 sm:mt-5 sm:text-[14px] underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#f4efe6] lg:text-[15px]">
+              {EMAIL}
+            </a>
+          </div>
         </div>
 
         {/* Нижний ряд: копирайт слева, документы в одну строку справа */}
