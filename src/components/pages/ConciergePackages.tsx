@@ -126,25 +126,14 @@ export default function ConciergePackages() {
               </div>
             </dl>
 
-            {/* Низ: состав и кнопка */}
-            <div className="mt-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-              <ul className="flex flex-col gap-2">
-                {p.items.map((it, k) => (
-                  <li key={it.ru} className="flex items-start gap-3 font-display text-[10.5px] uppercase leading-[1.35] tracking-[0.03em] animate-[pk-in_.9s_cubic-bezier(.22,.61,.36,1)_both] sm:text-[11.5px]" style={{ animationDelay: `${0.15 + k * 0.09}s` }}>
-                    <span aria-hidden className="mt-[4px] h-1.5 w-1.5 shrink-0 rounded-[2px] bg-white" />
-                    {it[lang]}
-                  </li>
-                ))}
-              </ul>
-              {/* Две кнопки по брифу: КП для бизнеса (анкета сотрудничества) и расчёт частного события */}
-              <div className="flex shrink-0 flex-col gap-2">
-                <a href="/cooperation#business" className="flex shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-[12px] border border-white px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500 sm:px-8 sm:py-4 sm:text-[12px] bg-white text-[#17191a] hover:bg-transparent hover:text-white">
-                  {en ? "Download the B2B proposal" : "Скачать коммерческое предложение B2B"}
-                </a>
-                <a href="#calc" className="flex shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-[12px] border border-white px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500 sm:px-8 sm:py-4 sm:text-[12px] text-white hover:bg-white hover:text-[#17191a]">
-                  {en ? "Private event estimate" : "Расчёт частного мероприятия"}
-                </a>
-              </div>
+            {/* Низ: две кнопки в одну строку во всю ширину — как на обложке (состав пакета убран) */}
+            <div className="mt-8 grid gap-2 sm:grid-cols-2 sm:gap-3">
+              <a href="/cooperation#business" className="flex w-full items-center justify-center gap-3 text-center rounded-[12px] border border-white px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500 sm:px-8 sm:py-4 sm:text-[12px] bg-white text-[#17191a] hover:bg-transparent hover:text-white">
+                {en ? "Download the B2B proposal" : "Скачать коммерческое предложение B2B"}
+              </a>
+              <a href="#calc" className="flex w-full items-center justify-center gap-3 text-center rounded-[12px] border border-white px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500 sm:px-8 sm:py-4 sm:text-[12px] border-white/70 bg-white/[0.18] text-white backdrop-blur-md hover:border-white hover:bg-white hover:text-[#17191a]">
+                {en ? "Private event estimate" : "Расчёт частного мероприятия"}
+              </a>
             </div>
           </div>
         </div>
