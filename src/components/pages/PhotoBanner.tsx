@@ -64,7 +64,6 @@ export default function PhotoBanner({
     return (
       <section className="bg-white section-y">
         <div className="r-reveal mx-auto w-[92%] max-w-[720px] text-center">
-          <p className="text-[10.5px] uppercase tracking-[0.2em] text-[#17191a]/45 lg:text-[11px]">[ {label[lang]} ]</p>
           <h2 className="mt-3 text-[#17191a]">
             {titleLines ? (
               <>

@@ -105,7 +105,6 @@ export default function ReviewsWall({ title = { ru: "Так говорят го�
   return (
     <section id="reviews" className="scroll-mt-24 overflow-hidden bg-white section-y">
       <div className="mx-auto mb-8 flex w-[92%] max-w-[1760px] flex-col items-center text-center lg:mb-12">
-        <p className="text-[10.5px] uppercase tracking-[0.2em] text-[#17191a]/45 lg:text-[11px]">[ {en ? "Reviews" : "Отзывы"} ]</p>
         <h2 className="mt-4 text-[#17191a]">{title[lang]}</h2>
         <a
           href={YANDEX}
