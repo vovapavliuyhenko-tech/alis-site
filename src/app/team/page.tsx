@@ -9,7 +9,6 @@ import { TeamPeople } from "@/components/pages/TeamJoin";
 import Vacancies from "@/components/pages/Vacancies";
 import VacanciesScroll from "@/components/pages/VacanciesScroll";
 import JoinQuiz from "@/components/pages/JoinQuiz";
-import InternationalTeam from "@/components/pages/InternationalTeam";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/team" },
@@ -37,8 +36,8 @@ export default function TeamPage() {
 
         {/* 3 — Почему мы, а не другой салон (мини-сравнение).
             Якоря #international / #salon — для пунктов меню «Вакансии». */}
-        {/* Международная команда (#international) — по листам заказчицы */}
-        <InternationalTeam />
+        {/* Блок международной команды (InternationalTeam) — убран по просьбе заказчицы */}
+        <div id="international" aria-hidden className="scroll-mt-24" />
         <div id="salon" aria-hidden className="scroll-mt-24" />
         {/* <SalonCompare /> — скрыт */}
 
