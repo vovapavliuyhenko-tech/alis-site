@@ -18,7 +18,7 @@ export default function LoyaltyPage() {
       <ScrollReveal />
       <Header />
       {/* Обложка с заголовком страницы (фото временное — пришлёт заказчица) */}
-      <TeamIntro title={{ ru: "Программа лояльности", en: "Loyalty programme" }} photo="/assets/alis/img_2749.jpg" />
+      <TeamIntro title={{ ru: "Программа лояльности", en: "Loyalty programme" }} photo="/assets/alis/work_hair_waves.jpg" />
 
       {/* Маркер конца обложки — после него у шапки появляется подложка */}
       <div id="hero-end" aria-hidden className="h-0" />

@@ -28,7 +28,7 @@ const POINTS: BenefitPoint[] = [
       ru: "Для фотографов, брендов и продакшена: специалист на площадке весь день.",
       en: "For photographers, brands and production — an artist on set all day.",
     },
-    img: "/assets/alis/img_2672.jpg",
+    img: "/assets/alis/work_makeup_evening.jpg",
   },
   {
     title: { ru: "На торжественный выход / событие", en: "A grand entrance / event" },

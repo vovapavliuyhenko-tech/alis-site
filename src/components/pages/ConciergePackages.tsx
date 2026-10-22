@@ -17,7 +17,7 @@ const req = { ru: "по запросу", en: "on request" };
 const PACKS: Pack[] = [
   {
     name: "SOLO",
-    img: "/assets/alis/img_2672.jpg",
+    img: "/assets/alis/work_makeup_bun.jpg",
     who: { ru: "Один специалист — один образ", en: "One artist — one look" },
     items: [
       { ru: "Макияж или причёска", en: "Makeup or hair" },
@@ -136,13 +136,22 @@ export default function ConciergePackages() {
                   </li>
                 ))}
               </ul>
-              <a href="#calc" className="flex shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-[12px] border border-white bg-white px-7 py-4 text-[11.5px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-500 hover:bg-transparent hover:text-white sm:px-9 sm:py-[18px] sm:text-[12.5px]">
-                {en ? "Calculate the budget" : "Рассчитать бюджет"}
-                <span aria-hidden>→</span>
-              </a>
+              {/* Две кнопки по брифу: КП для бизнеса (анкета сотрудничества) и расчёт частного события */}
+              <div className="flex shrink-0 flex-col gap-2">
+                <a href="/cooperation#business" className="flex shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-[12px] border border-white px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500 sm:px-8 sm:py-4 sm:text-[12px] bg-white text-[#17191a] hover:bg-transparent hover:text-white">
+                  {en ? "Download the B2B proposal" : "Скачать коммерческое предложение B2B"}
+                </a>
+                <a href="#calc" className="flex shrink-0 items-center justify-center gap-3 whitespace-nowrap rounded-[12px] border border-white px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500 sm:px-8 sm:py-4 sm:text-[12px] text-white hover:bg-white hover:text-[#17191a]">
+                  {en ? "Private event estimate" : "Расчёт частного мероприятия"}
+                </a>
+              </div>
             </div>
           </div>
         </div>
+        {/* Сноска к ценам — формулировка заказчицы */}
+        <p className="mt-4 text-[11px] leading-relaxed text-[#17191a]/55 sm:text-[12px]">
+          {en ? "*The exact cost depends on the date, location and number of guests." : "*Точная стоимость зависит от даты, места и числа гостей."}
+        </p>
       </div>
       <style>{`@keyframes pk-in { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }`}</style>
     </section>

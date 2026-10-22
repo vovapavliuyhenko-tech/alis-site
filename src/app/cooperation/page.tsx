@@ -33,7 +33,7 @@ const WHO: BenefitPoint[] = [
       ru: "Фото- и видеопродакшенам: специалист на площадке на весь съёмочный день.",
       en: "Photo and video production: an artist on set for the whole shooting day.",
     },
-    img: "/assets/alis/img_2672.jpg",
+    img: "/assets/alis/work_makeup_evening.jpg",
   },
   {
     title: { ru: "Брендам", en: "Brands" },

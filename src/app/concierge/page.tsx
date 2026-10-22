@@ -44,7 +44,7 @@ const CONCIERGE_STAGES: Stage[] = [
       en: "At the salon, on location, or an online concept with our stylists — as you prefer.",
     },
     quote: { ru: "«Образ готов заранее»", en: "“The look is ready in advance”" },
-    photo: "/assets/alis/img_2749.jpg",
+    photo: "/assets/alis/work_makeup_bun.jpg",
   },
   {
     name: { ru: "Событие", en: "The day" },
@@ -107,7 +107,7 @@ export default function ConciergePage() {
 
         {/* 4 — Как проходит работа (#process) */}
         <BlockLabel ru="Как проходит работа с командой ÁLIS BEAUTY" en="How working with the ÁLIS BEAUTY team goes" />
-        <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={null} />
+        <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={{ ru: "Как проходит работа с командой ÁLIS BEAUTY", en: "How working with the ÁLIS BEAUTY team goes" }} />
 
         {/* 5 — Проверка даты: анкета «Рассчитать бюджет» прямо в тёмной плашке (#calc) */}
         <BudgetCalc />
