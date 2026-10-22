@@ -41,6 +41,9 @@ export default function Vacancies() {
   return (
     <section id="vacancies" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
+        <h2 className="r-reveal mb-10 text-center font-serif-display !text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:mb-14 lg:!text-[28px]">
+          {lang === "en" ? "Join the beauty salon team in Novorossiysk" : "Стать частью команды салона красоты в Новороссийске"}
+        </h2>
         {/* Оглавление-журнал: закруглённые строки-карточки, при наведении — полупрозрачно-бордовые */}
         <div className="flex flex-col gap-3">
           {VACANCIES.map((v, i) => (
