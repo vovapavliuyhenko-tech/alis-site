@@ -254,12 +254,8 @@ export default function SalonPage() {
           ru: "Ногтевой сервис, парикмахерские услуги, коррекция бровей, макияж. Пархоменко, 53, с 09:00 до 21:00.",
           en: "Nails, hair, brow shaping, makeup. 53 Parkhomenko St., 9:00–21:00.",
         }}
-        button={{ label: { ru: "Оформить запись", en: "Make a booking" }, href: YCLIENTS }}
-        button2={{ label: { ru: "Записаться онлайн", en: "Book online" }, href: YCLIENTS }}
-        more={[
-          { label: { ru: "Написать администратору", en: "Message the administrator" }, href: SALON_ADMIN_WA },
-          { label: { ru: "Пригласить подругу и получить бонус", en: "Invite a friend and get a bonus" }, href: "#friend" },
-        ]}
+        button={{ label: { ru: "Записаться онлайн", en: "Book online" }, href: YCLIENTS }}
+        button2={{ label: { ru: "Написать администратору", en: "Message the administrator" }, href: SALON_ADMIN_WA }}
       />
 
       {/* Порядок для клиента: услуги с ценами → отзывы → бонусы и сертификаты.

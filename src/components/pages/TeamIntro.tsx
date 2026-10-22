@@ -18,7 +18,6 @@ export default function TeamIntro({
   photo = DEFAULT_PHOTO,
   button,
   button2,
-  more = [],
   subtitle,
 }: {
   title: Loc;
@@ -28,8 +27,6 @@ export default function TeamIntro({
   button?: { label: Loc; href: string };
   // Вторая кнопка — две плашки в ряд, как на главной: первая белая, вторая стеклянная
   button2?: { label: Loc; href: string };
-  // Дополнительные стеклянные кнопки (салон: «Пригласить подругу…», «Записаться онлайн»)
-  more?: { label: Loc; href: string }[];
   // Длинный заголовок-оффер (в несколько строк) + мелкая строка под ним
   subtitle?: Loc;
 }) {
@@ -80,13 +77,13 @@ export default function TeamIntro({
       </div>
 
       {button && (
-        <div style={{ animationDelay: `${lineDelay + 0.4}s` }} className={`hero-up grid w-full gap-2 px-5 pb-5 sm:gap-3 sm:px-4 sm:pb-4 lg:gap-4 lg:px-6 lg:pb-6 ${more.length ? "grid-cols-2 lg:grid-cols-4" : button2 ? (button2.label.ru.length > 22 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-2") : ""}`}>
-          {[button, button2, ...more].filter((b): b is { label: Loc; href: string } => !!b).map((b, i) => (
+        <div style={{ animationDelay: `${lineDelay + 0.4}s` }} className={`hero-up grid w-full gap-2 px-5 pb-5 sm:gap-3 sm:px-4 sm:pb-4 lg:gap-4 lg:px-6 lg:pb-6 ${button2 ? (button2.label.ru.length > 22 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-2") : ""}`}>
+          {[button, button2].filter((b): b is { label: Loc; href: string } => !!b).map((b, i) => (
             <a
-              key={b.label.ru}
+              key={b.href}
               href={b.href}
               {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className={`flex w-full items-center justify-center rounded-xl border px-1.5 py-3 text-center text-[10px] font-medium uppercase tracking-[0.05em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[13px] lg:py-4 ${more.length ? "leading-tight sm:tracking-[0.12em] lg:text-[12.5px]" : "whitespace-nowrap sm:tracking-[0.18em] lg:text-[14px]"} ${
+              className={`flex w-full items-center justify-center whitespace-nowrap rounded-xl border px-1.5 py-3 text-[10px] font-medium uppercase tracking-[0.05em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[13px] sm:tracking-[0.18em] lg:py-4 lg:text-[14px] ${
                 i === 0
                   ? "border-white bg-white text-[#17191a] hover:bg-white/[0.18] hover:text-white"
                   : "border-white/70 bg-white/[0.18] text-white hover:border-white hover:bg-white hover:text-[#17191a]"
