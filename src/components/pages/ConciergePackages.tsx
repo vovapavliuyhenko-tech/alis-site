@@ -128,10 +128,10 @@ export default function ConciergePackages() {
 
             {/* Низ: две кнопки в одну строку во всю ширину — как на обложке (состав пакета убран) */}
             <div className="mt-8 grid gap-2 sm:grid-cols-2 sm:gap-3">
-              <a href="/cooperation#business" className="flex w-full items-center justify-center gap-3 text-center rounded-[12px] border border-white px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500 sm:px-8 sm:py-4 sm:text-[12px] bg-white text-[#17191a] hover:bg-transparent hover:text-white">
+              <a href="/cooperation#business" className="flex w-full items-center justify-center gap-3 text-center rounded-[12px] border border-white px-4 py-3 text-[10px] font-medium uppercase leading-tight tracking-[0.1em] transition-colors duration-500 sm:whitespace-nowrap sm:px-5 sm:py-3.5 sm:text-[11px] bg-white text-[#17191a] hover:bg-transparent hover:text-white">
                 {en ? "Download the B2B proposal" : "Скачать коммерческое предложение B2B"}
               </a>
-              <a href="#calc" className="flex w-full items-center justify-center gap-3 text-center rounded-[12px] border border-white px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500 sm:px-8 sm:py-4 sm:text-[12px] border-white/70 bg-white/[0.18] text-white backdrop-blur-md hover:border-white hover:bg-white hover:text-[#17191a]">
+              <a href="#calc" className="flex w-full items-center justify-center gap-3 text-center rounded-[12px] border border-white px-4 py-3 text-[10px] font-medium uppercase leading-tight tracking-[0.1em] transition-colors duration-500 sm:whitespace-nowrap sm:px-5 sm:py-3.5 sm:text-[11px] border-white/70 bg-white/[0.18] text-white backdrop-blur-md hover:border-white hover:bg-white hover:text-[#17191a]">
                 {en ? "Private event estimate" : "Расчёт частного мероприятия"}
               </a>
             </div>
