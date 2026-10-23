@@ -39,16 +39,18 @@ export default function Hero() {
     <div className="bg-white">
     <section ref={sec} className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#d9d7d3] text-white">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} className="hero-zoom absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-[50%_55%] will-change-transform" />
+      <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} className="hero-zoom absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-[50%_55%] will-change-transform lg:[filter:saturate(1.15)_contrast(1.04)]" />
       {/* Затемнение: сверху — под шапку, снизу — под текст (фото светлое, текст белый) */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 -z-10 lg:hidden"
         style={{
           background:
             "linear-gradient(to bottom, rgba(20,18,16,.32) 0%, rgba(20,18,16,0) 22%), linear-gradient(to top, rgba(20,18,16,.72) 0%, rgba(20,18,16,.25) 40%, rgba(20,18,16,0) 65%)",
         }}
       />
+      {/* Компьютер: без затемнения, фото насыщеннее; только лёгкая тень у самого низа — чтобы читался белый текст */}
+      <div aria-hidden className="absolute inset-0 -z-10 hidden lg:block" style={{ background: "linear-gradient(to top, rgba(20,18,16,.3) 0%, rgba(20,18,16,0) 32%)" }} />
       {/* Эффекты обложки: зерно, виньетка и затемнение при прокрутке */}
       <Grain />
       <div ref={shade} aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[#17191a] opacity-0" />

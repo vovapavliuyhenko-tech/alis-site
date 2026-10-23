@@ -51,16 +51,18 @@ export default function TeamIntro({
     <div className="bg-white">
     <section ref={sec} className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#b9b3a9] text-white">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img ref={bg} src={photo} alt={`${title[lang]} — ÁLIS BEAUTY`} className="hero-zoom absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-center will-change-transform" />
+      <img ref={bg} src={photo} alt={`${title[lang]} — ÁLIS BEAUTY`} className="hero-zoom absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-center will-change-transform lg:[filter:saturate(1.15)_contrast(1.04)]" />
       {/* Затемнение как на главной: сверху — под шапку, снизу — под заголовок */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 -z-10 lg:hidden"
         style={{
           background:
             "linear-gradient(to bottom, rgba(20,18,16,.38) 0%, rgba(20,18,16,0) 22%), linear-gradient(to top, rgba(20,18,16,.5) 0%, rgba(20,18,16,.12) 45%, rgba(20,18,16,0) 70%)",
         }}
       />
+      {/* Компьютер: без затемнения, фото насыщеннее; только лёгкая тень у самого низа — чтобы читался белый текст */}
+      <div aria-hidden className="absolute inset-0 -z-10 hidden lg:block" style={{ background: "linear-gradient(to top, rgba(20,18,16,.3) 0%, rgba(20,18,16,0) 32%)" }} />
       {/* Эффекты обложки: зерно, виньетка и затемнение при прокрутке */}
       <Grain />
       <div ref={shade} aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[#17191a] opacity-0" />

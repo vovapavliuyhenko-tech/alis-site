@@ -69,9 +69,9 @@ export default function CoopQuiz() {
 
   return (
     <section id="formats" className="scroll-mt-24 bg-white section-y">
-      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-8 rounded-[28px] bg-[#17191a] px-5 py-10 text-white sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
+      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-5 rounded-[22px] bg-[#17191a] px-4 py-7 text-white sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
         {/* Слева: заголовок и плитки ответов */}
-        <div className="flex flex-col text-center lg:text-left">
+        <div className="flex flex-col text-left">
           <h2 className="text-white">{en ? "Let's discuss your project" : "Обсудим ваш проект"}</h2>
           <p className="mt-2 !text-[12.5px] text-white/60 sm:mt-3 sm:!text-[15px]">{en ? "Four short steps — the manager will get back to you." : "Четыре коротких шага — и менеджер свяжется с вами."}</p>
           <div className="mt-7 hidden flex-col lg:flex">
@@ -108,7 +108,7 @@ export default function CoopQuiz() {
 
           {step < 3 && q && (
             <div key={step} className="animate-[coop-in_.4s_ease]">
-              <p className="mt-5 font-display text-[15px] uppercase tracking-[0.04em] sm:text-[17px]">{q.q[lang]}</p>
+              <p className="mt-4 font-display text-[13px] uppercase tracking-[0.04em] sm:mt-5 sm:text-[17px]">{q.q[lang]}</p>
               <div className={`mt-4 grid gap-2 ${q.opts.length > 2 ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-2"}`}>
                 {q.opts.map((o, k) => {
                   const on = ans[q.key] === o.ru;
@@ -118,7 +118,7 @@ export default function CoopQuiz() {
                       type="button"
                       onClick={() => { setAns({ ...ans, [q.key]: o.ru }); setStep(step + 1); }}
                       style={{ animationDelay: `${k * 0.06}s` }}
-                      className={`animate-[coop-in_.45s_ease_both] rounded-[14px] border px-3 py-3 text-[12px] transition-all active:scale-[0.97] sm:rounded-[16px] sm:text-[14px] ${on ? "border-white bg-white text-[#17191a]" : "border-white/20 text-white hover:border-white/60"}`}
+                      className={`animate-[coop-in_.45s_ease_both] flex min-h-[42px] items-center justify-center rounded-[12px] border px-2.5 py-2 text-center text-[11.5px] leading-tight transition-all active:scale-[0.97] sm:min-h-0 sm:py-3 sm:rounded-[16px] sm:text-[14px] ${on ? "border-white bg-white text-[#17191a]" : "border-white/20 text-white hover:border-white/60"}`}
                     >
                       {o[lang]}
                     </button>
@@ -131,7 +131,7 @@ export default function CoopQuiz() {
 
           {step === 3 && (
             <div className="animate-[coop-in_.4s_ease]">
-              <p className="mt-5 font-display text-[15px] uppercase tracking-[0.04em] sm:text-[17px]">{en ? "Your contacts" : "Ваши контакты"}</p>
+              <p className="mt-4 font-display text-[13px] uppercase tracking-[0.04em] sm:mt-5 sm:text-[17px]">{en ? "Your contacts" : "Ваши контакты"}</p>
               <div className="mt-4 flex flex-col gap-2">
                 <input type="text" placeholder={en ? "Name" : "Имя"} value={name} onChange={(e) => setName(e.target.value)} className={field} />
                 <PhoneField lang={lang} value={phone} onChange={setPhone} />

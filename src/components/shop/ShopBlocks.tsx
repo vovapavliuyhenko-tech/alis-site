@@ -104,8 +104,8 @@ export function HairQuiz() {
 
   return (
     <section id="hair" className="scroll-mt-24 bg-white section-y">
-      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-8 rounded-[28px] bg-[#17191a] px-5 py-10 text-white sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
-        <div className="flex flex-col text-center lg:text-left">
+      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-5 rounded-[22px] bg-[#17191a] px-4 py-7 text-white sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
+        <div className="flex flex-col text-left">
           <h2 className="text-white">{en ? "Find your care in 30 seconds with a consultant" : "Подобрать уход за 30 секунд с консультантом"}</h2>
           <p className="mt-2 !text-[12.5px] leading-[1.55] text-white/65 sm:mt-3 sm:!text-[15px]">
             {en ? "Answer 5 questions about your hair, and a specialist will send a selection of products for your type and goals." : "Ответьте на 5 вопросов о волосах, и специалист пришлёт подбор средств под ваш тип и цели."}
@@ -136,7 +136,7 @@ export function HairQuiz() {
 
           {step < 5 && q && (
             <div key={step} className="animate-[hq-in_.4s_ease]">
-              <p className="mt-5 font-display text-[15px] uppercase tracking-[0.04em] sm:text-[17px]">{q.q[lang]}</p>
+              <p className="mt-4 font-display text-[13px] uppercase tracking-[0.04em] sm:mt-5 sm:text-[17px]">{q.q[lang]}</p>
               <div className="mt-4 grid grid-cols-2 gap-2">
                 {q.opts.map((o, k) => (
                   <button
@@ -144,7 +144,7 @@ export function HairQuiz() {
                     type="button"
                     onClick={() => { setAns({ ...ans, [q.key]: o.ru }); setStep(step + 1); }}
                     style={{ animationDelay: `${k * 0.06}s` }}
-                    className={`animate-[hq-in_.45s_ease_both] rounded-[14px] border px-3 py-3 text-[12px] transition-all active:scale-[0.97] sm:rounded-[16px] sm:text-[14px] ${ans[q.key] === o.ru ? "border-white bg-white text-[#17191a]" : "border-white/20 text-white hover:border-white/60"}`}
+                    className={`animate-[hq-in_.45s_ease_both] flex min-h-[42px] items-center justify-center rounded-[12px] border px-2.5 py-2 text-center text-[11.5px] leading-tight transition-all active:scale-[0.97] sm:min-h-0 sm:py-3 sm:rounded-[16px] sm:text-[14px] ${ans[q.key] === o.ru ? "border-white bg-white text-[#17191a]" : "border-white/20 text-white hover:border-white/60"}`}
                   >
                     {o[lang]}
                   </button>
@@ -156,7 +156,7 @@ export function HairQuiz() {
 
           {step === 5 && (
             <div className="animate-[hq-in_.4s_ease]">
-              <p className="mt-5 font-display text-[15px] uppercase tracking-[0.04em] sm:text-[17px]">{en ? "Where to send the selection?" : "Куда прислать подбор?"}</p>
+              <p className="mt-4 font-display text-[13px] uppercase tracking-[0.04em] sm:mt-5 sm:text-[17px]">{en ? "Where to send the selection?" : "Куда прислать подбор?"}</p>
               <div className="mt-4 flex flex-col gap-2">
                 <input type="text" placeholder={en ? "Name" : "Имя"} value={name} onChange={(e) => setName(e.target.value)} className={field} />
                 <PhoneField lang={lang} value={phone} onChange={setPhone} />
@@ -332,7 +332,7 @@ export function CertBuilder() {
     <section id="certificates" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto grid w-[96%] max-w-[1760px] gap-6 rounded-[28px] bg-[#f6f4f1] p-5 sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-16">
         {/* Слева: заголовок и живое превью открытки */}
-        <div className="flex flex-col text-center lg:text-left">
+        <div className="flex flex-col text-left">
           <h2 className="text-[#17191a]">{en ? "Gift certificates" : "Сертификаты"}</h2>
           <p className="mt-3 !text-[12.5px] leading-[1.6] text-[#17191a]/65 sm:!text-[15px]">
             {en

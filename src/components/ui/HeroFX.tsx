@@ -43,7 +43,7 @@ const NOISE =
 export function Grain() {
   return (
     <>
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,.28) 100%)" }} />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 lg:hidden" style={{ background: "radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,.28) 100%)" }} />
       <div aria-hidden className="hero-grain pointer-events-none absolute -inset-[20%] -z-10 opacity-[0.09] mix-blend-overlay" style={{ backgroundImage: NOISE }} />
     </>
   );
