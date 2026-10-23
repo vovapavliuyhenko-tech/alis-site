@@ -89,7 +89,22 @@ export default function PhotoMarquee({
     let raf = 0;
     let running = false;
     let last = el.scrollLeft;
+    // Пальцем листают нативно (с инерцией); пока трогают и ещё 2,5 с после — авто-бег на паузе
+    let until = 0;
+    const hold = () => { until = performance.now() + 2500; };
+    el.addEventListener("touchstart", hold, { passive: true });
+    el.addEventListener("touchmove", hold, { passive: true });
+    el.addEventListener("wheel", hold, { passive: true });
     const step = () => {
+      if (performance.now() < until) {
+        // человек листает сам — только следим за положением и полосой прогресса
+        pos.current = el.scrollLeft;
+        last = el.scrollLeft;
+        const half0 = (el.scrollWidth / 2) || 1;
+        if (barRef.current) barRef.current.style.width = (Math.min(1, (el.scrollLeft % half0) / half0) * 100).toFixed(2) + "%";
+        raf = requestAnimationFrame(step);
+        return;
+      }
       const half = (el.scrollWidth / 2) || 1; // ширина одной дорожки (их две — для бесшовности)
       // Дробная позиция копится отдельно: scrollLeft на телефонах округляется до целых — отсюда были рывки
       // Если ленту прокрутили трекпадом/колесом — подхватываем её положение
@@ -111,12 +126,19 @@ export default function PhotoMarquee({
     // Крутим анимацию только пока лента на экране — экономит ресурсы и разгружает скролл
     const io = new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop()), { rootMargin: "200px" });
     io.observe(el);
-    return () => { stop(); io.disconnect(); };
+    return () => {
+      stop();
+      io.disconnect();
+      el.removeEventListener("touchstart", hold);
+      el.removeEventListener("touchmove", hold);
+      el.removeEventListener("wheel", hold);
+    };
   }, []);
 
+  // Перетаскивание — только мышью; на телефоне лента листается нативно (плавно, с инерцией)
   const onDown = (e: React.PointerEvent) => {
     const el = scroller.current;
-    if (!el) return;
+    if (!el || e.pointerType !== "mouse") return;
     drag.current = { active: true, startX: e.clientX, startScroll: el.scrollLeft };
     moved.current = false;
   };
@@ -154,7 +176,7 @@ export default function PhotoMarquee({
         onPointerMove={onMove}
         onPointerUp={onUp}
         onPointerCancel={onUp}
-        className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+        className="flex cursor-grab overflow-x-auto overscroll-x-contain overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
       >
         <Track items={items} moved={moved} />
         <Track items={items} hidden moved={moved} />
