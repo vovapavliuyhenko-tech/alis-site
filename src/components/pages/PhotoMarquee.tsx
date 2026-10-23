@@ -39,7 +39,7 @@ function Track({ items, hidden = false, moved }: { items: MarqueeItem[]; hidden?
           </>
         );
         return (
-          <li key={i} className="group relative mr-2 aspect-[3/4] h-[260px] shrink-0 sm:h-[320px] overflow-hidden rounded-[20px] lg:mr-3 lg:h-[440px]">
+          <li key={i} className="group relative mr-2 aspect-[3/4] h-[210px] shrink-0 sm:h-[320px] overflow-hidden rounded-[20px] lg:mr-3 lg:h-[440px]">
             {href ? (
               <a
                 href={href}
@@ -161,11 +161,11 @@ export default function PhotoMarquee({
   return (
     <section id={sectionId} className="scroll-mt-24 overflow-hidden bg-white section-y">
       {title && (
-        <div className="r-reveal mx-auto mb-12 w-[96%] max-w-[1760px] text-center lg:mb-16">
+        <div className="r-reveal mx-auto mb-8 w-[96%] max-w-[1760px] text-center sm:mb-12 lg:mb-16">
           <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {title[lang]}
           </h2>
-          {text && <p className="mx-auto mt-3 max-w-[56ch] !text-[12.5px] leading-[1.6] text-[#17191a]/65 sm:!text-[15px]">{text[lang]}</p>}
+          {text && <p className="mx-auto mt-2 max-w-[44ch] !text-[11px] leading-[1.5] text-[#17191a]/60 sm:mt-3 sm:!text-[13px]">{text[lang]}</p>}
         </div>
       )}
 
