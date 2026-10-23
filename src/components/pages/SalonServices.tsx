@@ -115,7 +115,7 @@ export default function SalonServices({
         )}
 
         {/* Оглавление-журнал: строки-категории, по клику раскрывается прайс-плашка */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2 sm:gap-3">
           {shown.map(({ c, i }) => {
             const isOpen = query ? true : open === i;
             return (
@@ -133,14 +133,14 @@ export default function SalonServices({
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
-                  className="group grid w-full grid-cols-[1fr_auto] items-center gap-3 px-4 py-4 text-left sm:gap-5 sm:px-6 sm:py-6 lg:gap-8 lg:px-8 lg:py-8"
+                  className="group grid w-full grid-cols-[1fr_auto] items-center gap-3 px-4 py-3 text-left sm:gap-5 sm:px-6 sm:py-6 lg:gap-8 lg:px-8 lg:py-8"
                 >
                   {/* Название + подпись */}
                   <span className="min-w-0">
                     <span className={`block text-[14px] font-normal leading-[1.3] transition-colors duration-300 sm:text-[16px] lg:text-[18px] text-[#17191a]`}>
                       {c.label[lang]}
                     </span>
-                    <span className={`mt-1 block text-[11px] leading-[1.4] transition-colors duration-300 sm:mt-1.5 sm:text-[12px] lg:text-[13px] text-[#2a2320]/55`}>
+                    <span className={`mt-1 hidden text-[11px] leading-[1.4] sm:block transition-colors duration-300 sm:mt-1.5 sm:text-[12px] lg:text-[13px] text-[#2a2320]/55`}>
                       {c.sub[lang]}
                     </span>
                   </span>
