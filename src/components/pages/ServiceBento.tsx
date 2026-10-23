@@ -23,7 +23,7 @@ export default function ServiceBento() {
   return (
     <section id="services" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <div className="grid grid-cols-2 gap-3 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
+        <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
           {CATS.map((c, i) => (
             <a
               key={c.title.ru}
@@ -46,7 +46,7 @@ export default function ServiceBento() {
                 <h3 className="font-serif-display text-[22px] uppercase tracking-[0.03em] text-white lg:text-[24px]">
                   {c.title[lang]}
                 </h3>
-                <div className="grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-hover:opacity-100">
+                <div className="grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] [@media(hover:none)]:hidden [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-hover:opacity-100">
                 <p className="min-h-0 overflow-hidden pt-1.5 max-w-[320px] !text-[11.5px] leading-[1.5] text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] sm:!text-[12.5px] lg:!text-[13px]">
                   {c.note[lang]}
                 </p>
