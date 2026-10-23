@@ -284,10 +284,9 @@ export default function Header() {
                   href={item.href}
                   onClick={() => setOpen(false)}
                   style={{ animationDelay: `${80 + i * 40}ms` }}
-                  className={`alis-menu-item flex items-center justify-between border-b border-[#17191a]/8 py-3.5 text-[13px] uppercase tracking-[0.12em] transition-colors ${pathname === item.href ? "text-[#17191a]" : "text-[#17191a]/75"}`}
+                  className={`alis-menu-item flex items-center justify-between border-b border-[#17191a]/8 py-3 text-[11.5px] uppercase tracking-[0.14em] transition-colors ${pathname === item.href ? "text-[#17191a]" : "text-[#17191a]/75"}`}
                 >
                   {item.label[lang]}
-                  <span aria-hidden className="text-[12px] text-[#17191a]/30">→</span>
                 </a>
               ))}
             </nav>
