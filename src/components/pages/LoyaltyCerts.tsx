@@ -114,7 +114,7 @@ export default function LoyaltyCerts() {
         if (e.isIntersecting) setActive(i);
         else setActive((a) => (a === i ? -1 : a));
       }
-    }, { rootMargin: "-40% 0px -40% 0px" });
+    }, { rootMargin: "-32% 0px -32% 0px" });
     cards.current.forEach((c) => c && io.observe(c));
     return () => io.disconnect();
   }, []);
@@ -199,16 +199,16 @@ export default function LoyaltyCerts() {
                     style={{ transitionDelay: `${0.1 + i * 0.12}s` }}
                   >
                     {/* Заливка снизу вверх при наведении */}
-                    <span aria-hidden className="absolute inset-0 origin-bottom scale-y-0 bg-[#17191a] transition-transform duration-500 ease-[cubic-bezier(.7,0,.2,1)] group-hover:scale-y-100 group-data-[on]:scale-y-100" />
+                    <span aria-hidden className="absolute inset-0 origin-bottom scale-y-0 bg-[#17191a] transition-transform duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-y-100 group-data-[on]:scale-y-100" />
                     <div className="relative flex items-start justify-between">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#17191a]/15 text-[#17191a] transition-colors duration-500 group-hover:border-white/25 group-hover:text-white group-data-[on]:border-white/25 group-data-[on]:text-white">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#17191a]/15 text-[#17191a] transition-colors duration-700 group-hover:border-white/25 group-hover:text-white group-data-[on]:border-white/25 group-data-[on]:text-white">
                         <Icon />
                       </span>
-                      <span className="text-[11px] text-[#17191a]/30 transition-colors duration-500 group-hover:text-white/40 group-data-[on]:text-white/40">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="text-[11px] text-[#17191a]/30 transition-colors duration-700 group-hover:text-white/40 group-data-[on]:text-white/40">{String(i + 1).padStart(2, "0")}</span>
                     </div>
                     <div className="relative mt-6 sm:mt-10">
-                      <h3 className="font-display text-[15px] tracking-[0.01em] text-[#17191a] transition-colors duration-500 group-hover:text-white group-data-[on]:text-white sm:text-[17px]">{p.title[lang]}</h3>
-                      <p className="mt-1.5 !text-[11.5px] leading-[1.5] text-[#17191a]/60 transition-colors duration-500 group-hover:text-white/70 group-data-[on]:text-white/70 sm:!text-[13px]">{p.note[lang]}</p>
+                      <h3 className="font-display text-[15px] tracking-[0.01em] text-[#17191a] transition-colors duration-700 group-hover:text-white group-data-[on]:text-white sm:text-[17px]">{p.title[lang]}</h3>
+                      <p className="mt-1.5 !text-[11.5px] leading-[1.5] text-[#17191a]/60 transition-colors duration-700 group-hover:text-white/70 group-data-[on]:text-white/70 sm:!text-[13px]">{p.note[lang]}</p>
                     </div>
                   </article>
                 );
@@ -232,7 +232,7 @@ export default function LoyaltyCerts() {
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-all duration-[700ms] ease-out group-hover:scale-105 group-hover:blur-md"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10 transition-colors duration-500 group-hover:from-black/80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10 transition-colors duration-700 group-hover:from-black/80" />
               <span className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/50 text-white transition-all duration-300 group-hover:border-transparent group-hover:bg-white group-hover:text-[#17191a] sm:right-6 sm:top-6 sm:h-11 sm:w-11">
                 <span className="transition-transform duration-300 group-hover:-rotate-45">→</span>
               </span>
@@ -240,7 +240,7 @@ export default function LoyaltyCerts() {
                 <h3 className="font-display text-[18px] leading-[1.2] tracking-[0.02em] text-white sm:text-[24px]">
                   {t("Подарочный сертификат ÁLIS BEAUTY", "ÁLIS BEAUTY gift certificate")}
                 </h3>
-                <div className="grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-hover:opacity-100">
+                <div className="grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] [@media(hover:none)]:hidden [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-hover:opacity-100">
                 <p className="min-h-0 overflow-hidden pt-1.5 max-w-md !text-[11.5px] leading-relaxed text-white/80 sm:!text-[13px]">
                   {t(
                     "Любая услуга или сумма. Лучший способ подарить заботу — и точно не промахнуться.",
