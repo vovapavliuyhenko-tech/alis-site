@@ -399,3 +399,9 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
   animation-timeline: scroll(root);
   animation-range: 0 60vh;
 }
+
+/* ===== Поля ввода на телефоне — 16px: при меньшем шрифте iPhone при нажатии на поле
+   увеличивает страницу и сдвигает её вбок (поля «уезжают» к правому краю) ===== */
+@media (max-width: 639px) {
+  input:not([type="checkbox"]):not([type="radio"]), select, textarea { font-size: 16px !important; }
+}
