@@ -3,7 +3,6 @@
 // топовых Tilda-портфолио: крупные строки-вакансии с номерами; при наведении на
 // строку сбоку плавно всплывает фото роли. Клик ведёт к форме ниже. Тексты ролей
 // — плейсхолдеры до присланного списка. Двуязычно.
-import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -38,21 +37,6 @@ const VACANCIES: Vacancy[] = [
 
 export default function Vacancies() {
   const { lang } = useLang();
-  // Телефон (нет наведения): фото роли всплывает у строки, которая проходит через центр экрана
-  const rows = useRef<(HTMLElement | null)[]>([]);
-  const [active, setActive] = useState(-1);
-  useEffect(() => {
-    if (matchMedia("(hover: hover)").matches) return;
-    const io = new IntersectionObserver((es) => {
-      for (const e of es) {
-        const i = rows.current.indexOf(e.target as HTMLElement);
-        if (e.isIntersecting) setActive(i);
-        else setActive((a) => (a === i ? -1 : a));
-      }
-    }, { rootMargin: "-38% 0px -38% 0px" });
-    rows.current.forEach((r) => r && io.observe(r));
-    return () => io.disconnect();
-  }, []);
 
   return (
     <section id="vacancies" className="scroll-mt-24 bg-white section-y">
@@ -66,8 +50,6 @@ export default function Vacancies() {
             <a
               key={v.role.ru}
               href="#join"
-              ref={(el) => { rows.current[i] = el; }}
-              data-on={active === i ? "" : undefined}
               className="group relative grid grid-cols-[1fr_auto] items-center gap-5 rounded-[20px] border border-[#17191a]/12 px-5 py-4 bg-white sm:px-6 sm:py-6 transition-[border-color,box-shadow] duration-500 hover:border-[#17191a]/20 hover:shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:gap-8 lg:px-8 lg:py-8"
             >
 
@@ -98,7 +80,7 @@ export default function Vacancies() {
                 loading="lazy"
                 decoding="async"
                 aria-hidden
-                className={`pointer-events-none absolute left-[62%] top-1/2 z-20 aspect-[3/4] w-[92px] -translate-x-1/2 -translate-y-1/2 scale-90 rounded-[14px] object-cover opacity-0 shadow-[0_20px_40px_rgba(23,25,26,0.25)] transition-all duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-100 group-hover:opacity-100 group-data-[on]:scale-100 group-data-[on]:opacity-100 sm:w-[150px] lg:left-1/2 lg:w-[232px] lg:rounded-[20px] lg:duration-300 lg:shadow-[0_28px_60px_rgba(23,25,26,0.28)] ${["rotate-[-7deg]", "rotate-[6deg]", "rotate-[-4deg]", "rotate-[7deg]"][i % 4]}`}
+                className={`pointer-events-none absolute left-[62%] top-1/2 z-20 hidden aspect-[3/4] w-[92px] -translate-x-1/2 -translate-y-1/2 scale-90 rounded-[14px] object-cover opacity-0 shadow-[0_20px_40px_rgba(23,25,26,0.25)] transition-all duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-100 group-hover:opacity-100 lg:block lg:left-1/2 lg:w-[232px] lg:rounded-[20px] lg:duration-300 lg:shadow-[0_28px_60px_rgba(23,25,26,0.28)] ${["rotate-[-7deg]", "rotate-[6deg]", "rotate-[-4deg]", "rotate-[7deg]"][i % 4]}`}
               />
             </a>
           ))}
