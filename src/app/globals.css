@@ -400,8 +400,9 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
   animation-range: 0 60vh;
 }
 
-/* ===== Поля ввода на телефоне — 16px: при меньшем шрифте iPhone при нажатии на поле
-   увеличивает страницу и сдвигает её вбок (поля «уезжают» к правому краю) ===== */
+/* ===== Поля ввода во всех формах — аккуратный мелкий текст.
+   (Автоувеличение страницы на iPhone при нажатии отключено в layout.tsx — viewport maximumScale) ===== */
+input:not([type="checkbox"]):not([type="radio"]), select, textarea { font-size: 14px !important; }
 @media (max-width: 639px) {
-  input:not([type="checkbox"]):not([type="radio"]), select, textarea { font-size: 16px !important; }
+  input:not([type="checkbox"]):not([type="radio"]), select, textarea { font-size: 12.5px !important; }
 }

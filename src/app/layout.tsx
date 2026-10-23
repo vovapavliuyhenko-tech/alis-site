@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
@@ -32,6 +32,9 @@ const SITE_DESC =
   "ÁLIS BEAUTY: маникюр, педикюр, брови, макияж, окрашивание и укладки волос, а также выездной премиум-сервис для мероприятий. Новороссийск, ул. Пархоменко, 53. Отражаем внутреннюю красоту во внешнем облике.";
 // Превью ссылки в мессенджерах и соцсетях (og:image) — фото с обложки главной
 const OG_IMAGE = { url: "/assets/alis/img_2745.jpg", width: 1600, height: 1067, alt: "ÁLIS BEAUTY — салон красоты в Новороссийске" };
+
+// Без автоувеличения страницы при нажатии на поле ввода (iPhone сдвигал форму вбок)
+export const viewport: Viewport = { width: "device-width", initialScale: 1, maximumScale: 1 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://alis-site-one.vercel.app"),
