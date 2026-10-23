@@ -82,14 +82,6 @@ export default function Header() {
   const pathname = usePathname();
   const [solid, setSolid] = useState(pathname !== "/");
   const [open, setOpen] = useState(false);
-  // Прокрутили страницу — шапка сжимается в «таблетку»
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 40);
-    on();
-    window.addEventListener("scroll", on, { passive: true });
-    return () => window.removeEventListener("scroll", on);
-  }, [pathname]);
 
   // На первом блоке фон прозрачный, элементы светлые; после #hero-end — подложка и тёмные
   useEffect(() => {
@@ -129,8 +121,9 @@ export default function Header() {
   // Над первым экраном главной (тёмное фото) — шапка светлая; после прокрутки
   // и на внутренних страницах — тёмная на белой подложке.
   // Открыто мобильное меню — шапка белая и тёмная, как на внутренних страницах
-  const overHero = !solid && !open;
-  const pill = solid && scrolled && !open;
+  // Шапка всегда белая «таблетка» — и на первом экране (по просьбе заказчицы); тёмные пункты меню
+  const overHero = false;
+  const pill = !open;
   const ink = overHero ? "text-white" : "text-[#17191a]";
   const inkSoft = overHero ? "text-white/90" : "text-[#17191a]/90";
   const hoverInk = overHero ? "hover:text-white" : "hover:text-[#17191a]";
