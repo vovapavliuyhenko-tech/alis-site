@@ -12,13 +12,13 @@ const YANDEX = "https://yandex.ru/maps/org/lis_byuti/63024642190/reviews/";
 
 function Card({ r, lang }: { r: (typeof REVIEWS)[number]; lang: "ru" | "en" }) {
   return (
-    <figure className="mr-3 flex w-[290px] shrink-0 flex-col justify-between rounded-[20px] min-h-[230px] border border-[#17191a]/[0.06] bg-white p-6 shadow-[0_10px_30px_-18px_rgba(23,25,26,0.28)] transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] hover:-translate-y-2 hover:shadow-[0_22px_40px_-20px_rgba(23,25,26,0.35)] sm:w-[380px] lg:mr-4">
-      <blockquote className="text-[11.5px] leading-[1.55] text-[#17191a]/85 sm:text-[12.5px]">{r.text[lang]}</blockquote>
-      <figcaption className="mt-4 flex items-center gap-2.5">
-        <span aria-hidden className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[10px] text-white">
+    <figure className="mr-2.5 flex w-[230px] shrink-0 flex-col justify-between rounded-[18px] min-h-[170px] border border-[#17191a]/[0.06] bg-white p-4 sm:mr-3 sm:min-h-[230px] sm:rounded-[20px] sm:p-6 shadow-[0_10px_30px_-18px_rgba(23,25,26,0.28)] transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] hover:-translate-y-2 hover:shadow-[0_22px_40px_-20px_rgba(23,25,26,0.35)] sm:w-[380px] lg:mr-4">
+      <blockquote className="text-[10.5px] leading-[1.5] text-[#17191a]/85 sm:text-[12.5px] sm:leading-[1.55]">{r.text[lang]}</blockquote>
+      <figcaption className="mt-3 flex items-center gap-2 sm:mt-4 sm:gap-2.5">
+        <span aria-hidden className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[9px] text-white sm:h-6 sm:w-6 sm:text-[10px]">
           {r.name[lang].charAt(0)}
         </span>
-        <span className="text-[10.5px] sm:text-[11.5px]">
+        <span className="text-[9.5px] sm:text-[11.5px]">
           <span className="font-medium text-[#17191a]">{r.name[lang]}</span>
           <span className="text-[#17191a]/50"> · {r.role[lang]}</span>
         </span>
@@ -115,10 +115,10 @@ export default function ReviewsWall({ title = { ru: "Так говорят го�
           href={YANDEX}
           target="_blank"
           rel="noopener noreferrer"
-          className="group mt-6 inline-flex items-center gap-3 rounded-full border border-[#17191a]/12 bg-white py-1.5 pl-1.5 pr-4 text-[12.5px] text-[#17191a]/65 transition-colors hover:border-[#17191a]/40 sm:text-[13.5px]"
+          className="group mt-4 inline-flex items-center gap-2 rounded-full border border-[#17191a]/12 bg-white py-1 pl-1 pr-3 text-[10.5px] text-[#17191a]/65 transition-colors hover:border-[#17191a]/40 sm:mt-6 sm:gap-3 sm:py-1.5 sm:pl-1.5 sm:pr-4 sm:text-[13.5px]"
         >
-          <span className="rounded-full bg-[#17191a] px-3 py-1.5 text-[13px] font-medium text-white">4.9</span>
-          <span aria-hidden className="tracking-[0.1em] text-[#b8955a]">★★★★★</span>
+          <span className="rounded-full bg-[#17191a] px-2 py-1 text-[11px] font-medium text-white sm:px-3 sm:py-1.5 sm:text-[13px]">4.9</span>
+          <span aria-hidden className="text-[10px] tracking-[0.06em] text-[#b8955a] sm:text-[inherit] sm:tracking-[0.1em]">★★★★★</span>
           {en ? "75+ reviews on Yandex and 2GIS" : "75+ отзывов на Яндекс и 2ГИС"}
           <span aria-hidden className="transition-transform duration-300 group-hover:-rotate-45">↗</span>
         </a>
