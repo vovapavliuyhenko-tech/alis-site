@@ -2,7 +2,7 @@
 // «КАК ПРИСОЕДИНИТЬСЯ?» (страница «Вакансии», #steps) — 4 шага широкими карточками, по мотивам
 // блока «[ Услуги ]» uni-s.group в стиле нашего сайта. Компьютер: блок «прилипает» к экрану, и пока
 // страница прокручивается вниз, карточки едут влево; активная — чёрная; под лентой — счётчик с
-// полосой прогресса и кнопка «Подать заявку». Телефон/планшет: обычная лента, листается свайпом вбок.
+// полосой прогресса и кнопка «Подать заявку». Телефон — так же (лента едет вбок при прокрутке страницы).
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
@@ -21,48 +21,54 @@ export default function VacanciesScroll() {
   const wrap = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  const [prog, setProg] = useState(0);
+  const bar = useRef<HTMLSpanElement>(null);
 
-  // Компьютер: вертикальная прокрутка → сдвиг ленты влево (rAF)
+  // Везде (и на телефоне): блок «прилипает», вертикальная прокрутка плавно сдвигает ленту вбок.
+  // Лента догоняет нужное положение с мягким замедлением (не дёргается за каждым движением пальца).
   useEffect(() => {
     const w = wrap.current, tr = track.current;
     if (!w || !tr) return;
-    const mq = matchMedia("(min-width: 1024px)");
-    let raf = 0;
-    const upd = () => {
-      raf = 0;
-      if (!mq.matches) { tr.style.transform = ""; return; }
+    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let raf = 0, cur = -1, target = 0;
+    const measure = () => {
       const r = w.getBoundingClientRect();
       const total = w.offsetHeight - innerHeight;
-      const p = Math.min(1, Math.max(0, -r.top / Math.max(1, total)));
-      const max = tr.scrollWidth - tr.parentElement!.clientWidth;
-      tr.style.transform = `translate3d(${-p * max}px,0,0)`;
-      setProg(p);
-      setActive(Math.min(STEPS.length - 1, Math.round(p * (STEPS.length - 1))));
+      target = Math.min(1, Math.max(0, -r.top / Math.max(1, total)));
     };
-    const on = () => { if (!raf) raf = requestAnimationFrame(upd); };
-    upd();
+    const frame = () => {
+      raf = 0;
+      measure();
+      cur = cur < 0 || still ? target : cur + (target - cur) * 0.14;
+      if (Math.abs(target - cur) < 0.0005) cur = target;
+      const max = tr.scrollWidth - tr.parentElement!.clientWidth;
+      tr.style.transform = `translate3d(${(-cur * max).toFixed(1)}px,0,0)`;
+      if (bar.current) bar.current.style.width = `${Math.max(4, cur * 100)}%`;
+      const act = Math.min(STEPS.length - 1, Math.round(cur * (STEPS.length - 1)));
+      setActive((x) => (x === act ? x : act));
+      if (cur !== target) raf = requestAnimationFrame(frame);
+    };
+    const on = () => { if (!raf) raf = requestAnimationFrame(frame); };
+    frame();
     addEventListener("scroll", on, { passive: true });
     addEventListener("resize", on);
-    mq.addEventListener("change", on);
-    return () => { removeEventListener("scroll", on); removeEventListener("resize", on); mq.removeEventListener("change", on); cancelAnimationFrame(raf); };
+    return () => { removeEventListener("scroll", on); removeEventListener("resize", on); cancelAnimationFrame(raf); };
   }, []);
 
   return (
     <section id="steps" className="scroll-mt-24 bg-white section-y">
       {/* Высота обёртки = длина «прокрутки вбок» (только компьютер) */}
-      <div ref={wrap} className="lg:h-[280vh]">
-        <div className="lg:sticky lg:top-0 lg:flex lg:h-svh lg:items-center">
+      <div ref={wrap} className="h-[260vh] lg:h-[280vh]">
+        <div className="sticky top-0 flex h-svh items-center">
           <div className="mx-auto w-[96%] max-w-[1760px]">
             <h2 className="sr-only">{en ? "How to join?" : "Как присоединиться?"}</h2>
 
             {/* Лента карточек во всю ширину */}
-            <div className="-mx-[2%] overflow-x-auto px-[2%] [scrollbar-width:none] lg:mx-0 lg:overflow-hidden lg:px-0">
-              <div ref={track} className="flex snap-x snap-mandatory gap-2 will-change-transform sm:gap-3 lg:gap-4">
+            <div className="overflow-hidden">
+              <div ref={track} className="flex gap-2 will-change-transform sm:gap-3 lg:gap-4">
                 {STEPS.map((s, i) => (
                   <article
                     key={s.title.ru}
-                    className={`flex min-h-[260px] w-[80%] shrink-0 snap-start flex-col justify-between rounded-[28px] p-6 transition-colors duration-500 sm:w-[48%] sm:p-8 lg:min-h-[min(520px,60vh)] lg:w-[min(620px,42%)] lg:p-12 ${
+                    className={`flex min-h-[260px] w-[80%] shrink-0 flex-col justify-between rounded-[28px] p-6 transition-colors duration-500 sm:w-[48%] sm:p-8 lg:min-h-[min(520px,60vh)] lg:w-[min(620px,42%)] lg:p-12 ${
                       i === active ? "bg-[#17191a] text-white" : "bg-[#f6f4f1] text-[#17191a]"
                     }`}
                   >
@@ -80,10 +86,10 @@ export default function VacanciesScroll() {
 
             {/* Счётчик + кнопка */}
             <div className="mt-6 flex flex-col items-center gap-5 lg:flex-row lg:gap-8">
-              <div className="hidden flex-1 items-center gap-4 lg:flex">
+              <div className="flex w-full flex-1 items-center gap-4">
                 <span className="font-display text-[13px] tabular-nums text-[#17191a]">{String(active + 1).padStart(2, "0")}</span>
                 <span className="relative h-px flex-1 bg-[#17191a]/12">
-                  <span className="absolute inset-y-0 left-0 bg-[#17191a]" style={{ width: `${Math.max(4, prog * 100)}%` }} />
+                  <span ref={bar} className="absolute inset-y-0 left-0 bg-[#17191a]" style={{ width: "4%" }} />
                 </span>
                 <span className="font-display text-[13px] tabular-nums text-[#17191a]/40">{String(STEPS.length).padStart(2, "0")}</span>
               </div>
