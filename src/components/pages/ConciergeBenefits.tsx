@@ -162,7 +162,7 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
                 {/* Заголовок (мобильная версия — всегда; десктоп — у активной) и описание */}
                 <div className="absolute inset-x-5 bottom-5 lg:inset-x-8 lg:bottom-8">
                   <h3
-                    className={`font-serif-display text-[14px] uppercase leading-[1.2] tracking-[0.03em] sm:text-[17px] transition-all duration-500 lg:text-[22px] ${
+                    className={`font-serif-display !text-[13px] uppercase leading-[1.2] tracking-[0.03em] sm:!text-[14px] transition-all duration-500 lg:!text-[18px] ${
                       on ? "lg:translate-y-0 lg:opacity-100 lg:delay-300" : "lg:translate-y-4 lg:opacity-0"
                     }`}
                   >
