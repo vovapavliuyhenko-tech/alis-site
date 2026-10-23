@@ -87,7 +87,7 @@ export function TeamPeople() {
             <div key={p.role.ru} ref={(el) => { fans.current[i] = el; }} className="relative will-change-transform">
             <article
               data-on={active === i ? "" : undefined}
-              className="group relative h-[380px] overflow-hidden rounded-[20px] bg-[#f6f4f1] shadow-[0_24px_60px_-30px_rgba(23,25,26,0.35)] transition-transform duration-500 ease-out hover:-translate-y-3 data-[on]:-translate-y-3 sm:h-[420px] lg:h-[480px]"
+              className="group relative h-[250px] overflow-hidden rounded-[20px] bg-[#f6f4f1] shadow-[0_24px_60px_-30px_rgba(23,25,26,0.35)] transition-transform duration-500 ease-out hover:-translate-y-3 data-[on]:-translate-y-3 sm:h-[340px] lg:h-[400px]"
             >
               {/* Фото во всю карточку: медленный зум при наведении */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
