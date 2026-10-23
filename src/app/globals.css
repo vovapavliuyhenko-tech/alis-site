@@ -376,3 +376,26 @@ html.menu-open .booking-fab { opacity: 0; pointer-events: none; }
 @keyframes hero-up-blur { from { opacity: 0; filter: blur(8px); transform: translateY(14px); } to { opacity: 1; filter: blur(0); transform: none; } }
 .hero-up-blur { animation: hero-up-blur 1s cubic-bezier(.22, .61, .36, 1) both; }
 @media (prefers-reduced-motion: reduce) { .hero-up-blur { animation: none; } }
+
+/* ===== Обложки: заголовок с текстом при прокрутке уменьшается и исчезает, фото темнеет.
+   Анимация привязана к прокрутке (scroll-driven) — работает на видеокарте, без рывков.
+   Классы ставит useHeroLive (HeroFX.tsx), если браузер это поддерживает. ===== */
+@keyframes hero-live-out {
+  0% { opacity: 1; transform: scale(1); }
+  71% { opacity: 0; }
+  100% { opacity: 0; transform: scale(.65); }
+}
+@keyframes hero-shade-in { from { opacity: 0; } to { opacity: .45; } }
+.hero-live {
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+  animation: hero-live-out linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0 60vh;
+}
+.hero-shade-live {
+  will-change: opacity;
+  animation: hero-shade-in linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0 60vh;
+}

@@ -58,14 +58,25 @@ export function useHeroLive(
   useEffect(() => {
     const sec = section.current, ph = img.current, ct = content.current, sh = shade.current;
     if (!sec || !ph || !ct || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf = 0;
-    // При прокрутке заголовок с текстом заметно уменьшается и исчезает, фото темнеет
+    // 1) Современные браузеры: анимация привязана к прокрутке прямо в CSS (.hero-live в globals.css) —
+    //    считается видеокартой, без JS на каждом кадре, поэтому идёт идеально плавно.
+    if (typeof CSS !== "undefined" && CSS.supports("animation-timeline: scroll()")) {
+      ct.classList.add("hero-live");
+      sh?.classList.add("hero-shade-live");
+      return () => { ct.classList.remove("hero-live"); sh?.classList.remove("hero-shade-live"); };
+    }
+    // 2) Остальные: раз в кадр меняем только transform и opacity (слой заранее вынесен на видеокарту)
+    ct.style.setProperty("will-change", "transform, opacity");
+    ct.style.setProperty("transform-origin", "50% 100%");
+    sh?.style.setProperty("will-change", "opacity");
+    let raf = 0, lastP = -1;
     const draw = () => {
       raf = 0;
       const p = Math.min(1, Math.max(0, window.scrollY / (window.innerHeight * 0.6)));
+      if (Math.abs(p - lastP) < 0.002) return;
+      lastP = p;
       ct.style.opacity = String(Math.max(0, 1 - p * 1.4));
-      ct.style.scale = String(1 - p * 0.35);
-      ct.style.transformOrigin = "50% 100%";
+      ct.style.transform = `translate3d(0,0,0) scale(${1 - p * 0.35})`;
       if (sh) sh.style.opacity = String(p * 0.45);
     };
     const kick = () => { if (!raf) raf = requestAnimationFrame(draw); };
