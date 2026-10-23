@@ -77,3 +77,29 @@ export function useHeroLive(
     };
   }, [section, img, content, shade]);
 }
+
+// Не больше N строк: если текст на экране занимает больше строк, шрифт плавно уменьшается
+// (шагами по 0,5px, не меньше minPx), пока не уложится. Пересчёт при изменении ширины экрана.
+export function useFitLines(el: RefObject<HTMLElement | null>, maxLines = 3, minPx = 12) {
+  useEffect(() => {
+    const node = el.current;
+    if (!node) return;
+    const fit = () => {
+      node.style.removeProperty("font-size");
+      let size = parseFloat(getComputedStyle(node).fontSize);
+      const lines = () => {
+        const lh = parseFloat(getComputedStyle(node).lineHeight) || size * 1.2;
+        return Math.round(node.getBoundingClientRect().height / lh);
+      };
+      while (lines() > maxLines && size > minPx) {
+        size -= 0.5;
+        node.style.setProperty("font-size", `${size}px`, "important");
+      }
+    };
+    fit();
+    const ro = new ResizeObserver(() => fit());
+    ro.observe(node.parentElement ?? node);
+    document.fonts?.ready.then(fit).catch(() => {});
+    return () => ro.disconnect();
+  }, [el, maxLines, minPx]);
+}

@@ -5,7 +5,7 @@
 import { useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { useHeroParallax } from "@/lib/useHeroParallax";
-import { SplitTitle, Grain, useHeroLive } from "@/components/ui/HeroFX";
+import { SplitTitle, Grain, useHeroLive, useFitLines } from "@/components/ui/HeroFX";
 
 type Loc = { ru: string; en: string };
 
@@ -38,6 +38,11 @@ export default function TeamIntro({
   const sec = useRef<HTMLElement>(null);
   const content = useRef<HTMLDivElement>(null);
   const shade = useRef<HTMLDivElement>(null);
+  // Заголовок и подзаголовок — размер как на главной, но не больше 3 строк (длинные — чуть мельче)
+  const h1 = useRef<HTMLHeadingElement>(null);
+  const sub = useRef<HTMLParagraphElement>(null);
+  useFitLines(h1, 3, 14);
+  useFitLines(sub, 3, 10);
   useHeroLive(sec, bg, content, shade);
   const lineDelay = 0.35 + title[lang].length * 0.035 + 0.25;
 
@@ -66,11 +71,11 @@ export default function TeamIntro({
             {kicker[lang]}
           </p>
         )}
-        <h1 className={`${subtitle ? "max-w-[30ch] lg:max-w-[44ch]" : "whitespace-nowrap"} text-[clamp(18px,6vw,24px)] font-serif-display font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]`}>
+        <h1 ref={h1} className={`${subtitle ? "max-w-full lg:max-w-[1100px]" : "whitespace-nowrap"} text-[clamp(18px,6vw,24px)] font-serif-display font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]`}>
           <SplitTitle text={title[lang]} />
         </h1>
         {subtitle && (
-          <p style={{ animationDelay: `${lineDelay + 0.2}s` }} className="hero-up mt-3 max-w-[620px] !text-[11.5px] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[12.5px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[13px]">
+          <p ref={sub} style={{ animationDelay: `${lineDelay + 0.2}s` }} className="hero-up mt-3 max-w-[720px] !text-[11.5px] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[12.5px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[13px]">
             {subtitle[lang]}
           </p>
         )}
@@ -83,7 +88,7 @@ export default function TeamIntro({
               key={b.href}
               href={b.href}
               {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className={`flex w-full items-center justify-center rounded-xl border px-1.5 py-3 text-center text-[10px] ${b.label[lang].length > 20 ? "leading-tight sm:whitespace-nowrap" : "whitespace-nowrap"} font-medium uppercase tracking-[0.05em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[13px] sm:tracking-[0.18em] lg:py-4 lg:text-[14px] ${
+              className={`flex w-full items-center justify-center rounded-xl border px-1.5 py-3 text-center text-[9px] ${b.label[lang].length > 25 ? "leading-tight sm:whitespace-nowrap" : "whitespace-nowrap"} font-medium uppercase tracking-[0.02em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[13px] sm:tracking-[0.18em] lg:py-4 lg:text-[14px] ${
                 i === 0
                   ? "border-white bg-white text-[#17191a] hover:bg-white/[0.18] hover:text-white"
                   : "border-white/70 bg-white/[0.18] text-white hover:border-white hover:bg-white hover:text-[#17191a]"
