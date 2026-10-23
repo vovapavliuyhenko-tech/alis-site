@@ -3,6 +3,7 @@
 // топовых Tilda-портфолио: крупные строки-вакансии с номерами; при наведении на
 // строку сбоку плавно всплывает фото роли. Клик ведёт к форме ниже. Тексты ролей
 // — плейсхолдеры до присланного списка. Двуязычно.
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
@@ -37,11 +38,26 @@ const VACANCIES: Vacancy[] = [
 
 export default function Vacancies() {
   const { lang } = useLang();
+  // Телефон (нет наведения): фото роли всплывает у строки, которая проходит через центр экрана
+  const rows = useRef<(HTMLElement | null)[]>([]);
+  const [active, setActive] = useState(-1);
+  useEffect(() => {
+    if (matchMedia("(hover: hover)").matches) return;
+    const io = new IntersectionObserver((es) => {
+      for (const e of es) {
+        const i = rows.current.indexOf(e.target as HTMLElement);
+        if (e.isIntersecting) setActive(i);
+        else setActive((a) => (a === i ? -1 : a));
+      }
+    }, { rootMargin: "-38% 0px -38% 0px" });
+    rows.current.forEach((r) => r && io.observe(r));
+    return () => io.disconnect();
+  }, []);
 
   return (
     <section id="vacancies" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <h2 className="r-reveal mb-10 text-center font-serif-display !text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:mb-14 lg:!text-[28px]">
+        <h2 className="r-reveal mb-8 text-center text-[#17191a] lg:mb-10">
           {lang === "en" ? "Join the beauty salon team in Novorossiysk" : "Стать частью команды салона красоты в Новороссийске"}
         </h2>
         {/* Оглавление-журнал: закруглённые строки-карточки, при наведении — полупрозрачно-бордовые */}
@@ -50,15 +66,17 @@ export default function Vacancies() {
             <a
               key={v.role.ru}
               href="#join"
-              className="group relative grid grid-cols-[1fr_auto] items-center gap-5 rounded-[20px] border border-[#17191a]/12 px-6 py-6 bg-white transition-[border-color,box-shadow] duration-500 hover:border-[#17191a]/20 hover:shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:gap-8 lg:px-8 lg:py-8"
+              ref={(el) => { rows.current[i] = el; }}
+              data-on={active === i ? "" : undefined}
+              className="group relative grid grid-cols-[1fr_auto] items-center gap-5 rounded-[20px] border border-[#17191a]/12 px-5 py-4 bg-white sm:px-6 sm:py-6 transition-[border-color,box-shadow] duration-500 hover:border-[#17191a]/20 hover:shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)] lg:gap-8 lg:px-8 lg:py-8"
             >
 
               {/* Название + описание */}
               <div className="min-w-0">
-                <h3 className="font-display text-[16px] font-normal uppercase leading-[1.15] tracking-[0.01em] text-[#17191a] transition-all duration-300 group-hover:translate-x-2 sm:text-[19px] lg:text-[24px]">
+                <h3 className="font-display !text-[13px] font-normal uppercase leading-[1.15] tracking-[0.01em] text-[#17191a] transition-all duration-300 group-hover:translate-x-2 sm:!text-[19px] lg:!text-[24px]">
                   {v.role[lang]}
                 </h3>
-                <p className="mt-2 text-[12.5px] text-[#2a2320]/55 transition-colors duration-300 lg:text-[13.5px]">{v.desc[lang]}</p>
+                <p className="mt-2 hidden text-[12.5px] text-[#2a2320]/55 sm:block transition-colors duration-300 lg:text-[13.5px]">{v.desc[lang]}</p>
               </div>
 
               {/* График + стрелка в кружке */}
@@ -66,7 +84,7 @@ export default function Vacancies() {
                 <span className="hidden whitespace-nowrap rounded-full bg-[#17191a]/10 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 group-hover:bg-[#17191a] group-hover:text-white sm:inline">
                   {v.schedule[lang]}
                 </span>
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#17191a]/30 text-[#17191a] transition-all duration-300 group-hover:border-[#17191a] group-hover:bg-[#17191a] group-hover:text-white lg:h-12 lg:w-12">
+                <span className="flex h-9 w-9 shrink-0 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-[#17191a]/30 text-[#17191a] transition-all duration-300 group-hover:border-[#17191a] group-hover:bg-[#17191a] group-hover:text-white lg:h-12 lg:w-12">
                   <span className="text-[16px] leading-none transition-transform duration-300 group-hover:-rotate-45 lg:text-[18px]">→</span>
                 </span>
               </span>
@@ -80,7 +98,7 @@ export default function Vacancies() {
                 loading="lazy"
                 decoding="async"
                 aria-hidden
-                className={`pointer-events-none absolute left-1/2 top-1/2 z-20 hidden aspect-[3/4] w-[205px] -translate-x-1/2 -translate-y-1/2 scale-95 rounded-[20px] object-cover opacity-0 shadow-[0_28px_60px_rgba(23,25,26,0.28)] transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:block lg:w-[232px] ${["rotate-[-7deg]", "rotate-[6deg]", "rotate-[-4deg]", "rotate-[7deg]"][i % 4]}`}
+                className={`pointer-events-none absolute left-[62%] top-1/2 z-20 aspect-[3/4] w-[92px] -translate-x-1/2 -translate-y-1/2 scale-90 rounded-[14px] object-cover opacity-0 shadow-[0_20px_40px_rgba(23,25,26,0.25)] transition-all duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-100 group-hover:opacity-100 group-data-[on]:scale-100 group-data-[on]:opacity-100 sm:w-[150px] lg:left-1/2 lg:w-[232px] lg:rounded-[20px] lg:duration-300 lg:shadow-[0_28px_60px_rgba(23,25,26,0.28)] ${["rotate-[-7deg]", "rotate-[6deg]", "rotate-[-4deg]", "rotate-[7deg]"][i % 4]}`}
               />
             </a>
           ))}
