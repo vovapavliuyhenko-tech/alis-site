@@ -11,6 +11,8 @@ import { useLang } from "@/lib/i18n";
 const PHONE_SALON = "+7 988 888 77 58";
 const PHONE_SERVICE = "+7 988 888 77 28";
 const EMAIL = "alisbeautyclub@gmail.com";
+// Международный номер консьерж-сервиса — пришлёт заказчица (пока пусто — строка не показывается)
+const PHONE_INTL: string = "";
 const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
 // Маршрут до салона в Яндекс Картах (координаты организации «Áлис Бьюти»)
 const ROUTE_URL = "https://yandex.ru/maps/?rtext=~44.704933%2C37.782638&rtt=auto";
@@ -30,10 +32,6 @@ export default function Footer() {
   // На странице консьерж-сервиса первым идёт телефон сервиса, на остальных — салона
   const concierge = pathname === "/concierge";
   const t = (ru: string, e: string) => (en ? e : ru);
-  // Компьютер: крупно — телефон текущего направления, ниже — второй
-  const PHONE_MAIN = concierge ? PHONE_SERVICE : PHONE_SALON;
-  const PHONE_SECOND = concierge ? PHONE_SALON : PHONE_SERVICE;
-  const secondNote = concierge ? t("салон красоты", "beauty salon") : t("консьерж-сервис", "concierge service");
   const title = "mb-2.5 lg:mb-5 text-[9.5px] sm:text-[11px] uppercase tracking-[0.18em] text-[#f4efe6]/75";
   const link =
     "relative block w-fit text-[11.5px] text-[#f4efe6]/85 sm:text-[13px] lg:text-[12.5px] transition-colors hover:text-[#f4efe6] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-[#f4efe6] after:transition-all after:duration-300 hover:after:w-full";
@@ -110,7 +108,7 @@ export default function Footer() {
             <a href={SOCIALS[concierge ? 1 : 0].href} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page")} className="flex h-8 w-8 items-center justify-center rounded-full border border-[#f4efe6]/35 text-[#f4efe6] transition-all duration-500 hover:-translate-y-0.5 hover:border-[#f4efe6] hover:bg-[#f4efe6] hover:text-[#17191a]">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="h-3.5 w-3.5" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>
             </a>
-            <a href={`mailto:${EMAIL}`} className="text-[12.5px] text-[#f4efe6]/85 underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#f4efe6] sm:text-[14px]">{EMAIL}</a>
+            <a href={`mailto:${EMAIL}`} className="whitespace-nowrap font-display text-[20px] leading-none tracking-[0.02em] text-[#f4efe6] transition-opacity hover:opacity-70 sm:text-[24px]">{EMAIL}</a>
           </div>
         </div>
 
@@ -189,18 +187,21 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Телефоны + email справа, крупно */}
-          <div className="col-span-2 lg:col-span-1 lg:text-right">
-            <p className={title}>{concierge ? t("Консьерж-сервис", "Concierge service") : t("Салон красоты", "Beauty salon")}</p>
-            <a href={`tel:${PHONE_MAIN.replace(/[^\d+]/g, "")}`} className="block whitespace-nowrap font-display text-[20px] leading-none sm:text-[24px] tracking-[0.02em] text-[#f4efe6] transition-opacity hover:opacity-70 lg:text-[40px]">
-              {PHONE_MAIN}
-            </a>
-            <a href={`tel:${PHONE_SECOND.replace(/[^\d+]/g, "")}`} className="mt-2 block text-[11.5px] text-[#f4efe6]/75 sm:mt-3 sm:text-[14px] lg:text-[12.5px] transition-colors hover:text-[#f4efe6]">
-              {PHONE_SECOND} — {secondNote}
-            </a>
-            <a href={`mailto:${EMAIL}`} className="mt-3 inline-block text-[12px] text-[#f4efe6]/85 sm:mt-5 sm:text-[14px] underline decoration-[#f4efe6]/25 underline-offset-[6px] transition-colors hover:text-[#f4efe6] hover:decoration-[#f4efe6] lg:text-[15px]">
-              {EMAIL}
-            </a>
+          {/* Телефоны и почта справа — все одного размера (по просьбе заказчицы) */}
+          <div className="col-span-2 flex flex-col gap-4 lg:col-span-1 lg:items-end lg:text-right">
+            {[
+              { label: t("Салон красоты", "Beauty salon"), value: PHONE_SALON, href: `tel:${PHONE_SALON.replace(/[^d+]/g, "")}` },
+              { label: t("Консьерж-сервис", "Concierge service"), value: PHONE_SERVICE, href: `tel:${PHONE_SERVICE.replace(/[^d+]/g, "")}` },
+              ...(PHONE_INTL ? [{ label: t("Международный номер", "International number"), value: PHONE_INTL, href: `tel:${PHONE_INTL.replace(/[^d+]/g, "")}` }] : []),
+              { label: t("Почта", "E-mail"), value: EMAIL, href: `mailto:${EMAIL}` },
+            ].map((c) => (
+              <div key={c.value}>
+                <p className="mb-1 text-[9.5px] uppercase tracking-[0.18em] text-[#f4efe6]/55 sm:text-[10.5px]">{c.label}</p>
+                <a href={c.href} className="block whitespace-nowrap font-display text-[20px] leading-none tracking-[0.02em] text-[#f4efe6] transition-opacity hover:opacity-70">
+                  {c.value}
+                </a>
+              </div>
+            ))}
           </div>
         </div>
 
