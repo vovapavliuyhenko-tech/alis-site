@@ -46,7 +46,7 @@ export default function Vacancies() {
         </h2>
         {/* Оглавление-журнал: закруглённые строки-карточки, при наведении — полупрозрачно-бордовые */}
         <div className="flex flex-col gap-3">
-          {VACANCIES.map((v, i) => (
+          {VACANCIES.map((v) => (
             <a
               key={v.role.ru}
               href="#join"
