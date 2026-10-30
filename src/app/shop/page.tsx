@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import BlockLabel from "@/components/ui/BlockLabel";
 import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
-import { ShopCategories, GiftBox } from "@/components/shop/ShopBlocks";
+import { ShopCategories } from "@/components/shop/ShopBlocks";
 import { ShopTrend } from "@/components/shop/ShopShowcase";
 
 // Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и анимации — по главной
@@ -32,7 +32,7 @@ export default function ShopPage() {
         {/* Новинки — товары из каталога (подпись над блоком убрана) */}
         <ShopTrend />
         {/* Подарочный бокс — «веер» из трёх фото, как карточки команды на «Вакансиях» */}
-        <GiftBox />
+        {/* <GiftBox /> — подарочный бокс убран по просьбе заказчицы (ждём визуализацию конфигуратора) */}
       </div>
       <Footer />
     </main>
