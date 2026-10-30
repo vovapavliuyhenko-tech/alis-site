@@ -67,7 +67,7 @@ export default function CooperationPage() {
         }}
         photo="/assets/alis/img_6011.jpg"
         // «Скачать КП» — сначала данные: открывает форму для бизнеса. TODO: PDF КП пришлёт заказчица
-        button={{ label: { ru: "Скачать КП", en: "Download proposal" }, href: "#business" }}
+        button={{ label: { ru: "Скачать коммерческое предложение", en: "Download the commercial proposal" }, href: "#business" }}
         // «Обсудить проект» — связь с менеджером: сразу в мессенджер консьерж-сервиса
         button2={{ label: { ru: "Обсудить проект", en: "Discuss a project" }, href: "https://wa.me/79888887728" }}
       />

@@ -46,7 +46,7 @@ export default function Hero() {
         className="absolute inset-0 -z-10 lg:hidden"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(20,18,16,.32) 0%, rgba(20,18,16,0) 22%), linear-gradient(to top, rgba(20,18,16,.72) 0%, rgba(20,18,16,.25) 40%, rgba(20,18,16,0) 65%)",
+            "linear-gradient(to top, rgba(20,18,16,.5) 0%, rgba(20,18,16,.12) 35%, rgba(20,18,16,0) 55%)",
         }}
       />
       {/* Компьютер: без затемнения, фото насыщеннее; только лёгкая тень у самого низа — чтобы читался белый текст */}

@@ -26,7 +26,7 @@ export function ShopCategories() {
   const en = lang === "en";
   const CATS: { title: Loc; price: Loc; img: string; href: string }[] = [
     { title: { ru: "Смотреть все", en: "View all" }, price: { ru: "весь каталог", en: "full catalogue" }, img: "/assets/tild3561-646_-2___1__5.jpg", href: "/shop/catalog" },
-    { title: { ru: "Уход для волос, инструменты", en: "Hair care & tools" }, price: { ru: `от ${fmt(minPrice(["уход"]))} ₽`, en: `from ${fmt(minPrice(["уход"]))} ₽` }, img: "/assets/alis/img_5910.webp", href: "/shop/catalog?cat=%D1%83%D1%85%D0%BE%D0%B4" },
+    { title: { ru: "Уход для волос", en: "Hair care" }, price: { ru: `от ${fmt(minPrice(["уход"]))} ₽`, en: `from ${fmt(minPrice(["уход"]))} ₽` }, img: "/assets/alis/img_5910.webp", href: "/shop/catalog?cat=%D1%83%D1%85%D0%BE%D0%B4" },
     { title: { ru: "Мерч ÁLIS BEAUTY", en: "ÁLIS BEAUTY merch" }, price: { ru: `от ${fmt(minPrice(["одежда", "аксессуары"]))} ₽`, en: `from ${fmt(minPrice(["одежда", "аксессуары"]))} ₽` }, img: "/assets/alis/img_1834.jpg", href: "/shop/catalog" },
     { title: { ru: "Подарочный beauty-бокс", en: "Beauty gift box" }, price: { ru: "по запросу", en: "on request" }, img: "/assets/alis/img_6048.jpg", href: "#box" },
     { title: { ru: "Сертификаты", en: "Gift certificates" }, price: { ru: "любая сумма", en: "any amount" }, img: "/assets/alis/img_1855.jpg", href: "https://o8981.yclients.ru/certificates" },

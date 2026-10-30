@@ -170,7 +170,6 @@ export default function ConciergeChat() {
     { icon: "✦", title: t("Оставить заявку на выезд", "Request an on-location visit"), sub: t("5 коротких вопросов", "5 short questions"), onClick: startFlow },
     { icon: "☏", title: t("Позвонить в консьерж-сервис", "Call the concierge service"), sub: PHONE_SERVICE, href: `tel:+${PHONE_RAW}` },
     { icon: "✉", title: t("Написать нам", "Message us"), sub: t("в мессенджере", "in a messenger"), href: `https://wa.me/${PHONE_RAW}` },
-    { icon: "◷", title: t("Записаться в салон", "Book at the salon"), sub: t("онлайн-запись", "online booking"), href: YCLIENTS },
   ];
 
   return (

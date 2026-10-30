@@ -16,7 +16,7 @@ import ConciergeBenefits, { type BenefitPoint } from "@/components/pages/Concier
 // «Почему выбирают ÁLIS BEAUTY» — пункты заказчицы, в формате фото-панелей как на странице
 // консьерж-сервиса. Описаний нет (только заголовки). Фото — временные.
 const WHY: BenefitPoint[] = [
-  { title: { ru: "Предсказуемый качественный результат", en: "Predictable, high-quality results" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_2672.jpg" },
+  { title: { ru: "Предсказуемый качественный результат", en: "Predictable, high-quality results" }, desc: { ru: "", en: "" }, img: "/assets/alis/work_hair_waves.jpg" },
   { title: { ru: "Опытная команда специалистов", en: "An experienced team of specialists" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_3283.jpg" },
   { title: { ru: "Профессиональный сервис по высоким стандартам бренда", en: "Professional service to the brand’s high standards" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_8578.jpg" },
   { title: { ru: "Работа в 4–6 рук", en: "Working with 4–6 hands at once" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_2746.jpg" },

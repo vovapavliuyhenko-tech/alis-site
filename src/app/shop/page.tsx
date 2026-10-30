@@ -19,7 +19,7 @@ export default function ShopPage() {
       <ScrollReveal />
       <Header />
       {/* 1 — Обложка с заголовком страницы, как на остальных страницах (фото временное) */}
-      <TeamIntro title={{ ru: "Средства, которыми работают специалисты ÁLIS, и beauty с нашим характером", en: "The products ÁLIS specialists work with — and beauty with our character" }} subtitle={{ ru: "Уход для волос, инструменты, мерч, подарочные боксы и сертификаты.", en: "Hair care, tools, merch, gift boxes and certificates." }} photo="/assets/tild6530-383_-2___1_.jpg" button={{ label: { ru: "Смотреть каталог", en: "View the catalogue" }, href: "/shop/catalog" }} />
+      <TeamIntro title={{ ru: "Средства, которыми работают специалисты ÁLIS, и beauty с нашим характером", en: "The products ÁLIS specialists work with — and beauty with our character" }} photo="/assets/tild6530-383_-2___1_.jpg" button={{ label: { ru: "Смотреть каталог", en: "View the catalogue" }, href: "/shop/catalog" }} />
 
       {/* Маркер конца обложки — после него у шапки появляется подложка */}
       <div id="hero-end" aria-hidden className="h-0" />

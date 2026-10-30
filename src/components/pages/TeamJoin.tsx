@@ -45,36 +45,7 @@ export function TeamPeople() {
     return () => io.disconnect();
   }, []);
 
-  // «Веер»: пока блок въезжает в экран, карточки из стопки по центру (наклонены веером)
-  // разъезжаются в ряд и выпрямляются. Только когда карточки стоят в ряд (≥640px).
-  const fans = useRef<(HTMLDivElement | null)[]>([]);
-  useEffect(() => {
-    const root = box.current;
-    if (!root) return;
-    const mq = matchMedia("(min-width: 640px)");
-    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let raf = 0;
-    const upd = () => {
-      raf = 0;
-      const r = root.getBoundingClientRect();
-      // 0 — верх блока у низа экрана, 1 — блок поднялся до ~35% высоты экрана
-      const raw = (innerHeight * 0.95 - r.top) / (innerHeight * 0.6);
-      const p = still || !mq.matches ? 1 : Math.min(1, Math.max(0, raw));
-      const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; // мягкий разгон и торможение
-      fans.current.forEach((el, i) => {
-        if (!el) return;
-        const k = 1 - i; // 1, 0, -1 — левая, центр, правая
-        const w = el.offsetWidth;
-        el.style.transform = e >= 1 ? "" : `translate3d(${k * (w + 16) * (1 - e) * 0.92}px, ${Math.abs(k) * 24 * (1 - e)}px, 0) rotate(${-k * 12 * (1 - e)}deg)`;
-        el.style.zIndex = i === 1 ? "2" : "1";
-      });
-    };
-    const on = () => { if (!raf) raf = requestAnimationFrame(upd); };
-    upd();
-    addEventListener("scroll", on, { passive: true });
-    addEventListener("resize", on);
-    return () => { removeEventListener("scroll", on); removeEventListener("resize", on); cancelAnimationFrame(raf); };
-  }, []);
+  // Анимация «веер» убрана по просьбе заказчицы — карточки сразу стоят в ряд
 
   return (
     <section id="people" className="scroll-mt-24 bg-white section-y">
@@ -84,7 +55,7 @@ export function TeamPeople() {
         </h2>
         <div ref={box} className="grid gap-2 sm:grid-cols-3 sm:gap-3 lg:gap-4">
           {PEOPLE.map((p, i) => (
-            <div key={p.role.ru} ref={(el) => { fans.current[i] = el; }} className="relative will-change-transform">
+            <div key={p.role.ru} className="relative">
             <article
               data-on={active === i ? "" : undefined}
               className="group relative h-[250px] overflow-hidden rounded-[20px] bg-[#f6f4f1] shadow-[0_24px_60px_-30px_rgba(23,25,26,0.35)] transition-transform duration-500 ease-out hover:-translate-y-3 data-[on]:-translate-y-3 sm:h-[340px] lg:h-[400px]"
