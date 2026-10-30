@@ -99,7 +99,7 @@ export function SalonBonusStrip() {
 const POPULAR: { name: Loc; price: Loc; img: string }[] = [
   { name: { ru: "Маникюр + покрытие", en: "Manicure + polish" }, price: { ru: "от 1 900 ₽", en: "from 1 900 ₽" }, img: "/assets/alis/img_8578.jpg" },
   { name: { ru: "Express-укладка", en: "Express styling" }, price: { ru: "от 2 000 ₽", en: "from 2 000 ₽" }, img: "/assets/alis/img_3283.jpg" },
-  { name: { ru: "Коррекция бровей", en: "Brow shaping" }, price: { ru: "по запросу", en: "on request" }, img: "/assets/alis/img_2672.jpg" },
+  { name: { ru: "Коррекция бровей", en: "Brow shaping" }, price: { ru: "по запросу", en: "on request" }, img: "/assets/alis/work_makeup_evening.jpg" },
   { name: { ru: "Маникюр + педикюр в 4 руки", en: "Mani + pedi, 4 hands" }, price: { ru: "от 5 700 ₽", en: "from 5 700 ₽" }, img: "/assets/tild3638-373_-2___1__3.jpg" },
   { name: { ru: "Макияж", en: "Makeup" }, price: { ru: "по запросу", en: "on request" }, img: "/assets/alis/img_2746.jpg" },
 ];
