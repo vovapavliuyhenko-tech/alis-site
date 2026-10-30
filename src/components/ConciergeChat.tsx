@@ -15,7 +15,7 @@ import { sendLead } from "@/lib/sendLead";
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const PHONE_SERVICE = "+7 988 888 77 28";
 const PHONE_RAW = PHONE_SERVICE.replace(/[^\d]/g, "");
-const ADMIN_PHOTO = "/assets/tild6536-613_-2___1__4.jpg"; // плейсхолдер — фото администратора
+const ADMIN_PHOTO = "/assets/alis/work_nails_bag.jpg"; // плейсхолдер — фото администратора
 
 type Loc = { ru: string; en: string };
 type Msg = { from: "bot" | "user"; text: string };

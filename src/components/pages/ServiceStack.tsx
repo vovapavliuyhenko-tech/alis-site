@@ -15,7 +15,7 @@ const PHOTOS = [
   "/assets/tild3236-393__.jpg",
   "/assets/tild6230-643__.jpg",
   "/assets/tild3561-646_-2___1__5.jpg",
-  "/assets/tild6536-613_-2___1__4.jpg",
+  "/assets/alis/work_nails_bag.jpg",
 ];
 
 type Cta = { label: Loc; href: string; external?: boolean };

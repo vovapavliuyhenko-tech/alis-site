@@ -66,7 +66,7 @@ const STAGES: Stage[] = [
       en: "At a shoot, wedding or event we're there to the end: adjusting details, handling the unexpected and keeping your look perfect. You just enjoy the day.",
     },
     quote: { ru: "«Ваш день — наша забота»", en: "“Your day is our care”" },
-    photo: "/assets/tild6536-613_-2___1__4.jpg",
+    photo: "/assets/alis/work_nails_bag.jpg",
   },
 ];
 

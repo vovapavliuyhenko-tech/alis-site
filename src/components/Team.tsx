@@ -60,7 +60,7 @@ const TEAM: Member[] = [
       { ru: "имидж", en: "image" },
       { ru: "образ под событие", en: "event look" },
     ],
-    photo: "/assets/tild6536-613_-2___1__4.jpg",
+    photo: "/assets/alis/work_nails_bag.jpg",
   },
 ];
 

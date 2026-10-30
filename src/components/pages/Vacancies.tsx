@@ -19,7 +19,7 @@ const VACANCIES: Vacancy[] = [
     role: { ru: "Визажист", en: "Makeup artist" },
     desc: { ru: "Дневной, вечерний, свадебный макияж", en: "Day, evening and bridal makeup" },
     schedule: { ru: "частичная / полная", en: "part / full time" },
-    img: "/assets/tild6536-613_-2___1__4.jpg",
+    img: "/assets/alis/work_nails_bag.jpg",
   },
   {
     role: { ru: "Бровист", en: "Brow artist" },

@@ -69,7 +69,7 @@ export const PRODUCTS: Product[] = [
     id: "careset",
     name: { ru: "Набор мини-уходов", en: "Mini care set" },
     price: 3200,
-    img: "/assets/tild6536-613_-2___1__4.jpg",
+    img: "/assets/alis/work_nails_bag.jpg",
     tag: { ru: "уход", en: "care" },
     desc: {
       ru: "Дорожный набор миниатюр профессионального ухода за волосами и кожей. Идеально в поездку и как подарок.",

@@ -24,7 +24,7 @@ const SERVICES: Service[] = [
   {
     name: { ru: "Коррекция бровей", en: "Brow shaping" },
     desc: { ru: "Форма под ваши черты — выразительный и естественный взгляд.", en: "A shape to match your features — an expressive, natural look." },
-    img: "/assets/tild6536-613_-2___1__4.jpg",
+    img: "/assets/alis/work_nails_bag.jpg",
   },
   {
     name: { ru: "Макияж", en: "Makeup" },

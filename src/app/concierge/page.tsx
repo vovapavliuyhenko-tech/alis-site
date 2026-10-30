@@ -64,7 +64,7 @@ const CONCIERGE_STAGES: Stage[] = [
       en: "If you choose stay-on support, an artist stays with you until the end of the event.",
     },
     quote: { ru: "«С вами до конца»", en: "“With you to the end”" },
-    photo: "/assets/tild6536-613_-2___1__4.jpg",
+    photo: "/assets/alis/work_nails_bag.jpg",
   },
 ];
 

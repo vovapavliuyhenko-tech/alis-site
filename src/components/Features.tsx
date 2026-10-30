@@ -21,7 +21,7 @@ const COLS: Cell[][] = [
   ],
   [
     { t: "stat", num: "9+", cap: { ru: "фирменных услуг и направлений", en: "signature services and directions" } },
-    { t: "photo", img: "/assets/tild6536-613_-2___1__4.jpg" },
+    { t: "photo", img: "/assets/alis/work_nails_bag.jpg" },
   ],
   [
     { t: "text", text: { ru: "Премиальная стойкая косметика", en: "Premium long-wear cosmetics" } },

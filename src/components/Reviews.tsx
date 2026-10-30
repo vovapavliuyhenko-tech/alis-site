@@ -43,7 +43,7 @@ export const REVIEWS: Review[] = [
       ru: "Очень комфортное, красивое пространство, сотрудники внимательные. Услугу сделали отлично, как я хотела, уточнили все нюансы.",
       en: "A very comfortable, beautiful space and attentive staff. The service was done perfectly, just as I wanted, and they checked every detail.",
     },
-    photo: "/assets/tild6536-613_-2___1__4.jpg",
+    photo: "/assets/alis/work_nails_bag.jpg",
   },
   {
     name: { ru: "Анастасия Е.", en: "Anastasia E." },
@@ -115,7 +115,7 @@ export const REVIEWS: Review[] = [
       ru: "Отличное место, приятная обстановка, всё очень аккуратно. Барбер Эдуард знает своё дело — сын в восторге! Ходим только к нему.",
       en: "A great place, pleasant setting, everything is neat. Barber Eduard knows his craft — my son is thrilled! We only go to him.",
     },
-    photo: "/assets/tild6536-613_-2___1__4.jpg",
+    photo: "/assets/alis/work_nails_bag.jpg",
   },
 ];
 
