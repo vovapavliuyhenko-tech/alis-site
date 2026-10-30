@@ -71,17 +71,7 @@ export default function Vacancies() {
                 </span>
               </span>
 
-              {/* Всплывающее фото роли по центру, в пустоте (только на десктопе) */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={v.img}
-                alt={v.role[lang]}
-                draggable={false}
-                loading="lazy"
-                decoding="async"
-                aria-hidden
-                className={`pointer-events-none absolute left-[62%] top-1/2 z-20 hidden aspect-[3/4] w-[92px] -translate-x-1/2 -translate-y-1/2 scale-90 rounded-[14px] object-cover opacity-0 shadow-[0_20px_40px_rgba(23,25,26,0.25)] transition-all duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-100 group-hover:opacity-100 lg:block lg:left-1/2 lg:w-[232px] lg:rounded-[20px] lg:duration-300 lg:shadow-[0_28px_60px_rgba(23,25,26,0.28)] ${["rotate-[-7deg]", "rotate-[6deg]", "rotate-[-4deg]", "rotate-[7deg]"][i % 4]}`}
-              />
+              {/* Всплывающее при наведении фото роли убрано по просьбе заказчицы */}
             </a>
           ))}
         </div>
