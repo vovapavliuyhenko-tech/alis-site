@@ -88,17 +88,17 @@ export default function BudgetCalc() {
 
   const q = QS[step];
   const pack = pickPack(ans);
-  const btn = "flex w-full items-center justify-center rounded-[12px] border border-white bg-white py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-white disabled:hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]";
-  const field = "h-[46px] w-full rounded-[14px] bg-white px-4 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 sm:h-[48px] sm:rounded-[16px] sm:px-5 sm:text-[15px] autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:[-webkit-text-fill-color:#17191a]";
-  const link = "text-[11px] uppercase tracking-[0.14em] text-white/55 transition-colors hover:text-white disabled:opacity-35";
+  const btn = "flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]";
+  const field = "h-[46px] w-full rounded-[14px] bg-white px-4 ring-1 ring-[#17191a]/12 focus:ring-[#17191a]/40 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 sm:h-[48px] sm:rounded-[16px] sm:px-5 sm:text-[15px] autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:[-webkit-text-fill-color:#17191a]";
+  const link = "text-[11px] uppercase tracking-[0.14em] text-[#17191a]/55 transition-colors hover:text-[#17191a] disabled:opacity-35";
 
   return (
     <section id="calc" className="scroll-mt-24 bg-white section-y">
       {/* Компьютер: слева заголовок и ваши ответы (заполняются по ходу), справа — шаги анкеты */}
-      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-5 rounded-[22px] bg-[#17191a] px-4 py-7 text-white sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
+      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-5 rounded-[22px] border border-[#17191a]/[0.06] bg-white px-4 py-7 text-[#17191a] shadow-[0_24px_60px_-30px_rgba(23,25,26,0.3)] sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
         <div className="flex flex-col text-left">
-          <h2 className="text-white">{en ? "Your date may already be taken" : "Ваша дата может быть уже занята"}</h2>
-          <p className="mt-2 !text-[12.5px] text-white/65 sm:mt-3 sm:!text-[15px]">{en ? "We'll check within 15 minutes?" : "Проверим за 15 минут?"}</p>
+          <h2 className="text-[#17191a]">{en ? "Your date may already be taken" : "Ваша дата может быть уже занята"}</h2>
+          <p className="mt-2 !text-[12.5px] text-[#17191a]/65 sm:mt-3 sm:!text-[15px]">{en ? "We'll check within 15 minutes?" : "Проверим за 15 минут?"}</p>
           {/* Ваши ответы — только на компьютере: плитки заполняются по ходу анкеты,
               пустые — пунктиром; внизу — пакет, который подходит по ответам */}
           <div className="mt-7 hidden flex-1 flex-col justify-end lg:flex">
@@ -112,22 +112,22 @@ export default function BudgetCalc() {
                   <div
                     key={row.key}
                     className={`rounded-[14px] border px-4 py-2.5 transition-colors duration-500 ${row.key === "services" ? "col-span-2" : ""} ${
-                      filled ? "border-white/10 bg-white/[0.06]" : "border-dashed border-white/15"
+                      filled ? "border-[#17191a]/10 bg-[#17191a]/[0.04]" : "border-dashed border-[#17191a]/15"
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] uppercase tracking-[0.18em] text-white/45">{row.label[lang]}</span>
-                      <span key={filled ? "on" : "off"} className={`h-1.5 w-1.5 rounded-full transition-colors duration-500 ${filled ? "bg-white animate-[alis-dot_.9s_ease-out]" : "bg-white/15"}`} />
+                      <span className="text-[10px] uppercase tracking-[0.18em] text-[#17191a]/45">{row.label[lang]}</span>
+                      <span key={filled ? "on" : "off"} className={`h-1.5 w-1.5 rounded-full transition-colors duration-500 ${filled ? "bg-[#17191a] animate-[alis-dot_.9s_ease-out]" : "bg-[#17191a]/12"}`} />
                     </div>
                     {Array.isArray(v) && row.key === "services" ? (
                       <div className="mt-2 flex min-h-[26px] flex-wrap gap-1.5">
                         {v.length ? v.map((x) => (
-                          <span key={x} className="animate-[alis-chip_.45s_cubic-bezier(.2,.9,.3,1.3)] rounded-full border border-white/20 px-2.5 py-0.5 text-[12px] text-white">{x}</span>
-                        )) : <span className="text-[16px] text-white/20">—</span>}
+                          <span key={x} className="animate-[alis-chip_.45s_cubic-bezier(.2,.9,.3,1.3)] rounded-full border border-[#17191a]/20 px-2.5 py-0.5 text-[12px] text-[#17191a]">{x}</span>
+                        )) : <span className="text-[16px] text-[#17191a]/20">—</span>}
                       </div>
                     ) : (
                       <p className="mt-1 overflow-hidden font-display text-[16px] tracking-[0.02em]">
-                        <span key={(Array.isArray(v) ? v.join(",") : v) || "—"} className={`block ${filled ? "animate-[alis-val_.55s_cubic-bezier(.2,.8,.2,1)] text-white" : "text-white/20"}`}>{(Array.isArray(v) ? v.join(", ") : v) || "—"}</span>
+                        <span key={(Array.isArray(v) ? v.join(",") : v) || "—"} className={`block ${filled ? "animate-[alis-val_.55s_cubic-bezier(.2,.8,.2,1)] text-[#17191a]" : "text-[#17191a]/20"}`}>{(Array.isArray(v) ? v.join(", ") : v) || "—"}</span>
                       </p>
                     )}
                   </div>
@@ -135,8 +135,8 @@ export default function BudgetCalc() {
               })}
             </div>
             {/* Подходящий пакет — аккуратная белая плашка, появляется после первого ответа */}
-            <div className={`mt-2 flex items-center justify-between rounded-[14px] bg-white px-4 py-3 text-[#17191a] transition-all duration-500 ${ans.format?.length ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}>
-              <span className="text-[10px] uppercase tracking-[0.18em] text-[#17191a]/50">{en ? "Your package" : "Вам подходит пакет"}</span>
+            <div className={`mt-2 flex items-center justify-between rounded-[14px] bg-[#17191a] px-4 py-3 text-white transition-all duration-500 ${ans.format?.length ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}>
+              <span className="text-[10px] uppercase tracking-[0.18em] text-white/55">{en ? "Your package" : "Вам подходит пакет"}</span>
               <span key={pack} className="font-display text-[16px] uppercase tracking-[0.1em]">
                 {pack.split("").map((ch, k) => (
                   <span key={k} className="inline-block animate-[alis-letter_.5s_cubic-bezier(.2,.8,.2,1)_both]" style={{ animationDelay: `${k * 0.04}s` }}>{ch}</span>
@@ -149,18 +149,18 @@ export default function BudgetCalc() {
         <div className="w-full text-left">
           {/* Прогресс */}
           <div className="flex items-center justify-between gap-4">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/45">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/45">
               {step < 5 ? `${en ? "Step" : "Шаг"} ${step + 1} / 5` : en ? "Done" : "Готово"}
             </span>
           </div>
-          <div className="mt-3 h-[2px] w-full overflow-hidden rounded-full bg-white/15">
-            <div className="h-full bg-white transition-all duration-500" style={{ width: `${(Math.min(step, 5) / 5) * 100}%` }} />
+          <div className="mt-3 h-[2px] w-full overflow-hidden rounded-full bg-[#17191a]/12">
+            <div className="h-full bg-[#17191a] transition-all duration-500" style={{ width: `${(Math.min(step, 5) / 5) * 100}%` }} />
           </div>
 
           {step < 4 && q && (
             <div key={step} className="animate-[alis-calc-in_.4s_ease]">
               <p className="mt-4 font-display text-[13px] uppercase tracking-[0.04em] sm:mt-5 sm:text-[17px]">{q.q[lang]}</p>
-              {q.multi && <p className="mt-1 !text-[11px] text-white/50 sm:!text-[12.5px]">{en ? "You can pick several" : "Можно выбрать несколько"}</p>}
+              {q.multi && <p className="mt-1 !text-[11px] text-[#17191a]/50 sm:!text-[12.5px]">{en ? "You can pick several" : "Можно выбрать несколько"}</p>}
               <div className="mt-4 grid grid-cols-2 gap-2">
                 {q.opts.map((o) => {
                   const on = (ans[q.key] || []).includes(o.ru);
@@ -170,7 +170,7 @@ export default function BudgetCalc() {
                       style={{ animationDelay: `${q.opts.indexOf(o) * 0.06}s` }}
                       type="button"
                       onClick={() => choose(q, o.ru)}
-                      className={`animate-[alis-calc-in_.45s_ease_both] flex min-h-[42px] items-center justify-center rounded-[12px] border px-2.5 py-2 text-center text-[11.5px] leading-tight transition-all active:scale-[0.97] sm:min-h-0 sm:py-3 sm:rounded-[16px] sm:text-[14px] ${on ? "border-white bg-white text-[#17191a]" : "border-white/20 text-white hover:border-white/60"}`}
+                      className={`animate-[alis-calc-in_.45s_ease_both] flex min-h-[42px] items-center justify-center rounded-[12px] border px-2.5 py-2 text-center text-[11.5px] leading-tight transition-all active:scale-[0.97] sm:min-h-0 sm:py-3 sm:rounded-[16px] sm:text-[14px] ${on ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/15 text-[#17191a] hover:border-[#17191a]/50"}`}
                     >
                       {o[lang]}
                     </button>
@@ -192,13 +192,13 @@ export default function BudgetCalc() {
             <div className="animate-[alis-calc-in_.4s_ease]">
               <p className="mt-4 font-display text-[13px] uppercase tracking-[0.04em] sm:mt-5 sm:text-[17px]">{en ? "Where to send the estimate?" : "Куда прислать расчёт?"}</p>
               <div className="mt-4 flex flex-col gap-2">
-                <DateField lang={lang} value={date} onChange={setDate} />
+                <DateField lang={lang} value={date} onChange={setDate} className="rounded-[14px] ring-1 ring-[#17191a]/12 sm:rounded-[16px]" />
                 <input type="text" placeholder={en ? "Name" : "Имя"} value={name} onChange={(e) => setName(e.target.value)} className={field} />
-                <PhoneField lang={lang} value={phone} onChange={setPhone} />
+                <PhoneField lang={lang} value={phone} onChange={setPhone} className="ring-1 ring-[#17191a]/12" />
               </div>
               <label className="mt-4 flex cursor-pointer items-center gap-2.5">
-                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="h-4 w-4 shrink-0 cursor-pointer accent-white" />
-                <span className="whitespace-nowrap text-[clamp(10px,2.8vw,11px)] text-white/55">
+                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]" />
+                <span className="whitespace-nowrap text-[clamp(10px,2.8vw,11px)] text-[#17191a]/55">
                   {en ? "I agree to the processing of my " : "Даю согласие на обработку "}
                   <a href="/policy" className="underline underline-offset-2">{en ? "personal data" : "персональных данных"}</a>
                 </span>
@@ -210,9 +210,9 @@ export default function BudgetCalc() {
 
           {step === 5 && (
             <div className="animate-[alis-calc-in_.4s_ease] py-4 text-center">
-              <p className="mt-4 text-[10px] uppercase tracking-[0.2em] text-white/45">{en ? "Your package" : "Вам подходит пакет"}</p>
-              <p className="mx-auto mt-3 inline-block rounded-full border border-white/25 px-5 py-2 font-display text-[15px] uppercase tracking-[0.18em] sm:text-[17px]">{pack}</p>
-              <p className="mx-auto mt-3 max-w-[34ch] !text-[12.5px] leading-[1.55] text-white/70 sm:!text-[14px]">
+              <p className="mt-4 text-[10px] uppercase tracking-[0.2em] text-[#17191a]/45">{en ? "Your package" : "Вам подходит пакет"}</p>
+              <p className="mx-auto mt-3 inline-block rounded-full border border-[#17191a]/25 px-5 py-2 font-display text-[15px] uppercase tracking-[0.18em] sm:text-[17px]">{pack}</p>
+              <p className="mx-auto mt-3 max-w-[34ch] !text-[12.5px] leading-[1.55] text-[#17191a]/70 sm:!text-[14px]">
                 {en ? "Thank you! We will reply within 15 minutes and send the exact estimate." : "Спасибо! Ответим за 15 минут и пришлём точную смету."}
               </p>
             </div>
