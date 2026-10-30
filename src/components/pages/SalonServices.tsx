@@ -122,10 +122,10 @@ export default function SalonServices({
               <div
                 key={c.label.ru}
                 id={c.slug ? "cat-" + c.slug : undefined}
-                className={`scroll-mt-28 overflow-hidden rounded-[20px] border transition-[border-color,box-shadow,translate] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] ${
+                className={`scroll-mt-28 overflow-hidden rounded-[20px] border transition-[border-color,box-shadow] duration-500 ${
                   isOpen
                     ? "border-[#17191a]/20 bg-white shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)]"
-                    : "border-[#17191a]/12 bg-white hover:-translate-y-1 hover:border-[#17191a]/15 hover:shadow-[0_18px_40px_-24px_rgba(23,25,26,0.3)]"
+                    : "border-[#17191a]/12 bg-white hover:border-[#17191a]/20 hover:shadow-[0_24px_60px_-28px_rgba(23,25,26,0.22)]"
                 }`}
               >
                 {/* Заголовок-строка */}
@@ -137,10 +137,11 @@ export default function SalonServices({
                 >
                   {/* Название + подпись */}
                   <span className="min-w-0">
-                    <span className={`block text-[14px] font-normal leading-[1.3] transition-colors duration-300 sm:text-[16px] lg:text-[18px] text-[#17191a]`}>
+                    {/* Размер и эффект — как у строк вакансий */}
+                    <span className="block font-display text-[13px] font-normal leading-[1.15] tracking-[0.01em] text-[#17191a] transition-all duration-300 group-hover:translate-x-2 sm:text-[19px] lg:text-[24px]">
                       {c.label[lang]}
                     </span>
-                    <span className={`mt-1 hidden text-[11px] leading-[1.4] sm:block transition-colors duration-300 sm:mt-1.5 sm:text-[12px] lg:text-[13px] text-[#2a2320]/55`}>
+                    <span className="mt-2 hidden text-[12.5px] text-[#2a2320]/55 transition-colors duration-300 sm:block lg:text-[13.5px]">
                       {c.sub[lang]}
                     </span>
                   </span>
