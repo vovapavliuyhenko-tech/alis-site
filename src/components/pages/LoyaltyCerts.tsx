@@ -41,30 +41,17 @@ function FriendsIcon() {
     </svg>
   );
 }
-function SparkIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" className="h-6 w-6 transition-transform duration-700 group-hover:rotate-90 group-data-[on]:rotate-90">
-      <path d="M12 3v5M12 16v5M3 12h5M16 12h5" strokeLinecap="round" />
-      <path d="M12 8.5 13.2 10.8 15.5 12 13.2 13.2 12 15.5 10.8 13.2 8.5 12 10.8 10.8Z" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 const PERKS: { icon: () => React.ReactElement; title: Loc; note: Loc }[] = [
   {
     icon: GiftIcon,
-    title: { ru: "Подарок в день рождения", en: "A birthday gift" },
-    note: { ru: "Поздравим подарком от салона — подробности расскажет администратор.", en: "We'll celebrate with a gift from the salon — the administrator will tell you more." },
+    title: { ru: "Подарок в день рождения от салона красоты", en: "A birthday gift from the beauty salon" },
+    note: { ru: "Подробности расскажет администратор при записи.", en: "The administrator will tell you the details when you book." },
   },
   {
     icon: FriendsIcon,
     title: { ru: "Бонус за подругу", en: "A bonus for a friend" },
-    note: { ru: "Посоветуйте ÁLIS BEAUTY подруге — бонусы получите вы обе.", en: "Recommend ÁLIS BEAUTY to a friend — you both get bonuses." },
-  },
-  {
-    icon: SparkIcon,
-    title: { ru: "Бонусы постоянным", en: "Regulars' bonuses" },
-    note: { ru: "Копятся с каждым визитом.", en: "They add up with every visit." },
+    note: { ru: "Посоветуйте ÁLIS BEAUTY подруге, и вы обе получите бонусы на счёт.", en: "Recommend ÁLIS BEAUTY to a friend, and you'll both get bonuses to your account." },
   },
 ];
 
@@ -187,7 +174,7 @@ export default function LoyaltyCerts() {
 
           {/* Справа: три бонуса сверху, сертификат снизу */}
           <div className="grid gap-2 sm:gap-3 lg:grid-rows-[auto_1fr] lg:gap-4">
-            <div className="grid gap-2 sm:grid-cols-3 sm:gap-3 lg:gap-4">
+            <div className="grid gap-2 sm:grid-cols-2 sm:gap-3 lg:gap-4">
               {PERKS.map((p, i) => {
                 const Icon = p.icon;
                 return (
