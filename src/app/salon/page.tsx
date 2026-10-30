@@ -255,7 +255,7 @@ export default function SalonPage() {
           en: "Nails, hair, brow shaping, makeup. 53 Parkhomenko St., 9:00–21:00.",
         }}
         button={{ label: { ru: "Записаться онлайн", en: "Book online" }, href: YCLIENTS }}
-        button2={{ label: { ru: "Написать админу", en: "Message the admin" }, href: SALON_ADMIN_WA }}
+        button2={{ label: { ru: "Написать администратору", en: "Message the administrator" }, href: SALON_ADMIN_WA }}
       />
 
       {/* Порядок для клиента: услуги с ценами → отзывы → бонусы и сертификаты.

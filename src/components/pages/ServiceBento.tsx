@@ -10,9 +10,9 @@ type Cat = { title: Loc; note: Loc; img: string; alt: Loc; span: string; href: s
 
 // Фото — работы по услуге (волны, маникюр, взгляд, макияж невесты, уход за волосами)
 const CATS: Cat[] = [
-  { href: "/salon#uslugi-hair", title: { ru: "Волосы", en: "Hair" }, note: { ru: "Стрижка, цвет, укладка. Выходите с причёской, а не с обещанием.", en: "Cut, colour, styling. You leave with the hairstyle, not a promise." }, img: "/assets/alis/img_3283.jpg", alt: { ru: "Укладка локонами на длинных тёмных волосах — работа ÁLIS BEAUTY", en: "Long dark hair styled in soft waves by ÁLIS BEAUTY" }, span: "lg:col-start-1 lg:row-start-1 lg:row-span-2" },
-  { href: "/salon#uslugi-manicure", title: { ru: "Ногти", en: "Nails" }, note: { ru: "Маникюр и педикюр, которые держатся, а не отлетают через неделю.", en: "Manicure and pedicure that last — no chipping after a week." }, img: "/assets/alis/img_8578.jpg", alt: { ru: "Нюдовый маникюр на коротких ногтях — работа ÁLIS BEAUTY", en: "Nude manicure on short nails by ÁLIS BEAUTY" }, span: "lg:col-start-2 lg:row-start-1" },
-  { href: "/salon#uslugi-brows", title: { ru: "Брови и ресницы", en: "Brows & lashes" }, note: { ru: "Форма под ваше лицо. Взгляд открытый уже на выходе.", en: "Shape made for your face. An open gaze the moment you leave." }, img: "/assets/alis/img_2672.jpg", alt: { ru: "Оформленные брови и ресницы, открытый взгляд — работа ÁLIS BEAUTY", en: "Shaped brows and lashes, an open gaze — by ÁLIS BEAUTY" }, span: "lg:col-start-3 lg:row-start-1" },
+  { href: "/salon#uslugi-hair", title: { ru: "Парикмахерские услуги", en: "Hairdressing" }, note: { ru: "Стрижка, цвет, укладка. Выходите с причёской, а не с обещанием.", en: "Cut, colour, styling. You leave with the hairstyle, not a promise." }, img: "/assets/alis/img_3283.jpg", alt: { ru: "Укладка локонами на длинных тёмных волосах — работа ÁLIS BEAUTY", en: "Long dark hair styled in soft waves by ÁLIS BEAUTY" }, span: "lg:col-start-1 lg:row-start-1 lg:row-span-2" },
+  { href: "/salon#uslugi-manicure", title: { ru: "Ногтевой сервис", en: "Nail service" }, note: { ru: "Маникюр и педикюр, которые держатся, а не отлетают через неделю.", en: "Manicure and pedicure that last — no chipping after a week." }, img: "/assets/alis/img_8578.jpg", alt: { ru: "Нюдовый маникюр на коротких ногтях — работа ÁLIS BEAUTY", en: "Nude manicure on short nails by ÁLIS BEAUTY" }, span: "lg:col-start-2 lg:row-start-1" },
+  { href: "/salon#uslugi-brows", title: { ru: "Коррекция бровей", en: "Brow shaping" }, note: { ru: "Форма под ваше лицо. Взгляд открытый уже на выходе.", en: "Shape made for your face. An open gaze the moment you leave." }, img: "/assets/alis/img_2672.jpg", alt: { ru: "Оформленные брови и ресницы, открытый взгляд — работа ÁLIS BEAUTY", en: "Shaped brows and lashes, an open gaze — by ÁLIS BEAUTY" }, span: "lg:col-start-3 lg:row-start-1" },
   { href: "/salon#uslugi-makeup", title: { ru: "Макияж", en: "Makeup" }, note: { ru: "Дневной, вечерний, свадебный. В тон всему образу.", en: "Day, evening, bridal. In tone with the whole look." }, img: "/assets/alis/img_2746.jpg", alt: { ru: "Визажист ÁLIS BEAUTY делает свадебный макияж невесте", en: "An ÁLIS BEAUTY make-up artist doing bridal make-up" }, span: "lg:col-start-2 lg:row-start-2" },
   { href: "/salon#uslugi", title: { ru: "Уход", en: "Care" }, note: { ru: "Уход, после которого кожа и волосы говорят сами за себя.", en: "Care after which your skin and hair speak for themselves." }, img: "/assets/alis/img_5910.webp", alt: { ru: "Гладкие блестящие волосы после ухода, гребень ÁLIS BEAUTY", en: "Smooth glossy hair after a care treatment, ÁLIS BEAUTY comb" }, span: "lg:col-start-3 lg:row-start-2" },
 ];
@@ -39,18 +39,14 @@ export default function ServiceBento() {
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-[scale,filter] duration-[900ms] ease-out group-hover:scale-105 group-hover:blur-md"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent transition-colors duration-500 group-hover:from-black/80 group-hover:via-black/25" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent transition-colors duration-500 group-hover:from-black/55" />
 
               {/* Название внизу слева; подпись на компьютере выезжает при наведении, на телефоне видна сразу */}
               <div className="absolute bottom-5 left-6 right-16 lg:bottom-6">
-                <h3 className="font-serif-display text-[22px] uppercase tracking-[0.03em] text-white lg:text-[24px]">
+                <h3 className="font-serif-display text-[22px] uppercase tracking-[0.03em] text-white [text-shadow:0_1px_14px_rgba(0,0,0,.45)] lg:text-[24px]">
                   {c.title[lang]}
                 </h3>
-                <div className="grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] [@media(hover:none)]:hidden [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-hover:opacity-100">
-                <p className="min-h-0 overflow-hidden pt-1.5 max-w-[320px] !text-[11.5px] leading-[1.5] text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,.45)] sm:!text-[12.5px] lg:!text-[13px]">
-                  {c.note[lang]}
-                </p>
-                </div>
+                {/* Подписи под названием убраны по просьбе заказчицы — только название категории */}
               </div>
 
               {/* Стрелка — видно, что карточка кликабельна (в т.ч. на телефоне без hover) */}
