@@ -141,8 +141,9 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
                   className={`absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-[1200ms] ease-out ${on ? "scale-100" : "scale-110"}`}
                 />
                 <div
-                  className={`absolute inset-0 -z-10 transition-colors duration-700 ${on ? "bg-black/5" : "bg-black/30"}`}
-                  style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,.7), rgba(0,0,0,.25) 45%, rgba(0,0,0,0) 70%)" }}
+                  className="absolute inset-0 -z-10"
+                  // Без затемнения фото: только лёгкая тень у самого низа, чтобы читался белый текст
+                  style={{ backgroundImage: "linear-gradient(to top, rgba(0,0,0,.42), rgba(0,0,0,0) 38%)" }}
                 />
 
                 {/* Номер */}
@@ -152,7 +153,7 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
 
                 {/* Свёрнутая панель на десктопе — вертикальный заголовок */}
                 <span
-                  className={`absolute bottom-6 top-16 left-1/2 hidden origin-center -translate-x-1/2 text-[15px] leading-[1.25] transition-opacity duration-300 [writing-mode:vertical-rl] rotate-180 lg:block ${
+                  className={`absolute bottom-6 top-16 left-1/2 hidden origin-center -translate-x-1/2 text-[15px] leading-[1.25] transition-opacity duration-300 [text-shadow:0_1px_12px_rgba(0,0,0,.55)] [writing-mode:vertical-rl] rotate-180 lg:block ${
                     on ? "opacity-0" : "opacity-100 delay-300"
                   }`}
                 >
