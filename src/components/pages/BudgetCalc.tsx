@@ -89,13 +89,13 @@ export default function BudgetCalc() {
   const q = QS[step];
   const pack = pickPack(ans);
   const btn = "flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]";
-  const field = "h-[46px] w-full rounded-[14px] bg-white px-4 focus:ring-1 focus:ring-[#17191a]/25 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 sm:h-[48px] sm:rounded-[16px] sm:px-5 sm:text-[15px] autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:[-webkit-text-fill-color:#17191a]";
+  const field = "h-[46px] w-full rounded-[14px] bg-[#f6f4f1] px-4 focus:ring-1 focus:ring-[#17191a]/25 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 sm:h-[48px] sm:rounded-[16px] sm:px-5 sm:text-[15px] autofill:shadow-[inset_0_0_0_1000px_#fff] autofill:[-webkit-text-fill-color:#17191a]";
   const link = "text-[11px] uppercase tracking-[0.14em] text-[#17191a]/55 transition-colors hover:text-[#17191a] disabled:opacity-35";
 
   return (
     <section id="calc" className="scroll-mt-24 bg-white section-y">
       {/* Компьютер: слева заголовок и ваши ответы (заполняются по ходу), справа — шаги анкеты */}
-      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-5 rounded-[22px] bg-[#f6f4f1] px-4 py-7 text-[#17191a] sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
+      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-5 rounded-[22px] border border-[#17191a]/[0.06] bg-white px-4 py-7 text-[#17191a] shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
         <div className="flex flex-col text-left">
           <h2 className="text-[#17191a]">{en ? "Your date may already be taken" : "Ваша дата может быть уже занята"}</h2>
           <p className="mt-2 !text-[12.5px] text-[#17191a]/65 sm:mt-3 sm:!text-[15px]">{en ? "We'll check within 15 minutes?" : "Проверим за 15 минут?"}</p>
@@ -112,7 +112,7 @@ export default function BudgetCalc() {
                   <div
                     key={row.key}
                     className={`rounded-[14px] border px-4 py-2.5 transition-colors duration-500 ${row.key === "services" ? "col-span-2" : ""} ${
-                      filled ? "border-transparent bg-white" : "border-transparent bg-white/55"
+                      filled ? "border-transparent bg-[#f6f4f1]" : "border-transparent bg-[#f6f4f1]/55"
                     }`}
                   >
                     <div className="flex items-center justify-between">
@@ -122,7 +122,7 @@ export default function BudgetCalc() {
                     {Array.isArray(v) && row.key === "services" ? (
                       <div className="mt-2 flex min-h-[26px] flex-wrap gap-1.5">
                         {v.length ? v.map((x) => (
-                          <span key={x} className="animate-[alis-chip_.45s_cubic-bezier(.2,.9,.3,1.3)] rounded-full bg-[#f6f4f1] px-2.5 py-0.5 text-[12px] text-[#17191a]">{x}</span>
+                          <span key={x} className="animate-[alis-chip_.45s_cubic-bezier(.2,.9,.3,1.3)] rounded-full bg-white px-2.5 py-0.5 text-[12px] text-[#17191a]">{x}</span>
                         )) : <span className="text-[16px] text-[#17191a]/20">—</span>}
                       </div>
                     ) : (
@@ -170,7 +170,7 @@ export default function BudgetCalc() {
                       style={{ animationDelay: `${q.opts.indexOf(o) * 0.06}s` }}
                       type="button"
                       onClick={() => choose(q, o.ru)}
-                      className={`animate-[alis-calc-in_.45s_ease_both] flex min-h-[42px] items-center justify-center rounded-[12px] border px-2.5 py-2 text-center text-[11.5px] leading-tight transition-all active:scale-[0.97] sm:min-h-0 sm:py-3 sm:rounded-[16px] sm:text-[14px] ${on ? "border-[#17191a] bg-[#17191a] text-white" : "border-transparent bg-white text-[#17191a] hover:border-[#17191a]/30"}`}
+                      className={`animate-[alis-calc-in_.45s_ease_both] flex min-h-[42px] items-center justify-center rounded-[12px] border px-2.5 py-2 text-center text-[11.5px] leading-tight transition-all active:scale-[0.97] sm:min-h-0 sm:py-3 sm:rounded-[16px] sm:text-[14px] ${on ? "border-[#17191a] bg-[#17191a] text-white" : "border-transparent bg-[#f6f4f1] text-[#17191a] hover:border-[#17191a]/30"}`}
                     >
                       {o[lang]}
                     </button>
@@ -192,9 +192,9 @@ export default function BudgetCalc() {
             <div className="animate-[alis-calc-in_.4s_ease]">
               <p className="mt-4 font-display text-[13px] uppercase tracking-[0.04em] sm:mt-5 sm:text-[17px]">{en ? "Where to send the estimate?" : "Куда прислать расчёт?"}</p>
               <div className="mt-4 flex flex-col gap-2">
-                <DateField lang={lang} value={date} onChange={setDate} className="rounded-[14px] sm:rounded-[16px]" />
+                <DateField lang={lang} value={date} onChange={setDate} className="[&>button]:!bg-[#f6f4f1]" />
                 <input type="text" placeholder={en ? "Name" : "Имя"} value={name} onChange={(e) => setName(e.target.value)} className={field} />
-                <PhoneField lang={lang} value={phone} onChange={setPhone} />
+                <PhoneField lang={lang} value={phone} onChange={setPhone} className="!bg-[#f6f4f1]" />
               </div>
               <label className="mt-4 flex cursor-pointer items-center gap-2.5">
                 <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]" />
