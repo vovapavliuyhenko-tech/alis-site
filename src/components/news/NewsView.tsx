@@ -50,28 +50,25 @@ export function NewsCard({ n }: { n: NewsItem }) {
   );
 }
 
-// Главная (свежая) новость — во всю ширину, как обложка: фото, затемнение снизу, текст поверх
+// Главная (свежая) новость — светлая: фото слева, справа на белом дата, заголовок, текст и кнопка.
+// Белая карточка с мягкой тенью, как блок тарифов; при наведении фото слегка приближается.
 function NewsFeature({ n }: { n: NewsItem }) {
   const { lang } = useLang();
   const href = `/news/${n.slug}`;
   return (
-    <Link href={href} className="group relative block overflow-hidden rounded-[28px] bg-[#17191a]">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={n.image} alt={n.title[lang]} className="aspect-square w-full object-cover transition-[scale,filter] duration-[900ms] ease-out group-hover:scale-105 group-hover:blur-md sm:aspect-[2/1] lg:aspect-[3/1]" />
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-      <span className="absolute left-5 top-5 rounded-full border border-white/70 bg-white/15 px-3 py-1.5 text-[10px] uppercase tracking-[0.12em] text-white backdrop-blur-md lg:left-8 lg:top-8">
-        {catLabel(n.cat, lang)}
-      </span>
-      <div className="absolute inset-x-5 bottom-5 flex flex-col gap-5 text-white sm:inset-x-8 sm:bottom-8 lg:inset-x-10 lg:bottom-10 lg:flex-row lg:items-end lg:justify-between">
-        <div className="max-w-[760px]">
-          <p className="text-[12px] text-white/70">{fmtDate(n.date, lang)} · {lang === "en" ? `${n.read} min read` : `${n.read} мин чтения`}</p>
-          <h2 className="mt-2.5 font-display !text-[19px] uppercase leading-[1.2] tracking-[0.02em] text-white sm:!text-[23px] lg:!text-[28px]">{n.title[lang]}</h2>
-          {/* Описание: на компьютере выезжает при наведении (фото в этот момент размывается), на телефоне видно сразу */}
-          <div className="grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-hover:opacity-100">
-            <p className="min-h-0 overflow-hidden pt-2.5 line-clamp-2 max-w-[60ch] !text-[12px] leading-relaxed text-white/80 sm:!text-[13px]">{n.excerpt[lang]}</p>
-          </div>
-        </div>
-        <span className="flex w-full shrink-0 items-center justify-center gap-3 rounded-[12px] border border-white bg-white px-10 py-4 text-[12px] sm:w-fit sm:min-w-[260px] lg:min-w-[300px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 group-hover:bg-transparent group-hover:text-white sm:py-4">
+    <Link href={href} className="group grid overflow-hidden rounded-[28px] border border-[#17191a]/[0.06] bg-white shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] lg:grid-cols-[1.25fr_1fr]">
+      <div className="relative overflow-hidden bg-[#f2f1ee]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={n.image} alt={n.title[lang]} className="aspect-[4/3] h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04] sm:aspect-[16/9] lg:aspect-auto lg:min-h-[420px]" />
+        <span className="absolute left-5 top-5 rounded-full border border-white/70 bg-white/15 px-3 py-1.5 text-[10px] uppercase tracking-[0.12em] text-white backdrop-blur-md lg:left-7 lg:top-7">
+          {catLabel(n.cat, lang)}
+        </span>
+      </div>
+      <div className="flex flex-col justify-center gap-4 p-6 sm:p-9 lg:p-12">
+        <Meta n={n} lang={lang} />
+        <h2 className="font-display !text-[19px] uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] sm:!text-[23px] lg:!text-[28px]">{n.title[lang]}</h2>
+        <p className="line-clamp-3 max-w-[52ch] !text-[13px] leading-relaxed text-[#17191a]/60 sm:!text-[14px]">{n.excerpt[lang]}</p>
+        <span className="mt-2 flex w-full items-center justify-center gap-3 rounded-[12px] border border-[#17191a] bg-[#17191a] px-10 py-4 text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-colors duration-300 group-hover:bg-transparent group-hover:text-[#17191a] sm:w-fit sm:min-w-[240px]">
           {lang === "en" ? "Read" : "Читать"} <span aria-hidden>→</span>
         </span>
       </div>
