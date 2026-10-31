@@ -99,28 +99,28 @@ export function HairQuiz() {
   };
   const label = (x: Q) => x.opts.find((o) => o.ru === ans[x.key])?.[lang] || "";
   const q = HAIR[step];
-  const link = "text-[11px] uppercase tracking-[0.14em] text-white/55 transition-colors hover:text-white";
-  const field = "h-[46px] w-full rounded-[14px] bg-white px-4 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 sm:h-[48px] sm:rounded-[16px] sm:px-5 sm:text-[15px] autofill:shadow-[inset_0_0_0_1000px_#fff]";
+  const link = "text-[11px] uppercase tracking-[0.14em] text-[#17191a]/55 transition-colors hover:text-[#17191a]";
+  const field = "h-[46px] w-full rounded-[14px] bg-[#f6f4f1] px-4 focus:ring-1 focus:ring-[#17191a]/25 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 sm:h-[48px] sm:rounded-[16px] sm:px-5 sm:text-[15px] autofill:shadow-[inset_0_0_0_1000px_#f6f4f1]";
 
   return (
     <section id="hair" className="scroll-mt-24 bg-white section-y">
-      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-5 rounded-[22px] bg-[#17191a] px-4 py-7 text-white sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
+      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-5 rounded-[22px] border border-[#17191a]/[0.06] bg-white px-4 py-7 text-[#17191a] shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
         <div className="flex flex-col text-left">
-          <h2 className="text-white">{en ? "Find your care in 30 seconds with a consultant" : "Подобрать уход за 30 секунд с консультантом"}</h2>
-          <p className="mt-2 !text-[12.5px] leading-[1.55] text-white/65 sm:mt-3 sm:!text-[15px]">
+          <h2 className="text-[#17191a]">{en ? "Find your care in 30 seconds with a consultant" : "Подобрать уход за 30 секунд с консультантом"}</h2>
+          <p className="mt-2 !text-[12.5px] leading-[1.55] text-[#17191a]/65 sm:mt-3 sm:!text-[15px]">
             {en ? "Answer 5 questions about your hair, and a specialist will send a selection of products for your type and goals." : "Ответьте на 5 вопросов о волосах, и специалист пришлёт подбор средств под ваш тип и цели."}
           </p>
           <div className="mt-7 hidden grid-cols-2 gap-2 lg:grid">
             {HAIR.map((x, i) => {
               const v = label(x);
               return (
-                <div key={x.key} className={`rounded-[14px] border px-4 py-2.5 transition-colors duration-500 ${i === HAIR.length - 1 ? "col-span-2" : ""} ${v ? "border-white/10 bg-white/[0.06]" : "border-dashed border-white/15"}`}>
+                <div key={x.key} className={`rounded-[14px] border px-4 py-2.5 transition-colors duration-500 ${i === HAIR.length - 1 ? "col-span-2" : ""} ${v ? "border-transparent bg-[#f6f4f1]" : "border-transparent bg-[#f6f4f1]/55"}`}>
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase tracking-[0.18em] text-white/45">{x.label[lang]}</span>
-                    <span key={v ? "on" : "off"} className={`h-1.5 w-1.5 rounded-full transition-colors duration-500 ${v ? "bg-white animate-[hq-dot_.9s_ease-out]" : "bg-white/15"}`} />
+                    <span className="text-[10px] uppercase tracking-[0.18em] text-[#17191a]/45">{x.label[lang]}</span>
+                    <span key={v ? "on" : "off"} className={`hidden h-1.5 w-1.5 rounded-full transition-colors duration-500 ${v ? "bg-[#17191a] animate-[hq-dot_.9s_ease-out]" : "bg-[#17191a]/12"}`} />
                   </div>
                   <p className="mt-1 overflow-hidden font-display text-[16px] tracking-[0.02em]">
-                    <span key={v || "—"} className={`block ${v ? "animate-[hq-val_.55s_cubic-bezier(.2,.8,.2,1)] text-white" : "text-white/20"}`}>{v || "—"}</span>
+                    <span key={v || "—"} className={`block ${v ? "animate-[hq-val_.55s_cubic-bezier(.2,.8,.2,1)] text-[#17191a]" : "text-[#17191a]/20"}`}>{v || "—"}</span>
                   </p>
                 </div>
               );
@@ -129,9 +129,9 @@ export function HairQuiz() {
         </div>
 
         <div className="w-full text-left">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-white/45">{step < 6 ? `${en ? "Step" : "Шаг"} ${step + 1} / 6` : en ? "Done" : "Готово"}</span>
-          <div className="mt-3 h-[2px] w-full overflow-hidden rounded-full bg-white/15">
-            <div className="h-full bg-white transition-all duration-500" style={{ width: `${(Math.min(step, 6) / 6) * 100}%` }} />
+          <span className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/45">{step < 6 ? `${en ? "Step" : "Шаг"} ${step + 1} / 6` : en ? "Done" : "Готово"}</span>
+          <div className="mt-3 h-[2px] w-full overflow-hidden rounded-full bg-[#17191a]/12">
+            <div className="h-full bg-[#17191a] transition-all duration-500" style={{ width: `${(Math.min(step, 6) / 6) * 100}%` }} />
           </div>
 
           {step < 5 && q && (
@@ -144,7 +144,7 @@ export function HairQuiz() {
                     type="button"
                     onClick={() => { setAns({ ...ans, [q.key]: o.ru }); setStep(step + 1); }}
                     style={{ animationDelay: `${k * 0.06}s` }}
-                    className={`animate-[hq-in_.45s_ease_both] flex min-h-[42px] items-center justify-center rounded-[12px] border px-2.5 py-2 text-center text-[11.5px] leading-tight transition-all active:scale-[0.97] sm:min-h-0 sm:py-3 sm:rounded-[16px] sm:text-[14px] ${ans[q.key] === o.ru ? "border-white bg-white text-[#17191a]" : "border-white/20 text-white hover:border-white/60"}`}
+                    className={`animate-[hq-in_.45s_ease_both] flex min-h-[42px] items-center justify-center rounded-[12px] border px-2.5 py-2 text-center text-[11.5px] leading-tight transition-all active:scale-[0.97] sm:min-h-0 sm:py-3 sm:rounded-[16px] sm:text-[14px] ${ans[q.key] === o.ru ? "border-white bg-white text-[#17191a]" : "border-[#17191a]/20 text-[#17191a] hover:border-[#17191a]/60"}`}
                   >
                     {o[lang]}
                   </button>
@@ -159,16 +159,16 @@ export function HairQuiz() {
               <p className="mt-4 font-display text-[13px] uppercase tracking-[0.04em] sm:mt-5 sm:text-[17px]">{en ? "Where to send the selection?" : "Куда прислать подбор?"}</p>
               <div className="mt-4 flex flex-col gap-2">
                 <input type="text" placeholder={en ? "Name" : "Имя"} value={name} onChange={(e) => setName(e.target.value)} className={field} />
-                <PhoneField lang={lang} value={phone} onChange={setPhone} />
+                <PhoneField lang={lang} value={phone} onChange={setPhone} className="!bg-[#f6f4f1]" />
               </div>
               <label className="mt-4 flex cursor-pointer items-center gap-2.5">
-                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="h-4 w-4 shrink-0 cursor-pointer accent-white" />
-                <span className="whitespace-nowrap text-[clamp(10px,2.8vw,11px)] text-white/55">
+                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]" />
+                <span className="whitespace-nowrap text-[clamp(10px,2.8vw,11px)] text-[#17191a]/55">
                   {en ? "I agree to the processing of my " : "Даю согласие на обработку "}
                   <a href="/policy" className="underline underline-offset-2">{en ? "personal data" : "персональных данных"}</a>
                 </span>
               </label>
-              <button type="button" onClick={send} disabled={!ok} className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-white bg-white py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-white disabled:hover:text-[#17191a] sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
+              <button type="button" onClick={send} disabled={!ok} className="mt-4 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white sm:py-3.5 sm:text-[12px] sm:tracking-[0.16em]">
                 {en ? "Find my care" : "Подобрать уход"}
               </button>
               <button type="button" onClick={() => setStep(4)} className={`mt-4 ${link}`}>← {en ? "Back" : "Назад"}</button>
@@ -177,9 +177,9 @@ export function HairQuiz() {
 
           {step === 6 && (
             <div className="animate-[hq-in_.4s_ease] py-6 text-center">
-              <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white text-[20px] text-[#17191a]">✓</span>
+              <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓</span>
               <p className="mt-5 font-display text-[18px] sm:text-[22px]">{en ? "Thank you!" : "Спасибо!"}</p>
-              <p className="mx-auto mt-2 max-w-[34ch] !text-[12.5px] leading-[1.55] text-white/65 sm:!text-[14px]">
+              <p className="mx-auto mt-2 max-w-[34ch] !text-[12.5px] leading-[1.55] text-[#17191a]/65 sm:!text-[14px]">
                 {en ? "A specialist will send you a selection of products." : "Специалист пришлёт вам подбор средств."}
               </p>
             </div>
