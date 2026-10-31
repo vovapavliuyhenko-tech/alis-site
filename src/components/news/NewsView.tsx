@@ -22,26 +22,32 @@ function Meta({ n, lang }: { n: NewsItem; lang: Lang }) {
   );
 }
 
-// Карточка новости: белая, мягкая тень, при наведении приподнимается (как отзывы на главной)
+// МИНИМАЛИЗМ И ВОЗДУХ: без рамок, теней и тёмных плашек — фото, тонкая строка «рубрика · дата»,
+// заголовок и тихая ссылка «Читать →». Много пустого пространства между новостями.
+function Line({ n, lang }: { n: NewsItem; lang: Lang }) {
+  return (
+    <p className="text-[10.5px] uppercase tracking-[0.16em] text-[#17191a]/45">
+      {catLabel(n.cat, lang)} <span aria-hidden className="mx-1.5">·</span> {fmtDate(n.date, lang)}
+    </p>
+  );
+}
+
+// Карточка новости
 export function NewsCard({ n }: { n: NewsItem }) {
   const { lang } = useLang();
   const href = `/news/${n.slug}`;
   return (
-    <article className="group flex flex-col overflow-hidden rounded-[20px] border border-[#17191a]/[0.06] bg-white shadow-[0_10px_30px_-18px_rgba(23,25,26,0.28)] transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] hover:-translate-y-2 hover:shadow-[0_22px_40px_-20px_rgba(23,25,26,0.35)]">
-      <Link href={href} className="relative block overflow-hidden bg-[#f2f1ee]">
+    <article className="group flex flex-col">
+      <Link href={href} className="block overflow-hidden rounded-[20px] bg-[#f2f1ee]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={n.image} alt={n.title[lang]} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
-        <span className="absolute left-4 top-4 rounded-full border border-white/70 bg-white/15 px-3 py-1.5 text-[10px] uppercase tracking-[0.12em] text-white backdrop-blur-md">
-          {catLabel(n.cat, lang)}
-        </span>
+        <img src={n.image} alt={n.title[lang]} loading="lazy" className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]" />
       </Link>
-      <div className="flex flex-1 flex-col px-5 pb-5 pt-5 lg:px-6 lg:pb-6">
-        <Meta n={n} lang={lang} />
-        <h3 className="mt-3 font-display !text-[16px] uppercase leading-[1.25] tracking-[0.02em] text-[#17191a] lg:!text-[18px]">
+      <div className="flex flex-1 flex-col pt-5 lg:pt-6">
+        <Line n={n} lang={lang} />
+        <h3 className="mt-3 !text-[16px] font-normal leading-[1.3] text-[#17191a] lg:!text-[19px]">
           <Link href={href}>{n.title[lang]}</Link>
         </h3>
-        <p className="mt-2.5 line-clamp-2 !text-[13px] leading-relaxed text-[#17191a]/60">{n.excerpt[lang]}</p>
-        <Link href={href} className="mt-auto inline-flex w-fit items-center gap-2 pt-5 text-[11.5px] uppercase tracking-[0.14em] text-[#17191a]">
+        <Link href={href} className="mt-4 inline-flex w-fit items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/60 transition-colors hover:text-[#17191a]">
           {lang === "en" ? "Read" : "Читать"}
           <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
         </Link>
@@ -50,29 +56,28 @@ export function NewsCard({ n }: { n: NewsItem }) {
   );
 }
 
-// Главная (свежая) новость — светлая: фото слева, справа на белом дата, заголовок, текст и кнопка.
-// Белая карточка с мягкой тенью, как блок тарифов; при наведении фото слегка приближается.
+// Главная (свежая) новость — без плашки: крупное фото слева, справа много воздуха и короткий текст
 function NewsFeature({ n }: { n: NewsItem }) {
   const { lang } = useLang();
   const href = `/news/${n.slug}`;
   return (
-    <Link href={href} className="group grid overflow-hidden rounded-[28px] border border-[#17191a]/[0.06] bg-white shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] lg:grid-cols-[1.25fr_1fr]">
-      <div className="relative overflow-hidden bg-[#f2f1ee]">
+    <article className="group grid items-center gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-20">
+      <Link href={href} className="block overflow-hidden rounded-[28px] bg-[#f2f1ee]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={n.image} alt={n.title[lang]} className="aspect-[4/3] h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04] sm:aspect-[16/9] lg:aspect-auto lg:min-h-[420px]" />
-        <span className="absolute left-5 top-5 rounded-full border border-white/70 bg-white/15 px-3 py-1.5 text-[10px] uppercase tracking-[0.12em] text-white backdrop-blur-md lg:left-7 lg:top-7">
-          {catLabel(n.cat, lang)}
-        </span>
+        <img src={n.image} alt={n.title[lang]} className="aspect-[4/3] w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03] lg:aspect-[5/4]" />
+      </Link>
+      <div className="max-w-[520px]">
+        <Line n={n} lang={lang} />
+        <h2 className="mt-5 !text-[22px] font-normal leading-[1.25] text-[#17191a] sm:!text-[26px] lg:!text-[32px]">
+          <Link href={href}>{n.title[lang]}</Link>
+        </h2>
+        <p className="mt-5 !text-[13px] leading-[1.7] text-[#17191a]/55 sm:!text-[14px]">{n.excerpt[lang]}</p>
+        <Link href={href} className="mt-8 inline-flex items-center gap-3 border-b border-[#17191a]/25 pb-1.5 text-[11.5px] uppercase tracking-[0.16em] text-[#17191a] transition-colors hover:border-[#17191a]">
+          {lang === "en" ? "Read" : "Читать"}
+          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </Link>
       </div>
-      <div className="flex flex-col justify-center gap-4 p-6 sm:p-9 lg:p-12">
-        <Meta n={n} lang={lang} />
-        <h2 className="font-display !text-[19px] uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] sm:!text-[23px] lg:!text-[28px]">{n.title[lang]}</h2>
-        <p className="line-clamp-3 max-w-[52ch] !text-[13px] leading-relaxed text-[#17191a]/60 sm:!text-[14px]">{n.excerpt[lang]}</p>
-        <span className="mt-2 flex w-full items-center justify-center gap-3 rounded-[12px] border border-[#17191a] bg-[#17191a] px-10 py-4 text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-colors duration-300 group-hover:bg-transparent group-hover:text-[#17191a] sm:w-fit sm:min-w-[240px]">
-          {lang === "en" ? "Read" : "Читать"} <span aria-hidden>→</span>
-        </span>
-      </div>
-    </Link>
+    </article>
   );
 }
 
@@ -80,19 +85,20 @@ export function NewsGrid() {
   const { lang } = useLang();
   const [first, ...rest] = NEWS;
   return (
-    // Без обложки: отступ сверху под фиксированную шапку
-    <section className="pb-4 pt-[112px] min-[1280px]:pt-[128px] min-[1680px]:pt-[150px]">
-      <div className="mx-auto w-[96%] max-w-[1760px]">
-        <h1 className="sr-only">
-          {lang === "en" ? "ÁLIS BEAUTY news" : "Новости ÁLIS BEAUTY"}
-        </h1>
+    // Без обложки: отступ сверху под фиксированную шапку; много воздуха между блоками
+    <section className="pb-10 pt-[120px] min-[1280px]:pt-[150px] min-[1680px]:pt-[180px]">
+      <div className="mx-auto w-[92%] max-w-[1440px]">
+        <h1 className="sr-only">{lang === "en" ? "ÁLIS BEAUTY news" : "Новости ÁLIS BEAUTY"}</h1>
         {first && <NewsFeature n={first} />}
         {rest.length > 0 && (
-          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3 lg:gap-6">
-            {rest.map((n) => (
-              <NewsCard key={n.slug} n={n} />
-            ))}
-          </div>
+          <>
+            <div aria-hidden className="my-16 h-px bg-[#17191a]/10 lg:my-28" />
+            <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-24">
+              {rest.map((n) => (
+                <NewsCard key={n.slug} n={n} />
+              ))}
+            </div>
+          </>
         )}
       </div>
     </section>
@@ -163,7 +169,7 @@ export function NewsArticle({ n }: { n: NewsItem }) {
                 {lang === "en" ? "All news" : "Все новости"} <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
               </Link>
             </div>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+            <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-12">
               {related.map((r) => (
                 <NewsCard key={r.slug} n={r} />
               ))}
