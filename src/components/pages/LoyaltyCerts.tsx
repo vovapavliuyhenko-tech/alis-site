@@ -195,7 +195,10 @@ export default function LoyaltyCerts() {
                     </div>
                     <div className="relative mt-6 sm:mt-10">
                       <h3 className="font-display text-[15px] tracking-[0.01em] text-[#17191a] transition-colors duration-700 group-hover:text-white group-data-[on]:text-white sm:text-[17px]">{p.title[lang]}</h3>
-                      <p className="mt-1.5 !text-[11.5px] leading-[1.5] text-[#17191a]/60 transition-colors duration-700 group-hover:text-white/70 group-data-[on]:text-white/70 sm:!text-[13px]">{p.note[lang]}</p>
+                      {/* Пояснение появляется при наведении (на телефоне — у карточки в центре экрана), заголовок остаётся */}
+                      <div className="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] group-hover:grid-rows-[1fr] group-hover:opacity-100 group-data-[on]:grid-rows-[1fr] group-data-[on]:opacity-100">
+                        <p className="min-h-0 overflow-hidden pt-1.5 !text-[11.5px] leading-[1.5] text-white/70 sm:!text-[13px]">{p.note[lang]}</p>
+                      </div>
                     </div>
                   </article>
                 );
