@@ -6,10 +6,7 @@ import { useLang } from "@/lib/i18n";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const OUTCALL = "/concierge#calc";
-const PHONE_SALON = "+7 988 888 77 58";
-const PHONE_CONCIERGE = "+7 988 888 77 28";
 // Место под номер для международных клиентов — пока не задан (null = не показываем)
-const PHONE_INTL: string | null = null;
 
 export default function FinalChoice() {
   const { lang } = useLang();
@@ -23,11 +20,6 @@ export default function FinalChoice() {
     { label: en ? "Order an outcall" : "Заказать выезд", href: OUTCALL, cls: line },
     { label: en ? "Message or call" : "Написать или позвонить", href: "/contacts", cls: line },
   ];
-  const PHONES = [
-    { label: en ? "Beauty salon" : "Салон красоты", phone: PHONE_SALON },
-    { label: en ? "Concierge service" : "Консьерж-сервис", phone: PHONE_CONCIERGE },
-    ...(PHONE_INTL ? [{ label: en ? "International" : "Международные клиенты", phone: PHONE_INTL }] : []),
-  ];
 
   return (
     <section id="final" className="bg-white section-y">
@@ -37,14 +29,6 @@ export default function FinalChoice() {
           {BTNS.map((b) => (
             <a key={b.label} href={b.href} {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={b.cls}>
               {b.label}
-            </a>
-          ))}
-        </div>
-        <div className="mt-6 flex flex-col items-center justify-center gap-1 whitespace-nowrap text-[11px] sm:flex-row text-[#17191a] sm:mt-7 sm:flex-wrap sm:gap-x-6 sm:gap-y-2 sm:text-[13px]">
-          {PHONES.map((p) => (
-            <a key={p.phone} href={`tel:${p.phone.replace(/[^\d+]/g, "")}`} className="transition-opacity hover:opacity-60">
-              <span className="text-[#17191a]/55">{p.label}: </span>
-              {p.phone}
             </a>
           ))}
         </div>

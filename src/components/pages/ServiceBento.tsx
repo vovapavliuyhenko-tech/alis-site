@@ -13,8 +13,7 @@ const CATS: Cat[] = [
   { href: "/salon#uslugi-hair", title: { ru: "Парикмахерские услуги", en: "Hairdressing" }, note: { ru: "Стрижка, цвет, укладка. Выходите с причёской, а не с обещанием.", en: "Cut, colour, styling. You leave with the hairstyle, not a promise." }, img: "/assets/alis/img_3283.jpg", alt: { ru: "Укладка локонами на длинных тёмных волосах — работа ÁLIS BEAUTY", en: "Long dark hair styled in soft waves by ÁLIS BEAUTY" }, span: "lg:col-start-1 lg:row-start-1 lg:row-span-2" },
   { href: "/salon#uslugi-manicure", title: { ru: "Ногтевой сервис", en: "Nail service" }, note: { ru: "Маникюр и педикюр, которые держатся, а не отлетают через неделю.", en: "Manicure and pedicure that last — no chipping after a week." }, img: "/assets/alis/img_8578.jpg", alt: { ru: "Нюдовый маникюр на коротких ногтях — работа ÁLIS BEAUTY", en: "Nude manicure on short nails by ÁLIS BEAUTY" }, span: "lg:col-start-2 lg:row-start-1" },
   { href: "/salon#uslugi-brows", title: { ru: "Коррекция бровей", en: "Brow shaping" }, note: { ru: "Форма под ваше лицо. Взгляд открытый уже на выходе.", en: "Shape made for your face. An open gaze the moment you leave." }, img: "/assets/alis/work_makeup_evening.jpg", alt: { ru: "Оформленные брови и ресницы, открытый взгляд — работа ÁLIS BEAUTY", en: "Shaped brows and lashes, an open gaze — by ÁLIS BEAUTY" }, span: "lg:col-start-3 lg:row-start-1" },
-  { href: "/salon#uslugi-makeup", title: { ru: "Макияж", en: "Makeup" }, note: { ru: "Дневной, вечерний, свадебный. В тон всему образу.", en: "Day, evening, bridal. In tone with the whole look." }, img: "/assets/alis/img_2746.jpg", alt: { ru: "Визажист ÁLIS BEAUTY делает свадебный макияж невесте", en: "An ÁLIS BEAUTY make-up artist doing bridal make-up" }, span: "lg:col-start-2 lg:row-start-2" },
-  { href: "/salon#uslugi", title: { ru: "Уход", en: "Care" }, note: { ru: "Уход, после которого кожа и волосы говорят сами за себя.", en: "Care after which your skin and hair speak for themselves." }, img: "/assets/alis/img_5910.webp", alt: { ru: "Гладкие блестящие волосы после ухода, гребень ÁLIS BEAUTY", en: "Smooth glossy hair after a care treatment, ÁLIS BEAUTY comb" }, span: "lg:col-start-3 lg:row-start-2" },
+  { href: "/salon#uslugi-makeup", title: { ru: "Макияж", en: "Makeup" }, note: { ru: "Дневной, вечерний, свадебный. В тон всему образу.", en: "Day, evening, bridal. In tone with the whole look." }, img: "/assets/alis/img_2746.jpg", alt: { ru: "Визажист ÁLIS BEAUTY делает свадебный макияж невесте", en: "An ÁLIS BEAUTY make-up artist doing bridal make-up" }, span: "lg:col-start-2 lg:col-span-2 lg:row-start-2" },
 ];
 
 export default function ServiceBento() {
@@ -28,7 +27,7 @@ export default function ServiceBento() {
             <a
               key={c.title.ru}
               href={c.href}
-              className={`r-reveal group relative overflow-hidden rounded-[20px] ${c.span} ${i === 0 ? "col-span-2 aspect-[4/3] lg:col-span-1 lg:aspect-auto lg:h-full" : "aspect-[4/5] lg:aspect-auto lg:h-full"}`}
+              className={`r-reveal group relative overflow-hidden rounded-[20px] ${c.span} ${i === 0 ? "col-span-2 aspect-[4/3] lg:col-span-1 lg:aspect-auto lg:h-full" : i === CATS.length - 1 ? "col-span-2 aspect-[16/10] lg:aspect-auto lg:h-full" : "aspect-[4/5] lg:aspect-auto lg:h-full"}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
