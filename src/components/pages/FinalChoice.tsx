@@ -6,7 +6,6 @@ import { useLang } from "@/lib/i18n";
 
 const YCLIENTS = "https://n1054895.yclients.com/company/976464/personal/menu";
 const OUTCALL = "/concierge#calc";
-// Место под номер для международных клиентов — пока не задан (null = не показываем)
 
 export default function FinalChoice() {
   const { lang } = useLang();
