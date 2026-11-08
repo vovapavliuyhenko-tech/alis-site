@@ -42,14 +42,18 @@ function FriendsIcon() {
   );
 }
 
-const PERKS: { icon: () => React.ReactElement; title: Loc; note: Loc }[] = [
+// Куда ведёт карточка: «book» — онлайн-запись (подарок обсуждается при записи), «friend» — форма «Для подруги»
+const SALON_BOOKING = "https://n1054895.yclients.com/company/976464/personal/menu";
+const PERKS: { icon: () => React.ReactElement; title: Loc; note: Loc; action: "book" | "friend" }[] = [
   {
     icon: GiftIcon,
+    action: "book",
     title: { ru: "Подарок в день рождения от салона красоты", en: "A birthday gift from the beauty salon" },
     note: { ru: "Подробности расскажет администратор при записи.", en: "The administrator will tell you the details when you book." },
   },
   {
     icon: FriendsIcon,
+    action: "friend",
     title: { ru: "Бонус за подругу", en: "A bonus for a friend" },
     note: { ru: "Посоветуйте ÁLIS BEAUTY подруге, и вы обе получите бонусы на счёт.", en: "Recommend ÁLIS BEAUTY to a friend, and you'll both get bonuses to your account." },
   },
@@ -178,9 +182,13 @@ export default function LoyaltyCerts() {
               {PERKS.map((p, i) => {
                 const Icon = p.icon;
                 return (
-                  <article
+                  <a
                     key={p.title.ru}
                     ref={(el) => { cards.current[i] = el; }}
+                    // Карточка кликабельна: подарок — к онлайн-записи, бонус за подругу — к форме с номером подруги
+                    href={p.action === "book" ? SALON_BOOKING : "#friend"}
+                    {...(p.action === "book" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    onClick={p.action === "friend" ? (e) => { e.preventDefault(); setWho("friend"); document.getElementById("loyalty")?.scrollIntoView({ behavior: "smooth", block: "start" }); } : undefined}
                     data-on={active === i ? "" : undefined}
                     className="r-reveal group relative flex min-h-[150px] flex-col justify-start overflow-hidden rounded-[20px] border border-[#17191a]/12 bg-white p-5 sm:min-h-[220px] sm:p-6 lg:min-h-[240px]"
                     style={{ transitionDelay: `${0.1 + i * 0.12}s` }}
@@ -191,7 +199,8 @@ export default function LoyaltyCerts() {
                       <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#17191a]/15 text-[#17191a] transition-colors duration-700 group-hover:border-white/25 group-hover:text-white group-data-[on]:border-white/25 group-data-[on]:text-white">
                         <Icon />
                       </span>
-                      <span className="text-[11px] text-[#17191a]/30 transition-colors duration-700 group-hover:text-white/40 group-data-[on]:text-white/40">{String(i + 1).padStart(2, "0")}</span>
+                      {/* Стрелка — видно, что карточка ведёт дальше */}
+                      <span aria-hidden className="flex h-9 w-9 items-center justify-center rounded-full border border-[#17191a]/15 text-[14px] text-[#17191a] transition-all duration-700 group-hover:-rotate-45 group-hover:border-white/30 group-hover:text-white group-data-[on]:border-white/30 group-data-[on]:text-white">→</span>
                     </div>
                     <div className="relative mt-6 sm:mt-10">
                       <h3 className="font-display text-[15px] tracking-[0.01em] text-[#17191a] transition-colors duration-700 group-hover:text-white group-data-[on]:text-white sm:text-[17px]">{p.title[lang]}</h3>
@@ -200,7 +209,7 @@ export default function LoyaltyCerts() {
                         <p className="min-h-0 overflow-hidden pt-1.5 !text-[11.5px] leading-[1.5] text-white/70 sm:!text-[13px]">{p.note[lang]}</p>
                       </div>
                     </div>
-                  </article>
+                  </a>
                 );
               })}
             </div>
