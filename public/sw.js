@@ -2,7 +2,7 @@
 // Стратегии: страницы — network-first с откатом в кэш; статика/картинки/шрифты —
 // cache-first + фоновое обновление (stale-while-revalidate).
 // Смена версии удаляет весь старый кэш у посетителей (см. activate)
-const VERSION = "alis-v2";
+const VERSION = "alis-v3"; // поднята — у всех посетителей стирается старый кэш и грузится свежий сайт
 const STATIC_CACHE = `static-${VERSION}`;
 const PAGE_CACHE = `pages-${VERSION}`;
 
