@@ -164,6 +164,14 @@ export default function CoopQuiz() {
               <p className="mx-auto mt-2 max-w-[34ch] !text-[12.5px] leading-[1.55] text-[#17191a]/65 sm:!text-[14px]">
                 {en ? "We've received your request — the manager will get back to you soon." : "Мы получили вашу заявку — менеджер скоро свяжется с вами."}
               </p>
+              {/* По брифу: коммерческое предложение скачивается после того, как оставили данные */}
+              <a
+                href={en ? "/docs/alis-beauty-proposal-en.pdf" : "/docs/alis-beauty-kp.pdf"}
+                download={en ? "ALIS BEAUTY — commercial proposal.pdf" : "ÁLIS BEAUTY — коммерческое предложение.pdf"}
+                className="mx-auto mt-6 flex w-full max-w-[340px] items-center justify-center gap-2 rounded-[12px] border border-[#17191a] bg-[#17191a] py-3.5 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:text-[12px]"
+              >
+                {en ? "Download the commercial proposal" : "Скачать коммерческое предложение"} <span aria-hidden>↓</span>
+              </a>
             </div>
           )}
         </div>
