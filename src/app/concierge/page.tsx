@@ -6,6 +6,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import ConciergeBenefits from "@/components/pages/ConciergeBenefits";
 import ConciergePackages from "@/components/pages/ConciergePackages";
+import SalonServices from "@/components/pages/SalonServices";
+import { CONCIERGE_PRICES } from "@/lib/conciergePrices";
 import Brands from "@/components/Brands";
 // import ConciergeFounder from "@/components/pages/ConciergeFounder"; // блок основателя скрыт по просьбе заказчицы
 import BudgetCalc from "@/components/pages/BudgetCalc";
@@ -105,6 +107,12 @@ export default function ConciergePage() {
         {/* 3 — Пакеты услуг (#uslugi). TODO: цены «от …» и PDF КП пришлёт заказчица */}
         <BlockLabel ru="Пакеты услуг" en="Packages" />
         <ConciergePackages />
+        {/* Прайс консьерж-сервиса — с листов заказчицы, раскрывающимися категориями как в салоне */}
+        <SalonServices
+          title={{ ru: "Стоимость услуг", en: "Prices" }}
+          categories={CONCIERGE_PRICES}
+          cta={{ label: { ru: "Рассчитать бюджет", en: "Calculate the budget" }, href: "#calc" }}
+        />
 
         {/* 4 — Как проходит работа (#process) */}
         <BlockLabel ru="Как проходит работа с командой ÁLIS BEAUTY" en="How working with the ÁLIS BEAUTY team goes" />
