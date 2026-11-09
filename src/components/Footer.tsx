@@ -190,9 +190,9 @@ export default function Footer() {
           {/* Телефоны и почта справа — все одного размера (по просьбе заказчицы) */}
           <div className="col-span-2 flex flex-col gap-4 lg:col-span-1 lg:items-end lg:text-right">
             {[
-              { label: t("Салон красоты", "Beauty salon"), value: PHONE_SALON, href: `tel:${PHONE_SALON.replace(/[^d+]/g, "")}` },
-              { label: t("Консьерж-сервис", "Concierge service"), value: PHONE_SERVICE, href: `tel:${PHONE_SERVICE.replace(/[^d+]/g, "")}` },
-              ...(PHONE_INTL ? [{ label: t("Международный номер", "International number"), value: PHONE_INTL, href: `tel:${PHONE_INTL.replace(/[^d+]/g, "")}` }] : []),
+              { label: t("Салон красоты", "Beauty salon"), value: PHONE_SALON, href: `tel:${PHONE_SALON.replace(/[^\d+]/g, "")}` },
+              { label: t("Консьерж-сервис", "Concierge service"), value: PHONE_SERVICE, href: `tel:${PHONE_SERVICE.replace(/[^\d+]/g, "")}` },
+              ...(PHONE_INTL ? [{ label: t("Международный номер", "International number"), value: PHONE_INTL, href: `tel:${PHONE_INTL.replace(/[^\d+]/g, "")}` }] : []),
               { label: t("Почта", "E-mail"), value: EMAIL, href: `mailto:${EMAIL}` },
             ].map((c) => (
               <div key={c.value}>
