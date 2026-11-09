@@ -104,15 +104,15 @@ export default function ContactsBlock() {
       {/* Заголовок страницы — только для поисковиков и экранных чтецов (визуально убран по просьбе клиента) */}
       <h1 className="sr-only">{t("Контакты салона красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon contacts, Novorossiysk")}</h1>
 
-      <div ref={box} className="relative mx-auto w-[96%] max-w-[1760px] overflow-hidden rounded-[28px] bg-[#e9e6e1] lg:h-[clamp(480px,62vh,620px)]">
+      <div ref={box} className="relative mx-auto w-[96%] max-w-[1760px] overflow-hidden rounded-[28px] bg-[#e9e6e1] lg:flex lg:min-h-[clamp(480px,62vh,620px)]">
         {/* Карта: на телефоне — сверху, на компьютере — на весь блок */}
         <div className="relative h-[320px] [--cx:50%] sm:h-[420px] lg:absolute lg:inset-0 lg:h-auto lg:[--cx:30%]">
           <TileMap lat={44.704933} lon={37.782638} href={MAP_2GIS} label={t("ÁLIS BEAUTY на карте 2ГИС", "ÁLIS BEAUTY on the 2GIS map")} />
         </div>
 
-        {/* Тёмная карточка с контактами — выезжает справа */}
+        {/* Белая карточка с контактами — выезжает справа; высота блока подстраивается под неё */}
         <div
-          className="relative border border-[#17191a]/[0.06] bg-white p-6 text-[#17191a] shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] transition-[opacity,translate] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] flex flex-col sm:p-7 lg:absolute lg:bottom-6 lg:right-6 lg:top-6 lg:w-[min(440px,36%)] lg:rounded-[22px] lg:p-9"
+          className="relative border border-[#17191a]/[0.06] bg-white p-6 text-[#17191a] shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] transition-[opacity,translate] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] flex flex-col sm:p-7 lg:relative lg:z-10 lg:my-6 lg:ml-auto lg:mr-6 lg:w-[min(460px,40%)] lg:rounded-[22px] lg:p-9"
           style={{ opacity: inView ? 1 : 0, translate: inView ? "0 0" : "40px 0" }}
         >
           {COLS.map((c, i) => (
