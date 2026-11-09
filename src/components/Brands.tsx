@@ -17,19 +17,13 @@ const BRANDS: ReactNode[] = [
       wedding
     </span>
   </span>,
-  <span key="nitochka" className="font-serif text-[30px] leading-none text-[#17191a]">
-    н<span className="italic">и&#769;</span>точка
-  </span>,
-  // PALOMA — тонкие капители с засечками и подпись «FLOWERS COFFEE YOU»
-  <span key="paloma" className="flex flex-col items-center leading-none text-[#17191a]">
-    <span className="font-serif text-[30px] font-light tracking-[0.06em]">PALOMA</span>
-    <span className="mt-1.5 font-serif text-[9px] tracking-[0.16em]">FLOWERS COFFEE YOU</span>
-  </span>,
-  // WA ЮГ — крупные тонкие геометричные буквы и «ЮГ» ниже
-  <span key="wa" className="flex flex-col items-center leading-none text-[#17191a]">
-    <span className="text-[34px] font-light tracking-[-0.06em]">WA</span>
-    <span className="mt-1 text-[10px] tracking-[0.12em]">ЮГ</span>
-  </span>,
+  // Логотипы партнёров — оригинальные файлы от заказчицы
+  // eslint-disable-next-line @next/next/no-img-element
+  <img key="nitochka" src="/assets/brands/nitochka.png" alt="Ниточка" className="h-8 w-auto object-contain" draggable={false} />,
+  // eslint-disable-next-line @next/next/no-img-element
+  <img key="paloma" src="/assets/brands/paloma.png" alt="PALOMA — flowers coffee you" className="h-12 w-auto object-contain" draggable={false} />,
+  // eslint-disable-next-line @next/next/no-img-element
+  <img key="wa" src="/assets/brands/wa-yug.png" alt="WA Юг" className="h-14 w-auto object-contain" draggable={false} />,
   <span key="talu" className="font-serif text-[20px] uppercase tracking-[0.16em] text-[#6b6459]">
     Château <span className="lowercase italic tracking-normal">de</span> Talu
   </span>,
