@@ -75,6 +75,7 @@ export default function ContactsBlock() {
       wa: `https://wa.me/${PHONE_SERVICE_RAW}`,
       ig: "https://www.instagram.com/alisbeauty.global",
       rows: [
+        { label: { ru: "Международный номер", en: "International number" }, value: "+374 43 24 21 78", href: "tel:+37443242178" },
         { label: { ru: "Почта", en: "E-mail" }, value: EMAIL, href: `mailto:${EMAIL}` },
       ],
       links: [

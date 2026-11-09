@@ -12,7 +12,7 @@ const PHONE_SALON = "+7 988 888 77 58";
 const PHONE_SERVICE = "+7 988 888 77 28";
 const EMAIL = "alisbeautyclub@gmail.com";
 // Международный номер консьерж-сервиса — пришлёт заказчица (пока пусто — строка не показывается)
-const PHONE_INTL: string = "";
+const PHONE_INTL: string = "+374 43 24 21 78";
 const MAP_URL = "https://yandex.ru/maps/org/lis_byuti/63024642190";
 // Маршрут до салона в Яндекс Картах (координаты организации «Áлис Бьюти»)
 const ROUTE_URL = "https://yandex.ru/maps/?rtext=~44.704933%2C37.782638&rtt=auto";
