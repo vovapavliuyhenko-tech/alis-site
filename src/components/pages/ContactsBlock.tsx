@@ -75,8 +75,8 @@ export default function ContactsBlock() {
       wa: `https://wa.me/${PHONE_SERVICE_RAW}`,
       ig: "https://www.instagram.com/alisbeauty.global",
       rows: [
-        { label: { ru: "Управляющий менеджер — сотрудничество, жалобы и предложения", en: "Managing director — partnerships, feedback" }, value: "+7 996 409 28 74", href: "tel:+79964092874" },
-        { label: { ru: "Международный номер", en: "International number" }, value: "+374 43 24 21 78", href: "tel:+37443242178" },
+        { label: { ru: "Управляющий менеджер", en: "Managing director" }, value: "+7 996 409 28 74 — сотрудничество, жалобы и предложения", href: "tel:+79964092874" },
+        { label: { ru: "Международный", en: "International" }, value: "+374 43 24 21 78", href: "tel:+37443242178" },
         { label: { ru: "Почта", en: "E-mail" }, value: EMAIL, href: `mailto:${EMAIL}` },
       ],
       links: [
@@ -132,7 +132,7 @@ export default function ContactsBlock() {
               <dl className="mt-3 space-y-1.5">
                 {c.rows.map((r) => (
                   <div key={r.label.ru} className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-4">
-                    <dt className="w-16 shrink-0 text-[10.5px] uppercase tracking-[0.16em] text-[#17191a]/45">{r.label[lang]}</dt>
+                    <dt className="w-28 shrink-0 text-[10px] uppercase leading-[1.35] tracking-[0.14em] text-[#17191a]/45">{r.label[lang]}</dt>
                     <dd className="text-[12.5px] leading-[1.5] text-[#17191a]/80 lg:text-[13px]">
                       {r.href ? (
                         <a href={r.href} {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="underline decoration-[#17191a]/25 underline-offset-[5px] transition-colors hover:decoration-[#17191a]">{r.value}</a>
