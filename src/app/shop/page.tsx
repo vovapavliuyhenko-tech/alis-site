@@ -6,6 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 import { ShopCategories } from "@/components/shop/ShopBlocks";
 import { ShopTrend } from "@/components/shop/ShopShowcase";
+import BoxBuilder from "@/components/shop/BoxBuilder";
 
 // Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и анимации — по главной
 // aurorebrand.com, оформление — в стиле нашего сайта. Фото — временные.
@@ -32,7 +33,8 @@ export default function ShopPage() {
         {/* Новинки — товары из каталога (подпись над блоком убрана) */}
         <ShopTrend />
         {/* Подарочный бокс — «веер» из трёх фото, как карточки команды на «Вакансиях» */}
-        {/* <GiftBox /> — подарочный бокс убран по просьбе заказчицы (ждём визуализацию конфигуратора) */}
+        {/* Конфигуратор подарочного бокса: размер → цвет → наполнение → заявка менеджеру */}
+        <BoxBuilder />
       </div>
       <Footer />
     </main>
