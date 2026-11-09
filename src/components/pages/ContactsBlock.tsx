@@ -112,19 +112,19 @@ export default function ContactsBlock() {
 
         {/* Тёмная карточка с контактами — выезжает справа */}
         <div
-          className="relative bg-[#17191a] p-6 text-white transition-[opacity,translate] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] flex flex-col sm:p-7 lg:absolute lg:bottom-6 lg:right-6 lg:top-6 lg:w-[min(440px,36%)] lg:rounded-[22px] lg:p-9"
+          className="relative border border-[#17191a]/[0.06] bg-white p-6 text-[#17191a] shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] transition-[opacity,translate] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] flex flex-col sm:p-7 lg:absolute lg:bottom-6 lg:right-6 lg:top-6 lg:w-[min(440px,36%)] lg:rounded-[22px] lg:p-9"
           style={{ opacity: inView ? 1 : 0, translate: inView ? "0 0" : "40px 0" }}
         >
           {COLS.map((c, i) => (
-            <div key={c.title.ru} className={i > 0 ? "mt-6 border-t border-white/12 pt-6 lg:mt-8 lg:pt-8" : ""}>
-              <p className="text-[10.5px] uppercase tracking-[0.18em] text-white/50 sm:text-[11px]">{c.title[lang]}</p>
+            <div key={c.title.ru} className={i > 0 ? "mt-6 border-t border-[#17191a]/12 pt-6 lg:mt-8 lg:pt-8" : ""}>
+              <p className="text-[10.5px] uppercase tracking-[0.18em] text-[#17191a]/50 sm:text-[11px]">{c.title[lang]}</p>
               <div className="mt-2 flex items-center justify-between gap-4">
-                <a href={`tel:+${c.phoneRaw}`} className="whitespace-nowrap font-display text-[20px] leading-none tracking-[0.01em] text-white transition-opacity hover:opacity-70 lg:text-[22px]">{c.phone}</a>
+                <a href={`tel:+${c.phoneRaw}`} className="whitespace-nowrap font-display text-[20px] leading-none tracking-[0.01em] text-[#17191a] transition-opacity hover:opacity-70 lg:text-[22px]">{c.phone}</a>
                 <div className="flex gap-2">
-                  <a href={c.wa} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us") + " — " + c.title[lang]} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-500 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a]">
+                  <a href={c.wa} target="_blank" rel="noopener noreferrer" aria-label={t("Написать в мессенджер", "Message us") + " — " + c.title[lang]} className="flex h-8 w-8 items-center justify-center rounded-full border border-[#17191a]/20 text-[#17191a] transition-all duration-500 hover:-translate-y-0.5 hover:border-[#17191a] hover:bg-[#17191a] hover:text-white">
                     <IconWa />
                   </a>
-                  <a href={c.ig} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page") + " — " + c.title[lang]} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-500 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a]">
+                  <a href={c.ig} target="_blank" rel="noopener noreferrer" aria-label={t("Наша страница в соцсети", "Our social media page") + " — " + c.title[lang]} className="flex h-8 w-8 items-center justify-center rounded-full border border-[#17191a]/20 text-[#17191a] transition-all duration-500 hover:-translate-y-0.5 hover:border-[#17191a] hover:bg-[#17191a] hover:text-white">
                     <IconIg />
                   </a>
                 </div>
@@ -132,10 +132,10 @@ export default function ContactsBlock() {
               <dl className="mt-3 space-y-1.5">
                 {c.rows.map((r) => (
                   <div key={r.label.ru} className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-4">
-                    <dt className="w-16 shrink-0 text-[10.5px] uppercase tracking-[0.16em] text-white/45">{r.label[lang]}</dt>
-                    <dd className="text-[12.5px] leading-[1.5] text-white/80 lg:text-[13px]">
+                    <dt className="w-16 shrink-0 text-[10.5px] uppercase tracking-[0.16em] text-[#17191a]/45">{r.label[lang]}</dt>
+                    <dd className="text-[12.5px] leading-[1.5] text-[#17191a]/80 lg:text-[13px]">
                       {r.href ? (
-                        <a href={r.href} {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="underline decoration-white/25 underline-offset-[5px] transition-colors hover:decoration-white">{r.value}</a>
+                        <a href={r.href} {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="underline decoration-[#17191a]/25 underline-offset-[5px] transition-colors hover:decoration-[#17191a]">{r.value}</a>
                       ) : r.value}
                     </dd>
                   </div>
@@ -143,7 +143,7 @@ export default function ContactsBlock() {
               </dl>
             </div>
           ))}
-          <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="group mt-6 flex items-center justify-between rounded-[12px] lg:mt-auto border border-white bg-white px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-colors duration-300 hover:bg-transparent hover:text-white">
+          <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="group mt-6 flex items-center justify-between rounded-[12px] lg:mt-auto border border-[#17191a] bg-[#17191a] px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a]">
             {t("Построить маршрут", "Get directions")}
             <Arrow />
           </a>
