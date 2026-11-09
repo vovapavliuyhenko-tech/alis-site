@@ -17,8 +17,18 @@ const BRANDS: ReactNode[] = [
       wedding
     </span>
   </span>,
-  <span key="nitochka" className="font-serif text-[28px] italic text-[#6b6459]">
-    Nitochka
+  <span key="nitochka" className="font-serif text-[30px] leading-none text-[#17191a]">
+    н<span className="italic">и&#769;</span>точка
+  </span>,
+  // PALOMA — тонкие капители с засечками и подпись «FLOWERS COFFEE YOU»
+  <span key="paloma" className="flex flex-col items-center leading-none text-[#17191a]">
+    <span className="font-serif text-[30px] font-light tracking-[0.06em]">PALOMA</span>
+    <span className="mt-1.5 font-serif text-[9px] tracking-[0.16em]">FLOWERS COFFEE YOU</span>
+  </span>,
+  // WA ЮГ — крупные тонкие геометричные буквы и «ЮГ» ниже
+  <span key="wa" className="flex flex-col items-center leading-none text-[#17191a]">
+    <span className="text-[34px] font-light tracking-[-0.06em]">WA</span>
+    <span className="mt-1 text-[10px] tracking-[0.12em]">ЮГ</span>
   </span>,
   <span key="talu" className="font-serif text-[20px] uppercase tracking-[0.16em] text-[#6b6459]">
     Château <span className="lowercase italic tracking-normal">de</span> Talu
@@ -29,9 +39,8 @@ const BRANDS: ReactNode[] = [
       luxury resort &amp; spa
     </span>
   </span>,
-  <span key="weddywood" className="text-[27px] font-semibold lowercase tracking-tight text-[#6b6459]">
-    weddywood
-  </span>,
+  // eslint-disable-next-line @next/next/no-img-element
+  <img key="weddywood" src="/assets/brands/weddywood-2026.png" alt="Weddywood — Wedding vendor 2026" width={64} height={64} className="h-16 w-16 object-contain" draggable={false} />,
   <span key="eldayana" className="flex flex-col items-center leading-none text-[#6b6459]">
     <span className="font-serif text-[21px] uppercase tracking-[0.2em]">EL&apos;DAYANA</span>
     <span className="mt-1 text-[8px] uppercase tracking-[0.22em] text-[#6b6459]/55">
