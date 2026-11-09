@@ -6,9 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import TeamIntro from "@/components/pages/TeamIntro";
 // import SalonCompare from "@/components/pages/SalonCompare"; // сравнение скрыто по просьбе заказчицы
 import { TeamPeople } from "@/components/pages/TeamJoin";
-import Vacancies from "@/components/pages/Vacancies";
-import VacanciesScroll from "@/components/pages/VacanciesScroll";
-import JoinQuiz from "@/components/pages/JoinQuiz";
+import VacanciesBoard from "@/components/pages/VacanciesBoard";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/team" },
@@ -34,22 +32,9 @@ export default function TeamPage() {
         <BlockLabel ru="Команда" en="Team" />
         <TeamPeople />
 
-        {/* 3 — Почему мы, а не другой салон (мини-сравнение).
-            Якоря #international / #salon — для пунктов меню «Вакансии». */}
-        {/* Блок международной команды (InternationalTeam) — убран по просьбе заказчицы */}
-        <div id="international" aria-hidden className="scroll-mt-24" />
-        <div id="salon" aria-hidden className="scroll-mt-24" />
-        {/* <SalonCompare /> — скрыт */}
-
-        {/* 4 — Кого ищем (#vacancies) → как присоединиться */}
-        <BlockLabel ru="Стать частью команды салона красоты в Новороссийске" en="Join the salon team in Novorossiysk" />
-        <Vacancies />
-        {/* «Как присоединиться?» — 4 шага, карточки едут вбок при прокрутке */}
-        <BlockLabel ru="Как присоединиться" en="How to join" />
-        <VacanciesScroll />
-
-        {/* 5 — Анкета (#join) */}
-        <JoinQuiz />
+        {/* 3 — Вакансии по документу заказчицы: салон / консьерж-сервис (вкладки), позиции и анкета кандидата.
+            Пункты меню /team#salon и /team#international открывают нужную вкладку. */}
+        <VacanciesBoard />
       </div>
 
       <Footer />
