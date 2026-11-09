@@ -13,6 +13,10 @@ export type MarqueeItem = string | { src: string; cap?: Loc; href?: string };
 // Подписи — по тому, что видно на фото; клик ведёт в категорию услуг салона.
 // TODO: заказчица сама отберёт фото работ мастеров (и подпишет мастера) — заменить список.
 const ITEMS: MarqueeItem[] = [
+  { src: "/assets/alis/look_red_2.jpg", cap: { ru: "Макияж и укладка", en: "Makeup & styling" } },
+  { src: "/assets/alis/nails_french.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+  { src: "/assets/alis/look_leopard.jpg", cap: { ru: "Макияж и причёска", en: "Makeup & hair" } },
+  { src: "/assets/alis/nails_pink_ring.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
   { src: "/assets/alis/img_3283.jpg", cap: { ru: "Укладка", en: "Styling" } },
   { src: "/assets/alis/work_nails_nude.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
   { src: "/assets/alis/work_makeup_evening.jpg", cap: { ru: "Макияж и причёска", en: "Makeup & hair" } },

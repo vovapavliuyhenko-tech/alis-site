@@ -284,7 +284,7 @@ export default function SalonPage() {
         {/* 6 — Атмосфера (вместо «Галереи»). TODO: 6 фото салона, работ и подарков пришлёт заказчица */}
         <PhotoMarquee
           sectionId="gallery"
-          items={["/assets/alis/img_6048.jpg", "/assets/alis/img_8578.jpg", "/assets/alis/img_3283.jpg", "/assets/alis/work_nails_nude.jpg", "/assets/alis/work_hair_bun.jpg", "/assets/alis/img_1855.jpg"]}
+          items={["/assets/alis/salon_cup_flatlay.jpg", "/assets/alis/nails_french.jpg", "/assets/alis/look_red_1.jpg", "/assets/alis/salon_cup.jpg", "/assets/alis/work_hair_waves.jpg", "/assets/alis/nails_pink_ring.jpg", "/assets/alis/img_6048.jpg"]}
           title={{ ru: "Атмосфера, в которую хочется вернуться", en: "An atmosphere you want to come back to" }}
           text={{
             ru: "Гости говорят, что чувствуют себя окрылёнными после процедур, — а мы делаем всё, чтобы так было каждый раз.",

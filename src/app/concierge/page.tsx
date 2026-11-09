@@ -44,7 +44,7 @@ const CONCIERGE_STAGES: Stage[] = [
       en: "At the salon, on location, or an online concept with our stylists — as you prefer.",
     },
     quote: { ru: "«Образ готов заранее»", en: "“The look is ready in advance”" },
-    photo: "/assets/alis/work_makeup_bun.jpg",
+    photo: "/assets/alis/look_leopard.jpg",
   },
   {
     name: { ru: "Событие", en: "The day" },
@@ -54,7 +54,7 @@ const CONCIERGE_STAGES: Stage[] = [
       en: "The team arrives early with all materials and equipment and works to the timing.",
     },
     quote: { ru: "«Всё по таймингу»", en: "“Everything on schedule”" },
-    photo: "/assets/tild6530-383_-2___1_.jpg",
+    photo: "/assets/alis/concierge_case.jpg",
   },
   {
     name: { ru: "Финал", en: "Finishing touches" },
@@ -82,6 +82,7 @@ export default function ConciergePage() {
       {/* 1 — Обложка: фото + кнопка к заявке (без логотипа и эффектов) */}
       <TeamIntro
         title={{ ru: "Международная beauty-команда для вашего события по России, Европе и странам СНГ", en: "An international beauty team for your event in Russia, Europe and the CIS" }}
+        photo="/assets/alis/look_red_1.jpg"
         subtitle={{ ru: "Макияж и укладки под ключ для свадеб, съёмок и модных мероприятий.", en: "Turnkey makeup and styling for weddings, shoots and fashion events." }}
         button={{ label: { ru: "Рассчитать бюджет", en: "Calculate the budget" }, href: "#calc" }}
         button2={{ label: { ru: "Написать личному beauty-консьержу", en: "Message your personal beauty concierge" }, href: "#chat" }}
