@@ -16,7 +16,7 @@ export const SALON_PRICES: SalonCategory[] = [
     slug: "manicure",
     label: L("Маникюр", "Manicure"),
     sub: L("Классический, гель-лак, японский, пилочный, наращивание и дизайн", "Classic, gel polish, Japanese, file, extensions and design"),
-    from: rub("от 300"),
+    from: rub("от 1 000"),
     groups: [
       {
         rows: [
