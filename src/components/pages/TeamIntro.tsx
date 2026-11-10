@@ -77,7 +77,7 @@ export default function TeamIntro({
           <SplitTitle text={title[lang]} />
         </h1>
         {subtitle && (
-          <p ref={sub} style={{ animationDelay: `${lineDelay + 0.2}s` }} className="hero-up mt-3 max-w-[640px] whitespace-pre-line lg:max-w-[900px] !text-[clamp(11.5px,3.5vw,13px)] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[14px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[15px]">
+          <p ref={sub} style={{ animationDelay: `${lineDelay + 0.2}s` }} className="hero-up mt-3 max-w-[640px] whitespace-pre-line lg:max-w-[780px] !text-[clamp(11.5px,3.5vw,13px)] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[14px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[15px]">
             {subtitle[lang]}
           </p>
         )}
