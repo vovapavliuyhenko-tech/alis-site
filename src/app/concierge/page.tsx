@@ -109,7 +109,6 @@ export default function ConciergePage() {
         <ConciergePackages />
         {/* Прайс консьерж-сервиса — с листов заказчицы, раскрывающимися категориями как в салоне */}
         <SalonServices
-          title={{ ru: "Стоимость услуг", en: "Prices" }}
           categories={CONCIERGE_PRICES}
           cta={{ label: { ru: "Рассчитать бюджет", en: "Calculate the budget" }, href: "#calc" }}
         />
