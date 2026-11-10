@@ -117,9 +117,7 @@ export default function LoyaltyCerts() {
 
         <div className="grid gap-2 sm:gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-4">
           {/* 500 ₽ на первый визит */}
-          <div className="r-reveal relative flex flex-col justify-between overflow-hidden rounded-[20px] border border-[#17191a]/[0.06] bg-white p-6 text-[#17191a] shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:p-8 lg:p-10">
-            {/* Мягкое «дыхание» света в углу */}
-            <span aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 animate-[alis-glow_6s_ease-in-out_infinite] rounded-full bg-[#f6f4f1] blur-2xl" />
+          <div className="r-reveal relative flex flex-col justify-between overflow-hidden rounded-[20px] border border-[#17191a]/12 bg-white p-6 text-[#17191a] sm:p-8 lg:p-10">
             <div className="relative">
               <p className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/50 sm:text-[11px]">{t("Первый визит", "First visit")}</p>
               {/* div, а не p — чтобы общее «мобильное» уменьшение текста не трогало крупную цифру */}
