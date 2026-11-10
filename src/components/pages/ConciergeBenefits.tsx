@@ -109,7 +109,7 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
   }, [active, paused, mobile, points.length]);
 
   return (
-    <section id={sectionId} className={`scroll-mt-24 overflow-hidden bg-white section-y ${sectionId === "why" ? "!pt-[clamp(40px,5vw,80px)]" : ""}`}>
+    <section id={sectionId} className={`scroll-mt-24 overflow-hidden bg-white section-y ${sectionId === "why" ? "!pt-[clamp(40px,5vw,80px)]" : "!pt-[clamp(56px,8vw,120px)]"}`}>
       <div className="mx-auto w-[96%] max-w-[1760px]">
         {title && <h2 className="r-reveal mb-10 text-center text-[#17191a] lg:mb-14">{title[lang]}</h2>}
         {/* Пять преимуществ — раскрывающиеся фото-панели */}
