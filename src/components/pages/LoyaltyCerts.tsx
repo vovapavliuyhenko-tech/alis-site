@@ -13,7 +13,7 @@ import CountUp from "@/components/ui/CountUp";
 import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
 import { sendLead } from "@/lib/sendLead";
 
-const CERT_PHOTO = "/assets/alis/img_1855.jpg";
+const CERT_PHOTO = "/assets/alis/salon_cup_flatlay.jpg"; // светлое фото: стаканчик ÁLIS BEAUTY, мешочек, флакон — как подарок
 
 type Loc = { ru: string; en: string };
 
