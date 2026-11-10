@@ -190,7 +190,8 @@ export default function LoyaltyCerts() {
                     href={p.action === "book" ? SALON_BOOKING : "#friend"}
                     {...(p.action === "book" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     onClick={p.action === "friend" ? (e) => { e.preventDefault(); setWho("friend"); document.getElementById("loyalty")?.scrollIntoView({ behavior: "smooth", block: "start" }); } : undefined}
-                    data-on={active === i ? "" : undefined}
+                    // В режиме «Для подруги» карточка «Бонус за подругу» тоже становится тёмной
+                    data-on={active === i || (dk && p.action === "friend") ? "" : undefined}
                     className="r-reveal group relative flex min-h-[150px] flex-col justify-start overflow-hidden rounded-[20px] border border-[#17191a]/12 bg-white p-5 sm:min-h-[220px] sm:p-6 lg:min-h-[240px]"
                     style={{ transitionDelay: `${0.1 + i * 0.12}s` }}
                   >
