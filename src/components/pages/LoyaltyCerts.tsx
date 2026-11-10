@@ -114,7 +114,7 @@ export default function LoyaltyCerts() {
   return (
     <section id="loyalty" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <h2 className="r-reveal mb-8 text-center text-[#17191a] lg:mb-10">{t("Красота, которая возвращается бонусами", "Beauty that comes back as bonuses")}</h2>
+        <h2 className="r-reveal mb-10 text-center text-[#17191a] lg:mb-14">{t("Красота, которая возвращается бонусами", "Beauty that comes back as bonuses")}</h2>
 
         <div className="grid gap-2 sm:gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-4">
           {/* 500 ₽ на первый визит — белая; в режиме «Для подруги» плавно становится тёмной */}

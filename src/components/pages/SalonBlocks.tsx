@@ -110,7 +110,7 @@ export function PopularServices() {
   return (
     <section id="popular" className="scroll-mt-24 overflow-hidden bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <h2 className="r-reveal mb-8 text-center text-[#17191a] lg:mb-10">{en ? "Popular treatments" : "Популярные процедуры"}</h2>
+        <h2 className="r-reveal mb-10 text-center text-[#17191a] lg:mb-14">{en ? "Popular treatments" : "Популярные процедуры"}</h2>
         {/* Лента: на телефоне листается вбок, на компьютере — 5 в ряд */}
         <div className="-mx-[2%] flex snap-x snap-mandatory gap-2 overflow-x-auto px-[2%] pb-2 [scrollbar-width:none] sm:gap-3 lg:mx-0 lg:grid lg:grid-cols-5 lg:overflow-visible lg:px-0 lg:pb-0 lg:gap-4">
           {POPULAR.map((s, i) => (
@@ -144,7 +144,7 @@ export function SalonReviews() {
   return (
     <section id="reviews" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <h2 className="r-reveal mb-8 text-center text-[#17191a] lg:mb-10">{en ? "Reviews" : "Отзывы"}</h2>
+        <h2 className="r-reveal mb-10 text-center text-[#17191a] lg:mb-14">{en ? "Reviews" : "Отзывы"}</h2>
         <div className="grid gap-2 sm:gap-3 md:grid-cols-3 lg:gap-4">
           {REVIEWS.slice(0, 3).map((r, i) => (
             <figure key={r.name.ru} className="r-reveal flex flex-col justify-between rounded-[20px] border border-[#17191a]/12 bg-white p-5 sm:p-7" style={{ transitionDelay: `${i * 0.1}s` }}>

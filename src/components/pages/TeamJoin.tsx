@@ -165,7 +165,7 @@ export function JoinSteps() {
   return (
     <section id="steps" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        <h2 className="r-reveal mb-8 text-center text-[#17191a] lg:mb-10">{en ? "How to join?" : "Как присоединиться?"}</h2>
+        <h2 className="r-reveal mb-10 text-center text-[#17191a] lg:mb-14">{en ? "How to join?" : "Как присоединиться?"}</h2>
         <ol className="grid gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4 lg:gap-4">
           {STEPS.map((s, i) => (
             <li

@@ -60,7 +60,7 @@ export default function VacanciesScroll() {
       <div ref={wrap} className="h-[260vh] lg:h-[280vh]">
         <div className="sticky top-0 flex h-svh items-center">
           <div className="mx-auto w-[96%] max-w-[1760px]">
-            <h2 className="mb-6 text-center text-[#17191a] lg:mb-10">{en ? "How to join" : "Как присоединиться"}</h2>
+            <h2 className="mb-8 text-center text-[#17191a] lg:mb-14">{en ? "How to join" : "Как присоединиться"}</h2>
 
             {/* Лента карточек во всю ширину */}
             <div className="overflow-hidden">

@@ -111,7 +111,7 @@ export default function ConciergeBenefits({ points = POINTS, title, sectionId = 
   return (
     <section id={sectionId} className={`scroll-mt-24 overflow-hidden bg-white section-y ${sectionId === "why" ? "!pt-[clamp(40px,5vw,80px)]" : ""}`}>
       <div className="mx-auto w-[96%] max-w-[1760px]">
-        {title && <h2 className="r-reveal mb-8 text-center text-[#17191a] lg:mb-10">{title[lang]}</h2>}
+        {title && <h2 className="r-reveal mb-10 text-center text-[#17191a] lg:mb-14">{title[lang]}</h2>}
         {/* Пять преимуществ — раскрывающиеся фото-панели */}
         <div
           ref={wrap}

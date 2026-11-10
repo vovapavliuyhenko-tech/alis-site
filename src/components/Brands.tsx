@@ -83,7 +83,7 @@ export default function Brands({ heading = false, title, label }: { heading?: bo
         </div>
       )}
       {/* Маленькая подпись капсом — чтобы было понятно, что за логотипы */}
-      {title && <h2 className="r-reveal mx-auto mb-8 w-[92%] text-center text-[#17191a] lg:mb-10">{title[lang]}</h2>}
+      {title && <h2 className="r-reveal mx-auto mb-10 w-[92%] text-center text-[#17191a] lg:mb-14">{title[lang]}</h2>}
       {/* На телефоне вся строка с логотипами компактнее (масштаб 0.68) */}
       <div className="group relative flex overflow-hidden max-sm:[zoom:0.68]">
         <Track />
