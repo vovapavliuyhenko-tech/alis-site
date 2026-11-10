@@ -30,7 +30,7 @@ const LEFT: NavItem[] = [
     href: "/concierge",
     sub: [
       { label: { ru: "Услуги и цены", en: "Services & prices" }, href: "/concierge#uslugi" },
-      { label: { ru: "Как проходит выезд", en: "How a visit works" }, href: "/concierge#process" },
+      { label: { ru: "Этапы работы", en: "How we work" }, href: "/concierge#process" },
       { label: { ru: "О сервисе", en: "About the service" }, href: "/concierge#about" },
     ],
   },
