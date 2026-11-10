@@ -80,7 +80,7 @@ export default function CooperationPage() {
 
         {/* 2 — Кому полезно */}
         <BlockLabel ru="Кому полезно" en="Who it's for" />
-        <ConciergeBenefits points={WHO} sectionId="who" />
+        <ConciergeBenefits points={WHO} sectionId="who" title={{ ru: "Кому полезно", en: "Who it's for" }} />
 
         {/* Бегущая строка брендов, которые с нами сотрудничают */}
         <Brands label={{ ru: "Нас выбирают", en: "They choose us" }} />

@@ -99,7 +99,7 @@ export default function ConciergePage() {
 
         {/* 2 — Для кого (#about) */}
         <BlockLabel ru="Для кого" en="Who it's for" />
-        <ConciergeBenefits />
+        <ConciergeBenefits title={{ ru: "Для кого", en: "Who it's for" }} />
 
         {/* Бегущая строка брендов, которые нас выбирают — доверие перед ценами и пакетами */}
         <Brands label={{ ru: "Нас выбирают", en: "They choose us" }} />
