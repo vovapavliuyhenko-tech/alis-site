@@ -137,10 +137,6 @@ export default function ConciergePackages() {
             </div>
           </div>
         </div>
-        {/* Сноска к ценам — формулировка заказчицы */}
-        <p className="mt-4 text-[11px] leading-relaxed text-[#17191a]/55 sm:text-[12px]">
-          {en ? "*The exact cost depends on the date, location and number of guests." : "*Точная стоимость зависит от даты, места и числа гостей."}
-        </p>
       </div>
       <style>{`@keyframes pk-in { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }`}</style>
     </section>
