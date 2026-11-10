@@ -84,7 +84,7 @@ export default function Brands({ heading = false, title, label }: { heading?: bo
       )}
       {/* Маленькая подпись капсом — чтобы было понятно, что за логотипы */}
       {/* Подпись к ленте — мелким капсом, тихо (обычный крупный заголовок здесь «не вписывался») */}
-      {title && <h2 className="r-reveal mx-auto mb-6 w-[92%] text-center !text-[10.5px] uppercase !tracking-[0.22em] text-[#17191a]/45 lg:mb-8 lg:!text-[11px]">{title[lang]}</h2>}
+      {title && <h2 className="r-reveal mx-auto mb-6 w-[92%] text-center !text-[10.5px] !uppercase !tracking-[0.22em] text-[#17191a]/45 lg:mb-8 lg:!text-[11px]">{title[lang]}</h2>}
       {/* На телефоне вся строка с логотипами компактнее (масштаб 0.68) */}
       <div className="group relative flex overflow-hidden max-sm:[zoom:0.68]">
         <Track />
