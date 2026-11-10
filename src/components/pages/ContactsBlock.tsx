@@ -131,8 +131,8 @@ export default function ContactsBlock() {
               </div>
               <dl className="mt-4 space-y-2">
                 {c.rows.map((r) => (
-                  <div key={r.label.ru} className="grid grid-cols-[96px_minmax(0,1fr)] items-baseline gap-3">
-                    <dt className="whitespace-nowrap text-[10px] uppercase tracking-[0.12em] text-[#17191a]/45">{r.label[lang]}</dt>
+                  <div key={r.label.ru} className="grid grid-cols-[112px_minmax(0,1fr)] items-baseline gap-4">
+                    <dt className="whitespace-nowrap text-[9.5px] uppercase tracking-[0.1em] text-[#17191a]/45">{r.label[lang]}</dt>
                     <dd className="min-w-0 break-words text-[12.5px] leading-[1.5] text-[#17191a]/80 lg:text-[13px]">
                       {r.href ? (
                         <a href={r.href} {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="underline decoration-[#17191a]/25 underline-offset-[5px] transition-colors hover:decoration-[#17191a]">{r.value}</a>
