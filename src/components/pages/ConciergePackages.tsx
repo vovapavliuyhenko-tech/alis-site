@@ -75,7 +75,7 @@ export default function ConciergePackages() {
 
         {/* Слева: список тарифов — белая карточка с тенью; тариф выбирается нажатием,
             выбранный — тёмная плашка */}
-        <div className="r-reveal flex flex-col gap-1.5 rounded-[28px] border border-[#17191a]/[0.06] bg-white p-3 shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:p-4 lg:p-5">
+        <div className="r-reveal flex flex-col gap-1.5 rounded-[28px] border border-[#17191a]/[0.06] bg-white p-3 sm:p-4 lg:p-5">
           {PACKS.map((x, i) => {
             const on = i === cur;
             return (
