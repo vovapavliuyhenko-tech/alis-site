@@ -11,7 +11,7 @@ const FRAMES: { src: string; alt: Loc }[] = [
   { src: "/assets/alis/img_6048.jpg", alt: { ru: "Работа команды ÁLIS BEAUTY на мероприятии", en: "ÁLIS BEAUTY team at an event" } },
   { src: "/assets/alis/img_2745.jpg", alt: { ru: "Образ для съёмки — ÁLIS BEAUTY", en: "A look for a shoot — ÁLIS BEAUTY" } },
   { src: "/assets/alis/img_1834.jpg", alt: { ru: "Образ гостьи — ÁLIS BEAUTY", en: "A guest's look — ÁLIS BEAUTY" } },
-  { src: "/assets/alis/img_2455.jpg", alt: { ru: "Макияж для показа — ÁLIS BEAUTY", en: "Show makeup — ÁLIS BEAUTY" } },
+  { src: "/assets/alis/salon_cup_flatlay.jpg", alt: { ru: "Макияж для показа — ÁLIS BEAUTY", en: "Show makeup — ÁLIS BEAUTY" } },
   { src: "/assets/alis/img_0569.jpg", alt: { ru: "Подготовка гостей — ÁLIS BEAUTY", en: "Getting guests ready — ÁLIS BEAUTY" } },
 ];
 

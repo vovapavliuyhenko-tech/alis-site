@@ -63,7 +63,7 @@ export const NEWS: NewsItem[] = [
       en: "ÁLIS BEAUTY CONCIERGE — our artists come to you: home, hotel, event venue or photo shoot.",
     },
     image: "/assets/alis/work_makeup_evening.jpg",
-    gallery: ["/assets/alis/img_1834.jpg", "/assets/alis/img_1855.jpg", "/assets/alis/img_2455.jpg"],
+    gallery: ["/assets/alis/img_1834.jpg", "/assets/alis/img_1855.jpg", "/assets/alis/salon_cup_flatlay.jpg"],
     content: [
       { type: "p", text: { ru: "Консьерж-сервис ÁLIS BEAUTY — это услуги салона с выездом туда, где вам удобно.", en: "ÁLIS BEAUTY concierge service brings salon treatments wherever suits you." } },
       { type: "h2", text: { ru: "Как это работает", en: "How it works" } },
