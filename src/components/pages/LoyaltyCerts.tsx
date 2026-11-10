@@ -232,7 +232,7 @@ export default function LoyaltyCerts() {
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-all duration-[700ms] ease-out group-hover:scale-105 group-hover:blur-md"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10 transition-colors duration-700 group-hover:from-black/80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent transition-colors duration-700 group-hover:from-black/65" />
               <span className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/50 text-white transition-all duration-300 group-hover:border-transparent group-hover:bg-white group-hover:text-[#17191a] sm:right-6 sm:top-6 sm:h-11 sm:w-11">
                 <span className="transition-transform duration-300 group-hover:-rotate-45">→</span>
               </span>
