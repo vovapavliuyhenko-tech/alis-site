@@ -176,7 +176,7 @@ export default function PhotoMarquee({
           <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
             {title[lang]}
           </h2>
-          {text && <p className="mx-auto mt-2 max-w-[44ch] !text-[11px] leading-[1.5] text-[#17191a]/60 sm:mt-3 sm:!text-[13px]">{text[lang]}</p>}
+          {text && <p className="mx-auto mt-2 max-w-[44ch] sm:max-w-[66ch] !text-[11px] leading-[1.5] text-[#17191a]/60 sm:mt-3 sm:!text-[13px]">{text[lang]}</p>}
         </div>
       )}
 
