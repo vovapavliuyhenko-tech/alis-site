@@ -61,7 +61,7 @@ export default function ContactsBlock() {
       ig: "https://www.instagram.com/alisbeauty.ru",
       rows: [
         { label: { ru: "Адрес", en: "Address" }, value: t("Новороссийск, ул. Пархоменко, 53", "Novorossiysk, Parkhomenko St., 53"), href: MAP_URL, external: true },
-        { label: { ru: "Часы", en: "Hours" }, value: t("Без перерывов и выходных, 9:00–21:00", "No breaks, open daily, 9:00–21:00") },
+        { label: { ru: "Часы", en: "Hours" }, value: t("Ежедневно, 9:00–21:00", "Daily, 9:00–21:00") },
       ],
       links: [
         { label: { ru: "Написать нам", en: "Message us" }, href: `https://wa.me/${PHONE_RAW}` },
@@ -75,7 +75,7 @@ export default function ContactsBlock() {
       wa: `https://wa.me/${PHONE_SERVICE_RAW}`,
       ig: "https://www.instagram.com/alisbeauty.global",
       rows: [
-        { label: { ru: "Управляющий менеджер", en: "Managing director" }, value: "+7 996 409 28 74 — сотрудничество, жалобы и предложения", href: "tel:+79964092874" },
+        { label: { ru: "Управляющий", en: "Manager" }, value: "+7 996 409 28 74", href: "tel:+79964092874" },
         { label: { ru: "Международный", en: "International" }, value: "+374 43 24 21 78", href: "tel:+37443242178" },
         { label: { ru: "Почта", en: "E-mail" }, value: EMAIL, href: `mailto:${EMAIL}` },
       ],
@@ -129,11 +129,11 @@ export default function ContactsBlock() {
                   </a>
                 </div>
               </div>
-              <dl className="mt-3 space-y-1.5">
+              <dl className="mt-4 space-y-2">
                 {c.rows.map((r) => (
-                  <div key={r.label.ru} className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-4">
-                    <dt className="w-28 shrink-0 text-[10px] uppercase leading-[1.35] tracking-[0.14em] text-[#17191a]/45">{r.label[lang]}</dt>
-                    <dd className="text-[12.5px] leading-[1.5] text-[#17191a]/80 lg:text-[13px]">
+                  <div key={r.label.ru} className="grid grid-cols-[96px_minmax(0,1fr)] items-baseline gap-3">
+                    <dt className="whitespace-nowrap text-[10px] uppercase tracking-[0.12em] text-[#17191a]/45">{r.label[lang]}</dt>
+                    <dd className="min-w-0 break-words text-[12.5px] leading-[1.5] text-[#17191a]/80 lg:text-[13px]">
                       {r.href ? (
                         <a href={r.href} {...(r.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="underline decoration-[#17191a]/25 underline-offset-[5px] transition-colors hover:decoration-[#17191a]">{r.value}</a>
                       ) : r.value}
@@ -143,7 +143,7 @@ export default function ContactsBlock() {
               </dl>
             </div>
           ))}
-          <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="group mt-6 flex items-center justify-between rounded-[12px] lg:mt-auto border border-[#17191a] bg-[#17191a] px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a]">
+          <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className="group mt-6 flex items-center justify-between rounded-[12px] lg:mt-8 border border-[#17191a] bg-[#17191a] px-5 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a]">
             {t("Построить маршрут", "Get directions")}
             <Arrow />
           </a>
