@@ -118,7 +118,8 @@ export default function LoyaltyCerts() {
 
         <div className="grid gap-2 sm:gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-4">
           {/* 500 ₽ на первый визит — белая; в режиме «Для подруги» плавно становится тёмной */}
-          <div className={`r-reveal relative flex flex-col justify-between overflow-hidden rounded-[20px] border p-6 transition-[background-color,color,border-color] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] sm:p-8 lg:p-10 ${dk ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/12 bg-white text-[#17191a]"}`}>
+          <div className="r-reveal flex">
+          <div className={`relative flex w-full flex-col justify-between overflow-hidden rounded-[20px] border p-6 transition-[background-color,color,border-color] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] sm:p-8 lg:p-10 ${dk ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/12 bg-white text-[#17191a]"}`}>
             <div className="relative">
               <p className={`text-[10px] uppercase tracking-[0.2em] transition-colors duration-700 sm:text-[11px] ${dk ? "text-white/50" : "text-[#17191a]/50"}`}>{t("Первый визит", "First visit")}</p>
               {/* div, а не p — чтобы общее «мобильное» уменьшение текста не трогало крупную цифру */}
@@ -173,6 +174,7 @@ export default function LoyaltyCerts() {
                 </>
               )}
             </div>
+          </div>
           </div>
 
           {/* Справа: три бонуса сверху, сертификат снизу */}
