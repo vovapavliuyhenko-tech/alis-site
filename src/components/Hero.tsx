@@ -61,7 +61,7 @@ export default function Hero() {
         <h1 className="whitespace-nowrap font-serif-display text-[clamp(18px,6vw,24px)] font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
           <SplitTitle text={TITLE} />
         </h1>
-        <p style={{ animationDelay: `${lineDelay + 0.2}s` }} className="hero-up mt-3 max-w-[640px] !text-[11.5px] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[14px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[15px]">
+        <p style={{ animationDelay: `${lineDelay + 0.2}s` }} className="hero-up mt-3 max-w-[640px] lg:max-w-[900px] !text-[11.5px] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[14px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[15px]">
           {/* Телефон — короче (тот же смысл, 2–3 строки), компьютер — полный текст заказчицы */}
           {/* Ровно 3 строки на любом телефоне: явные переносы + размер от ширины экрана */}
           <span className="block text-[clamp(10px,3.05vw,11.5px)] sm:hidden">
