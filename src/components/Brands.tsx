@@ -74,7 +74,7 @@ function Track({ hidden = false }: { hidden?: boolean }) {
 export default function Brands({ heading = false, title, label }: { heading?: boolean; title?: { ru: string; en: string }; label?: { ru: string; en: string } }) {
   const { lang } = useLang();
   return (
-    <section className="overflow-hidden bg-white section-y">
+    <section className="overflow-hidden bg-white py-[clamp(40px,6vw,96px)]">
       {heading && (
         <div className="mx-auto mb-12 w-[92%] max-w-[1280px] text-center lg:mb-16">
           <h2 className="font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] lg:text-[28px]">
@@ -83,7 +83,8 @@ export default function Brands({ heading = false, title, label }: { heading?: bo
         </div>
       )}
       {/* Маленькая подпись капсом — чтобы было понятно, что за логотипы */}
-      {title && <h2 className="r-reveal mx-auto mb-8 w-[92%] text-center text-[#17191a] lg:mb-10">{title[lang]}</h2>}
+      {/* Подпись к ленте — мелким капсом, тихо (обычный крупный заголовок здесь «не вписывался») */}
+      {title && <h2 className="r-reveal mx-auto mb-6 w-[92%] text-center !text-[10.5px] uppercase !tracking-[0.22em] text-[#17191a]/45 lg:mb-8 lg:!text-[11px]">{title[lang]}</h2>}
       {/* На телефоне вся строка с логотипами компактнее (масштаб 0.68) */}
       <div className="group relative flex overflow-hidden max-sm:[zoom:0.68]">
         <Track />
