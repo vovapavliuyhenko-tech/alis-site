@@ -66,6 +66,7 @@ export default function LoyaltyCerts() {
 
   // Бонусы: для себя или для подруги → номер(а) в CRM (тип «bonus»)
   const [who, setWho] = useState<"me" | "friend">("me");
+  const dk = who === "friend"; // режим «Для подруги» — карточка тёмная
   // Кнопка «Пригласить подругу и получить бонус» на обложке салона ведёт сюда (#friend)
   useEffect(() => {
     const go = () => {
@@ -116,20 +117,20 @@ export default function LoyaltyCerts() {
         <h2 className="r-reveal mb-8 text-center text-[#17191a] lg:mb-10">{t("Красота, которая возвращается бонусами", "Beauty that comes back as bonuses")}</h2>
 
         <div className="grid gap-2 sm:gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-4">
-          {/* 500 ₽ на первый визит */}
-          <div className="r-reveal relative flex flex-col justify-between overflow-hidden rounded-[20px] border border-[#17191a]/12 bg-white p-6 text-[#17191a] sm:p-8 lg:p-10">
+          {/* 500 ₽ на первый визит — белая; в режиме «Для подруги» плавно становится тёмной */}
+          <div className={`r-reveal relative flex flex-col justify-between overflow-hidden rounded-[20px] border p-6 transition-[background-color,color,border-color] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] sm:p-8 lg:p-10 ${dk ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/12 bg-white text-[#17191a]"}`}>
             <div className="relative">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/50 sm:text-[11px]">{t("Первый визит", "First visit")}</p>
+              <p className={`text-[10px] uppercase tracking-[0.2em] transition-colors duration-700 sm:text-[11px] ${dk ? "text-white/50" : "text-[#17191a]/50"}`}>{t("Первый визит", "First visit")}</p>
               {/* div, а не p — чтобы общее «мобильное» уменьшение текста не трогало крупную цифру */}
               <div className="mt-4 font-display text-[64px] font-extralight leading-none tracking-[0.01em] sm:mt-6 lg:text-[88px]"><CountUp to={500} /> ₽</div>
-              <p className="mt-3 text-[13px] leading-[1.5] text-[#17191a]/70 sm:text-[15px]">
+              <p className={`mt-3 text-[13px] leading-[1.5] transition-colors duration-700 sm:text-[15px] ${dk ? "text-white/70" : "text-[#17191a]/70"}`}>
                 {t("бонусных рублей на первый визит — уже на счёте, когда вы придёте", "bonus roubles on your first visit — already in your account when you come")}
               </p>
             </div>
             {/* Форма бонусов: для себя — свой номер; для подруги — свой номер и номер подруги */}
             <div className="relative mt-8">
               {sent ? (
-                <p className="animate-[alis-bonus-in_.5s_ease] rounded-[14px] bg-[#f6f4f1] px-5 py-4 text-center text-[13px] text-[#17191a] sm:text-[15px]">
+                <p className={`animate-[alis-bonus-in_.5s_ease] rounded-[14px] px-5 py-4 text-center text-[13px] sm:text-[15px] ${dk ? "bg-white/10 text-white" : "bg-[#f6f4f1] text-[#17191a]"}`}>
                   {who === "me"
                     ? t("Спасибо! Бонусы будут на счёте, когда вы придёте.", "Thank you! The bonuses will be in your account when you come.")
                     : t("Спасибо! Начислим бонусы вам и подруге.", "Thank you! We'll add bonuses for you and your friend.")}
@@ -137,26 +138,26 @@ export default function LoyaltyCerts() {
               ) : (
                 <>
                   {/* Переключатель «Для себя / Для подруги» с бегущей подложкой */}
-                  <div className="relative grid grid-cols-2 rounded-full bg-[#f6f4f1] p-1 text-[11px] uppercase tracking-[0.12em] sm:text-[12px]">
-                    <span aria-hidden className="absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-[#17191a] transition-transform duration-500 ease-[cubic-bezier(.7,0,.2,1)]" style={{ transform: who === "me" ? "none" : "translateX(100%)" }} />
+                  <div className={`relative grid grid-cols-2 rounded-full p-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-700 sm:text-[12px] ${dk ? "bg-white/10" : "bg-[#f6f4f1]"}`}>
+                    <span aria-hidden className={`absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full transition-[transform,background-color] duration-500 ${dk ? "bg-white" : "bg-[#17191a]"}`}  style={{ transform: who === "me" ? "none" : "translateX(100%)" }} />
                     {(["me", "friend"] as const).map((w) => (
-                      <button key={w} type="button" onClick={() => setWho(w)} aria-pressed={who === w} className={`relative z-10 rounded-full py-2.5 transition-colors duration-500 ${who === w ? "text-white" : "text-[#17191a]/60 hover:text-[#17191a]"}`}>
+                      <button key={w} type="button" onClick={() => setWho(w)} aria-pressed={who === w} className={`relative z-10 rounded-full py-2.5 transition-colors duration-500 ${who === w ? (dk ? "text-[#17191a]" : "text-white") : dk ? "text-white/60 hover:text-white" : "text-[#17191a]/60 hover:text-[#17191a]"}`}>
                         {w === "me" ? t("Для себя", "For me") : t("Для подруги", "For a friend")}
                       </button>
                     ))}
                   </div>
                   <div className="mt-3 flex flex-col gap-2">
-                    <PhoneField lang={lang} value={me} onChange={setMe} className="!bg-[#f6f4f1]" />
+                    <PhoneField lang={lang} value={me} onChange={setMe} className={dk ? "" : "!bg-[#f6f4f1]"} />
                     <div className={`grid transition-all duration-500 ease-out ${who === "friend" ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                       <div className="overflow-hidden">
-                        <p className="mb-1.5 pl-1 text-[10px] uppercase tracking-[0.16em] text-[#17191a]/45">{t("Номер подруги", "Your friend's number")}</p>
-                        <PhoneField lang={lang} value={friend} onChange={setFriend} className="!bg-[#f6f4f1]" />
+                        <p className="mb-1.5 pl-1 text-[10px] uppercase tracking-[0.16em] text-white/45">{t("Номер подруги", "Your friend's number")}</p>
+                        <PhoneField lang={lang} value={friend} onChange={setFriend} className={dk ? "" : "!bg-[#f6f4f1]"} />
                       </div>
                     </div>
                   </div>
                   <label className="mt-3 flex cursor-pointer items-center gap-2.5">
-                    <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]" />
-                    <span className="whitespace-nowrap text-[clamp(10px,2.8vw,11px)] text-[#17191a]/55">
+                    <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className={`h-4 w-4 shrink-0 cursor-pointer ${dk ? "accent-white" : "accent-[#17191a]"}`} />
+                    <span className={`whitespace-nowrap text-[clamp(10px,2.8vw,11px)] ${dk ? "text-white/55" : "text-[#17191a]/55"}`}>
                       {t("Даю согласие на обработку ", "I agree to the processing of my ")}
                       <a href="/policy" className="underline underline-offset-2">{t("персональных данных", "personal data")}</a>
                     </span>
@@ -165,7 +166,7 @@ export default function LoyaltyCerts() {
                     type="button"
                     onClick={sendBonus}
                     disabled={!canSend}
-                    className="mt-3 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-3.5 font-display text-[11px] uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#17191a] disabled:hover:text-white"
+                    className={`mt-3 flex w-full items-center justify-center rounded-[12px] border py-3.5 font-display text-[11px] uppercase tracking-[0.14em] transition-colors duration-300 disabled:cursor-not-allowed disabled:opacity-35 ${dk ? "border-white bg-white text-[#17191a] hover:bg-transparent hover:text-white disabled:hover:bg-white disabled:hover:text-[#17191a]" : "border-[#17191a] bg-[#17191a] text-white hover:bg-transparent hover:text-[#17191a] disabled:hover:bg-[#17191a] disabled:hover:text-white"}`}
                   >
                     {t("Забрать бонусы", "Get my bonuses")}
                   </button>
