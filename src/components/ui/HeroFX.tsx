@@ -12,9 +12,10 @@ export function SplitTitle({ text, delay = 0.35 }: { text: string; delay?: numbe
   let n = 0;
   return (
     <>
-      <span className="sr-only">{text}</span>
+      <span className="sr-only">{text.replace(/\n/g, " ")}</span>
       <span aria-hidden>
-        {text.split(" ").map((word, w, arr) => (
+        {/* «\n» в тексте — принудительный перенос строки */}
+        {text.replace(/\n/g, " \n ").split(" ").filter(Boolean).map((word, w, arr) => word === "\n" ? <br key={w} /> : (
           <span key={w} className="inline-block whitespace-nowrap">
             {word.split("").map((ch) => {
               const d = delay + n++ * 0.035;
@@ -24,7 +25,7 @@ export function SplitTitle({ text, delay = 0.35 }: { text: string; delay?: numbe
                 </span>
               );
             })}
-            {w < arr.length - 1 && <span className="inline-block">&nbsp;</span>}
+            {w < arr.length - 1 && arr[w + 1] !== "\n" && <span className="inline-block">&nbsp;</span>}
           </span>
         ))}
       </span>

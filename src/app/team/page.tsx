@@ -21,7 +21,7 @@ export default function TeamPage() {
       <Header />
 
       {/* 1 — Обложка: фото + кнопка к вакансиям (без логотипа и эффектов) */}
-      <TeamIntro title={{ ru: "Команда ÁLIS BEAUTY — люди, которым доверяют свою красоту", en: "The ÁLIS BEAUTY team — people trusted with beauty" }} button={{ label: { ru: "Смотреть вакансии", en: "View vacancies" }, href: "#vacancies" }} button2={{ label: { ru: "Оставить заявку", en: "Apply" }, href: "#join" }} />
+      <TeamIntro title={{ ru: "Команда ÁLIS BEAUTY — люди,\nкоторым доверяют свою красоту", en: "The ÁLIS BEAUTY team — people trusted with beauty" }} button={{ label: { ru: "Смотреть вакансии", en: "View vacancies" }, href: "#vacancies" }} button2={{ label: { ru: "Оставить заявку", en: "Apply" }, href: "#join" }} />
 
       {/* Порядок по брифу: команда → международная команда → салон (кого ищем, как присоединиться) → анкета.
           space-y — дополнительный воздух между блоками поверх общего section-y. */}
