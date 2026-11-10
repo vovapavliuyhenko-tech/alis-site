@@ -49,7 +49,7 @@ const PERKS: { icon: () => React.ReactElement; title: Loc; note: Loc; action: "b
     icon: GiftIcon,
     action: "book",
     title: { ru: "Подарок в день рождения от салона красоты", en: "A birthday gift from the beauty salon" },
-    note: { ru: "Подробности расскажет администратор при записи.", en: "The administrator will tell you the details when you book." },
+    note: { ru: "Оповестите администратора о дате дня рождения при записи.", en: "Let the administrator know your birthday when you book." },
   },
   {
     icon: FriendsIcon,
