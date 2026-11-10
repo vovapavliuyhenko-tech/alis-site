@@ -13,7 +13,7 @@ import CountUp from "@/components/ui/CountUp";
 import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
 import { sendLead } from "@/lib/sendLead";
 
-const CERT_PHOTO = "/assets/alis/work_hair_waves.jpg"; // светлое фото: волны со спины на фоне белых дверей
+const CERT_PHOTO = "/assets/alis/img_6048.jpg"; // кремовое фото: платок с вышивкой ÁLIS BEAUTY — как фирменный подарок
 
 type Loc = { ru: string; en: string };
 
