@@ -86,7 +86,7 @@ export default function ConciergePage() {
         title={{ ru: "Международная beauty-команда для вашего события по России, Европе и странам СНГ", en: "An international beauty team for your event in Russia, Europe and the CIS" }}
         photo="/assets/alis/look_red_1.jpg"
         subtitle={{ ru: "Макияж и укладки под ключ для свадеб, съёмок и модных мероприятий.", en: "Turnkey makeup and styling for weddings, shoots and fashion events." }}
-        button={{ label: { ru: "Рассчитать бюджет", en: "Calculate the budget" }, href: "#calc" }}
+        button={{ label: { ru: "Рассчитать стоимость выезда", en: "Calculate the travel cost" }, href: "#calc" }}
         button2={{ label: { ru: "Написать личному beauty-консьержу", en: "Message your personal beauty concierge" }, href: "#chat" }}
       />
 
