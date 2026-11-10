@@ -242,8 +242,8 @@ export default function LoyaltyCerts() {
                 <div className="grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] [@media(hover:none)]:hidden [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-hover:opacity-100">
                 <p className="min-h-0 overflow-hidden pt-1.5 max-w-md !text-[11.5px] leading-relaxed text-white/80 sm:!text-[13px]">
                   {t(
-                    "Любая услуга или сумма. Лучший способ подарить заботу — и точно не промахнуться.",
-                    "Any service or amount. The best way to gift care — and never miss.",
+                    "Любая услуга или сумма. Лучший способ подарить заботу и внимание.",
+                    "Any service or amount. The best way to gift care and attention.",
                   )}
                 </p>
                 </div>
