@@ -102,7 +102,7 @@ export default function ConciergePage() {
         <ConciergeBenefits title={{ ru: "Для кого", en: "Who it's for" }} />
 
         {/* Бегущая строка брендов, которые нас выбирают — доверие перед ценами и пакетами */}
-        <Brands label={{ ru: "Нас выбирают", en: "They choose us" }} />
+        <Brands title={{ ru: "Нас выбирают", en: "They choose us" }} />
 
         {/* 3 — Пакеты услуг (#uslugi). TODO: цены «от …» и PDF КП пришлёт заказчица */}
         <BlockLabel ru="Пакеты услуг" en="Packages" />
