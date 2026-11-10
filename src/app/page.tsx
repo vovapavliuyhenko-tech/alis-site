@@ -40,33 +40,34 @@ export default function Home() {
         {/* Порядок: работы мастеров → выезд (консьерж) → как записаться в салон → услуги → контакты (подвал) */}
         <PhotoMarquee />
         {/* Отзывы гостей — перед баннером консьерж-сервиса */}
-        <ReviewsWall title={{ ru: "Так говорят гости", en: "What our guests say" }} />
+        <ReviewsWall title={{ ru: "Гости о нас", en: "Guests about us" }} />
         {/* «Выездной сервис» — баннер консьерж-сервиса (тексты заказчицы). Чтобы поставить видео:
             video="/assets/....mp4" (photo станет обложкой видео) */}
         <PhotoBanner
           stacked
           photo="/assets/alis/img_6009.jpg"
           label={{ ru: "Выездной сервис", en: "Outcall service" }}
-          title={{
+          title={{ ru: "Выездной сервис", en: "Outcall service" }}
+          subtitle={{
             ru: "Свадьба в Ереване, съёмка в Москве, ужин в Каннах — международная команда ÁLIS BEAUTY уже в пути.",
             en: "A wedding in Yerevan, a shoot in Moscow, a dinner in Cannes — the international ÁLIS BEAUTY team is already on its way.",
           }}
-          titleLines={{
+          subtitleLines={{
             ru: ["Свадьба в Ереване, съёмка в Москве,", "ужин в Каннах — международная команда", "ÁLIS BEAUTY уже в пути."],
             en: ["A wedding in Yerevan, a shoot in Moscow,", "a dinner in Cannes — the international", "ÁLIS BEAUTY team is already on its way."],
           }}
           text={{
-            ru: "Вы выбираете место, мы приводим специалистов, тайминг и спокойствие — вам остаётся только наслаждаться днём.",
-            en: "You choose the place; we bring the specialists, the timing and the peace of mind — all that’s left is to enjoy your day.",
+            ru: "Вы выбираете место, мы берём на себя специалистов, тайминг и спокойствие — вам остаётся только наслаждаться важным днём.",
+            en: "You choose the place; we take care of the specialists, the timing and the peace of mind — all that’s left is to enjoy your big day.",
           }}
           button={{ label: { ru: "Рассчитать выезд за 1 минуту", en: "Get a travel quote in 1 minute" }, href: "/concierge#calc" }}
         />
-        {/* Комплимент от ÁLIS BEAUTY — 500 бонусов, номер уходит в CRM */}
-        <BonusOffer />
         {/* Услуги салона — карточки с фото. Скрыто по просьбе (вернуть — раскомментировать):
         <ServiceBento /> */}
         {/* Финальный экран — выбор: салон / выезд / связаться */}
         <FinalChoice />
+        {/* Комплимент от ÁLIS BEAUTY — 500 бонусов, номер уходит в CRM (по просьбе — последним блоком) */}
+        <BonusOffer />
       </div>
       <Footer />
     </main>

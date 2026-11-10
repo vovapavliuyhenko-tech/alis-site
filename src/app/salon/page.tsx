@@ -284,7 +284,16 @@ export default function SalonPage() {
         {/* 6 — Атмосфера (вместо «Галереи»). TODO: 6 фото салона, работ и подарков пришлёт заказчица */}
         <PhotoMarquee
           sectionId="gallery"
-          items={["/assets/alis/salon_cup_flatlay.jpg", "/assets/alis/nails_french.jpg", "/assets/alis/look_red_1.jpg", "/assets/alis/salon_cup.jpg", "/assets/alis/work_hair_waves.jpg", "/assets/alis/nails_pink_ring.jpg", "/assets/alis/img_6048.jpg"]}
+          items={[
+            { src: "/assets/alis/salon_cup_flatlay.jpg", cap: { ru: "Атмосфера салона", en: "Salon atmosphere" } },
+            { src: "/assets/alis/nails_french.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+            { src: "/assets/alis/look_red_1.jpg", cap: { ru: "Макияж + укладка", en: "Makeup + styling" } },
+            { src: "/assets/alis/salon_cup.jpg", cap: { ru: "Атмосфера салона", en: "Salon atmosphere" } },
+            { src: "/assets/alis/work_hair_waves.jpg", cap: { ru: "Укладка", en: "Styling" } },
+            { src: "/assets/alis/nails_pink_ring.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+            { src: "/assets/alis/img_6048.jpg", cap: { ru: "Магазин ÁLIS BEAUTY", en: "ÁLIS BEAUTY shop" } },
+          ]}
+          cta={{ label: { ru: "Посмотреть услуги", en: "View services" }, href: "#uslugi" }}
           title={{ ru: "Атмосфера, в которую хочется вернуться", en: "An atmosphere you want to come back to" }}
           text={{
             ru: "Гости говорят, что чувствуют себя окрылёнными после процедур, — а мы делаем всё, чтобы так было каждый раз.",

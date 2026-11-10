@@ -19,6 +19,8 @@ export default function PhotoBanner({
   video,
   stacked = false,
   titleLines,
+  subtitle,
+  subtitleLines,
 }: {
   photo: string;
   text?: Loc;
@@ -26,6 +28,9 @@ export default function PhotoBanner({
   stacked?: boolean;
   // Телефон: заголовок ровно по этим строкам (размер подстраивается под ширину экрана)
   titleLines?: { ru: string[]; en: string[] };
+  // Подзаголовок под заголовком (меньше) — например длинная фраза под коротким заголовком
+  subtitle?: Loc;
+  subtitleLines?: { ru: string[]; en: string[] };
   label: Loc;
   title: Loc;
   button: { label: Loc; href: string };
@@ -78,6 +83,22 @@ export default function PhotoBanner({
               title[lang]
             )}
           </h2>
+          {subtitle && (
+            <p className="mx-auto mt-3 max-w-[640px] !text-[12.5px] leading-[1.5] text-[#17191a]/70 sm:!text-[15px] lg:!text-[16px]">
+              {subtitleLines ? (
+                <>
+                  <span className="block text-[clamp(11px,3.4vw,12.5px)] sm:hidden">
+                    {subtitleLines[lang].map((l, i) => (
+                      <span key={i} className="block whitespace-nowrap">{l}</span>
+                    ))}
+                  </span>
+                  <span className="hidden sm:inline">{subtitle[lang]}</span>
+                </>
+              ) : (
+                subtitle[lang]
+              )}
+            </p>
+          )}
         </div>
         {/* Плашка во всю ширину экрана, скругление как у первого блока (28px): видео (если задано) или фото, с тем же параллаксом; текст и кнопка — внутри, внизу */}
         <div className="relative mx-auto mt-10 flex h-[60svh] min-h-[420px] w-[96%] max-w-[1760px] items-end justify-center overflow-hidden rounded-[28px] text-center text-white lg:mt-14 lg:h-[70svh]">

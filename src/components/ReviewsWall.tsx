@@ -6,6 +6,7 @@
 import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { REVIEWS } from "@/components/Reviews";
+import LineCta from "@/components/ui/LineCta";
 
 type Loc = { ru: string; en: string };
 const YANDEX = "https://yandex.ru/maps/org/lis_byuti/63024642190/reviews/";
@@ -131,6 +132,8 @@ export default function ReviewsWall({ title = { ru: "Так говорят го�
         <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent lg:w-40" />
         <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent lg:w-40" />
       </div>
+      {/* Оставить отзыв — в карточке салона на Яндекс Картах */}
+      <LineCta href={YANDEX} external label={en ? "Share your impressions of ÁLIS BEAUTY" : "Поделиться своими впечатлениями об ÁLIS BEAUTY"} />
     </section>
   );
 }

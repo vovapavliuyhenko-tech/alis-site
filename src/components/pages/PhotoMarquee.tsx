@@ -4,6 +4,7 @@
 // Под фото — полоса прогресса, отражающая позицию прокрутки (как на референсе).
 import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
+import LineCta from "@/components/ui/LineCta";
 
 type Loc = { ru: string; en: string };
 // Кадр: фото + подпись (услуга) + куда ведёт клик. Можно передать и просто путь к фото.
@@ -13,19 +14,19 @@ export type MarqueeItem = string | { src: string; cap?: Loc; href?: string };
 // Подписи — по тому, что видно на фото; клик ведёт в категорию услуг салона.
 // TODO: заказчица сама отберёт фото работ мастеров (и подпишет мастера) — заменить список.
 const ITEMS: MarqueeItem[] = [
-  { src: "/assets/alis/look_red_2.jpg", cap: { ru: "Макияж и укладка", en: "Makeup & styling" } },
+  { src: "/assets/alis/look_red_2.jpg", cap: { ru: "Макияж + укладка", en: "Makeup & styling" } },
   { src: "/assets/alis/nails_french.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-  { src: "/assets/alis/look_leopard.jpg", cap: { ru: "Макияж и причёска", en: "Makeup & hair" } },
+  { src: "/assets/alis/look_leopard.jpg", cap: { ru: "Макияж + причёска", en: "Makeup & hair" } },
   { src: "/assets/alis/nails_pink_ring.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
   { src: "/assets/alis/img_3283.jpg", cap: { ru: "Укладка", en: "Styling" } },
   { src: "/assets/alis/work_nails_nude.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-  { src: "/assets/alis/work_makeup_evening.jpg", cap: { ru: "Макияж и причёска", en: "Makeup & hair" } },
+  { src: "/assets/alis/work_makeup_evening.jpg", cap: { ru: "Макияж + причёска", en: "Makeup & hair" } },
   { src: "/assets/alis/work_hair_waves.jpg", cap: { ru: "Укладка", en: "Styling" } },
   { src: "/assets/alis/img_8578.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-  { src: "/assets/alis/work_makeup_bun.jpg", cap: { ru: "Макияж и причёска", en: "Makeup & hair" } },
+  { src: "/assets/alis/work_makeup_bun.jpg", cap: { ru: "Макияж + причёска", en: "Makeup & hair" } },
   { src: "/assets/alis/work_hair_bun.jpg", cap: { ru: "Причёска", en: "Hairstyle" } },
   { src: "/assets/alis/work_nails_bag.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-  { src: "/assets/alis/img_6011.jpg", cap: { ru: "Образ: укладка и макияж", en: "Look: styling & makeup" } },
+  { src: "/assets/alis/img_6011.jpg", cap: { ru: "Укладка + макияж", en: "Look: styling & makeup" } },
   { src: "/assets/alis/img_6048.jpg", cap: { ru: "Магазин ÁLIS BEAUTY", en: "ÁLIS BEAUTY shop" } },
 ];
 
@@ -43,7 +44,8 @@ function Track({ items, hidden = false, moved }: { items: MarqueeItem[]; hidden?
           </>
         );
         return (
-          <li key={i} className="group relative mr-2 aspect-[3/4] h-[300px] shrink-0 sm:h-[380px] overflow-hidden rounded-[20px] lg:mr-3 lg:h-[540px]">
+          <li key={i} className="group mr-2 shrink-0 lg:mr-3">
+            <div className="relative aspect-[3/4] h-[300px] overflow-hidden rounded-[20px] sm:h-[380px] lg:h-[540px]">
             {href ? (
               <a
                 href={href}
@@ -58,6 +60,9 @@ function Track({ items, hidden = false, moved }: { items: MarqueeItem[]; hidden?
             ) : (
               inner
             )}
+            </div>
+            {/* Подпись услуги — тихо, по низу фото */}
+            {cap && <p className="mt-2.5 pl-1 text-[10.5px] uppercase tracking-[0.14em] text-[#17191a]/50 sm:text-[11px]">{cap[lang]}</p>}
           </li>
         );
       })}
@@ -70,14 +75,16 @@ function Track({ items, hidden = false, moved }: { items: MarqueeItem[]; hidden?
 // Переиспользуется: главная (работы мастеров) и страница салона (#gallery).
 export default function PhotoMarquee({
   items = ITEMS,
-  title = { ru: "То, что создают специалисты ÁLIS BEAUTY", en: "Created by ÁLIS BEAUTY specialists" },
+  title = { ru: "Галерея работ специалистов ÁLIS BEAUTY", en: "ÁLIS BEAUTY specialists' work" },
   sectionId,
   text,
+  cta = { label: { ru: "Посмотреть услуги", en: "View services" }, href: "/salon#uslugi" },
 }: {
   items?: MarqueeItem[];
   title?: Loc | null; // null — без заголовка
   sectionId?: string;
   text?: Loc; // короткая строка под заголовком
+  cta?: { label: Loc; href: string } | null; // кнопка-строка под лентой
 } = {}) {
   const { lang } = useLang();
 
@@ -190,6 +197,7 @@ export default function PhotoMarquee({
       <div className="mx-auto mt-10 h-[3px] w-[96%] max-w-[1760px] overflow-hidden rounded-full bg-[#C2C0B6]/40">
         <div ref={barRef} className="h-full rounded-full bg-[#17191a]" style={{ width: "0%" }} />
       </div>
+      {cta && <LineCta href={cta.href} label={cta.label[lang]} />}
     </section>
   );
 }
