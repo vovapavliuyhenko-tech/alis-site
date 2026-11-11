@@ -19,7 +19,7 @@ const HEROES = [
 const PILLS: { ru: string; en: string; href: string }[] = [
   { ru: "Все", en: "All", href: "/shop/catalog" },
   { ru: "Уход", en: "Care", href: "/shop/catalog?cat=%D1%83%D1%85%D0%BE%D0%B4" },
-  { ru: "Мерч", en: "Merch", href: "/shop/catalog?cat=%D0%BE%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0" },
+  { ru: "Мерч", en: "Merch", href: "/shop/catalog" },
   { ru: "Подарочный бокс", en: "Gift box", href: "#box" },
   { ru: "Сертификаты", en: "Certificates", href: "https://o8981.yclients.ru/certificates" },
 ];
