@@ -33,7 +33,7 @@ export function ShopCategories() {
   ];
   // Вид — как прежний блок категорий: светлые плитки, круглое фото, подпись капсом и цена
   return (
-    <section id="categories" className="scroll-mt-24 bg-white section-y">
+    <section id="categories" className="scroll-mt-24 bg-white section-y !pt-6 lg:!pt-8">
       <div className="mx-auto w-[96%] max-w-[1760px]">
         <h2 className="sr-only">{en ? "Categories" : "Категории"}</h2>
         {/* Телефон — лента вбок, компьютер — 4 в ряд */}
