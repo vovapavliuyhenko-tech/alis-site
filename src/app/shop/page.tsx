@@ -5,6 +5,7 @@ import BlockLabel from "@/components/ui/BlockLabel";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ShopCategories } from "@/components/shop/ShopBlocks";
 import { ShopBanner, HairCta } from "@/components/shop/ShopIntro";
+import { ShopTrend } from "@/components/shop/ShopShowcase";
 import BoxBuilder from "@/components/shop/BoxBuilder";
 
 // Страница «Магазин» — мерч ÁLIS BEAUTY. Структура и анимации — по главной
@@ -24,6 +25,8 @@ export default function ShopPage() {
       <div className="relative z-10 bg-white page-end">
         <BlockLabel ru="Категории" en="Categories" />
         <ShopCategories />
+        {/* Коллекция — карточки товаров, как было */}
+        <ShopTrend />
         <HairCta />
         <BoxBuilder />
       </div>
