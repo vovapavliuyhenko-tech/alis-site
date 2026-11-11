@@ -1,5 +1,6 @@
 // НАПОЛНЕНИЕ ПОДАРОЧНОГО БОКСА — список средств от заказчицы (ссылки «Золотого яблока» и LUVU).
-export type BoxItem = { name: string; brand: string; img?: string };
+// price — розничная цена в ₽ (LUVU — с сайта бренда); без цены — «цена у менеджера»
+export type BoxItem = { name: string; brand: string; img?: string; price?: number };
 export type BoxGroup = { title: string; items: BoxItem[] };
 
 // Фото товаров — с карточек на сайтах брендов/официальных ритейлеров, приведены к белому квадрату.
@@ -42,22 +43,22 @@ export const BOX_GROUPS: BoxGroup[] = [
   {
     title: "Макияж LUVU",
     items: [
-      { name: "Lip Pencil Dreamy Nude", brand: "LUVU", img: "/assets/products/luvu-lip-pencil-dreamy-nude-v2.jpg" },
-      { name: "Lip Pencil Rose Haze", brand: "LUVU", img: "/assets/products/luvu-lip-pencil-rose-haze-v2.jpg" },
-      { name: "Lip Pencil Flirt Alert", brand: "LUVU", img: "/assets/products/luvu-lip-pencil-flirt-alert-v2.jpg" },
-      { name: "Lip Gloss Dreamy Nude", brand: "LUVU", img: "/assets/products/luvu-lip-gloss-dreamy-nude-v2.jpg" },
-      { name: "Lip Gloss Rose Haze", brand: "LUVU", img: "/assets/products/luvu-lip-gloss-rose-haze-v2.jpg" },
-      { name: "Lip Gloss Flirt Alert", brand: "LUVU", img: "/assets/products/luvu-lip-gloss-flirt-alert-v2.jpg" },
-      { name: "Lip Gloss Berry Kiss", brand: "LUVU", img: "/assets/products/luvu-lip-gloss-berry-kiss-v2.jpg" },
-      { name: "Lip Gloss Dolce Daze", brand: "LUVU", img: "/assets/products/luvu-lip-gloss-dolce-daze-v2.jpg" },
-      { name: "Lip Combo Flirt Alert", brand: "LUVU", img: "/assets/products/luvu-nabor-dlya-gub-lip-combo-flirt-alert-v2.jpg" },
-      { name: "Glossy Lip Treatment SPF 15", brand: "LUVU", img: "/assets/products/luvu-glossy-lip-treatment-spf-15-v2.jpg" },
+      { name: "Lip Pencil Dreamy Nude", brand: "LUVU", img: "/assets/products/luvu-lip-pencil-dreamy-nude-v2.jpg", price: 1120 },
+      { name: "Lip Pencil Rose Haze", brand: "LUVU", img: "/assets/products/luvu-lip-pencil-rose-haze-v2.jpg", price: 1120 },
+      { name: "Lip Pencil Flirt Alert", brand: "LUVU", img: "/assets/products/luvu-lip-pencil-flirt-alert-v2.jpg", price: 1120 },
+      { name: "Lip Gloss Dreamy Nude", brand: "LUVU", img: "/assets/products/luvu-lip-gloss-dreamy-nude-v2.jpg", price: 1070 },
+      { name: "Lip Gloss Rose Haze", brand: "LUVU", img: "/assets/products/luvu-lip-gloss-rose-haze-v2.jpg", price: 1070 },
+      { name: "Lip Gloss Flirt Alert", brand: "LUVU", img: "/assets/products/luvu-lip-gloss-flirt-alert-v2.jpg", price: 1070 },
+      { name: "Lip Gloss Berry Kiss", brand: "LUVU", img: "/assets/products/luvu-lip-gloss-berry-kiss-v2.jpg", price: 1070 },
+      { name: "Lip Gloss Dolce Daze", brand: "LUVU", img: "/assets/products/luvu-lip-gloss-dolce-daze-v2.jpg", price: 1070 },
+      { name: "Lip Combo Flirt Alert", brand: "LUVU", img: "/assets/products/luvu-nabor-dlya-gub-lip-combo-flirt-alert-v2.jpg", price: 1980 },
+      { name: "Glossy Lip Treatment SPF 15", brand: "LUVU", img: "/assets/products/luvu-glossy-lip-treatment-spf-15-v2.jpg", price: 1070 },
       { name: "Lip + Cheek Stick Never Shy", brand: "LUVU", img: "/assets/products/luvu-lip-cheek-stick-never-shy-v2.jpg" },
       { name: "Lip + Cheek Stick Almost Ready", brand: "LUVU", img: "/assets/products/luvu-lip-cheek-stick-almost-ready-v2.jpg" },
       { name: "Lip + Cheek Stick Always Busy", brand: "LUVU", img: "/assets/products/luvu-lip-cheek-stick-always-busy-v2.jpg" },
       { name: "Trio Lip + Cheek Stick", brand: "LUVU", img: "/assets/products/luvu-lip-cheek-stick-trio-v2.jpg" },
-      { name: "Brow Sculpture", brand: "LUVU", img: "/assets/products/luvu-brow-sculpture-v2.jpg" },
-      { name: "Daily Glow Fluid SPF 30", brand: "LUVU", img: "/assets/products/luvu-daily-glow-fluid-spf-30-v2.jpg" },
+      { name: "Brow Sculpture", brand: "LUVU", img: "/assets/products/luvu-brow-sculpture-v2.jpg", price: 890 },
+      { name: "Daily Glow Fluid SPF 30", brand: "LUVU", img: "/assets/products/luvu-daily-glow-fluid-spf-30-v2.jpg", price: 2070 },
     ],
   },
   {

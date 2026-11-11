@@ -58,6 +58,8 @@ export default function BoxBuilder() {
     `rounded-[16px] border p-5 text-left transition-all duration-300 ${on ? "border-[#17191a] ring-1 ring-[#17191a]" : "border-[#17191a]/12 hover:border-[#17191a]/40"}`;
   const field = "h-[48px] w-full rounded-[14px] bg-[#f6f4f1] px-4 text-[13px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 focus:ring-1 focus:ring-[#17191a]/25";
   const count = items.length;
+  const total = items.reduce((sum, it) => sum + (ALL.find((x) => x.name === it)?.price || 0), 0);
+  const partial = items.some((it) => !ALL.find((x) => x.name === it)?.price);
   const word = count === 1 ? "средство" : count > 1 && count < 5 ? "средства" : "средств";
 
   return (
@@ -173,6 +175,7 @@ export default function BoxBuilder() {
                             <span aria-hidden className={`absolute right-1.5 top-1.5 flex h-5 w-5 items-center justify-center rounded-full text-[11px] transition-all ${on ? "bg-[#17191a] text-white" : "bg-white/90 text-[#17191a]/45 ring-1 ring-[#17191a]/15"}`}>{on ? "✓" : "+"}</span>
                           </span>
                           <span className="mt-1.5 line-clamp-2 block text-[11px] leading-[1.3] text-[#17191a]/80">{p.name}</span>
+                          <span className="mt-1 block text-[11.5px] font-medium text-[#17191a]">{p.price ? `${p.price.toLocaleString("ru-RU")} ₽` : <span className="font-normal text-[#17191a]/40">цена у менеджера</span>}</span>
                         </button>
                       );
                     })}
@@ -208,6 +211,7 @@ export default function BoxBuilder() {
               <div className="mt-8 flex flex-col gap-4 border-t border-[#17191a]/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-[12.5px] text-[#17191a]/60">
                   {sizeDef.label} · {BOX_COLORS[color].label} · {count ? `${count} ${word}` : "без наполнения"}
+                  {total > 0 && <span className="ml-1 font-medium text-[#17191a]">· {partial ? "от " : ""}{total.toLocaleString("ru-RU")} ₽</span>}
                 </p>
                 <div className="flex items-center gap-3">
                   {step > 0 && (
