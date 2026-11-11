@@ -56,7 +56,7 @@ export function ShopBanner() {
           <img src={BANNER_PHOTO} alt="" className="h-[300px] w-full object-cover sm:h-[360px] lg:h-[420px]" />
           <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-black/5" />
           <div className="absolute inset-x-0 bottom-0 px-5 pb-12 text-left sm:px-10 sm:pb-14 lg:px-14 lg:pb-16">
-            <h1 className="max-w-[58%] font-serif-display sm:max-w-[52%] text-[clamp(15px,4.2vw,19px)] font-normal uppercase leading-[1.25] tracking-[0.04em] text-white [text-shadow:0_2px_24px_rgba(0,0,0,.3)] sm:text-[22px] lg:text-[28px]">
+            <h1 className="max-w-[64%] font-serif-display sm:max-w-[52%] text-[clamp(13px,3.7vw,16px)] font-normal uppercase leading-[1.25] tracking-[0.04em] text-white [text-shadow:0_2px_24px_rgba(0,0,0,.3)] sm:text-[22px] lg:text-[28px]">
               {lang === "en"
                 ? "The products ÁLIS BEAUTY specialists work with, plus merch and accessories"
                 : "Средства, которыми работают специалисты ÁLIS BEAUTY, а также мерч и аксессуары"}
