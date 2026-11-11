@@ -20,8 +20,8 @@ export function ShopBanner() {
         <div className="relative flex w-full flex-col items-center px-5 pb-6 sm:px-10 sm:pb-8 lg:pb-10">
         <h1 className="w-full text-center font-serif-display text-[clamp(16px,4.4vw,20px)] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_24px_rgba(0,0,0,.3)] sm:text-[24px] lg:text-[30px]">
           {lang === "en"
-            ? "The products ÁLIS BEAUTY specialists work with, plus merch and accessories"
-            : "Средства, которыми работают специалисты ÁLIS BEAUTY, а также мерч и аксессуары"}
+            ? <>The products ÁLIS BEAUTY specialists work with,<br />plus merch and accessories</>
+            : <>Средства, которыми работают специалисты ÁLIS BEAUTY,<br />а также мерч и аксессуары</>}
         </h1>
         <a
           href="#categories"
