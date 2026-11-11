@@ -13,15 +13,23 @@ export function ShopBanner() {
   const { lang } = useLang();
   return (
     <section className="bg-white pt-[96px] min-[1280px]:pt-[110px]">
-      <div className="relative mx-auto flex h-[300px] w-[96%] max-w-[1760px] items-end overflow-hidden rounded-[22px] sm:h-[380px] sm:rounded-[28px] lg:h-[480px]">
+      <div className="relative mx-auto flex h-[300px] w-[96%] max-w-[1760px] items-end overflow-hidden rounded-[22px] sm:h-[460px] sm:rounded-[28px] lg:h-[580px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={BANNER_PHOTO} alt="" className="absolute inset-0 h-full w-full object-cover" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-        <h1 className="relative w-full px-5 pb-6 text-center font-serif-display text-[clamp(16px,4.4vw,20px)] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_24px_rgba(0,0,0,.3)] sm:px-10 sm:pb-8 sm:text-[24px] lg:pb-10 lg:text-[30px]">
+        <div className="relative flex w-full flex-col items-center px-5 pb-6 sm:px-10 sm:pb-8 lg:pb-10">
+        <h1 className="w-full text-center font-serif-display text-[clamp(16px,4.4vw,20px)] font-normal uppercase leading-[1.2] tracking-[0.04em] text-white [text-shadow:0_2px_24px_rgba(0,0,0,.3)] sm:text-[24px] lg:text-[30px]">
           {lang === "en"
             ? "The products ÁLIS BEAUTY specialists work with, plus merch and accessories"
             : "Средства, которыми работают специалисты ÁLIS BEAUTY, а также мерч и аксессуары"}
         </h1>
+        <a
+          href="#categories"
+          className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-[11px] uppercase tracking-[0.16em] text-[#17191a] transition-colors duration-500 hover:bg-[#17191a] hover:text-white sm:mt-6 sm:text-[12px]"
+        >
+          {lang === "en" ? "View catalogue" : "Смотреть каталог"}
+        </a>
+        </div>
       </div>
     </section>
   );
