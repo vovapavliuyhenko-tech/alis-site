@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { PRODUCTS, fmtPrice } from "@/lib/products";
+import { useShop } from "@/lib/shop";
 
 type Loc = { ru: string; en: string };
 const CERTS = "https://o8981.yclients.ru/certificates";
@@ -171,6 +172,44 @@ export const ALT_PHOTO: Record<string, string> = {
 };
 export const NEW_IDS = new Set(["hoodie", "careset"]);
 
+// Карточка товара: при наведении — второй кадр и снизу выезжает белая кнопка «В корзину»
+// (на телефоне кнопка видна всегда). Нажатие — товар в корзину, кнопка на миг показывает «Добавлено».
+function TrendCard({ p }: { p: (typeof PRODUCTS)[number] }) {
+  const { lang } = useLang();
+  const shop = useShop();
+  const [added, setAdded] = useState(false);
+  const add = () => {
+    shop.add(p.id);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1600);
+  };
+  return (
+    <div className="r-reveal group relative flex aspect-[296/355] flex-col overflow-hidden rounded-[20px] bg-[#f6f4f1]">
+      <Link href={`/product/${p.id}`} aria-label={p.name[lang]} className="absolute inset-0 z-[1]" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={p.img} alt={p.name[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ease-in-out group-hover:opacity-0" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={ALT_PHOTO[p.id] || p.img} alt="" aria-hidden loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
+      {NEW_IDS.has(p.id) && (
+        <span className="absolute right-3 top-3 rounded-full bg-white px-3 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-[#17191a]">New</span>
+      )}
+      <div className="pointer-events-none relative mt-auto bg-gradient-to-t from-black/55 to-transparent px-3 pb-3 pt-12 text-white lg:px-4 lg:pb-4">
+        <div className="flex items-end justify-between gap-2 transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)] [@media(hover:hover)]:group-hover:-translate-y-[46px]">
+          <span className="text-[11px] uppercase leading-[1.3] tracking-[0.06em] lg:text-[12px]">{p.name[lang]}</span>
+          <span className="shrink-0 text-[11px] lg:text-[12px]">{fmtPrice(p.price)}</span>
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={add}
+        className="absolute inset-x-3 bottom-3 z-[2] flex h-[38px] items-center justify-center rounded-[10px] bg-white text-[10.5px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-all duration-500 ease-[cubic-bezier(.22,.61,.36,1)] hover:bg-[#17191a] hover:text-white max-[1023px]:relative max-[1023px]:inset-auto max-[1023px]:mx-3 max-[1023px]:mb-3 [@media(hover:hover)]:translate-y-[140%] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100 lg:inset-x-4 lg:bottom-4"
+      >
+        {added ? (lang === "en" ? "Added ✓" : "Добавлено ✓") : lang === "en" ? "Add to cart" : "В корзину"}
+      </button>
+    </div>
+  );
+}
+
 export function ShopTrend() {
   const { lang } = useLang();
   const items = PRODUCTS.slice(0, 4);
@@ -217,25 +256,7 @@ export function ShopTrend() {
           {/* Сетка 2×2 товаров: при наведении — второй кадр */}
           <div className="grid grid-cols-2 gap-2">
             {items.map((p) => (
-              <Link
-                key={p.id}
-                href={`/product/${p.id}`}
-                className="r-reveal group relative flex aspect-[296/355] flex-col overflow-hidden rounded-[20px] bg-[#f6f4f1]"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={p.img} alt={p.name[lang]} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ease-in-out group-hover:opacity-0" />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={ALT_PHOTO[p.id] || p.img} alt="" aria-hidden loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100" />
-                {NEW_IDS.has(p.id) && (
-                  <span className="absolute right-3 top-3 rounded-full bg-white px-3 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-[#46131E]">
-                    New
-                  </span>
-                )}
-                <div className="relative mt-auto flex items-end justify-between gap-2 bg-gradient-to-t from-black/45 to-transparent px-3 pb-3 pt-10 text-white lg:px-4 lg:pb-4">
-                  <span className="text-[11px] uppercase leading-[1.3] tracking-[0.06em] lg:text-[12px]">{p.name[lang]}</span>
-                  <span className="shrink-0 text-[11px] lg:text-[12px]">{fmtPrice(p.price)}</span>
-                </div>
-              </Link>
+              <TrendCard key={p.id} p={p} />
             ))}
           </div>
         </div>
