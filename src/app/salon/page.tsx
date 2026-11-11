@@ -75,7 +75,7 @@ export default function SalonPage() {
             { src: "/assets/alis/nails_pink_ring.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
             { src: "/assets/alis/img_6048.jpg", cap: { ru: "Магазин ÁLIS BEAUTY", en: "ÁLIS BEAUTY shop" } },
           ]}
-          cta={{ label: { ru: "Посмотреть услуги", en: "View services" }, href: "#uslugi" }}
+          cta={null}
           title={{ ru: "Атмосфера, в которую хочется вернуться", en: "An atmosphere you want to come back to" }}
           text={{
             ru: "Гости говорят, что чувствуют себя окрылёнными после процедур, — а мы делаем всё, чтобы так было каждый раз.",
