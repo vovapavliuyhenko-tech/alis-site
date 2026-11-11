@@ -177,7 +177,7 @@ export default function BoxBuilder() {
                   </div>
                   {/* Сетка товаров: без своей полосы прокрутки, мягкое растворение снизу; вся карточка — кнопка */}
                   <div key={group} className="relative mt-4">
-                    <div className="grid max-h-[392px] grid-cols-3 content-start gap-x-2.5 gap-y-4 overflow-y-auto pb-6 [mask-image:linear-gradient(to_bottom,#000_88%,transparent)] [scrollbar-width:none] sm:grid-cols-4 [&::-webkit-scrollbar]:hidden">
+                    <div className="grid max-h-[392px] grid-cols-3 content-start gap-x-2.5 gap-y-4 overflow-y-auto pb-6 [scrollbar-width:none] sm:grid-cols-4 [&::-webkit-scrollbar]:hidden">
                       {GROUPS[group].items.map((p, k) => {
                         const on = items.includes(p.name);
                         return (
@@ -191,7 +191,7 @@ export default function BoxBuilder() {
                           >
                             <span className={`relative block aspect-square overflow-hidden rounded-[14px] bg-[#f6f4f1] transition-all duration-300 ${on ? "ring-2 ring-[#17191a]" : "ring-0 group-hover:ring-1 group-hover:ring-[#17191a]/25"}`}>
                               {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img src={p.img} alt={p.name} loading="lazy" className={`h-full w-full object-contain mix-blend-multiply transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)] ${on ? "scale-[0.92]" : "group-hover:scale-[1.04]"}`} />
+                              <img src={p.img} alt={p.name} className={`h-full w-full object-contain mix-blend-multiply transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)] ${on ? "scale-[0.92]" : "group-hover:scale-[1.04]"}`} />
                               <span aria-hidden className={`absolute right-1.5 top-1.5 flex h-6 w-6 items-center justify-center rounded-full text-[12px] transition-all duration-300 ${on ? "scale-100 bg-[#17191a] text-white" : "scale-90 bg-white text-[#17191a]/50 shadow-[0_1px_4px_rgba(0,0,0,.08)] group-hover:scale-100 group-hover:text-[#17191a]"}`}>
                                 {on ? "✓" : "+"}
                               </span>
