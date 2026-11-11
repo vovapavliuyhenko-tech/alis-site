@@ -34,10 +34,10 @@ export function ShopBanner() {
   }, []);
 
   return (
-    <section className="bg-white pb-[clamp(56px,7vw,104px)] pt-[84px] min-[1280px]:pt-[96px]">
-      <div className="relative mx-auto w-[96%] max-w-[1760px]">
+    <section className="bg-white pb-[clamp(56px,7vw,104px)] pt-[70px] min-[1280px]:pt-[80px]">
+      <div className="relative mx-auto w-[96%] max-w-[1760px] pt-[90px] sm:pt-[150px] lg:pt-[200px]">
         {/* Товар-герой: выходит над верхним краем баннера */}
-        <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 z-20 h-[200px] w-[180px] -translate-x-1/2 sm:left-auto sm:right-[8%] sm:h-[300px] sm:w-[260px] sm:translate-x-0 lg:right-[10%] lg:h-[420px] lg:w-[340px]">
+        <div aria-hidden className="pointer-events-none absolute right-[5%] top-0 z-20 h-[220px] w-[120px] sm:right-[8%] sm:h-[320px] sm:w-[220px] lg:right-[10%] lg:h-[440px] lg:w-[320px]">
           {HEROES.map((h, k) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -51,17 +51,17 @@ export function ShopBanner() {
         </div>
 
         {/* Фото-баннер */}
-        <div className="relative mt-[110px] overflow-hidden rounded-[22px] sm:mt-[150px] sm:rounded-[28px] lg:mt-[200px]">
+        <div className="relative overflow-hidden rounded-[22px] sm:rounded-[28px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={BANNER_PHOTO} alt="" className="h-[300px] w-full object-cover sm:h-[360px] lg:h-[420px]" />
           <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-black/5" />
-          <div className="absolute inset-x-0 bottom-0 px-5 pb-12 text-center sm:px-10 sm:pb-14 sm:text-left lg:px-14 lg:pb-16">
-            <h1 className="mx-auto max-w-[900px] font-serif-display sm:mx-0 sm:max-w-[52%] text-[clamp(15px,4.2vw,19px)] font-normal uppercase leading-[1.25] tracking-[0.04em] text-white [text-shadow:0_2px_24px_rgba(0,0,0,.3)] sm:text-[22px] lg:text-[28px]">
+          <div className="absolute inset-x-0 bottom-0 px-5 pb-12 text-left sm:px-10 sm:pb-14 lg:px-14 lg:pb-16">
+            <h1 className="max-w-[58%] font-serif-display sm:max-w-[52%] text-[clamp(15px,4.2vw,19px)] font-normal uppercase leading-[1.25] tracking-[0.04em] text-white [text-shadow:0_2px_24px_rgba(0,0,0,.3)] sm:text-[22px] lg:text-[28px]">
               {lang === "en"
                 ? "The products ÁLIS BEAUTY specialists work with, plus merch and accessories"
                 : "Средства, которыми работают специалисты ÁLIS BEAUTY, а также мерч и аксессуары"}
             </h1>
-            <p key={i} className="mt-3 animate-[shop-hero-in_.8s_ease_both] text-[11px] uppercase tracking-[0.16em] text-white/70">{HEROES[i].name}</p>
+            <p key={i} className="mt-3 hidden animate-[shop-hero-in_.8s_ease_both] text-[11px] sm:block uppercase tracking-[0.16em] text-white/70">{HEROES[i].name}</p>
           </div>
         </div>
 
