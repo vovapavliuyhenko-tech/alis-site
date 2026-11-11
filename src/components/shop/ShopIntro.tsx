@@ -37,7 +37,7 @@ export function ShopBanner() {
     <section className="bg-white pb-[clamp(56px,7vw,104px)] pt-[84px] min-[1280px]:pt-[96px]">
       <div className="relative mx-auto w-[96%] max-w-[1760px]">
         {/* Товар-герой: выходит над верхним краем баннера */}
-        <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 z-20 h-[230px] w-[200px] -translate-x-1/2 sm:h-[300px] sm:w-[260px] lg:h-[400px] lg:w-[340px]">
+        <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 z-20 h-[200px] w-[180px] -translate-x-1/2 sm:left-auto sm:right-[8%] sm:h-[300px] sm:w-[260px] sm:translate-x-0 lg:right-[10%] lg:h-[420px] lg:w-[340px]">
           {HEROES.map((h, k) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -51,12 +51,12 @@ export function ShopBanner() {
         </div>
 
         {/* Фото-баннер */}
-        <div className="relative mt-[120px] overflow-hidden rounded-[22px] sm:mt-[150px] sm:rounded-[28px] lg:mt-[190px]">
+        <div className="relative mt-[110px] overflow-hidden rounded-[22px] sm:mt-[150px] sm:rounded-[28px] lg:mt-[200px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={BANNER_PHOTO} alt="" className="h-[300px] w-full object-cover sm:h-[360px] lg:h-[420px]" />
           <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-black/5" />
-          <div className="absolute inset-x-0 bottom-0 px-5 pb-12 text-center sm:pb-14 lg:pb-16">
-            <h1 className="mx-auto max-w-[900px] font-serif-display text-[clamp(15px,4.2vw,19px)] font-normal uppercase leading-[1.25] tracking-[0.04em] text-white [text-shadow:0_2px_24px_rgba(0,0,0,.3)] sm:text-[22px] lg:text-[28px]">
+          <div className="absolute inset-x-0 bottom-0 px-5 pb-12 text-center sm:px-10 sm:pb-14 sm:text-left lg:px-14 lg:pb-16">
+            <h1 className="mx-auto max-w-[900px] font-serif-display sm:mx-0 sm:max-w-[52%] text-[clamp(15px,4.2vw,19px)] font-normal uppercase leading-[1.25] tracking-[0.04em] text-white [text-shadow:0_2px_24px_rgba(0,0,0,.3)] sm:text-[22px] lg:text-[28px]">
               {lang === "en"
                 ? "The products ÁLIS BEAUTY specialists work with, plus merch and accessories"
                 : "Средства, которыми работают специалисты ÁLIS BEAUTY, а также мерч и аксессуары"}
