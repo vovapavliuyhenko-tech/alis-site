@@ -25,7 +25,7 @@ export function ShopBanner() {
         </h1>
         <a
           href="#categories"
-          className="mt-5 flex w-full items-center justify-center gap-2 rounded-[14px] bg-white px-7 py-4 text-[11px] sm:py-5 uppercase tracking-[0.16em] text-[#17191a] transition-colors duration-500 hover:bg-[#17191a] hover:text-white sm:mt-6 sm:text-[12px]"
+          className="mt-5 flex w-full items-center justify-center gap-2 rounded-[14px] border border-white/70 bg-transparent px-7 py-4 text-[11px] sm:py-5 uppercase tracking-[0.16em] text-white transition-colors duration-500 hover:border-white hover:bg-white hover:text-[#17191a] sm:mt-6 sm:text-[12px]"
         >
           {lang === "en" ? "View catalogue" : "Смотреть каталог"}
         </a>
