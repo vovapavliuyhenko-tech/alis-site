@@ -143,7 +143,7 @@ export default function BoxBuilder() {
                 ))}
               </div>
               {/* Товары — карточки с фото (как в примере), выбранные отмечены галочкой */}
-              <div className="mt-3 grid max-h-[520px] grid-cols-3 gap-2 overflow-y-auto pr-1 sm:grid-cols-4 sm:gap-3">
+              <div className="mt-3 grid max-h-[460px] grid-cols-3 gap-2 overflow-y-auto pr-1 sm:grid-cols-4 sm:gap-3 xl:grid-cols-5">
                 {BOX_GROUPS[group].items.map((p) => {
                   const on = items.includes(p.name);
                   return (
