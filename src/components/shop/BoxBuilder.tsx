@@ -10,6 +10,8 @@ import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
 import { BOX_COLORS, BOX_GROUPS, BOX_SIZES, type BoxColor, type BoxSize } from "@/lib/boxProducts";
 
 const ALL = BOX_GROUPS.flatMap((g) => g.items);
+// В выбор попадают только товары с фото (без фото карточка выглядит пустой); пустые вкладки скрыты
+const GROUPS = BOX_GROUPS.map((g) => ({ ...g, items: g.items.filter((p) => p.img) })).filter((g) => g.items.length);
 const STEPS = ["Размер", "Цвет", "Наполнение", "Контакты"];
 
 export default function BoxBuilder() {
@@ -36,6 +38,8 @@ export default function BoxBuilder() {
   const img = `/assets/box/box_${color}_${opened ? "open" : "closed"}.jpg`;
   const ok = !!name.trim() && phoneComplete(phone) && consent && items.length > 0;
   const canNext = step === 2 ? items.length > 0 : true;
+  const [nudge, setNudge] = useState(0); // «покачать» подсказку, если нажали «Далее» без наполнения
+  const next = () => (canNext ? setStep(step + 1) : setNudge((n) => n + 1));
 
   const send = () => {
     if (!ok) return;
@@ -152,33 +156,52 @@ export default function BoxBuilder() {
 
               {step === 2 && (
                 <>
-                  <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">Наполнение</h3>
-                  <div className="mt-4 flex gap-5 overflow-x-auto border-b border-[#17191a]/10 [scrollbar-width:none]">
-                    {BOX_GROUPS.map((g, i) => (
-                      <button key={g.title} type="button" onClick={() => setGroup(i)} className={`-mb-px shrink-0 border-b pb-2.5 text-[12.5px] transition-colors ${group === i ? "border-[#17191a] text-[#17191a]" : "border-transparent text-[#17191a]/45 hover:text-[#17191a]"}`}>
-                        {g.title}
-                      </button>
-                    ))}
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">Наполнение</h3>
+                    {/* Счётчик выбранного — «тикает» при каждом изменении */}
+                    <span key={count} className={`text-[12px] tabular-nums transition-colors ${count ? "animate-[box-pop_.35s_ease] text-[#17191a]" : "text-[#17191a]/40"}`}>
+                      {count ? `Выбрано: ${count}` : "Выберите средства"}
+                    </span>
                   </div>
-                  <div className="mt-4 grid max-h-[400px] grid-cols-3 content-start items-start gap-x-3 gap-y-4 overflow-y-auto p-0.5 pr-1.5 sm:grid-cols-4">
-                    {BOX_GROUPS[group].items.map((p) => {
-                      const on = items.includes(p.name);
+                  {/* Вкладки-«таблетки» с числом выбранного в каждой */}
+                  <div className="-mx-1 mt-4 flex gap-1.5 overflow-x-auto px-1 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    {GROUPS.map((g, i) => {
+                      const n = g.items.filter((p) => items.includes(p.name)).length;
                       return (
-                        <button key={p.name} type="button" onClick={() => toggle(p.name)} aria-pressed={on} className="group flex flex-col text-left outline-none">
-                          <span className={`relative block aspect-square overflow-hidden rounded-[12px] bg-white ring-1 transition-all duration-300 ${on ? "ring-2 ring-[#17191a]" : "ring-[#17191a]/10 group-hover:ring-[#17191a]/35"}`}>
-                            {p.img ? (
-                              // eslint-disable-next-line @next/next/no-img-element
-                              <img src={p.img} alt={p.name} loading="lazy" className="h-full w-full object-contain" />
-                            ) : (
-                              <span className="flex h-full w-full items-center justify-center bg-[#f6f4f1] px-2 text-center text-[10px] uppercase tracking-[0.08em] text-[#17191a]/45">{p.brand}</span>
-                            )}
-                            <span aria-hidden className={`absolute right-1.5 top-1.5 flex h-5 w-5 items-center justify-center rounded-full text-[11px] transition-all ${on ? "bg-[#17191a] text-white" : "bg-white/90 text-[#17191a]/45 ring-1 ring-[#17191a]/15"}`}>{on ? "✓" : "+"}</span>
-                          </span>
-                          <span className="mt-1.5 line-clamp-2 block text-[11px] leading-[1.3] text-[#17191a]/80">{p.name}</span>
-                          <span className="mt-1 block text-[11.5px] font-medium text-[#17191a]">{p.price ? `${p.price.toLocaleString("ru-RU")} ₽` : <span className="font-normal text-[#17191a]/40">цена у менеджера</span>}</span>
+                        <button key={g.title} type="button" onClick={() => setGroup(i)} className={`flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2 text-[12px] transition-colors duration-300 ${group === i ? "bg-[#17191a] text-white" : "bg-[#f6f4f1] text-[#17191a]/70 hover:text-[#17191a]"}`}>
+                          {g.title}
+                          {n > 0 && <span className={`flex h-[18px] min-w-[18px] items-center justify-center rounded-full px-1 text-[10px] tabular-nums ${group === i ? "bg-white text-[#17191a]" : "bg-[#17191a] text-white"}`}>{n}</span>}
                         </button>
                       );
                     })}
+                  </div>
+                  {/* Сетка товаров: без своей полосы прокрутки, мягкое растворение снизу; вся карточка — кнопка */}
+                  <div key={group} className="relative mt-4">
+                    <div className="grid max-h-[392px] grid-cols-3 content-start gap-x-2.5 gap-y-4 overflow-y-auto pb-6 [mask-image:linear-gradient(to_bottom,#000_88%,transparent)] [scrollbar-width:none] sm:grid-cols-4 [&::-webkit-scrollbar]:hidden">
+                      {GROUPS[group].items.map((p, k) => {
+                        const on = items.includes(p.name);
+                        return (
+                          <button
+                            key={p.name}
+                            type="button"
+                            onClick={() => toggle(p.name)}
+                            aria-pressed={on}
+                            style={{ animationDelay: `${k * 25}ms` }}
+                            className="group flex animate-[box-in_.45s_cubic-bezier(.22,.61,.36,1)_both] flex-col text-left outline-none"
+                          >
+                            <span className={`relative block aspect-square overflow-hidden rounded-[14px] bg-[#f6f4f1] transition-all duration-300 ${on ? "ring-2 ring-[#17191a]" : "ring-0 group-hover:ring-1 group-hover:ring-[#17191a]/25"}`}>
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img src={p.img} alt={p.name} loading="lazy" className={`h-full w-full object-contain mix-blend-multiply transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)] ${on ? "scale-[0.92]" : "group-hover:scale-[1.04]"}`} />
+                              <span aria-hidden className={`absolute right-1.5 top-1.5 flex h-6 w-6 items-center justify-center rounded-full text-[12px] transition-all duration-300 ${on ? "scale-100 bg-[#17191a] text-white" : "scale-90 bg-white text-[#17191a]/50 shadow-[0_1px_4px_rgba(0,0,0,.08)] group-hover:scale-100 group-hover:text-[#17191a]"}`}>
+                                {on ? "✓" : "+"}
+                              </span>
+                            </span>
+                            <span className="mt-2 line-clamp-2 min-h-[2.6em] text-[11.5px] leading-[1.3] text-[#17191a]">{p.name}</span>
+                            {p.price ? <span className="mt-0.5 text-[11.5px] tabular-nums text-[#17191a]/55">{p.price.toLocaleString("ru-RU")} ₽</span> : null}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
                 </>
               )}
@@ -207,6 +230,9 @@ export default function BoxBuilder() {
             </div>
 
             {/* Итог и кнопки — как в Apple Store */}
+            {!sent && step === 2 && !count && nudge > 0 && (
+              <p key={nudge} className="mt-4 animate-[box-shake_.4s_ease] text-[12px] text-[#17191a]">Добавьте хотя бы одно средство — нажмите на «+» у товара</p>
+            )}
             {!sent && (
               <div className="mt-8 flex flex-col gap-4 border-t border-[#17191a]/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-[12.5px] text-[#17191a]/60">
@@ -220,8 +246,8 @@ export default function BoxBuilder() {
                     </button>
                   )}
                   {step < 3 ? (
-                    <button type="button" onClick={() => canNext && setStep(step + 1)} disabled={!canNext} className="rounded-full bg-[#17191a] px-8 py-3.5 text-[11.5px] font-medium uppercase tracking-[0.14em] text-white transition-opacity disabled:opacity-35">
-                      {step === 2 && !count ? "Выберите средства" : "Далее"}
+                    <button type="button" onClick={next} className="rounded-full bg-[#17191a] px-8 py-3.5 text-[11.5px] font-medium uppercase tracking-[0.14em] text-white transition-opacity disabled:opacity-35">
+                      {step === 2 && count ? `Далее · ${count}` : "Далее"}
                     </button>
                   ) : (
                     <button type="button" onClick={send} disabled={!ok} className="rounded-full bg-[#17191a] px-8 py-3.5 text-[11.5px] font-medium uppercase tracking-[0.14em] text-white transition-opacity disabled:opacity-35">
@@ -234,7 +260,7 @@ export default function BoxBuilder() {
           </div>
         </div>
       </div>
-      <style>{`@keyframes box-in { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }`}</style>
+      <style>{`@keyframes box-in { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } } @keyframes box-pop { 0% { transform: scale(.85); opacity: .4 } 60% { transform: scale(1.08) } 100% { transform: none; opacity: 1 } } @keyframes box-shake { 0%,100% { transform: none } 25% { transform: translateX(-5px) } 75% { transform: translateX(5px) } }`}</style>
     </section>
   );
 }
