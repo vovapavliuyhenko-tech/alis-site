@@ -56,8 +56,8 @@ export default function JoinQuiz() {
       <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-5 rounded-[22px] border border-[#17191a]/[0.06] bg-white px-4 py-7 text-[#17191a] shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
         {/* Слева: заголовок и плитки ответов */}
         <div className="flex flex-col text-left">
-          <h2 className="text-[#17191a]">{en ? "Become part of the ÁLIS BEAUTY team" : "Стать частью команды ÁLIS BEAUTY"}</h2>
-          <p className="mt-2 !text-[12.5px] text-[#17191a]/60 sm:mt-3 sm:!text-[15px]">{en ? "Four short steps — we'll get back to you." : "Четыре коротких шага — и мы с вами свяжемся."}</p>
+          <h2 className="text-[#17191a]">{en ? "Work at events in different cities and countries under the ÁLIS BEAUTY brand" : "Работайте на мероприятиях в разных городах и странах под брендом ÁLIS BEAUTY"}</h2>
+          <p className="mt-2 !text-[12.5px] text-[#17191a]/60 sm:mt-3 sm:!text-[15px]">{en ? "We find the big bookings, you create the looks. No client hunting and no spending on materials." : "Мы находим крупные заказы, вы создаёте образы. Без поиска клиентов и вложений в материалы."}</p>
           <div className="mt-7 hidden flex-col lg:flex">
             <div className="grid grid-cols-2 gap-2">
               {QS.map((x, i) => {
