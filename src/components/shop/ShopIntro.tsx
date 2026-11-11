@@ -13,7 +13,7 @@ export function ShopBanner() {
   const { lang } = useLang();
   return (
     <section className="bg-white pt-[96px] min-[1280px]:pt-[110px]">
-      <div className="relative mx-auto flex h-[220px] w-[96%] max-w-[1760px] items-end overflow-hidden rounded-[22px] sm:h-[280px] sm:rounded-[28px] lg:h-[340px]">
+      <div className="relative mx-auto flex h-[300px] w-[96%] max-w-[1760px] items-end overflow-hidden rounded-[22px] sm:h-[380px] sm:rounded-[28px] lg:h-[480px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={BANNER_PHOTO} alt="" className="absolute inset-0 h-full w-full object-cover" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />

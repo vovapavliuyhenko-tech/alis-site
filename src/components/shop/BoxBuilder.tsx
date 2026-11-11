@@ -158,15 +158,15 @@ export default function BoxBuilder() {
                       </button>
                     ))}
                   </div>
-                  <div className="mt-4 grid max-h-[380px] grid-cols-3 gap-3 overflow-y-auto pr-1 sm:grid-cols-4">
+                  <div className="mt-4 grid max-h-[400px] grid-cols-3 content-start items-start gap-x-3 gap-y-4 overflow-y-auto p-0.5 pr-1.5 sm:grid-cols-4">
                     {BOX_GROUPS[group].items.map((p) => {
                       const on = items.includes(p.name);
                       return (
-                        <button key={p.name} type="button" onClick={() => toggle(p.name)} aria-pressed={on} className="group text-left">
+                        <button key={p.name} type="button" onClick={() => toggle(p.name)} aria-pressed={on} className="group flex flex-col text-left outline-none">
                           <span className={`relative block aspect-square overflow-hidden rounded-[12px] bg-white ring-1 transition-all duration-300 ${on ? "ring-2 ring-[#17191a]" : "ring-[#17191a]/10 group-hover:ring-[#17191a]/35"}`}>
                             {p.img ? (
                               // eslint-disable-next-line @next/next/no-img-element
-                              <img src={p.img} alt={p.name} loading="lazy" className="h-full w-full object-contain p-1" />
+                              <img src={p.img} alt={p.name} loading="lazy" className="h-full w-full object-contain" />
                             ) : (
                               <span className="flex h-full w-full items-center justify-center bg-[#f6f4f1] px-2 text-center text-[10px] uppercase tracking-[0.08em] text-[#17191a]/45">{p.brand}</span>
                             )}

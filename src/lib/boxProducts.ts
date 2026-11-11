@@ -14,9 +14,9 @@ export const BOX_GROUPS: BoxGroup[] = [
       { name: "Real Argan Smoothing Hair Serum", brand: "Rated Green", img: "/assets/products/rg-argan-serum.jpg" },
       { name: "Cold Pressed Argan Oil Conditioning Hair Mask", brand: "Rated Green", img: "/assets/products/rg-argan-mask.jpg" },
       { name: "Real Grow Anti Hair Loss Treatment", brand: "Rated Green", img: "/assets/products/rg-antiloss.jpg" },
-      { name: "Cold Pressed Shea Butter Real Change Treatment", brand: "Rated Green" },
+      { name: "Real Shea Real Change Treatment", brand: "Rated Green", img: "/assets/products/rg-shea-change.jpg" },
       { name: "Rated Green Real Jojoba", brand: "Rated Green" },
-      { name: "Anti-Frizz Hydrating Hair Lotion", brand: "Rated Green" },
+      { name: "Real Shea Anti-Frizz Hydrating Hair Lotion", brand: "Rated Green" },
     ],
   },
   {
@@ -36,7 +36,7 @@ export const BOX_GROUPS: BoxGroup[] = [
       { name: "OI All in One Milk", brand: "Davines", img: "/assets/products/dv-oi-milk.jpg" },
       { name: "OI Oil", brand: "Davines", img: "/assets/products/dv-oi-oil.jpg" },
       { name: "VOLU Hair Mist", brand: "Davines", img: "/assets/products/dv-volu.jpg" },
-      { name: "MELU Hair Shield", brand: "Davines" },
+      { name: "MELU Hair Shield", brand: "Davines", img: "/assets/products/dv-melu.jpg" },
     ],
   },
   {
