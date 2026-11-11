@@ -9,6 +9,8 @@ import { sendLead } from "@/lib/sendLead";
 import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
 import { BOX_COLORS, BOX_GROUPS, BOX_SIZES, type BoxColor, type BoxSize } from "@/lib/boxProducts";
 
+const ALL = BOX_GROUPS.flatMap((g) => g.items);
+
 export default function BoxBuilder() {
   const { lang } = useLang();
   const [size, setSize] = useState<BoxSize>("M");
@@ -63,7 +65,7 @@ export default function BoxBuilder() {
           </p>
         </div>
 
-        <div className="grid gap-6 rounded-[22px] border border-[#17191a]/[0.06] bg-white p-4 shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:rounded-[28px] sm:p-8 lg:grid-cols-[1fr_1.15fr] lg:gap-12 lg:p-12">
+        <div className="grid gap-6 rounded-[22px] border border-[#17191a]/[0.06] bg-white p-4 shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:rounded-[28px] sm:p-7 lg:grid-cols-[0.8fr_1.4fr] lg:gap-10 lg:p-10">
           {/* Коробка */}
           <div className="lg:sticky lg:top-28 lg:self-start">
             <div className="flex aspect-square items-center justify-center overflow-hidden rounded-[20px] bg-white">
@@ -82,20 +84,30 @@ export default function BoxBuilder() {
             {opened && (
               <div className="mt-4 rounded-[16px] bg-[#f6f4f1] p-4">
                 <p className={step}>В боксе · {items.length}</p>
-                <ul className="mt-2 flex flex-col gap-1.5">
-                  {items.map((it) => (
-                    <li key={it} className="flex items-start justify-between gap-3 text-[12px] text-[#17191a]/80 sm:text-[13px]">
-                      {it}
-                      <button type="button" onClick={() => toggle(it)} aria-label={`Убрать ${it}`} className="shrink-0 text-[#17191a]/40 hover:text-[#17191a]">✕</button>
-                    </li>
-                  ))}
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {items.map((it) => {
+                    const p = ALL.find((x) => x.name === it);
+                    return (
+                      <li key={it} className="group/i relative">
+                        <button type="button" onClick={() => toggle(it)} aria-label={`Убрать ${it}`} title={it} className="block h-12 w-12 overflow-hidden rounded-[10px] bg-white">
+                          {p?.img ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={p.img} alt={it} className="h-full w-full object-contain" />
+                          ) : (
+                            <span className="flex h-full w-full items-center justify-center text-[9px] uppercase text-[#17191a]/50">{p?.brand.slice(0, 3)}</span>
+                          )}
+                          <span aria-hidden className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#17191a] text-[8px] text-white opacity-0 transition-opacity group-hover/i:opacity-100">✕</span>
+                        </button>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             )}
           </div>
 
           {/* Шаги */}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6">
             <div>
               <p className={step}>1 · Размер</p>
               <div className="mt-3 grid grid-cols-2 gap-2">
@@ -130,15 +142,26 @@ export default function BoxBuilder() {
                   </button>
                 ))}
               </div>
-              <div className="mt-3 grid max-h-[420px] gap-2 overflow-y-auto pr-1 sm:grid-cols-2">
-                {BOX_GROUPS[group].items.map((it) => (
-                  <button key={it} type="button" onClick={() => toggle(it)} aria-pressed={items.includes(it)} className={chip(items.includes(it))}>
-                    <span className="flex items-start gap-2">
-                      <span aria-hidden className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-[4px] border text-[10px] ${items.includes(it) ? "border-white bg-white text-[#17191a]" : "border-[#17191a]/30"}`}>{items.includes(it) ? "✓" : ""}</span>
-                      {it}
-                    </span>
-                  </button>
-                ))}
+              {/* Товары — карточки с фото (как в примере), выбранные отмечены галочкой */}
+              <div className="mt-3 grid max-h-[520px] grid-cols-3 gap-2 overflow-y-auto pr-1 sm:grid-cols-4 sm:gap-3">
+                {BOX_GROUPS[group].items.map((p) => {
+                  const on = items.includes(p.name);
+                  return (
+                    <button key={p.name} type="button" onClick={() => toggle(p.name)} aria-pressed={on} className="group text-left">
+                      <span className={`relative block aspect-square overflow-hidden rounded-[14px] bg-white ring-1 transition-all duration-300 ${on ? "ring-2 ring-[#17191a]" : "ring-[#17191a]/10 group-hover:ring-[#17191a]/35"}`}>
+                        {p.img ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={p.img} alt={p.name} loading="lazy" className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.04]" />
+                        ) : (
+                          <span className="flex h-full w-full items-center justify-center bg-[#f6f4f1] px-2 text-center font-display text-[11px] uppercase tracking-[0.08em] text-[#17191a]/45">{p.brand}</span>
+                        )}
+                        <span aria-hidden className={`absolute right-1.5 top-1.5 flex h-5 w-5 items-center justify-center rounded-full text-[10px] transition-colors ${on ? "bg-[#17191a] text-white" : "border border-[#17191a]/20 bg-white/90 text-transparent"}`}>✓</span>
+                      </span>
+                      <span className="mt-1.5 block text-[9.5px] uppercase tracking-[0.1em] text-[#17191a]/45">{p.brand}</span>
+                      <span className="mt-0.5 line-clamp-2 block text-[11.5px] leading-[1.3] text-[#17191a] sm:text-[12px]">{p.name}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
