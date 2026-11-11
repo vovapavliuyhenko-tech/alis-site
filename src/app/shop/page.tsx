@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import BlockLabel from "@/components/ui/BlockLabel";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ShopCategories } from "@/components/shop/ShopBlocks";
-import { ShopBanner, HairCta } from "@/components/shop/ShopIntro";
+import { ShopBanner } from "@/components/shop/ShopIntro";
 import { ShopTrend } from "@/components/shop/ShopShowcase";
 import BoxBuilder from "@/components/shop/BoxBuilder";
 
@@ -27,7 +27,7 @@ export default function ShopPage() {
         <ShopCategories />
         {/* Коллекция — карточки товаров, как было */}
         <ShopTrend />
-        <HairCta />
+        {/* <HairCta /> — плашка «Подобрать уход за 30 секунд» убрана по просьбе */}
         <BoxBuilder />
       </div>
       <Footer />
