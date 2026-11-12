@@ -28,14 +28,16 @@ function List({ items }: { items: string[] }) {
   );
 }
 
-export default function VacanciesBoard() {
+// only — показать одно направление без переключателя (страница консьержа: only="concierge")
+export default function VacanciesBoard({ only }: { only?: Dir } = {}) {
   const { lang } = useLang();
-  const [dir, setDir] = useState<Dir>("salon");
+  const [dir, setDir] = useState<Dir>(only ?? "salon");
   const [open, setOpen] = useState<number | null>(null);
   const data = CAREER[dir];
 
   // Меню «Вакансии → …» и ссылки с хэшем переключают направление
   useEffect(() => {
+    if (only) return;
     const go = () => {
       const h = location.hash;
       if (h === "#international" || h === "#concierge") setDir("concierge");
@@ -47,12 +49,13 @@ export default function VacanciesBoard() {
     go();
     window.addEventListener("hashchange", go);
     return () => window.removeEventListener("hashchange", go);
-  }, []);
+  }, [only]);
 
   return (
-    <section id="vacancies" className="scroll-mt-24 bg-white section-y">
+    <section id={only ? "career" : "vacancies"} className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
         {/* Переключатель направлений */}
+        {!only && (
         <div className="flex justify-center">
           <div className="relative inline-grid grid-cols-2 rounded-full bg-[#f6f4f1] p-1">
             <span
@@ -73,10 +76,11 @@ export default function VacanciesBoard() {
             ))}
           </div>
         </div>
+        )}
 
         <div key={dir} className="animate-[vac-in_.6s_cubic-bezier(.22,.61,.36,1)]">
           {/* Карьера в … — описание, «Мы предлагаем», «Как откликнуться» */}
-          <div className="mt-10 grid gap-6 lg:mt-14 lg:grid-cols-2 lg:gap-10">
+          <div className={`${only ? "" : "mt-10 lg:mt-14"} grid gap-6 lg:grid-cols-2 lg:gap-10`}>
             <div>
               <h2 className="text-[#17191a]">{data.title}</h2>
               <div className="mt-4 flex flex-col gap-3">
