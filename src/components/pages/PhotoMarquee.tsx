@@ -2,13 +2,77 @@
 // БЛОК-ЛЕНТА на главной — фотографии бегут сами (JS-автоскролл через scrollLeft),
 // бег не прерывается при наведении. Клиент листает вручную: перетаскиванием/свайпом/трекпадом.
 // Под фото — полоса прогресса, отражающая позицию прокрутки (как на референсе).
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 import LineCta from "@/components/ui/LineCta";
 
 type Loc = { ru: string; en: string };
 // Кадр: фото + подпись (услуга) + куда ведёт клик. Можно передать и просто путь к фото.
-export type MarqueeItem = string | { src: string; cap?: Loc; href?: string };
+// back — оборот карточки (как на paloma.website): наведение (компьютер) / нажатие (телефон) переворачивает фото
+export type MarqueeBack = { eyebrow?: Loc; title: Loc; text?: Loc; cta?: { label: Loc; href: string } };
+export type MarqueeItem = string | { src: string; cap?: Loc; href?: string; back?: MarqueeBack };
+
+const isVideo = (src: string) => /.(mp4|webm)$/i.test(src);
+
+// Карточка-переворот: лицо — фото/видео с подписью, оборот — заголовок, текст и призыв к действию
+function FlipCard({ src, cap, back, hidden, moved }: { src: string; cap?: Loc; back: MarqueeBack; hidden?: boolean; moved: React.RefObject<boolean> }) {
+  const { lang } = useLang();
+  const en = lang === "en";
+  const [flipped, setFlipped] = useState(false);
+  const media = isVideo(src) ? (
+    <video src={src} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" />
+  ) : (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={hidden ? "" : (cap?.[lang] ?? back.title[lang])} draggable={false} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+  );
+  return (
+    <div
+      tabIndex={hidden ? -1 : 0}
+      role="button"
+      aria-pressed={flipped}
+      onClick={() => { if (!moved.current) setFlipped((v) => !v); }}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setFlipped((v) => !v); } }}
+      className="group/flip relative h-full w-full cursor-pointer outline-none [perspective:2000px]"
+    >
+      <div
+        className={`relative h-full w-full transition-transform duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] [transform-style:preserve-3d] ${flipped ? "[transform:rotateY(180deg)]" : "[@media(hover:hover)_and_(pointer:fine)]:group-hover/flip:[transform:rotateY(180deg)]"}`}
+      >
+        {/* Лицо */}
+        <div className="absolute inset-0 overflow-hidden rounded-[20px] [backface-visibility:hidden]">
+          {media}
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+          <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1.5 text-[9.5px] uppercase tracking-[0.16em] text-[#17191a] backdrop-blur-md sm:right-4 sm:top-4 sm:text-[10.5px]">
+            <span aria-hidden className="text-[12px] leading-none">↻</span>
+            <span className="[@media(hover:hover)_and_(pointer:fine)]:hidden">{en ? "Tap" : "Нажмите"}</span>
+            <span className="hidden [@media(hover:hover)_and_(pointer:fine)]:inline">{en ? "Hover" : "Наведите"}</span>
+          </span>
+          {cap && (
+            <p className="absolute inset-x-0 bottom-0 px-5 pb-5 font-serif-display text-[22px] uppercase leading-[1.1] tracking-[0.02em] text-white sm:px-6 sm:pb-6 sm:text-[26px] lg:text-[32px]">
+              {cap[lang]}
+            </p>
+          )}
+        </div>
+        {/* Оборот */}
+        <div className="absolute inset-0 flex flex-col overflow-hidden rounded-[20px] border border-[#17191a]/12 bg-white px-6 py-7 [backface-visibility:hidden] [transform:rotateY(180deg)_translateZ(1px)] sm:px-7 sm:py-8 lg:px-9 lg:py-10">
+          {back.eyebrow && <span className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/50 sm:text-[11px]">{back.eyebrow[lang]}</span>}
+          <h3 className="mt-3 font-serif-display !text-[22px] font-normal uppercase leading-[1.15] tracking-[0.02em] text-[#17191a] sm:!text-[26px] lg:!text-[32px]">{back.title[lang]}</h3>
+          {back.text && <p className="mt-auto pt-6 !text-[12px] leading-[1.6] text-[#17191a]/70 sm:!text-[13px] lg:!text-[14px]">{back.text[lang]}</p>}
+          {back.cta && (
+            <a
+              href={back.cta.href}
+              tabIndex={hidden ? -1 : undefined}
+              onClick={(e) => e.stopPropagation()}
+              className={`${back.text ? "mt-6" : "mt-auto"} flex items-center gap-2 border-t border-[#17191a]/12 pt-4 text-[11px] uppercase tracking-[0.16em] text-[#17191a] transition-opacity duration-300 hover:opacity-60 sm:text-[12px]`}
+            >
+              <span aria-hidden>→</span>
+              {back.cta.label[lang]}
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 // Кадры одного формата — единый портретный размер, минимальный зазор.
 // Подписи — по тому, что видно на фото; клик ведёт в категорию услуг салона.
@@ -35,7 +99,15 @@ function Track({ items, hidden = false, moved }: { items: MarqueeItem[]; hidden?
   return (
     <ul aria-hidden={hidden} className="flex shrink-0">
       {items.map((it, i) => {
-        const { src, cap, href } = typeof it === "string" ? { src: it, cap: undefined, href: undefined } : it;
+        const { src, cap, href, back } = typeof it === "string" ? { src: it, cap: undefined, href: undefined, back: undefined } : it;
+        if (back)
+          return (
+            <li key={i} className="mr-2 shrink-0 lg:mr-3">
+              <div className="relative aspect-[3/4] h-[300px] sm:h-[380px] lg:h-[540px]">
+                <FlipCard src={src} cap={cap} back={back} hidden={hidden} moved={moved} />
+              </div>
+            </li>
+          );
         const alt = hidden ? "" : cap ? `${cap[lang]} — ÁLIS BEAUTY` : lang === "en" ? `ÁLIS BEAUTY — photo ${i + 1}` : `ÁLIS BEAUTY — фото ${i + 1}`;
         const inner = (
           <>
@@ -93,6 +165,8 @@ export default function PhotoMarquee({
   const drag = useRef({ active: false, startX: 0, startScroll: 0 });
   const moved = useRef(false);
   const pos = useRef(0);
+  const paused = useRef(false);
+  const hasFlip = items.some((it) => typeof it !== "string" && !!it.back);
 
   useEffect(() => {
     const el = scroller.current;
@@ -120,7 +194,7 @@ export default function PhotoMarquee({
       // Дробная позиция копится отдельно: scrollLeft на телефонах округляется до целых — отсюда были рывки
       // Если ленту прокрутили трекпадом/колесом — подхватываем её положение
       if (drag.current.active || Math.abs(el.scrollLeft - last) > 1.5) pos.current = el.scrollLeft;
-      if (!drag.current.active) pos.current += 0.9;
+      if (!drag.current.active && !paused.current) pos.current += 0.9;
       // бесшовная петля
       if (pos.current >= half) pos.current -= half;
       else if (pos.current < 0) pos.current += half;
@@ -187,6 +261,8 @@ export default function PhotoMarquee({
         onPointerMove={onMove}
         onPointerUp={onUp}
         onPointerCancel={onUp}
+        onMouseEnter={() => { if (hasFlip) paused.current = true; }}
+        onMouseLeave={() => { paused.current = false; }}
         className="flex cursor-grab overflow-x-auto overscroll-x-contain overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
       >
         <Track items={items} moved={moved} />

@@ -17,6 +17,7 @@ import ConciergeStages from "@/components/pages/ConciergeStages";
 import ConciergeChat from "@/components/ConciergeChat";
 import ConciergeEvents from "@/components/pages/ConciergeEvents";
 import ConciergeContacts from "@/components/pages/ConciergeContacts";
+import ReviewsWall from "@/components/ReviewsWall";
 
 // Этапы работы — тексты заказчицы (сокращены под мобильную версию).
 const CONCIERGE_STAGES: Stage[] = [
@@ -129,7 +130,8 @@ export default function ConciergePage() {
         {/* Номера консьерж-сервиса + КП на двух языках */}
         <ConciergeContacts />
 
-        {/* TODO: отзывы о консьерж-сервисе — в самом конце, когда Зера пришлёт */}
+        {/* Отзывы — как на главной. TODO: заменить на отзывы о консьерж-сервисе, когда Зера пришлёт */}
+        <ReviewsWall title={{ ru: "Гости о нас", en: "Guests about us" }} />
 
         {/* 6 — Основатель и форматы сотрудничества (#partners) */}
         {/* <ConciergeFounder /> — скрыт */}
