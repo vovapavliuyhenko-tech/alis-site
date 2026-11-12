@@ -14,50 +14,54 @@ export type MarqueeItem = string | { src: string; cap?: Loc; href?: string; back
 
 const isVideo = (src: string) => /.(mp4|webm)$/i.test(src);
 
-// Карточка-переворот: лицо — фото/видео с подписью, оборот — заголовок, текст и призыв к действию
-function FlipCard({ src, cap, back, hidden, moved }: { src: string; cap?: Loc; back: MarqueeBack; hidden?: boolean; moved: React.RefObject<boolean> }) {
+// Карточка-раскрытие (галерея выездных событий): на фото — только город; по нажатию карточка плавно
+// расширяется вбок и рядом с фото появляются событие, рассказ и призыв к действию.
+function ExpandCard({ src, cap, back, hidden, moved, openCount }: { src: string; cap?: Loc; back: MarqueeBack; hidden?: boolean; moved: React.RefObject<boolean>; openCount: React.RefObject<number> }) {
   const { lang } = useLang();
-  const en = lang === "en";
-  const [flipped, setFlipped] = useState(false);
-  const media = isVideo(src) ? (
-    <video src={src} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" />
-  ) : (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img src={src} alt={hidden ? "" : (cap?.[lang] ?? back.title[lang])} draggable={false} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-  );
+  const [open, setOpen] = useState(false);
+  const toggle = () => {
+    setOpen((v) => {
+      openCount.current += v ? -1 : 1; // пока хоть одна карточка раскрыта — лента стоит
+      return !v;
+    });
+  };
   return (
-    <div
-      tabIndex={hidden ? -1 : 0}
-      role="button"
-      aria-pressed={flipped}
-      onClick={() => { if (!moved.current) setFlipped((v) => !v); }}
-      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setFlipped((v) => !v); } }}
-      className="group/flip relative h-full w-full cursor-pointer outline-none [perspective:2000px]"
-    >
+    <li className="mr-2 shrink-0 lg:mr-3">
       <div
-        className={`relative h-full w-full transition-transform duration-[1600ms] ease-[cubic-bezier(.45,.05,.25,1)] [transform-style:preserve-3d] ${flipped ? "[transform:rotateY(180deg)]" : "[@media(hover:hover)_and_(pointer:fine)]:group-hover/flip:[transform:rotateY(180deg)]"}`}
+        tabIndex={hidden ? -1 : 0}
+        role="button"
+        aria-expanded={open}
+        onClick={() => { if (!moved.current) toggle(); }}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } }}
+        className={`group relative flex h-[300px] cursor-pointer overflow-hidden rounded-[20px] bg-[#f6f4f1] outline-none transition-[width] duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] sm:h-[380px] lg:h-[540px] ${open ? "w-[425px] sm:w-[565px] lg:w-[765px]" : "w-[225px] sm:w-[285px] lg:w-[405px]"}`}
       >
-        {/* Лицо */}
-        <div className="absolute inset-0 overflow-hidden rounded-[20px] [backface-visibility:hidden]">
-          {media}
+        {/* Фото */}
+        <div className="relative h-full w-[225px] shrink-0 overflow-hidden rounded-[20px] sm:w-[285px] lg:w-[405px]">
+          {isVideo(src) ? (
+            <video src={src} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover" />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={src} alt={hidden ? "" : (cap?.[lang] ?? back.title[lang])} draggable={false} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
+          )}
           <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           {cap && (
-            <p className="absolute inset-x-0 bottom-0 px-5 pb-5 text-[10.5px] uppercase tracking-[0.22em] text-white sm:px-6 sm:pb-6 sm:text-[11.5px]">
+            <p className="absolute inset-x-0 bottom-0 flex items-center justify-between px-5 pb-5 text-[10.5px] uppercase tracking-[0.22em] text-white sm:px-6 sm:pb-6 sm:text-[11.5px]">
               {cap[lang]}
+              <span aria-hidden className={`text-[14px] transition-transform duration-500 ${open ? "rotate-45" : ""}`}>+</span>
             </p>
           )}
         </div>
-        {/* Оборот */}
-        <div className="absolute inset-0 flex flex-col overflow-hidden rounded-[20px] border border-[#17191a]/12 bg-white px-6 py-7 [backface-visibility:hidden] [transform:rotateY(180deg)_translateZ(1px)] sm:px-7 sm:py-8 lg:px-9 lg:py-10">
+        {/* Текст — появляется при раскрытии */}
+        <div className={`flex h-full w-[200px] shrink-0 flex-col px-5 py-6 transition-opacity duration-500 sm:w-[280px] sm:px-7 sm:py-8 lg:w-[360px] lg:px-9 lg:py-10 ${open ? "opacity-100 delay-300" : "opacity-0"}`}>
           {back.eyebrow && <span className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/50 sm:text-[11px]">{back.eyebrow[lang]}</span>}
-          <h3 className="mt-3 font-serif-display !text-[22px] font-normal uppercase leading-[1.15] tracking-[0.02em] text-[#17191a] sm:!text-[26px] lg:!text-[32px]">{back.title[lang]}</h3>
-          {back.text && <p className="mt-auto pt-6 !text-[12px] leading-[1.6] text-[#17191a]/70 sm:!text-[13px] lg:!text-[14px]">{back.text[lang]}</p>}
+          <h3 className="mt-3 font-serif-display !text-[20px] font-normal uppercase leading-[1.15] tracking-[0.02em] text-[#17191a] sm:!text-[24px] lg:!text-[30px]">{back.title[lang]}</h3>
+          {back.text && <p className="mt-auto pt-5 !text-[12px] leading-[1.6] text-[#17191a]/70 sm:!text-[13px] lg:!text-[14px]">{back.text[lang]}</p>}
           {back.cta && (
             <a
               href={back.cta.href}
-              tabIndex={hidden ? -1 : undefined}
+              tabIndex={hidden || !open ? -1 : undefined}
               onClick={(e) => e.stopPropagation()}
-              className={`${back.text ? "mt-6" : "mt-auto"} flex items-center gap-2 border-t border-[#17191a]/12 pt-4 text-[11px] uppercase tracking-[0.16em] text-[#17191a] transition-opacity duration-300 hover:opacity-60 sm:text-[12px]`}
+              className={`${back.text ? "mt-5" : "mt-auto"} flex items-center gap-2 border-t border-[#17191a]/12 pt-4 text-[10.5px] uppercase tracking-[0.16em] text-[#17191a] transition-opacity duration-300 hover:opacity-60 sm:text-[11.5px]`}
             >
               <span aria-hidden>→</span>
               {back.cta.label[lang]}
@@ -65,7 +69,7 @@ function FlipCard({ src, cap, back, hidden, moved }: { src: string; cap?: Loc; b
           )}
         </div>
       </div>
-    </div>
+    </li>
   );
 }
 
@@ -89,20 +93,13 @@ const ITEMS: MarqueeItem[] = [
   { src: "/assets/alis/img_6048.jpg", cap: { ru: "Магазин ÁLIS BEAUTY", en: "ÁLIS BEAUTY shop" } },
 ];
 
-function Track({ items, hidden = false, moved }: { items: MarqueeItem[]; hidden?: boolean; moved: React.RefObject<boolean> }) {
+function Track({ items, hidden = false, moved, openCount }: { items: MarqueeItem[]; hidden?: boolean; moved: React.RefObject<boolean>; openCount: React.RefObject<number> }) {
   const { lang } = useLang();
   return (
     <ul aria-hidden={hidden} className="flex shrink-0">
       {items.map((it, i) => {
         const { src, cap, href, back } = typeof it === "string" ? { src: it, cap: undefined, href: undefined, back: undefined } : it;
-        if (back)
-          return (
-            <li key={i} className="mr-2 shrink-0 lg:mr-3">
-              <div className="relative aspect-[3/4] h-[300px] sm:h-[380px] lg:h-[540px]">
-                <FlipCard src={src} cap={cap} back={back} hidden={hidden} moved={moved} />
-              </div>
-            </li>
-          );
+        if (back) return <ExpandCard key={i} src={src} cap={cap} back={back} hidden={hidden} moved={moved} openCount={openCount} />;
         const alt = hidden ? "" : cap ? `${cap[lang]} — ÁLIS BEAUTY` : lang === "en" ? `ÁLIS BEAUTY — photo ${i + 1}` : `ÁLIS BEAUTY — фото ${i + 1}`;
         const inner = (
           <>
@@ -161,6 +158,7 @@ export default function PhotoMarquee({
   const moved = useRef(false);
   const pos = useRef(0);
   const paused = useRef(false);
+  const openCount = useRef(0);
   const hasFlip = items.some((it) => typeof it !== "string" && !!it.back);
 
   useEffect(() => {
@@ -189,7 +187,7 @@ export default function PhotoMarquee({
       // Дробная позиция копится отдельно: scrollLeft на телефонах округляется до целых — отсюда были рывки
       // Если ленту прокрутили трекпадом/колесом — подхватываем её положение
       if (drag.current.active || Math.abs(el.scrollLeft - last) > 1.5) pos.current = el.scrollLeft;
-      if (!drag.current.active && !paused.current) pos.current += 0.9;
+      if (!drag.current.active && !paused.current && openCount.current <= 0) pos.current += 0.9;
       // бесшовная петля
       if (pos.current >= half) pos.current -= half;
       else if (pos.current < 0) pos.current += half;
@@ -260,8 +258,8 @@ export default function PhotoMarquee({
         onMouseLeave={() => { paused.current = false; }}
         className="flex cursor-grab overflow-x-auto overscroll-x-contain overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
       >
-        <Track items={items} moved={moved} />
-        <Track items={items} hidden moved={moved} />
+        <Track items={items} moved={moved} openCount={openCount} />
+        <Track items={items} hidden moved={moved} openCount={openCount} />
       </div>
 
       {/* Полоса прогресса под фото */}
