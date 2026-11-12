@@ -85,7 +85,10 @@ export default function CandidateQuiz() {
   };
   const last = step === STEPS.length - 1;
   const fields = STEPS[step].keys.map(F);
-  const stepOk = fields.every((f) => !f.required || filled(f)) && (!last || consent);
+  // Выбран Telegram — нужен ник
+  const needTg = STEPS[step].keys.includes("contact") && v.contact === "Telegram";
+  const tgOk = !needTg || String(v.tg || "").replace("@", "").trim().length > 1;
+  const stepOk = fields.every((f) => !f.required || filled(f)) && tgOk && (!last || consent);
 
   const next = () => {
     if (!stepOk) { setTried(true); return; }
@@ -93,6 +96,7 @@ export default function CandidateQuiz() {
     if (!last) { setStep(step + 1); return; }
     const details: Record<string, unknown> = { Направление: "Консьерж-сервис", Форма: "Анкета кандидата (страница консьержа)" };
     for (const f of ALL) { const x = v[f.key]; if (x && (Array.isArray(x) ? x.length : String(x).trim())) details[f.label] = Array.isArray(x) ? x.join(", ") : x; }
+    if (v.contact === "Telegram" && v.tg) details["Ник в Telegram"] = "@" + String(v.tg).replace(/^@+/, "").trim();
     void sendLead({ kind: "vacancy", name: String(v.name || ""), phone: String(v.phone || ""), details });
     setSent(true);
   };
@@ -147,6 +151,28 @@ export default function CandidateQuiz() {
                 <input type={f.type === "email" ? "email" : "text"} value={String(v[f.key] || "")} onChange={(e) => setV({ ...v, [f.key]: e.target.value })} className={field} />
               )}
               {f.note && <span className="text-[11px] leading-[1.5] text-[#17191a]/50 sm:text-[12px]">{f.note}</span>}
+              {/* Telegram — плавно появляется поле для ника */}
+              {f.key === "contact" && (
+                <div className={`grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.22,.61,.36,1)] ${v.contact === "Telegram" ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                  <div className="overflow-hidden">
+                    <div className="relative mt-1">
+                      <span aria-hidden className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[13px] text-[#17191a]/45 sm:left-5 sm:text-[15px]">@</span>
+                      <input
+                        type="text"
+                        inputMode="text"
+                        autoCapitalize="none"
+                        autoCorrect="off"
+                        placeholder="username"
+                        aria-label="Ник в Telegram"
+                        tabIndex={v.contact === "Telegram" ? 0 : -1}
+                        value={String(v.tg || "")}
+                        onChange={(e) => setV({ ...v, tg: e.target.value.replace(/^@+/, "").replace(/\s/g, "") })}
+                        className={`${field} pl-8 sm:pl-9 ${tried && needTg && !tgOk ? "ring-1 ring-[#b42318]/60" : ""}`}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           );
         })}
