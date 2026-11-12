@@ -35,19 +35,14 @@ function FlipCard({ src, cap, back, hidden, moved }: { src: string; cap?: Loc; b
       className="group/flip relative h-full w-full cursor-pointer outline-none [perspective:2000px]"
     >
       <div
-        className={`relative h-full w-full transition-transform duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] [transform-style:preserve-3d] ${flipped ? "[transform:rotateY(180deg)]" : "[@media(hover:hover)_and_(pointer:fine)]:group-hover/flip:[transform:rotateY(180deg)]"}`}
+        className={`relative h-full w-full transition-transform duration-[1600ms] ease-[cubic-bezier(.45,.05,.25,1)] [transform-style:preserve-3d] ${flipped ? "[transform:rotateY(180deg)]" : "[@media(hover:hover)_and_(pointer:fine)]:group-hover/flip:[transform:rotateY(180deg)]"}`}
       >
         {/* Лицо */}
         <div className="absolute inset-0 overflow-hidden rounded-[20px] [backface-visibility:hidden]">
           {media}
-          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-          <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1.5 text-[9.5px] uppercase tracking-[0.16em] text-[#17191a] backdrop-blur-md sm:right-4 sm:top-4 sm:text-[10.5px]">
-            <span aria-hidden className="text-[12px] leading-none">↻</span>
-            <span className="[@media(hover:hover)_and_(pointer:fine)]:hidden">{en ? "Tap" : "Нажмите"}</span>
-            <span className="hidden [@media(hover:hover)_and_(pointer:fine)]:inline">{en ? "Hover" : "Наведите"}</span>
-          </span>
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           {cap && (
-            <p className="absolute inset-x-0 bottom-0 px-5 pb-5 font-serif-display text-[22px] uppercase leading-[1.1] tracking-[0.02em] text-white sm:px-6 sm:pb-6 sm:text-[26px] lg:text-[32px]">
+            <p className="absolute inset-x-0 bottom-0 px-5 pb-5 text-[10.5px] uppercase tracking-[0.22em] text-white sm:px-6 sm:pb-6 sm:text-[11.5px]">
               {cap[lang]}
             </p>
           )}
