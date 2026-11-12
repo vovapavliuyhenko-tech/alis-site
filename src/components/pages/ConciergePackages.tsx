@@ -128,7 +128,7 @@ export default function ConciergePackages() {
 
             {/* Низ: две кнопки в одну строку во всю ширину — как на обложке (состав пакета убран) */}
             <div className="mt-8 grid gap-2 sm:grid-cols-2 sm:gap-3">
-              <a href="/cooperation#business" className="flex w-full items-center justify-center gap-3 text-center rounded-[12px] border border-white px-4 py-4 text-[10px] font-medium uppercase leading-tight tracking-[0.1em] transition-colors duration-500 sm:whitespace-nowrap sm:px-5 sm:py-[18px] sm:text-[11px] lg:py-5 bg-white text-[#17191a] hover:bg-transparent hover:text-white">
+              <a href={en ? "/docs/alis-beauty-proposal-en.pdf" : "/docs/alis-beauty-kp.pdf"} target="_blank" rel="noopener noreferrer" className="flex w-full items-center justify-center gap-3 text-center rounded-[12px] border border-white px-4 py-4 text-[10px] font-medium uppercase leading-tight tracking-[0.1em] transition-colors duration-500 sm:whitespace-nowrap sm:px-5 sm:py-[18px] sm:text-[11px] lg:py-5 bg-white text-[#17191a] hover:bg-transparent hover:text-white">
                 {en ? "Download the B2B proposal" : "Скачать коммерческое предложение B2B"}
               </a>
               <a href="#calc" className="flex w-full items-center justify-center gap-3 text-center rounded-[12px] border border-white px-4 py-4 text-[10px] font-medium uppercase leading-tight tracking-[0.1em] transition-colors duration-500 sm:whitespace-nowrap sm:px-5 sm:py-[18px] sm:text-[11px] lg:py-5 border-white/70 bg-white/[0.18] text-white backdrop-blur-md hover:border-white hover:bg-white hover:text-[#17191a]">

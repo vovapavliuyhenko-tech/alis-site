@@ -16,7 +16,6 @@ import ConciergeStages from "@/components/pages/ConciergeStages";
 // import ConciergeOffer from "@/components/pages/ConciergeOffer"; // форма заявки скрыта — заявки идут через анкету #calc
 import ConciergeChat from "@/components/ConciergeChat";
 import ConciergeEvents from "@/components/pages/ConciergeEvents";
-import ConciergeContacts from "@/components/pages/ConciergeContacts";
 import ReviewsWall from "@/components/ReviewsWall";
 
 // Этапы работы — тексты заказчицы (сокращены под мобильную версию).
@@ -126,9 +125,6 @@ export default function ConciergePage() {
 
         {/* 5 — Проверка даты: анкета «Рассчитать бюджет» прямо в тёмной плашке (#calc) */}
         <BudgetCalc />
-
-        {/* Номера консьерж-сервиса + КП на двух языках */}
-        <ConciergeContacts />
 
         {/* Отзывы — как на главной. TODO: заменить на отзывы о консьерж-сервисе, когда Зера пришлёт */}
         <ReviewsWall title={{ ru: "Гости о нас", en: "Guests about us" }} />
