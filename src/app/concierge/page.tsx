@@ -17,7 +17,6 @@ import ConciergeStages from "@/components/pages/ConciergeStages";
 import ConciergeChat from "@/components/ConciergeChat";
 import ConciergeEvents from "@/components/pages/ConciergeEvents";
 import ReviewsWall from "@/components/ReviewsWall";
-import VacanciesBoard from "@/components/pages/VacanciesBoard";
 
 // Этапы работы — тексты заказчицы (сокращены под мобильную версию).
 const CONCIERGE_STAGES: Stage[] = [
@@ -130,13 +129,10 @@ export default function ConciergePage() {
         {/* 8 — Отзывы: «люди довольны?». TODO: заменить на отзывы о консьерж-сервисе, когда Зера пришлёт */}
         <ReviewsWall title={{ ru: "Гости о нас", en: "Guests about us" }} />
 
-        {/* 9 — Целевое действие: анкета «Рассчитать бюджет» (#calc) */}
+        {/* 9 — Целевое действие: анкета «Рассчитать бюджет» (#calc). Вкладка «Хочу в команду» —
+            анкета кандидата (карьера в ÁLIS BEAUTY Concierge), ссылка /concierge#team открывает её сразу */}
         <BudgetCalc />
 
-        {/* 10 — Карьера в ÁLIS BEAUTY Concierge (#career): текст заказчицы, позиции и анкета кандидата.
-            Стоит после целевого действия — это отдельная аудитория (специалисты). */}
-        <BlockLabel ru="Карьера" en="Career" />
-        <VacanciesBoard only="concierge" />
 
         {/* 6 — Основатель и форматы сотрудничества (#partners) */}
         {/* <ConciergeFounder /> — скрыт */}

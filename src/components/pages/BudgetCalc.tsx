@@ -4,7 +4,8 @@
 // просто прокручивают к ней. 4 коротких вопроса кнопками → дата, имя, телефон → подходящий
 // пакет (SOLO / BRIDAL / TEAM / DESTINATION). Цен пока нет — точную смету присылает
 // менеджер. Ответы уходят в CRM (тип «concierge»).
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import CandidateQuiz, { CandidateIntro } from "@/components/pages/CandidateQuiz";
 import { useLang } from "@/lib/i18n";
 import { sendLead } from "@/lib/sendLead";
 import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
@@ -55,6 +56,20 @@ export default function BudgetCalc() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [consent, setConsent] = useState(false);
+  // Вкладки последнего блока: клиент («Рассчитать выезд») / специалист («Хочу в команду» — анкета кандидата).
+  // Ссылка с #team (меню «Вакансии → Консьерж» и т. п.) сразу открывает анкету кандидата.
+  const [mode, setMode] = useState<"client" | "team">("client");
+  useEffect(() => {
+    const go = () => {
+      if (location.hash === "#team" || location.hash === "#career") {
+        setMode("team");
+        document.getElementById("calc")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else if (location.hash === "#calc") setMode("client");
+    };
+    go();
+    window.addEventListener("hashchange", go);
+    return () => window.removeEventListener("hashchange", go);
+  }, []);
 
   const choose = (q: Q, v: string) => {
     if (q.multi) {
@@ -95,7 +110,36 @@ export default function BudgetCalc() {
   return (
     <section id="calc" className="scroll-mt-24 bg-white section-y">
       {/* Компьютер: слева заголовок и ваши ответы (заполняются по ходу), справа — шаги анкеты */}
-      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-5 rounded-[22px] border border-[#17191a]/[0.06] bg-white px-4 py-7 text-[#17191a] shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
+      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-5 rounded-[22px] border border-[#17191a]/[0.06] bg-white px-4 py-7 text-[#17191a] shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-x-20 lg:gap-y-10 lg:px-20 lg:py-14">
+        {/* Переключатель: клиент / специалист */}
+        <div className="flex justify-center lg:col-span-2">
+          <div className="relative inline-grid grid-cols-2 rounded-full bg-[#f6f4f1] p-1">
+            <span
+              aria-hidden
+              className="absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-[#17191a] transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)]"
+              style={{ transform: mode === "team" ? "translateX(100%)" : "none" }}
+            />
+            {([["client", en ? "Calculate the trip" : "Рассчитать выезд"], ["team", en ? "Join the team" : "Хочу в команду"]] as const).map(([id, label]) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => setMode(id)}
+                aria-pressed={mode === id}
+                className={`relative z-10 rounded-full px-4 py-2.5 text-[10.5px] uppercase tracking-[0.12em] transition-colors duration-500 sm:px-8 sm:text-[12px] ${mode === id ? "text-white" : "text-[#17191a]/60 hover:text-[#17191a]"}`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {mode === "team" ? (
+          <>
+            <CandidateIntro />
+            <CandidateQuiz />
+          </>
+        ) : (
+        <>
         <div className="flex flex-col text-left">
           <h2 className="text-[#17191a]">{en ? "Your date may already be taken" : "Ваша дата может быть уже занята"}</h2>
           <p className="mt-2 !text-[12.5px] text-[#17191a]/65 sm:mt-3 sm:!text-[15px]">{en ? "We'll check within 15 minutes?" : "Проверим за 15 минут?"}</p>
@@ -218,6 +262,8 @@ export default function BudgetCalc() {
             </div>
           )}
         </div>
+        </>
+        )}
       </div>
       <style>{`
         @keyframes alis-calc-in { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }
