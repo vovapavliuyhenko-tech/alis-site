@@ -61,7 +61,7 @@ export default function Vacancies() {
                           </div>
                         ))}
                       </div>
-                      <a href="#join" className="mt-6 inline-flex items-center gap-2 rounded-[12px] border border-[#17191a] bg-[#17191a] px-7 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:text-[12px]">
+                      <a href="#join" onClick={() => window.dispatchEvent(new CustomEvent("alis-join-pick", { detail: { position: v.title } }))} className="mt-6 inline-flex items-center gap-2 rounded-[12px] border border-[#17191a] bg-[#17191a] px-7 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:text-[12px]">
                         {lang === "en" ? "Apply" : "Откликнуться"} <span aria-hidden>→</span>
                       </a>
                     </div>

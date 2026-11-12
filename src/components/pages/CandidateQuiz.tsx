@@ -5,14 +5,27 @@
 import { useState } from "react";
 import { sendLead } from "@/lib/sendLead";
 import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
-import { CAREER, type Field } from "@/lib/vacancies";
+import DateField from "@/components/ui/DateField";
+import { CAREER, type Dir, type Field } from "@/lib/vacancies";
 
+// Используется и на странице «Команда» (анкета салона, dir="salon"), и на консьерже (dir="concierge")
 const DATA = CAREER.concierge;
-const ALL: Field[] = DATA.form.flatMap((s) => s.fields);
-const F = (k: string) => ALL.find((f) => f.key === k)!;
 
-// Шаги: 0 — позиция, дальше группы вопросов
-const STEPS: { title: string; keys: string[] }[] = [
+// Шаги: 0 — позиция, дальше группы по 2–3 вопроса
+const STEPS_BY: Record<Dir, { title: string; keys: string[] }[]> = {
+  salon: [
+    { title: "Позиция", keys: ["position"] },
+    { title: "Контактная информация", keys: ["name", "age", "phone"] },
+    { title: "Контактная информация", keys: ["contact", "profile", "district"] },
+    { title: "Профессиональный опыт", keys: ["experience", "workplace"] },
+    { title: "Профессиональный опыт", keys: ["services", "growth"] },
+    { title: "Профессиональный опыт", keys: ["education", "brands"] },
+    { title: "Портфолио", keys: ["portfolio", "photo"] },
+    { title: "Условия сотрудничества", keys: ["start", "income"] },
+    { title: "Условия сотрудничества", keys: ["medbook", "trial"] },
+    { title: "Мотивация", keys: ["why", "env"] },
+  ],
+  concierge: [
   { title: "Позиция", keys: ["position"] },
   { title: "Контактная информация", keys: ["name", "age", "phone"] },
   { title: "Контактная информация", keys: ["contact", "email", "profile"] },
@@ -22,7 +35,8 @@ const STEPS: { title: string; keys: string[] }[] = [
   { title: "Профессиональный опыт", keys: ["education", "kit"] },
   { title: "Портфолио", keys: ["portfolio", "video", "photo"] },
   { title: "Условия сотрудничества", keys: ["availability", "rate", "why"] },
-];
+  ],
+};
 
 const chip = (on: boolean) =>
   `rounded-[12px] border px-3.5 py-2.5 text-[12px] leading-tight transition-all active:scale-[0.97] sm:rounded-[16px] sm:text-[14px] ${on ? "border-[#17191a] bg-[#17191a] text-white" : "border-transparent bg-[#f6f4f1] text-[#17191a] hover:border-[#17191a]/30"}`;
@@ -70,9 +84,24 @@ export function CandidateIntro() {
   );
 }
 
-export default function CandidateQuiz() {
+export default function CandidateQuiz({
+  dir = "concierge",
+  onValues,
+  onBack,
+  initial,
+}: {
+  dir?: Dir;
+  onValues?: (v: Record<string, string | string[]>) => void; // для плиток «ваши ответы» слева
+  onBack?: () => void; // «Назад» на первом шаге (к выбору направления)
+  initial?: Record<string, string>; // например, позиция, выбранная в списке вакансий
+} = {}) {
+  const D = CAREER[dir];
+  const ALL: Field[] = D.form.flatMap((s) => s.fields);
+  const F = (k: string) => ALL.find((f) => f.key === k)!;
+  const STEPS = STEPS_BY[dir];
   const [step, setStep] = useState(0);
-  const [v, setV] = useState<Record<string, string | string[]>>({});
+  const [v, setV0] = useState<Record<string, string | string[]>>(initial ?? {});
+  const setV = (x: Record<string, string | string[]>) => { setV0(x); onValues?.(x); };
   const [consent, setConsent] = useState(false);
   const [tried, setTried] = useState(false);
   const [sent, setSent] = useState(false);
@@ -94,7 +123,7 @@ export default function CandidateQuiz() {
     if (!stepOk) { setTried(true); return; }
     setTried(false);
     if (!last) { setStep(step + 1); return; }
-    const details: Record<string, unknown> = { Направление: "Консьерж-сервис", Форма: "Анкета кандидата (страница консьержа)" };
+    const details: Record<string, unknown> = { Направление: dir === "salon" ? "Салон красоты" : "Консьерж-сервис / международная команда", Форма: "Анкета кандидата" };
     for (const f of ALL) { const x = v[f.key]; if (x && (Array.isArray(x) ? x.length : String(x).trim())) details[f.label] = Array.isArray(x) ? x.join(", ") : x; }
     if (v.contact === "Telegram" && v.tg) details["Ник в Telegram"] = "@" + String(v.tg).replace(/^@+/, "").trim();
     void sendLead({ kind: "vacancy", name: String(v.name || ""), phone: String(v.phone || ""), details });
@@ -112,10 +141,11 @@ export default function CandidateQuiz() {
 
   // Задачи и требования выбранной позиции (визажист-стилист — как визажист)
   const posTitle = String(v.position || "");
-  const pos = DATA.positions.find((p) => p.title === (posTitle === "Визажист-стилист" ? "Визажист" : posTitle));
+  const pos = D.positions.find((p) => p.title === (posTitle === "Визажист-стилист" ? "Визажист" : posTitle));
 
   return (
     <div className="w-full text-left">
+      <style>{`@keyframes alis-calc-in { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }`}</style>
       <span className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/45">Шаг {step + 1} / {STEPS.length} · {STEPS[step].title}</span>
       <div className="mt-3 h-[2px] w-full overflow-hidden rounded-full bg-[#17191a]/12">
         <div className="h-full bg-[#17191a] transition-all duration-500" style={{ width: `${(step / STEPS.length) * 100}%` }} />
@@ -136,7 +166,7 @@ export default function CandidateQuiz() {
               ) : f.type === "textarea" ? (
                 <textarea rows={2} value={String(v[f.key] || "")} onChange={(e) => setV({ ...v, [f.key]: e.target.value })} className={`${field} h-auto py-3`} />
               ) : f.type === "select" || f.type === "multi" ? (
-                <div className={f.key === "position" ? "grid gap-2 sm:grid-cols-3" : "flex flex-wrap gap-2"}>
+                <div className={f.key === "position" ? "grid grid-cols-2 gap-2 sm:grid-cols-3" : "flex flex-wrap gap-2"}>
                   {f.options!.map((o) => {
                     const cur = v[f.key];
                     const on = f.type === "multi" ? ((cur as string[]) || []).includes(o) : cur === o;
@@ -147,6 +177,8 @@ export default function CandidateQuiz() {
                     return <button key={o} type="button" onClick={pick} className={`${chip(on)} ${f.key === "position" ? "py-3.5" : ""}`}>{o}</button>;
                   })}
                 </div>
+              ) : f.type === "date" ? (
+                <DateField lang="ru" value={String(v[f.key] || "")} onChange={(x) => setV({ ...v, [f.key]: x })} className="[&>button]:!bg-[#f6f4f1]" />
               ) : (
                 <input type={f.type === "email" ? "email" : "text"} value={String(v[f.key] || "")} onChange={(e) => setV({ ...v, [f.key]: e.target.value })} className={field} />
               )}
@@ -210,7 +242,7 @@ export default function CandidateQuiz() {
         {tried && !stepOk && <p className="text-[12px] text-[#b42318]">Заполните, пожалуйста, поля со звёздочкой.</p>}
 
         <button type="button" onClick={next} className={btn}>{last ? "Отправить заявку" : "Далее"}</button>
-        {step > 0 && <button type="button" onClick={() => { setTried(false); setStep(step - 1); }} className={`self-start ${link}`}>← Назад</button>}
+        {(step > 0 || onBack) && <button type="button" onClick={() => { setTried(false); if (step > 0) setStep(step - 1); else onBack?.(); }} className={`self-start ${link}`}>← Назад</button>}
       </div>
     </div>
   );
