@@ -99,35 +99,38 @@ export default function ConciergePage() {
       <div id="hero-end" aria-hidden className="h-0" />
       <div className="relative z-10 bg-white page-end">
 
-        {/* 2 — Для кого (#about) */}
+        {/* Порядок — по лестнице Ханта: что это → это про меня → доказательства (кейсы, бренды) →
+            какой формат и сколько стоит → как всё пройдёт → отзывы → целевое действие (анкета). */}
+
+        {/* 2 — Для кого (#about): «это про меня?» */}
         <BlockLabel ru="Для кого" en="Who it's for" />
         <ConciergeBenefits title={{ ru: "Для кого", en: "Who it's for" }} />
 
-        {/* Бегущая строка брендов, которые нас выбирают — доверие перед ценами и пакетами */}
+        {/* 3 — Галерея выездных событий: «вы правда это делаете?» (данные — src/lib/conciergeEvents.ts) */}
+        <BlockLabel ru="Галерея выездных событий" en="Event gallery" />
+        <ConciergeEvents />
+
+        {/* 4 — Нас выбирают: «кто ещё вам доверяет?» */}
         <Brands title={{ ru: "Нас выбирают", en: "They choose us" }} />
 
-        {/* 3 — Пакеты услуг (#uslugi). TODO: цены «от …» и PDF КП пришлёт заказчица */}
+        {/* 5 — Пакеты услуг (#uslugi): «какой формат мой?» */}
         <BlockLabel ru="Пакеты услуг" en="Packages" />
         <ConciergePackages />
-        {/* Прайс консьерж-сервиса — с листов заказчицы, раскрывающимися категориями как в салоне */}
+        {/* 6 — Прайс: «сколько стоит?» */}
         <SalonServices
           categories={CONCIERGE_PRICES}
           cta={{ label: { ru: "Рассчитать бюджет", en: "Calculate the budget" }, href: "#calc" }}
         />
 
-        {/* Галерея выездных событий: город, событие, задача, итог (данные — src/lib/conciergeEvents.ts) */}
-        <BlockLabel ru="Галерея выездных событий" en="Event gallery" />
-        <ConciergeEvents />
-
-        {/* 4 — Как проходит работа (#process) */}
+        {/* 7 — Этапы работы (#process): «как всё пройдёт?» */}
         <BlockLabel ru="Как проходит работа с командой ÁLIS BEAUTY" en="How working with the ÁLIS BEAUTY team goes" />
         <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={{ ru: "Как проходит работа с командой ÁLIS BEAUTY", en: "How working with the ÁLIS BEAUTY team goes" }} />
 
-        {/* 5 — Проверка даты: анкета «Рассчитать бюджет» прямо в тёмной плашке (#calc) */}
-        <BudgetCalc />
-
-        {/* Отзывы — как на главной. TODO: заменить на отзывы о консьерж-сервисе, когда Зера пришлёт */}
+        {/* 8 — Отзывы: «люди довольны?». TODO: заменить на отзывы о консьерж-сервисе, когда Зера пришлёт */}
         <ReviewsWall title={{ ru: "Гости о нас", en: "Guests about us" }} />
+
+        {/* 9 — Целевое действие: анкета «Рассчитать бюджет» (#calc) */}
+        <BudgetCalc />
 
         {/* 6 — Основатель и форматы сотрудничества (#partners) */}
         {/* <ConciergeFounder /> — скрыт */}
