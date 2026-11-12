@@ -15,6 +15,8 @@ import { type Stage } from "@/components/HorizontalStory";
 import ConciergeStages from "@/components/pages/ConciergeStages";
 // import ConciergeOffer from "@/components/pages/ConciergeOffer"; // форма заявки скрыта — заявки идут через анкету #calc
 import ConciergeChat from "@/components/ConciergeChat";
+import ConciergeEvents from "@/components/pages/ConciergeEvents";
+import ConciergeContacts from "@/components/pages/ConciergeContacts";
 
 // Этапы работы — тексты заказчицы (сокращены под мобильную версию).
 const CONCIERGE_STAGES: Stage[] = [
@@ -22,8 +24,8 @@ const CONCIERGE_STAGES: Stage[] = [
     name: { ru: "Заявка", en: "Request" },
     heading: { ru: "Заявка", en: "Request" },
     desc: {
-      ru: "Заполните анкету или отправьте запрос личному консьержу. Ответим за 15 минут.",
-      en: "Fill in the form or message your personal concierge — we reply within 15 minutes.",
+      ru: "Заполните [анкету](#calc) или отправьте запрос [личному консьержу](#chat). Ответим за 15 минут.",
+      en: "Fill in the [form](#calc) or message your [personal concierge](#chat) — we reply within 15 minutes.",
     },
     quote: { ru: "«Ответим за 15 минут»", en: "“We reply in 15 minutes”" },
     photo: "/assets/tild6230-643__.jpg",
@@ -32,8 +34,8 @@ const CONCIERGE_STAGES: Stage[] = [
     name: { ru: "Смета", en: "Estimate" },
     heading: { ru: "Расчёт сметы и бронь", en: "Estimate and booking" },
     desc: {
-      ru: "Присылаем смету, подбираем команду и составляем тайминг. Дату закрепляют предоплата и подписание договора.",
-      en: "We send the estimate, pick the team and set the timing. A deposit and a contract secure the date.",
+      ru: "Присылаем смету, подбираем команду и составляем тайминг. Дату закрепляют предоплата и подписание договора. Заранее можно изучить наше [коммерческое предложение](/docs/alis-beauty-kp.pdf).",
+      en: "We send the estimate, pick the team and set the timing. A deposit and a contract secure the date. You can study our [commercial proposal](/docs/alis-beauty-proposal-en.pdf) in advance.",
     },
     quote: { ru: "«Дата закреплена»", en: "“Your date is secured”" },
     photo: "/assets/tild3236-393__.jpg",
@@ -113,12 +115,21 @@ export default function ConciergePage() {
           cta={{ label: { ru: "Рассчитать бюджет", en: "Calculate the budget" }, href: "#calc" }}
         />
 
+        {/* Галерея выездных событий: город, событие, задача, итог (данные — src/lib/conciergeEvents.ts) */}
+        <BlockLabel ru="Галерея выездных событий" en="Event gallery" />
+        <ConciergeEvents />
+
         {/* 4 — Как проходит работа (#process) */}
         <BlockLabel ru="Как проходит работа с командой ÁLIS BEAUTY" en="How working with the ÁLIS BEAUTY team goes" />
         <ConciergeStages stages={CONCIERGE_STAGES} sectionId="process" title={{ ru: "Как проходит работа с командой ÁLIS BEAUTY", en: "How working with the ÁLIS BEAUTY team goes" }} />
 
         {/* 5 — Проверка даты: анкета «Рассчитать бюджет» прямо в тёмной плашке (#calc) */}
         <BudgetCalc />
+
+        {/* Номера консьерж-сервиса + КП на двух языках */}
+        <ConciergeContacts />
+
+        {/* TODO: отзывы о консьерж-сервисе — в самом конце, когда Зера пришлёт */}
 
         {/* 6 — Основатель и форматы сотрудничества (#partners) */}
         {/* <ConciergeFounder /> — скрыт */}

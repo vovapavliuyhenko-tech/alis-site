@@ -9,6 +9,30 @@ import { type Stage } from "@/components/HorizontalStory";
 
 type Loc = { ru: string; en: string };
 
+// Ссылки прямо в тексте этапа: «[анкету](#calc)» → подсвеченное кликабельное слово
+function RichText({ text }: { text: string }) {
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
+  return (
+    <>
+      {parts.map((p, i) => {
+        const m = p.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (!m) return p;
+        const ext = /^https?:|\.pdf$/.test(m[2]);
+        return (
+          <a
+            key={i}
+            href={m[2]}
+            {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            className="rounded-[6px] bg-[#17191a]/[0.07] px-1.5 py-0.5 font-medium text-[#17191a] underline decoration-[#17191a]/40 decoration-1 underline-offset-[3px] transition-colors duration-300 hover:bg-[#17191a] hover:text-white hover:decoration-transparent"
+          >
+            {m[1]}
+          </a>
+        );
+      })}
+    </>
+  );
+}
+
 export default function ConciergeStages({
   stages,
   sectionId,
@@ -87,7 +111,7 @@ export default function ConciergeStages({
                   {s.heading[lang]}
                 </h3>
                 <p className="mt-3 max-w-[335px] !text-[11px] leading-[1.55] text-[#17191a]/65 sm:mt-5 sm:max-w-md sm:!text-[13px] lg:!text-[13.5px]">
-                  {s.desc[lang]}
+                  <RichText text={s.desc[lang]} />
                 </p>
                 </div>
               </div>
