@@ -2,7 +2,7 @@
 // Стратегии: страницы — network-first с откатом в кэш; статика/картинки/шрифты —
 // cache-first + фоновое обновление (stale-while-revalidate).
 // Смена версии удаляет весь старый кэш у посетителей (см. activate)
-const VERSION = "alis-v3"; // поднята — у всех посетителей стирается старый кэш и грузится свежий сайт
+const VERSION = "alis-v4"; // поднята — у всех посетителей стирается старый кэш и грузится свежий сайт
 const STATIC_CACHE = `static-${VERSION}`;
 const PAGE_CACHE = `pages-${VERSION}`;
 
@@ -63,7 +63,23 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Статика/картинки/шрифты: из кэша сразу + тихое обновление в фоне
+  // Код и стили сайта (/_next/static, .css/.js): сначала сеть, кэш — только без интернета.
+  // Имена этих файлов между обновлениями сайта иногда не меняются — из кэша приходили старые стили.
+  if (url.pathname.startsWith("/_next/static") || /.(css|js)$/.test(url.pathname)) {
+    event.respondWith((async () => {
+      const cache = await caches.open(STATIC_CACHE);
+      try {
+        const net = await fetch(req, { cache: "no-cache" });
+        if (net && net.ok) cache.put(req, net.clone());
+        return net;
+      } catch {
+        return (await cache.match(req)) || Response.error();
+      }
+    })());
+    return;
+  }
+
+  // Картинки/шрифты: из кэша сразу + тихое обновление в фоне
   if (isStatic(url)) {
     event.respondWith((async () => {
       const cache = await caches.open(STATIC_CACHE);
