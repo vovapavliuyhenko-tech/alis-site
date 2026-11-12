@@ -76,10 +76,10 @@ export default function BoxBuilder() {
           </p>
         </div>
 
-        <div className="grid overflow-hidden rounded-[22px] border border-[#17191a]/[0.06] bg-white shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:rounded-[28px] lg:grid-cols-2">
+        <div className="grid overflow-hidden rounded-[22px] border border-[#17191a]/[0.06] bg-white shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:rounded-[28px] lg:h-[clamp(480px,31.5vw,620px)] lg:grid-cols-2">
           {/* Слева — коробка */}
-          <div className="flex flex-col items-center justify-center bg-white p-6 sm:p-10 lg:min-h-[600px] lg:border-r lg:border-[#17191a]/[0.06]">
-            <div className="flex aspect-square w-full max-w-[440px] items-center justify-center">
+          <div className="flex flex-col items-center justify-center bg-white p-6 sm:p-10 lg:min-h-0 lg:p-8 lg:border-r lg:border-[#17191a]/[0.06]">
+            <div className="flex aspect-square w-full max-w-[440px] items-center justify-center lg:h-[74%] lg:w-auto lg:max-w-full">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 key={img}
@@ -111,7 +111,7 @@ export default function BoxBuilder() {
           </div>
 
           {/* Справа — один шаг */}
-          <div className="flex flex-col p-6 sm:p-10">
+          <div className="flex min-h-0 flex-col p-6 sm:p-10 lg:p-8">
             <div className="flex items-center gap-2">
               {STEPS.map((s, i) => (
                 <span key={s} className={`h-1 flex-1 rounded-full transition-colors duration-500 ${i <= step ? "bg-[#17191a]" : "bg-[#17191a]/12"}`} />
@@ -121,7 +121,7 @@ export default function BoxBuilder() {
               Шаг {step + 1} из 4 · {STEPS[step]}
             </p>
 
-            <div key={step} className="mt-2 flex-1 animate-[box-in_.5s_cubic-bezier(.22,.61,.36,1)]">
+            <div key={step} className="mt-2 flex min-h-0 flex-1 flex-col animate-[box-in_.5s_cubic-bezier(.22,.61,.36,1)]">
               {step === 0 && (
                 <>
                   <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">Какой размер?</h3>
@@ -176,8 +176,8 @@ export default function BoxBuilder() {
                     })}
                   </div>
                   {/* Сетка товаров: без своей полосы прокрутки, мягкое растворение снизу; вся карточка — кнопка */}
-                  <div key={group} className="relative mt-4">
-                    <div className="grid max-h-[392px] grid-cols-3 content-start gap-x-2.5 gap-y-4 overflow-y-auto pb-6 [scrollbar-width:none] sm:grid-cols-4 [&::-webkit-scrollbar]:hidden">
+                  <div key={group} className="relative mt-4 min-h-0 flex-1">
+                    <div className="grid max-h-[392px] grid-cols-3 lg:h-full lg:max-h-none content-start gap-x-2.5 gap-y-4 overflow-y-auto pb-6 [scrollbar-width:none] sm:grid-cols-4 [&::-webkit-scrollbar]:hidden">
                       {GROUPS[group].items.map((p, k) => {
                         const on = items.includes(p.name);
                         return (
@@ -234,7 +234,7 @@ export default function BoxBuilder() {
               <p key={nudge} className="mt-4 animate-[box-shake_.4s_ease] text-[12px] text-[#17191a]">Добавьте хотя бы одно средство — нажмите на «+» у товара</p>
             )}
             {!sent && (
-              <div className="mt-8 flex flex-col gap-4 border-t border-[#17191a]/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
+              <div className="mt-8 flex flex-col gap-4 border-t border-[#17191a]/10 pt-5 lg:mt-4 lg:pt-4 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-[12.5px] text-[#17191a]/60">
                   {sizeDef.label} · {BOX_COLORS[color].label} · {count ? `${count} ${word}` : "без наполнения"}
                   {total > 0 && <span className="ml-1 font-medium text-[#17191a]">· {partial ? "от " : ""}{total.toLocaleString("ru-RU")} ₽</span>}
