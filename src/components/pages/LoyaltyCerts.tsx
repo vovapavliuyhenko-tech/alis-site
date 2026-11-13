@@ -201,7 +201,6 @@ export default function LoyaltyCerts() {
                       if (dk) { setWho("me"); setCool(true); return; }
                       setCool(false);
                       setWho("friend");
-                      document.getElementById("loyalty")?.scrollIntoView({ behavior: "smooth", block: "start" });
                     } : undefined}
                     // В режиме «Для подруги» карточка «Бонус за подругу» тоже становится тёмной
                     data-on={(active === i && !(cool && p.action === "friend")) || (dk && p.action === "friend") ? "" : undefined}
