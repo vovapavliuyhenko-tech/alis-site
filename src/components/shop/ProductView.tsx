@@ -20,7 +20,7 @@ function Accordion({ title, children }: { title: string; children: React.ReactNo
   const [open, setOpen] = useState(false);
   return (
     <div className="border-t border-[#17191a]/15">
-      <button onClick={() => setOpen((v) => !v)} className="flex w-full items-center justify-between py-4 text-left">
+      <button type="button" onClick={() => setOpen((v) => !v)} aria-expanded={open} className="flex w-full items-center justify-between rounded-[8px] py-4 text-left outline-none focus-visible:ring-1 focus-visible:ring-[#17191a]/25">
         <span className="text-[13px] uppercase tracking-[0.14em] text-[#2a2320]">{title}</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={`h-4 w-4 text-[#17191a] transition-transform duration-300 ${open ? "rotate-180" : ""}`}>
           <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
