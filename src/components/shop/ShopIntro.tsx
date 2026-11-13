@@ -57,3 +57,65 @@ export function HairCta() {
     </div>
   );
 }
+
+// ДВЕ ФОТО-ПЛАШКИ под категориями (как баннеры на главной — фото с закруглением и кнопкой):
+// «Подобрать уход за 30 секунд» — раскрывает опросник (HairQuiz) прямо под плашками;
+// «Соберите подарочный бокс» — ведёт к конструктору бокса ниже (#box). Тексты — на согласование.
+export function ShopPromos() {
+  const { lang } = useLang();
+  const en = lang === "en";
+  const [open, setOpen] = useState(false);
+  const btn = "inline-flex items-center justify-center rounded-xl border border-white bg-white px-7 py-3 text-[10px] font-medium uppercase tracking-[0.12em] text-[#17191a] transition-colors duration-300 hover:bg-white/[0.18] hover:text-white sm:px-9 sm:py-3.5 sm:text-[12px] sm:tracking-[0.18em] lg:py-4 lg:text-[13px]";
+  const cards = [
+    {
+      img: "/assets/alis/img_5910.webp",
+      pos: "object-[50%_55%]",
+      eyebrow: en ? "30 seconds" : "30 секунд",
+      title: en ? "Find your hair care" : "Подберём уход для ваших волос",
+      text: en ? "Answer 5 questions — a specialist will send products for your hair type and goals." : "Ответьте на 5 вопросов — специалист пришлёт подбор средств под ваш тип и цели.",
+      cta: en ? (open ? "Hide" : "Find my care") : (open ? "Свернуть" : "Подобрать уход"),
+      onClick: () => {
+        setOpen((v) => !v);
+        if (!open) setTimeout(() => document.getElementById("hair")?.scrollIntoView({ behavior: "smooth", block: "start" }), 350);
+      },
+    },
+    {
+      img: "/assets/alis/img_6048.jpg",
+      pos: "object-center",
+      eyebrow: en ? "Gift" : "Подарок",
+      title: en ? "Build a gift box" : "Соберите подарочный бокс",
+      text: en ? "Pick the size, colour and contents — a manager will get back to you within 15 minutes." : "Выберите размер, цвет и наполнение — менеджер свяжется с вами за 15 минут.",
+      cta: en ? "Build a box" : "Собрать бокс",
+      href: "#box",
+    },
+  ];
+  return (
+    <section className="bg-white section-y">
+      <div className="mx-auto grid w-[96%] max-w-[1760px] gap-3 lg:grid-cols-2 lg:gap-4">
+        {cards.map((c) => (
+          <div key={c.title} className="r-reveal group relative flex h-[380px] items-end overflow-hidden rounded-[22px] sm:h-[440px] sm:rounded-[28px] lg:h-[520px]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={c.img} alt="" loading="lazy" className={`absolute inset-0 h-full w-full object-cover ${c.pos} transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]`} />
+            <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
+            <div className="relative w-full p-6 text-white sm:p-9 lg:p-11">
+              <span className="text-[10px] uppercase tracking-[0.22em] text-white/70 sm:text-[11px]">{c.eyebrow}</span>
+              <h2 className="mt-2 font-serif-display !text-[22px] font-normal uppercase leading-[1.15] tracking-[0.02em] text-white sm:!text-[26px] lg:!text-[32px]">{c.title}</h2>
+              <p className="mt-2 max-w-[42ch] !text-[12.5px] leading-[1.55] text-white/80 sm:!text-[14px]">{c.text}</p>
+              <div className="mt-5 sm:mt-6">
+                {c.href ? (
+                  <a href={c.href} className={btn}>{c.cta}</a>
+                ) : (
+                  <button type="button" onClick={c.onClick} aria-expanded={open} className={btn}>{c.cta}</button>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* Опросник по уходу — раскрывается под плашками */}
+      <div className={`grid transition-[grid-template-rows] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+        <div className="overflow-hidden">{open && <HairQuiz />}</div>
+      </div>
+    </section>
+  );
+}
