@@ -76,7 +76,7 @@ export function ShopPromos() {
       </div>
       <div className="relative mx-auto mt-8 flex h-[360px] w-[96%] max-w-[1760px] items-end overflow-hidden rounded-[22px] sm:h-[440px] sm:rounded-[28px] lg:mt-12 lg:h-[540px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/alis/img_5910.webp" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[50%_55%]" />
+        <img src="/assets/alis/work_hair_waves.jpg" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[50%_40%]" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
         <div className="relative w-full p-4 sm:p-5 lg:p-6">
           <button
