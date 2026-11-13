@@ -24,7 +24,7 @@ export default function ShopPage() {
           (прежний узкий баннер — ShopBanner в ShopIntro.tsx) */}
       <TeamIntro
         title={{
-          ru: "Средства, которыми работают специалисты ÁLIS BEAUTY, а00A0также мерч и аксессуары", // «а» не висит в конце строки
+          ru: "Средства, которыми работают специалисты ÁLIS BEAUTY, а также мерч и аксессуары", // «а» не висит в конце строки
           en: "The products ÁLIS BEAUTY specialists work with, plus merch and accessories",
         }}
         photo="/assets/alis/salon_cup_flatlay.jpg"
