@@ -83,7 +83,7 @@ export default function CooperationPage() {
         <ConciergeBenefits points={WHO} sectionId="who" title={{ ru: "Кому полезно", en: "Who it's for" }} />
 
         {/* Бегущая строка брендов, которые с нами сотрудничают */}
-        <Brands title={{ ru: "Нас выбирают", en: "They choose us" }} />
+        <Brands title={{ ru: "Наши партнёры", en: "Our partners" }} />
 
         {/* 3 — 5 рамок: фото или видео (TODO: медиа пришлёт заказчица) */}
         {/* <CoopGallery /> — скрыта, пока нет фото/видео */}

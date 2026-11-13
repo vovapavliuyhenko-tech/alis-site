@@ -106,8 +106,8 @@ export default function ConciergePage() {
         <BlockLabel ru="Для кого" en="Who it's for" />
         <ConciergeBenefits title={{ ru: "Для кого", en: "Who it's for" }} />
 
-        {/* 4 — Нас выбирают: «кто ещё вам доверяет?» */}
-        <Brands title={{ ru: "Нас выбирают", en: "They choose us" }} />
+        {/* 4 — Наши партнёры: «кто ещё вам доверяет?» */}
+        <Brands title={{ ru: "Наши партнёры", en: "Our partners" }} />
 
         {/* 5 — Пакеты услуг (#uslugi): «какой формат мой?» */}
         <BlockLabel ru="Пакеты услуг" en="Packages" />
