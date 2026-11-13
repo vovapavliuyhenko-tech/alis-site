@@ -120,7 +120,7 @@ export function HairQuiz() {
 
   return (
     <section id="hair" className="scroll-mt-24 bg-white section-y">
-      <div className="r-reveal mx-auto grid w-[96%] max-w-[1760px] gap-5 rounded-[22px] border border-[#17191a]/[0.06] bg-white px-4 py-7 text-[#17191a] shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
+      <div className="mx-auto grid w-[96%] max-w-[1760px] animate-[hq-in_.5s_ease] gap-5 rounded-[22px] border border-[#17191a]/[0.06] bg-white px-4 py-7 text-[#17191a] shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:gap-8 sm:rounded-[28px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-20 lg:px-20 lg:py-14">
         {/* Слева: заголовок и ваши ответы */}
         <div className="flex flex-col text-left">
           <h2 className="text-[#17191a]">{T("Анкета: подбор домашнего ухода за волосами", "Questionnaire: home hair care selection")}</h2>
