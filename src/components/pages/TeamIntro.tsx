@@ -24,9 +24,9 @@ export default function TeamIntro({
   kicker?: Loc; // короткая продающая строка мелко над заголовком (как оффер на главной)
   photo?: string;
   // Кнопка во всю ширину внизу — как «Оформить визит» на главной
-  button?: { label: Loc; href: string };
+  button?: { label: Loc; href: string; hrefEn?: string }; // hrefEn — своя ссылка для английской версии (например, КП на английском)
   // Вторая кнопка — две плашки в ряд, как на главной: первая белая, вторая стеклянная
-  button2?: { label: Loc; href: string };
+  button2?: { label: Loc; href: string; hrefEn?: string };
   // Длинный заголовок-оффер (в несколько строк) + мелкая строка под ним
   subtitle?: Loc;
 }) {
@@ -85,11 +85,11 @@ export default function TeamIntro({
 
       {button && (
         <div style={{ animationDelay: `${lineDelay + 0.4}s` }} className={`hero-up grid w-full gap-2 px-5 pb-5 sm:gap-3 sm:px-4 sm:pb-4 lg:gap-4 lg:px-6 lg:pb-6 ${button2 ? "grid-cols-2" : ""}`}>
-          {[button, button2].filter((b): b is { label: Loc; href: string } => !!b).map((b, i) => (
+          {[button, button2].filter((b): b is { label: Loc; href: string; hrefEn?: string } => !!b).map((b, i) => (
             <a
               key={b.href}
-              href={b.href}
-              {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              href={lang === "en" && b.hrefEn ? b.hrefEn : b.href}
+              {...(/^http|\.pdf$/.test(b.href) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className={`flex w-full items-center justify-center rounded-xl border px-1.5 py-3 text-center text-[9px] ${b.label[lang].length > 25 ? "leading-tight sm:whitespace-nowrap" : "whitespace-nowrap"} font-medium uppercase tracking-[0.02em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[13px] sm:tracking-[0.18em] lg:py-4 lg:text-[14px] ${
                 i === 0
                   ? "border-white bg-white text-[#17191a] hover:bg-white/[0.18] hover:text-white"

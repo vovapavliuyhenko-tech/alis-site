@@ -66,8 +66,8 @@ export default function CooperationPage() {
           en: "We take care of the looks of guests, models and VIP clients, and create bespoke gifts — in your city or wherever the event takes place.",
         }}
         photo="/assets/alis/img_6011.jpg"
-        // «Скачать КП» — сначала данные: открывает форму для бизнеса. TODO: PDF КП пришлёт заказчица
-        button={{ label: { ru: "Скачать коммерческое предложение", en: "Download the commercial proposal" }, href: "#business" }}
+        // «Скачать КП» — открывает PDF коммерческого предложения (на английской версии — английское КП)
+        button={{ label: { ru: "Скачать коммерческое предложение", en: "Download the commercial proposal" }, href: "/docs/alis-beauty-kp.pdf", hrefEn: "/docs/alis-beauty-proposal-en.pdf" }}
         // «Обсудить проект» — связь с менеджером: сразу в мессенджер консьерж-сервиса
         button2={{ label: { ru: "Обсудить проект", en: "Discuss a project" }, href: "https://wa.me/79888887728" }}
       />
