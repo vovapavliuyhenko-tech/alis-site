@@ -109,13 +109,13 @@ export default function ConciergePage() {
         {/* 4 — Нас выбирают: «кто ещё вам доверяет?» */}
         <Brands title={{ ru: "Нас выбирают", en: "They choose us" }} />
 
-        {/* 4.5 — Галерея выездных событий: «вы правда это делаете?» (данные — src/lib/conciergeEvents.ts) */}
-        <BlockLabel ru="Галерея выездных событий" en="Event gallery" />
-        <ConciergeEvents />
-
         {/* 5 — Пакеты услуг (#uslugi): «какой формат мой?» */}
         <BlockLabel ru="Пакеты услуг" en="Packages" />
         <ConciergePackages />
+        {/* 5.5 — Галерея выездных событий: «вы правда это делаете?» (данные — src/lib/conciergeEvents.ts) */}
+        <BlockLabel ru="Галерея выездных событий" en="Event gallery" />
+        <ConciergeEvents />
+
         {/* 6 — Прайс: «сколько стоит?» */}
         <SalonServices
           categories={CONCIERGE_PRICES}
