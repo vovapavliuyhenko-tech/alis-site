@@ -76,7 +76,6 @@ export default function SalonPage() {
             { src: "/assets/alis/salon_cup.jpg", cap: { ru: "Атмосфера салона", en: "Salon atmosphere" } },
             { src: "/assets/alis/work_hair_waves.jpg", cap: { ru: "Укладка", en: "Styling" } },
             { src: "/assets/alis/nails_pink_ring.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-            { src: "/assets/alis/img_6048.jpg", cap: { ru: "Магазин ÁLIS BEAUTY", en: "ÁLIS BEAUTY shop" } },
           ]}
           cta={null}
           title={{ ru: "Атмосфера, в которую хочется вернуться", en: "An atmosphere you want to come back to" }}
