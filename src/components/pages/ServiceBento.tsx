@@ -22,6 +22,9 @@ export default function ServiceBento() {
   return (
     <section id="services" className="scroll-mt-24 bg-white section-y">
       <div className="mx-auto w-[96%] max-w-[1760px]">
+        <h2 className="r-reveal mb-8 text-center font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] sm:mb-12 lg:mb-16 lg:text-[28px]">
+          {lang === "en" ? "Popular services" : "Популярные услуги"}
+        </h2>
         <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:h-[560px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4">
           {CATS.map((c, i) => (
             <a
