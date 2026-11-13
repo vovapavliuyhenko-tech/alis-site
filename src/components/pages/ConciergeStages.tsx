@@ -23,7 +23,7 @@ function RichText({ text }: { text: string }) {
             key={i}
             href={m[2]}
             {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="rounded-[6px] bg-[#17191a]/[0.07] px-1.5 py-0.5 font-medium text-[#17191a] underline decoration-[#17191a]/40 decoration-1 underline-offset-[3px] transition-colors duration-300 hover:bg-[#17191a] hover:text-white hover:decoration-transparent"
+            className="whitespace-nowrap rounded-[6px] bg-[#17191a]/[0.07] px-1.5 py-0.5 font-medium text-[#17191a] underline decoration-[#17191a]/40 decoration-1 underline-offset-[3px] transition-colors duration-300 hover:bg-[#17191a] hover:text-white hover:decoration-transparent"
           >
             {m[1]}
           </a>
