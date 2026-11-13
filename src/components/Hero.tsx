@@ -46,11 +46,11 @@ export default function Hero() {
         className="absolute inset-0 -z-10 lg:hidden"
         style={{
           background:
-            "linear-gradient(to top, rgba(20,18,16,.5) 0%, rgba(20,18,16,.12) 35%, rgba(20,18,16,0) 55%)",
+            "linear-gradient(to top, rgba(20,18,16,.72) 0%, rgba(20,18,16,.38) 32%, rgba(20,18,16,0) 62%)",
         }}
       />
       {/* Компьютер: без затемнения, фото насыщеннее; только лёгкая тень у самого низа — чтобы читался белый текст */}
-      <div aria-hidden className="absolute inset-0 -z-10 hidden lg:block" style={{ background: "linear-gradient(to top, rgba(20,18,16,.3) 0%, rgba(20,18,16,0) 32%)" }} />
+      <div aria-hidden className="absolute inset-0 -z-10 hidden lg:block" style={{ background: "linear-gradient(to top, rgba(20,18,16,.62) 0%, rgba(20,18,16,.3) 30%, rgba(20,18,16,0) 55%)" }} />
       {/* Эффекты обложки: зерно, виньетка и затемнение при прокрутке */}
       <Grain />
       <div ref={shade} aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[#17191a] opacity-0" />

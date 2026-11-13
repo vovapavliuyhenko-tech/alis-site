@@ -19,7 +19,7 @@ export default function TeamIntro({
   button,
   button2,
   subtitle,
-  dim = false,
+  dim = true, // затемнение под заголовком, текстом и кнопками — на всех обложках
 }: {
   title: Loc;
   kicker?: Loc; // короткая продающая строка мелко над заголовком (как оффер на главной)
