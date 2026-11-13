@@ -75,30 +75,20 @@ function ExpandCard({ src, cap, back, hidden, moved, openCount }: { src: string;
 // Кадры одного формата — единый портретный размер, минимальный зазор.
 // Подписи — по тому, что видно на фото; клик ведёт в категорию услуг салона.
 // TODO: заказчица сама отберёт фото работ мастеров (и подпишет мастера) — заменить список.
+// Только фото, которых нет в «Атмосфере» на странице салона — между страницами фото не повторяются
 const ITEMS: MarqueeItem[] = [
   { src: "/assets/alis/look_red_2.jpg", cap: { ru: "Макияж + укладка", en: "Makeup & styling" } },
   { src: "/assets/works/nails_bag_white.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-  { src: "/assets/works/bun_blonde.jpg", cap: { ru: "Причёска", en: "Hairstyle" } },
-  { src: "/assets/works/nails_cherry.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-  { src: "/assets/works/curls_brunette.jpg", cap: { ru: "Укладка + макияж", en: "Styling & makeup" } },
-  { src: "/assets/works/nails_tea.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
   { src: "/assets/alis/work_makeup_bun_crop.jpg", cap: { ru: "Макияж + причёска", en: "Makeup & hair" } },
-  { src: "/assets/alis/nails_french.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-  { src: "/assets/works/hair_halfup.jpg", cap: { ru: "Причёска", en: "Hairstyle" } },
-  { src: "/assets/works/nails_cup.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-  { src: "/assets/works/makeup_brunette.jpg", cap: { ru: "Макияж", en: "Makeup" } },
   { src: "/assets/works/nails_ring.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
   { src: "/assets/alis/img_3283.jpg", cap: { ru: "Укладка", en: "Styling" } },
   { src: "/assets/works/nails_red_tile.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-  { src: "/assets/works/look_redhead.jpg", cap: { ru: "Причёска + макияж", en: "Hair & makeup" } },
-  { src: "/assets/works/img_8173.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
   { src: "/assets/alis/work_hair_bun.jpg", cap: { ru: "Причёска", en: "Hairstyle" } },
-  { src: "/assets/works/nails_nude_hands.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+  { src: "/assets/works/img_8173.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
   { src: "/assets/works/makeup_shoot.jpg", cap: { ru: "Макияж + причёска", en: "Makeup & hair" } },
-  { src: "/assets/alis/work_nails_bag.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-  { src: "/assets/alis/work_hair_waves.jpg", cap: { ru: "Укладка", en: "Styling" } },
-  { src: "/assets/alis/nails_pink_ring.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+  { src: "/assets/works/nails_nude_hands.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
   { src: "/assets/alis/work_makeup_evening.jpg", cap: { ru: "Макияж + причёска", en: "Makeup & hair" } },
+  { src: "/assets/alis/work_nails_bag.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
 ];
 
 function Track({ items, hidden = false, moved, openCount }: { items: MarqueeItem[]; hidden?: boolean; moved: React.RefObject<boolean>; openCount: React.RefObject<number> }) {
