@@ -110,9 +110,9 @@ export default function ShopCatalog() {
                 <div className="grid grid-cols-1 gap-[6px] lg:grid-cols-2">
                   {/* Большое фото раздела */}
                   <div className={`group relative min-h-[260px] overflow-clip rounded-[12px] border border-[#17191a]/10 bg-white lg:min-h-0 lg:aspect-[598/715] ${photoLeft ? "" : "lg:order-2"}`}>
-                    {/* Заголовок и тег прижаты к низу экрана и едут за прокруткой, пока видно фото (как на странице магазина) */}
-                    <div className="absolute inset-0 flex flex-col justify-end px-6 py-8 lg:px-8 lg:py-12">
-                    <div className="sticky bottom-8 max-w-[440px] text-[#17191a] lg:bottom-12">
+                    {/* Заголовок и тег — с самого верха плашки и едут за прокруткой, пока видна плашка */}
+                    <div className="absolute inset-0 flex flex-col justify-start px-6 py-8 lg:px-8 lg:py-12">
+                    <div className="sticky top-28 max-w-[440px] text-[#17191a]">
                       <p className="text-[22px] uppercase leading-[1.15] tracking-[0.02em] lg:text-[28px]">{s.title[lang]}</p>
                       <p className="mt-5 text-[13px] uppercase tracking-[0.04em] text-[#17191a]/50 lg:mt-7 lg:text-[14px]">{s.hash[lang]}</p>
                     </div>
