@@ -13,7 +13,7 @@ import CountUp from "@/components/ui/CountUp";
 import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
 import { sendLead } from "@/lib/sendLead";
 
-const CERT_PHOTO = "/assets/works/certificate_envelope_wide.jpg"; // конверт с открыткой ÁLIS BEAUTY (повёрнут горизонтально, показывается целиком)
+const CERT_PHOTO = "/assets/works/certificate_envelope_wide2.jpg"; // конверт с открыткой ÁLIS BEAUTY (повёрнут горизонтально — виден целиком на всю плашку)
 
 type Loc = { ru: string; en: string };
 
@@ -238,9 +238,6 @@ export default function LoyaltyCerts() {
               className="r-reveal group relative min-h-[200px] scroll-mt-28 overflow-hidden rounded-[20px] sm:min-h-[240px]"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              {/* Фон — то же фото, размытое (ткань), сверху — конверт целиком справа, чтобы было понятно, что это */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={CERT_PHOTO} alt="" aria-hidden draggable={false} loading="lazy" className="absolute inset-0 h-full w-full scale-110 object-cover blur-xl brightness-90" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={CERT_PHOTO}
@@ -248,7 +245,7 @@ export default function LoyaltyCerts() {
                 draggable={false}
                 loading="lazy"
                 decoding="async"
-                className="absolute inset-y-0 right-0 h-full w-full object-contain object-right transition-all duration-[700ms] ease-out group-hover:scale-105 sm:w-auto sm:max-w-none sm:[mask-image:linear-gradient(to_right,transparent,black_22%)]"
+                className="absolute inset-0 h-full w-full object-cover object-center transition-all duration-[700ms] ease-out group-hover:scale-105 group-hover:blur-md"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent transition-colors duration-700 group-hover:from-black/65" />
               <span className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/50 text-white transition-all duration-300 group-hover:border-transparent group-hover:bg-white group-hover:text-[#17191a] sm:right-6 sm:top-6 sm:h-11 sm:w-11">
