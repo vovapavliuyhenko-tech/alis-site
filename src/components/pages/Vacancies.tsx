@@ -34,7 +34,7 @@ export default function Vacancies() {
                   className="group grid w-full grid-cols-[1fr_auto] items-center gap-5 px-5 py-4 text-left sm:px-6 sm:py-6 lg:gap-8 lg:px-8 lg:py-8"
                 >
                   <span className="min-w-0">
-                    <span className="block font-display text-[13px] font-normal uppercase leading-[1.15] tracking-[0.01em] text-[#17191a] transition-all duration-300 group-hover:translate-x-2 sm:text-[19px] lg:text-[24px]">
+                    <span className="block font-display text-[13px] font-normal leading-[1.15] tracking-[0.01em] text-[#17191a] transition-all duration-300 group-hover:translate-x-2 sm:text-[19px] lg:text-[24px]">
                       {v.title}
                     </span>
                   </span>
