@@ -6,13 +6,13 @@ import { useLang } from "@/lib/i18n";
 
 type Loc = { ru: string; en: string };
 // href — куда ведёт карточка: категория в услугах салона (раскрывается по якорю) или весь прайс
-type Cat = { title: Loc; note: Loc; img: string; alt: Loc; span: string; href: string };
+type Cat = { title: Loc; note: Loc; img: string; alt: Loc; span: string; href: string; pos?: string }; // pos — какая часть фото видна
 
 // Фото — работы по услуге (волны, маникюр, взгляд, макияж невесты, уход за волосами)
 const CATS: Cat[] = [
   { href: "/salon#uslugi-hair", title: { ru: "Парикмахерские услуги", en: "Hairdressing" }, note: { ru: "Стрижка, цвет, укладка. Выходите с причёской, а не с обещанием.", en: "Cut, colour, styling. You leave with the hairstyle, not a promise." }, img: "/assets/alis/work_hair_waves.jpg", alt: { ru: "Укладка локонами на длинных тёмных волосах — работа ÁLIS BEAUTY", en: "Long dark hair styled in soft waves by ÁLIS BEAUTY" }, span: "lg:col-start-1 lg:row-start-1 lg:row-span-2" },
   { href: "/salon#uslugi-makeup", title: { ru: "Макияж", en: "Makeup" }, note: { ru: "Дневной, вечерний, свадебный. В тон всему образу.", en: "Day, evening, bridal. In tone with the whole look." }, img: "/assets/works/makeup_shoot.jpg", alt: { ru: "Визажист ÁLIS BEAUTY делает свадебный макияж невесте", en: "An ÁLIS BEAUTY make-up artist doing bridal make-up" }, span: "lg:col-start-2 lg:row-start-1" },
-  { href: "/salon#uslugi-brows", title: { ru: "Коррекция бровей", en: "Brow shaping" }, note: { ru: "Форма под ваше лицо. Взгляд открытый уже на выходе.", en: "Shape made for your face. An open gaze the moment you leave." }, img: "/assets/works/brows_bw.jpg", alt: { ru: "Оформленные брови и ресницы, открытый взгляд — работа ÁLIS BEAUTY", en: "Shaped brows and lashes, an open gaze — by ÁLIS BEAUTY" }, span: "lg:col-start-3 lg:row-start-1" },
+  { href: "/salon#uslugi-brows", title: { ru: "Коррекция бровей", en: "Brow shaping" }, note: { ru: "Форма под ваше лицо. Взгляд открытый уже на выходе.", en: "Shape made for your face. An open gaze the moment you leave." }, img: "/assets/works/brows_bw.jpg", pos: "object-[50%_22%]", alt: { ru: "Оформленные брови и ресницы, открытый взгляд — работа ÁLIS BEAUTY", en: "Shaped brows and lashes, an open gaze — by ÁLIS BEAUTY" }, span: "lg:col-start-3 lg:row-start-1" },
   { href: "/salon#uslugi-manicure", title: { ru: "Ногтевой сервис", en: "Nail services" }, note: { ru: "Маникюр и педикюр, которые держатся, а не отлетают через неделю.", en: "Manicure and pedicure that last — no chipping after a week." }, img: "/assets/works/nails_ysl.jpg", alt: { ru: "Нюдовый маникюр на коротких ногтях — работа ÁLIS BEAUTY", en: "Nude manicure on short nails by ÁLIS BEAUTY" }, span: "lg:col-start-2 lg:col-span-2 lg:row-start-2" },
 ];
 
@@ -39,7 +39,7 @@ export default function ServiceBento() {
                 draggable={false}
                 loading="lazy"
                 decoding="async"
-                className="absolute inset-0 h-full w-full object-cover transition-[scale,filter] duration-[900ms] ease-out group-hover:scale-105 group-hover:blur-md"
+                className={`absolute inset-0 h-full w-full object-cover ${c.pos ?? ""} transition-[scale,filter] duration-[900ms] ease-out group-hover:scale-105 group-hover:blur-md`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent transition-colors duration-500 group-hover:from-black/55" />
 
