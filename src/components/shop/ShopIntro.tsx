@@ -1,5 +1,5 @@
 "use client";
-// МАГАЗИН — начало страницы по видео заказчицы: вместо обложки на весь экран — узкая плашка-баннер
+// МАГАЗИН — первый блок: скруглённый фото-баннер от самого верха (шапка лежит поверх фото),
 // с фото (временное; Зера пришлёт фото с баночками) и заголовком, без кнопки.
 // HairCta — маленькая плашка «Подобрать уход для волос за 30 секунд с консультантом»: по нажатию
 // раскрывается короткий опросник (HairQuiz), заявка уходит администратору/мастеру.
@@ -12,8 +12,8 @@ const BANNER_PHOTO = "/assets/alis/salon_cup_flatlay.jpg";
 export function ShopBanner() {
   const { lang } = useLang();
   return (
-    <section className="bg-white pt-[96px] min-[1280px]:pt-[110px]">
-      <div className="relative mx-auto flex h-[300px] w-[96%] max-w-[1760px] items-end overflow-hidden rounded-[22px] sm:h-[460px] sm:rounded-[28px] lg:h-[580px]">
+    <section className="bg-white pt-2 sm:pt-3">
+      <div className="relative mx-auto flex h-[460px] w-[96%] max-w-[1760px] items-end overflow-hidden rounded-[22px] sm:h-[560px] sm:rounded-[28px] lg:h-[min(80svh,720px)]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={BANNER_PHOTO} alt="" className="absolute inset-0 h-full w-full object-cover" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
