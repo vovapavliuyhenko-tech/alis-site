@@ -47,7 +47,7 @@ function ExpandCard({ src, cap, back, hidden, moved, openCount }: { src: string;
           {cap && (
             <p className="absolute inset-x-0 bottom-0 flex items-center justify-between px-5 pb-5 text-[10.5px] uppercase tracking-[0.22em] text-white sm:px-6 sm:pb-6 sm:text-[11.5px]">
               {cap[lang]}
-              <span aria-hidden className={`text-[14px] transition-transform duration-500 ${open ? "rotate-45" : ""}`}>+</span>
+              <span aria-hidden className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[17px] font-light leading-none text-[#17191a] shadow-[0_2px_10px_rgba(0,0,0,.15)] transition-transform duration-500 group-hover:scale-110 sm:h-9 sm:w-9 ${open ? "rotate-45" : ""}`}>+</span>
             </p>
           )}
         </div>
@@ -61,9 +61,8 @@ function ExpandCard({ src, cap, back, hidden, moved, openCount }: { src: string;
               href={back.cta.href}
               tabIndex={hidden || !open ? -1 : undefined}
               onClick={(e) => e.stopPropagation()}
-              className={`${back.text ? "mt-5" : "mt-auto"} flex items-center gap-2 border-t border-[#17191a]/12 pt-4 text-[10.5px] uppercase tracking-[0.16em] text-[#17191a] transition-opacity duration-300 hover:opacity-60 sm:text-[11.5px]`}
+              className={`${back.text ? "mt-5" : "mt-auto"} flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] px-3 py-3 text-center text-[10px] font-medium uppercase leading-tight tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:py-3.5 sm:text-[11px]`}
             >
-              <span aria-hidden>→</span>
               {back.cta.label[lang]}
             </a>
           )}
