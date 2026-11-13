@@ -17,6 +17,7 @@ export default function SalonServices({
   cta,
   search = false,
   master,
+  showFrom = true,
 }: {
   eyebrow?: Loc; // больше не выводится (надстрочники убраны по фидбеку)
   title?: Loc; // без заголовка, если не передан
@@ -24,6 +25,7 @@ export default function SalonServices({
   cta: { label: Loc; href: string };
   search?: boolean; // строка поиска по услугам над списком
   master?: { label: Loc; href: string }; // плашка «Выбрать своего мастера»
+  showFrom?: boolean; // плашка «от … ₽» у категории (на странице салона убрана)
 }) {
   const { lang } = useLang();
   const [open, setOpen] = useState<number | null>(null);
@@ -148,9 +150,9 @@ export default function SalonServices({
 
                   {/* Цена «от» + стрелка-переключатель */}
                   <span className="flex items-center gap-4 lg:gap-6">
-                    <span className={`hidden whitespace-nowrap rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 sm:inline ${isOpen ? "bg-[#17191a] text-white" : "bg-[#17191a]/[0.06] text-[#17191a]"}`}>
+                    {showFrom && <span className={`hidden whitespace-nowrap rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 sm:inline ${isOpen ? "bg-[#17191a] text-white" : "bg-[#17191a]/[0.06] text-[#17191a]"}`}>
                       {c.from[lang]}
-                    </span>
+                    </span>}
                     <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 sm:h-11 sm:w-11 lg:h-12 lg:w-12 ${isOpen ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/25 text-[#17191a] group-hover:border-[#17191a] group-hover:text-[#17191a]"}`}>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`h-4 w-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
                         <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />

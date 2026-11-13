@@ -59,6 +59,7 @@ export default function SalonPage() {
         <SalonServices
           categories={SALON_PRICES}
           search
+          showFrom={false}
           master={{ label: { ru: "Выбрать своего мастера", en: "Choose your specialist" }, href: YCLIENTS }}
           cta={{ label: { ru: "Оформить визит", en: "Book a visit" }, href: YCLIENTS }}
         />
