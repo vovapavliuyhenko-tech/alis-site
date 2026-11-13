@@ -6,9 +6,15 @@
 //  useHeroLive  — при прокрутке заголовок с текстом заметно уменьшается и исчезает, фото темнеет.
 // Анимации — в globals.css (hero-zoom, hero-letter, hero-line, hero-up). При «уменьшить
 // движение» всё выключено.
-import { useEffect, type RefObject } from "react";
+import { useEffect, useState, type RefObject } from "react";
 
 export function SplitTitle({ text, delay = 0.35 }: { text: string; delay?: number }) {
+  // Буквы проявляются только при первом показе. После смены языка текст меняется сразу целиком
+  // (иначе часть букв оставалась старой, а новые проявлялись с задержкой — «тупило»).
+  const [first] = useState(text);
+  const [changed, setChanged] = useState(false);
+  if (text !== first && !changed) setChanged(true);
+  const anim = !changed && text === first;
   let n = 0;
   return (
     <>
@@ -20,7 +26,7 @@ export function SplitTitle({ text, delay = 0.35 }: { text: string; delay?: numbe
             {word.split("").map((ch) => {
               const d = delay + n++ * 0.035;
               return (
-                <span key={n} className="hero-letter inline-block" style={{ animationDelay: `${d}s` }}>
+                <span key={n} className={anim ? "hero-letter inline-block" : "inline-block"} style={anim ? { animationDelay: `${d}s` } : undefined}>
                   {ch}
                 </span>
               );

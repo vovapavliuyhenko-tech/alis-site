@@ -11,6 +11,10 @@ import { usePathname } from "next/navigation";
 const LETTERS = "main h2:not(.sr-only), main .block-label";
 const SUBS = "main h2:not(.sr-only) + p";
 
+// Заголовки, у которых сейчас идёт побуквенная анимация: при смене языка мгновенно
+// возвращаем им обычный текст (React к этому моменту уже вписал перевод)
+const active = new Set<() => void>();
+
 function splitLetters(el: HTMLElement) {
   // Только простые заголовки из одного текста (сложную разметку не трогаем — анимируем целиком)
   const nodes = Array.from(el.childNodes);
@@ -39,13 +43,16 @@ function splitLetters(el: HTMLElement) {
   sr.textContent = text;
   nodes.forEach((nd) => nd.parentNode?.removeChild(nd));
   el.append(sr, box);
-  // Вернуть исходные узлы после анимации
-  setTimeout(() => {
+  // Вернуть исходные узлы после анимации (или сразу — при смене языка)
+  const restore = () => {
+    active.delete(restore);
     if (!el.contains(box)) return;
     sr.remove();
     box.remove();
     nodes.forEach((nd) => el.appendChild(nd));
-  }, 900 + n * 30 + 200);
+  };
+  active.add(restore);
+  setTimeout(restore, 900 + n * 30 + 200);
   return true;
 }
 
@@ -60,6 +67,12 @@ export default function HeadingReveal() {
   const pathname = usePathname();
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Смена языка (меняется атрибут lang у <html>) — мгновенно убрать незавершённые анимации
+    const mo = new MutationObserver(() => {
+      active.forEach((r) => r());
+      document.querySelectorAll(".hero-up-blur").forEach((x) => x.classList.remove("hero-up-blur"));
+    });
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
     let io: IntersectionObserver | null = null;
     const t = setTimeout(() => {
       const done = new WeakSet<Element>();
@@ -80,7 +93,7 @@ export default function HeadingReveal() {
         io!.observe(el);
       });
     }, 400);
-    return () => { clearTimeout(t); io?.disconnect(); };
+    return () => { clearTimeout(t); io?.disconnect(); mo.disconnect(); };
   }, [pathname]);
   return null;
 }
