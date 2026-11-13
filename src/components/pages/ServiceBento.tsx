@@ -20,7 +20,7 @@ export default function ServiceBento() {
   const { lang } = useLang();
 
   return (
-    <section id="services" className="scroll-mt-24 bg-white section-y">
+    <section id="services" className="scroll-mt-24 bg-white section-y !pt-[clamp(48px,8vw,116px)]">
       <div className="mx-auto w-[96%] max-w-[1760px]">
         <h2 className="r-reveal mb-8 text-center font-serif-display text-[22px] font-normal uppercase leading-[1.2] tracking-[0.02em] text-[#17191a] sm:mb-12 lg:mb-16 lg:text-[28px]">
           {lang === "en" ? "Popular services" : "Популярные услуги"}
