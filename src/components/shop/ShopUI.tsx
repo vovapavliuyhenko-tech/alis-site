@@ -5,9 +5,7 @@ import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { useShop } from "@/lib/shop";
 import { fmtPrice, PRODUCTS } from "@/lib/products";
-import { sendLead } from "@/lib/sendLead";
 
-const WA_PHONE = "79888887758";
 
 function IconClose() {
   return (
@@ -30,17 +28,6 @@ export default function ShopUI() {
   const t = (ru: string, e: string) => (en ? e : ru);
   const s = useShop();
 
-  const whatsappHref = () => {
-    const lines = s.cart.map((it) => {
-      const p = s.productById(it.id);
-      return `• ${p?.name[lang]} × ${it.qty} — ${fmtPrice((p?.price || 0) * it.qty, en)}`;
-    });
-    const msg =
-      t("Здравствуйте! Хочу заказать мерч ÁLIS BEAUTY:", "Hello! I'd like to order ÁLIS BEAUTY merch:") +
-      "\n" + lines.join("\n") +
-      "\n\n" + t("Итого:", "Total:") + " " + fmtPrice(s.cartTotal, en);
-    return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
-  };
 
   return (
     <>
@@ -90,26 +77,15 @@ export default function ShopUI() {
                 <span className="text-[13px] uppercase tracking-[0.14em] text-[#2a2320]/60">{t("Итого", "Total")}</span>
                 <span className="font-display text-[22px] text-[#2a2320]">{fmtPrice(s.cartTotal, en)}</span>
               </div>
-              <a
-                href={whatsappHref()}
-                onClick={() => {
-                  // Заказ дублируется в CRM — менеджер увидит состав, даже если клиент не отправит сообщение
-                  void sendLead({
-                    kind: "shop",
-                    details: {
-                      Состав: s.cart.map((it) => { const p = s.productById(it.id); return p ? `${p.name.ru} × ${it.qty}` : it.id; }).join(", "),
-                      Сумма: `${s.cartTotal} ₽`,
-                    },
-                  });
-                }}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="alis-pulse-wine mt-5 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:bg-transparent hover:text-[#17191a] hover:backdrop-blur-md"
+              <Link
+                href="/checkout"
+                onClick={s.closeAll}
+                className="mt-5 flex w-full items-center justify-center rounded-[12px] border border-[#17191a] bg-[#17191a] py-4 font-display text-[13px] uppercase tracking-[0.16em] text-[#f4efe6] transition-all duration-300 hover:bg-transparent hover:text-[#17191a]"
               >
-                {t("Оформить заказ в мессенджере", "Order via messenger")}
-              </a>
+                {t("Оформить заказ", "Checkout")}
+              </Link>
               <p className="mt-3 text-center text-[11px] text-[#2a2320]/45">
-                {t("Состав заказа отправится сообщением — подтвердим наличие и доставку.", "Your order is sent as a message — we'll confirm stock and delivery.")}
+                {t("Менеджер подтвердит наличие и стоимость — оплата только после согласования.", "Our manager confirms availability and price — payment only after approval.")}
               </p>
             </div>
           </>

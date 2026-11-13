@@ -14,6 +14,7 @@ type ShopCtx = {
   add: (id: string, qty?: number) => void;
   setQty: (id: string, qty: number) => void;
   remove: (id: string) => void;
+  clear: () => void; // очистить корзину (после оформления заказа)
   toggleFav: (id: string) => void;
   isFav: (id: string) => boolean;
   cartCount: number;
@@ -77,6 +78,7 @@ export function ShopProvider({ children }: { children: React.ReactNode }) {
     setCart((c) => (qty <= 0 ? c.filter((x) => x.id !== id) : c.map((x) => (x.id === id ? { ...x, qty } : x))));
   }, []);
   const remove = useCallback((id: string) => setCart((c) => c.filter((x) => x.id !== id)), []);
+  const clear = useCallback(() => setCart([]), []);
   const toggleFav = useCallback((id: string) => {
     setFavorites((f) => (f.includes(id) ? f.filter((x) => x !== id) : [...f, id]));
   }, []);
@@ -96,7 +98,7 @@ export function ShopProvider({ children }: { children: React.ReactNode }) {
   const closeAll = useCallback(() => setUi({ cart: false, fav: false, product: null }), []);
 
   const value: ShopCtx = {
-    cart, favorites, ui, add, setQty, remove, toggleFav, isFav,
+    cart, favorites, ui, add, setQty, remove, clear, toggleFav, isFav,
     cartCount, favCount: favorites.length, cartTotal,
     openCart, openFav, openProduct, closeAll, productById,
   };
