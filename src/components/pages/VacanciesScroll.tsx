@@ -55,7 +55,7 @@ export default function VacanciesScroll() {
   }, []);
 
   return (
-    <section id="steps" className="scroll-mt-24 bg-white section-y">
+    <section id="steps" className="scroll-mt-24 bg-white section-y !pt-[clamp(32px,6vw,90px)]">
       {/* Высота обёртки = длина «прокрутки вбок» (только компьютер) */}
       <div ref={wrap} className="h-[260vh] lg:h-[280vh]">
         <div className="sticky top-0 flex h-svh items-center">
