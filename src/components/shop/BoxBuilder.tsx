@@ -1,6 +1,6 @@
 "use client";
 // КОНФИГУРАТОР ПОДАРОЧНОГО БОКСА (магазин, #box) — по принципу Apple Store: справа всегда ОДИН шаг
-// (размер → цвет → наполнение → контакты), слева — сама коробка (S заметно меньше M; когда выбрано
+// (размер → цвет → наполнение → открытка и доставка → контакты), слева — сама коробка (S заметно меньше M; когда выбрано
 // средство — «открывается»). Внизу — строка-итог и кнопки «Назад / Далее». Ничего лишнего на экране.
 // Заявка уходит менеджеру (CRM, тип «shop»): он подтверждает наличие, упаковку, открытку и стоимость.
 import { useState } from "react";
@@ -12,7 +12,15 @@ import { BOX_COLORS, BOX_GROUPS, BOX_SIZES, type BoxColor, type BoxSize } from "
 const ALL = BOX_GROUPS.flatMap((g) => g.items);
 // В выбор попадают только товары с фото (без фото карточка выглядит пустой); пустые вкладки скрыты
 const GROUPS = BOX_GROUPS.map((g) => ({ ...g, items: g.items.filter((p) => p.img) })).filter((g) => g.items.length);
-const STEPS = ["Размер", "Цвет", "Наполнение", "Контакты"];
+const STEPS = ["Размер", "Цвет", "Наполнение", "Открытка и доставка", "Контакты"];
+
+// Варианты доставки (стоимость доставки менеджер называет при подтверждении). Тексты — на согласование.
+const DELIVERY = [
+  { id: "pickup", label: "Самовывоз из салона", note: "Новороссийск, ул. Пархоменко, 53 · бесплатно" },
+  { id: "city", label: "Курьером по Новороссийску", note: "В удобное время, стоимость подтвердит менеджер" },
+  { id: "russia", label: "Доставка по России", note: "Службой доставки, стоимость подтвердит менеджер" },
+] as const;
+type DeliveryId = (typeof DELIVERY)[number]["id"];
 
 export default function BoxBuilder() {
   const { lang } = useLang();
@@ -24,6 +32,10 @@ export default function BoxBuilder() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [comment, setComment] = useState("");
+  const [withCard, setWithCard] = useState(true); // открытка — бесплатно
+  const [cardText, setCardText] = useState("");
+  const [delivery, setDelivery] = useState<DeliveryId>("pickup");
+  const [address, setAddress] = useState("");
   const [consent, setConsent] = useState(false);
   const [sent, setSent] = useState(false);
 
@@ -36,7 +48,7 @@ export default function BoxBuilder() {
   const toggle = (it: string) => setItems((cur) => (cur.includes(it) ? cur.filter((x) => x !== it) : [...cur, it]));
   const opened = items.length > 0;
   const img = `/assets/box/box_${color}_${opened ? "open" : "closed"}.jpg`;
-  const ok = !!name.trim() && phoneComplete(phone) && consent && items.length > 0;
+  const ok = !!name.trim() && phoneComplete(phone) && consent && items.length > 0 && (delivery === "pickup" || !!address.trim());
   const canNext = step === 2 ? items.length > 0 : true;
   const [nudge, setNudge] = useState(0); // «покачать» подсказку, если нажали «Далее» без наполнения
   const next = () => (canNext ? setStep(step + 1) : setNudge((n) => n + 1));
@@ -52,6 +64,8 @@ export default function BoxBuilder() {
         Размер: `${sizeDef.label} (${sizeDef.dims})`,
         Цвет: BOX_COLORS[color].label,
         Наполнение: items.join("; "),
+        Открытка: withCard ? `да (бесплатно)${cardText.trim() ? ` — текст: «${cardText.trim()}»` : ""}` : "нет",
+        Доставка: DELIVERY.find((d) => d.id === delivery)!.label + (delivery !== "pickup" && address.trim() ? ` — ${address.trim()}` : ""),
         Комментарий: comment,
       },
     });
@@ -118,10 +132,10 @@ export default function BoxBuilder() {
               ))}
             </div>
             <p className="mt-4 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45">
-              Шаг {step + 1} из 4 · {STEPS[step]}
+              Шаг {step + 1} из {STEPS.length} · {STEPS[step]}
             </p>
 
-            <div key={step} className="mt-2 flex min-h-0 flex-1 flex-col animate-[box-in_.5s_cubic-bezier(.22,.61,.36,1)]">
+            <div key={step} className="mt-2 flex min-h-0 flex-1 flex-col overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden animate-[box-in_.5s_cubic-bezier(.22,.61,.36,1)]">
               {step === 0 && (
                 <>
                   <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">Какой размер?</h3>
@@ -206,7 +220,42 @@ export default function BoxBuilder() {
                 </>
               )}
 
-              {step === 3 &&
+              {step === 3 && (
+                <>
+                  <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">Открытка и доставка</h3>
+                  {/* Открытка — бесплатно, да/нет; при «да» — текст открытки */}
+                  <p className="mt-5 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45">Открытка · бесплатно</p>
+                  <div className="mt-2 grid grid-cols-2 gap-2">
+                    {[{ v: true, l: "Добавить открытку" }, { v: false, l: "Без открытки" }].map((o) => (
+                      <button key={o.l} type="button" onClick={() => setWithCard(o.v)} aria-pressed={withCard === o.v} className={`${card(withCard === o.v)} !p-4 text-[13px] text-[#17191a]`}>
+                        {o.l}
+                      </button>
+                    ))}
+                  </div>
+                  <div className={`grid transition-[grid-template-rows,opacity] duration-500 ${withCard ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                    <div className="overflow-hidden">
+                      <textarea value={cardText} onChange={(e) => setCardText(e.target.value)} rows={2} tabIndex={withCard ? 0 : -1} placeholder="Текст открытки (можно оставить пустым — подпишем красиво сами)" className={`${field} mt-2 h-auto py-3`} />
+                    </div>
+                  </div>
+                  {/* Доставка */}
+                  <p className="mt-6 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45">Доставка</p>
+                  <div className="mt-2 grid gap-2">
+                    {DELIVERY.map((d) => (
+                      <button key={d.id} type="button" onClick={() => setDelivery(d.id)} aria-pressed={delivery === d.id} className={`${card(delivery === d.id)} flex items-center justify-between gap-4 !px-4 !py-3.5`}>
+                        <span>
+                          <span className="block text-[13.5px] text-[#17191a]">{d.label}</span>
+                          <span className="mt-0.5 block text-[11.5px] text-[#17191a]/50">{d.note}</span>
+                        </span>
+                        <span aria-hidden className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${delivery === d.id ? "border-[#17191a] bg-[#17191a]" : "border-[#17191a]/25"}`}>
+                          {delivery === d.id && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {step === 4 &&
                 (sent ? (
                   <div className="py-10 text-center">
                     <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓</span>
@@ -219,7 +268,10 @@ export default function BoxBuilder() {
                     <div className="mt-6 flex flex-col gap-2">
                       <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Имя" className={field} />
                       <PhoneField lang={lang} value={phone} onChange={setPhone} className="!bg-[#f6f4f1]" />
-                      <textarea value={comment} onChange={(e) => setComment(e.target.value)} rows={2} placeholder="Пожелания: открытка, текст, дата" className={`${field} h-auto py-3`} />
+                      {delivery !== "pickup" && (
+                        <input value={address} onChange={(e) => setAddress(e.target.value)} placeholder={delivery === "city" ? "Адрес доставки в Новороссийске" : "Город и адрес доставки"} className={field} />
+                      )}
+                      <textarea value={comment} onChange={(e) => setComment(e.target.value)} rows={2} placeholder="Пожелания: дата и время доставки, детали" className={`${field} h-auto py-3`} />
                       <label className="mt-1 flex cursor-pointer items-center gap-2.5">
                         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]" />
                         <span className="text-[12px] text-[#17191a]/60">Даю согласие на обработку <a href="/policy" className="underline underline-offset-2">персональных данных</a></span>
@@ -245,7 +297,7 @@ export default function BoxBuilder() {
                       Назад
                     </button>
                   )}
-                  {step < 3 ? (
+                  {step < 4 ? (
                     <button type="button" onClick={next} className="rounded-full bg-[#17191a] px-8 py-3.5 text-[11.5px] font-medium uppercase tracking-[0.14em] text-white transition-opacity disabled:opacity-35">
                       {step === 2 && count ? `Далее · ${count}` : "Далее"}
                     </button>
