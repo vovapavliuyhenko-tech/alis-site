@@ -69,13 +69,22 @@ export default function SalonPage() {
         {/* 6 — Атмосфера (вместо «Галереи»). TODO: 6 фото салона, работ и подарков пришлёт заказчица */}
         <PhotoMarquee
           sectionId="gallery"
+          // фото не повторяются внутри ленты; похожие кадры (стаканчики, ногти) не стоят рядом
           items={[
             { src: "/assets/alis/salon_cup_flatlay.jpg", cap: { ru: "Атмосфера салона", en: "Salon atmosphere" } },
+            { src: "/assets/works/bun_blonde.jpg", cap: { ru: "Причёска", en: "Hairstyle" } },
             { src: "/assets/alis/nails_french.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
             { src: "/assets/alis/look_red_1.jpg", cap: { ru: "Макияж + укладка", en: "Makeup + styling" } },
+            { src: "/assets/works/nails_cup.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+            { src: "/assets/works/curls_brunette.jpg", cap: { ru: "Укладка + макияж", en: "Styling + makeup" } },
+            { src: "/assets/works/nails_tea.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+            { src: "/assets/works/hair_halfup.jpg", cap: { ru: "Причёска", en: "Hairstyle" } },
             { src: "/assets/alis/salon_cup.jpg", cap: { ru: "Атмосфера салона", en: "Salon atmosphere" } },
-            { src: "/assets/alis/work_hair_waves.jpg", cap: { ru: "Укладка", en: "Styling" } },
+            { src: "/assets/works/look_redhead.jpg", cap: { ru: "Причёска + макияж", en: "Hair + makeup" } },
             { src: "/assets/alis/nails_pink_ring.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+            { src: "/assets/alis/work_hair_waves.jpg", cap: { ru: "Укладка", en: "Styling" } },
+            { src: "/assets/works/nails_cherry.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+            { src: "/assets/works/makeup_brunette.jpg", cap: { ru: "Макияж", en: "Makeup" } },
           ]}
           cta={null}
           title={{ ru: "Атмосфера, в которую хочется вернуться", en: "An atmosphere you want to come back to" }}
