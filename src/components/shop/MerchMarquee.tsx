@@ -2,10 +2,45 @@
 // ЛЕНТА ТОВАРОВ «С этим часто покупают» на странице товара — в стиле ленты фото на главной:
 // портретные карточки со скруглением 12, авто-бег + перетаскивание, полоса прогресса снизу.
 // Название и цена появляются при наведении (на телефоне видны сразу). Без заголовка.
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useShop } from "@/lib/shop";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { PRODUCTS, fmtPrice } from "@/lib/products";
+
+// Карточка ленты: при наведении название и цена приподнимаются, снизу выезжает белая кнопка
+// «В корзину» (как в коллекции выше; на телефоне кнопка видна всегда)
+function MarqueeCard({ p, hidden, en, lang }: { p: (typeof PRODUCTS)[number]; hidden: boolean; en: boolean; lang: "ru" | "en" }) {
+  const shop = useShop();
+  const [added, setAdded] = useState(false);
+  const add = () => {
+    shop.add(p.id);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1600);
+  };
+  return (
+    <div className="group relative h-full w-full overflow-hidden rounded-[12px] bg-[#f2f1ee]">
+      <Link href={`/product/${p.id}`} tabIndex={hidden ? -1 : undefined} className="block h-full w-full" draggable={false}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={p.img} alt={hidden ? "" : p.name[lang]} draggable={false} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
+        <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 to-transparent px-4 pb-4 pt-12 text-white max-[1023px]:pb-[58px]">
+          <span className="flex items-end justify-between gap-2 transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)] [@media(hover:hover)]:group-hover:-translate-y-[48px]">
+            <span className="text-[12px] uppercase leading-[1.3] tracking-[0.06em] lg:text-[13px]">{p.name[lang]}</span>
+            <span className="shrink-0 text-[12px] lg:text-[13px]">{fmtPrice(p.price, en)}</span>
+          </span>
+        </span>
+      </Link>
+      <button
+        type="button"
+        tabIndex={hidden ? -1 : undefined}
+        onClick={add}
+        className="absolute inset-x-3 bottom-3 flex h-[38px] items-center justify-center rounded-[10px] bg-white text-[10.5px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-all duration-500 ease-[cubic-bezier(.22,.61,.36,1)] hover:bg-[#17191a] hover:text-white lg:inset-x-4 lg:bottom-4 [@media(hover:hover)]:translate-y-[140%] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100"
+      >
+        {added ? (en ? "Added ✓" : "Добавлено ✓") : en ? "Add to cart" : "В корзину"}
+      </button>
+    </div>
+  );
+}
 
 export default function MerchMarquee({ sectionId = "merch", exclude }: { sectionId?: string; exclude?: string } = {}) {
   const { lang } = useLang();
@@ -67,14 +102,7 @@ export default function MerchMarquee({ sectionId = "merch", exclude }: { section
     <ul aria-hidden={hidden} className="flex shrink-0">
       {items.map((p, i) => (
         <li key={i} className="mr-2 aspect-[3/4] h-[320px] shrink-0 lg:mr-3 lg:h-[440px]">
-          <Link href={`/product/${p.id}`} tabIndex={hidden ? -1 : undefined} className="group relative block h-full w-full overflow-hidden rounded-[12px] bg-[#f2f1ee]" draggable={false}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={p.img} alt={hidden ? "" : p.name[lang]} draggable={false} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
-            <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/50 to-transparent px-4 pb-4 pt-12 text-white">
-              <span className="text-[12px] uppercase leading-[1.3] tracking-[0.06em] lg:text-[13px]">{p.name[lang]}</span>
-              <span className="shrink-0 text-[12px] lg:text-[13px]">{fmtPrice(p.price, en)}</span>
-            </span>
-          </Link>
+          <MarqueeCard p={p} hidden={hidden} en={en} lang={lang} />
         </li>
       ))}
     </ul>
@@ -93,8 +121,8 @@ export default function MerchMarquee({ sectionId = "merch", exclude }: { section
           onClickCapture={onClickCapture}
           className="flex cursor-grab touch-pan-y overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
         >
-          <Track />
-          <Track hidden />
+          {Track({})}
+          {Track({ hidden: true })}
         </div>
 
 
