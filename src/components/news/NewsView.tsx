@@ -56,17 +56,18 @@ export function NewsCard({ n }: { n: NewsItem }) {
   );
 }
 
-// Главная (свежая) новость — без плашки: крупное фото слева, справа много воздуха и короткий текст
-function NewsFeature({ n }: { n: NewsItem }) {
+// Новость в ленте — без плашки: крупное фото и рядом много воздуха с коротким текстом.
+// flip — фото справа, текст слева (в ленте стороны чередуются)
+function NewsFeature({ n, flip = false }: { n: NewsItem; flip?: boolean }) {
   const { lang } = useLang();
   const href = `/news/${n.slug}`;
   return (
-    <article className="group grid items-center gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-20">
-      <Link href={href} className="block overflow-hidden rounded-[28px] bg-[#f2f1ee]">
+    <article className={`group grid items-center gap-8 lg:gap-20 ${flip ? "lg:grid-cols-[1fr_1.2fr]" : "lg:grid-cols-[1.2fr_1fr]"}`}>
+      <Link href={href} className={`block overflow-hidden rounded-[28px] bg-[#f2f1ee] ${flip ? "lg:order-2" : ""}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={n.image} alt={n.title[lang]} className="aspect-[4/3] w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03] lg:aspect-[5/4]" />
       </Link>
-      <div className="max-w-[520px]">
+      <div className={`max-w-[520px] ${flip ? "lg:order-1 lg:justify-self-end" : ""}`}>
         <Line n={n} lang={lang} />
         <h2 className="mt-5 !text-[22px] font-normal leading-[1.25] text-[#17191a] sm:!text-[26px] lg:!text-[32px]">
           <Link href={href}>{n.title[lang]}</Link>
@@ -83,23 +84,17 @@ function NewsFeature({ n }: { n: NewsItem }) {
 
 export function NewsGrid() {
   const { lang } = useLang();
-  const [first, ...rest] = NEWS;
   return (
     // Без обложки: отступ сверху под фиксированную шапку; много воздуха между блоками
     <section className="pb-10 pt-[120px] min-[1280px]:pt-[150px] min-[1680px]:pt-[180px]">
       <div className="mx-auto w-[92%] max-w-[1440px]">
         <h1 className="sr-only">{lang === "en" ? "ÁLIS BEAUTY news" : "Новости ÁLIS BEAUTY"}</h1>
-        {first && <NewsFeature n={first} />}
-        {rest.length > 0 && (
-          <>
-            <div aria-hidden className="my-16 h-px bg-[#17191a]/10 lg:my-28" />
-            <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-24">
-              {rest.map((n) => (
-                <NewsCard key={n.slug} n={n} />
-              ))}
-            </div>
-          </>
-        )}
+        {/* Все новости — крупным форматом, фото и текст меняются сторонами */}
+        <div className="flex flex-col gap-16 sm:gap-20 lg:gap-32">
+          {NEWS.map((n, i) => (
+            <NewsFeature key={n.slug} n={n} flip={i % 2 === 1} />
+          ))}
+        </div>
       </div>
     </section>
   );
