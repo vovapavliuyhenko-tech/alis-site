@@ -13,17 +13,27 @@ const ALL = BOX_GROUPS.flatMap((g) => g.items);
 // В выбор попадают только товары с фото (без фото карточка выглядит пустой); пустые вкладки скрыты
 const GROUPS = BOX_GROUPS.map((g) => ({ ...g, items: g.items.filter((p) => p.img) })).filter((g) => g.items.length);
 const STEPS = ["Размер", "Цвет", "Наполнение", "Открытка и доставка", "Контакты"];
+const STEPS_EN = ["Size", "Colour", "Contents", "Card and delivery", "Contacts"];
+// Английские подписи групп, размеров и цветов (данные — в boxProducts.ts)
+const EN: Record<string, string> = {
+  "Уход за волосами": "Hair care", "Кожа головы": "Scalp", "Макияж LUVU": "LUVU makeup", "Ароматы": "Fragrances",
+  "Размер S": "Size S", "Размер M": "Size M", "16 × 9 см": "16 × 9 cm", "30 × 16 см": "30 × 16 cm",
+  "Красный": "Red", "Розовый": "Pink", "Голубой": "Light blue", "Зелёный": "Green",
+};
 
 // Варианты доставки (стоимость доставки менеджер называет при подтверждении). Тексты — на согласование.
 const DELIVERY = [
-  { id: "pickup", label: "Самовывоз из салона", note: "Новороссийск, ул. Пархоменко, 53 · бесплатно" },
-  { id: "city", label: "Курьером по Новороссийску", note: "В удобное время, стоимость подтвердит менеджер" },
-  { id: "russia", label: "Доставка по России", note: "Службой доставки, стоимость подтвердит менеджер" },
+  { id: "pickup", label: "Самовывоз из салона", note: "Новороссийск, ул. Пархоменко, 53 · бесплатно", labelEn: "Pick up at the salon", noteEn: "53 Parkhomenko St., Novorossiysk · free" },
+  { id: "city", label: "Курьером по Новороссийску", note: "В удобное время, стоимость подтвердит менеджер", labelEn: "Courier in Novorossiysk", noteEn: "At a convenient time; the manager will confirm the cost" },
+  { id: "russia", label: "Доставка по России", note: "Службой доставки, стоимость подтвердит менеджер", labelEn: "Delivery across Russia", noteEn: "By a delivery service; the manager will confirm the cost" },
 ] as const;
 type DeliveryId = (typeof DELIVERY)[number]["id"];
 
 export default function BoxBuilder() {
   const { lang } = useLang();
+  const en = lang === "en";
+  const T = (ru: string, e: string) => (en ? e : ru);
+  const tr = (ru: string) => (en ? EN[ru] ?? ru : ru);
   const [step, setStep] = useState(0);
   const [size, setSize] = useState<BoxSize>("M");
   const [color, setColor] = useState<BoxColor>("pink");
@@ -78,7 +88,7 @@ export default function BoxBuilder() {
   const count = items.length;
   const total = items.reduce((sum, it) => sum + (ALL.find((x) => x.name === it)?.price || 0), 0);
   const partial = items.some((it) => !ALL.find((x) => x.name === it)?.price);
-  const word = count === 1 ? "средство" : count > 1 && count < 5 ? "средства" : "средств";
+  const word = en ? (count === 1 ? "product" : "products") : count % 10 === 1 && count % 100 !== 11 ? "средство" : [2, 3, 4].includes(count % 10) && ![12, 13, 14].includes(count % 100) ? "средства" : "средств";
 
   return (
     <section id="box" className="scroll-mt-24 bg-white section-y">
@@ -86,7 +96,7 @@ export default function BoxBuilder() {
         <div className="mb-8 text-center lg:mb-12">
           <h2 className="text-[#17191a]">{lang === "en" ? "Build your gift box" : "Соберите подарочный бокс"}</h2>
           <p className="mx-auto mt-3 max-w-[60ch] !text-[12.5px] leading-[1.6] text-[#17191a]/60 sm:!text-[14px]">
-            Свяжитесь с менеджером за 15 минут, чтобы выбрать упаковку, наполнение, открытку и обсудить необходимые детали.
+            {T("Свяжитесь с менеджером за 15 минут, чтобы выбрать упаковку, наполнение, открытку и обсудить необходимые детали.", "Our manager will get back to you within 15 minutes to choose the packaging, contents and card and discuss the details.")}
           </p>
         </div>
 
@@ -98,7 +108,7 @@ export default function BoxBuilder() {
               <img
                 key={img}
                 src={img}
-                alt={`Подарочный бокс ÁLIS BEAUTY — ${BOX_COLORS[color].label.toLowerCase()}, ${sizeDef.label}`}
+                alt={en ? `ÁLIS BEAUTY gift box — ${tr(BOX_COLORS[color].label).toLowerCase()}, ${tr(sizeDef.label)}` : `Подарочный бокс ÁLIS BEAUTY — ${BOX_COLORS[color].label.toLowerCase()}, ${sizeDef.label}`}
                 className="animate-[box-in_.6s_cubic-bezier(.22,.61,.36,1)] object-contain transition-[width] duration-700 ease-[cubic-bezier(.22,.61,.36,1)]"
                 style={{ width: size === "S" ? "58%" : "100%" }}
               />
@@ -109,7 +119,7 @@ export default function BoxBuilder() {
                 {items.map((it) => {
                   const p = ALL.find((x) => x.name === it);
                   return (
-                    <button key={it} type="button" onClick={() => toggle(it)} title={`Убрать: ${it}`} className="group/i relative h-11 w-11 overflow-hidden rounded-[10px] bg-white ring-1 ring-[#17191a]/10">
+                    <button key={it} type="button" onClick={() => toggle(it)} title={`${T("Убрать", "Remove")}: ${it}`} className="group/i relative h-11 w-11 overflow-hidden rounded-[10px] bg-white ring-1 ring-[#17191a]/10">
                       {p?.img ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={p.img} alt={it} className="h-full w-full object-contain" />
@@ -132,21 +142,21 @@ export default function BoxBuilder() {
               ))}
             </div>
             <p className="mt-4 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45">
-              Шаг {step + 1} из {STEPS.length} · {STEPS[step]}
+              {T("Шаг", "Step")} {step + 1} {T("из", "of")} {STEPS.length} · {en ? STEPS_EN[step] : STEPS[step]}
             </p>
 
             <div key={step} className="-mx-1.5 mt-1 flex min-h-0 flex-1 flex-col overflow-y-auto px-1.5 py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden animate-[box-in_.5s_cubic-bezier(.22,.61,.36,1)]">
               {step === 0 && (
                 <>
-                  <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">Какой размер?</h3>
+                  <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">{T("Какой размер?", "Which size?")}</h3>
                   <div className="mt-6 grid gap-3">
                     {BOX_SIZES.map((s) => (
                       <button key={s.id} type="button" onClick={() => pickSize(s.id)} className={card(size === s.id)}>
                         <span className="flex items-baseline justify-between gap-4">
-                          <span className="font-display text-[18px] uppercase tracking-[0.04em] text-[#17191a]">{s.label}</span>
-                          <span className="text-[13px] text-[#17191a]/55">{s.dims}</span>
+                          <span className="font-display text-[18px] uppercase tracking-[0.04em] text-[#17191a]">{tr(s.label)}</span>
+                          <span className="text-[13px] text-[#17191a]/55">{tr(s.dims)}</span>
                         </span>
-                        <span className="mt-1 block text-[12.5px] text-[#17191a]/55">{s.id === "S" ? "Компактный — несколько средств" : "Большой — для полного набора"}</span>
+                        <span className="mt-1 block text-[12.5px] text-[#17191a]/55">{s.id === "S" ? T("Компактный — несколько средств", "Compact — a few products") : T("Большой — для полного набора", "Large — for a full set")}</span>
                       </button>
                     ))}
                   </div>
@@ -155,26 +165,26 @@ export default function BoxBuilder() {
 
               {step === 1 && (
                 <>
-                  <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">Цвет коробки</h3>
-                  <p className="mt-2 text-[13px] text-[#17191a]/55">{BOX_COLORS[color].label}</p>
+                  <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">{T("Цвет коробки", "Box colour")}</h3>
+                  <p className="mt-2 text-[13px] text-[#17191a]/55">{tr(BOX_COLORS[color].label)}</p>
                   <div className="mt-6 flex flex-wrap gap-5">
                     {sizeDef.colors.map((c) => (
-                      <button key={c} type="button" onClick={() => setColor(c)} aria-pressed={color === c} aria-label={BOX_COLORS[c].label}>
+                      <button key={c} type="button" onClick={() => setColor(c)} aria-pressed={color === c} aria-label={tr(BOX_COLORS[c].label)}>
                         <span className={`block h-12 w-12 rounded-full transition-all duration-300 ${color === c ? "ring-2 ring-[#17191a] ring-offset-4" : "ring-1 ring-[#17191a]/15 hover:ring-[#17191a]/40"}`} style={{ background: BOX_COLORS[c].hex }} />
                       </button>
                     ))}
                   </div>
-                  {size === "S" && <p className="mt-4 text-[12px] text-[#17191a]/50">Размер S — в голубом цвете.</p>}
+                  {size === "S" && <p className="mt-4 text-[12px] text-[#17191a]/50">{T("Размер S — в голубом цвете.", "Size S comes in light blue.")}</p>}
                 </>
               )}
 
               {step === 2 && (
                 <>
                   <div className="flex items-baseline justify-between gap-4">
-                    <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">Наполнение</h3>
+                    <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">{T("Наполнение", "Contents")}</h3>
                     {/* Счётчик выбранного — «тикает» при каждом изменении */}
                     <span key={count} className={`text-[12px] tabular-nums transition-colors ${count ? "animate-[box-pop_.35s_ease] text-[#17191a]" : "text-[#17191a]/40"}`}>
-                      {count ? `Выбрано: ${count}` : "Выберите средства"}
+                      {count ? `${T("Выбрано", "Selected")}: ${count}` : T("Выберите средства", "Choose products")}
                     </span>
                   </div>
                   {/* Вкладки-«таблетки» с числом выбранного в каждой */}
@@ -183,7 +193,7 @@ export default function BoxBuilder() {
                       const n = g.items.filter((p) => items.includes(p.name)).length;
                       return (
                         <button key={g.title} type="button" onClick={() => setGroup(i)} className={`flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2 text-[12px] transition-colors duration-300 ${group === i ? "bg-[#17191a] text-white" : "bg-[#f6f4f1] text-[#17191a]/70 hover:text-[#17191a]"}`}>
-                          {g.title}
+                          {tr(g.title)}
                           {n > 0 && <span className={`flex h-[18px] min-w-[18px] items-center justify-center rounded-full px-1 text-[10px] tabular-nums ${group === i ? "bg-white text-[#17191a]" : "bg-[#17191a] text-white"}`}>{n}</span>}
                         </button>
                       );
@@ -222,11 +232,11 @@ export default function BoxBuilder() {
 
               {step === 3 && (
                 <>
-                  <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">Открытка и доставка</h3>
+                  <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">{T("Открытка и доставка", "Card and delivery")}</h3>
                   {/* Открытка — бесплатно, да/нет; при «да» — текст открытки */}
-                  <p className="mt-5 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45">Открытка · бесплатно</p>
+                  <p className="mt-5 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45">{T("Открытка · бесплатно", "Greeting card · free")}</p>
                   <div className="mt-2 grid grid-cols-2 gap-2">
-                    {[{ v: true, l: "Добавить открытку" }, { v: false, l: "Без открытки" }].map((o) => (
+                    {[{ v: true, l: T("Добавить открытку", "Add a card") }, { v: false, l: T("Без открытки", "No card") }].map((o) => (
                       <button key={o.l} type="button" onClick={() => setWithCard(o.v)} aria-pressed={withCard === o.v} className={`${card(withCard === o.v)} !p-4 text-[13px] text-[#17191a]`}>
                         {o.l}
                       </button>
@@ -234,17 +244,17 @@ export default function BoxBuilder() {
                   </div>
                   <div className={`grid transition-[grid-template-rows,opacity] duration-500 ${withCard ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                     <div className="overflow-hidden">
-                      <textarea value={cardText} onChange={(e) => setCardText(e.target.value)} rows={2} tabIndex={withCard ? 0 : -1} placeholder="Текст открытки (можно оставить пустым — подпишем красиво сами)" className={`${field} mt-2 h-auto py-3`} />
+                      <textarea value={cardText} onChange={(e) => setCardText(e.target.value)} rows={2} tabIndex={withCard ? 0 : -1} placeholder={T("Текст открытки (можно оставить пустым — подпишем красиво сами)", "Card message (leave it blank and we will write something lovely)")} className={`${field} mt-2 h-auto py-3`} />
                     </div>
                   </div>
                   {/* Доставка */}
-                  <p className="mt-6 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45">Доставка</p>
+                  <p className="mt-6 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45">{T("Доставка", "Delivery")}</p>
                   <div className="mt-2 grid gap-2">
                     {DELIVERY.map((d) => (
                       <button key={d.id} type="button" onClick={() => setDelivery(d.id)} aria-pressed={delivery === d.id} className={`${card(delivery === d.id)} flex items-center justify-between gap-4 !px-4 !py-3.5`}>
                         <span>
-                          <span className="block text-[13.5px] text-[#17191a]">{d.label}</span>
-                          <span className="mt-0.5 block text-[11.5px] text-[#17191a]/50">{d.note}</span>
+                          <span className="block text-[13.5px] text-[#17191a]">{en ? d.labelEn : d.label}</span>
+                          <span className="mt-0.5 block text-[11.5px] text-[#17191a]/50">{en ? d.noteEn : d.note}</span>
                         </span>
                         <span aria-hidden className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${delivery === d.id ? "border-[#17191a] bg-[#17191a]" : "border-[#17191a]/25"}`}>
                           {delivery === d.id && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
@@ -259,22 +269,22 @@ export default function BoxBuilder() {
                 (sent ? (
                   <div className="py-10 text-center">
                     <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓</span>
-                    <p className="mt-5 font-display text-[20px]">Спасибо!</p>
-                    <p className="mx-auto mt-2 max-w-[36ch] !text-[13px] text-[#17191a]/65">Менеджер свяжется с вами в течение 15 минут, чтобы подтвердить состав, упаковку, открытку и стоимость.</p>
+                    <p className="mt-5 font-display text-[20px]">{T("Спасибо!", "Thank you!")}</p>
+                    <p className="mx-auto mt-2 max-w-[36ch] !text-[13px] text-[#17191a]/65">{T("Менеджер свяжется с вами в течение 15 минут, чтобы подтвердить состав, упаковку, открытку и стоимость.", "Our manager will contact you within 15 minutes to confirm the contents, packaging, card and price.")}</p>
                   </div>
                 ) : (
                   <>
-                    <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">Куда прислать детали?</h3>
+                    <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">{T("Куда прислать детали?", "Where should we send the details?")}</h3>
                     <div className="mt-6 flex flex-col gap-2">
-                      <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Имя" className={field} />
+                      <input value={name} onChange={(e) => setName(e.target.value)} placeholder={T("Имя", "Name")} className={field} />
                       <PhoneField lang={lang} value={phone} onChange={setPhone} className="!bg-[#f6f4f1]" />
                       {delivery !== "pickup" && (
-                        <input value={address} onChange={(e) => setAddress(e.target.value)} placeholder={delivery === "city" ? "Адрес доставки в Новороссийске" : "Город и адрес доставки"} className={field} />
+                        <input value={address} onChange={(e) => setAddress(e.target.value)} placeholder={delivery === "city" ? T("Адрес доставки в Новороссийске", "Delivery address in Novorossiysk") : T("Город и адрес доставки", "City and delivery address")} className={field} />
                       )}
-                      <textarea value={comment} onChange={(e) => setComment(e.target.value)} rows={2} placeholder="Пожелания: дата и время доставки, детали" className={`${field} h-auto py-3`} />
+                      <textarea value={comment} onChange={(e) => setComment(e.target.value)} rows={2} placeholder={T("Пожелания: дата и время доставки, детали", "Notes: delivery date and time, details")} className={`${field} h-auto py-3`} />
                       <label className="mt-1 flex cursor-pointer items-center gap-2.5">
                         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]" />
-                        <span className="text-[12px] text-[#17191a]/60">Даю согласие на обработку <a href="/policy" className="underline underline-offset-2">персональных данных</a></span>
+                        <span className="text-[12px] text-[#17191a]/60">{T("Даю согласие на обработку ", "I agree to the processing of my ")}<a href="/policy" className="underline underline-offset-2">{T("персональных данных", "personal data")}</a></span>
                       </label>
                     </div>
                   </>
@@ -283,27 +293,27 @@ export default function BoxBuilder() {
 
             {/* Итог и кнопки — как в Apple Store */}
             {!sent && step === 2 && !count && nudge > 0 && (
-              <p key={nudge} className="mt-4 animate-[box-shake_.4s_ease] text-[12px] text-[#17191a]">Добавьте хотя бы одно средство — нажмите на «+» у товара</p>
+              <p key={nudge} className="mt-4 animate-[box-shake_.4s_ease] text-[12px] text-[#17191a]">{T("Добавьте хотя бы одно средство — нажмите на «+» у товара", "Add at least one product — tap “+” on a product")}</p>
             )}
             {!sent && (
               <div className="mt-8 flex flex-col gap-4 border-t border-[#17191a]/10 pt-5 lg:mt-4 lg:pt-4 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-[12.5px] text-[#17191a]/60">
-                  {sizeDef.label} · {BOX_COLORS[color].label} · {count ? `${count} ${word}` : "без наполнения"}
-                  {total > 0 && <span className="ml-1 font-medium text-[#17191a]">· {partial ? "от " : ""}{total.toLocaleString("ru-RU")} ₽</span>}
+                  {tr(sizeDef.label)} · {tr(BOX_COLORS[color].label)} · {count ? `${count} ${word}` : T("без наполнения", "no contents")}
+                  {total > 0 && <span className="ml-1 font-medium text-[#17191a]">· {partial ? T("от ", "from ") : ""}{total.toLocaleString("ru-RU")} ₽</span>}
                 </p>
                 <div className="flex items-center gap-3">
                   {step > 0 && (
                     <button type="button" onClick={() => setStep(step - 1)} className="px-3 py-3 text-[11.5px] uppercase tracking-[0.14em] text-[#17191a]/55 transition-colors hover:text-[#17191a]">
-                      Назад
+                      {T("Назад", "Back")}
                     </button>
                   )}
                   {step < 4 ? (
                     <button type="button" onClick={next} className="rounded-full bg-[#17191a] px-8 py-3.5 text-[11.5px] font-medium uppercase tracking-[0.14em] text-white transition-opacity disabled:opacity-35">
-                      {step === 2 && count ? `Далее · ${count}` : "Далее"}
+                      {step === 2 && count ? `${T("Далее", "Next")} · ${count}` : T("Далее", "Next")}
                     </button>
                   ) : (
                     <button type="button" onClick={send} disabled={!ok} className="rounded-full bg-[#17191a] px-8 py-3.5 text-[11.5px] font-medium uppercase tracking-[0.14em] text-white transition-opacity disabled:opacity-35">
-                      Связаться с менеджером
+                      {T("Связаться с менеджером", "Contact the manager")}
                     </button>
                   )}
                 </div>

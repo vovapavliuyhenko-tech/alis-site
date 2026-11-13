@@ -14,7 +14,7 @@ export const REVIEWS: Review[] = [
     role: { ru: "маникюр", en: "manicure" },
     text: {
       ru: "Прекрасное место, квалифицированные мастера, приятная атмосфера. Была на маникюре у Ксении — всё понравилось, спасибо за красивые ноготочки.",
-      en: "A wonderful place, skilled masters and a lovely atmosphere. I had a manicure with Ksenia — loved everything, thank you for the beautiful nails.",
+      en: "A wonderful place, skilled artists and a lovely atmosphere. I had a manicure with Ksenia — loved everything, thank you for the beautiful nails.",
     },
     photo: "/assets/tild3236-393__.jpg",
   },

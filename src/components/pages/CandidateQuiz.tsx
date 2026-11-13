@@ -6,10 +6,20 @@ import { useState } from "react";
 import { sendLead } from "@/lib/sendLead";
 import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
 import DateField from "@/components/ui/DateField";
-import { CAREER, type Dir, type Field } from "@/lib/vacancies";
+import { CAREER, careerFor, type Dir, type Field } from "@/lib/vacancies";
+import { useLang } from "@/lib/i18n";
 
-// Используется и на странице «Команда» (анкета салона, dir="salon"), и на консьерже (dir="concierge")
-const DATA = CAREER.concierge;
+// Используется и на странице «Команда» (анкета салона, dir="salon"), и на консьерже (dir="concierge").
+// Названия шагов на английском
+const STEP_EN: Record<string, string> = {
+  "Позиция": "Position",
+  "Контактная информация": "Contact information",
+  "Профессиональный опыт": "Professional experience",
+  "Портфолио": "Portfolio",
+  "Условия сотрудничества": "Terms",
+  "Мотивация": "Motivation",
+  "География и текущая занятость": "Location and current work",
+};
 
 // Шаги: 0 — позиция, дальше группы по 2–3 вопроса
 const STEPS_BY: Record<Dir, { title: string; keys: string[] }[]> = {
@@ -46,6 +56,8 @@ const btn = "flex w-full items-center justify-center rounded-[12px] border borde
 
 // Слева (компьютер) — коротко о карьере: «Мы предлагаем» и международная команда по нажатию
 export function CandidateIntro() {
+  const { lang } = useLang();
+  const DATA = careerFor(lang).concierge;
   const [intl, setIntl] = useState(false);
   return (
     <div className="flex flex-col text-left">
@@ -95,7 +107,10 @@ export default function CandidateQuiz({
   onBack?: () => void; // «Назад» на первом шаге (к выбору направления)
   initial?: Record<string, string>; // например, позиция, выбранная в списке вакансий
 } = {}) {
-  const D = CAREER[dir];
+  const { lang } = useLang();
+  const en = lang === "en";
+  const D = careerFor(lang)[dir];
+  const RU_LABEL = (k: string) => CAREER[dir].form.flatMap((x) => x.fields).find((f) => f.key === k)?.label ?? k;
   const ALL: Field[] = D.form.flatMap((s) => s.fields);
   const F = (k: string) => ALL.find((f) => f.key === k)!;
   const STEPS = STEPS_BY[dir];
@@ -124,7 +139,7 @@ export default function CandidateQuiz({
     setTried(false);
     if (!last) { setStep(step + 1); return; }
     const details: Record<string, unknown> = { Направление: dir === "salon" ? "Салон красоты" : "Консьерж-сервис / международная команда", Форма: "Анкета кандидата" };
-    for (const f of ALL) { const x = v[f.key]; if (x && (Array.isArray(x) ? x.length : String(x).trim())) details[f.label] = Array.isArray(x) ? x.join(", ") : x; }
+    for (const f of ALL) { const x = v[f.key]; if (x && (Array.isArray(x) ? x.length : String(x).trim())) details[RU_LABEL(f.key)] = Array.isArray(x) ? x.join(", ") : x; }
     if (v.contact === "Telegram" && v.tg) details["Ник в Telegram"] = "@" + String(v.tg).replace(/^@+/, "").trim();
     void sendLead({ kind: "vacancy", name: String(v.name || ""), phone: String(v.phone || ""), details });
     setSent(true);
@@ -134,35 +149,35 @@ export default function CandidateQuiz({
     return (
       <div className="animate-[alis-calc-in_.4s_ease] py-8 text-center">
         <span aria-hidden className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#17191a] text-[18px] text-white">✓</span>
-        <p className="mt-4 font-display text-[18px]">Спасибо!</p>
-        <p className="mx-auto mt-2 max-w-[38ch] !text-[13px] text-[#17191a]/65">Мы получили вашу анкету. Каждая заявка рассматривается лично — при соответствии требованиям мы свяжемся с вами.</p>
+        <p className="mt-4 font-display text-[18px]">{en ? "Thank you!" : "Спасибо!"}</p>
+        <p className="mx-auto mt-2 max-w-[38ch] !text-[13px] text-[#17191a]/65">{en ? "We have received your application. Every application is reviewed personally — if you meet the requirements, we will contact you." : "Мы получили вашу анкету. Каждая заявка рассматривается лично — при соответствии требованиям мы свяжемся с вами."}</p>
       </div>
     );
 
-  // Задачи и требования выбранной позиции (визажист-стилист — как визажист)
+  // Задачи и требования выбранной позиции (универсал «визажист-стилист» — как визажист)
   const posTitle = String(v.position || "");
-  const pos = D.positions.find((p) => p.title === (posTitle === "Визажист-стилист" ? "Визажист" : posTitle));
+  const pos = D.positions.find((p) => p.title === posTitle) ?? (posTitle && dir === "concierge" ? D.positions[0] : undefined);
 
   return (
     <div className="w-full text-left">
       <style>{`@keyframes alis-calc-in { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }`}</style>
-      <span className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/45">Шаг {step + 1} / {STEPS.length} · {STEPS[step].title}</span>
+      <span className="text-[10px] uppercase tracking-[0.2em] text-[#17191a]/45">{en ? "Step" : "Шаг"} {step + 1} / {STEPS.length} · {en ? STEP_EN[STEPS[step].title] ?? STEPS[step].title : STEPS[step].title}</span>
       <div className="mt-3 h-[2px] w-full overflow-hidden rounded-full bg-[#17191a]/12">
         <div className="h-full bg-[#17191a] transition-all duration-500" style={{ width: `${(step / STEPS.length) * 100}%` }} />
       </div>
 
       <div key={step} className="mt-4 flex animate-[alis-calc-in_.4s_ease] flex-col gap-4 sm:mt-5">
-        {step === 0 && <p className="!text-[12px] leading-[1.55] text-[#17191a]/60 sm:!text-[13px]">Заполнение анкеты займёт около 7 минут. Каждая заявка рассматривается лично.</p>}
+        {step === 0 && <p className="!text-[12px] leading-[1.55] text-[#17191a]/60 sm:!text-[13px]">{en ? "The form takes about 7 minutes. Every application is reviewed personally." : "Заполнение анкеты займёт около 7 минут. Каждая заявка рассматривается лично."}</p>}
         {fields.map((f) => {
           const bad = tried && f.required && !filled(f);
-          const label = f.key === "position" ? "На какую позицию вы претендуете?" : f.label;
+          const label = f.key === "position" ? (en ? "Which position are you applying for?" : "На какую позицию вы претендуете?") : f.label;
           return (
             <div key={f.key} className="flex flex-col gap-2">
               <span className={`${f.key === "position" ? "font-display text-[13px] uppercase tracking-[0.04em] sm:text-[17px]" : "text-[11.5px] leading-[1.4] sm:text-[12.5px]"} ${bad ? "text-[#b42318]" : f.key === "position" ? "text-[#17191a]" : "text-[#17191a]/70"}`}>
                 {label}{f.required && f.key !== "position" ? " *" : ""}
               </span>
               {f.type === "phone" ? (
-                <PhoneField lang="ru" value={String(v[f.key] || "")} onChange={(x) => setV({ ...v, [f.key]: x })} className="!bg-[#f6f4f1]" />
+                <PhoneField lang={lang} value={String(v[f.key] || "")} onChange={(x) => setV({ ...v, [f.key]: x })} className="!bg-[#f6f4f1]" />
               ) : f.type === "textarea" ? (
                 <textarea rows={2} value={String(v[f.key] || "")} onChange={(e) => setV({ ...v, [f.key]: e.target.value })} className={`${field} h-auto py-3`} />
               ) : f.type === "select" || f.type === "multi" ? (
@@ -178,7 +193,7 @@ export default function CandidateQuiz({
                   })}
                 </div>
               ) : f.type === "date" ? (
-                <DateField lang="ru" value={String(v[f.key] || "")} onChange={(x) => setV({ ...v, [f.key]: x })} className="[&>button]:!bg-[#f6f4f1]" />
+                <DateField lang={lang} value={String(v[f.key] || "")} onChange={(x) => setV({ ...v, [f.key]: x })} className="[&>button]:!bg-[#f6f4f1]" />
               ) : (
                 <input type={f.type === "email" ? "email" : "text"} value={String(v[f.key] || "")} onChange={(e) => setV({ ...v, [f.key]: e.target.value })} className={field} />
               )}
@@ -195,7 +210,7 @@ export default function CandidateQuiz({
                         autoCapitalize="none"
                         autoCorrect="off"
                         placeholder="username"
-                        aria-label="Ник в Telegram"
+                        aria-label={en ? "Telegram username" : "Ник в Telegram"}
                         tabIndex={v.contact === "Telegram" ? 0 : -1}
                         value={String(v.tg || "")}
                         onChange={(e) => setV({ ...v, tg: e.target.value.replace(/^@+/, "").replace(/\s/g, "") })}
@@ -213,12 +228,12 @@ export default function CandidateQuiz({
         {step === 0 && pos && (
           <div className="rounded-[16px] bg-[#f6f4f1] px-5 py-4">
             <button type="button" onClick={() => setMore((x) => !x)} className="flex w-full items-center justify-between text-left">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-[#17191a]/55">Задачи и требования · {pos.title}</span>
+              <span className="text-[10px] uppercase tracking-[0.18em] text-[#17191a]/55">{en ? "Duties and requirements" : "Задачи и требования"} · {pos.title}</span>
               <span aria-hidden className={`text-[14px] text-[#17191a]/60 transition-transform duration-500 ${more ? "rotate-45" : ""}`}>+</span>
             </button>
             <div className={`grid transition-[grid-template-rows] duration-500 ${more ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
               <div className="overflow-hidden">
-                {[{ t: pos.tasksTitle || "Задачи", items: pos.tasks }, { t: "Требования", items: pos.reqs }].map((b) => (
+                {[{ t: pos.tasksTitle || (en ? "Duties" : "Задачи"), items: pos.tasks }, { t: en ? "Requirements" : "Требования", items: pos.reqs }].map((b) => (
                   <div key={b.t} className="mt-3">
                     <p className="text-[10px] uppercase tracking-[0.18em] text-[#17191a]/45">{b.t}</p>
                     <ul className="mt-1.5 flex flex-col gap-1">
@@ -235,14 +250,14 @@ export default function CandidateQuiz({
           <label className="flex cursor-pointer items-center gap-2.5">
             <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="h-4 w-4 shrink-0 cursor-pointer accent-[#17191a]" />
             <span className={`text-[11.5px] ${tried && !consent ? "text-[#b42318]" : "text-[#17191a]/55"}`}>
-              Даю согласие на обработку <a href="/policy" className="underline underline-offset-2">персональных данных</a> *
+              {en ? "I agree to the processing of my " : "Даю согласие на обработку "}<a href="/policy" className="underline underline-offset-2">{en ? "personal data" : "персональных данных"}</a> *
             </span>
           </label>
         )}
-        {tried && !stepOk && <p className="text-[12px] text-[#b42318]">Заполните, пожалуйста, поля со звёздочкой.</p>}
+        {tried && !stepOk && <p className="text-[12px] text-[#b42318]">{en ? "Please fill in the fields marked with an asterisk." : "Заполните, пожалуйста, поля со звёздочкой."}</p>}
 
-        <button type="button" onClick={next} className={btn}>{last ? "Отправить заявку" : "Далее"}</button>
-        {(step > 0 || onBack) && <button type="button" onClick={() => { setTried(false); if (step > 0) setStep(step - 1); else onBack?.(); }} className={`self-start ${link}`}>← Назад</button>}
+        <button type="button" onClick={next} className={btn}>{last ? (en ? "Submit application" : "Отправить заявку") : en ? "Next" : "Далее"}</button>
+        {(step > 0 || onBack) && <button type="button" onClick={() => { setTried(false); if (step > 0) setStep(step - 1); else onBack?.(); }} className={`self-start ${link}`}>← {en ? "Back" : "Назад"}</button>}
       </div>
     </div>
   );

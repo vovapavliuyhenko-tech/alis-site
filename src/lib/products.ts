@@ -18,7 +18,7 @@ export const PRODUCTS: Product[] = [
     tag: { ru: "одежда", en: "apparel" },
     desc: {
       ru: "Мягкое худи оверсайз из плотного хлопкового футера с вышивкой ÁLIS. Унисекс, тёплое и уютное — как атмосфера салона.",
-      en: "A soft oversized hoodie in dense cotton fleece with an ÁLIS BEAUTY embroidery. Unisex, warm and cosy — like the salon's mood.",
+      en: "A soft oversized hoodie in dense cotton fleece with ÁLIS BEAUTY embroidery. Unisex, warm and cosy — like the salon's mood.",
     },
   },
   {

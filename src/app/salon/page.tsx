@@ -80,7 +80,7 @@ export default function SalonPage() {
           title={{ ru: "Атмосфера, в которую хочется вернуться", en: "An atmosphere you want to come back to" }}
           text={{
             ru: "Гости говорят, что чувствуют себя окрылёнными после процедур, — а мы делаем всё, чтобы так было каждый раз.",
-            en: "Guests say they feel uplifted after their treatments — and we do everything to make it so every time.",
+            en: "Guests say they feel uplifted after their treatments — and we do everything to make sure it happens every time.",
           }}
         />
 

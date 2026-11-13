@@ -9,9 +9,9 @@ import { useLang } from "@/lib/i18n";
 type Loc = { ru: string; en: string };
 
 const STEPS: { title: Loc; note: Loc }[] = [
-  { title: { ru: "Заполните анкету", en: "Fill in the form" }, note: { ru: "и прикрепите 10 работ", en: "and attach 10 works" } },
-  { title: { ru: "Пройдите собеседование", en: "Have an interview" }, note: { ru: "знакомимся и обсуждаем формат работы", en: "we meet and discuss the format of work" } },
-  { title: { ru: "Сделайте пробную работу", en: "Do a trial work" }, note: { ru: "по стандартам ÁLIS BEAUTY", en: "to ÁLIS BEAUTY standards" } },
+  { title: { ru: "Заполните анкету", en: "Fill in the form" }, note: { ru: "и прикрепите 10 работ", en: "and attach 10 examples of your work" } },
+  { title: { ru: "Пройдите собеседование", en: "Have an interview" }, note: { ru: "знакомимся и обсуждаем формат работы", en: "we meet and discuss how we'll work together" } },
+  { title: { ru: "Сделайте пробную работу", en: "Do a trial service" }, note: { ru: "по стандартам ÁLIS BEAUTY", en: "to ÁLIS BEAUTY standards" } },
   { title: { ru: "Получите работу", en: "Get the job" }, note: { ru: "и становитесь частью команды", en: "and become part of the team" } },
 ];
 

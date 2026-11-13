@@ -73,7 +73,7 @@ export default function CoopQuiz() {
         {/* Слева: заголовок и плитки ответов */}
         <div className="flex flex-col text-left">
           <h2 className="text-[#17191a]">{en ? "Let's discuss your project" : "Обсудим ваш проект"}</h2>
-          <p className="mt-2 !text-[12.5px] text-[#17191a]/60 sm:mt-3 sm:!text-[15px]">{en ? "Four short steps — the manager will get back to you." : "Четыре коротких шага — и менеджер свяжется с вами."}</p>
+          <p className="mt-2 !text-[12.5px] text-[#17191a]/60 sm:mt-3 sm:!text-[15px]">{en ? "Four short steps — our manager will get back to you." : "Четыре коротких шага — и менеджер свяжется с вами."}</p>
           <div className="mt-7 hidden flex-col lg:flex">
             <div className="grid grid-cols-2 gap-2">
               {QS.map((x, i) => {

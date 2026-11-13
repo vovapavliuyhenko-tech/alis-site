@@ -142,7 +142,7 @@ export default function BudgetCalc() {
         <>
         <div className="flex flex-col text-left">
           <h2 className="text-[#17191a]">{en ? "Your date may already be taken" : "Ваша дата может быть уже занята"}</h2>
-          <p className="mt-2 !text-[12.5px] text-[#17191a]/65 sm:mt-3 sm:!text-[15px]">{en ? "We'll check within 15 minutes?" : "Проверим за 15 минут?"}</p>
+          <p className="mt-2 !text-[12.5px] text-[#17191a]/65 sm:mt-3 sm:!text-[15px]">{en ? "Shall we check in 15 minutes?" : "Проверим за 15 минут?"}</p>
           {/* Ваши ответы — только на компьютере: плитки заполняются по ходу анкеты,
               пустые — пунктиром; внизу — пакет, который подходит по ответам */}
           <div className="mt-7 hidden flex-1 flex-col justify-end lg:flex">

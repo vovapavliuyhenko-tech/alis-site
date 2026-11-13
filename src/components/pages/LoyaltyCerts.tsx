@@ -55,7 +55,7 @@ const PERKS: { icon: () => React.ReactElement; title: Loc; note: Loc; action: "b
     icon: FriendsIcon,
     action: "friend",
     title: { ru: "Бонус за подругу", en: "A bonus for a friend" },
-    note: { ru: "Посоветуйте ÁLIS BEAUTY подруге, и вы обе получите бонусы на счёт.", en: "Recommend ÁLIS BEAUTY to a friend, and you'll both get bonuses to your account." },
+    note: { ru: "Посоветуйте ÁLIS BEAUTY подруге, и вы обе получите бонусы на счёт.", en: "Recommend ÁLIS BEAUTY to a friend, and you'll both get bonuses in your account." },
   },
 ];
 
@@ -258,7 +258,7 @@ export default function LoyaltyCerts() {
                 <p className="min-h-0 overflow-hidden pt-1.5 max-w-md !text-[11.5px] leading-relaxed text-white/80 sm:!text-[13px]">
                   {t(
                     "Любая услуга или сумма. Лучший способ подарить заботу и внимание.",
-                    "Any service or amount. The best way to gift care and attention.",
+                    "Any service or amount. The best way to give care and attention.",
                   )}
                 </p>
                 </div>

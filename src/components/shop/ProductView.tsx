@@ -107,7 +107,7 @@ export default function ProductView({ product }: { product: Product }) {
               <Accordion title={t("Доставка и оплата", "Delivery & payment")}>
                 {t(
                   "Забрать можно в салоне на Пархоменко, 53 или оформить доставку. Заказ подтверждаем в мессенджере — там же согласуем оплату и способ получения.",
-                  "Pick up at the salon on Parkhomenko 53 or arrange delivery. We confirm the order via messenger — payment and pickup are agreed there.",
+                  "Pick up at the salon at 53 Parkhomenko St. or arrange delivery. We confirm the order via messenger — payment and pickup are agreed there.",
                 )}
               </Accordion>
             </div>

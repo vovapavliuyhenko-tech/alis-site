@@ -7,7 +7,7 @@ export type ConciergeCategory = { slug?: string; label: Loc; sub: Loc; from: Loc
 
 const r = (v: string): Loc => ({ ru: `${v} ₽`, en: `${v} ₽` });
 const from = (v: string): Loc => ({ ru: `от ${v} ₽`, en: `from ${v} ₽` });
-const TOP = { ru: " (специалисты категории «топ»)", en: " (top-category specialists)" };
+const TOP = { ru: " (специалисты категории «топ»)", en: " (top artists)" };
 const top = (n: Loc): Loc => ({ ru: n.ru + TOP.ru, en: n.en + TOP.en });
 
 const FULL = { ru: "Полный образ", en: "Full look" };
@@ -74,8 +74,8 @@ export const CONCIERGE_PRICES: ConciergeCategory[] = [
     groups: [
       {
         rows: [
-          { name: { ru: "1 специалист (час) — стилист или визажист", en: "1 specialist (hour) — stylist or makeup artist" }, price: r("2 000") },
-          { name: { ru: "2 специалиста (час)", en: "2 specialists (hour)" }, price: r("4 000") },
+          { name: { ru: "1 специалист (час) — стилист или визажист", en: "1 specialist per hour — hairstylist or makeup artist" }, price: r("2 000") },
+          { name: { ru: "2 специалиста (час)", en: "2 specialists per hour" }, price: r("4 000") },
           { name: { ru: "Полная смена образа", en: "Full look change" }, price: r("10 000") },
           { name: top({ ru: "Полная смена образа", en: "Full look change" }), price: r("12 500") },
           { name: { ru: "Частичная смена образа (причёска или макияж)", en: "Partial look change (hair or makeup)" }, price: r("5 000") },

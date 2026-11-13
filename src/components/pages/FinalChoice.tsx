@@ -23,7 +23,7 @@ export default function FinalChoice() {
   return (
     <section id="final" className="bg-white section-y">
       <div className="r-reveal mx-auto w-[92%] max-w-[1100px] text-center">
-        <h2 className="text-[#17191a]">{en ? "Choose where it suits you to be beautiful" : "Выберите, где вам удобнее быть красивой"}</h2>
+        <h2 className="text-[#17191a]">{en ? "Choose where you'd like to get ready" : "Выберите, где вам удобнее быть красивой"}</h2>
         <div className="mx-auto mt-8 grid max-w-[920px] grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3 lg:mt-10">
           {BTNS.map((b) => (
             <a key={b.label} href={b.href} {...(b.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={b.cls}>

@@ -52,7 +52,7 @@ export default function Footer() {
     { label: t("Документы", "Documents"), href: "/docs" },
     { label: t("Политика конфиденциальности", "Privacy policy"), href: "/policy" },
     { label: t("Публичная оферта", "Public offer"), href: "/offer" },
-    { label: "Cookie", href: "/cookies" },
+    { label: lang === "en" ? "Cookie policy" : "Cookie", href: "/cookies" },
   ];
 
   // Разделы-аккордеоны (как в мобильной версии): плавно раскрываются, пункты выезжают по очереди

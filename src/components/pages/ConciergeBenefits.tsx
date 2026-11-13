@@ -31,7 +31,7 @@ const POINTS: BenefitPoint[] = [
     img: "/assets/alis/work_makeup_evening.jpg",
   },
   {
-    title: { ru: "На торжественный выход / событие", en: "A grand entrance / event" },
+    title: { ru: "На торжественный выход / событие", en: "A grand occasion or event" },
     desc: {
       ru: "Частный ужин или красная дорожка: все гости готовы по чёткому таймингу и запросу.",
       en: "A private dinner or a red carpet — every guest ready on a precise schedule.",

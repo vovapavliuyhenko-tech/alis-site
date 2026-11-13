@@ -19,7 +19,7 @@ const WHY: BenefitPoint[] = [
   { title: { ru: "Предсказуемый качественный результат", en: "Predictable, high-quality results" }, desc: { ru: "", en: "" }, img: "/assets/alis/work_hair_waves.jpg" },
   { title: { ru: "Опытная команда специалистов", en: "An experienced team of specialists" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_3283.jpg" },
   { title: { ru: "Профессиональный сервис по высоким стандартам бренда", en: "Professional service to the brand’s high standards" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_8578.jpg" },
-  { title: { ru: "Работа в 4–6 рук", en: "Working with 4–6 hands at once" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_2746.jpg" },
+  { title: { ru: "Работа в 4–6 рук", en: "Two or three artists working on you at once" }, desc: { ru: "", en: "" }, img: "/assets/alis/img_2746.jpg" },
 ];
 
 export const metadata: Metadata = {

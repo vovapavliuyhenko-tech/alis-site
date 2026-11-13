@@ -2,15 +2,15 @@
 // БЛОК ВАКАНСИЙ (страница «Команда») — строки-вакансии салона; по нажатию раскрываются.
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
-import { CAREER } from "@/lib/vacancies";
+import { careerFor } from "@/lib/vacancies";
 
 // Актуальные вакансии салона — тексты заказчицы слово в слово (src/lib/vacancies.ts).
 // Строка раскрывается по нажатию: описание, задачи, требования и «Откликнуться» (→ анкета #join).
-const POSITIONS = CAREER.salon.positions;
 
 export default function Vacancies() {
   const { lang } = useLang();
   const [open, setOpen] = useState<number | null>(null);
+  const POSITIONS = careerFor(lang).salon.positions;
 
   return (
     <section id="vacancies" className="scroll-mt-24 bg-white section-y">
@@ -47,7 +47,7 @@ export default function Vacancies() {
                     <div className="px-5 pb-6 sm:px-6 sm:pb-8 lg:px-8 lg:pb-10">
                       {v.lead && <p className="max-w-[72ch] !text-[13px] leading-[1.6] text-[#17191a]/75 sm:!text-[15px]">{v.lead}</p>}
                       <div className="mt-6 grid gap-6 md:grid-cols-2 md:gap-10">
-                        {[{ t: v.tasksTitle || "Задачи", items: v.tasks }, { t: "Требования", items: v.reqs }].map((blk) => (
+                        {[{ t: v.tasksTitle || (lang === "en" ? "Duties" : "Задачи"), items: v.tasks }, { t: lang === "en" ? "Requirements" : "Требования", items: v.reqs }].map((blk) => (
                           <div key={blk.t} className="border-t border-[#17191a]/10 pt-4">
                             <p className="text-[10px] uppercase tracking-[0.18em] text-[#17191a]/45 sm:text-[11px]">{blk.t}</p>
                             <ul className="mt-3 flex flex-col gap-2">

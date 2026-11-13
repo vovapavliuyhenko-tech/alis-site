@@ -132,7 +132,7 @@ export default function ConciergePackages() {
                 {en ? "Download the B2B proposal" : "Скачать коммерческое предложение B2B"}
               </a>
               <a href="#calc" className="flex w-full items-center justify-center gap-3 text-center rounded-[12px] border border-white px-4 py-4 text-[10px] font-medium uppercase leading-tight tracking-[0.1em] transition-colors duration-500 sm:whitespace-nowrap sm:px-5 sm:py-[18px] sm:text-[11px] lg:py-5 border-white/70 bg-white/[0.18] text-white backdrop-blur-md hover:border-white hover:bg-white hover:text-[#17191a]">
-                {en ? "Private event estimate" : "Расчёт частного мероприятия"}
+                {en ? "Get a quote for a private event" : "Расчёт частного мероприятия"}
               </a>
             </div>
           </div>

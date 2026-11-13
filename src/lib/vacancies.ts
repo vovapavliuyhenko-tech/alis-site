@@ -3,6 +3,8 @@
 // Отступления: в вариантах связи и ссылках не пишем названия соцсетей/мессенджера (правило сайта),
 // фото работ — ссылкой на облако/профиль (сайт не принимает файлы).
 
+import { CAREER_EN } from "./vacanciesEn";
+
 export type Dir = "salon" | "concierge";
 export type Position = { title: string; lead?: string; tasks: string[]; reqs: string[]; tasksTitle?: string };
 export type Field = {
@@ -264,3 +266,6 @@ export const CAREER: Record<Dir, {
     ],
   },
 };
+
+// Тексты вакансий на нужном языке (английская версия — vacanciesEn.ts)
+export const careerFor = (lang: "ru" | "en") => (lang === "en" ? CAREER_EN : CAREER);

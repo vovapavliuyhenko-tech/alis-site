@@ -1,14 +1,15 @@
 // ПРАЙС САЛОНА — актуальные услуги и цены из онлайн-записи YCLIENTS (ÁLIS BEAUTY, Пархоменко, 53),
 // перенесены 10.11.2026. Порядок и названия — как в записи. При изменении цен в YCLIENTS — обновить здесь.
+import { SALON_EN } from "./salonPricesEn";
 type Loc = { ru: string; en: string };
 type Row = { name: Loc; price: Loc; time?: Loc };
 type Group = { title?: Loc; rows: Row[] };
 export type SalonCategory = { slug?: string; label: Loc; sub: Loc; from: Loc; groups: Group[] };
 
 const rub = (v: string): Loc => ({ ru: `${v} ₽`, en: `${v} ₽`.replace(/^от /, "from ") });
-const t = (v: string): Loc => ({ ru: v, en: v.replace(" ч", " h").replace(" мин", " min") });
-// Строка прайса: название (RU = EN — названия услуг как в записи), цена, длительность
-const r = (name: string, price: string, time?: string): Row => ({ name: { ru: name, en: name }, price: rub(price), ...(time ? { time: t(time) } : {}) });
+const t = (v: string): Loc => ({ ru: v, en: v.replace(/ ч/g, " h").replace(/ ч$/g, " h").replace(/ ч /g, " h ").replace(/ мин/g, " min") });
+// Строка прайса: название (EN — из словаря salonPricesEn.ts), цена, длительность
+const r = (name: string, price: string, time?: string): Row => ({ name: { ru: name, en: SALON_EN[name] ?? name }, price: rub(price), ...(time ? { time: t(time) } : {}) });
 const L = (ru: string, en: string): Loc => ({ ru, en });
 
 export const SALON_PRICES: SalonCategory[] = [
@@ -33,7 +34,7 @@ export const SALON_PRICES: SalonCategory[] = [
         ],
       },
       {
-        title: L("Пилочный маникюр", "File manicure"),
+        title: L("Пилочный маникюр", "File-only manicure"),
         rows: [
           r("Пилочный маникюр без покрытия", "2 000 – 2 400", "1 ч"),
           r("Пилочный маникюр с покрытием лак", "2 300 – 2 800", "1 ч 30 мин"),
@@ -41,7 +42,7 @@ export const SALON_PRICES: SalonCategory[] = [
         ],
       },
       {
-        title: L("Наращивание, покрытие и дизайн", "Extensions, coating and design"),
+        title: L("Наращивание, покрытие и дизайн", "Extensions, polish and design"),
         rows: [
           r("Наращивание ногтей", "2 700 – 4 500", "3 ч"),
           r("Коррекция наращенных ногтей", "2 800 – 4 500", "2 ч"),
