@@ -19,7 +19,7 @@ export default function TeamIntro({
   button,
   button2,
   subtitle,
-  shade = false,
+  dim = false,
 }: {
   title: Loc;
   kicker?: Loc; // короткая продающая строка мелко над заголовком (как оффер на главной)
@@ -30,7 +30,7 @@ export default function TeamIntro({
   button2?: { label: Loc; href: string; hrefEn?: string };
   // Длинный заголовок-оффер (в несколько строк) + мелкая строка под ним
   subtitle?: Loc;
-  shade?: boolean; // светлое фото — плотнее затемнение снизу, под заголовком, текстом и кнопками
+  dim?: boolean; // светлое фото — плотнее затемнение снизу, под заголовком, текстом и кнопками
 }) {
   const { lang } = useLang();
   // Эффект «статичного фона»: фото уезжает медленнее страницы
@@ -60,13 +60,13 @@ export default function TeamIntro({
         className="absolute inset-0 -z-10 lg:hidden"
         style={{
           background:
-            shade
+            dim
               ? "linear-gradient(to top, rgba(20,18,16,.72) 0%, rgba(20,18,16,.38) 32%, rgba(20,18,16,0) 62%)"
               : "linear-gradient(to top, rgba(20,18,16,.5) 0%, rgba(20,18,16,.12) 35%, rgba(20,18,16,0) 55%)",
         }}
       />
       {/* Компьютер: без затемнения, фото насыщеннее; только лёгкая тень у самого низа — чтобы читался белый текст */}
-      <div aria-hidden className="absolute inset-0 -z-10 hidden lg:block" style={{ background: shade ? "linear-gradient(to top, rgba(20,18,16,.62) 0%, rgba(20,18,16,.3) 30%, rgba(20,18,16,0) 55%)" : "linear-gradient(to top, rgba(20,18,16,.3) 0%, rgba(20,18,16,0) 32%)" }} />
+      <div aria-hidden className="absolute inset-0 -z-10 hidden lg:block" style={{ background: dim ? "linear-gradient(to top, rgba(20,18,16,.62) 0%, rgba(20,18,16,.3) 30%, rgba(20,18,16,0) 55%)" : "linear-gradient(to top, rgba(20,18,16,.3) 0%, rgba(20,18,16,0) 32%)" }} />
       {/* Эффекты обложки: зерно, виньетка и затемнение при прокрутке */}
       <Grain />
       <div ref={shade} aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[#17191a] opacity-0" />
