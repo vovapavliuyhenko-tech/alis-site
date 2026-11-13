@@ -71,7 +71,7 @@ export default function LoyaltyCerts() {
   useEffect(() => {
     const go = () => {
       if (location.hash !== "#friend") return;
-      setWho("friend");
+      setWho("friend"); setCool(false);
       document.getElementById("loyalty")?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
     go();
@@ -98,6 +98,11 @@ export default function LoyaltyCerts() {
   // Телефон/планшет (нет наведения): эффект наведения у карточки в центре экрана
   const cards = useRef<(HTMLElement | null)[]>([]);
   const [active, setActive] = useState<number>(-1);
+  // После повторного нажатия «Бонус за подругу» карточка сразу белая — эффект наведения
+  // выключается, пока курсор не уйдёт с карточки
+  const [cool, setCool] = useState(false);
+  // className карточки меняется — сохраняем класс появления is-in (иначе r-reveal снова прячет карточку)
+  const [touched, setTouched] = useState(false);
   useEffect(() => {
     if (matchMedia("(hover: hover)").matches) return;
     const io = new IntersectionObserver((es) => {
@@ -142,7 +147,7 @@ export default function LoyaltyCerts() {
                   <div className={`relative grid grid-cols-2 rounded-full p-1 text-[11px] uppercase tracking-[0.12em] transition-colors duration-700 sm:text-[12px] ${dk ? "bg-white/10" : "bg-[#f6f4f1]"}`}>
                     <span aria-hidden className={`absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full transition-[transform,background-color] duration-500 ${dk ? "bg-white" : "bg-[#17191a]"}`}  style={{ transform: who === "me" ? "none" : "translateX(100%)" }} />
                     {(["me", "friend"] as const).map((w) => (
-                      <button key={w} type="button" onClick={() => setWho(w)} aria-pressed={who === w} className={`relative z-10 rounded-full py-2.5 transition-colors duration-500 ${who === w ? (dk ? "text-[#17191a]" : "text-white") : dk ? "text-white/60 hover:text-white" : "text-[#17191a]/60 hover:text-[#17191a]"}`}>
+                      <button key={w} type="button" onClick={() => { setWho(w); setCool(false); }} aria-pressed={who === w} className={`relative z-10 rounded-full py-2.5 transition-colors duration-500 ${who === w ? (dk ? "text-[#17191a]" : "text-white") : dk ? "text-white/60 hover:text-white" : "text-[#17191a]/60 hover:text-[#17191a]"}`}>
                         {w === "me" ? t("Для себя", "For me") : t("Для подруги", "For a friend")}
                       </button>
                     ))}
@@ -192,13 +197,16 @@ export default function LoyaltyCerts() {
                     onClick={p.action === "friend" ? (e) => {
                       e.preventDefault();
                       // Повторное нажатие на тёмную карточку — обратно «Для себя» (карточка снова белая)
-                      if (dk) { setWho("me"); return; }
+                      setTouched(true);
+                      if (dk) { setWho("me"); setCool(true); return; }
+                      setCool(false);
                       setWho("friend");
                       document.getElementById("loyalty")?.scrollIntoView({ behavior: "smooth", block: "start" });
                     } : undefined}
                     // В режиме «Для подруги» карточка «Бонус за подругу» тоже становится тёмной
-                    data-on={active === i || (dk && p.action === "friend") ? "" : undefined}
-                    className="r-reveal group relative flex min-h-[150px] flex-col justify-start overflow-hidden rounded-[20px] border border-[#17191a]/12 bg-white p-5 sm:min-h-[220px] sm:p-6 lg:min-h-[240px]"
+                    data-on={(active === i && !(cool && p.action === "friend")) || (dk && p.action === "friend") ? "" : undefined}
+                    onMouseLeave={p.action === "friend" ? () => setCool(false) : undefined}
+                    className={`r-reveal ${touched ? "is-in" : ""} ${cool && p.action === "friend" ? "" : "group"} relative flex min-h-[150px] flex-col justify-start overflow-hidden rounded-[20px] border border-[#17191a]/12 bg-white p-5 sm:min-h-[220px] sm:p-6 lg:min-h-[240px]`}
                     style={{ transitionDelay: `${0.1 + i * 0.12}s` }}
                   >
                     {/* Заливка снизу вверх при наведении */}
