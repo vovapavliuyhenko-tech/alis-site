@@ -68,9 +68,15 @@ export default function HeadingReveal() {
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     // Смена языка (меняется атрибут lang у <html>) — мгновенно убрать незавершённые анимации
+    // и заново проявить заголовки, которые сейчас на экране, — уже на новом языке
     const mo = new MutationObserver(() => {
       active.forEach((r) => r());
-      document.querySelectorAll(".hero-up-blur").forEach((x) => x.classList.remove("hero-up-blur"));
+      requestAnimationFrame(() => {
+        document.querySelectorAll<HTMLElement>(LETTERS).forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) splitLetters(el);
+        });
+      });
     });
     mo.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
     let io: IntersectionObserver | null = null;

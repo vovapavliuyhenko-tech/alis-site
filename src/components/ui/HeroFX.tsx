@@ -6,20 +6,17 @@
 //  useHeroLive  — при прокрутке заголовок с текстом заметно уменьшается и исчезает, фото темнеет.
 // Анимации — в globals.css (hero-zoom, hero-letter, hero-line, hero-up). При «уменьшить
 // движение» всё выключено.
-import { useEffect, useState, type RefObject } from "react";
+import { useEffect, type RefObject } from "react";
 
 export function SplitTitle({ text, delay = 0.35 }: { text: string; delay?: number }) {
-  // Буквы проявляются только при первом показе. После смены языка текст меняется сразу целиком
-  // (иначе часть букв оставалась старой, а новые проявлялись с задержкой — «тупило»).
-  const [first] = useState(text);
-  const [changed, setChanged] = useState(false);
-  if (text !== first && !changed) setChanged(true);
-  const anim = !changed && text === first;
+  // При смене языка заголовок пересоздаётся целиком (key={text}) — все буквы нового текста
+  // проявляются заново и одновременно по порядку, без «застрявших» букв старого языка
+  const anim = true;
   let n = 0;
   return (
     <>
       <span className="sr-only">{text.replace(/\n/g, " ")}</span>
-      <span aria-hidden>
+      <span aria-hidden key={text}>
         {/* «\n» в тексте — принудительный перенос строки */}
         {text.replace(/\n/g, " \n ").split(" ").filter(Boolean).map((word, w, arr) => word === "\n" ? <br key={w} /> : (
           <span key={w} className="inline-block whitespace-nowrap">
