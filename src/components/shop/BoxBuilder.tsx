@@ -135,7 +135,7 @@ export default function BoxBuilder() {
               Шаг {step + 1} из {STEPS.length} · {STEPS[step]}
             </p>
 
-            <div key={step} className="mt-2 flex min-h-0 flex-1 flex-col overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden animate-[box-in_.5s_cubic-bezier(.22,.61,.36,1)]">
+            <div key={step} className="-mx-1.5 mt-1 flex min-h-0 flex-1 flex-col overflow-y-auto px-1.5 py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden animate-[box-in_.5s_cubic-bezier(.22,.61,.36,1)]">
               {step === 0 && (
                 <>
                   <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">Какой размер?</h3>
