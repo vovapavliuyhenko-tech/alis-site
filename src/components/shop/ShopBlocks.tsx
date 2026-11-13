@@ -26,7 +26,6 @@ export function ShopCategories() {
   const en = lang === "en";
   const CATS: { title: Loc; price: Loc; img: string; href: string }[] = [
     { title: { ru: "Смотреть все", en: "View all" }, price: { ru: "весь каталог", en: "full catalogue" }, img: "/assets/tild3561-646_-2___1__5.jpg", href: "/shop/catalog" },
-    { title: { ru: "Уход для волос", en: "Hair care" }, price: { ru: `от ${fmt(minPrice(["уход"]))} ₽`, en: `from ${fmt(minPrice(["уход"]))} ₽` }, img: "/assets/alis/img_5910.webp", href: "/shop/catalog?cat=%D1%83%D1%85%D0%BE%D0%B4" },
     { title: { ru: "Мерч ÁLIS BEAUTY", en: "ÁLIS BEAUTY merch" }, price: { ru: `от ${fmt(minPrice(["одежда", "аксессуары"]))} ₽`, en: `from ${fmt(minPrice(["одежда", "аксессуары"]))} ₽` }, img: "/assets/alis/img_1834.jpg", href: "/shop/catalog" },
     { title: { ru: "Подарочный beauty-бокс", en: "Beauty gift box" }, price: { ru: "по запросу", en: "on request" }, img: "/assets/alis/img_6048.jpg", href: "#box" },
     { title: { ru: "Сертификаты", en: "Gift certificates" }, price: { ru: "любая сумма", en: "any amount" }, img: "/assets/alis/img_1855.jpg", href: "https://o8981.yclients.ru/certificates" },
@@ -37,7 +36,7 @@ export function ShopCategories() {
       <div className="mx-auto w-[96%] max-w-[1760px]">
         <h2 className="sr-only">{en ? "Categories" : "Категории"}</h2>
         {/* Телефон — лента вбок, компьютер — 4 в ряд */}
-        <div className="-mx-[2%] flex snap-x snap-mandatory gap-2 overflow-x-auto px-[2%] pb-2 [scrollbar-width:none] lg:mx-0 lg:grid lg:grid-cols-5 lg:gap-3 lg:overflow-visible lg:px-0 [&::-webkit-scrollbar]:hidden">
+        <div className="-mx-[2%] flex snap-x snap-mandatory gap-2 overflow-x-auto px-[2%] pb-2 [scrollbar-width:none] lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-3 lg:overflow-visible lg:px-0 [&::-webkit-scrollbar]:hidden">
           {CATS.map((c) => {
             const ext = c.href.startsWith("http");
             const inner = (
@@ -50,7 +49,7 @@ export function ShopCategories() {
                 <span className="mt-1 text-[10.5px] text-[#17191a]/50 lg:text-[11.5px]">{c.price[lang]}</span>
               </>
             );
-            const cls = "group flex w-[40%] shrink-0 snap-start flex-col items-center rounded-[20px] bg-[#f6f4f1] px-3 pb-4 pt-5 sm:w-[26%] lg:w-auto";
+            const cls = "group flex w-[40%] shrink-0 snap-start flex-col items-center rounded-[20px] bg-[#f6f4f1] px-3 pb-4 pt-5 sm:w-[30%] lg:w-auto";
             return ext || c.href.startsWith("#") ? (
               <a key={c.title.ru} href={c.href} {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={cls}>{inner}</a>
             ) : (
