@@ -32,6 +32,8 @@ export default function SalonPage() {
       {/* TODO: видео на фон обложки пришлёт заказчица */}
       <TeamIntro
         title={{ ru: "Салон красоты ÁLIS BEAUTY в Новороссийске", en: "ÁLIS BEAUTY beauty salon in Novorossiysk" }}
+        photo="/assets/alis/cherry_hero.jpg"
+        shade
         subtitle={{
           ru: "Ногтевой сервис, парикмахерские услуги, коррекция бровей, макияж.\nПархоменко, 53, с 09:00 до 21:00.",
           en: "Nails, hair, brow shaping, makeup.\n53 Parkhomenko St., 9:00–21:00.",

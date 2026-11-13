@@ -78,16 +78,16 @@ function ExpandCard({ src, cap, back, hidden, moved, openCount }: { src: string;
 const ITEMS: MarqueeItem[] = [
   { src: "/assets/alis/look_red_2.jpg", cap: { ru: "Макияж + укладка", en: "Makeup & styling" } },
   { src: "/assets/alis/nails_french.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-  { src: "/assets/alis/look_leopard.jpg", cap: { ru: "Макияж + причёска", en: "Makeup & hair" } },
+  // фото «девушка сидит» — кадрировано ближе (без пустого места сверху); не рядом с «Причёской» сзади
+  { src: "/assets/alis/work_makeup_bun_crop.jpg", cap: { ru: "Макияж + причёска", en: "Makeup & hair" } },
   { src: "/assets/alis/nails_pink_ring.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
   { src: "/assets/alis/img_3283.jpg", cap: { ru: "Укладка", en: "Styling" } },
   { src: "/assets/alis/work_nails_nude.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
+  { src: "/assets/alis/work_hair_bun.jpg", cap: { ru: "Причёска", en: "Hairstyle" } },
   { src: "/assets/alis/work_makeup_evening.jpg", cap: { ru: "Макияж + причёска", en: "Makeup & hair" } },
+  { src: "/assets/alis/work_nails_bag.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
   { src: "/assets/alis/work_hair_waves.jpg", cap: { ru: "Укладка", en: "Styling" } },
   { src: "/assets/alis/img_8578.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
-  { src: "/assets/alis/work_makeup_bun.jpg", cap: { ru: "Макияж + причёска", en: "Makeup & hair" } },
-  { src: "/assets/alis/work_hair_bun.jpg", cap: { ru: "Причёска", en: "Hairstyle" } },
-  { src: "/assets/alis/work_nails_bag.jpg", cap: { ru: "Маникюр", en: "Manicure" } },
   { src: "/assets/alis/img_6011.jpg", cap: { ru: "Укладка + макияж", en: "Look: styling & makeup" } },
   { src: "/assets/alis/img_6048.jpg", cap: { ru: "Магазин ÁLIS BEAUTY", en: "ÁLIS BEAUTY shop" } },
 ];
