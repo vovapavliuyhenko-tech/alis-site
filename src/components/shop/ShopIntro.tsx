@@ -74,7 +74,7 @@ export function ShopPromos() {
           {en ? "Answer 5 questions — a specialist will send products for your hair type and goals." : "Ответьте на 5 вопросов — специалист пришлёт подбор средств под ваш тип и цели."}
         </p>
       </div>
-      <div className="relative mx-auto mt-8 flex h-[300px] w-[96%] max-w-[1760px] items-end overflow-hidden rounded-[22px] sm:h-[360px] sm:rounded-[28px] lg:mt-12 lg:h-[420px]">
+      <div className="relative mx-auto mt-8 flex h-[360px] w-[96%] max-w-[1760px] items-end overflow-hidden rounded-[22px] sm:h-[440px] sm:rounded-[28px] lg:mt-12 lg:h-[540px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/assets/alis/img_5910.webp" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[50%_55%]" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
