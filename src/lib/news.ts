@@ -43,7 +43,7 @@ export const NEWS: NewsItem[] = [
       ru: "Волшебство случается с теми, кто позаботился о записи.",
       en: "Magic happens to those who book ahead.",
     },
-    image: "/assets/works/nails_red_tile.jpg",
+    image: "/assets/works/nails_red_tile_news.jpg",
     content: [
       { type: "p", text: { ru: "Волшебство случается с теми, кто позаботился о записи. Встретить Новый год со свежим маникюром намного проще, чем кажется.", en: "Magic happens to those who book ahead. Greeting the New Year with a fresh manicure is easier than it seems." } },
       { type: "quote", text: { ru: "Оформите визит прямо сейчас, чтобы блистать в главную ночь!", en: "Book your visit now and shine on the most important night of the year!" } },
@@ -60,7 +60,7 @@ export const NEWS: NewsItem[] = [
       ru: "Бьюти-боксы с продуктами нашей витрины на любой бюджет — подберём наполнение и красиво упакуем.",
       en: "Beauty boxes with products from our shelves for any budget — we'll choose the contents and wrap them beautifully.",
     },
-    image: "/assets/box/box_red_open.jpg",
+    image: "/assets/works/news_box.jpg",
     content: [
       { type: "p", text: { ru: "Подарок, который точно захочется открыть задолго до боя курантов, должен быть от ÁLIS BEAUTY.", en: "A gift you'll want to open long before the clock strikes midnight should be from ÁLIS BEAUTY." } },
       { type: "p", text: { ru: "Мы подготовили всё за вас: бьюти-боксы с продуктами нашей витрины на любой бюджет. Вам остаётся только назвать получателя — подберём наполнение и красиво упакуем.", en: "We've prepared everything for you: beauty boxes with products from our shelves for any budget. Just tell us who it's for — we'll choose the contents and wrap it beautifully." } },
@@ -98,7 +98,7 @@ export const NEWS: NewsItem[] = [
       ru: "Атмосфера праздника с любимой зимней кинокартиной из детства — для создания волшебного настроения.",
       en: "The festive atmosphere of a favourite winter film from childhood — to create a magical mood.",
     },
-    image: "/assets/alis/salon_cup.jpg",
+    image: "/assets/works/news_movie.jpg",
     content: [
       { type: "p", text: { ru: "Ежегодный кинопросмотр новогоднего фильма для создания волшебного настроения: атмосфера праздника с любимой зимней кинокартиной из детства.", en: "Our annual New Year movie night to create a magical mood: the festive atmosphere of a favourite winter film from childhood." } },
       { type: "p", text: { ru: "В прошлом году на экране был «Один дома». Что ждёт вас этой зимой?", en: "Last year we watched “Home Alone”. What's in store for you this winter?" } },
