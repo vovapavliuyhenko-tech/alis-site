@@ -43,7 +43,7 @@ export const NEWS: NewsItem[] = [
       ru: "Волшебство случается с теми, кто позаботился о записи.",
       en: "Magic happens to those who book ahead.",
     },
-    image: "/assets/works/nails_red_focus.jpg",
+    image: "/assets/works/nails_red_tile.jpg",
     content: [
       { type: "p", text: { ru: "Волшебство случается с теми, кто позаботился о записи. Встретить Новый год со свежим маникюром намного проще, чем кажется.", en: "Magic happens to those who book ahead. Greeting the New Year with a fresh manicure is easier than it seems." } },
       { type: "quote", text: { ru: "Оформите визит прямо сейчас, чтобы блистать в главную ночь!", en: "Book your visit now and shine on the most important night of the year!" } },
