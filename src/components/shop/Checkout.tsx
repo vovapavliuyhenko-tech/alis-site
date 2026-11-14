@@ -309,7 +309,7 @@ export default function Checkout() {
             {/* Дополнят заказ */}
             {extras.length > 0 && (
               <section>
-                <h2 className="!text-[24px] font-normal leading-[1.3] text-[#17191a] sm:!text-[25.6px]">{T("Идеально дополнят ваш заказ", "Perfect additions to your order")}</h2>
+                <p className="text-[24px] font-normal leading-[1.3] text-[#17191a] sm:text-[25.6px]">{T("Идеально дополнят ваш заказ", "Perfect additions to your order")}</p>
                 <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {extras.map((p) => (
                     <div key={p.id} className="flex flex-col overflow-hidden rounded-[12px] border border-[#17191a]/10 bg-white">
@@ -332,7 +332,7 @@ export default function Checkout() {
           {/* ===== Справа: состав, итог, оплата и кнопка ===== */}
           <aside id="co-summary" className="scroll-mt-20 lg:sticky lg:top-[80px]">
             <div className="rounded-[12px] border border-[#17191a]/10 bg-white p-5 sm:p-7">
-              <h2 className="!text-[16px] font-semibold tracking-[-0.01em] text-[#17191a]">{T("Состав заказа", "Your order")}</h2>
+              <p className="text-[16px] font-semibold tracking-[-0.01em] text-[#17191a]">{T("Состав заказа", "Your order")}</p>
               <div className="mt-4 flex flex-col gap-3">
                 {items.map(({ id, qty, p }) => (
                   <div key={id} className="flex gap-3">
@@ -370,7 +370,7 @@ export default function Checkout() {
                 {T(" Сумма предварительная — итог подтверждает менеджер.", " The total is preliminary — our manager confirms the final amount.")}
               </p>
 
-              <h3 className="mt-6 text-[14px] font-semibold text-[#17191a]">{T("Способ оплаты", "Payment method")}</h3>
+              <p className="mt-6 text-[14px] font-semibold text-[#17191a]">{T("Способ оплаты", "Payment method")}</p>
               <div className="mt-3 flex flex-col gap-2">
                 {([
                   ["receipt", T("Оплата при получении", "Pay on receipt"), T("Картой или наличными в салоне либо курьеру.", "By card or cash at the salon or to the courier.")],
