@@ -27,7 +27,7 @@ export function ShopCategories() {
   const CATS: { title: Loc; price: Loc; img: string; href: string }[] = [
     { title: { ru: "Смотреть все", en: "View all" }, price: { ru: "весь каталог", en: "full catalogue" }, img: "/assets/tild3561-646_-2___1__5.jpg", href: "/shop/catalog" },
     { title: { ru: "Мерч ÁLIS BEAUTY", en: "ÁLIS BEAUTY merch" }, price: { ru: `от ${fmt(minPrice(["одежда", "аксессуары"]))} ₽`, en: `from ${fmt(minPrice(["одежда", "аксессуары"]))} ₽` }, img: "/assets/alis/img_1834.jpg", href: "/shop/catalog" },
-    { title: { ru: "Подарочный beauty-бокс", en: "Beauty gift box" }, price: { ru: "по запросу", en: "on request" }, img: "/assets/alis/img_6048.jpg", href: "#box" },
+    { title: { ru: "Подарочный beauty-бокс", en: "Beauty gift box" }, price: { ru: "по запросу", en: "on request" }, img: "/assets/works/news_box.jpg", href: "#box" },
     { title: { ru: "Сертификаты", en: "Gift certificates" }, price: { ru: "любая сумма", en: "any amount" }, img: "/assets/alis/img_1855.jpg", href: "https://o8981.yclients.ru/certificates" },
   ];
   // Вид — как прежний блок категорий: светлые плитки, круглое фото, подпись капсом и цена
