@@ -4,20 +4,21 @@ export type BoxItem = { name: string; brand: string; img?: string; price?: numbe
 export type BoxGroup = { title: string; items: BoxItem[] };
 
 // Фото товаров — с карточек на сайтах брендов/официальных ритейлеров, приведены к белому квадрату.
-// Позиции без фото — с «Золотого яблока» (сайт закрыт защитой) или не удалось однозначно определить.
 export const BOX_GROUPS: BoxGroup[] = [
   {
     title: "Уход за волосами",
     items: [
       { name: "Real Shea Nourishing Shampoo", brand: "Rated Green", img: "/assets/products/rg-shea-shampoo-v2.jpg" },
       { name: "Real Shea Protein Recharging Leave-in Treatment", brand: "Rated Green", img: "/assets/products/rg-shea-leavein-v2.jpg" },
+      { name: "Real Shea Protein Recharging Leave-in Spray", brand: "Rated Green", img: "/assets/products/rg-shea-heat-spray-v2.jpg" },
       { name: "Real Argan Repairing Shampoo", brand: "Rated Green", img: "/assets/products/rg-argan-shampoo-v2.jpg" },
+      { name: "Real Argan Shine Hair Oil", brand: "Rated Green", img: "/assets/products/rg-argan-oil-v2.jpg" },
       { name: "Real Argan Smoothing Hair Serum", brand: "Rated Green", img: "/assets/products/rg-argan-serum-v2.jpg" },
       { name: "Cold Pressed Argan Oil Conditioning Hair Mask", brand: "Rated Green", img: "/assets/products/rg-argan-mask-v2.jpg" },
       { name: "Real Grow Anti Hair Loss Treatment", brand: "Rated Green", img: "/assets/products/rg-antiloss-v2.jpg" },
       { name: "Real Shea Real Change Treatment", brand: "Rated Green", img: "/assets/products/rg-shea-change-v2.jpg" },
-      { name: "Rated Green Real Jojoba", brand: "Rated Green" },
-      { name: "Real Shea Anti-Frizz Hydrating Hair Lotion", brand: "Rated Green" },
+      { name: "Rated Green Real Jojoba", brand: "Rated Green", img: "/assets/products/rg-jojoba-v2.jpg" },
+      { name: "Real Shea Anti-Frizz Hydrating Hair Lotion", brand: "Rated Green", img: "/assets/products/rg-shea-lotion-v2.jpg" },
     ],
   },
   {
@@ -29,6 +30,7 @@ export const BOX_GROUPS: BoxGroup[] = [
       { name: "Cold Brew Rosemary Balancing Scalp Pack", brand: "Rated Green", img: "/assets/products/rg-rosemary-pack-v2.jpg" },
       { name: "Cold Press Avocado Nourishing Scalp Pack", brand: "Rated Green", img: "/assets/products/rg-avocado-pack-v2.jpg" },
       { name: "Cold Press Tamanu Oil Soothing Scalp Pack", brand: "Rated Green", img: "/assets/products/rg-tamanu-pack-v2.jpg" },
+      { name: "Rosemary Dandruff Relief Shampoo", brand: "Rated Green", img: "/assets/products/rg-rosemary-dandruff-v2.jpg" },
     ],
   },
   {
@@ -36,6 +38,10 @@ export const BOX_GROUPS: BoxGroup[] = [
     items: [
       { name: "OI All in One Milk", brand: "Davines", img: "/assets/products/dv-oi-milk-v2.jpg" },
       { name: "OI Oil", brand: "Davines", img: "/assets/products/dv-oi-oil-v2.jpg" },
+      { name: "OI Shampoo", brand: "Davines", img: "/assets/products/dv-oi-shampoo-v2.jpg" },
+      { name: "OI Conditioner", brand: "Davines", img: "/assets/products/dv-oi-conditioner-v2.jpg" },
+      { name: "OI Hair Butter", brand: "Davines", img: "/assets/products/dv-oi-butter-v2.jpg" },
+      { name: "OI Hand Balm", brand: "Davines", img: "/assets/products/dv-oi-handbalm-v2.jpg" },
       { name: "VOLU Hair Mist", brand: "Davines", img: "/assets/products/dv-volu-v2.jpg" },
       { name: "MELU Hair Shield", brand: "Davines", img: "/assets/products/dv-melu-v2.jpg" },
     ],
@@ -53,6 +59,7 @@ export const BOX_GROUPS: BoxGroup[] = [
       { name: "Lip Gloss Dolce Daze", brand: "LUVU", img: "/assets/products/luvu-lip-gloss-dolce-daze-v2.jpg", price: 1070 },
       { name: "Lip Combo Flirt Alert", brand: "LUVU", img: "/assets/products/luvu-nabor-dlya-gub-lip-combo-flirt-alert-v2.jpg", price: 1980 },
       { name: "Glossy Lip Treatment SPF 15", brand: "LUVU", img: "/assets/products/luvu-glossy-lip-treatment-spf-15-v2.jpg", price: 1070 },
+      { name: "Lip + Cheek Stick Born to Blush", brand: "LUVU", img: "/assets/products/luvu-lip-cheek-stick-born-to-blush-v2.jpg", price: 1430 },
       { name: "Lip + Cheek Stick Never Shy", brand: "LUVU", img: "/assets/products/luvu-lip-cheek-stick-never-shy-v2.jpg", price: 1430 },
       { name: "Lip + Cheek Stick Almost Ready", brand: "LUVU", img: "/assets/products/luvu-lip-cheek-stick-almost-ready-v2.jpg", price: 1430 },
       { name: "Lip + Cheek Stick Always Busy", brand: "LUVU", img: "/assets/products/luvu-lip-cheek-stick-always-busy-v2.jpg", price: 1430 },
@@ -62,12 +69,13 @@ export const BOX_GROUPS: BoxGroup[] = [
     ],
   },
   {
-    title: "Ароматы",
+    title: "Уход за лицом",
     items: [
-      { name: "Trésor Solaire", brand: "Аромат" },
-      { name: "Carbone Glacé", brand: "Аромат" },
-      { name: "Exception Rosée", brand: "Аромат" },
-      { name: "Elixir Intense", brand: "Аромат" },
+      { name: "Carbone Glacé Face Mask", brand: "Rare Paris", img: "/assets/products/rare-carbone-v2.jpg" },
+      { name: "Exception Rosée Face Mask", brand: "Rare Paris", img: "/assets/products/rare-exception-v2.jpg" },
+      { name: "Élixir Intense Face Mask", brand: "Rare Paris", img: "/assets/products/rare-elixir-v2.jpg" },
+      { name: "Trésor Solaire Face Mask", brand: "Rare Paris", img: "/assets/products/rare-tresor-v2.jpg" },
+      { name: "Carbone Glacé Eye Patches", brand: "Rare Paris", img: "/assets/products/rare-carbone-patches-v2.jpg" },
     ],
   },
 ];

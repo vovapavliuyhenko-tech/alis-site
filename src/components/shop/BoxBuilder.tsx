@@ -16,7 +16,7 @@ const STEPS = ["Размер", "Цвет", "Наполнение", "Открыт
 const STEPS_EN = ["Size", "Colour", "Contents", "Card and delivery", "Contacts"];
 // Английские подписи групп, размеров и цветов (данные — в boxProducts.ts)
 const EN: Record<string, string> = {
-  "Уход за волосами": "Hair care", "Кожа головы": "Scalp", "Макияж LUVU": "LUVU makeup", "Ароматы": "Fragrances",
+  "Уход за волосами": "Hair care", "Кожа головы": "Scalp", "Макияж LUVU": "LUVU makeup", "Уход за лицом": "Face care",
   "Размер S": "Size S", "Размер M": "Size M", "16 × 9 см": "16 × 9 cm", "30 × 16 см": "30 × 16 cm",
   "Красный": "Red", "Розовый": "Pink", "Голубой": "Light blue", "Зелёный": "Green",
 };
