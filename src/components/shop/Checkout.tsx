@@ -5,11 +5,11 @@
 // комментарий и «дополнят заказ»; справа (на телефоне — ниже) — состав заказа, итог и способ оплаты.
 // Без интервалов доставки ко времени: день и время менеджер согласует сам. Заказ уходит в бот команды
 // (тип «shop»), после отправки — экран «Заказ принят» с номером, корзина очищается.
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { useShop } from "@/lib/shop";
-import { PRODUCTS, fmtPrice } from "@/lib/products";
+import { fmtPrice } from "@/lib/products";
 import { sendLead } from "@/lib/sendLead";
 import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
 
@@ -55,7 +55,6 @@ export default function Checkout() {
   const [done, setDone] = useState<string | null>(null);
 
   const items = s.cart.map((it) => ({ ...it, p: s.productById(it.id) })).filter((x) => x.p);
-  const extras = useMemo(() => PRODUCTS.filter((p) => !s.cart.some((c) => c.id === p.id)).slice(0, 3), [s.cart]);
 
   const DELIVERY: { id: Delivery; icon: string; title: string; note: string; price: string }[] = [
     { id: "pickup", icon: "◎", title: T("Самовывоз", "Pick-up"), note: T("Салон, ул. Пархоменко, 53", "Salon, 53 Parkhomenko St."), price: T("Бесплатно", "Free") },
@@ -306,27 +305,6 @@ export default function Checkout() {
               <textarea value={comment} onChange={(e) => setComment(e.target.value)} rows={3} placeholder={T("Пожелания по упаковке, дате, подарку", "Notes on packaging, date or the gift")} className={`${field} h-auto py-[13px]`} />
             </fieldset>
 
-            {/* Дополнят заказ */}
-            {extras.length > 0 && (
-              <section>
-                <p className="text-[24px] font-normal leading-[1.3] text-[#17191a] sm:text-[25.6px]">{T("Идеально дополнят ваш заказ", "Perfect additions to your order")}</p>
-                <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  {extras.map((p) => (
-                    <div key={p.id} className="flex flex-col overflow-hidden rounded-[12px] border border-[#17191a]/10 bg-white">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={p.img} alt={p.name[lang]} loading="lazy" className="h-[110px] w-full bg-[#17191a]/[0.06] object-cover sm:h-[80px]" />
-                      <div className="flex flex-1 flex-col p-3">
-                        <span className="line-clamp-2 text-[12px] font-medium leading-[1.35] text-[#17191a]">{p.name[lang]}</span>
-                        <span className="mt-1 text-[12px] font-semibold text-[#17191a]">{fmtPrice(p.price, en)}</span>
-                        <button type="button" onClick={() => s.add(p.id)} className="mt-auto flex h-9 items-center justify-center rounded-[8px] border border-[#17191a]/10 pt-0 text-[12px] font-semibold text-[#17191a] transition-colors hover:border-[#17191a] hover:bg-[#17191a] hover:text-white [margin-top:10px]">
-                          + {T("Добавить", "Add")}
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
           </div>
 
           {/* ===== Справа: состав, итог, оплата и кнопка ===== */}

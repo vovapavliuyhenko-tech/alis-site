@@ -3,7 +3,7 @@
 // с фото (временное; Зера пришлёт фото с баночками) и заголовком, без кнопки.
 // HairCta — маленькая плашка «Подобрать уход для волос за 30 секунд с консультантом»: по нажатию
 // раскрывается короткий опросник (HairQuiz), заявка уходит администратору/мастеру.
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
 import { HairQuiz } from "@/components/shop/ShopBlocks";
 
@@ -65,6 +65,31 @@ export function ShopPromos() {
   const { lang } = useLang();
   const en = lang === "en";
   const [open, setOpen] = useState(false);
+  const img = useRef<HTMLImageElement>(null);
+
+  // Эффект «статичного фона» — как в баннере «Выездной сервис» на главной: фото смещается
+  // на 20% (компьютер) / 16% (сенсорный) от прокрутки; цикл крутится только пока блок в кадре
+  useEffect(() => {
+    const el = img.current;
+    if (!el || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const k = matchMedia("(pointer: fine)").matches ? 0.2 : 0.16;
+    let raf = 0;
+    const tick = () => {
+      const r = el.parentElement!.getBoundingClientRect();
+      const p = r.top + r.height / 2 - innerHeight / 2;
+      el.style.setProperty("transform", `translate3d(0, ${-p * k}px, 0)`);
+      raf = requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver(([e]) => {
+      cancelAnimationFrame(raf);
+      if (e.isIntersecting) raf = requestAnimationFrame(tick);
+    });
+    io.observe(el.parentElement!);
+    return () => {
+      cancelAnimationFrame(raf);
+      io.disconnect();
+    };
+  }, []);
   const base = "flex w-full items-center justify-center rounded-xl border px-2 py-3 text-center text-[9px] font-medium uppercase leading-tight tracking-[0.02em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[12px] sm:tracking-[0.14em] lg:py-4 lg:text-[13px]";
   return (
     <section className="bg-white section-y">
@@ -76,7 +101,7 @@ export function ShopPromos() {
       </div>
       <div className="relative mx-auto mt-8 flex h-[360px] w-[96%] max-w-[1760px] items-end overflow-hidden rounded-[22px] sm:h-[440px] sm:rounded-[28px] lg:mt-12 lg:h-[540px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/alis/work_hair_waves.jpg" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-[50%_40%]" />
+        <img ref={img} src="/assets/alis/work_hair_waves.jpg" alt="" loading="lazy" className="absolute left-0 top-[-25%] h-[150%] w-full object-cover object-[50%_40%] will-change-transform" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
         <div className="relative w-full p-4 sm:p-5 lg:p-6">
           <button
