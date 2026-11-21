@@ -1,7 +1,7 @@
 "use client";
 // АНКЕТА «ПОДБОР ДОМАШНЕГО УХОДА ЗА ВОЛОСАМИ» (магазин, кнопка в баннере «Подобрать уход…»).
-// Вопросы — от заказчицы: 5 шагов (волосы → кожа головы → что делали за год → что исправить
-// (до трёх) → текущий уход) → контакты. Компьютер: слева заголовок и плитки ответов (заполняются
+// Вопросы — от заказчицы: 5 шагов (волосы →︎ кожа головы →︎ что делали за год →︎ что исправить
+// (до трёх) →︎ текущий уход) →︎ контакты. Компьютер: слева заголовок и плитки ответов (заполняются
 // по ходу), справа шаги — как в анкетах консьержа и вакансий. Заявка уходит в бот команды (тип «shop»).
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
@@ -242,7 +242,7 @@ export function HairQuiz() {
 
             {step === 6 && (
               <div className="py-6 text-center">
-                <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓</span>
+                <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓︎</span>
                 <p className="mt-5 font-display text-[18px] sm:text-[22px]">{T("Спасибо!", "Thank you!")}</p>
                 <p className="mx-auto mt-2 max-w-[36ch] !text-[12.5px] leading-[1.55] text-[#17191a]/65 sm:!text-[14px]">
                   {T("Стилист изучит ваши ответы, свяжется с вами и подберёт уход именно для ваших волос.", "Our stylist will review your answers, get in touch and choose care that is right for your hair.")}
@@ -257,7 +257,7 @@ export function HairQuiz() {
               </button>
             )}
             {step > 0 && step < 6 && (
-              <button type="button" onClick={() => setStep(step - 1)} className={`mt-4 ${link}`}>← {T("Назад", "Back")}</button>
+              <button type="button" onClick={() => setStep(step - 1)} className={`mt-4 ${link}`}>←︎ {T("Назад", "Back")}</button>
             )}
           </div>
         </div>

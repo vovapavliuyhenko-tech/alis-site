@@ -5,7 +5,7 @@ import { useLang } from "@/lib/i18n";
 import { careerFor } from "@/lib/vacancies";
 
 // Актуальные вакансии салона — тексты заказчицы слово в слово (src/lib/vacancies.ts).
-// Строка раскрывается по нажатию: описание, задачи, требования и «Откликнуться» (→ анкета #join).
+// Строка раскрывается по нажатию: описание, задачи, требования и «Откликнуться» (→︎ анкета #join).
 
 export default function Vacancies() {
   const { lang } = useLang();
@@ -39,7 +39,7 @@ export default function Vacancies() {
                     </span>
                   </span>
                   <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-[#17191a] transition-all duration-500 sm:h-11 sm:w-11 lg:h-12 lg:w-12 ${on ? "border-[#17191a] bg-[#17191a] text-white" : "border-[#17191a]/30 group-hover:border-[#17191a] group-hover:bg-[#17191a] group-hover:text-white"}`}>
-                    <span className={`text-[16px] leading-none transition-transform duration-500 lg:text-[18px] ${on ? "rotate-90" : "group-hover:-rotate-45"}`}>→</span>
+                    <span className={`text-[16px] leading-none transition-transform duration-500 lg:text-[18px] ${on ? "rotate-90" : "group-hover:-rotate-45"}`}>→︎</span>
                   </span>
                 </button>
                 <div className={`grid transition-[grid-template-rows] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] ${on ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
@@ -62,7 +62,7 @@ export default function Vacancies() {
                         ))}
                       </div>
                       <a href="#join" onClick={() => window.dispatchEvent(new CustomEvent("alis-join-pick", { detail: { position: v.title } }))} className="mt-6 inline-flex items-center gap-2 rounded-[12px] border border-[#17191a] bg-[#17191a] px-7 py-3.5 text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:text-[12px]">
-                        {lang === "en" ? "Apply" : "Откликнуться"} <span aria-hidden>→</span>
+                        {lang === "en" ? "Apply" : "Откликнуться"} <span aria-hidden>→︎</span>
                       </a>
                     </div>
                   </div>

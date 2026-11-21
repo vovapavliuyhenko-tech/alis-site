@@ -47,8 +47,9 @@ export function HairCta() {
           aria-expanded={open}
           className="group flex w-full items-center justify-between gap-4 rounded-[14px] border border-[#17191a]/12 px-5 py-4 text-left text-[11px] uppercase tracking-[0.16em] text-[#17191a] transition-colors duration-500 hover:border-[#17191a] hover:bg-[#17191a] hover:text-white sm:px-7 sm:py-5 sm:text-[12px]"
         >
-          <span>{lang === "en" ? "Find your hair care in 30 seconds with a consultant" : "Подобрать уход для волос за 30 секунд с консультантом"}</span>
-          <span aria-hidden className={`text-[16px] transition-transform duration-500 ${open ? "rotate-45" : "group-hover:translate-x-1.5"}`}>{open ? "+" : "→"}</span>
+          <span className="sm:hidden">{lang === "en" ? "Find care in 30 seconds" : "Подобрать уход за 30 секунд"}</span>
+          <span className="hidden sm:inline">{lang === "en" ? "Find your hair care in 30 seconds with a consultant" : "Подобрать уход для волос за 30 секунд с консультантом"}</span>
+          <span aria-hidden className={`text-[16px] transition-transform duration-500 ${open ? "rotate-45" : "group-hover:translate-x-1.5"}`}>{open ? "+" : "→︎"}</span>
         </button>
       </div>
       <div className={`grid transition-[grid-template-rows] duration-700 ease-[cubic-bezier(.22,.61,.36,1)] ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
@@ -90,7 +91,7 @@ export function ShopPromos() {
       io.disconnect();
     };
   }, []);
-  const base = "flex w-full items-center justify-center rounded-xl border px-2 py-3 text-center text-[9px] font-medium uppercase leading-tight tracking-[0.02em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[12px] sm:tracking-[0.14em] lg:py-4 lg:text-[13px]";
+  const base = "flex w-full items-center justify-center rounded-xl border px-2 py-3 text-center text-[8.5px] font-medium uppercase leading-tight tracking-[0.02em] backdrop-blur-md transition-colors duration-300 sm:py-3.5 sm:text-[12px] sm:tracking-[0.14em] lg:py-4 lg:text-[13px]";
   return (
     <section className="bg-white section-y">
       <div className="r-reveal mx-auto w-[92%] max-w-[720px] text-center">
@@ -113,7 +114,8 @@ export function ShopPromos() {
             aria-expanded={open}
             className={`${base} border-white bg-white text-[#17191a] hover:bg-white/[0.18] hover:text-white`}
           >
-            {en ? "Find hair care in 30 seconds with a consultant" : "Подобрать уход для волос за 30 секунд с консультантом"}
+            <span className="sm:hidden">{en ? "Find care in 30 seconds" : "Подобрать уход за 30 секунд"}</span>
+            <span className="hidden sm:inline">{en ? "Find hair care in 30 seconds with a consultant" : "Подобрать уход для волос за 30 секунд с консультантом"}</span>
           </button>
         </div>
       </div>

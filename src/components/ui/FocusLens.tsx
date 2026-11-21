@@ -34,7 +34,7 @@ export default function FocusLens({ src, imgClass = "object-center" }: { src: st
       const { w, h } = size();
       const r = host.getBoundingClientRect();
       const left = x - w / 2, top = y - h / 2;
-      // Окно в координатах обложки → clip-path для чёткой копии (она сдвинута параллаксом)
+      // Окно в координатах обложки →︎ clip-path для чёткой копии (она сдвинута параллаксом)
       const imgTop = sharp.getBoundingClientRect().top - r.top;
       sharp.style.clipPath = `inset(${top - imgTop}px ${r.width - left - w}px ${sharp.offsetHeight - (top - imgTop) - h}px ${left}px round 2px)`;
       fr.style.transform = `translate3d(${left}px, ${top}px, 0)`;

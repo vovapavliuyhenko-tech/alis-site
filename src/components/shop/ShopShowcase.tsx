@@ -204,7 +204,7 @@ function TrendCard({ p }: { p: (typeof PRODUCTS)[number] }) {
         onClick={add}
         className="absolute inset-x-3 bottom-3 z-[2] flex h-[38px] items-center justify-center rounded-[10px] bg-white text-[10.5px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-all duration-500 ease-[cubic-bezier(.22,.61,.36,1)] hover:bg-[#17191a] hover:text-white max-[1023px]:relative max-[1023px]:inset-auto max-[1023px]:mx-3 max-[1023px]:mb-3 [@media(hover:hover)]:translate-y-[140%] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100 lg:inset-x-4 lg:bottom-4"
       >
-        {added ? (lang === "en" ? "Added ✓" : "Добавлено ✓") : lang === "en" ? "Add to cart" : "В корзину"}
+        {added ? (lang === "en" ? "Added ✓︎" : "Добавлено ✓︎") : lang === "en" ? "Add to cart" : "В корзину"}
       </button>
     </div>
   );
@@ -225,7 +225,7 @@ export function ShopTrend() {
           <div className="flex items-baseline justify-end">
             <Link href="/shop/catalog" className="group inline-flex items-center gap-1.5 text-[12px] uppercase tracking-[0.1em] text-[#17191a] transition-colors hover:text-[#46131E]">
               {lang === "en" ? "View all" : "Смотреть все"}
-              <span className="inline-block transition-transform duration-300 group-hover:-rotate-45">→</span>
+              <span className="inline-block transition-transform duration-300 group-hover:-rotate-45">→︎</span>
             </Link>
           </div>
         </div>
@@ -247,7 +247,7 @@ export function ShopTrend() {
                 className="alis-pulse group mt-6 inline-flex items-center gap-2 rounded-xl border border-white/70 bg-white/15 px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-md transition-colors duration-300 hover:bg-white hover:text-[#17191a]"
               >
                 {lang === "en" ? "View the collection" : "Смотреть коллекцию"}
-                <span className="inline-block transition-transform duration-300 group-hover:-rotate-45">→</span>
+                <span className="inline-block transition-transform duration-300 group-hover:-rotate-45">→︎</span>
               </Link>
               </div>
             </div>

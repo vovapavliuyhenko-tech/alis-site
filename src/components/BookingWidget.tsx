@@ -1,6 +1,6 @@
 "use client";
-// ОНЛАЙН-ЗАПИСЬ ÁLIS BEAUTY (собственный движок, прототип). Шаги: услуга → мастер →
-// дата → свободное время → контакты → подтверждение. Свободные слоты считаются
+// ОНЛАЙН-ЗАПИСЬ ÁLIS BEAUTY (собственный движок, прототип). Шаги: услуга →︎ мастер →︎
+// дата →︎ свободное время →︎ контакты →︎ подтверждение. Свободные слоты считаются
 // из графика мастера минус уже занятые брони. Данные — localStorage (общий с
 // админкой /admin). Стиль — под сайт (белый фон, бордовые акценты).
 import { useEffect, useMemo, useState } from "react";
@@ -311,7 +311,7 @@ export default function BookingWidget() {
                       onClick={() => setStep(3)}
                       className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#17191a] bg-[#17191a] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#17191a]"
                     >
-                      Далее <span aria-hidden>→</span>
+                      Далее <span aria-hidden>→︎</span>
                     </button>
                   )}
                 </div>
@@ -344,7 +344,7 @@ export default function BookingWidget() {
                     disabled={!canConfirm}
                     className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#17191a] bg-[#17191a] px-6 py-3 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-[#17191a] disabled:hover:text-[#f4efe6]"
                   >
-                    Записаться <span aria-hidden>→</span>
+                    Записаться <span aria-hidden>→︎</span>
                   </button>
                 </div>
                 {/* Сводка */}

@@ -25,7 +25,7 @@ export default function LegalLayout({
       <div className="h-16 bg-white" />
       <article className="mx-auto w-[90%] max-w-[860px] py-14 lg:py-20">
         <Link href="/" className="text-[13px] text-[#17191a] transition-opacity hover:opacity-70">
-          {en ? "← Home" : "← На главную"}
+          {en ? "←︎ Home" : "←︎ На главную"}
         </Link>
         <h1 className="mt-6 font-serif text-[30px] leading-[1.12] text-[#17191a] lg:text-[44px]">
           {title}

@@ -1,7 +1,7 @@
 "use client";
 // БЛОК «КРАСОТА, КОТОРАЯ ВОЗВРАЩАЕТСЯ БОНУСАМИ» (страница «Салон») — bento:
 //  слева высокая чёрная карточка: «500 ₽» (счётчик от 0) и форма бонусов — «Для себя» (свой номер)
-//  или «Для подруги» (свой номер + номер подруги) → CRM, тип «bonus»;
+//  или «Для подруги» (свой номер + номер подруги) →︎ CRM, тип «bonus»;
 //  справа сверху три карточки бонусов (подарок в день рождения, бонус за подругу, бонусы
 //  постоянным) — иконка, название, пояснение; снизу — подарочный сертификат с фото.
 // Движение: карточки появляются по очереди; наведение — карточку снизу заливает чёрным,
@@ -64,7 +64,7 @@ export default function LoyaltyCerts() {
   const en = lang === "en";
   const t = (ru: string, e: string) => (en ? e : ru);
 
-  // Бонусы: для себя или для подруги → номер(а) в CRM (тип «bonus»)
+  // Бонусы: для себя или для подруги →︎ номер(а) в CRM (тип «bonus»)
   const [who, setWho] = useState<"me" | "friend">("me");
   const dk = who === "friend"; // режим «Для подруги» — карточка тёмная
   // Кнопка «Пригласить подругу и получить бонус» на обложке салона ведёт сюда (#friend)
@@ -215,7 +215,7 @@ export default function LoyaltyCerts() {
                         <Icon />
                       </span>
                       {/* Стрелка — видно, что карточка ведёт дальше */}
-                      <span aria-hidden className="flex h-9 w-9 items-center justify-center rounded-full border border-[#17191a]/15 text-[14px] text-[#17191a] transition-all duration-700 group-hover:-rotate-45 group-hover:border-white/30 group-hover:text-white group-data-[on]:border-white/30 group-data-[on]:text-white">→</span>
+                      <span aria-hidden className="flex h-9 w-9 items-center justify-center rounded-full border border-[#17191a]/15 text-[14px] text-[#17191a] transition-all duration-700 group-hover:-rotate-45 group-hover:border-white/30 group-hover:text-white group-data-[on]:border-white/30 group-data-[on]:text-white">→︎</span>
                     </div>
                     <div className="relative mt-6 sm:mt-10">
                       <h3 className="font-display text-[15px] tracking-[0.01em] text-[#17191a] transition-colors duration-700 group-hover:text-white group-data-[on]:text-white sm:text-[17px]">{p.title[lang]}</h3>
@@ -249,7 +249,7 @@ export default function LoyaltyCerts() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent transition-colors duration-700 group-hover:from-black/65" />
               <span className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/50 text-white transition-all duration-300 group-hover:border-transparent group-hover:bg-white group-hover:text-[#17191a] sm:right-6 sm:top-6 sm:h-11 sm:w-11">
-                <span className="transition-transform duration-300 group-hover:-rotate-45">→</span>
+                <span className="transition-transform duration-300 group-hover:-rotate-45">→︎</span>
               </span>
               <div className="absolute inset-x-5 bottom-5 sm:inset-x-7 sm:bottom-7">
                 <h3 className="font-display text-[18px] leading-[1.2] tracking-[0.02em] text-white sm:text-[24px]">

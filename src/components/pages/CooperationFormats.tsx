@@ -123,19 +123,19 @@ export default function CooperationFormats() {
                       </span>
                     </span>
                   )}
-                  {/* По центру фото — «Выбрать →» при наведении; у выбранной — «Выбрано ✓» всегда, фото размыто */}
+                  {/* По центру фото — «Выбрать →︎» при наведении; у выбранной — «Выбрано ✓︎» всегда, фото размыто */}
                   <span className={`pointer-events-none absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${on ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}>
                     <span className="flex items-center gap-3 rounded-full border border-white/60 bg-white/15 px-7 py-3 text-[14px] text-white backdrop-blur-md lg:text-[15px]">
-                      {on ? (en ? "Selected ✓" : "Выбрано ✓") : (en ? "Choose" : "Выбрать")}
-                      {!on && <span aria-hidden className="inline-block animate-[alis-nudge_1.2s_ease-in-out_infinite]">→</span>}
+                      {on ? (en ? "Selected ✓︎" : "Выбрано ✓︎") : (en ? "Choose" : "Выбрать")}
+                      {!on && <span aria-hidden className="inline-block animate-[alis-nudge_1.2s_ease-in-out_infinite]">→︎</span>}
                     </span>
                   </span>
                 </div>
                 <div className="flex items-baseline justify-between gap-4 px-1 pt-4 text-[#242424]">
                   <h2 className="!text-[15px] lg:!text-[16px]">{a.title[lang]}</h2>
                   <span className={`shrink-0 text-[13px] transition-colors duration-300 ${on ? "text-[#46131E]" : "text-[#17191a]/55 group-hover:text-[#17191a]"}`}>
-                    {on ? (en ? "Selected ✓" : "Выбрано ✓") : (en ? "Choose" : "Выбрать")}{" "}
-                    {!on && <span aria-hidden className={`inline-block ${kind ? "transition-transform duration-300 group-hover:translate-x-1" : "animate-[alis-nudge_1.2s_ease-in-out_infinite] text-[#46131E]"}`}>→</span>}
+                    {on ? (en ? "Selected ✓︎" : "Выбрано ✓︎") : (en ? "Choose" : "Выбрать")}{" "}
+                    {!on && <span aria-hidden className={`inline-block ${kind ? "transition-transform duration-300 group-hover:translate-x-1" : "animate-[alis-nudge_1.2s_ease-in-out_infinite] text-[#46131E]"}`}>→︎</span>}
                   </span>
                 </div>
               </button>

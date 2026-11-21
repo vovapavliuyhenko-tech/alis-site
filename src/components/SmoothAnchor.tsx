@@ -1,7 +1,7 @@
 "use client";
 // Плавная прокрутка к якорям (кнопки/меню, ведущие к #блоку на той же странице).
 // Делаем через JS (scrollIntoView smooth), а НЕ через CSS scroll-behavior — иначе
-// конфликт с кастомным SmoothScroll (window.scrollTo в rAF-цикле → залипание).
+// конфликт с кастомным SmoothScroll (window.scrollTo в rAF-цикле →︎ залипание).
 import { useEffect } from "react";
 
 export default function SmoothAnchor() {

@@ -58,7 +58,7 @@ export default function Checkout() {
 
   const DELIVERY: { id: Delivery; icon: string; title: string; note: string; price: string }[] = [
     { id: "pickup", icon: "◎", title: T("Самовывоз", "Pick-up"), note: T("Салон, ул. Пархоменко, 53", "Salon, 53 Parkhomenko St."), price: T("Бесплатно", "Free") },
-    { id: "courier", icon: "→", title: T("Курьер", "Courier"), note: T("По Новороссийску, до двери", "Novorossiysk, to your door"), price: T("Подтвердит менеджер", "Confirmed by manager") },
+    { id: "courier", icon: "→︎", title: T("Курьер", "Courier"), note: T("По Новороссийску, до двери", "Novorossiysk, to your door"), price: T("Подтвердит менеджер", "Confirmed by manager") },
     { id: "russia", icon: "✈", title: T("По России", "Across Russia"), note: T("Службой доставки", "By a delivery service"), price: T("По тарифу", "By tariff") },
     { id: "ask", icon: "?", title: T("Узнать у получателя", "Ask the recipient"), note: T("Уточним адрес и удобное время", "We'll confirm the address and time"), price: "—" },
   ];
@@ -120,18 +120,18 @@ export default function Checkout() {
   // Ошибка под полем — как у Paloma
   const err = (k: keyof typeof errs, text: string) => (bad(k) ? <p className="mt-1.5 text-[12px] text-[#b42318]">{text}</p> : null);
 
-  // Шапка как у Paloma: высота 60, «← Назад» слева, логотип и «Ваш заказ» по центру, крестик справа
+  // Шапка как у Paloma: высота 60, «←︎ Назад» слева, логотип и «Ваш заказ» по центру, крестик справа
   const top = (
     <header className="sticky top-0 z-30 border-b border-[#17191a]/[0.08] bg-white/[0.92] backdrop-blur-md">
       <div className="mx-auto grid h-[60px] max-w-[1280px] grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-10">
         <Link href="/shop" className="flex items-center gap-2 justify-self-start text-[14px] text-[#17191a]/60 transition-colors hover:text-[#17191a]">
-          <span aria-hidden className="text-[16px]">←</span> <span className="hidden sm:inline">{T("Назад", "Back")}</span>
+          <span aria-hidden className="text-[16px]">←︎</span> <span className="hidden sm:inline">{T("Назад", "Back")}</span>
         </Link>
         <div className="text-center leading-tight">
           <p className="text-[11px] uppercase tracking-[0.3em] text-[#17191a]/35">ÁLIS BEAUTY</p>
           <p className="text-[15px] font-semibold text-[#17191a]">{T("Ваш заказ", "Your order")}</p>
         </div>
-        <Link href="/shop" aria-label={T("Закрыть", "Close")} className="flex h-9 w-9 items-center justify-center justify-self-end text-[18px] text-[#17191a]/60 transition-colors hover:text-[#17191a]">✕</Link>
+        <Link href="/shop" aria-label={T("Закрыть", "Close")} className="flex h-9 w-9 items-center justify-center justify-self-end text-[18px] text-[#17191a]/60 transition-colors hover:text-[#17191a]">✕︎</Link>
       </div>
     </header>
   );
@@ -143,13 +143,13 @@ export default function Checkout() {
       <>
         {top}
         <div className="mx-auto flex min-h-[70vh] w-full max-w-[520px] flex-col items-center justify-center px-6 py-16 text-center">
-          <span aria-hidden className="flex h-16 w-16 items-center justify-center rounded-full bg-[#17191a] text-[24px] text-white">✓</span>
+          <span aria-hidden className="flex h-16 w-16 items-center justify-center rounded-full bg-[#17191a] text-[24px] text-white">✓︎</span>
           <h1 className="mt-6 !text-[28px] font-normal text-[#17191a]">{T("Заказ принят!", "Order received!")}</h1>
           <p className="mt-2 text-[13px] text-[#17191a]/50">№ {done}</p>
           <p className="mt-4 text-[15px] leading-[1.6] text-[#17191a]/65">
             {T("Мы свяжемся с вами в ближайшее время, подтвердим наличие, состав и итоговую стоимость. Оплата — только после согласования.", "We'll contact you shortly to confirm availability, the order and the final price. Payment only after confirmation.")}
           </p>
-          <Link href="/shop" className={`mt-8 !w-auto ${primaryBtn}`}>{T("Продолжить покупки →", "Continue shopping →")}</Link>
+          <Link href="/shop" className={`mt-8 !w-auto ${primaryBtn}`}>{T("Продолжить покупки →︎", "Continue shopping →︎")}</Link>
         </div>
       </>
     );
@@ -366,8 +366,8 @@ export default function Checkout() {
               <p className="mt-3 text-center text-[12px] leading-[1.5] text-[#17191a]/50">{T("После оформления менеджер проверит наличие, свяжется с вами и подтвердит итоговую стоимость. Оплата — только после согласования.", "After you order, our manager checks availability, contacts you and confirms the final price. Payment only after approval.")}</p>
 
               <ul className="mt-5 flex flex-col gap-2 border-t border-[#17191a]/10 pt-4 text-[12.5px] leading-[1.5] text-[#17191a]/60">
-                <li>✓ {T("Красиво упакуем — подарок можно отправить сразу получателю.", "Beautifully packed — the gift can go straight to the recipient.")}</li>
-                <li>✓ {T("4,9 — более 75 отзывов на Яндексе и 2ГИС.", "4.9 — 75+ reviews on Yandex and 2GIS.")}</li>
+                <li>✓︎ {T("Красиво упакуем — подарок можно отправить сразу получателю.", "Beautifully packed — the gift can go straight to the recipient.")}</li>
+                <li>✓︎ {T("4,9 — более 75 отзывов на Яндексе и 2ГИС.", "4.9 — 75+ reviews on Yandex and 2GIS.")}</li>
               </ul>
             </div>
           </aside>
@@ -376,7 +376,7 @@ export default function Checkout() {
 
       {/* Телефон: плавающая кнопка «Оформить заказ ниже» — ведёт к итогу и кнопке (как у Paloma) */}
       <a href="#co-summary" className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full border border-[#17191a]/10 bg-white/[0.94] px-[18px] py-[9px] text-[12px] font-semibold text-[#17191a] shadow-[0_6px_24px_rgba(0,0,0,.12)] backdrop-blur-md lg:hidden">
-        {T("Оформить заказ ниже", "Checkout below")} <span aria-hidden>↓</span>
+        {T("Оформить заказ ниже", "Checkout below")} <span aria-hidden>↓︎</span>
       </a>
     </>
   );
@@ -387,7 +387,7 @@ function Check({ checked, onChange, bad, children }: { checked: boolean; onChang
   return (
     <label className="flex cursor-pointer items-start gap-2.5">
       <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} className="peer sr-only" />
-      <span aria-hidden className={`mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded-[6px] border text-[12px] text-white transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-[#17191a]/30 ${checked ? "border-[#17191a] bg-[#17191a]" : bad ? "border-[#b42318]/60 bg-white" : "border-[#17191a]/10 bg-white"}`}>{checked ? "✓" : ""}</span>
+      <span aria-hidden className={`mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded-[6px] border text-[12px] text-white transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-[#17191a]/30 ${checked ? "border-[#17191a] bg-[#17191a]" : bad ? "border-[#b42318]/60 bg-white" : "border-[#17191a]/10 bg-white"}`}>{checked ? "✓︎" : ""}</span>
       <span className={`text-[13px] leading-[1.5] ${bad ? "text-[#b42318]" : "text-[#17191a]/70"}`}>{children}</span>
     </label>
   );

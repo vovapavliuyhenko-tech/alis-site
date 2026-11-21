@@ -122,7 +122,7 @@ export function JoinInternational() {
       <ul className="mx-auto mt-6 w-full max-w-[460px] border-t border-[#17191a]/10 text-left md:mx-0">
         {PERKS.map((p) => (
           <li key={p} className="flex items-center gap-3 border-b border-[#17191a]/10 py-3 text-[13px] text-[#17191a] sm:text-[15px]">
-            <span aria-hidden className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[10px] text-white">✓</span>
+            <span aria-hidden className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[10px] text-white">✓︎</span>
             {p}
           </li>
         ))}

@@ -449,7 +449,7 @@ export default function Booking() {
                         onClick={() => setStep(step - 1)}
                         className="inline-flex items-center gap-2 text-[14px] text-[#17191a]/50 transition-colors hover:text-[#17191a]"
                       >
-                        <span aria-hidden>←</span> {ui.back}
+                        <span aria-hidden>←︎</span> {ui.back}
                       </button>
                     ) : (
                       <span />

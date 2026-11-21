@@ -1,7 +1,7 @@
 "use client";
 // СТРАНИЦА «САЛОН КРАСОТЫ» — блоки по брифу заказчицы:
 //  SalonBonusStrip — плашка «500 бонусных рублей на первый визит» + «Пригласить подругу и получить
-//                    бонус»: по кнопке раскрывается форма (ваш номер + номер подруги) → CRM, тип «bonus»;
+//                    бонус»: по кнопке раскрывается форма (ваш номер + номер подруги) →︎ CRM, тип «bonus»;
 //  PopularServices — «Популярные процедуры»: лента карточек с фото, ценой и кнопкой «Записаться»;
 //  SalonReviews    — 3 отзыва + «Оставить свой отзыв о визите».
 // Цены — из прайса салона на этой странице. TODO: фото процедур и ссылку на отзывы пришлёт заказчица.
@@ -37,7 +37,7 @@ export function SalonBonusStrip() {
       <div className="mx-auto w-[96%] max-w-[1760px] rounded-[20px] border border-[#17191a]/12 bg-white px-5 py-5 sm:px-8 sm:py-6">
         <div className="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
           <div className="flex items-center gap-3">
-            <span aria-hidden className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[12px] text-white">✓</span>
+            <span aria-hidden className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[12px] text-white">✓︎</span>
             <p className="font-display text-[14px] uppercase tracking-[0.04em] text-[#17191a] sm:text-[17px]">
               {en ? "500 bonus roubles on your first visit" : "500 бонусных рублей на первый визит"}
             </p>
@@ -191,7 +191,7 @@ export function SalonRating() {
           {LINKS.map((l) => (
             <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 rounded-full border border-[#17191a]/20 px-4 py-2 text-[12px] text-[#17191a] transition-colors duration-300 hover:border-[#17191a] hover:bg-[#17191a] hover:text-white sm:text-[13px]">
               {l.label}
-              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→︎</span>
             </a>
           ))}
         </div>

@@ -39,7 +39,7 @@ export default function Hero() {
     <div className="bg-white">
     <section ref={sec} className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#d9d7d3] text-white">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} className="hero-zoom absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-[50%_55%] will-change-transform lg:[filter:saturate(1.15)_contrast(1.04)]" />
+      <img ref={bg} src={BG_PHOTO} alt={t("Салон красоты ÁLIS BEAUTY в Новороссийске", "ÁLIS BEAUTY beauty salon, Novorossiysk")} fetchPriority="high" className="hero-zoom absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-[50%_55%] will-change-transform lg:[filter:saturate(1.15)_contrast(1.04)]" />
       {/* Затемнение: сверху — под шапку, снизу — под текст (фото светлое, текст белый) */}
       <div
         aria-hidden
@@ -58,7 +58,7 @@ export default function Hero() {
       {/* Телефон (вариант A): всё внизу по центру, заголовок в 2 строки, текст мельче; компьютер — по центру */}
       <div ref={content} className="flex w-full max-w-[1320px] flex-col items-center px-5 pb-4 text-center sm:items-center sm:px-6 sm:pb-[clamp(24px,4vh,48px)] sm:text-center">
         {/* Заголовок — как на всех обложках сайта */}
-        <h1 className="whitespace-nowrap font-serif-display text-[clamp(18px,6vw,24px)] font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]">
+        <h1 className="max-w-full font-serif-display text-[22px] font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[30px] lg:text-[38px]">
           <SplitTitle text={TITLE} />
         </h1>
         <p style={{ animationDelay: `${lineDelay + 0.2}s` }} className="hero-up mt-3 max-w-[640px] lg:max-w-[780px] !text-[11.5px] leading-[1.55] text-white/85 sm:mt-4 sm:!text-[14px] sm:leading-[1.6] sm:text-white/90 [text-shadow:0_1px_14px_rgba(0,0,0,.35)] lg:!text-[15px]">

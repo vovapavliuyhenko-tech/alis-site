@@ -35,7 +35,7 @@ export default function VacanciesBoard({ only }: { only?: Dir } = {}) {
   const [open, setOpen] = useState<number | null>(null);
   const data = CAREER[dir];
 
-  // Меню «Вакансии → …» и ссылки с хэшем переключают направление
+  // Меню «Вакансии →︎ …» и ссылки с хэшем переключают направление
   useEffect(() => {
     if (only) return;
     const go = () => {
@@ -201,7 +201,7 @@ function ApplyForm({ dir, lang }: { dir: Dir; lang: "ru" | "en" }) {
 
       {sent ? (
         <div className="py-10 text-center">
-          <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓</span>
+          <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓︎</span>
           <p className="mt-5 font-display text-[18px] sm:text-[22px]">Спасибо!</p>
           <p className="mx-auto mt-2 max-w-[40ch] !text-[13px] text-[#17191a]/65">Мы получили вашу анкету. Каждая заявка рассматривается лично — мы свяжемся с вами.</p>
         </div>

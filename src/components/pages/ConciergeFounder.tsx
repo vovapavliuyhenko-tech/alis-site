@@ -2,9 +2,9 @@
 // ОСНОВАТЕЛЬ И ФОРМАТЫ (страница «Консьерж-сервис», #partners): слева фото основателя, справа
 // на белом фоне текст и три формата сотрудничества строками (без плашек и кнопок). Тексты — заказчицы.
 // Движение в стиле сайта:
-//  — фото при прокрутке плавно отъезжает от крупного плана (масштаб 1.15 → 1);
+//  — фото при прокрутке плавно отъезжает от крупного плана (масштаб 1.15 →︎ 1);
 //  — при появлении блока линии форматов прорисовываются слева направо по очереди, строки выезжают;
-//  — наведение на формат: строку снизу заливает чёрным, текст белеет и сдвигается, номер → стрелка;
+//  — наведение на формат: строку снизу заливает чёрным, текст белеет и сдвигается, номер →︎ стрелка;
 //    на телефоне так подсвечивается строка, которая сейчас в центре экрана.
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
@@ -108,7 +108,7 @@ export default function ConciergeFounder() {
                   <span aria-hidden className="absolute inset-0 origin-bottom scale-y-0 rounded-[14px] bg-[#17191a] transition-transform duration-500 ease-[cubic-bezier(.7,0,.2,1)] group-hover:scale-y-100 group-data-[on]:scale-y-100" />
                   <div className="relative flex items-center justify-between gap-4 px-0 py-4 text-left transition-all duration-500 group-hover:px-5 group-data-[on]:px-5 sm:py-5">
                     <span className="font-display text-[14px] tracking-[0.02em] text-[#17191a] transition-colors duration-500 group-hover:text-white group-data-[on]:text-white sm:text-[18px]">{f}</span>
-                    {/* Номер → стрелка */}
+                    {/* Номер →︎ стрелка */}
                     <span className="relative h-5 w-8 overflow-hidden text-right text-[11px] sm:text-[12px]">
                       <span className="absolute inset-0 flex items-center justify-end text-[#17191a]/35 transition-transform duration-500 group-hover:-translate-y-full group-data-[on]:-translate-y-full">{String(i + 1).padStart(2, "0")}</span>
                       <span className="absolute inset-0 flex translate-y-full items-center justify-end text-white transition-transform duration-500 group-hover:translate-y-0 group-data-[on]:translate-y-0">

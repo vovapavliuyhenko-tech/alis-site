@@ -1,6 +1,6 @@
 "use client";
 // ОТЗЫВЫ «стеной» (по референсу): маленькая подпись «[ Отзывы ]», заголовок, под ним плашка
-// с рейтингом (4.9 ★★★★★ · 75+ отзывов на Яндекс и 2ГИС ↗), ниже — две бегущие ленты
+// с рейтингом (4.9 ★★★★★ · 75+ отзывов на Яндекс и 2ГИС ↗︎), ниже — две бегущие ленты
 // светлых карточек в разные стороны. Карточка: текст отзыва, внизу кружок с буквой имени,
 // имя и услуга. Ленты едут сами и листаются (палец, колёсико, мышка). Края растворяются в белом.
 import { useEffect, useRef } from "react";
@@ -120,7 +120,7 @@ export default function ReviewsWall({ title = { ru: "Так говорят го�
           <span className="rounded-full bg-[#17191a] px-2 py-1 text-[11px] font-medium text-white sm:px-3 sm:py-1.5 sm:text-[13px]">4.9</span>
           <span aria-hidden className="text-[10px] tracking-[0.06em] text-[#b8955a] sm:text-[inherit] sm:tracking-[0.1em]">★★★★★</span>
           {en ? "75+ reviews on Yandex and 2GIS" : "75+ отзывов на Яндекс и 2ГИС"}
-          <span aria-hidden className="transition-transform duration-300 group-hover:-rotate-45">↗</span>
+          <span aria-hidden className="transition-transform duration-300 group-hover:-rotate-45">↗︎</span>
         </a>
       </div>
 

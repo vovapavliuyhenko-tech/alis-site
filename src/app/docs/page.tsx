@@ -35,7 +35,7 @@ export default function DocsPage() {
               <span className="block text-[16px] font-medium text-[#17191a] transition-colors group-hover:text-white">{d.title}</span>
               <span className="mt-1 block text-[13px] text-[#17191a]/55 transition-colors group-hover:text-white/70">{d.note}</span>
             </span>
-            <span aria-hidden className="text-[18px] text-[#17191a] transition-colors group-hover:text-white">→</span>
+            <span aria-hidden className="text-[18px] text-[#17191a] transition-colors group-hover:text-white">→︎</span>
           </a>
         ))}
       </div>

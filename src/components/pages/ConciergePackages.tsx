@@ -94,7 +94,7 @@ export default function ConciergePackages() {
                   </span>
                   <span className={`mt-1.5 block text-[11.5px] leading-[1.45] transition-colors duration-500 sm:text-[13px] ${on ? "text-white/70" : "text-[#17191a]/45"}`}>{x.who[lang]}</span>
                 </span>
-                <span aria-hidden className={`shrink-0 text-[18px] transition-all duration-500 ease-[cubic-bezier(.22,.61,.36,1)] ${on ? "translate-x-0 opacity-100" : "-translate-x-3 opacity-0 group-hover:translate-x-0 group-hover:opacity-40"}`}>→</span>
+                <span aria-hidden className={`shrink-0 text-[18px] transition-all duration-500 ease-[cubic-bezier(.22,.61,.36,1)] ${on ? "translate-x-0 opacity-100" : "-translate-x-3 opacity-0 group-hover:translate-x-0 group-hover:opacity-40"}`}>→︎</span>
               </button>
             );
           })}

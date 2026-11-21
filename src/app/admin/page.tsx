@@ -76,7 +76,7 @@ export default function AdminPage() {
             Войти
           </button>
           <p className="mt-4 text-[12px] text-[#17191a]/35">Пароль прототипа: <code>alis</code></p>
-          <a href="/" className="mt-6 block text-[13px] text-[#17191a] underline underline-offset-4">← на сайт</a>
+          <a href="/" className="mt-6 block text-[13px] text-[#17191a] underline underline-offset-4">←︎ на сайт</a>
         </div>
       </main>
     );

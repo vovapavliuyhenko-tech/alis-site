@@ -32,7 +32,7 @@ export default function ForDesigners() {
               className="r-reveal mt-10 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-[14px] font-medium text-[#17191a] transition-opacity hover:opacity-85"
             >
               Записаться
-              <span aria-hidden>→</span>
+              <span aria-hidden>→︎</span>
             </a>
           </div>
 

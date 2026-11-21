@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Checkout from "@/components/shop/Checkout";
 
 // Оформление заказа из корзины (по образцу paloma.website/checkout.html) — без шапки и подвала сайта,
-// чтобы ничего не отвлекало: сверху «Назад / Ваш заказ / ✕».
+// чтобы ничего не отвлекало: сверху «Назад / Ваш заказ / ✕︎».
 export const metadata: Metadata = {
   title: "Ваш заказ — ÁLIS BEAUTY",
   robots: { index: false },

@@ -4,8 +4,8 @@
 // сценарий с кнопками-ответами и итоговой карточкой, как в чатах банков):
 //  • Главный экран: приветствие + крупные кнопки действий (заявка, стоимость, звонок,
 //    мессенджер, запись в салон).
-//  • Заявка — по одному вопросу за раз: повод → дата → сколько человек → имя → телефон →
-//    карточка-проверка → отправка. Прогресс-полоса сверху, «печатает…» перед ответом.
+//  • Заявка — по одному вопросу за раз: повод →︎ дата →︎ сколько человек →︎ имя →︎ телефон →︎
+//    карточка-проверка →︎ отправка. Прогресс-полоса сверху, «печатает…» перед ответом.
 // Светлый, ч/б с бордовыми акцентами. Без бэкенда: отправка — заглушка. Двуязычно.
 import { useEffect, useRef, useState } from "react";
 import MiniCalendar from "@/components/ui/MiniCalendar";
@@ -218,7 +218,7 @@ export default function ConciergeChat() {
                           <span className="block text-[12.5px] text-[#17191a] sm:text-[14px]">{a.title}</span>
                           <span className="block text-[10.5px] text-[#17191a]/45 sm:text-[12px]">{a.sub}</span>
                         </span>
-                        <span aria-hidden className="text-[#17191a]/30 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#17191a]">→</span>
+                        <span aria-hidden className="text-[#17191a]/30 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#17191a]">→︎</span>
                       </>
                     );
                     const cls = "group flex w-full items-center gap-2.5 rounded-[12px] border border-[#17191a]/10 px-3 py-2.5 transition-colors sm:gap-3 sm:px-4 sm:py-3 hover:border-[#17191a]/40 hover:bg-[#17191a]/[0.03]";
@@ -270,7 +270,7 @@ export default function ConciergeChat() {
 
                 {!typing && step === "done" && (
                   <div className="flex flex-col items-center gap-3 pt-4 text-center">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#17191a] text-[18px] text-white">✓</span>
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#17191a] text-[18px] text-white">✓︎</span>
                     <a href={YCLIENTS} target="_blank" rel="noopener noreferrer" className="border-b border-[#17191a]/30 pb-0.5 text-[13px] text-[#17191a] hover:border-[#17191a] hover:text-[#17191a]">
                       {t("А пока — записаться в салон онлайн", "Meanwhile — book at the salon online")}
                     </a>
@@ -320,7 +320,7 @@ export default function ConciergeChat() {
                     onChange={(e) => { setInput(step === "phone" ? formatPhone(e.target.value) : e.target.value); setErr(false); }}
                     className={`flex-1 rounded-full border bg-[#f4f3f1] px-4 py-2.5 text-[14px] text-[#17191a] outline-none placeholder:text-[#17191a]/35 ${err ? "border-[#c0392b]" : "border-transparent"}`}
                   />
-                  <button type="submit" aria-label={t("Далее", "Next")} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#17191a] text-white">→</button>
+                  <button type="submit" aria-label={t("Далее", "Next")} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#17191a] text-white">→︎</button>
                 </form>
               )}
               {step === "review" && (

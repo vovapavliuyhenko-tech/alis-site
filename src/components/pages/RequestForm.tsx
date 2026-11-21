@@ -102,7 +102,7 @@ export default function RequestForm({
             <ul className="space-y-2 text-left sm:space-y-2.5">
               {bullets.map((b) => (
                 <li key={b.ru} className="flex items-start gap-2.5 text-[12px] leading-[1.5] text-[#242424] sm:gap-3 sm:text-[14px] lg:text-[15px]">
-                  <span aria-hidden className="mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[10px] text-white">✓</span>
+                  <span aria-hidden className="mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[10px] text-white">✓︎</span>
                   {b[lang]}
                 </li>
               ))}

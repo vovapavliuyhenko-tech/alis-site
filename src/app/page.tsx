@@ -37,7 +37,7 @@ export default function Home() {
         <div id="hero-end" aria-hidden className="h-0" />
         {/* Почему выбирают ÁLIS BEAUTY */}
         <ConciergeBenefits points={WHY} sectionId="why" title={{ ru: "Почему выбирают ÁLIS BEAUTY", en: "Why choose ÁLIS BEAUTY" }} />
-        {/* Порядок: работы мастеров → выезд (консьерж) → как записаться в салон → услуги → контакты (подвал) */}
+        {/* Порядок: работы мастеров →︎ выезд (консьерж) →︎ как записаться в салон →︎ услуги →︎ контакты (подвал) */}
         <PhotoMarquee />
         {/* Отзывы гостей — перед баннером консьерж-сервиса */}
         <ReviewsWall title={{ ru: "Гости о нас", en: "Guests about us" }} />

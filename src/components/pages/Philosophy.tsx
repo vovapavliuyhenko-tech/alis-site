@@ -33,7 +33,7 @@ export default function Philosophy() {
           className="r-reveal mt-6 inline-flex items-center justify-center gap-2 rounded-xl border border-white/70 bg-white/[0.18] px-10 py-4 text-[13px] font-medium uppercase tracking-[0.14em] text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#17191a] lg:mt-8"
         >
           {en ? "All about the ÁLIS BEAUTY concierge service" : "Всё о консьерж-сервисе от ÁLIS BEAUTY"}
-          <span aria-hidden>→</span>
+          <span aria-hidden>→︎</span>
         </a>
       </div>
     </section>

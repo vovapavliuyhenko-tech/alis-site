@@ -1,7 +1,7 @@
 "use client";
 // АНКЕТА СОТРУДНИЧЕСТВА (страница «Сотрудничество», #formats) — в формате анкеты кандидата
 // на «Вакансиях»: тёмная, слева заголовок и плитки ответов, справа шаги:
-// кто вы → что нужно → где событие → контакты. Частные лица уходят в CRM как «coop_private»,
+// кто вы →︎ что нужно →︎ где событие →︎ контакты. Частные лица уходят в CRM как «coop_private»,
 // бизнес — как «coop_business». Пункты меню /cooperation#private и #business сразу выбирают ответ.
 import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
@@ -125,7 +125,7 @@ export default function CoopQuiz() {
                   );
                 })}
               </div>
-              {step > 0 && <button type="button" onClick={() => setStep(step - 1)} className={`mt-5 ${link}`}>← {en ? "Back" : "Назад"}</button>}
+              {step > 0 && <button type="button" onClick={() => setStep(step - 1)} className={`mt-5 ${link}`}>←︎ {en ? "Back" : "Назад"}</button>}
             </div>
           )}
 
@@ -153,13 +153,13 @@ export default function CoopQuiz() {
               >
                 {en ? "Send" : "Отправить"}
               </button>
-              <button type="button" onClick={() => setStep(2)} className={`mt-4 ${link}`}>← {en ? "Back" : "Назад"}</button>
+              <button type="button" onClick={() => setStep(2)} className={`mt-4 ${link}`}>←︎ {en ? "Back" : "Назад"}</button>
             </div>
           )}
 
           {step === 4 && (
             <div className="animate-[coop-in_.4s_ease] py-6 text-center">
-              <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓</span>
+              <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓︎</span>
               <p className="mt-5 font-display text-[18px] sm:text-[22px]">{en ? "Thank you!" : "Спасибо!"}</p>
               <p className="mx-auto mt-2 max-w-[34ch] !text-[12.5px] leading-[1.55] text-[#17191a]/65 sm:!text-[14px]">
                 {en ? "We've received your request — the manager will get back to you soon." : "Мы получили вашу заявку — менеджер скоро свяжется с вами."}
@@ -170,7 +170,7 @@ export default function CoopQuiz() {
                 download={en ? "ALIS BEAUTY — commercial proposal.pdf" : "ÁLIS BEAUTY — коммерческое предложение.pdf"}
                 className="mx-auto mt-6 flex w-full max-w-[340px] items-center justify-center gap-2 rounded-[12px] border border-[#17191a] bg-[#17191a] py-3.5 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-transparent hover:text-[#17191a] sm:text-[12px]"
               >
-                {en ? "Download the commercial proposal" : "Скачать коммерческое предложение"} <span aria-hidden>↓</span>
+                {en ? "Download the commercial proposal" : "Скачать коммерческое предложение"} <span aria-hidden>↓︎</span>
               </a>
             </div>
           )}

@@ -69,7 +69,7 @@ export default function Footer() {
       items: [
         { label: ADDRESS[lang], href: MAP_URL },
         { label: HOURS[lang] },
-        { label: t("Построить маршрут →", "Get directions →"), href: ROUTE_URL },
+        { label: t("Построить маршрут →︎", "Get directions →︎"), href: ROUTE_URL },
       ],
     },
     {
@@ -173,7 +173,7 @@ export default function Footer() {
             </a>
             <p className="mt-2 text-[11px] leading-relaxed text-[#f4efe6]/70 sm:mt-3 sm:text-[13px] lg:text-[12px]">{HOURS[lang]}</p>
             <a href={ROUTE_URL} target="_blank" rel="noopener noreferrer" className={`${link} mt-4`}>
-              {t("Построить маршрут →", "Get directions →")}
+              {t("Построить маршрут →︎", "Get directions →︎")}
             </a>
           </div>
 

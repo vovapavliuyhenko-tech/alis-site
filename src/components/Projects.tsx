@@ -59,7 +59,7 @@ function Cell({ s, i }: { s: (typeof SLIDES)[number]; i: number }) {
                 className="flex w-full items-center justify-center gap-2 rounded-full border border-[#17191a] bg-[#17191a] px-6 py-3.5 text-[13px] font-medium text-[#f4efe6] transition-colors duration-300 hover:bg-transparent hover:text-[#17191a]"
               >
                 {lang === "en" ? "Book" : "Записаться"}
-                <span aria-hidden>→</span>
+                <span aria-hidden>→︎</span>
               </a>
             </div>
           </div>
@@ -101,7 +101,7 @@ export default function Projects() {
         if (!section) continue;
         // абсолютная позиция панели в документе (устойчиво к sticky)
         const abTop = section.getBoundingClientRect().top + sy;
-        // прогресс скролла ВНУТРИ залипшей панели: 0 (вошла) → 1 (уходит)
+        // прогресс скролла ВНУТРИ залипшей панели: 0 (вошла) →︎ 1 (уходит)
         const p = (sy - abTop) / vh;
         const factor = parseFloat(el.dataset.parallax || "0.08");
         // карточка «догоняет» скролл: по центру панели в покое, дрейф ±

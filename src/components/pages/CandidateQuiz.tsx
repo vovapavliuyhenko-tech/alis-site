@@ -1,7 +1,7 @@
 "use client";
 // АНКЕТА КАНДИДАТА (консьерж-сервис) — вторая вкладка последнего блока страницы консьержа
 // («Хочу в команду»). Те же вопросы из документа заказчицы (src/lib/vacancies.ts), но по шагам,
-// как клиентская анкета: позиция → 2–3 вопроса на шаг → согласие и «Отправить заявку».
+// как клиентская анкета: позиция →︎ 2–3 вопроса на шаг →︎ согласие и «Отправить заявку».
 import { useState } from "react";
 import { sendLead } from "@/lib/sendLead";
 import PhoneField, { phoneComplete } from "@/components/ui/PhoneField";
@@ -148,7 +148,7 @@ export default function CandidateQuiz({
   if (sent)
     return (
       <div className="animate-[alis-calc-in_.4s_ease] py-8 text-center">
-        <span aria-hidden className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#17191a] text-[18px] text-white">✓</span>
+        <span aria-hidden className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#17191a] text-[18px] text-white">✓︎</span>
         <p className="mt-4 font-display text-[18px]">{en ? "Thank you!" : "Спасибо!"}</p>
         <p className="mx-auto mt-2 max-w-[38ch] !text-[13px] text-[#17191a]/65">{en ? "We have received your application. Every application is reviewed personally — if you meet the requirements, we will contact you." : "Мы получили вашу анкету. Каждая заявка рассматривается лично — при соответствии требованиям мы свяжемся с вами."}</p>
       </div>
@@ -257,7 +257,7 @@ export default function CandidateQuiz({
         {tried && !stepOk && <p className="text-[12px] text-[#b42318]">{en ? "Please fill in the fields marked with an asterisk." : "Заполните, пожалуйста, поля со звёздочкой."}</p>}
 
         <button type="button" onClick={next} className={btn}>{last ? (en ? "Submit application" : "Отправить заявку") : en ? "Next" : "Далее"}</button>
-        {(step > 0 || onBack) && <button type="button" onClick={() => { setTried(false); if (step > 0) setStep(step - 1); else onBack?.(); }} className={`self-start ${link}`}>← {en ? "Back" : "Назад"}</button>}
+        {(step > 0 || onBack) && <button type="button" onClick={() => { setTried(false); if (step > 0) setStep(step - 1); else onBack?.(); }} className={`self-start ${link}`}>←︎ {en ? "Back" : "Назад"}</button>}
       </div>
     </div>
   );

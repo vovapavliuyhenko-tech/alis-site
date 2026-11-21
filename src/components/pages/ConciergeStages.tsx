@@ -9,7 +9,7 @@ import { type Stage } from "@/components/HorizontalStory";
 
 type Loc = { ru: string; en: string };
 
-// Ссылки прямо в тексте этапа: «[анкету](#calc)» → подсвеченное кликабельное слово
+// Ссылки прямо в тексте этапа: «[анкету](#calc)» →︎ подсвеченное кликабельное слово
 function RichText({ text }: { text: string }) {
   const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
   return (

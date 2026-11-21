@@ -1,4 +1,4 @@
-// Приём заявок со всех форм сайта → CRM (таблица crm_leads) + уведомление в Telegram.
+// Приём заявок со всех форм сайта →︎ CRM (таблица crm_leads) + уведомление в Telegram.
 import { NextResponse } from "next/server";
 import { dbConfigured, saveLead } from "@/lib/crm";
 

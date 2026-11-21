@@ -1,11 +1,11 @@
 "use client";
 // СТРАНИЦА «МАГАЗИН» — блоки по брифу заказчицы:
 //  ShopCategories — 4 категории с фото и ценами: уход и инструменты, мерч, подарочный бокс, сертификаты;
-//  HairQuiz       — «Подобрать уход за 30 секунд с консультантом»: 5 вопросов о волосах → контакты →
+//  HairQuiz       — «Подобрать уход за 30 секунд с консультантом»: 5 вопросов о волосах →︎ контакты →︎
 //                   CRM (тип «shop»); тёмная, в формате анкеты консьерж-сервиса;
 //  MerchLine      — строка про мерч + условия доставки и самовывоза (над лентой товаров);
 //  GiftBox        — подарочный бокс: 3 фото, текст и связь с менеджером;
-//  CertBuilder    — конструктор сертификата: открытка, сумма, пожелание, день и час → CRM.
+//  CertBuilder    — конструктор сертификата: открытка, сумма, пожелание, день и час →︎ CRM.
 // Цены категорий считаются из каталога. TODO: фото бокса, открыток и суммы сертификатов — от заказчицы.
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -84,7 +84,7 @@ export function MerchLine() {
             { ru: "Доставка — согласуем в мессенджере вместе с оплатой", en: "Delivery — arranged in a messenger together with payment" },
           ].map((d) => (
             <li key={d.ru} className="flex items-start gap-3 rounded-[14px] border border-[#17191a]/12 px-4 py-3 text-[12.5px] text-[#17191a] sm:text-[14px]">
-              <span aria-hidden className="mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[10px] text-white">✓</span>
+              <span aria-hidden className="mt-[3px] flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#17191a] text-[10px] text-white">✓︎</span>
               {d[lang]}
             </li>
           ))}
@@ -224,7 +224,7 @@ export function CertBuilder() {
         {/* Справа: настройки */}
         {sent ? (
           <div className="flex flex-col items-center justify-center rounded-[20px] bg-white p-8 text-center">
-            <span aria-hidden className="flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓</span>
+            <span aria-hidden className="flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓︎</span>
             <p className="mt-5 font-display text-[18px] sm:text-[22px]">{en ? "Thank you!" : "Спасибо!"}</p>
             <p className="mt-2 max-w-[34ch] !text-[12.5px] text-[#17191a]/65 sm:!text-[14px]">{en ? "We'll contact you to confirm and arrange payment." : "Свяжемся с вами, чтобы подтвердить сертификат и оплату."}</p>
           </div>

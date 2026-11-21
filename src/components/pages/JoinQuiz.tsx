@@ -83,7 +83,7 @@ export default function JoinQuiz() {
                 ))}
               </div>
               <p className={`mt-5 !text-[12px] leading-[1.55] text-[#17191a]/55 sm:!text-[13px]`}>{en ? "The form takes about 7 minutes. Every application is reviewed personally." : "Заполнение анкеты займёт около 7 минут. Каждая заявка рассматривается лично."}</p>
-              <a href="#vacancies" className={`mt-4 inline-block ${link}`}>{en ? "← Open positions" : "← Открытые вакансии"}</a>
+              <a href="#vacancies" className={`mt-4 inline-block ${link}`}>{en ? "←︎ Open positions" : "←︎ Открытые вакансии"}</a>
             </div>
           </div>
         )}

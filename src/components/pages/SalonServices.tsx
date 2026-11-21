@@ -105,7 +105,7 @@ export default function SalonServices({
                 className="group flex h-[48px] items-center justify-between gap-4 rounded-[14px] bg-[#17191a] px-5 text-[11px] font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-[#2a2c2d] sm:h-[54px] sm:rounded-[16px] sm:px-6 sm:text-[12px]"
               >
                 {master.label[lang]}
-                <span className="transition-transform duration-300 group-hover:-rotate-45">→</span>
+                <span className="transition-transform duration-300 group-hover:-rotate-45">→︎</span>
               </a>
             )}
           </div>

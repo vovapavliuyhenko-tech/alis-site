@@ -1,6 +1,6 @@
 "use client";
 // КОНФИГУРАТОР ПОДАРОЧНОГО БОКСА (магазин, #box) — по принципу Apple Store: справа всегда ОДИН шаг
-// (размер → цвет → наполнение → открытка и доставка → контакты), слева — сама коробка (S заметно меньше M; когда выбрано
+// (размер →︎ цвет →︎ наполнение →︎ открытка и доставка →︎ контакты), слева — сама коробка (S заметно меньше M; когда выбрано
 // средство — «открывается»). Внизу — строка-итог и кнопки «Назад / Далее». Ничего лишнего на экране.
 // Заявка уходит менеджеру (CRM, тип «shop»): он подтверждает наличие, упаковку, открытку и стоимость.
 import { useState } from "react";
@@ -102,8 +102,8 @@ export default function BoxBuilder() {
 
         <div className="grid overflow-hidden rounded-[22px] border border-[#17191a]/[0.06] bg-white shadow-[0_24px_50px_-28px_rgba(23,25,26,0.35)] sm:rounded-[28px] lg:h-[clamp(480px,31.5vw,620px)] lg:grid-cols-2">
           {/* Слева — коробка */}
-          <div className="flex flex-col items-center justify-center bg-white p-6 sm:p-10 lg:min-h-0 lg:p-8 lg:border-r lg:border-[#17191a]/[0.06]">
-            <div className="flex aspect-square w-full max-w-[440px] items-center justify-center lg:h-[74%] lg:w-auto lg:max-w-full">
+          <div className="flex flex-col items-center justify-center bg-white p-4 sm:p-10 lg:min-h-0 lg:p-8 lg:border-r lg:border-[#17191a]/[0.06]">
+            <div className="flex aspect-square w-full max-w-[220px] items-center justify-center sm:max-w-[440px] lg:h-[74%] lg:w-auto lg:max-w-full">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 key={img}
@@ -115,18 +115,18 @@ export default function BoxBuilder() {
             </div>
             {/* Выбранное наполнение — мини-фото под коробкой (нажатие убирает) */}
             {opened && (
-              <div className="mt-4 flex max-w-[440px] flex-wrap justify-center gap-2">
+              <div className="mt-3 flex max-w-[220px] flex-wrap justify-center gap-1.5 sm:mt-4 sm:max-w-[440px] sm:gap-2">
                 {items.map((it) => {
                   const p = ALL.find((x) => x.name === it);
                   return (
-                    <button key={it} type="button" onClick={() => toggle(it)} title={`${T("Убрать", "Remove")}: ${it}`} className="group/i relative h-11 w-11 overflow-hidden rounded-[10px] bg-white ring-1 ring-[#17191a]/10">
+                    <button key={it} type="button" onClick={() => toggle(it)} title={`${T("Убрать", "Remove")}: ${it}`} className="group/i relative h-9 w-9 overflow-hidden rounded-[10px] bg-white ring-1 ring-[#17191a]/10 sm:h-11 sm:w-11">
                       {p?.img ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={p.img} alt={it} className="h-full w-full object-contain" />
                       ) : (
                         <span className="flex h-full w-full items-center justify-center text-[8px] uppercase text-[#17191a]/50">{p?.brand.slice(0, 4)}</span>
                       )}
-                      <span aria-hidden className="absolute inset-0 flex items-center justify-center bg-[#17191a]/70 text-[11px] text-white opacity-0 transition-opacity group-hover/i:opacity-100">✕</span>
+                      <span aria-hidden className="absolute inset-0 flex items-center justify-center bg-[#17191a]/70 text-[11px] text-white opacity-0 transition-opacity group-hover/i:opacity-100">✕︎</span>
                     </button>
                   );
                 })}
@@ -135,7 +135,7 @@ export default function BoxBuilder() {
           </div>
 
           {/* Справа — один шаг */}
-          <div className="flex min-h-0 flex-col p-6 sm:p-10 lg:p-8">
+          <div className="flex min-h-0 flex-col p-4 sm:p-10 lg:p-8">
             <div className="flex items-center gap-2">
               {STEPS.map((s, i) => (
                 <span key={s} className={`h-1 flex-1 rounded-full transition-colors duration-500 ${i <= step ? "bg-[#17191a]" : "bg-[#17191a]/12"}`} />
@@ -148,7 +148,7 @@ export default function BoxBuilder() {
             <div key={step} className="-mx-1.5 mt-1 flex min-h-0 flex-1 flex-col overflow-y-auto px-1.5 py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden animate-[box-in_.5s_cubic-bezier(.22,.61,.36,1)]">
               {step === 0 && (
                 <>
-                  <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">{T("Какой размер?", "Which size?")}</h3>
+                  <h3 className="!text-[18px] text-[#17191a] sm:!text-[22px] lg:!text-[28px]">{T("Какой размер?", "Which size?")}</h3>
                   <div className="mt-6 grid gap-3">
                     {BOX_SIZES.map((s) => (
                       <button key={s.id} type="button" onClick={() => pickSize(s.id)} className={card(size === s.id)}>
@@ -165,12 +165,12 @@ export default function BoxBuilder() {
 
               {step === 1 && (
                 <>
-                  <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">{T("Цвет коробки", "Box colour")}</h3>
+                  <h3 className="!text-[18px] text-[#17191a] sm:!text-[22px] lg:!text-[28px]">{T("Цвет коробки", "Box colour")}</h3>
                   <p className="mt-2 text-[13px] text-[#17191a]/55">{tr(BOX_COLORS[color].label)}</p>
-                  <div className="mt-6 flex flex-wrap gap-5">
+                  <div className="mt-4 flex flex-wrap gap-3 sm:gap-5">
                     {sizeDef.colors.map((c) => (
                       <button key={c} type="button" onClick={() => setColor(c)} aria-pressed={color === c} aria-label={tr(BOX_COLORS[c].label)}>
-                        <span className={`block h-12 w-12 rounded-full transition-all duration-300 ${color === c ? "ring-2 ring-[#17191a] ring-offset-4" : "ring-1 ring-[#17191a]/15 hover:ring-[#17191a]/40"}`} style={{ background: BOX_COLORS[c].hex }} />
+                        <span className={`block h-10 w-10 rounded-full transition-all duration-300 sm:h-12 sm:w-12 ${color === c ? "ring-2 ring-[#17191a] ring-offset-4" : "ring-1 ring-[#17191a]/15 hover:ring-[#17191a]/40"}`} style={{ background: BOX_COLORS[c].hex }} />
                       </button>
                     ))}
                   </div>
@@ -181,7 +181,7 @@ export default function BoxBuilder() {
               {step === 2 && (
                 <>
                   <div className="flex items-baseline justify-between gap-4">
-                    <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">{T("Наполнение", "Contents")}</h3>
+                    <h3 className="!text-[18px] text-[#17191a] sm:!text-[22px] lg:!text-[28px]">{T("Наполнение", "Contents")}</h3>
                     {/* Счётчик выбранного — «тикает» при каждом изменении */}
                     <span key={count} className={`text-[12px] tabular-nums transition-colors ${count ? "animate-[box-pop_.35s_ease] text-[#17191a]" : "text-[#17191a]/40"}`}>
                       {count ? `${T("Выбрано", "Selected")}: ${count}` : T("Выберите средства", "Choose products")}
@@ -192,7 +192,7 @@ export default function BoxBuilder() {
                     {GROUPS.map((g, i) => {
                       const n = g.items.filter((p) => items.includes(p.name)).length;
                       return (
-                        <button key={g.title} type="button" onClick={() => setGroup(i)} className={`flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2 text-[12px] transition-colors duration-300 ${group === i ? "bg-[#17191a] text-white" : "bg-[#f6f4f1] text-[#17191a]/70 hover:text-[#17191a]"}`}>
+                        <button key={g.title} type="button" onClick={() => setGroup(i)} className={`flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] transition-colors duration-300 sm:px-3.5 sm:py-2 sm:text-[12px] ${group === i ? "bg-[#17191a] text-white" : "bg-[#f6f4f1] text-[#17191a]/70 hover:text-[#17191a]"}`}>
                           {tr(g.title)}
                           {n > 0 && <span className={`flex h-[18px] min-w-[18px] items-center justify-center rounded-full px-1 text-[10px] tabular-nums ${group === i ? "bg-white text-[#17191a]" : "bg-[#17191a] text-white"}`}>{n}</span>}
                         </button>
@@ -201,7 +201,7 @@ export default function BoxBuilder() {
                   </div>
                   {/* Сетка товаров: без своей полосы прокрутки, мягкое растворение снизу; вся карточка — кнопка */}
                   <div key={group} className="relative mt-4 min-h-0 flex-1">
-                    <div className="grid max-h-[392px] grid-cols-3 lg:h-full lg:max-h-none content-start gap-x-2.5 gap-y-4 overflow-y-auto pb-6 [scrollbar-width:none] sm:grid-cols-4 [&::-webkit-scrollbar]:hidden">
+                    <div className="grid max-h-[392px] grid-cols-3 content-start gap-x-2 gap-y-3 overflow-y-auto pb-6 [scrollbar-width:none] sm:gap-x-2.5 sm:gap-y-4 lg:h-full lg:max-h-none [&::-webkit-scrollbar]:hidden sm:grid-cols-4">
                       {GROUPS[group].items.map((p, k) => {
                         const on = items.includes(p.name);
                         return (
@@ -217,11 +217,11 @@ export default function BoxBuilder() {
                               {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img src={p.img} alt={p.name} className={`h-full w-full object-contain mix-blend-multiply transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)] ${on ? "scale-[0.92]" : "group-hover:scale-[1.04]"}`} />
                               <span aria-hidden className={`absolute right-1.5 top-1.5 flex h-6 w-6 items-center justify-center rounded-full text-[12px] transition-all duration-300 ${on ? "scale-100 bg-[#17191a] text-white" : "scale-90 bg-white text-[#17191a]/50 shadow-[0_1px_4px_rgba(0,0,0,.08)] group-hover:scale-100 group-hover:text-[#17191a]"}`}>
-                                {on ? "✓" : "+"}
+                                {on ? "✓︎" : "+"}
                               </span>
                             </span>
-                            <span className="mt-2 line-clamp-2 min-h-[2.6em] text-[11.5px] leading-[1.3] text-[#17191a]">{p.name}</span>
-                            {p.price ? <span className="mt-0.5 text-[11.5px] tabular-nums text-[#17191a]/55">{p.price.toLocaleString("ru-RU")} ₽</span> : null}
+                            <span className="mt-2 line-clamp-2 min-h-[2.6em] text-[10.5px] leading-[1.3] text-[#17191a] sm:text-[11.5px]">{p.name}</span>
+                            {p.price ? <span className="mt-0.5 text-[10.5px] tabular-nums text-[#17191a]/55 sm:text-[11.5px]">{p.price.toLocaleString("ru-RU")} ₽</span> : null}
                           </button>
                         );
                       })}
@@ -232,9 +232,9 @@ export default function BoxBuilder() {
 
               {step === 3 && (
                 <>
-                  <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">{T("Открытка и доставка", "Card and delivery")}</h3>
+                  <h3 className="!text-[18px] text-[#17191a] sm:!text-[22px] lg:!text-[28px]">{T("Открытка и доставка", "Card and delivery")}</h3>
                   {/* Открытка — бесплатно, да/нет; при «да» — текст открытки */}
-                  <p className="mt-5 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45">{T("Открытка · бесплатно", "Greeting card · free")}</p>
+                  <p className="mt-4 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45 sm:mt-5">{T("Открытка · бесплатно", "Greeting card · free")}</p>
                   <div className="mt-2 grid grid-cols-2 gap-2">
                     {[{ v: true, l: T("Добавить открытку", "Add a card") }, { v: false, l: T("Без открытки", "No card") }].map((o) => (
                       <button key={o.l} type="button" onClick={() => setWithCard(o.v)} aria-pressed={withCard === o.v} className={`${card(withCard === o.v)} !p-4 text-[13px] text-[#17191a]`}>
@@ -248,7 +248,7 @@ export default function BoxBuilder() {
                     </div>
                   </div>
                   {/* Доставка */}
-                  <p className="mt-6 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45">{T("Доставка", "Delivery")}</p>
+                  <p className="mt-4 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/45 sm:mt-6">{T("Доставка", "Delivery")}</p>
                   <div className="mt-2 grid gap-2">
                     {DELIVERY.map((d) => (
                       <button key={d.id} type="button" onClick={() => setDelivery(d.id)} aria-pressed={delivery === d.id} className={`${card(delivery === d.id)} flex items-center justify-between gap-4 !px-4 !py-3.5`}>
@@ -268,14 +268,14 @@ export default function BoxBuilder() {
               {step === 4 &&
                 (sent ? (
                   <div className="py-10 text-center">
-                    <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓</span>
+                    <span aria-hidden className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#17191a] text-[20px] text-white">✓︎</span>
                     <p className="mt-5 font-display text-[20px]">{T("Спасибо!", "Thank you!")}</p>
                     <p className="mx-auto mt-2 max-w-[36ch] !text-[13px] text-[#17191a]/65">{T("Менеджер свяжется с вами в течение 15 минут, чтобы подтвердить состав, упаковку, открытку и стоимость.", "Our manager will contact you within 15 minutes to confirm the contents, packaging, card and price.")}</p>
                   </div>
                 ) : (
                   <>
-                    <h3 className="!text-[22px] text-[#17191a] lg:!text-[28px]">{T("Куда прислать детали?", "Where should we send the details?")}</h3>
-                    <div className="mt-6 flex flex-col gap-2">
+                    <h3 className="!text-[18px] text-[#17191a] sm:!text-[22px] lg:!text-[28px]">{T("Куда прислать детали?", "Where should we send the details?")}</h3>
+                    <div className="mt-4 flex flex-col gap-2 sm:mt-6">
                       <input value={name} onChange={(e) => setName(e.target.value)} placeholder={T("Имя", "Name")} className={field} />
                       <PhoneField lang={lang} value={phone} onChange={setPhone} className="!bg-[#f6f4f1]" />
                       {delivery !== "pickup" && (
@@ -296,7 +296,7 @@ export default function BoxBuilder() {
               <p key={nudge} className="mt-4 animate-[box-shake_.4s_ease] text-[12px] text-[#17191a]">{T("Добавьте хотя бы одно средство — нажмите на «+» у товара", "Add at least one product — tap “+” on a product")}</p>
             )}
             {!sent && (
-              <div className="mt-8 flex flex-col gap-4 border-t border-[#17191a]/10 pt-5 lg:mt-4 lg:pt-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="mt-4 flex flex-col gap-3 border-t border-[#17191a]/10 pt-4 sm:flex-row sm:items-center sm:justify-between lg:mt-4 lg:pt-4 sm:mt-8 sm:gap-4 sm:pt-5">
                 <p className="text-[12.5px] text-[#17191a]/60">
                   {tr(sizeDef.label)} · {tr(BOX_COLORS[color].label)} · {count ? `${count} ${word}` : T("без наполнения", "no contents")}
                   {total > 0 && <span className="ml-1 font-medium text-[#17191a]">· {partial ? T("от ", "from ") : ""}{total.toLocaleString("ru-RU")} ₽</span>}
@@ -308,7 +308,7 @@ export default function BoxBuilder() {
                     </button>
                   )}
                   {step < 4 ? (
-                    <button type="button" onClick={next} className="rounded-full bg-[#17191a] px-8 py-3.5 text-[11.5px] font-medium uppercase tracking-[0.14em] text-white transition-opacity disabled:opacity-35">
+                    <button type="button" onClick={next} className="rounded-full bg-[#17191a] px-6 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-white transition-opacity disabled:opacity-35 sm:px-8 sm:py-3.5 sm:text-[11.5px]">
                       {step === 2 && count ? `${T("Далее", "Next")} · ${count}` : T("Далее", "Next")}
                     </button>
                   ) : (

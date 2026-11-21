@@ -23,7 +23,7 @@ function Meta({ n, lang }: { n: NewsItem; lang: Lang }) {
 }
 
 // МИНИМАЛИЗМ И ВОЗДУХ: без рамок, теней и тёмных плашек — фото, тонкая строка «рубрика · дата»,
-// заголовок и тихая ссылка «Читать →». Много пустого пространства между новостями.
+// заголовок и тихая ссылка «Читать →︎». Много пустого пространства между новостями.
 function Line({ n, lang }: { n: NewsItem; lang: Lang }) {
   return (
     <p className="text-[10.5px] uppercase tracking-[0.16em] text-[#17191a]/45">
@@ -49,7 +49,7 @@ export function NewsCard({ n }: { n: NewsItem }) {
         </h3>
         <Link href={href} className="mt-4 inline-flex w-fit items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-[#17191a]/60 transition-colors hover:text-[#17191a]">
           {lang === "en" ? "Read" : "Читать"}
-          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→︎</span>
         </Link>
       </div>
     </article>
@@ -67,15 +67,17 @@ function NewsFeature({ n, flip = false }: { n: NewsItem; flip?: boolean }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={n.image} alt={n.title[lang]} className="aspect-[4/3] w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03] lg:aspect-[5/4]" />
       </Link>
-      <div className={`max-w-[520px] ${flip ? "lg:order-1 lg:justify-self-end" : ""}`}>
-        <Line n={n} lang={lang} />
+      <div className={`max-w-[520px] max-lg:mx-auto max-lg:text-center ${flip ? "lg:order-1 lg:justify-self-end" : ""}`}>
+        <div className="max-lg:flex max-lg:flex-col max-lg:items-center">
+          <Line n={n} lang={lang} />
+        </div>
         <h2 className="mt-5 !text-[22px] font-normal leading-[1.25] text-[#17191a] sm:!text-[26px] lg:!text-[32px]">
           <Link href={href}>{n.title[lang]}</Link>
         </h2>
         <p className="mt-5 !text-[13px] leading-[1.7] text-[#17191a]/55 sm:!text-[14px]">{n.excerpt[lang]}</p>
         <Link href={href} className="mt-8 inline-flex items-center gap-3 border-b border-[#17191a]/25 pb-1.5 text-[11.5px] uppercase tracking-[0.16em] text-[#17191a] transition-colors hover:border-[#17191a]">
           {lang === "en" ? "Read" : "Читать"}
-          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→︎</span>
         </Link>
       </div>
     </article>
@@ -161,7 +163,7 @@ export function NewsArticle({ n }: { n: NewsItem }) {
             <div className="mb-8 flex items-baseline justify-between gap-6 lg:mb-10">
               <h2 className="text-[#17191a]">{lang === "en" ? "Read also" : "Читайте также"}</h2>
               <Link href="/news" className="group shrink-0 text-[13px] text-[#17191a]/60 transition-colors hover:text-[#17191a]">
-                {lang === "en" ? "All news" : "Все новости"} <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                {lang === "en" ? "All news" : "Все новости"} <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→︎</span>
               </Link>
             </div>
             <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-12">

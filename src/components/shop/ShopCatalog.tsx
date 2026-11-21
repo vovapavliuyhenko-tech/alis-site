@@ -20,11 +20,11 @@ const SECTIONS: Section[] = [
   { id: "aksessuary", tag: "аксессуары", hash: { ru: "#аксессуары", en: "#accessories" }, title: { ru: "Детали, которые напоминают о салоне", en: "Details that remind you of the salon" }, photo: "/assets/alis/img_6048.jpg" },
   { id: "uhod", tag: "уход", hash: { ru: "#уход", en: "#care" }, title: { ru: "Уход после салона — дома", en: "Salon care, continued at home" }, photo: "/assets/alis/img_5910.webp" },
 ];
-// Старые ссылки вида ?cat=одежда (плитки на странице магазина) → нужный раздел
+// Старые ссылки вида ?cat=одежда (плитки на странице магазина) →︎ нужный раздел
 const CAT_TO_ID: Record<string, string> = { одежда: "odezhda", аксессуары: "aksessuary", уход: "uhod", new: "odezhda" };
 
 // Карточка товара: при наведении — второй кадр, название и цена приподнимаются, снизу выезжает
-// белая кнопка «В корзину» (на телефоне видна всегда). Нажатие — товар в корзину, «Добавлено ✓».
+// белая кнопка «В корзину» (на телефоне видна всегда). Нажатие — товар в корзину, «Добавлено ✓︎».
 function Item({ p }: { p: Product }) {
   const { lang } = useLang();
   const en = lang === "en";
@@ -53,7 +53,7 @@ function Item({ p }: { p: Product }) {
         onClick={add}
         className="absolute inset-x-3 bottom-3 z-[2] flex h-[38px] items-center justify-center rounded-[10px] bg-white text-[10.5px] font-medium uppercase tracking-[0.14em] text-[#17191a] transition-all duration-500 ease-[cubic-bezier(.22,.61,.36,1)] hover:bg-[#17191a] hover:text-white lg:inset-x-3.5 lg:bottom-3.5 [@media(hover:hover)]:translate-y-[140%] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100"
       >
-        {added ? (en ? "Added ✓" : "Добавлено ✓") : en ? "Add to cart" : "В корзину"}
+        {added ? (en ? "Added ✓︎" : "Добавлено ✓︎") : en ? "Add to cart" : "В корзину"}
       </button>
     </div>
   );

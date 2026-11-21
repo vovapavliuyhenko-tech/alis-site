@@ -53,7 +53,7 @@ export default function TeamIntro({
     <div className="bg-white">
     <section ref={sec} className="relative isolate flex min-h-[100svh] flex-col items-center justify-end overflow-hidden rounded-b-[28px] bg-[#b9b3a9] text-white">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img ref={bg} src={photo} alt={`${title[lang]} — ÁLIS BEAUTY`} className="hero-zoom absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-center will-change-transform lg:[filter:saturate(1.15)_contrast(1.04)]" />
+      <img ref={bg} src={photo} alt={`${title[lang]} — ÁLIS BEAUTY`} fetchPriority="high" className="hero-zoom absolute inset-x-0 top-0 -z-20 h-full w-full object-cover object-center will-change-transform lg:[filter:saturate(1.15)_contrast(1.04)]" />
       {/* Затемнение как на главной: сверху — под шапку, снизу — под заголовок */}
       <div
         aria-hidden
@@ -77,7 +77,7 @@ export default function TeamIntro({
             {kicker[lang]}
           </p>
         )}
-        <h1 ref={h1} className={`${subtitle ? "max-w-full lg:max-w-[1100px]" : "whitespace-nowrap"} text-[clamp(18px,6vw,24px)] font-serif-display font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[26px] lg:text-[clamp(26px,2.1vw,38px)]`}>
+        <h1 ref={h1} className="max-w-full text-[22px] font-serif-display font-normal uppercase leading-[1.15] tracking-[0.04em] text-white [text-shadow:0_2px_30px_rgba(0,0,0,.25)] sm:text-[30px] lg:max-w-[1100px] lg:text-[38px]">
           <SplitTitle text={title[lang]} />
         </h1>
         {subtitle && (

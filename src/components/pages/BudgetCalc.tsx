@@ -1,7 +1,7 @@
 "use client";
 // АНКЕТА «РАССЧИТАТЬ БЮДЖЕТ» (консьерж-сервис) — встроена в тёмную плашку
 // «Ваша дата может быть уже занята» (#calc), без всплывающего окна. Ссылки href="#calc"
-// просто прокручивают к ней. 4 коротких вопроса кнопками → дата, имя, телефон → подходящий
+// просто прокручивают к ней. 4 коротких вопроса кнопками →︎ дата, имя, телефон →︎ подходящий
 // пакет (SOLO / BRIDAL / TEAM / DESTINATION). Цен пока нет — точную смету присылает
 // менеджер. Ответы уходят в CRM (тип «concierge»).
 import { useEffect, useState } from "react";
@@ -57,7 +57,7 @@ export default function BudgetCalc() {
   const [phone, setPhone] = useState("");
   const [consent, setConsent] = useState(false);
   // Вкладки последнего блока: клиент («Рассчитать выезд») / специалист («Хочу в команду» — анкета кандидата).
-  // Ссылка с #team (меню «Вакансии → Консьерж» и т. п.) сразу открывает анкету кандидата.
+  // Ссылка с #team (меню «Вакансии →︎ Консьерж» и т. п.) сразу открывает анкету кандидата.
   const [mode, setMode] = useState<"client" | "team">("client");
   useEffect(() => {
     const go = () => {
@@ -222,10 +222,10 @@ export default function BudgetCalc() {
                 })}
               </div>
               <div className="mt-5 flex items-center justify-between">
-                {step > 0 ? <button type="button" onClick={() => setStep(step - 1)} className={link}>← {en ? "Back" : "Назад"}</button> : <span />}
+                {step > 0 ? <button type="button" onClick={() => setStep(step - 1)} className={link}>←︎ {en ? "Back" : "Назад"}</button> : <span />}
                 {q.multi && (
                   <button type="button" onClick={() => setStep(step + 1)} disabled={!(ans[q.key] || []).length} className={link}>
-                    {en ? "Next" : "Далее"} →
+                    {en ? "Next" : "Далее"} →︎
                   </button>
                 )}
               </div>
@@ -248,7 +248,7 @@ export default function BudgetCalc() {
                 </span>
               </label>
               <button type="button" onClick={send} disabled={!phoneOk || !consent} className={`mt-4 ${btn}`}>{en ? "Calculate the budget" : "Рассчитать бюджет"}</button>
-              <button type="button" onClick={() => setStep(3)} className={`mt-4 ${link}`}>← {en ? "Back" : "Назад"}</button>
+              <button type="button" onClick={() => setStep(3)} className={`mt-4 ${link}`}>←︎ {en ? "Back" : "Назад"}</button>
             </div>
           )}
 

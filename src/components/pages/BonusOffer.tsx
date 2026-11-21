@@ -14,7 +14,7 @@ export default function BonusOffer() {
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [err, setErr] = useState("");
   const [consent, setConsent] = useState(false); // кнопка активна только после галочки согласия
-  // Счётчик 0 → 500, когда блок попадает в кадр
+  // Счётчик 0 →︎ 500, когда блок попадает в кадр
   const box = useRef<HTMLElement>(null);
   const [n, setN] = useState(500);
   useEffect(() => {
@@ -92,7 +92,7 @@ export default function BonusOffer() {
                 autoComplete="tel"
                 placeholder="+7 (___) ___-__-__"
                 value={phone}
-                // Маска +7 (XXX) XXX-XX-XX: цифры раскладываются сами, «8» в начале → «+7»
+                // Маска +7 (XXX) XXX-XX-XX: цифры раскладываются сами, «8» в начале →︎ «+7»
                 onFocus={() => { if (!phone) setPhone("+7 ("); }}
                 onBlur={() => { if (phone.replace(/\D/g, "").length <= 1) setPhone(""); }}
                 onChange={(e) => {
