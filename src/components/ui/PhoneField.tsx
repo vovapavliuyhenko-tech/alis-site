@@ -90,7 +90,7 @@ export default function PhoneField({
         className="flex h-full shrink-0 items-center gap-1.5 pl-4 pr-2 sm:pl-5"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={`https://flagcdn.com/w40/${c.iso}.png`} alt="" width={22} height={15} className="h-[15px] w-[22px] rounded-[2px] object-cover shadow-[0_0_0_1px_rgba(0,0,0,0.06)]" />
+        <img src={`/assets/flags/${c.iso}.png`} alt="" width={22} height={15} className="h-[15px] w-[22px] rounded-[2px] object-cover shadow-[0_0_0_1px_rgba(0,0,0,0.06)]" />
         <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden className={`text-[#17191a]/45 transition-transform ${open ? "rotate-180" : ""}`}><path d="M1.5 3.5L5 7l3.5-3.5" fill="currentColor" /></svg>
       </button>
       <span className="shrink-0 pr-1.5 text-[13px] text-[#17191a]/70 sm:text-[15px]">+{c.code}</span>
@@ -117,7 +117,7 @@ export default function PhoneField({
                 className={`flex w-full items-center gap-3 px-4 py-2 text-left text-[13px] hover:bg-[#17191a]/5 ${k.iso === c.iso ? "bg-[#17191a]/5" : ""}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`https://flagcdn.com/w40/${k.iso}.png`} alt="" width={20} height={14} loading="lazy" className="h-[14px] w-[20px] rounded-[2px] object-cover" />
+                <img src={`/assets/flags/${k.iso}.png`} alt="" width={20} height={14} loading="lazy" className="h-[14px] w-[20px] rounded-[2px] object-cover" />
                 <span className="flex-1 text-[#17191a]">{k[lang]}</span>
                 <span className="text-[#17191a]/45">+{k.code}</span>
               </button>
